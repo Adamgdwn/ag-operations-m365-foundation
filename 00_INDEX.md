@@ -39,7 +39,7 @@ The canonical execution plan is the **10-stage roadmap**:
 |---|---|---|
 | 0 | Setup Control Room | ✅ Done — env template, PS modules installed (current-user), inventory scripts |
 | 1 | Current-State Inventory | ✅ Done — valid run `20260610-173554`, written report |
-| **2** | **Identity & Admin Foundation** | **◀ You are here (next work)** |
+| **2** | **Identity & Admin Foundation** | **◀ In progress — design & decisions DONE; live execution (break-glass + role strip) pending** |
 | 3 | SharePoint Information Architecture | ⬜ Planned |
 | 4 | OneDrive & Local Machine Dovetail | ⬜ Planned (absorbs the local-machine track — see below) |
 | 5 | Exchange & Communication Routing | ⬜ Planned |
@@ -63,6 +63,14 @@ human-supervised setup, not unattended automation.
 - [guided-ai-labs-m365-foundation-build-brief.md](guided-ai-labs-m365-foundation-build-brief.md)
   — comprehensive reference/design spec behind the roadmap (the "why" and the
   detailed target architecture). Defers to the roadmap for sequencing.
+
+### Stage 2 — Identity & Admin Foundation (current work)
+
+- [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) —
+  account role matrix, target identity model, break-glass plan, role-reduction
+  sequence, and the Stage 2 decision log. **Design complete; execution pending.**
+- [IDENTITY_NAMING_STANDARD.md](IDENTITY_NAMING_STANDARD.md) — the legend: every
+  identity type, what it means, its naming pattern, and how much power it may hold.
 
 ### Current state (read these to know what exists)
 
@@ -136,11 +144,19 @@ Carry these forward; resolve at the noted stage.
 2. **Stage 1 summary-script patch is unverified.** `summary.json` for the valid
    run was hand-built after the script crashed at summary generation; the patch
    was syntax-checked but not confirmed by a clean re-run.
-3. **Break-glass admin plan (Stage 2).** No backup/recovery admin account is
-   documented yet. Build this **before** removing any admin roles.
-4. **`contact@guidedailabs.com` is a Global Administrator (Stage 2).** Front-door/
-   assistant candidate that should not stay GA long term — but do not remove until
-   the break-glass plan exists.
+3. ~~**Break-glass admin plan (Stage 2).**~~ **DECIDED 2026-06-11:** create **two**
+   emergency-access accounts (`breakglass-01/02@…onmicrosoft.com`), cloud-only GA,
+   credentials offline. Plan in
+   [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) §4.
+   **Execution pending** (first live step — needs interactive sign-in).
+4. ~~**`contact@guidedailabs.com` is a Global Administrator (Stage 2).**~~
+   **DECIDED 2026-06-11:** strip Global Admin + Global Reader + AI Admin; keep it a
+   low-privilege mailbox; future agentic capability comes via a scoped app
+   registration at Stage 9 (interaction surface ≠ capability surface).
+   **Execution pending — do only AFTER the break-glass accounts are confirmed.**
+5. **`adamgoodwin@…` keeps Global Admin (Stage 2, accepted risk).** Adam chose to
+   keep his daily identity as primary admin; managed by MFA + consent discipline,
+   revisit just-in-time elevation at Stage 7 if Business Premium/Entra P1–P2 lands.
 
 ---
 
