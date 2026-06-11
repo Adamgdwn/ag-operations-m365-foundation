@@ -192,7 +192,46 @@ This is the design contract the Stage 9 Agentic OS bridge must satisfy.
 
 ---
 
-## 8. Stage 2 done when
+## 8. Execution tooling & token-efficiency notes (carry forward)
+
+The operating principle for *every* agent runner (me, Codex, or the eventual
+Agentic OS) is: **prefer code-driven, log-as-you-go automation over live visual
+streaming.** Live frame-by-frame "watching" is the most token-expensive mode and is
+avoided for routine work.
+
+Token cost, cheapest → most expensive interface to M365:
+
+1. **Microsoft Graph API** (our Level-1 default) — structured JSON in/out; lowest
+   cost; durable and auditable. This is the workhorse for accounts, roles,
+   licenses, and the large majority of configuration.
+2. **Code-driven browser** for the few portal-only settings with no Graph API —
+   medium cost; far cheaper than streaming screenshots.
+3. **Live screenshot streaming** — highest cost; avoid for routine work.
+
+### Webwright (flag for Stage 9 bridge)
+
+**Webwright** (Microsoft Research, released ~2026-05-24;
+`github.com/microsoft/Webwright`) is a terminal-native web-agent harness: the model
+**writes Playwright/bash code** to drive a browser and captures screenshots only
+when needed, compacting history every ~20 steps — so it's markedly more
+token-efficient than naive screenshot-per-step browser watching. It is
+**model-agnostic** (benchmarked on GPT-5.4 and Claude Opus 4.7).
+
+How it fits here (decided to earmark, not adopt yet):
+
+- It does **not** replace Graph (Level 1) — a Graph call is cheaper than any browser
+  approach, and most M365 admin *has* an API.
+- It **does** make the **Level-2 portal-only fallback** much cheaper. Earmark a
+  Webwright-style engine for that slot at **Stage 9**.
+- Caveats: (a) its "savings" come from *not* live-streaming — you review a concise
+  log/artifacts afterward, not a live window; (b) its writeup defines no
+  auth/credential model, so keep it on **low-privilege / read** portal tasks, never
+  as a path to admin power (respects interaction≠capability); (c) it's research-
+  grade and new — experiment, don't build production on it yet.
+
+See also the project-wide [TOOLING_AND_LICENSING.md](TOOLING_AND_LICENSING.md).
+
+## 9. Stage 2 done when
 
 Every account has a clear named role (admin / daily human / front door / support /
 shared mailbox / alias / guest / future service-agent identity), a tested

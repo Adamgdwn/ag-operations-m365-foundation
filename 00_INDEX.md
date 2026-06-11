@@ -84,6 +84,13 @@ human-supervised setup, not unattended automation.
   — the **valid** raw inventory data. (The `20260610-172735` and `-173346`
   folders are failed runs — ignore them; each has a `FAILED_RUN_NOTE.md`.)
 
+### Tooling & licensing
+
+- [TOOLING_AND_LICENSING.md](TOOLING_AND_LICENSING.md) — are our tools optimum, and
+  which free licenses save time/tokens. **Headline: apply to Microsoft for Startups
+  Founders Hub as Guided AI Labs → possible free Business Premium + Azure credits;
+  turn on free Security Defaults MFA now; stay API-first (Graph).**
+
 ### Reference & access
 
 - [M365_API_ACCESS_START_HERE.md](M365_API_ACCESS_START_HERE.md) — Microsoft

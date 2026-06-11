@@ -365,6 +365,10 @@ Future AI access only works if Microsoft 365 already has clean permissions, labe
 - device/security policy direction
 - audit and sign-in review
 - license upgrade decision, likely Business Premium for key accounts
+  - **Check FREE path first:** Microsoft for Startups Founders Hub may grant
+    Guided AI Labs **Business Premium at no cost** (+ Azure credits). Applying as
+    the AI-product entity could unlock Entra ID P1 / Conditional Access / Intune /
+    Defender for free — see [TOOLING_AND_LICENSING.md](TOOLING_AND_LICENSING.md).
 
 ### Main tools
 
@@ -441,7 +445,9 @@ The Agentic OS will be built elsewhere, but Microsoft 365 needs to be ready for 
 
 - Entra app registrations
 - Enterprise applications
-- Microsoft Graph
+- Microsoft Graph (API-first — the token-cheapest, most auditable interface)
+- a Webwright-style code-driven browser for the few portal-only tasks with no Graph
+  API (low-privilege/read only) — see [TOOLING_AND_LICENSING.md](TOOLING_AND_LICENSING.md)
 - Power Automate
 - n8n later
 - future Agentic OS bridge
