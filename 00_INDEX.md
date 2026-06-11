@@ -98,8 +98,10 @@ human-supervised setup, not unattended automation.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-10.md](SESSION_TURNOVER_2026-06-10.md) — detailed
-  handoff from the 2026-06-10 session.
+- [SESSION_TURNOVER_2026-06-11.md](SESSION_TURNOVER_2026-06-11.md) — **most recent**
+  handoff: audit + consolidation + git/GitHub setup; resume at Stage 2.
+- [SESSION_TURNOVER_2026-06-10.md](SESSION_TURNOVER_2026-06-10.md) — handoff from
+  the 2026-06-10 session (Stage 1 inventory).
 
 ---
 
