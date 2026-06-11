@@ -9,10 +9,12 @@ per [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md). Orientation lives 
 BEFORE removing any admin role. Every live change is a separate, explicit,
 reversible decision.**
 
-> **Execution status (2026-06-11): safety net DONE — both break-glass accounts
-> created with Global Administrator, first sign-in + permanent password + MFA all
-> confirmed (see Execution Log, §10). No admin roles have been *removed* yet;
-> `contact@` cleanup (§5 step 3) is the next gated write.**
+> **Execution status (2026-06-11): safety net DONE (both break-glass accounts,
+> first sign-in + permanent password + MFA confirmed) AND `contact@` admin
+> stripped — Global Administrator + Global Reader + AI Administrator all removed,
+> read-back confirms zero directory roles on `contact@` (see Execution Log, §10).
+> §5 steps 1 and 3 are complete. Next: §5 step 4 (re-inventory); optional §5 step 2
+> (cosmetic sub-role tidy on `adamgoodwin@`) remains do-anytime-or-skip.**
 
 ---
 
@@ -139,7 +141,13 @@ step — the reductions are the `contact@` cleanup plus optional tidying.)
 3. **Remove Global Admin (and Global Reader + AI Admin) from
    `contact@guidedailabs.com`.** Then decide separately whether it becomes a shared
    mailbox or stays a licensed user.
+   — **DONE 2026-06-11.** All three roles removed via
+   `Invoke-M365Stage2StripContactAdmin.ps1` (last-GA safety check passed: 4 other
+   GAs remain; typed-`yes` gate); read-back confirms `contact@` now holds zero
+   directory roles. The shared-mailbox-vs-licensed-user question is still open and
+   deliberately separate (not yet decided).
 4. **Re-inventory** to confirm the final role assignments match this matrix.
+   — *Next step.* Run `Invoke-M365Stage2Verify.ps1`.
 
 Steps 2–3 touch live config, so each is a separate explicit approval at the time we
 do it — not pre-authorized by this plan.
@@ -194,7 +202,7 @@ This is the design contract the Stage 9 Agentic OS bridge must satisfy.
 | 2.2 | `admin@agoperations.ca` role | **Secondary / backup admin** (not the daily-admin) | 2026-06-11 |
 | 2.3 | Demote `adamgoodwin@…` from Global Admin? | **No** — stays primary admin (accepted residual risk) | 2026-06-11 |
 | 2.4 | Which daily roles `adamgoodwin@…` keeps | Keeps Global Admin; optional cleanup of redundant sub-roles | 2026-06-11 |
-| 2.5 | `contact@…` target | **Strip all admin now**; low-priv licensed mailbox; agentic power via scoped app identity at Stage 9 | 2026-06-11 |
+| 2.5 | `contact@…` target | **Strip all admin now** (EXECUTED 2026-06-11 — GA + Global Reader + AI Admin removed); low-priv licensed mailbox; agentic power via scoped app identity at Stage 9 | 2026-06-11 |
 | 2.6 | Adopt the naming standard in §6? | **Yes, as written** — see legend [IDENTITY_NAMING_STANDARD.md](IDENTITY_NAMING_STANDARD.md) | 2026-06-11 |
 | 2.7 | Live-execution mode | **Level 1 — visible terminal + Microsoft Graph.** Adam authenticates (interactive device-code, MFA his); agent operates in delegated scopes; read-only first, writes only after explicit consent; every action narrated on screen; one reversible action at a time. Independent agent login deferred to the scoped Stage 9 app identity. | 2026-06-11 |
 
@@ -257,8 +265,12 @@ deliberately — but only after the safety net is confirmed.
 | 2026-06-11 | Read-only verify of live identity/role state | `Invoke-M365Stage2Verify.ps1` | Confirmed 3 GAs, `contact@` holds GA+Reader+AI Admin, no break-glass existed | n/a (read-only) |
 
 | 2026-06-11 | Break-glass first sign-in: permanent passwords set + stored offline, MFA registered on both | Manual (Adam), private browser window | Safety net proven; §5 step 1 complete. MFA prompt seen → Security Defaults likely on | Reset password / re-register MFA |
+| 2026-06-11 | Stripped **Global Administrator + Global Reader + AI Administrator** from `contact@guidedailabs.com` (id `311b3307…`) | `Invoke-M365Stage2StripContactAdmin.ps1`, signed in as `admin@agoperations.ca`, delegated write scopes (`RoleManagement.ReadWrite.Directory`), typed-`yes` gate | Last-GA safety check passed (4 other GAs: `admin@`, `adamgoodwin@`, bg-01, bg-02). All three removed; read-back confirms `contact@` now holds **zero** directory roles. Account/license/mailbox untouched | Re-POST each role assignment to `/roleManagement/directory/roleAssignments` |
 
-**§5 step 1 (safety net) is complete.** Next gated write: §5 step 3 — strip Global
-Admin + Global Reader + AI Admin from `contact@guidedailabs.com` (its own script +
-its own explicit write consent). Optional §5 step 2 (tidy redundant sub-roles on
-`adamgoodwin@`) can be done anytime or skipped — it's cosmetic, not a power change.
+**§5 steps 1 and 3 are complete.** `contact@` is now a low-privilege front-door
+identity (interaction surface ≠ capability surface — its future agentic power comes
+from a scoped app registration at Stage 9, not standing admin). Next: **§5 step 4 —
+re-inventory** via `Invoke-M365Stage2Verify.ps1` to confirm the live role matrix.
+Still open and deliberately separate: whether `contact@` becomes a shared mailbox
+or stays a licensed user. Optional §5 step 2 (tidy redundant sub-roles on
+`adamgoodwin@`) remains cosmetic — do anytime or skip.
