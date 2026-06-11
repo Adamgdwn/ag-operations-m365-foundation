@@ -1,5 +1,11 @@
 # Next Session Checklist
 
+> **Status (2026-06-11): this is a Stage 4 input, not the current step.** This
+> checklist belongs to the local-machine / device-side work in **Stage 4 —
+> OneDrive & Local Machine Dovetail**. The current resume point is **Stage 2 —
+> Identity & Admin Foundation**. Start at [00_INDEX.md](00_INDEX.md); canonical
+> order is in [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
+
 Use this when resuming the cleanup.
 
 ## Inventory First

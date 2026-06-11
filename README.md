@@ -1,5 +1,11 @@
 # AG Operations Workspace Setup
 
+> **Start at [00_INDEX.md](00_INDEX.md).** This README is the original
+> local-machine folder/lane plan (2026-05-25) and is now a **Stage 4 input** in
+> the broader M365 foundation roadmap. For current status and what to do next,
+> use the index; canonical sequencing is in
+> [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
+
 Captured on 2026-05-25.
 
 This folder captures the workspace and Microsoft 365 separation plan for Adam's consulting laptop. The goal is to make the laptop usable across personal work, AG Operations, Prime Boiler, City of Red Deer, and future clients without blending accounts, SharePoint sites, OneNote notebooks, browser sessions, or local files.

@@ -1,0 +1,150 @@
+# 00 — Start Here
+
+**AG Operations / Guided AI Labs — Microsoft 365 Foundation**
+
+Last updated: 2026-06-11
+
+This is the single entry point for the workspace. Open this first. It tells you
+what the project is, where it currently stands, which document is canonical, and
+what decision is waiting next.
+
+---
+
+## What this project is
+
+We are building **Microsoft 365 into a clean, governed operating substrate** for
+AG Operations and Guided AI Labs — so that a future Agentic OS (built elsewhere)
+can safely connect through scoped, audited access.
+
+We are **not** building the Agentic OS here. We are building the foundation it
+plugs into.
+
+```text
+Agentic OS  ->  governed bridge  ->  M365 touchpoint router  ->  correct M365 surface
+```
+
+Working principle: **classify intent first, then route to the right M365 surface**
+(SharePoint for records, OneDrive for drafts, Teams for collaboration, Exchange
+for comms, Planner/Lists for state, Entra for identity, Purview/Defender for
+governance). Email is **not** the hub.
+
+---
+
+## Where we are right now
+
+The canonical execution plan is the **10-stage roadmap**:
+[M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
+
+| Stage | Name | Status |
+|---|---|---|
+| 0 | Setup Control Room | ✅ Done — env template, PS modules installed (current-user), inventory scripts |
+| 1 | Current-State Inventory | ✅ Done — valid run `20260610-173554`, written report |
+| **2** | **Identity & Admin Foundation** | **◀ You are here (next work)** |
+| 3 | SharePoint Information Architecture | ⬜ Planned |
+| 4 | OneDrive & Local Machine Dovetail | ⬜ Planned (absorbs the local-machine track — see below) |
+| 5 | Exchange & Communication Routing | ⬜ Planned |
+| 6 | Teams, Planner, Lists & Operating State | ⬜ Planned |
+| 7 | Security, Governance & External Sharing | ⬜ Planned |
+| 8 | Client Workspace Reference Pattern | ⬜ Planned |
+| 9 | Agentic OS Bridge Readiness | ⬜ Planned |
+
+**Nothing in the live tenant has been changed yet.** Everything built so far is
+documentation plus read-only inventory. That is intentional — this is a
+human-supervised setup, not unattended automation.
+
+---
+
+## Document map
+
+### Canonical plan (read these to know what to do)
+
+- [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) — **canonical** staged
+  execution order (Stages 0–9). This is the source of truth for *what happens next*.
+- [guided-ai-labs-m365-foundation-build-brief.md](guided-ai-labs-m365-foundation-build-brief.md)
+  — comprehensive reference/design spec behind the roadmap (the "why" and the
+  detailed target architecture). Defers to the roadmap for sequencing.
+
+### Current state (read these to know what exists)
+
+- [M365_STAGE_1_CURRENT_STATE_INVENTORY.md](M365_STAGE_1_CURRENT_STATE_INVENTORY.md)
+  — written summary of the tenant as it exists today.
+- [inventory/stage-1-current-state/20260610-173554/](inventory/stage-1-current-state/20260610-173554/)
+  — the **valid** raw inventory data. (The `20260610-172735` and `-173346`
+  folders are failed runs — ignore them; each has a `FAILED_RUN_NOTE.md`.)
+
+### Reference & access
+
+- [M365_API_ACCESS_START_HERE.md](M365_API_ACCESS_START_HERE.md) — Microsoft
+  Graph / Entra access model; delegated read-only first.
+- [M365_ENVIRONMENT.template.env](M365_ENVIRONMENT.template.env) — tenant/app
+  constants (no secrets). Copy to `M365_ENVIRONMENT.local.env` for any private
+  values; that filename is git-ignored.
+- [scripts/Invoke-M365Stage1InventoryRest.ps1](scripts/Invoke-M365Stage1InventoryRest.ps1)
+  — **preferred** inventory script (Graph REST + device-code auth).
+- [scripts/Invoke-M365Stage1Inventory.ps1](scripts/Invoke-M365Stage1Inventory.ps1)
+  — older Graph PowerShell SDK attempt; kept for reference, not preferred.
+
+### Local-machine track (Stage 4 inputs — see reconciliation below)
+
+- [README.md](README.md) — original local folder/lane structure (2026-05-25).
+- [M365_SHAREPOINT_ONENOTE_SPLIT.md](M365_SHAREPOINT_ONENOTE_SPLIT.md) — context-
+  separation philosophy (identity / cloud home / working surface / local cache).
+- [NEXT_SESSION_CHECKLIST.md](NEXT_SESSION_CHECKLIST.md) — local cleanup checklist
+  (OneDrive/Chrome/OneNote/sync). **This belongs to Stage 4, not the current step.**
+- [SYSTEM_NOTES_FROM_INITIAL_DIG.md](SYSTEM_NOTES_FROM_INITIAL_DIG.md) — machine
+  findings from the first pass.
+- [M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md](M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md)
+  — desktop Office license/identity conflict notes.
+
+### Session history
+
+- [SESSION_TURNOVER_2026-06-10.md](SESSION_TURNOVER_2026-06-10.md) — detailed
+  handoff from the 2026-06-10 session.
+
+---
+
+## The two tracks, reconciled
+
+This workspace grew in two waves:
+
+- **Local-machine track** (May 25–27): keep one laptop usable across Personal,
+  AG Operations, Prime Boiler, City of Red Deer without blending accounts, files,
+  notebooks, or browser sessions.
+- **Tenant-foundation track** (June 10 →): build M365 as the governed substrate
+  for AG Operations / Guided AI Labs and the future Agentic OS.
+
+**Decision (2026-06-11): they are one project, sequenced through the roadmap.**
+The local-machine track is the practical, device-side half of **Stage 4 — OneDrive
+& Local Machine Dovetail**. Its documents stay as Stage 4 inputs and are not the
+current step. The roadmap is canonical for ordering.
+
+---
+
+## Open decisions / blockers
+
+Carry these forward; resolve at the noted stage.
+
+1. **License identity (verify before Stage 7).** Inventory returned the raw SKU
+   `O365_BUSINESS_PREMIUM` (4 consumed / 25 enabled), but the build brief assumed
+   *Business Standard*. These imply different security capabilities. Confirm the
+   real plan label in the M365 admin center billing UI before any security or
+   purchase decisions.
+2. **Stage 1 summary-script patch is unverified.** `summary.json` for the valid
+   run was hand-built after the script crashed at summary generation; the patch
+   was syntax-checked but not confirmed by a clean re-run.
+3. **Break-glass admin plan (Stage 2).** No backup/recovery admin account is
+   documented yet. Build this **before** removing any admin roles.
+4. **`contact@guidedailabs.com` is a Global Administrator (Stage 2).** Front-door/
+   assistant candidate that should not stay GA long term — but do not remove until
+   the break-glass plan exists.
+
+---
+
+## How to resume next session
+
+1. Read this index.
+2. Skim [M365_STAGE_1_CURRENT_STATE_INVENTORY.md](M365_STAGE_1_CURRENT_STATE_INVENTORY.md)
+   to refresh current state.
+3. Continue **Stage 2 — Identity & Admin Foundation** per
+   [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md): build the safety net
+   (account role matrix + break-glass plan) **before** changing any roles.

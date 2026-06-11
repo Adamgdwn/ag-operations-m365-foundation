@@ -4,6 +4,28 @@
 **Prepared on:** 2026-06-10  
 **Purpose:** Provide a Codex-ready implementation brief for designing and configuring the Microsoft 365 foundation for AG Operations, Guided AI Labs, related product brands, future collaborators, and future AI-native operating-system integration.
 
+> **Canonical sequencing note (2026-06-11):** This brief is the comprehensive
+> *reference and design spec*. The **canonical execution order** lives in
+> [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (Stages 0–9). When this
+> brief's Phase numbers and the roadmap's Stage numbers disagree, **the roadmap
+> wins** for *what happens next*; this brief wins for *target architecture detail*.
+> Start at [00_INDEX.md](00_INDEX.md).
+>
+> Phase ↔ Stage map:
+>
+> | Brief Phase (§15) | Roadmap Stage |
+> |---|---|
+> | Phase 0 — Confirm Current State | Stage 1 — Current-State Inventory |
+> | Phase 1 — Tenant & Identity Foundation | Stage 2 — Identity & Admin Foundation |
+> | Phase 2 — SharePoint Site Architecture | Stage 3 — SharePoint Information Architecture |
+> | Phase 3 — Exchange & Teams Structure | Stages 5 & 6 — Exchange routing; Teams/Planner/Lists |
+> | Phase 4 — Device & Access Model | Stage 4 — OneDrive & Local Machine Dovetail (+ Stage 7 security) |
+> | Phase 5 — Client Workspace Reference | Stage 8 — Client Workspace Reference Pattern |
+> | Phase 6 — Automation Readiness | Stage 9 — Agentic OS Bridge Readiness |
+>
+> (The roadmap adds an explicit **Stage 0 — Setup Control Room** and splits the
+> brief's Phase 3 into separate Exchange and Teams stages.)
+
 ---
 
 ## 1. Executive Intent

@@ -1,5 +1,8 @@
 # Microsoft 365 Desktop Account Conflict Discussion
 
+> **Local-machine track — Stage 4 input.** Desktop Office license/identity conflict
+> notes for the device-side work in **Stage 4**. Start at [00_INDEX.md](00_INDEX.md).
+
 Date: 2026-05-27
 
 ## Context

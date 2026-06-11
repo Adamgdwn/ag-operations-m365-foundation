@@ -196,6 +196,17 @@ Is it reusable IP, client-owned work, product material, or admin record?
 
 ## Stage 4 - OneDrive And Local Machine Dovetail
 
+> **Absorbs the local-machine track (2026-06-11).** The earlier device-side work
+> — laptop folder lanes, Chrome profiles per identity, OneNote/OneDrive/SharePoint
+> sync hygiene, and the desktop Office license conflict — is the practical half of
+> this stage. Treat these as Stage 4 inputs:
+> [README.md](README.md),
+> [M365_SHAREPOINT_ONENOTE_SPLIT.md](M365_SHAREPOINT_ONENOTE_SPLIT.md),
+> [NEXT_SESSION_CHECKLIST.md](NEXT_SESSION_CHECKLIST.md),
+> [SYSTEM_NOTES_FROM_INITIAL_DIG.md](SYSTEM_NOTES_FROM_INITIAL_DIG.md),
+> [M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md](M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md).
+> They are not the current step — Stage 2 comes first.
+
 ### What we are doing
 
 Define how OneDrive, local folders, synced SharePoint libraries, Office desktop apps, and browser profiles work together.

@@ -1,5 +1,8 @@
 # System Notes From Initial Dig
 
+> **Local-machine track — Stage 4 input.** Device findings from the first pass.
+> Start at [00_INDEX.md](00_INDEX.md).
+
 These were found during the first pass on 2026-05-25.
 
 ## OneDrive / Known Folder Split

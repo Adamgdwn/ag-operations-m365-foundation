@@ -1,5 +1,8 @@
 # Microsoft 365, SharePoint, and OneNote Split
 
+> **Local-machine track — Stage 4 input.** Context-separation philosophy for the
+> device-side work in **Stage 4**. Start at [00_INDEX.md](00_INDEX.md).
+
 The target is context separation, not hard lockout.
 
 When working in a Prime Boiler context, mostly Prime Boiler things should be visible. When working in City of Red Deer, mostly City of Red Deer things should be visible. When working in AG Operations, mostly AG Operations material should be visible.
