@@ -15,12 +15,13 @@ Every live change is a separate, explicit, reversible decision — one at a time
 > SharePoint yet. This document captures the proposed architecture and an open
 > decision log. No site, library, or permission has been created or changed. The
 > first live write will not happen until the keystone decisions (§4) are made.
-> **DESIGN PHASE COMPLETE (2026-06-11).** All decisions made: 3.1 (5 sites — Option
-> B), 3.2 (Hybrid), 3.2b (metadata schema drafted), 3.2c (Mixed: 3 Comms + 2 Team),
-> 3.3/3.4/3.5 (safe lean defaults, veto-able), 3.6 (All PnP PowerShell, pilot AG
-> Operations), 3.6b (dedicated `agent-pnp-provisioning` app, delegated auth). **Next
-> = first live write: register the provisioning app (Adam's interactive admin
-> consent), then provision the AG Operations pilot site.**
+> **BUILD COMPLETE (2026-06-11) — all 5 sites provisioned.** Design decisions
+> 3.1–3.6b all made (5 sites; Hybrid; metadata schema with `Sensitivity`→
+> `Classification` fix; Mixed 3 Comms + 2 Team; lean defaults; all-PnP). Provisioning
+> app `agent-pnp-provisioning` registered; **AG Operations pilot + the other 4 sites
+> all created**, each with Hybrid libraries + folders + the 5 metadata columns,
+> external sharing OFF, read-back verified (§8 log). **Remaining to close Stage 3: a
+> read-only re-inventory confirming the live estate matches this design.**
 
 ---
 
@@ -322,6 +323,7 @@ exist.
 |---|---|---|---|
 | 2026-06-11 | Registered provisioning app `agent-pnp-provisioning` (delegated: SP `AllSites.FullControl`, Graph `Group.ReadWrite.All`, `User.Read`) | `Invoke-M365Stage3RegisterPnPApp.ps1` (`Register-PnPEntraIDAppForInteractiveLogin`, interactive) | **App created** — ClientId `46a71fd0-068c-4f89-9575-65c6405ca067`. ClientId stashed in git-ignored `M365_ENVIRONMENT.local.env`. Delegated consent confirmed at first interactive connect. Reversible: delete the app in Entra. No SharePoint content created. |
 | 2026-06-11 | Provisioned **AG Operations PILOT** Communication site (`/sites/AGOperations`), external sharing Disabled, 3 libraries (Governance_Records, Finance_Legal, Archive) + folders + metadata columns | `Invoke-M365Stage3ProvisionAGOperations.ps1` (PnP, interactive, typed-`yes` gate) | **Site + libraries + folders created; sharing OFF.** Read-back caught **4/5 columns** — the 5th (`Sensitivity`) collided with built-in **hidden MIP sensitivity-label columns** (title "Sensitivity" = `_DisplayName`). Remediated by `Invoke-M365Stage3FixSensitivityColumn.ps1`: column **renamed to `Classification`** (collision-free, future-proofs Stage 7 labels); template patched to match. No system columns deleted. **Read-back confirmed 5/5 columns on all 3 libraries** (Brand, Classification, Client, Record Type, Status). Reversible: delete site via SP admin recycle bin. |
+| 2026-06-11 | Provisioned **remaining 4 sites** from the verified template: **Guided AI Labs** + **Change Leadership Tools** (Team sites, M365-group-connected), **Shared Libraries** + **Guided AI Journey** (Communication sites) — each with Hybrid libraries + folders + 5 columns, external sharing Disabled | `Invoke-M365Stage3ProvisionRemainingSites.ps1` (PnP, interactive, batch typed-`yes` gate) | **All 4 created; read-back confirmed** every library's folders + 5 columns; sharing OFF on all. **All 5 Stage 3 sites now match the design.** Reversible: delete any site via SP admin recycle bin. |
 
 _Every SharePoint provisioning action below will be recorded the same way — date,
 method, and read-back confirmation (Stage 2 §10 discipline)._
