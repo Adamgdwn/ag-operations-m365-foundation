@@ -39,8 +39,8 @@ The canonical execution plan is the **10-stage roadmap**:
 |---|---|---|
 | 0 | Setup Control Room | ✅ Done — env template, PS modules installed (current-user), inventory scripts |
 | 1 | Current-State Inventory | ✅ Done — valid run `20260610-173554`, written report |
-| **2** | **Identity & Admin Foundation** | **◀ In progress — decisions DONE; safety net DONE 2026-06-11 (break-glass ×2 created, GA + sign-in + MFA confirmed). Next: strip `contact@` admin** |
-| 3 | SharePoint Information Architecture | ⬜ Planned |
+| 2 | Identity & Admin Foundation | ✅ Done 2026-06-11 — safety net (break-glass ×2), `contact@` admin stripped, re-inventory confirms target role matrix |
+| **3** | **SharePoint Information Architecture** | **◀ In progress — design phase DONE 2026-06-11 (5 sites, Hybrid + metadata, Mixed templates, all decisions made). Next: first live write — register `agent-pnp-provisioning`, then provision AG Operations pilot** |
 | 4 | OneDrive & Local Machine Dovetail | ⬜ Planned (absorbs the local-machine track — see below) |
 | 5 | Exchange & Communication Routing | ⬜ Planned |
 | 6 | Teams, Planner, Lists & Operating State | ⬜ Planned |
@@ -48,9 +48,10 @@ The canonical execution plan is the **10-stage roadmap**:
 | 8 | Client Workspace Reference Pattern | ⬜ Planned |
 | 9 | Agentic OS Bridge Readiness | ⬜ Planned |
 
-**Nothing in the live tenant has been changed yet.** Everything built so far is
-documentation plus read-only inventory. That is intentional — this is a
-human-supervised setup, not unattended automation.
+**Live tenant changes so far are limited to Stage 2 identity work** (break-glass
+accounts created; `contact@` admin roles removed) — each a separate, gated,
+read-back-verified write. SharePoint is still untouched (Stage 3 first live write is
+next). This remains a human-supervised setup, not unattended automation.
 
 ---
 
