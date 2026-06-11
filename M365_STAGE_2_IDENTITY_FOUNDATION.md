@@ -9,12 +9,13 @@ per [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md). Orientation lives 
 BEFORE removing any admin role. Every live change is a separate, explicit,
 reversible decision.**
 
-> **Execution status (2026-06-11): safety net DONE (both break-glass accounts,
-> first sign-in + permanent password + MFA confirmed) AND `contact@` admin
-> stripped — Global Administrator + Global Reader + AI Administrator all removed,
-> read-back confirms zero directory roles on `contact@` (see Execution Log, §10).
-> §5 steps 1 and 3 are complete. Next: §5 step 4 (re-inventory); optional §5 step 2
-> (cosmetic sub-role tidy on `adamgoodwin@`) remains do-anytime-or-skip.**
+> **Execution status — STAGE 2 COMPLETE (2026-06-11):** safety net DONE (both
+> break-glass accounts, first sign-in + permanent password + MFA confirmed);
+> `contact@` admin stripped (Global Administrator + Global Reader + AI Administrator
+> removed); and **re-inventory confirms the live role matrix matches the §3 target**
+> (4 Global Admins — `adamgoodwin@`, `admin@`, breakglass-01/02; `contact@` and
+> `support@` hold no admin roles). §5 steps 1, 3, 4 done. Only optional §5 step 2
+> (cosmetic sub-role tidy on `adamgoodwin@`) remains — do-anytime-or-skip. See §10.
 
 ---
 
@@ -147,7 +148,9 @@ step — the reductions are the `contact@` cleanup plus optional tidying.)
    directory roles. The shared-mailbox-vs-licensed-user question is still open and
    deliberately separate (not yet decided).
 4. **Re-inventory** to confirm the final role assignments match this matrix.
-   — *Next step.* Run `Invoke-M365Stage2Verify.ps1`.
+   — **DONE 2026-06-11** via `Invoke-M365Stage2Verify.ps1`. Live matrix matches the
+   §3 target: `contact@` and `support@` hold no admin roles; the 4 Global Admins are
+   `adamgoodwin@`, `admin@`, `breakglass-01`, `breakglass-02`. **Stage 2 complete.**
 
 Steps 2–3 touch live config, so each is a separate explicit approval at the time we
 do it — not pre-authorized by this plan.
@@ -267,10 +270,12 @@ deliberately — but only after the safety net is confirmed.
 | 2026-06-11 | Break-glass first sign-in: permanent passwords set + stored offline, MFA registered on both | Manual (Adam), private browser window | Safety net proven; §5 step 1 complete. MFA prompt seen → Security Defaults likely on | Reset password / re-register MFA |
 | 2026-06-11 | Stripped **Global Administrator + Global Reader + AI Administrator** from `contact@guidedailabs.com` (id `311b3307…`) | `Invoke-M365Stage2StripContactAdmin.ps1`, signed in as `admin@agoperations.ca`, delegated write scopes (`RoleManagement.ReadWrite.Directory`), typed-`yes` gate | Last-GA safety check passed (4 other GAs: `admin@`, `adamgoodwin@`, bg-01, bg-02). All three removed; read-back confirms `contact@` now holds **zero** directory roles. Account/license/mailbox untouched | Re-POST each role assignment to `/roleManagement/directory/roleAssignments` |
 
-**§5 steps 1 and 3 are complete.** `contact@` is now a low-privilege front-door
-identity (interaction surface ≠ capability surface — its future agentic power comes
-from a scoped app registration at Stage 9, not standing admin). Next: **§5 step 4 —
-re-inventory** via `Invoke-M365Stage2Verify.ps1` to confirm the live role matrix.
-Still open and deliberately separate: whether `contact@` becomes a shared mailbox
-or stays a licensed user. Optional §5 step 2 (tidy redundant sub-roles on
-`adamgoodwin@`) remains cosmetic — do anytime or skip.
+| 2026-06-11 | Re-inventory (read-only) confirming final role matrix | `Invoke-M365Stage2Verify.ps1`, signed in as `admin@agoperations.ca` | Live matrix matches §3 target: 4 GAs (`adamgoodwin@`, `admin@`, bg-01, bg-02); `contact@` + `support@` hold no admin roles. **Stage 2 complete** | n/a (read-only) |
+
+**§5 steps 1, 3, and 4 are complete — STAGE 2 IS COMPLETE.** `contact@` is now a
+low-privilege front-door identity (interaction surface ≠ capability surface — its
+future agentic power comes from a scoped app registration at Stage 9, not standing
+admin). Still open and deliberately separate (carry into a later stage, not blocking):
+whether `contact@` becomes a shared mailbox or stays a licensed user. Optional §5
+step 2 (tidy redundant sub-roles on `adamgoodwin@`) remains cosmetic — do anytime or
+skip. **Next: Stage 3** per [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).

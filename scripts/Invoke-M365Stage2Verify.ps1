@@ -178,7 +178,7 @@ else {
 
 Write-Section "Done"
 Write-Host "Read-only verification complete. Nothing was changed." -ForegroundColor Green
-Write-Host "Next live step (separate, with your consent to write scopes): create the two break-glass accounts." -ForegroundColor Cyan
+Write-Host "Stage 2 is complete (safety net built, contact@ stripped, matrix verified). Next: Stage 3." -ForegroundColor Cyan
 Write-Host ""
 Write-Host "Press Enter to close this window."
 Read-Host | Out-Null
