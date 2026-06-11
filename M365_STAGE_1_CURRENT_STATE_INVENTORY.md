@@ -85,9 +85,17 @@ Graph returned one subscribed SKU:
 
 Notes:
 
-- Microsoft internal SKU names can be confusing and do not always match current marketing names.
-- Treat `O365_BUSINESS_PREMIUM` as the raw Graph value until cross-checked in the Microsoft 365 admin center billing/license UI.
-- Before making security or purchase recommendations, verify whether this maps in your tenant UI to Microsoft 365 Business Standard, Business Premium, or another plan label.
+- **Verified 2026-06-11:** `O365_BUSINESS_PREMIUM` (GUID
+  `f245ecc8-75af-4f8e-b61f-27d8114de5f3`) maps to **Microsoft 365 Business
+  Standard** per Microsoft's official licensing-service-plan reference. The legacy
+  internal name is misleading — the *actual* Microsoft 365 Business Premium is a
+  different SKU (`SPB`, GUID `cbdc14ab-d96c-4c30-b9f4-6ada7cdc1d46`), which this
+  tenant does **not** have.
+- Implication: the tenant is on Business Standard, so it does **not** include
+  Intune, Defender for Business, or Entra ID P1 (conditional access). A move to
+  **Business Premium is a genuine Stage 7 security-posture decision**, not a
+  relabel.
+- 4 of 25 enabled seats are consumed.
 
 ## Groups
 

@@ -51,9 +51,12 @@ Suggested first actions:
 
 ## Open blockers (carried forward)
 
-- **License identity:** inventory returned raw SKU `O365_BUSINESS_PREMIUM` but the
-  brief assumed Business Standard — verify in the M365 admin center billing UI
-  before Stage 7 security decisions.
+- ~~**License identity.**~~ **RESOLVED 2026-06-11:** raw SKU `O365_BUSINESS_PREMIUM`
+  (GUID `f245ecc8-75af-4f8e-b61f-27d8114de5f3`) = **Microsoft 365 Business
+  Standard** (verified against Microsoft's licensing-service-plan reference; the
+  legacy name is misleading — true Business Premium is SKU `SPB`, not held).
+  Implication: no Intune / Defender for Business / Entra ID P1 — **Business Premium
+  is a real Stage 7 upgrade decision.**
 - **Stage 1 summary-script patch unverified:** `summary.json` was hand-built after
   a crash; a clean re-run of
   [scripts/Invoke-M365Stage1InventoryRest.ps1](scripts/Invoke-M365Stage1InventoryRest.ps1)

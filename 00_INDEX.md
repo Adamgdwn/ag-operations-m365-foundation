@@ -126,11 +126,13 @@ current step. The roadmap is canonical for ordering.
 
 Carry these forward; resolve at the noted stage.
 
-1. **License identity (verify before Stage 7).** Inventory returned the raw SKU
-   `O365_BUSINESS_PREMIUM` (4 consumed / 25 enabled), but the build brief assumed
-   *Business Standard*. These imply different security capabilities. Confirm the
-   real plan label in the M365 admin center billing UI before any security or
-   purchase decisions.
+1. ~~**License identity.**~~ **RESOLVED 2026-06-11.** The raw SKU
+   `O365_BUSINESS_PREMIUM` (GUID `f245ecc8-75af-4f8e-b61f-27d8114de5f3`) maps to
+   **Microsoft 365 Business Standard** per Microsoft's published licensing
+   reference — a legacy-naming trap; the *actual* Business Premium SKU is `SPB`,
+   which the tenant does NOT have. Implication: no Intune / Defender for Business /
+   Entra ID P1, so **Business Premium is a genuine Stage 7 upgrade decision**, not
+   a maybe. (4 of 25 seats consumed.)
 2. **Stage 1 summary-script patch is unverified.** `summary.json` for the valid
    run was hand-built after the script crashed at summary generation; the patch
    was syntax-checked but not confirmed by a clean re-run.
