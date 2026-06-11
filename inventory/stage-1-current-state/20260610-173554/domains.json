@@ -1,0 +1,70 @@
+[
+  {
+    "authenticationType": "Managed",
+    "availabilityStatus": null,
+    "id": "AGOperationsLtd.onmicrosoft.com",
+    "isAdminManaged": true,
+    "isDefault": false,
+    "isInitial": true,
+    "isRoot": true,
+    "isVerified": true,
+    "supportedServices": [
+      "Email",
+      "OfficeCommunicationsOnline"
+    ],
+    "passwordValidityPeriodInDays": 2147483647,
+    "passwordNotificationWindowInDays": 14,
+    "state": null
+  },
+  {
+    "authenticationType": "Managed",
+    "availabilityStatus": null,
+    "id": "agoperations.ca",
+    "isAdminManaged": true,
+    "isDefault": true,
+    "isInitial": false,
+    "isRoot": true,
+    "isVerified": true,
+    "supportedServices": [
+      "Email",
+      "Intune"
+    ],
+    "passwordValidityPeriodInDays": 2147483647,
+    "passwordNotificationWindowInDays": 14,
+    "state": null
+  },
+  {
+    "authenticationType": "Managed",
+    "availabilityStatus": null,
+    "id": "guidedailabs.com",
+    "isAdminManaged": true,
+    "isDefault": false,
+    "isInitial": false,
+    "isRoot": true,
+    "isVerified": true,
+    "supportedServices": [
+      "Email",
+      "Intune"
+    ],
+    "passwordValidityPeriodInDays": 2147483647,
+    "passwordNotificationWindowInDays": 14,
+    "state": null
+  },
+  {
+    "authenticationType": "Managed",
+    "availabilityStatus": null,
+    "id": "changeleadershiptools.com",
+    "isAdminManaged": true,
+    "isDefault": false,
+    "isInitial": false,
+    "isRoot": true,
+    "isVerified": true,
+    "supportedServices": [
+      "Email",
+      "Intune"
+    ],
+    "passwordValidityPeriodInDays": 2147483647,
+    "passwordNotificationWindowInDays": 14,
+    "state": null
+  }
+]

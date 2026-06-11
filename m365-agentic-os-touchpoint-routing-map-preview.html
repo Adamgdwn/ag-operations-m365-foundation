@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>M365 Agentic OS Touchpoint Routing Map</title>
+  <style>
+    :root {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #eef2f7;
+      color: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #eef2f7;
+    }
+
+    header {
+      padding: 18px 28px;
+      background: #ffffff;
+      border-bottom: 1px solid #dbe4ef;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      color: #0f172a;
+      min-height: 36px;
+      padding: 0 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #f8fafc;
+    }
+
+    main {
+      flex: 1;
+      padding: 24px;
+      overflow: auto;
+    }
+
+    .frame {
+      width: min(100%, 1700px);
+      margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.14);
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media print {
+      header {
+        display: none;
+      }
+
+      body,
+      main {
+        background: #ffffff;
+        padding: 0;
+      }
+
+      .frame {
+        width: 100%;
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>M365 Agentic OS Touchpoint Routing Map</h1>
+    <div class="actions">
+      <button type="button" onclick="document.querySelector('img').style.width='100%'">Fit</button>
+      <button type="button" onclick="document.querySelector('img').style.width='1500px'">Large</button>
+      <button type="button" onclick="document.querySelector('img').style.width='1900px'">Actual</button>
+      <button type="button" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </header>
+  <main>
+    <div class="frame">
+      <img src="m365-agentic-os-touchpoint-routing-map.svg" alt="Agentic OS to Microsoft 365 touchpoint routing map">
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-06-10T17:38:12.6462651-06:00",
+  "tenantId": "1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "organization": "A.G. Operations Ltd",
+  "domains": 4,
+  "users": 4,
+  "groups": 3,
+  "subscribedSkus": 1,
+  "directoryRoles": 12,
+  "directoryRoleMembers": 14,
+  "sites": 5,
+  "appRegistrations": 1,
+  "enterpriseApplications": 169
+}

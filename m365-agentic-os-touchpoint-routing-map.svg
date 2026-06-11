@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1200" viewBox="0 0 1900 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic OS to Microsoft 365 Touchpoint Routing Map</title>
+  <desc id="desc">A left-to-right routing map showing how an external Agentic OS connects through a governed bridge into Microsoft 365 touchpoints, including SharePoint, OneDrive, Teams, Exchange, Planner, Lists, Power Automate, Entra, Purview, and security controls.</desc>
+  <defs>
+    <linearGradient id="agent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#0f172a" flood-opacity="0.15"/>
+    </filter>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="10" refY="4.5" orient="auto">
+      <path d="M0,0 L0,9 L12,4.5 z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowTeal" markerWidth="13" markerHeight="13" refX="10" refY="4.5" orient="auto">
+      <path d="M0,0 L0,9 L12,4.5 z" fill="#0f766e"/>
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 50px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 23px Arial, sans-serif; fill: #475569; }
+      .h2 { font: 700 24px Arial, sans-serif; fill: #0f172a; }
+      .label { font: 700 23px Arial, sans-serif; fill: #111827; }
+      .small { font: 400 18px Arial, sans-serif; fill: #475569; }
+      .tiny { font: 400 15px Arial, sans-serif; fill: #64748b; }
+      .tinyBold { font: 700 15px Arial, sans-serif; fill: #334155; }
+      .card { fill: #ffffff; stroke: #dbe4ef; stroke-width: 2; filter: url(#shadow); }
+      .lane { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .agent { fill: url(#agent); filter: url(#shadow); }
+      .bridge { fill: url(#bridge); filter: url(#shadow); }
+      .route { stroke: #2563eb; stroke-width: 5; fill: none; marker-end: url(#arrow); }
+      .routeThin { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .control { stroke: #0f766e; stroke-width: 4; fill: none; marker-end: url(#arrowTeal); stroke-dasharray: 10 8; }
+      .human { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrow); stroke-dasharray: 7 7; }
+      .blue { fill: #2563eb; }
+      .teal { fill: #0f766e; }
+      .green { fill: #15803d; }
+      .purple { fill: #6d28d9; }
+      .orange { fill: #b45309; }
+      .red { fill: #be123c; }
+      .slate { fill: #475569; }
+      .pillBlue { fill: #dbeafe; stroke: #93c5fd; stroke-width: 2; }
+      .pillTeal { fill: #ccfbf1; stroke: #5eead4; stroke-width: 2; }
+      .pillGreen { fill: #dcfce7; stroke: #86efac; stroke-width: 2; }
+      .pillPurple { fill: #ede9fe; stroke: #c4b5fd; stroke-width: 2; }
+      .pillOrange { fill: #ffedd5; stroke: #fdba74; stroke-width: 2; }
+      .pillRed { fill: #ffe4e6; stroke: #fda4af; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1900" height="1200"/>
+  <text class="title" x="950" y="72" text-anchor="middle">Agentic OS to Microsoft 365 Touchpoint Map</text>
+  <text class="subtitle" x="950" y="112" text-anchor="middle">Not a circular hub: the Agentic OS reaches M365 through a governed bridge, then routes work to the right touchpoint.</text>
+
+  <g transform="translate(70 210)">
+    <rect class="agent" width="285" height="700" rx="34"/>
+    <text x="142" y="68" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#ffffff">Agentic OS</text>
+    <text x="142" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#e0e7ff">built elsewhere</text>
+    <circle cx="142" cy="220" r="78" fill="none" stroke="#ffffff" stroke-width="7" opacity=".9"/>
+    <circle cx="142" cy="220" r="22" fill="#ffffff"/>
+    <path d="M142 136v52M142 252v52M58 220h52M174 220h52M83 161l37 37M164 242l37 37M201 161l-37 37M120 242l-37 37" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+    <text x="142" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#ffffff">External Brain</text>
+    <text x="142" y="398" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#e0e7ff">organizes</text>
+    <text x="142" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#e0e7ff">reasons</text>
+    <text x="142" y="452" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#e0e7ff">plans</text>
+    <text x="142" y="479" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#e0e7ff">acts with authority</text>
+    <rect x="34" y="545" width="217" height="96" rx="16" fill="#ffffff" opacity=".14" stroke="#ffffff" stroke-width="2"/>
+    <text x="142" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" fill="#ffffff">Does not store</text>
+    <text x="142" y="606" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#ffffff">the official record</text>
+    <text x="142" y="632" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#ffffff">unless designed to</text>
+  </g>
+
+  <path class="route" d="M355 560 C390 560, 405 560, 440 560"/>
+
+  <g transform="translate(440 260)">
+    <rect class="bridge" width="315" height="600" rx="30"/>
+    <text x="158" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">Governed Bridge</text>
+    <text x="158" y="88" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#dbeafe">the controlled crossing point</text>
+    <g transform="translate(34 130)">
+      <rect fill="#ffffff" opacity=".96" width="247" height="74" rx="14"/>
+      <text class="tinyBold" x="124" y="28" text-anchor="middle">Identity and consent</text>
+      <text class="tiny" x="124" y="52" text-anchor="middle">Entra app registrations, roles</text>
+    </g>
+    <g transform="translate(34 224)">
+      <rect fill="#ffffff" opacity=".96" width="247" height="74" rx="14"/>
+      <text class="tinyBold" x="124" y="28" text-anchor="middle">API surface</text>
+      <text class="tiny" x="124" y="52" text-anchor="middle">Graph, Copilot APIs, webhooks</text>
+    </g>
+    <g transform="translate(34 318)">
+      <rect fill="#ffffff" opacity=".96" width="247" height="74" rx="14"/>
+      <text class="tinyBold" x="124" y="28" text-anchor="middle">Workflow controls</text>
+      <text class="tiny" x="124" y="52" text-anchor="middle">Power Automate, n8n, approvals</text>
+    </g>
+    <g transform="translate(34 412)">
+      <rect fill="#ffffff" opacity=".96" width="247" height="74" rx="14"/>
+      <text class="tinyBold" x="124" y="28" text-anchor="middle">Trust controls</text>
+      <text class="tiny" x="124" y="52" text-anchor="middle">audit, scope, reversibility</text>
+    </g>
+  </g>
+
+  <path class="route" d="M755 560 C790 560, 810 560, 850 560"/>
+
+  <g transform="translate(850 220)">
+    <rect class="card" width="270" height="680" rx="30"/>
+    <text class="h2" x="135" y="54" text-anchor="middle">Touchpoint Router</text>
+    <text class="tiny" x="135" y="84" text-anchor="middle">decides where work belongs</text>
+    <circle cx="135" cy="185" r="58" fill="#e0f2fe" stroke="#7dd3fc" stroke-width="3"/>
+    <path class="blue" d="M104 176h62v18h-62zm14-42h34c25 0 45 20 45 45s-20 45-45 45h-34c-25 0-45-20-45-45s20-45 45-45zm0 20c-14 0-25 11-25 25s11 25 25 25h34c14 0 25-11 25-25s-11-25-25-25z"/>
+    <text class="label" x="135" y="295" text-anchor="middle">Route By Intent</text>
+    <text class="small" x="135" y="334" text-anchor="middle">record</text>
+    <text class="small" x="135" y="364" text-anchor="middle">draft</text>
+    <text class="small" x="135" y="394" text-anchor="middle">conversation</text>
+    <text class="small" x="135" y="424" text-anchor="middle">task</text>
+    <text class="small" x="135" y="454" text-anchor="middle">decision</text>
+    <text class="small" x="135" y="484" text-anchor="middle">approval</text>
+    <text class="small" x="135" y="514" text-anchor="middle">calendar event</text>
+    <rect x="35" y="565" width="200" height="78" rx="15" fill="#f8fafc" stroke="#dbe4ef" stroke-width="2"/>
+    <text class="tinyBold" x="135" y="595" text-anchor="middle">Routing rule</text>
+    <text class="tiny" x="135" y="620" text-anchor="middle">not everything becomes</text>
+    <text class="tiny" x="135" y="641" text-anchor="middle">email or a file</text>
+  </g>
+
+  <path class="routeThin" d="M1120 315 C1160 315, 1170 315, 1210 315"/>
+  <path class="routeThin" d="M1120 435 C1160 435, 1170 435, 1210 435"/>
+  <path class="routeThin" d="M1120 555 C1160 555, 1170 555, 1210 555"/>
+  <path class="routeThin" d="M1120 675 C1160 675, 1170 675, 1210 675"/>
+  <path class="routeThin" d="M1120 795 C1160 795, 1170 795, 1210 795"/>
+
+  <g transform="translate(1210 190)">
+    <rect class="lane" width="610" height="105" rx="18"/>
+    <rect class="pillTeal" x="24" y="22" width="138" height="60" rx="30"/>
+    <text class="label" x="93" y="59" text-anchor="middle">SharePoint</text>
+    <text class="label" x="195" y="44">Official Knowledge + Records</text>
+    <text class="small" x="195" y="75">sites, libraries, metadata, decision logs, client/work product records</text>
+  </g>
+
+  <g transform="translate(1210 310)">
+    <rect class="lane" width="610" height="105" rx="18"/>
+    <rect class="pillPurple" x="24" y="22" width="138" height="60" rx="30"/>
+    <text class="label" x="93" y="59" text-anchor="middle">OneDrive</text>
+    <text class="label" x="195" y="44">Day-to-Day Draft Workspace</text>
+    <text class="small" x="195" y="75">personal working files, temporary drafts, sync/offline use, not company archive</text>
+  </g>
+
+  <g transform="translate(1210 430)">
+    <rect class="lane" width="610" height="105" rx="18"/>
+    <rect class="pillGreen" x="24" y="22" width="138" height="60" rx="30"/>
+    <text class="label" x="93" y="59" text-anchor="middle">Teams</text>
+    <text class="label" x="195" y="44">Collaboration Surface</text>
+    <text class="small" x="195" y="75">channels, chats, meetings, client rooms, working context</text>
+  </g>
+
+  <g transform="translate(1210 550)">
+    <rect class="lane" width="610" height="105" rx="18"/>
+    <rect class="pillBlue" x="24" y="22" width="138" height="60" rx="30"/>
+    <text class="label" x="93" y="59" text-anchor="middle">Exchange</text>
+    <text class="label" x="195" y="44">Communications + Calendar Signals</text>
+    <text class="small" x="195" y="75">inbox, scheduling, commitments, history, support/contact intake</text>
+  </g>
+
+  <g transform="translate(1210 670)">
+    <rect class="lane" width="610" height="105" rx="18"/>
+    <rect class="pillOrange" x="24" y="22" width="138" height="60" rx="30"/>
+    <text class="label" x="93" y="49" text-anchor="middle">Planner</text>
+    <text class="tinyBold" x="93" y="70" text-anchor="middle">Lists / To Do</text>
+    <text class="label" x="195" y="44">Work State + Operational Registers</text>
+    <text class="small" x="195" y="75">tasks, approvals, trackers, owners, status, recurring process state</text>
+  </g>
+
+  <g transform="translate(1210 790)">
+    <rect class="lane" width="610" height="105" rx="18"/>
+    <rect class="pillRed" x="24" y="22" width="138" height="60" rx="30"/>
+    <text class="label" x="93" y="49" text-anchor="middle">Purview</text>
+    <text class="tinyBold" x="93" y="70" text-anchor="middle">Defender</text>
+    <text class="label" x="195" y="44">Governance + Protection</text>
+    <text class="small" x="195" y="75">labels, retention, DLP, audit, alerts, device/security policy</text>
+  </g>
+
+  <path class="control" d="M1515 895 C1515 965, 1020 965, 520 965 C385 965, 270 935, 210 910"/>
+  <text class="tinyBold" x="1045" y="990" text-anchor="middle">Governance feedback: every action should leave a permissioned, auditable, reversible trail where possible.</text>
+
+  <g transform="translate(90 970)">
+    <rect fill="#ffffff" stroke="#cbd5e1" stroke-width="2" width="850" height="110" rx="18"/>
+    <text class="h2" x="24" y="39">Main use-point answer</text>
+    <text class="small" x="24" y="70">For daily work, SharePoint + OneDrive are probably the main content surface.</text>
+    <text class="small" x="24" y="96">But routing also needs Teams for collaboration, Exchange for signals, and Planner/Lists/Approvals for process state.</text>
+  </g>
+
+  <g transform="translate(990 970)">
+    <rect fill="#ffffff" stroke="#cbd5e1" stroke-width="2" width="790" height="110" rx="18"/>
+    <text class="h2" x="24" y="39">Design principle</text>
+    <text class="small" x="24" y="70">The bridge should classify intent first, then touch the right M365 surface.</text>
+    <text class="small" x="24" y="96">Do not make email, Teams, or SharePoint pretend to be the whole operating system.</text>
+  </g>
+
+  <path class="human" d="M1525 120 C1525 145, 1525 160, 1525 190"/>
+  <text class="tiny" x="1525" y="102" text-anchor="middle">Human work also enters directly through Outlook, Teams, browser, Office apps, and mobile.</text>
+</svg>

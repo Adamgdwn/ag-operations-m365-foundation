@@ -1,0 +1,13 @@
+﻿{
+    "generatedAt":  "2026-06-10T17:30:08.3323960-06:00",
+    "tenantId":  "1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+    "account":  null,
+    "domains":  1,
+    "users":  1,
+    "groups":  1,
+    "subscribedSkus":  1,
+    "directoryRoles":  1,
+    "sites":  1,
+    "appRegistrations":  1,
+    "enterpriseApplications":  1
+}

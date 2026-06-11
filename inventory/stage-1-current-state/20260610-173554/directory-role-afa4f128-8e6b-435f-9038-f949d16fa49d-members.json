@@ -1,0 +1,30 @@
+[
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "id": "311b3307-e679-4c23-9e1f-3fabc0f5002e",
+    "businessPhones": [],
+    "displayName": "contact",
+    "givenName": null,
+    "jobTitle": null,
+    "mail": "contact@guidedailabs.com",
+    "mobilePhone": null,
+    "officeLocation": null,
+    "preferredLanguage": null,
+    "surname": null,
+    "userPrincipalName": "contact@guidedailabs.com"
+  },
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "id": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "businessPhones": [],
+    "displayName": "Adam Goodwin",
+    "givenName": "Adam",
+    "jobTitle": null,
+    "mail": "adamgoodwin@guidedailabs.com",
+    "mobilePhone": null,
+    "officeLocation": null,
+    "preferredLanguage": null,
+    "surname": "Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  }
+]

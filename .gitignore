@@ -1,0 +1,19 @@
+# Local environment files that may contain secrets — never commit these.
+*.local.env
+M365_ENVIRONMENT.local.env
+
+# Anything explicitly marked secret/private.
+*.secret
+*.secret.*
+secrets/
+.secrets/
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+
+# Auth token caches that some Graph/MSAL flows may write locally
+.msal_token_cache*
+*.token.json
