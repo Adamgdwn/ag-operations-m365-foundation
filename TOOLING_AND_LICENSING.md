@@ -84,6 +84,9 @@ needed**, compacting history every ~20 steps. Model-agnostic (GPT-5.4, Claude Op
 ## 4. Open follow-ups
 
 - [ ] Assess Founders Hub eligibility/application for **Guided AI Labs** (pre-Stage 7).
+      Planning now lives in the **sibling local project** `Guided AI Labs - Funding &
+      Benefits` (folder beside this repo; local-only, not in git). It maps the broad
+      funding landscape and holds the Founders Hub execution plan.
 - [ ] Confirm current MFA posture in-tenant (Security Defaults on? per-user MFA?) —
       add a read to the Stage 2 verify script next time it runs.
 - [ ] If a safe test tenant is wanted, check Visual Studio / Partner eligibility for
