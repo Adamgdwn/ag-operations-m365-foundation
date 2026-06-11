@@ -7,7 +7,12 @@ per [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md). Orientation lives 
 
 **Golden rule for this stage: build the safety net (break-glass + role matrix)
 BEFORE removing any admin role. Every live change is a separate, explicit,
-reversible decision. Nothing in this document has been executed in the tenant.**
+reversible decision.**
+
+> **Execution status (2026-06-11): safety net DONE — both break-glass accounts
+> created with Global Administrator, first sign-in + permanent password + MFA all
+> confirmed (see Execution Log, §10). No admin roles have been *removed* yet;
+> `contact@` cleanup (§5 step 3) is the next gated write.**
 
 ---
 
@@ -122,6 +127,9 @@ step — the reductions are the `contact@` cleanup plus optional tidying.)
    (`breakglass-01`, `breakglass-02`), register MFA, store credentials offline, and
    confirm each can sign in and read an admin surface. Also confirm
    `admin@agoperations.ca` still works as the backup admin. *No removals yet.*
+   — **DONE 2026-06-11.** Accounts + GA created (`Invoke-M365Stage2CreateBreakglass.ps1`);
+   first sign-in completed, permanent passwords set + stored offline, MFA registered
+   on both (MFA prompt appearing indicates Security Defaults is on). Safety net proven.
 2. **(Optional) Tidy redundant roles on `adamgoodwin@…`.** Several roles are
    already subsumed by Global Administrator (e.g. **Global Reader** is fully
    redundant; the sub-admin roles — Exchange/SharePoint/Teams/User/Helpdesk/Service
@@ -238,3 +246,19 @@ shared mailbox / alias / guest / future service-agent identity), a tested
 break-glass path exists, and there is an agreed, reversible sequence for reducing
 unnecessary admin access. Execution of removals can happen in Stage 2 or be staged
 deliberately — but only after the safety net is confirmed.
+
+---
+
+## 10. Execution log (live tenant changes, newest first)
+
+| Date | Action | By / how | Result | Reversible via |
+|---|---|---|---|---|
+| 2026-06-11 | Created `breakglass-01` + `breakglass-02` on `AGOperationsLtd.onmicrosoft.com` (cloud-only, unlicensed, temp password + forceChange) and assigned **Global Administrator** to each | `Invoke-M365Stage2CreateBreakglass.ps1`, signed in as `admin@agoperations.ca`, delegated write scopes | Both `enabled`, `GlobalAdmin=YES` confirmed by read-back. Temp passwords shown once, not stored. IDs: bg-01 `b4cb187e…`, bg-02 `291eb318…` | Delete user / remove role assignment |
+| 2026-06-11 | Read-only verify of live identity/role state | `Invoke-M365Stage2Verify.ps1` | Confirmed 3 GAs, `contact@` holds GA+Reader+AI Admin, no break-glass existed | n/a (read-only) |
+
+| 2026-06-11 | Break-glass first sign-in: permanent passwords set + stored offline, MFA registered on both | Manual (Adam), private browser window | Safety net proven; §5 step 1 complete. MFA prompt seen → Security Defaults likely on | Reset password / re-register MFA |
+
+**§5 step 1 (safety net) is complete.** Next gated write: §5 step 3 — strip Global
+Admin + Global Reader + AI Admin from `contact@guidedailabs.com` (its own script +
+its own explicit write consent). Optional §5 step 2 (tidy redundant sub-roles on
+`adamgoodwin@`) can be done anytime or skipped — it's cosmetic, not a power change.

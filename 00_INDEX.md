@@ -39,7 +39,7 @@ The canonical execution plan is the **10-stage roadmap**:
 |---|---|---|
 | 0 | Setup Control Room | ✅ Done — env template, PS modules installed (current-user), inventory scripts |
 | 1 | Current-State Inventory | ✅ Done — valid run `20260610-173554`, written report |
-| **2** | **Identity & Admin Foundation** | **◀ In progress — design & decisions DONE; live execution (break-glass + role strip) pending** |
+| **2** | **Identity & Admin Foundation** | **◀ In progress — decisions DONE; safety net DONE 2026-06-11 (break-glass ×2 created, GA + sign-in + MFA confirmed). Next: strip `contact@` admin** |
 | 3 | SharePoint Information Architecture | ⬜ Planned |
 | 4 | OneDrive & Local Machine Dovetail | ⬜ Planned (absorbs the local-machine track — see below) |
 | 5 | Exchange & Communication Routing | ⬜ Planned |
@@ -68,13 +68,17 @@ human-supervised setup, not unattended automation.
 
 - [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) —
   account role matrix, target identity model, break-glass plan, role-reduction
-  sequence, and the Stage 2 decision log. **Design complete; execution pending.**
+  sequence, the Stage 2 decision log, and the **§10 Execution Log** of live tenant
+  changes. **Decisions complete; execution underway (break-glass created).**
 - [IDENTITY_NAMING_STANDARD.md](IDENTITY_NAMING_STANDARD.md) — the legend: every
   identity type, what it means, its naming pattern, and how much power it may hold.
 - [scripts/Invoke-M365Stage2Verify.ps1](scripts/Invoke-M365Stage2Verify.ps1) —
   **read-only** Level-1 verification: signs you in (device-code, your MFA) and
   prints the live role matrix + Stage 2 plan checks. Changes nothing. Run this
   first to watch the visible-execution loop before any write.
+- [scripts/Invoke-M365Stage2CreateBreakglass.ps1](scripts/Invoke-M365Stage2CreateBreakglass.ps1)
+  — **live write** (idempotent): creates `breakglass-01/02` and assigns Global
+  Administrator. Ran 2026-06-11; re-runs safely skip existing accounts.
 
 ### Current state (read these to know what exists)
 
