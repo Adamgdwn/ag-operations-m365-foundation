@@ -148,7 +148,7 @@ Proposed starter schema (site-managed columns / content type, applied estate-wid
 | `Brand` | Which neighborhood/entity it belongs to | AG Operations, Guided AI Labs, Guided AI Journey, Change Leadership Tools, Shared |
 | `Client` | Linked client (blank if internal) | _(person/org lookup later)_ |
 | `Status` | Lifecycle state | Draft, Active, Final, Superseded, Archived |
-| `Sensitivity` | Handling / sharing class | Internal, Confidential, Client-Owned, Public |
+| `Classification` | Handling / sharing class _(renamed from "Sensitivity" 2026-06-11 — that title is reserved by built-in MIP sensitivity-label columns; "Classification" avoids the collision and future-proofs real labels at Stage 7)_ | Internal, Confidential, Client-Owned, Public |
 
 Open sub-points to settle in 3.2b: site columns vs a reusable **content type** (the
 content-type hub lets one definition propagate to all sites); which become **managed
@@ -318,5 +318,10 @@ exist.
 
 ## 8. Execution log (live SharePoint changes)
 
-_No live changes yet. Every provisioning action will be recorded here with date,
-method, and read-back confirmation — same discipline as the Stage 2 §10 log._
+| Date | Action | Method | Result |
+|---|---|---|---|
+| 2026-06-11 | Registered provisioning app `agent-pnp-provisioning` (delegated: SP `AllSites.FullControl`, Graph `Group.ReadWrite.All`, `User.Read`) | `Invoke-M365Stage3RegisterPnPApp.ps1` (`Register-PnPEntraIDAppForInteractiveLogin`, interactive) | **App created** — ClientId `46a71fd0-068c-4f89-9575-65c6405ca067`. ClientId stashed in git-ignored `M365_ENVIRONMENT.local.env`. Delegated consent confirmed at first interactive connect. Reversible: delete the app in Entra. No SharePoint content created. |
+| 2026-06-11 | Provisioned **AG Operations PILOT** Communication site (`/sites/AGOperations`), external sharing Disabled, 3 libraries (Governance_Records, Finance_Legal, Archive) + folders + metadata columns | `Invoke-M365Stage3ProvisionAGOperations.ps1` (PnP, interactive, typed-`yes` gate) | **Site + libraries + folders created; sharing OFF.** Read-back caught **4/5 columns** — the 5th (`Sensitivity`) collided with built-in **hidden MIP sensitivity-label columns** (title "Sensitivity" = `_DisplayName`). Remediated by `Invoke-M365Stage3FixSensitivityColumn.ps1`: column **renamed to `Classification`** (collision-free, future-proofs Stage 7 labels); template patched to match. No system columns deleted. **Read-back confirmed 5/5 columns on all 3 libraries** (Brand, Classification, Client, Record Type, Status). Reversible: delete site via SP admin recycle bin. |
+
+_Every SharePoint provisioning action below will be recorded the same way — date,
+method, and read-back confirmation (Stage 2 §10 discipline)._

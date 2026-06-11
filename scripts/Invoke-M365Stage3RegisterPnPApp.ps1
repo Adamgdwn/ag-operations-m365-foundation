@@ -56,21 +56,19 @@ Import-Module PnP.PowerShell
 Write-Host ""
 Write-Host "Registering the app and requesting consent (follow the browser prompts)..." -ForegroundColor Cyan
 
+# Default parameter set IS interactive (browser). No -Interactive switch exists;
+# the alternative would be -DeviceLogin.
 $app = Register-PnPEntraIDAppForInteractiveLogin `
     -ApplicationName $ApplicationName `
     -Tenant $Tenant `
     -SharePointDelegatePermissions "AllSites.FullControl" `
-    -GraphDelegatePermissions "Group.ReadWrite.All", "User.Read" `
-    -Interactive
+    -GraphDelegatePermissions "Group.ReadWrite.All", "User.Read"
 
 Write-Host ""
 Write-Host "[OK] App registration complete." -ForegroundColor Green
 Write-Host ""
-Write-Host "Record this Client (Application) ID - the next step uses it to connect:" -ForegroundColor Yellow
-Write-Host ("    ClientId : {0}" -f $app."AzureAppId/ClientId") -ForegroundColor White
-if ($app.'Certificate Thumbprint') {
-    Write-Host ("    Cert thumbprint : {0}" -f $app.'Certificate Thumbprint') -ForegroundColor Gray
-}
+Write-Host "Full registration result (record the ClientId / AppId from here):" -ForegroundColor Yellow
+$app | Format-List | Out-Host
 Write-Host ""
 Write-Host "Next: provision the AG Operations pilot site with this ClientId via" -ForegroundColor Cyan
 Write-Host "Connect-PnPOnline -Interactive. See M365_STAGE_3_SHAREPOINT_ARCHITECTURE.md." -ForegroundColor Cyan
