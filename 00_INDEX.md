@@ -140,6 +140,29 @@ Carry these forward; resolve at the noted stage.
 
 ---
 
+## Working across laptops (git)
+
+This workspace is a **private** GitHub repo:
+`https://github.com/Adamgdwn/ag-operations-m365-foundation` (kept private because
+it contains tenant identity and admin-role data — never make it public).
+
+On a new laptop, clone once:
+
+```powershell
+gh repo clone Adamgdwn/ag-operations-m365-foundation
+```
+
+Then, every session, to avoid the two laptops diverging:
+
+```text
+git pull    # at the START of a session, before changing anything
+git push    # at the END, after committing your work
+```
+
+Secrets stay out of git automatically: `*.local.env` and token caches are listed
+in `.gitignore`. Keep real secrets only in `M365_ENVIRONMENT.local.env` (ignored),
+never in the committed `M365_ENVIRONMENT.template.env`.
+
 ## How to resume next session
 
 1. Read this index.
