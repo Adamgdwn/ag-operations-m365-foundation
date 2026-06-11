@@ -71,6 +71,10 @@ human-supervised setup, not unattended automation.
   sequence, and the Stage 2 decision log. **Design complete; execution pending.**
 - [IDENTITY_NAMING_STANDARD.md](IDENTITY_NAMING_STANDARD.md) — the legend: every
   identity type, what it means, its naming pattern, and how much power it may hold.
+- [scripts/Invoke-M365Stage2Verify.ps1](scripts/Invoke-M365Stage2Verify.ps1) —
+  **read-only** Level-1 verification: signs you in (device-code, your MFA) and
+  prints the live role matrix + Stage 2 plan checks. Changes nothing. Run this
+  first to watch the visible-execution loop before any write.
 
 ### Current state (read these to know what exists)
 

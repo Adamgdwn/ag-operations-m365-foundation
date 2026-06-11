@@ -188,6 +188,7 @@ This is the design contract the Stage 9 Agentic OS bridge must satisfy.
 | 2.4 | Which daily roles `adamgoodwin@…` keeps | Keeps Global Admin; optional cleanup of redundant sub-roles | 2026-06-11 |
 | 2.5 | `contact@…` target | **Strip all admin now**; low-priv licensed mailbox; agentic power via scoped app identity at Stage 9 | 2026-06-11 |
 | 2.6 | Adopt the naming standard in §6? | **Yes, as written** — see legend [IDENTITY_NAMING_STANDARD.md](IDENTITY_NAMING_STANDARD.md) | 2026-06-11 |
+| 2.7 | Live-execution mode | **Level 1 — visible terminal + Microsoft Graph.** Adam authenticates (interactive device-code, MFA his); agent operates in delegated scopes; read-only first, writes only after explicit consent; every action narrated on screen; one reversible action at a time. Independent agent login deferred to the scoped Stage 9 app identity. | 2026-06-11 |
 
 ---
 
