@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-11
+Last updated: 2026-06-12
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
@@ -42,16 +42,17 @@ The canonical execution plan is the **10-stage roadmap**:
 | 2 | Identity & Admin Foundation | ✅ Done 2026-06-11 — safety net (break-glass ×2), `contact@` admin stripped, re-inventory confirms target role matrix |
 | 3 | SharePoint Information Architecture | ✅ Done 2026-06-12 — all 5 sites built (AG Operations, Guided AI Labs, Change Leadership Tools, Shared Libraries, Guided AI Journey) with Hybrid libraries + folders + 5 metadata columns, external sharing OFF; re-inventory PASS |
 | 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
-| **5** | **Exchange & Communication Routing** | **◀ Next** |
+| **5** | **Exchange & Communication Routing** | **◀ Current — inventory/design started; working doc + read-only Exchange inventory runner added** |
 | 6 | Teams, Planner, Lists & Operating State | ⬜ Planned |
 | 7 | Security, Governance & External Sharing | ⬜ Planned |
 | 8 | Client Workspace Reference Pattern | ⬜ Planned |
 | 9 | Agentic OS Bridge Readiness | ⬜ Planned |
 
-**Live tenant changes so far are limited to Stage 2 identity work** (break-glass
-accounts created; `contact@` admin roles removed) — each a separate, gated,
-read-back-verified write. SharePoint is still untouched (Stage 3 first live write is
-next). This remains a human-supervised setup, not unattended automation.
+**Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
+Stage 3 SharePoint site provisioning, and Stage 4 local OneDrive/browser cleanup.
+Each tenant write was gated and read-back-verified. Stage 5 starts with **read-only**
+Exchange inventory before any mailbox, alias, forwarding, calendar, or license
+change. This remains a human-supervised setup, not unattended automation.
 
 ---
 
@@ -65,12 +66,27 @@ next). This remains a human-supervised setup, not unattended automation.
   — comprehensive reference/design spec behind the roadmap (the "why" and the
   detailed target architecture). Defers to the roadmap for sequencing.
 
-### Stage 2 — Identity & Admin Foundation (current work)
+### Current work — Stage 5 Exchange & Communication Routing
+
+- [M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md](M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md)
+  — **current working document** for mailbox types, aliases, calendar ownership,
+  support/front-door routing, and durable record capture.
+- [scripts/Invoke-M365Stage5ExchangeInventory.ps1](scripts/Invoke-M365Stage5ExchangeInventory.ps1)
+  — **read-only** Exchange Online inventory: mailboxes, aliases, forwarding,
+  delegates, Send As, groups, recipients, and calendar-processing posture. Run this
+  before deciding any Stage 5 writes.
+
+### Completed foundation stages
 
 - [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) —
-  account role matrix, target identity model, break-glass plan, role-reduction
-  sequence, the Stage 2 decision log, and the **§10 Execution Log** of live tenant
-  changes. **Decisions complete; execution underway (break-glass created).**
+  Stage 2 account role matrix, target identity model, break-glass plan, role
+  reduction sequence, decision log, and execution log. **Complete 2026-06-11.**
+- [M365_STAGE_3_SHAREPOINT_ARCHITECTURE.md](M365_STAGE_3_SHAREPOINT_ARCHITECTURE.md)
+  — Stage 3 SharePoint information architecture and provisioning log.
+  **Complete 2026-06-12.**
+- [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md)
+  — Stage 4 OneDrive/local/browser lane model. **Complete 2026-06-12.**
+
 - [IDENTITY_NAMING_STANDARD.md](IDENTITY_NAMING_STANDARD.md) — the legend: every
   identity type, what it means, its naming pattern, and how much power it may hold.
 - [scripts/Invoke-M365Stage2Verify.ps1](scripts/Invoke-M365Stage2Verify.ps1) —
@@ -114,7 +130,8 @@ next). This remains a human-supervised setup, not unattended automation.
 - [M365_SHAREPOINT_ONENOTE_SPLIT.md](M365_SHAREPOINT_ONENOTE_SPLIT.md) — context-
   separation philosophy (identity / cloud home / working surface / local cache).
 - [NEXT_SESSION_CHECKLIST.md](NEXT_SESSION_CHECKLIST.md) — local cleanup checklist
-  (OneDrive/Chrome/OneNote/sync). **This belongs to Stage 4, not the current step.**
+  (OneDrive/Chrome/OneNote/sync). **Stage 4 is complete; this remains historical
+  input/reference, not the current step.**
 - [SYSTEM_NOTES_FROM_INITIAL_DIG.md](SYSTEM_NOTES_FROM_INITIAL_DIG.md) — machine
   findings from the first pass.
 - [M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md](M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md)
@@ -122,8 +139,12 @@ next). This remains a human-supervised setup, not unattended automation.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-11.md](SESSION_TURNOVER_2026-06-11.md) — **most recent**
-  handoff: audit + consolidation + git/GitHub setup; resume at Stage 2.
+- [SESSION_TURNOVER_2026-06-12.md](SESSION_TURNOVER_2026-06-12.md) — **most recent**
+  handoff: Stage 5 started, Exchange routing doc + read-only inventory runner added;
+  resume by running the Stage 5 Exchange inventory.
+- [SESSION_TURNOVER_2026-06-11.md](SESSION_TURNOVER_2026-06-11.md) — dated
+  handoff after audit + consolidation + git/GitHub setup; now historical because
+  Stages 2-4 have since completed.
 - [SESSION_TURNOVER_2026-06-10.md](SESSION_TURNOVER_2026-06-10.md) — handoff from
   the 2026-06-10 session (Stage 1 inventory).
 
@@ -160,16 +181,16 @@ Carry these forward; resolve at the noted stage.
 2. **Stage 1 summary-script patch is unverified.** `summary.json` for the valid
    run was hand-built after the script crashed at summary generation; the patch
    was syntax-checked but not confirmed by a clean re-run.
-3. ~~**Break-glass admin plan (Stage 2).**~~ **DECIDED 2026-06-11:** create **two**
+3. ~~**Break-glass admin plan (Stage 2).**~~ **DONE 2026-06-11:** create **two**
    emergency-access accounts (`breakglass-01/02@…onmicrosoft.com`), cloud-only GA,
    credentials offline. Plan in
    [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) §4.
-   **Execution pending** (first live step — needs interactive sign-in).
+   Execution complete and verified.
 4. ~~**`contact@guidedailabs.com` is a Global Administrator (Stage 2).**~~
-   **DECIDED 2026-06-11:** strip Global Admin + Global Reader + AI Admin; keep it a
+   **DONE 2026-06-11:** stripped Global Admin + Global Reader + AI Admin; keep it a
    low-privilege mailbox; future agentic capability comes via a scoped app
    registration at Stage 9 (interaction surface ≠ capability surface).
-   **Execution pending — do only AFTER the break-glass accounts are confirmed.**
+   Mailbox type remains a Stage 5 decision.
 5. **`adamgoodwin@…` keeps Global Admin (Stage 2, accepted risk).** Adam chose to
    keep his daily identity as primary admin; managed by MFA + consent discipline,
    revisit just-in-time elevation at Stage 7 if Business Premium/Entra P1–P2 lands.
@@ -187,6 +208,9 @@ Carry these forward; resolve at the noted stage.
    *tooling* app; consider adding a `tool-`/`setup-` prefix to the naming standard.
 9. **All writes run as the daily-driver GA** (`adamgoodwin@`) — compounds the accepted
    Stage 2 risk. Revisit with JIT/PIM at Stage 7 if Entra P1/P2 lands.
+10. **Stage 5 mailbox posture.** Decide whether `contact@` and `support@` remain
+    licensed users, become shared mailboxes, or act as aliases only after the
+    read-only Exchange inventory runs.
 
 ---
 
@@ -216,8 +240,13 @@ never in the committed `M365_ENVIRONMENT.template.env`.
 ## How to resume next session
 
 1. Read this index.
-2. Skim [M365_STAGE_1_CURRENT_STATE_INVENTORY.md](M365_STAGE_1_CURRENT_STATE_INVENTORY.md)
-   to refresh current state.
-3. Continue **Stage 2 — Identity & Admin Foundation** per
-   [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md): build the safety net
-   (account role matrix + break-glass plan) **before** changing any roles.
+2. Open
+   [M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md](M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md).
+3. Run the **read-only** Stage 5 Exchange inventory:
+
+```powershell
+pwsh -File .\scripts\Invoke-M365Stage5ExchangeInventory.ps1
+```
+
+4. Summarize the generated inventory before deciding any mailbox, alias,
+   forwarding, calendar, or license change.

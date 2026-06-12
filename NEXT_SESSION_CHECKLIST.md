@@ -1,12 +1,13 @@
 # Next Session Checklist
 
-> **Status (2026-06-11): this is a Stage 4 input, not the current step.** This
+> **Status (2026-06-12): Stage 4 is complete; this is historical input/reference,
+> not the current step.** This
 > checklist belongs to the local-machine / device-side work in **Stage 4 —
-> OneDrive & Local Machine Dovetail**. The current resume point is **Stage 2 —
-> Identity & Admin Foundation**. Start at [00_INDEX.md](00_INDEX.md); canonical
+> OneDrive & Local Machine Dovetail**. The current resume point is **Stage 5 —
+> Exchange & Communication Routing**. Start at [00_INDEX.md](00_INDEX.md); canonical
 > order is in [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
 
-Use this when resuming the cleanup.
+Use this only if the Stage 4 local-machine cleanup is reopened.
 
 ## Inventory First
 
@@ -64,4 +65,3 @@ Do these only after inventory and confirmation.
 - identifying stale paths and mixed OneDrive locations
 
 Adam should decide ownership and visibility buckets before anything is closed, unsynced, moved, or archived.
-
