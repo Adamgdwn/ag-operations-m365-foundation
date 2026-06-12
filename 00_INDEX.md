@@ -41,8 +41,8 @@ The canonical execution plan is the **10-stage roadmap**:
 | 1 | Current-State Inventory | ✅ Done — valid run `20260610-173554`, written report |
 | 2 | Identity & Admin Foundation | ✅ Done 2026-06-11 — safety net (break-glass ×2), `contact@` admin stripped, re-inventory confirms target role matrix |
 | 3 | SharePoint Information Architecture | ✅ Done 2026-06-12 — all 5 sites built (AG Operations, Guided AI Labs, Change Leadership Tools, Shared Libraries, Guided AI Journey) with Hybrid libraries + folders + 5 metadata columns, external sharing OFF; re-inventory PASS |
-| **4** | **OneDrive & Local Machine Dovetail** | **◀ Next — absorbs the local-machine track (see below)** |
-| 5 | Exchange & Communication Routing | ⬜ Planned |
+| 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
+| **5** | **Exchange & Communication Routing** | **◀ Next** |
 | 6 | Teams, Planner, Lists & Operating State | ⬜ Planned |
 | 7 | Security, Governance & External Sharing | ⬜ Planned |
 | 8 | Client Workspace Reference Pattern | ⬜ Planned |
