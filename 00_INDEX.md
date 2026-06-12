@@ -40,8 +40,8 @@ The canonical execution plan is the **10-stage roadmap**:
 | 0 | Setup Control Room | ✅ Done — env template, PS modules installed (current-user), inventory scripts |
 | 1 | Current-State Inventory | ✅ Done — valid run `20260610-173554`, written report |
 | 2 | Identity & Admin Foundation | ✅ Done 2026-06-11 — safety net (break-glass ×2), `contact@` admin stripped, re-inventory confirms target role matrix |
-| **3** | **SharePoint Information Architecture** | **◀ Nearly done — 2026-06-11 all 5 sites provisioned (AG Operations, Guided AI Labs, Change Leadership Tools, Shared Libraries, Guided AI Journey) with Hybrid libraries + folders + metadata columns, external sharing OFF. Closing step: read-only re-inventory** |
-| 4 | OneDrive & Local Machine Dovetail | ⬜ Planned (absorbs the local-machine track — see below) |
+| 3 | SharePoint Information Architecture | ✅ Done 2026-06-12 — all 5 sites built (AG Operations, Guided AI Labs, Change Leadership Tools, Shared Libraries, Guided AI Journey) with Hybrid libraries + folders + 5 metadata columns, external sharing OFF; re-inventory PASS |
+| **4** | **OneDrive & Local Machine Dovetail** | **◀ Next — absorbs the local-machine track (see below)** |
 | 5 | Exchange & Communication Routing | ⬜ Planned |
 | 6 | Teams, Planner, Lists & Operating State | ⬜ Planned |
 | 7 | Security, Governance & External Sharing | ⬜ Planned |

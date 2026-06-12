@@ -1,6 +1,6 @@
 # Microsoft 365 Stage 3 — SharePoint Information Architecture
 
-Status: **in progress** (started 2026-06-11). This is the Stage 3 working document
+Status: **COMPLETE** (started 2026-06-11, closed 2026-06-12). This is the Stage 3 working document
 per [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md). Orientation lives in
 [00_INDEX.md](00_INDEX.md); current-state facts come from
 [M365_STAGE_1_CURRENT_STATE_INVENTORY.md](M365_STAGE_1_CURRENT_STATE_INVENTORY.md);
@@ -15,13 +15,17 @@ Every live change is a separate, explicit, reversible decision — one at a time
 > SharePoint yet. This document captures the proposed architecture and an open
 > decision log. No site, library, or permission has been created or changed. The
 > first live write will not happen until the keystone decisions (§4) are made.
-> **BUILD COMPLETE (2026-06-11) — all 5 sites provisioned.** Design decisions
-> 3.1–3.6b all made (5 sites; Hybrid; metadata schema with `Sensitivity`→
+> **STAGE 3 COMPLETE (2026-06-12).** All 5 sites provisioned and verified. Design
+> decisions 3.1–3.6b all made (5 sites; Hybrid; metadata schema with `Sensitivity`→
 > `Classification` fix; Mixed 3 Comms + 2 Team; lean defaults; all-PnP). Provisioning
-> app `agent-pnp-provisioning` registered; **AG Operations pilot + the other 4 sites
-> all created**, each with Hybrid libraries + folders + the 5 metadata columns,
-> external sharing OFF, read-back verified (§8 log). **Remaining to close Stage 3: a
-> read-only re-inventory confirming the live estate matches this design.**
+> app `agent-pnp-provisioning` registered; **AG Operations + Guided AI Labs + Change
+> Leadership Tools + Shared Libraries + Guided AI Journey** all created with Hybrid
+> libraries + folders + 5 metadata columns, external sharing OFF. **Read-only
+> re-inventory (`Invoke-M365Stage3Verify.ps1`) returned PASS — all 5 sites match the
+> design.** Next: Stage 4 (OneDrive & Local Machine Dovetail). Carry-forward / open
+> (non-blocking): the 3.2b content-type-hub refinement (promote the 5 columns to a
+> reusable content type), and the per-site Owner/sharing widening as people/clients
+> are added.
 
 ---
 
@@ -324,6 +328,7 @@ exist.
 | 2026-06-11 | Registered provisioning app `agent-pnp-provisioning` (delegated: SP `AllSites.FullControl`, Graph `Group.ReadWrite.All`, `User.Read`) | `Invoke-M365Stage3RegisterPnPApp.ps1` (`Register-PnPEntraIDAppForInteractiveLogin`, interactive) | **App created** — ClientId `46a71fd0-068c-4f89-9575-65c6405ca067`. ClientId stashed in git-ignored `M365_ENVIRONMENT.local.env`. Delegated consent confirmed at first interactive connect. Reversible: delete the app in Entra. No SharePoint content created. |
 | 2026-06-11 | Provisioned **AG Operations PILOT** Communication site (`/sites/AGOperations`), external sharing Disabled, 3 libraries (Governance_Records, Finance_Legal, Archive) + folders + metadata columns | `Invoke-M365Stage3ProvisionAGOperations.ps1` (PnP, interactive, typed-`yes` gate) | **Site + libraries + folders created; sharing OFF.** Read-back caught **4/5 columns** — the 5th (`Sensitivity`) collided with built-in **hidden MIP sensitivity-label columns** (title "Sensitivity" = `_DisplayName`). Remediated by `Invoke-M365Stage3FixSensitivityColumn.ps1`: column **renamed to `Classification`** (collision-free, future-proofs Stage 7 labels); template patched to match. No system columns deleted. **Read-back confirmed 5/5 columns on all 3 libraries** (Brand, Classification, Client, Record Type, Status). Reversible: delete site via SP admin recycle bin. |
 | 2026-06-11 | Provisioned **remaining 4 sites** from the verified template: **Guided AI Labs** + **Change Leadership Tools** (Team sites, M365-group-connected), **Shared Libraries** + **Guided AI Journey** (Communication sites) — each with Hybrid libraries + folders + 5 columns, external sharing Disabled | `Invoke-M365Stage3ProvisionRemainingSites.ps1` (PnP, interactive, batch typed-`yes` gate) | **All 4 created; read-back confirmed** every library's folders + 5 columns; sharing OFF on all. **All 5 Stage 3 sites now match the design.** Reversible: delete any site via SP admin recycle bin. |
+| 2026-06-12 | **Stage 3 closure re-inventory** (read-only) across all 5 sites | `Invoke-M365Stage3Verify.ps1` (PnP, interactive, read-only) | **PASS** — every site's libraries, folders, and 5 metadata columns match the design. **Stage 3 closed.** |
 
 _Every SharePoint provisioning action below will be recorded the same way — date,
 method, and read-back confirmation (Stage 2 §10 discipline)._
