@@ -174,6 +174,20 @@ Carry these forward; resolve at the noted stage.
    keep his daily identity as primary admin; managed by MFA + consent discipline,
    revisit just-in-time elevation at Stage 7 if Business Premium/Entra P1–P2 lands.
 
+### Governance review backlog (raised 2026-06-12 — Adam to review)
+
+6. **Provisioning app resting state.** `agent-pnp-provisioning` holds delegated
+   `AllSites.FullControl` + `Group.ReadWrite.All`, consented and now **idle** after
+   Stage 3. Decide: disable / revoke consent until the next provisioning stage
+   (recommended) vs. leave consented. A broad-write app sitting idle is exactly what
+   the naming standard's "capability ≠ interaction" principle cautions against.
+7. **Untested rollback.** Stage 3 reversibility ("delete the site") is asserted but
+   was never validated. Low stakes on empty sites; note before relying on it.
+8. **Tooling-app naming gap.** The `agent-` prefix was used for a human-triggered
+   *tooling* app; consider adding a `tool-`/`setup-` prefix to the naming standard.
+9. **All writes run as the daily-driver GA** (`adamgoodwin@`) — compounds the accepted
+   Stage 2 risk. Revisit with JIT/PIM at Stage 7 if Entra P1/P2 lands.
+
 ---
 
 ## Working across laptops (git)
