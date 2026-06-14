@@ -67,6 +67,7 @@ the Microsoft substrate is clean enough for that future adapter boundary.
 | App consent | Broad setup permissions only while needed; idle setup apps reviewed or disabled |
 | Guests | No guests until a named onboarding decision is approved |
 | External sharing | Off or most restrictive by default; named exceptions only |
+| Microsoft Forms | Internal-only/default-restricted until public/client response collection is explicitly approved |
 | Share links | Specific people or organization-only links by default |
 | Labels / retention | Plain-language model now; Purview labels/retention when licensing supports it |
 | Device sync | Sync active trusted libraries only; keep client/sensitive libraries browser-first |
@@ -155,6 +156,35 @@ Exception path:
 
 This is the bridge into Stage 8: client workspaces should be repeatable, not
 improvised one-off sharing.
+
+### 6.1 Microsoft Forms collection rule
+
+Microsoft Forms is useful enough to be treated as a first-class intake surface,
+but public form links are still external collection surfaces.
+
+Default:
+
+```text
+Forms stay internal/test-only until the specific form, audience, response data,
+and routing flow are approved.
+```
+
+Required before distributing an external/client-facing form:
+
+1. Confirm what data the form collects.
+2. Confirm whether unauthenticated/public responses are acceptable.
+3. Keep phishing protection enabled.
+4. Route responses into the correct Microsoft List through Power Automate.
+5. Avoid collecting sensitive client records until the engagement/workspace rule
+   is decided.
+6. Record the form link, purpose, owner, and approval in the Decision Register.
+
+The Stage 6 Forms kit is the build source:
+
+```text
+config/M365_FORMS_INTAKE_FEEDBACK_KIT.json
+inventory/stage-6-operating-state/forms-intake-feedback/M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md
+```
 
 ---
 

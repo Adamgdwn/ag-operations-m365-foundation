@@ -108,6 +108,9 @@ should not sit waiting for private credentials.
 - [config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json](config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json)
   — machine-readable Stage 6 schema for the first four Lists, intended views,
   Planner buckets, and Teams/channel/tab layout.
+- [config/M365_FORMS_INTAKE_FEEDBACK_KIT.json](config/M365_FORMS_INTAKE_FEEDBACK_KIT.json)
+  — machine-readable Forms intake/feedback kit for discovery intake, support,
+  session feedback, and team retrospectives, with target List routing.
 - [scripts/Invoke-M365Stage6ProvisionLists.ps1](scripts/Invoke-M365Stage6ProvisionLists.ps1)
   — **live write** (gated/idempotent): creates the four Stage 6 Microsoft Lists,
   columns, and first useful views from the schema. It does not create Teams,
@@ -130,6 +133,9 @@ should not sit waiting for private credentials.
 - [inventory/stage-6-operating-state/STAGE_6_PROVISIONING_AUDIT.md](inventory/stage-6-operating-state/STAGE_6_PROVISIONING_AUDIT.md)
   — concise audit of the Stage 6 provisioning attempts, confirmed changes,
   unauthorized-operation blocker, and consent-warning response.
+- [inventory/stage-6-operating-state/forms-intake-feedback/M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md](inventory/stage-6-operating-state/forms-intake-feedback/M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md)
+  — manual build guide for governed Microsoft Forms intake/support/feedback
+  collection routed into the existing Stage 6 Lists.
 - [inventory/stage-6-operating-state/onboarding-readiness/STAGE_6_ONBOARDING_READINESS_RUNBOOK.md](inventory/stage-6-operating-state/onboarding-readiness/STAGE_6_ONBOARDING_READINESS_RUNBOOK.md)
   — Stage 6 readiness ladder, partner onboarding checklist, client-readiness
   checklist, training path, and scorecard for judging whether the operating

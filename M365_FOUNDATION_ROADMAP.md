@@ -309,7 +309,9 @@ Set up collaboration and workflow surfaces after the record and identity model a
 
 ### Why
 
-Teams is for collaboration, not filing. Planner and Lists are for work state, not random notes. This stage prevents Teams sprawl and keeps operational state visible.
+Teams is for collaboration, not filing. Planner and Lists are for work state, not
+random notes. Forms are controlled front doors for intake and feedback. This
+stage prevents Teams sprawl and keeps operational state visible.
 
 ### Starting Teams candidates
 
@@ -322,6 +324,7 @@ Teams is for collaboration, not filing. Planner and Lists are for work state, no
 
 - Planner for tasks and recurring work
 - Lists for registers and trackers
+- Forms for structured intake, support, session feedback, and retrospectives
 - Approvals for controlled decisions
 - Teams channels for active collaboration
 - SharePoint libraries behind Teams for official files
@@ -340,6 +343,7 @@ We can answer:
 
 ```text
 Where do conversations happen?
+Where do form responses go?
 Where do tasks live?
 Where do decisions get recorded?
 Where do official files go after collaboration?

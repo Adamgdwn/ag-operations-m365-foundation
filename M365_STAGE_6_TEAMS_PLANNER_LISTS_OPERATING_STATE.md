@@ -35,7 +35,8 @@ What needs Adam's approval?
 ```
 
 Teams is for coordination. Planner is for tasks. Lists are for structured state.
-SharePoint is the durable record home. Exchange is the signal layer.
+Forms are structured front doors for intake and feedback. SharePoint is the
+durable record home. Exchange is the signal layer.
 
 Stage 6 also defines the working experience. Adam should be able to open Teams and
 see the live operating picture without spelunking through email, file trees, or
@@ -46,6 +47,7 @@ This is not "just documentation and email." Stage 6 should be fully functional a
 Microsoft-native business infrastructure:
 
 - Lists hold current operational state.
+- Forms collect structured intake, support, feedback, and retrospective signals.
 - Planner holds real tasks and follow-up.
 - Teams holds active collaboration.
 - SharePoint holds durable records.
@@ -77,6 +79,7 @@ Expected first-screen rhythm:
 | Teams channel tabs | Intake Register, Operating Plan, Agent Action Log, Decision Register | One click from conversation to state |
 | Intake Register default view | New/Triage/Waiting on Adam items, sorted by received date and priority | The front door becomes visible work |
 | Planner board | Only action-bearing work, grouped by bucket | Tasks stay meaningful instead of becoming email mirrors |
+| Forms kit | Discovery intake, support request, session feedback, team retrospective | Clean front doors for information that should not start as loose email |
 | Agent Action Log | Suggested or completed agent moves | The agent is legible and auditable |
 | Decision Register | Commitments and approvals | Durable decisions do not disappear into chat |
 
@@ -173,6 +176,10 @@ Initial design targets:
 | List | `Change Leadership Tools - Support Register` | Change Leadership Tools | Product support triage and issue history |
 | List | `Agent Action Log` | Guided AI Labs | Human-readable log of agent suggestions/actions |
 | List | `Decision Register` | Guided AI Labs or Shared Libraries | Commitments, approvals, scope decisions, unresolved questions |
+| Form | `Guided AI Labs - Discovery Intake` | Guided AI Labs | Client/partner discovery front door that feeds Intake Register |
+| Form | `Change Leadership Tools - Support Request` | Change Leadership Tools | Support front door that feeds Support Register |
+| Form | `Guided AI Labs - Session Feedback` | Guided AI Labs | Workshop/session feedback that feeds Intake Register and improvement tasks |
+| Form | `Guided AI Labs - Team Retrospective` | Guided AI Labs | Internal/partner learning signal that feeds decisions/tasks |
 | Planner | `Guided AI Labs - Operating Plan` | Guided AI Labs | Tasks created from intake, delivery, setup, and follow-up |
 | Team | `Guided AI Labs - Operating Team` | Guided AI Labs | Internal coordination around intake, delivery, and agent setup |
 
@@ -320,6 +327,62 @@ Recommended Teams tab label: `Decisions`.
 
 ---
 
+### 5.5 Microsoft Forms intake and feedback kit
+
+Purpose: give Guided AI Labs and Change Leadership Tools clean, reusable front
+doors for information that is better collected as structured responses than as
+loose email.
+
+Forms should not become the operating record. A form response is a signal. The
+copied Microsoft List row is the operating state.
+
+Initial Forms:
+
+| Form | Audience | Target | Primary use |
+|---|---|---|---|
+| `Guided AI Labs - Discovery Intake` | Prospects, partners, business owners | `Guided AI Labs - Intake Register` | Discovery, readiness, consulting, partnership signals |
+| `Change Leadership Tools - Support Request` | Product users/buyers | `Change Leadership Tools - Support Register` | Questions, bugs, access issues, feedback, billing/refund issues |
+| `Guided AI Labs - Session Feedback` | Workshop/discovery/delivery participants | `Guided AI Labs - Intake Register` | Delivery improvement, follow-up requests, reusable method candidates |
+| `Guided AI Labs - Team Retrospective` | Internal team and future partners | `Decision Register` | Decision candidates, risks, improvements, operating lessons |
+
+Power Automate routing pattern:
+
+```text
+Forms response -> get response details -> create List item -> optional Planner task -> optional Teams notice -> update List item with task link
+```
+
+Rules:
+
+| Rule | Standard |
+|---|---|
+| External links | Treat public Forms links as external sharing; approve under Stage 7 before distribution |
+| Phishing protection | Keep Microsoft Forms phishing protection enabled |
+| Response storage | Copy into Lists; do not rely on manually opened Excel workbooks as the operating record |
+| Planner task creation | Create tasks only for action-bearing responses, urgent items, low scores, follow-up requests, or owner-accepted improvements |
+| Teams notifications | Notify channels only for meaningful items; do not make every form response a channel post |
+| Client data | Do not collect sensitive client material until Stage 7 sharing/security decisions are complete |
+
+Implementation artifacts:
+
+| Artifact | Purpose |
+|---|---|
+| `config/M365_FORMS_INTAKE_FEEDBACK_KIT.json` | Machine-readable Forms, question, flow, and governance schema |
+| `scripts/New-M365FormsIntakeFeedbackKit.ps1` | Generates the local Forms build guide and CSV mapping tables |
+| `inventory/stage-6-operating-state/forms-intake-feedback/M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md` | Manual build guide for Forms and Power Automate routing |
+| `inventory/stage-6-operating-state/forms-intake-feedback/forms-question-map.csv` | Flat question-to-List mapping |
+| `inventory/stage-6-operating-state/forms-intake-feedback/forms-flow-build-checklist.csv` | Flat Power Automate checklist by form |
+
+Important platform constraint:
+
+Microsoft Forms is not currently treated like Lists/Planner/Teams in this build.
+We should assume form creation and detailed response extraction are manual or
+Power Automate-centered unless a supported production API path is confirmed.
+That is acceptable: the robust pattern is to create Forms deliberately, then
+automate response handling into Lists where the rest of the operating state
+already exists.
+
+---
+
 ## 6. Planner design
 
 Plan:
@@ -447,10 +510,11 @@ invite, or tenant configuration change in this first loop.
 | 6.2 | Decide exact List names/columns | no | design drafted |
 | 6.3 | Decide whether to create the Guided AI Labs operating Team now | no | recommended |
 | 6.4 | Create the intake/support/action/decision Lists | yes | complete |
-| 6.5 | Create Planner plan and buckets | yes | pending approval |
-| 6.6 | Create Team/channels if approved | yes | pending approval |
-| 6.7 | Run read-back inventory/verification | read-only | ran; Lists missing |
-| 6.8 | Start first manual agent-assisted intake loop | mostly no | pending |
+| 6.5 | Create Forms intake/feedback kit and Power Automate build guide | no | local artifacts prepared |
+| 6.6 | Create Planner plan and buckets | yes | pending approval |
+| 6.7 | Create Team/channels if approved | yes | pending approval |
+| 6.8 | Run read-back inventory/verification | read-only | Lists passed; Planner/Teams pending |
+| 6.9 | Start first manual agent-assisted intake loop | mostly no | pending |
 
 Implementation artifacts:
 
@@ -470,6 +534,9 @@ Implementation artifacts:
 | `scripts/Invoke-M365Stage6ProvisionPlannerTeams.ps1` | Interactive, idempotent Graph provisioning of the Planner plan, buckets, existing-group Team, channels, and best-effort web tabs |
 | `scripts/Invoke-M365Stage6PlannerTeamsOperator.ps1` | Efficient Planner/Teams operator for verify or provision-and-verify |
 | `scripts/Start-M365Stage6PlannerTeamsOperatorInteractive.ps1` | Visible launcher for the efficient Planner/Teams operator; defaults to device-code auth |
+| `config/M365_FORMS_INTAKE_FEEDBACK_KIT.json` | Machine-readable Microsoft Forms intake/feedback schema and routing model |
+| `scripts/New-M365FormsIntakeFeedbackKit.ps1` | Generates the Forms build guide and CSV mapping/checklist files |
+| `inventory/stage-6-operating-state/forms-intake-feedback/` | Generated Forms build guide, question map, and Power Automate checklist |
 | `scripts/New-M365Stage6ManualListBuildGuide.ps1` | Generates a SharePoint UI fallback checklist from the canonical schema |
 | `inventory/stage-6-operating-state/STAGE_6_MANUAL_LIST_BUILD_GUIDE.md` | Manual creation guide for the four Stage 6 Lists when PnP is blocked |
 | `scripts/New-M365Stage6PlannerTeamsBuildGuide.ps1` | Generates a Planner/Teams setup checklist from the canonical schema |

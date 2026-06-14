@@ -62,6 +62,12 @@ Done:
   - `partner-training-path.csv`
   - `client-readiness-discovery-checklist.csv`
   - `operating-readiness-scorecard.csv`
+- Microsoft Forms intake/feedback kit was added locally:
+  - `config/M365_FORMS_INTAKE_FEEDBACK_KIT.json`
+  - `scripts/New-M365FormsIntakeFeedbackKit.ps1`
+  - `inventory/stage-6-operating-state/forms-intake-feedback/M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md`
+  - `forms-question-map.csv`
+  - `forms-flow-build-checklist.csv`
 - Stage 7 local baseline and inventory tooling were added:
   - `M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md`
   - `config/M365_STAGE_7_GOVERNANCE_BASELINE.json`
@@ -140,6 +146,8 @@ The schema defines:
 - Change Leadership Tools support register
 - Agent Action Log
 - Decision Register
+- Forms intake/feedback kit: discovery intake, support request, session feedback,
+  and team retrospective routed into the existing Lists
 - Planner buckets
 - Teams/channel/tab layout
 - future integration hooks: `CentralOSLink`, `GraphNodeId`
@@ -173,6 +181,7 @@ Read-only / diagnostic:
 .\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action Verify
 .\scripts\New-M365Stage6ManualListBuildGuide.ps1
 .\scripts\New-M365Stage6PlannerTeamsBuildGuide.ps1
+.\scripts\New-M365FormsIntakeFeedbackKit.ps1
 .\scripts\New-M365Stage6FirstRunPacket.ps1
 .\scripts\New-M365Stage6OnboardingReadinessPacket.ps1
 .\scripts\Update-M365Stage6LocalArtifacts.ps1

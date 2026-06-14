@@ -1,5 +1,6 @@
 param(
     [string]$SchemaPath = ".\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json",
+    [string]$FormsSchemaPath = ".\config\M365_FORMS_INTAKE_FEEDBACK_KIT.json",
     [string]$OutputPath = ".\inventory\stage-6-operating-state\STAGE_6_LOCAL_PREFLIGHT.md"
 )
 
@@ -45,6 +46,7 @@ function Test-ScriptParse {
 
 $workspaceRoot = Split-Path -Parent (Split-Path -Parent $PSCommandPath)
 $resolvedSchemaPath = Resolve-Stage6Path -Path $SchemaPath
+$resolvedFormsSchemaPath = Resolve-Stage6Path -Path $FormsSchemaPath
 $resolvedOutputPath = Resolve-Stage6Path -Path $OutputPath
 $outputDirectory = Split-Path -Parent $resolvedOutputPath
 New-Item -ItemType Directory -Path $outputDirectory -Force | Out-Null
@@ -79,6 +81,26 @@ if ($null -ne $schema) {
     Add-Result -Results $results -Check "Every List has a title" -Passed ($listsMissingTitle.Count -eq 0) -Detail ("Missing: {0}" -f $listsMissingTitle.Count)
 }
 
+if (Test-Path -LiteralPath $resolvedFormsSchemaPath) {
+    try {
+        $formsSchema = Get-Content -LiteralPath $resolvedFormsSchemaPath -Raw | ConvertFrom-Json
+        Add-Result -Results $results -Check "Forms kit schema parses as JSON" -Passed $true -Detail $resolvedFormsSchemaPath
+    }
+    catch {
+        Add-Result -Results $results -Check "Forms kit schema parses as JSON" -Passed $false -Detail $_.Exception.Message
+        $formsSchema = $null
+    }
+}
+else {
+    Add-Result -Results $results -Check "Forms kit schema exists" -Passed $false -Detail $resolvedFormsSchemaPath
+    $formsSchema = $null
+}
+
+if ($null -ne $formsSchema) {
+    Add-Result -Results $results -Check "Forms kit has form definitions" -Passed ($formsSchema.forms.Count -gt 0) -Detail ("Found {0}" -f $formsSchema.forms.Count)
+    Add-Result -Results $results -Check "Forms kit has flow pattern" -Passed ($formsSchema.flowPattern.Count -gt 0) -Detail ("Found {0} steps" -f $formsSchema.flowPattern.Count)
+}
+
 $requiredScripts = @(
     "scripts\Invoke-M365Stage6ProvisionLists.ps1",
     "scripts\Invoke-M365Stage6VerifyLists.ps1",
@@ -95,6 +117,7 @@ $requiredScripts = @(
     "scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1",
     "scripts\New-M365Stage6ManualListBuildGuide.ps1",
     "scripts\New-M365Stage6PlannerTeamsBuildGuide.ps1",
+    "scripts\New-M365FormsIntakeFeedbackKit.ps1",
     "scripts\New-M365Stage6FirstRunPacket.ps1",
     "scripts\New-M365Stage6OnboardingReadinessPacket.ps1",
     "scripts\Update-M365Stage6LocalArtifacts.ps1",
@@ -115,6 +138,9 @@ foreach ($relativeScript in $requiredScripts) {
 $requiredOutputs = @(
     "inventory\stage-6-operating-state\STAGE_6_MANUAL_LIST_BUILD_GUIDE.md",
     "inventory\stage-6-operating-state\STAGE_6_PLANNER_TEAMS_BUILD_GUIDE.md",
+    "inventory\stage-6-operating-state\forms-intake-feedback\M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md",
+    "inventory\stage-6-operating-state\forms-intake-feedback\forms-question-map.csv",
+    "inventory\stage-6-operating-state\forms-intake-feedback\forms-flow-build-checklist.csv",
     "inventory\stage-6-operating-state\first-run-packet\STAGE_6_FIRST_AGENT_LOOP_RUNBOOK.md",
     "inventory\stage-6-operating-state\onboarding-readiness\STAGE_6_ONBOARDING_READINESS_RUNBOOK.md",
     "inventory\stage-6-operating-state\onboarding-readiness\partner-onboarding-checklist.csv",
@@ -170,6 +196,7 @@ $lines.Add('2. If PnP reuses the wrong account, run `.\scripts\Start-M365Stage6L
 $lines.Add('3. Prefer `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action Verify` for Planner/Teams read-back.')
 $lines.Add('4. Use `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action ProvisionAndVerify` only when ready for the live Planner/Teams gate.')
 $lines.Add('5. Use `inventory\stage-6-operating-state\onboarding-readiness\STAGE_6_ONBOARDING_READINESS_RUNBOOK.md` before adding a partner or shaping first client onboarding.')
+$lines.Add('6. Use `inventory\stage-6-operating-state\forms-intake-feedback\M365_FORMS_INTAKE_FEEDBACK_BUILD_GUIDE.md` before creating Forms or Power Automate flows.')
 $lines.Add("")
 
 Set-Content -LiteralPath $resolvedOutputPath -Value $lines -Encoding UTF8

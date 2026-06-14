@@ -21,6 +21,11 @@ $steps = @(
         Params = @{ SchemaPath = $SchemaPath }
     },
     @{
+        Name = "Forms intake/feedback kit"
+        Path = Join-Path $scriptRoot "New-M365FormsIntakeFeedbackKit.ps1"
+        Params = @{}
+    },
+    @{
         Name = "First-run packet"
         Path = Join-Path $scriptRoot "New-M365Stage6FirstRunPacket.ps1"
         Params = @{}
