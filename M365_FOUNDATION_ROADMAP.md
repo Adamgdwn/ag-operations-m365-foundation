@@ -416,6 +416,9 @@ what should not sync locally
 
 ## Stage 8 - Client Workspace Reference Pattern
 
+Status: planned. See
+[M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
+
 ### What we are doing
 
 Turn Guided AI Labs' own setup into a repeatable client setup model.
@@ -445,6 +448,9 @@ Here is what you own when we leave.
 ```
 
 ## Stage 9 - Agentic OS Bridge Readiness
+
+Status: planned. See
+[M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md).
 
 ### What we are doing
 

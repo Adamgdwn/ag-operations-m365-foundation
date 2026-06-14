@@ -56,8 +56,8 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **Current live gate — Lists provisioned/verified; Planner/Teams live gate and onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **◀ Started locally — baseline, read-only inventory runner, summarizer, and local preflight prepared; no tenant changes** |
-| 8 | Client Workspace Reference Pattern | ⬜ Planned |
-| 9 | Agentic OS Bridge Readiness | ⬜ Planned |
+| 8 | Client Workspace Reference Pattern | ⬜ Planned — working doc added: [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md) |
+| 9 | Agentic OS Bridge Readiness | ⬜ Planned — working doc added: [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md) |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
 Stage 3 SharePoint site provisioning, and Stage 4 local OneDrive/browser cleanup.
@@ -175,6 +175,16 @@ should not sit waiting for private credentials.
   — latest Stage 7 local preflight report. The optional SharePoint Online
   Management Shell module is not installed, so `-IncludeSharePointAdmin` is a
   later optional enhancement.
+
+### Upcoming work — Stage 8/9 Reference Pattern & Bridge Readiness
+
+- [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
+  — planned client workspace reference pattern: client-vs-GAL tenant ownership,
+  discovery inputs, workspace components, handoff packet, and safety gates.
+- [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
+  — planned M365/Graphify/UAOS bridge readiness: adapter surface map,
+  read/propose/write categories, app posture, action logging, stop/rollback
+  rules, and low-risk bridge-loop exit criteria.
 
 - [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) —
   Stage 2 account role matrix, target identity model, break-glass plan, role

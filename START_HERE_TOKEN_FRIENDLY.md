@@ -76,6 +76,9 @@ Done:
   - `scripts/Summarize-M365Stage7SecurityInventory.ps1`
   - `scripts/Test-M365Stage7LocalPreflight.ps1`
   - `inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md`
+- Stage 8 and Stage 9 planning docs were added:
+  - `M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md`
+  - `M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md`
 
 Not done:
 
@@ -139,6 +142,11 @@ Read before retrying:
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 - [config/M365_STAGE_7_GOVERNANCE_BASELINE.json](config/M365_STAGE_7_GOVERNANCE_BASELINE.json)
 - [inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md](inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md)
+
+## Stage 8/9 planning assets
+
+- [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
+- [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
 
 The schema defines:
 
