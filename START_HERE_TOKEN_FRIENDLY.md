@@ -95,6 +95,13 @@ Not done:
 - The Planner/Teams operator was optimized after that run so a successful Graph
   sign-in can be preserved across preflight, provisioning, and post-verification
   in one process instead of forcing avoidable re-auth between phases.
+- A later visible run at 2026-06-14 17:30 showed the PowerShell `Read-Host`
+  pause could still be skipped by spawned windows, causing another device-code
+  timeout. The visible M365 launchers were repaired to open `cmd.exe`, pause
+  before PowerShell starts, and only then begin Graph/PnP auth.
+- A fixed Planner/Teams `ProvisionAndVerify` window is parked before auth. Press
+  any key in that window only when ready to complete Microsoft sign-in and the
+  `planner-teams` live write gate.
 
 ## Stage 6 blocker
 

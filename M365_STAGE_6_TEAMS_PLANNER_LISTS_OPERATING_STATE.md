@@ -594,6 +594,14 @@ What succeeded:
 - The Planner/Teams operator now preserves the Graph connection across
   preflight, provisioning, and post-verification phases after a successful sign-in
   so the live path should require fewer repeated authentication prompts.
+- A later run at 2026-06-14 17:30 proved that `Read-Host` was not a reliable
+  pause in spawned visible windows from this agent shell; it skipped ahead and
+  produced `stage-6-verify-planner-teams-20260614-173056.log`, another
+  device-code timeout before Graph connection.
+- The visible M365 launchers now start through `cmd.exe`, pause before
+  PowerShell begins, and then launch the Graph/PnP script only after Adam presses
+  a key in the visible window. A fixed Planner/Teams `ProvisionAndVerify` window
+  is parked before auth; no new Planner/Teams provision log exists yet.
 
 What was blocked:
 

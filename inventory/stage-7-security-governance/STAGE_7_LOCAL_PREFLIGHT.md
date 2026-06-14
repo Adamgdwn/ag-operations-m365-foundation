@@ -1,6 +1,6 @@
 # Stage 7 Local Preflight
 
-Generated: 2026-06-14 16:39:34
+Generated: 2026-06-14 17:35:28
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 

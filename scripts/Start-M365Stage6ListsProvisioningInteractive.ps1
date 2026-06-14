@@ -12,6 +12,39 @@ param(
 $ErrorActionPreference = "Stop"
 
 $scriptRoot = Split-Path -Parent $PSCommandPath
+$workspaceRoot = Split-Path -Parent $scriptRoot
+
+function ConvertTo-CmdArgument {
+    param([string]$Argument)
+
+    if ($Argument -match '[\s"]') {
+        return '"' + ($Argument -replace '"', '\"') + '"'
+    }
+
+    return $Argument
+}
+
+function Start-VisiblePowerShellConsole {
+    param(
+        [string]$Title,
+        [string]$PowerShellPath,
+        [string[]]$Arguments,
+        [string]$WorkingDirectory
+    )
+
+    $powerShellCommand = (ConvertTo-CmdArgument -Argument $PowerShellPath) + " " + (($Arguments | ForEach-Object { ConvertTo-CmdArgument -Argument $_ }) -join " ")
+    $command = @(
+        "title $Title",
+        "cd /d $(ConvertTo-CmdArgument -Argument $WorkingDirectory)",
+        "echo Ready to start $Title.",
+        "echo Complete any Microsoft sign-in promptly after the next prompt appears.",
+        "pause",
+        $powerShellCommand
+    ) -join " && "
+
+    Start-Process -FilePath $env:ComSpec -ArgumentList @("/k", $command) -WorkingDirectory $WorkingDirectory -WindowStyle Normal
+}
+
 $targetScript = if ($EnsureSiteAdmins) {
     Join-Path $scriptRoot "Invoke-M365Stage6EnsureSiteAdmins.ps1"
 }
@@ -39,7 +72,8 @@ Write-Host "Host:   $($powerShellHost.Source)" -ForegroundColor Gray
 $arguments = @(
     "-NoProfile",
     "-ExecutionPolicy", "Bypass",
-    "-File", "`"$targetScript`""
+    "-NoExit",
+    "-File", $targetScript
 )
 
 if ($ForceFreshLogin) {
@@ -49,4 +83,4 @@ if ($UseDeviceLogin) {
     $arguments += "-UseDeviceLogin"
 }
 
-Start-Process -FilePath $powerShellHost.Source -ArgumentList $arguments -WorkingDirectory (Split-Path -Parent $scriptRoot)
+Start-VisiblePowerShellConsole -Title "M365 Stage 6 Lists" -PowerShellPath $powerShellHost.Source -Arguments $arguments -WorkingDirectory $workspaceRoot

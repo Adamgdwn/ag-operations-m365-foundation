@@ -125,6 +125,13 @@ Planner/Teams operator preparation:
 - The Planner/Teams operator was then optimized to preserve the Graph connection
   across preflight, provisioning, and post-verification phases after successful
   sign-in, reducing avoidable repeated auth prompts in the live path.
+- `stage-6-verify-planner-teams-20260614-173056.log` showed the PowerShell
+  `Read-Host` pause was still skipped in a spawned visible window, so Graph
+  device-code auth again timed out before connection. No Planner/Teams provision
+  log was created.
+- The visible M365 launchers were repaired to open `cmd.exe`, pause before
+  PowerShell starts, and only then run the Graph/PnP script. A fixed
+  `ProvisionAndVerify` Planner/Teams window is now parked before auth.
 - No Planner/Teams provision log exists yet, so no Planner/Teams tenant write is
   recorded from this run.
 - The live write gate remains the typed phrase `planner-teams`.

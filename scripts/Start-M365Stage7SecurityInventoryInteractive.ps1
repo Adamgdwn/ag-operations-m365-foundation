@@ -7,6 +7,39 @@ param(
 $ErrorActionPreference = "Stop"
 
 $scriptRoot = Split-Path -Parent $PSCommandPath
+$workspaceRoot = Split-Path -Parent $scriptRoot
+
+function ConvertTo-CmdArgument {
+    param([string]$Argument)
+
+    if ($Argument -match '[\s"]') {
+        return '"' + ($Argument -replace '"', '\"') + '"'
+    }
+
+    return $Argument
+}
+
+function Start-VisiblePowerShellConsole {
+    param(
+        [string]$Title,
+        [string]$PowerShellPath,
+        [string[]]$Arguments,
+        [string]$WorkingDirectory
+    )
+
+    $powerShellCommand = (ConvertTo-CmdArgument -Argument $PowerShellPath) + " " + (($Arguments | ForEach-Object { ConvertTo-CmdArgument -Argument $_ }) -join " ")
+    $command = @(
+        "title $Title",
+        "cd /d $(ConvertTo-CmdArgument -Argument $WorkingDirectory)",
+        "echo Ready to start $Title.",
+        "echo Complete any Microsoft sign-in promptly after the next prompt appears.",
+        "pause",
+        $powerShellCommand
+    ) -join " && "
+
+    Start-Process -FilePath $env:ComSpec -ArgumentList @("/k", $command) -WorkingDirectory $WorkingDirectory -WindowStyle Normal
+}
+
 $targetScript = Join-Path $scriptRoot "Invoke-M365Stage7SecurityInventory.ps1"
 if (-not (Test-Path -LiteralPath $targetScript)) {
     throw "Target script not found: $targetScript"
@@ -27,11 +60,12 @@ if ($IncludeSharePointAdmin) {
 $arguments = @(
     "-NoProfile",
     "-ExecutionPolicy", "Bypass",
-    "-File", "`"$targetScript`""
+    "-NoExit",
+    "-File", $targetScript
 )
 
 if ($IncludeSharePointAdmin) {
     $arguments += "-IncludeSharePointAdmin"
 }
 
-Start-Process -FilePath $powerShellHost.Source -ArgumentList $arguments -WorkingDirectory (Split-Path -Parent $scriptRoot) -WindowStyle Normal
+Start-VisiblePowerShellConsole -Title "M365 Stage 7 Inventory" -PowerShellPath $powerShellHost.Source -Arguments $arguments -WorkingDirectory $workspaceRoot
