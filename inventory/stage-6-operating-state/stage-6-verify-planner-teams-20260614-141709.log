@@ -1,0 +1,32 @@
+**********************
+PowerShell transcript start
+Start time: 20260614141709
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action ProvisionAndVerify -UseDeviceCode
+Process ID: 19892
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Verify Planner/Teams (READ-ONLY)
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-verify-planner-teams-20260614-141709.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+PS>TerminatingError(Connect-MgGraph): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Authentication timed out after 120 seconds due to inactivity. Please try again."
+>> TerminatingError(Connect-MgGraph): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Authentication timed out after 120 seconds due to inactivity. Please try again."
+>> TerminatingError(Disconnect-MgGraph): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: No application to sign out from."
+**********************
+PowerShell transcript end
+End time: 20260614141909
+**********************

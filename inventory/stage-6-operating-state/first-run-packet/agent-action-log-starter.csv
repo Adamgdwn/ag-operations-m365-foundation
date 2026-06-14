@@ -1,0 +1,3 @@
+"Title","ActionDate","AgentSurface","Source","ActionType","Status","HumanApprover","Result","CentralOSLink","GraphNodeId"
+"Generated Stage 6 manual build guides","2026-06-14","Codex","","create-record","Completed","","Generated schema-driven manual guides for Lists, Planner, and Teams while tenant writes remained paused.","",""
+"Ran Stage 6 local preflight","2026-06-14","Codex","","recommend","Completed","","Validated local schema, scripts, generated guides, and required modules without connecting to Microsoft 365.","",""

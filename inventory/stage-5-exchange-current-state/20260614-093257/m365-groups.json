@@ -1,0 +1,66 @@
+[
+  {
+    "DisplayName": "A.G. Operations Ltd",
+    "PrimarySmtpAddress": "A.G.OperationsLtd@AGOperationsLtd.onmicrosoft.com",
+    "Alias": "A.G.OperationsLtd",
+    "AccessType": "Public",
+    "HiddenFromAddressListsEnabled": true,
+    "RequireSenderAuthenticationEnabled": true,
+    "EmailAddresses": [
+      "SPO:SPO_6964b555-d6dc-4b61-b637-ab47e2ea7077@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "SMTP:A.G.OperationsLtd@AGOperationsLtd.onmicrosoft.com"
+    ]
+  },
+  {
+    "DisplayName": "All Company",
+    "PrimarySmtpAddress": "allcompany@AGOperationsLtd.onmicrosoft.com",
+    "Alias": "allcompany",
+    "AccessType": "Public",
+    "HiddenFromAddressListsEnabled": false,
+    "RequireSenderAuthenticationEnabled": true,
+    "EmailAddresses": [
+      "SPO:SPO_adb37978-0bf8-4687-8200-f48954106039@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "SMTP:allcompany@AGOperationsLtd.onmicrosoft.com"
+    ]
+  },
+  {
+    "DisplayName": "Group for Answers in Viva Engage – DO NOT DELETE 1521570944958464",
+    "PrimarySmtpAddress": "groupforanswersinvivaengagedonotdelete1521570944958464273@agoperations.ca",
+    "Alias": "groupforanswersinvivaengagedonotdelete1521570944958464273",
+    "AccessType": "Public",
+    "HiddenFromAddressListsEnabled": false,
+    "RequireSenderAuthenticationEnabled": true,
+    "EmailAddresses": [
+      "SPO:SPO_242e3212-7570-4890-96c5-9b6ae1de84e4@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "smtp:groupforanswersinvivaengagedonotdelete1521570944958464273@AGOperationsLtd.onmicrosoft.com",
+      "SMTP:groupforanswersinvivaengagedonotdelete1521570944958464273@agoperations.ca"
+    ]
+  },
+  {
+    "DisplayName": "Guided AI Labs",
+    "PrimarySmtpAddress": "GuidedAILabs@agoperations.ca",
+    "Alias": "GuidedAILabs",
+    "AccessType": "Private",
+    "HiddenFromAddressListsEnabled": false,
+    "RequireSenderAuthenticationEnabled": true,
+    "EmailAddresses": [
+      "SPO:SPO_243281c6-f556-4534-807e-a0508202a7ba@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "smtp:GuidedAILabs@AGOperationsLtd.onmicrosoft.com",
+      "SMTP:GuidedAILabs@agoperations.ca"
+    ]
+  },
+  {
+    "DisplayName": "Change Leadership Tools",
+    "PrimarySmtpAddress": "ChangeLeadershipTools@agoperations.ca",
+    "Alias": "ChangeLeadershipTools",
+    "AccessType": "Private",
+    "HiddenFromAddressListsEnabled": false,
+    "RequireSenderAuthenticationEnabled": true,
+    "EmailAddresses": [
+      "SPO:SPO_460683e5-74d5-4f4b-8467-8851d9a3deb8@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "smtp:ChangeLeadershipTools290@AGOperationsLtd.onmicrosoft.com",
+      "smtp:ChangeLeadershipTools@AGOperationsLtd.onmicrosoft.com",
+      "SMTP:ChangeLeadershipTools@agoperations.ca"
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+**********************
+PowerShell transcript start
+Start time: 20260614141148
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -File .\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action Verify
+Process ID: 4568
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Verify Planner/Teams (READ-ONLY)
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-verify-planner-teams-20260614-141148.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+WARNING: Note: Sign in by Web Account Manager (WAM) is enabled by default on Windows. If using an embedded terminal, the interactive browser window may be hidden behind other windows.
+>> TerminatingError(Connect-MgGraph): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: InteractiveBrowserCredential authentication failed: A window handle must be configured. See https://aka.ms/msal-net-wam#parent-window-handles"
+>> TerminatingError(Connect-MgGraph): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: InteractiveBrowserCredential authentication failed: A window handle must be configured. See https://aka.ms/msal-net-wam#parent-window-handles"
+>> TerminatingError(Disconnect-MgGraph): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: No application to sign out from."
+**********************
+PowerShell transcript end
+End time: 20260614141150
+**********************

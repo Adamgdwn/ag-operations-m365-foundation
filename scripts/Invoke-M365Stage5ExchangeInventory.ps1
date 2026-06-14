@@ -1,6 +1,7 @@
 param(
     [string]$AdminUpn = "adamgoodwin@guidedailabs.com",
-    [string]$OutputRoot = ".\inventory\stage-5-exchange-current-state"
+    [string]$OutputRoot = ".\inventory\stage-5-exchange-current-state",
+    [switch]$UseWam
 )
 
 # Stage 5 - Exchange & Communication Routing : READ-ONLY inventory.
@@ -21,9 +22,17 @@ function Write-Section {
 function Export-Json {
     param(
         [Parameter(Mandatory = $true)] [string]$Path,
-        [Parameter(Mandatory = $true)] $Data
+        [Parameter(Mandatory = $true)] $Data,
+        [switch]$AsArray
     )
-    $Data | ConvertTo-Json -Depth 20 | Out-File -FilePath $Path -Encoding utf8
+
+    if ($AsArray) {
+        $items = @($Data)
+        ConvertTo-Json -InputObject $items -Depth 20 | Out-File -FilePath $Path -Encoding utf8
+        return
+    }
+
+    ConvertTo-Json -InputObject $Data -Depth 20 | Out-File -FilePath $Path -Encoding utf8
 }
 
 function Invoke-InventoryStep {
@@ -35,7 +44,7 @@ function Invoke-InventoryStep {
     Write-Section $Name
     try {
         $data = @(& $ScriptBlock)
-        Export-Json -Path (Join-Path $script:OutputDir "$Name.json") -Data $data
+        Export-Json -Path (Join-Path $script:OutputDir "$Name.json") -Data $data -AsArray
         Write-Host "Saved $Name.json ($($data.Count) item(s))" -ForegroundColor Green
         return $data
     }
@@ -93,6 +102,9 @@ Write-Host "Output folder: $script:OutputDir"
 Write-Host ""
 Write-Host "This run is non-destructive. It only READS Exchange Online configuration." -ForegroundColor Green
 Write-Host "Sign in as $AdminUpn or another account with Exchange visibility." -ForegroundColor Yellow
+if (-not $UseWam) {
+    Write-Host "Using device-code authentication to avoid host window-handle issues." -ForegroundColor Yellow
+}
 
 $exo = Get-Module -ListAvailable -Name ExchangeOnlineManagement | Sort-Object Version -Descending | Select-Object -First 1
 if ($null -eq $exo) {
@@ -107,7 +119,12 @@ Write-Host ("Using ExchangeOnlineManagement {0}" -f $exo.Version) -ForegroundCol
 Import-Module ExchangeOnlineManagement
 
 Write-Section "Connect"
-Connect-ExchangeOnline -UserPrincipalName $AdminUpn -ShowBanner:$false
+if ($UseWam) {
+    Connect-ExchangeOnline -UserPrincipalName $AdminUpn -ShowBanner:$false
+}
+else {
+    Connect-ExchangeOnline -UserPrincipalName $AdminUpn -Device -DisableWAM -ShowBanner:$false
+}
 
 try {
     $mailboxes = Invoke-InventoryStep -Name "mailboxes" -ScriptBlock {
@@ -156,7 +173,9 @@ try {
         foreach ($mailbox in $mailboxes) {
             $identity = [string]$mailbox.PrimarySmtpAddress
             Get-CalendarProcessing -Identity $identity -ErrorAction SilentlyContinue |
-                Select-Object Identity,AutomateProcessing,BookingWindowInDays,MaximumDurationInMinutes,AllowConflicts,AllBookInPolicy,AllRequestInPolicy,AllRequestOutOfPolicy,ResourceDelegates
+                Select-Object @{ Name = "Mailbox"; Expression = { $identity } },
+                    @{ Name = "UserPrincipalName"; Expression = { [string]$mailbox.UserPrincipalName } },
+                    Identity,AutomateProcessing,BookingWindowInDays,MaximumDurationInMinutes,AllowConflicts,AllBookInPolicy,AllRequestInPolicy,AllRequestOutOfPolicy,ResourceDelegates
         }
     } | Out-Null
 

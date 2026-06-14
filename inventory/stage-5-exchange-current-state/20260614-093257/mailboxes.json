@@ -1,0 +1,83 @@
+[
+  {
+    "DisplayName": "Adam Goodwin",
+    "UserPrincipalName": "admin@agoperations.ca",
+    "PrimarySmtpAddress": "admin@agoperations.ca",
+    "RecipientTypeDetails": "UserMailbox",
+    "HiddenFromAddressListsEnabled": false,
+    "WhenMailboxCreated": "2026-05-30T14:43:37-06:00",
+    "ForwardingSmtpAddress": null,
+    "ForwardingAddress": null,
+    "DeliverToMailboxAndForward": false,
+    "GrantSendOnBehalfTo": [],
+    "EmailAddresses": [
+      "SPO:SPO_ff0a328d-d5fd-463f-8b44-5d6bfb6329cc@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "SIP:admin@agoperations.ca",
+      "smtp:admin@AGOperationsLtd.onmicrosoft.com",
+      "SMTP:admin@agoperations.ca"
+    ]
+  },
+  {
+    "DisplayName": "Adam Goodwin",
+    "UserPrincipalName": "adamgoodwin@guidedailabs.com",
+    "PrimarySmtpAddress": "adamgoodwin@guidedailabs.com",
+    "RecipientTypeDetails": "UserMailbox",
+    "HiddenFromAddressListsEnabled": false,
+    "WhenMailboxCreated": "2026-06-03T14:17:52-06:00",
+    "ForwardingSmtpAddress": null,
+    "ForwardingAddress": null,
+    "DeliverToMailboxAndForward": false,
+    "GrantSendOnBehalfTo": [],
+    "EmailAddresses": [
+      "SPO:SPO_0932c9a9-e034-40c0-97aa-9b50bf122ec3@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "SIP:adamgoodwin@guidedailabs.com",
+      "SMTP:adamgoodwin@guidedailabs.com"
+    ]
+  },
+  {
+    "DisplayName": "contact",
+    "UserPrincipalName": "contact@guidedailabs.com",
+    "PrimarySmtpAddress": "contact@guidedailabs.com",
+    "RecipientTypeDetails": "UserMailbox",
+    "HiddenFromAddressListsEnabled": false,
+    "WhenMailboxCreated": "2026-05-31T15:22:05-06:00",
+    "ForwardingSmtpAddress": null,
+    "ForwardingAddress": null,
+    "DeliverToMailboxAndForward": false,
+    "GrantSendOnBehalfTo": [],
+    "EmailAddresses": [
+      "SPO:SPO_b704299c-00f3-4552-b976-ca2eeb341a24@SPO_1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+      "SIP:contact@guidedailabs.com",
+      "SMTP:contact@guidedailabs.com"
+    ]
+  },
+  {
+    "DisplayName": "Discovery Search Mailbox",
+    "UserPrincipalName": "DiscoverySearchMailbox{D919BA05-46A6-415f-80AD-7E09334BB852}@AGOperationsLtd.onmicrosoft.com",
+    "PrimarySmtpAddress": "DiscoverySearchMailbox{D919BA05-46A6-415f-80AD-7E09334BB852}@AGOperationsLtd.onmicrosoft.com",
+    "RecipientTypeDetails": "DiscoveryMailbox",
+    "HiddenFromAddressListsEnabled": true,
+    "WhenMailboxCreated": "2026-05-30T14:43:37-06:00",
+    "ForwardingSmtpAddress": null,
+    "ForwardingAddress": null,
+    "DeliverToMailboxAndForward": false,
+    "GrantSendOnBehalfTo": [],
+    "EmailAddresses": "SMTP:DiscoverySearchMailbox{D919BA05-46A6-415f-80AD-7E09334BB852}@AGOperationsLtd.onmicrosoft.com"
+  },
+  {
+    "DisplayName": "Support at ChangeTools",
+    "UserPrincipalName": "support@changeleadershiptools.com",
+    "PrimarySmtpAddress": "support@changeleadershiptools.com",
+    "RecipientTypeDetails": "UserMailbox",
+    "HiddenFromAddressListsEnabled": false,
+    "WhenMailboxCreated": "2026-06-07T11:31:10-06:00",
+    "ForwardingSmtpAddress": null,
+    "ForwardingAddress": null,
+    "DeliverToMailboxAndForward": false,
+    "GrantSendOnBehalfTo": [],
+    "EmailAddresses": [
+      "SIP:support@changeleadershiptools.com",
+      "SMTP:support@changeleadershiptools.com"
+    ]
+  }
+]

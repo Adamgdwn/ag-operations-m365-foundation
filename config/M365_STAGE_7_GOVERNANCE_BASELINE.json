@@ -1,0 +1,110 @@
+{
+  "stage": 7,
+  "name": "Security, Governance, And External Sharing",
+  "lastUpdated": "2026-06-14",
+  "principle": "Protect the Microsoft 365 substrate before partner, client, or agentic access expands.",
+  "sources": [
+    {
+      "title": "Security defaults in Microsoft Entra ID",
+      "url": "https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults"
+    },
+    {
+      "title": "Microsoft Entra licensing",
+      "url": "https://learn.microsoft.com/en-us/entra/fundamentals/licensing"
+    },
+    {
+      "title": "authorizationPolicy resource type",
+      "url": "https://learn.microsoft.com/en-us/graph/api/resources/authorizationpolicy?view=graph-rest-1.0"
+    },
+    {
+      "title": "List Conditional Access policies",
+      "url": "https://learn.microsoft.com/en-us/graph/api/conditionalaccessroot-list-policies?view=graph-rest-1.0"
+    },
+    {
+      "title": "Manage sharing settings for SharePoint and OneDrive",
+      "url": "https://learn.microsoft.com/en-us/sharepoint/turn-external-sharing-on-or-off"
+    }
+  ],
+  "readOnlyInventory": {
+    "tenantId": "1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+    "defaultClientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+    "outputRoot": ".\\inventory\\stage-7-security-governance",
+    "graphScopes": [
+      "User.Read",
+      "Organization.Read.All",
+      "Directory.Read.All",
+      "Group.Read.All",
+      "Application.Read.All",
+      "Policy.Read.All",
+      "AuditLog.Read.All",
+      "UserAuthenticationMethod.Read.All"
+    ],
+    "optionalSharePointAdminRead": {
+      "adminUrl": "https://agoperationsltd-admin.sharepoint.com",
+      "module": "Microsoft.Online.SharePoint.PowerShell",
+      "default": "off"
+    }
+  },
+  "baseline": [
+    {
+      "area": "Identity and MFA",
+      "target": "Security Defaults enabled now unless a Business Premium / Entra P1 Conditional Access plan replaces it.",
+      "notes": "Security Defaults are free and strong, but they can block device-code auth. Before enabling, confirm the replacement auth pattern for setup scripts."
+    },
+    {
+      "area": "Admin roles",
+      "target": "Two break-glass Global Admins, controlled admin account, and Adam's accepted-risk daily Global Admin reviewed at least monthly.",
+      "notes": "Revisit just-in-time elevation after Business Premium or Entra P1 is available."
+    },
+    {
+      "area": "App consent",
+      "target": "No casual broad-write app consent. Setup/provisioning apps are disabled, consent-revoked, or explicitly marked active only while needed.",
+      "notes": "The idle agent-pnp-provisioning app remains a Stage 7 review item because it has broad delegated setup scopes."
+    },
+    {
+      "area": "Guest access",
+      "target": "No guests until a named partner/client onboarding decision is approved. Guest invitations should be admin/guest-inviter controlled, not everyone.",
+      "notes": "Guest access is a business workflow, not a default convenience."
+    },
+    {
+      "area": "External sharing",
+      "target": "Tenant and sites remain as restrictive as practical. Client/partner sharing is enabled only for named sites with named domains or specific people.",
+      "notes": "Stage 3 built sites with external sharing off; preserve that default until a client workspace pattern is approved."
+    },
+    {
+      "area": "SharePoint and OneDrive links",
+      "target": "Default to specific people or organization-only links. Avoid anonymous Anyone links for business records.",
+      "notes": "Anyone links are a future exception path, not a default for an AI-first operating substrate."
+    },
+    {
+      "area": "Labels and retention",
+      "target": "Define a plain-language sensitivity/retention model now; implement Microsoft labels/retention when licensing supports it.",
+      "notes": "The operating rule can exist before the Purview feature set is fully licensed."
+    },
+    {
+      "area": "Device and sync posture",
+      "target": "Sync only active trusted libraries to Adam's machine. Client-owned or sensitive libraries stay browser-only unless approved.",
+      "notes": "This protects future client work and keeps local sprawl under control."
+    },
+    {
+      "area": "Audit cadence",
+      "target": "Review sign-ins, directory role membership, guests, app consent, external sharing, and agent action logs on a written cadence.",
+      "notes": "Monthly is enough for early stage; increase cadence when clients or partners are active."
+    },
+    {
+      "area": "Agent/UAOS gates",
+      "target": "Agents may read and propose inside scoped surfaces. External sends, guest invites, sharing changes, calendar commitments, and tenant policy changes require Adam approval.",
+      "notes": "This preserves the AI-first posture without allowing uncontrolled agency."
+    }
+  ],
+  "stageExitCriteria": [
+    "Read-only Stage 7 inventory captured and summarized.",
+    "Business Premium / Entra P1 decision recorded, including Founders Hub path.",
+    "Security Defaults versus Conditional Access path chosen.",
+    "External sharing default and named exception process documented.",
+    "Guest invitation rule documented.",
+    "Provisioning app resting-state decision recorded.",
+    "Partner onboarding security gate defined before any real external invite.",
+    "No Stage 8 client pattern begins until Stage 7 high-risk gaps are accepted or closed."
+  ]
+}

@@ -1,0 +1,57 @@
+[
+  {
+    "Identity": "AdamGoodwin",
+    "AutomateProcessing": "AutoUpdate",
+    "BookingWindowInDays": 180,
+    "MaximumDurationInMinutes": 1440,
+    "AllowConflicts": false,
+    "AllBookInPolicy": true,
+    "AllRequestInPolicy": false,
+    "AllRequestOutOfPolicy": false,
+    "ResourceDelegates": []
+  },
+  {
+    "Identity": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "AutomateProcessing": "AutoUpdate",
+    "BookingWindowInDays": 180,
+    "MaximumDurationInMinutes": 1440,
+    "AllowConflicts": false,
+    "AllBookInPolicy": true,
+    "AllRequestInPolicy": false,
+    "AllRequestOutOfPolicy": false,
+    "ResourceDelegates": []
+  },
+  {
+    "Identity": "311b3307-e679-4c23-9e1f-3fabc0f5002e",
+    "AutomateProcessing": "AutoUpdate",
+    "BookingWindowInDays": 180,
+    "MaximumDurationInMinutes": 1440,
+    "AllowConflicts": false,
+    "AllBookInPolicy": true,
+    "AllRequestInPolicy": false,
+    "AllRequestOutOfPolicy": false,
+    "ResourceDelegates": []
+  },
+  {
+    "Identity": "DiscoverySearchMailbox{D919BA05-46A6-415f-80AD-7E09334BB852}",
+    "AutomateProcessing": "AutoUpdate",
+    "BookingWindowInDays": 180,
+    "MaximumDurationInMinutes": 1440,
+    "AllowConflicts": false,
+    "AllBookInPolicy": true,
+    "AllRequestInPolicy": false,
+    "AllRequestOutOfPolicy": false,
+    "ResourceDelegates": []
+  },
+  {
+    "Identity": "932f46df-e804-4a7d-a5e2-ce976ed25d79",
+    "AutomateProcessing": "AutoUpdate",
+    "BookingWindowInDays": 180,
+    "MaximumDurationInMinutes": 1440,
+    "AllowConflicts": false,
+    "AllBookInPolicy": true,
+    "AllRequestInPolicy": false,
+    "AllRequestOutOfPolicy": false,
+    "ResourceDelegates": []
+  }
+]

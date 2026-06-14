@@ -1,0 +1,8 @@
+"Category","ReadyWhen","CurrentStatus","Evidence","Gap"
+"Lists","All four Stage 6 Lists exist and read-back verification passes","Ready","stage-6-verify-lists-20260614-135144.log",""
+"Planner","Operating Plan exists with expected buckets","Pending live gate","","Run Planner/Teams operator"
+"Teams","Operating Team and channels exist with useful tabs","Pending live gate","","Run Planner/Teams operator and verify tabs"
+"First agent loop","One supervised intake item can move from signal to list row, task, decision/action log","Packet prepared","first-run-packet","Run after Planner/Teams live gate"
+"Partner onboarding","Access model, training path, dry run, and approval boundaries are documented","Packet prepared","onboarding-readiness","Complete one dry onboarding"
+"Client onboarding","Discovery checklist and ownership/handoff rules are ready to use","Draft ready","client-readiness-discovery-checklist.csv","Convert into Stage 8 client workspace pattern"
+"Security posture","External sharing, guest access, labels/retention, admin role posture reviewed","Stage 7 pending","Roadmap Stage 7","Run Stage 7 before real external sharing"

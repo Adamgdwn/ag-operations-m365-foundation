@@ -347,6 +347,11 @@ Where do official files go after collaboration?
 
 ## Stage 7 - Security, Governance, And External Sharing
 
+Status: started locally 2026-06-14. See
+[M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
+and [config/M365_STAGE_7_GOVERNANCE_BASELINE.json](config/M365_STAGE_7_GOVERNANCE_BASELINE.json).
+No Stage 7 tenant changes have been made.
+
 ### What we are doing
 
 Set tenant-wide and site-level safety boundaries.
@@ -378,6 +383,19 @@ Future AI access only works if Microsoft 365 already has clean permissions, labe
 - Defender
 - SharePoint admin center
 - Teams admin center
+
+### Local artifacts
+
+- `M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md`
+- `config/M365_STAGE_7_GOVERNANCE_BASELINE.json`
+- `scripts/Invoke-M365Stage7SecurityInventory.ps1`
+- `scripts/Start-M365Stage7SecurityInventoryInteractive.ps1`
+- `scripts/Summarize-M365Stage7SecurityInventory.ps1`
+- `scripts/Test-M365Stage7LocalPreflight.ps1`
+- `inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md`
+
+The first Stage 7 implementation path is read-only inventory. Policy, guest,
+sharing, consent, and role changes remain explicit human-approved gates.
 
 ### Done when
 
@@ -494,4 +512,3 @@ Then harden governance.
 Then turn it into a client-ready pattern.
 Then prepare the future AI bridge.
 ```
-

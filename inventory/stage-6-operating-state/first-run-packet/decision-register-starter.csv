@@ -1,0 +1,2 @@
+"Title","DecisionDate","DecisionOwner","Area","Decision","Rationale","RevisitDate","SourceLink","CentralOSLink","GraphNodeId"
+"Stage 6 remains human-supervised","2026-06-14","adamgoodwin@guidedailabs.com","Agent","Codex may prepare local artifacts, run local validation, and produce human-approved runbooks. Codex will not approve consent, bypass warnings, complete MFA, send external messages, invite guests, or make tenant-wide changes unattended.","This keeps the setup genuinely agent-assisted without crossing into unsafe autonomous tenant administration.","","","",""

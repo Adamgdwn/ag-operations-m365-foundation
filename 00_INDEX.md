@@ -2,11 +2,15 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-12
+Last updated: 2026-06-14
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
 what decision is waiting next.
+
+For fast agent/session restart, read
+[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md) first. It is the
+compact current-state brief and safety stop for the Stage 6/7 transition.
 
 ---
 
@@ -28,6 +32,13 @@ Working principle: **classify intent first, then route to the right M365 surface
 for comms, Planner/Lists for state, Entra for identity, Purview/Defender for
 governance). Email is **not** the hub.
 
+Important nuance: Microsoft 365 is not being treated as "just documentation and
+email," and it is not being asked to become the entire central operating system.
+It should be fully useful operational infrastructure in its own right: records,
+tasks, decisions, conversations, approvals, and audit. The future Guided AI Labs
+central OS and Graphify map can then integrate across M365, local/Linux
+workspaces, repositories, products, and other systems.
+
 ---
 
 ## Where we are right now
@@ -42,17 +53,23 @@ The canonical execution plan is the **10-stage roadmap**:
 | 2 | Identity & Admin Foundation | ✅ Done 2026-06-11 — safety net (break-glass ×2), `contact@` admin stripped, re-inventory confirms target role matrix |
 | 3 | SharePoint Information Architecture | ✅ Done 2026-06-12 — all 5 sites built (AG Operations, Guided AI Labs, Change Leadership Tools, Shared Libraries, Guided AI Journey) with Hybrid libraries + folders + 5 metadata columns, external sharing OFF; re-inventory PASS |
 | 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
-| **5** | **Exchange & Communication Routing** | **◀ Current — inventory/design started; working doc + read-only Exchange inventory runner added** |
-| 6 | Teams, Planner, Lists & Operating State | ⬜ Planned |
-| 7 | Security, Governance & External Sharing | ⬜ Planned |
+| 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
+| **6** | **Teams, Planner, Lists & Operating State** | **Current live gate — Lists provisioned/verified; Planner/Teams live gate and onboarding readiness packet prepared** |
+| **7** | **Security, Governance & External Sharing** | **◀ Started locally — baseline, read-only inventory runner, summarizer, and local preflight prepared; no tenant changes** |
 | 8 | Client Workspace Reference Pattern | ⬜ Planned |
 | 9 | Agentic OS Bridge Readiness | ⬜ Planned |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
 Stage 3 SharePoint site provisioning, and Stage 4 local OneDrive/browser cleanup.
-Each tenant write was gated and read-back-verified. Stage 5 starts with **read-only**
-Exchange inventory before any mailbox, alias, forwarding, calendar, or license
-change. This remains a human-supervised setup, not unattended automation.
+Each tenant write was gated and read-back-verified. Stage 5 Exchange design
+completed on 2026-06-14; no mailbox, alias, forwarding, calendar, or license
+changes were needed. This remains a human-supervised setup, not unattended
+automation.
+
+**Authorization pattern:** when a tenant action needs Adam's credentials, MFA, or
+approval, launch a visible interactive window and let Adam authorize there. Codex
+can continue local analysis and documentation around that step, but hidden shells
+should not sit waiting for private credentials.
 
 ---
 
@@ -66,17 +83,92 @@ change. This remains a human-supervised setup, not unattended automation.
   — comprehensive reference/design spec behind the roadmap (the "why" and the
   detailed target architecture). Defers to the roadmap for sequencing.
 
-### Current work — Stage 5 Exchange & Communication Routing
+### Completed foundation stages
 
 - [M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md](M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md)
-  — **current working document** for mailbox types, aliases, calendar ownership,
-  support/front-door routing, and durable record capture.
+  — Stage 5 Exchange mailbox, alias, calendar, support/front-door routing, and
+  durable-record capture decisions. **Design complete 2026-06-14; no tenant writes
+  required now.** Live read-only inventory is captured under
+  `inventory/stage-5-exchange-current-state/20260614-093257/`.
+- [GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md](GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md)
+  — draft bridge between Stage 5, Stage 6, and Stage 9: how `contact@` /
+  `support@` become structured intake, tasks, records, central OS/Graphify
+  references, and eventually a governed agentic workflow.
+
+### Current work — Stage 6 Teams, Planner, Lists & Operating State
+
+- [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md)
+  — current working design for the Microsoft Lists, Planner buckets, Teams
+  channels, first safe agent-assisted intake loop, and Stage 6 operating
+  experience/look-and-feel.
+- [M365_GRAPHIFY_UAOS_ALIGNMENT.md](M365_GRAPHIFY_UAOS_ALIGNMENT.md)
+  — alignment note after reviewing the Graphify Workspace Cockpit source package:
+  M365 is the governed business substrate, Graphify is the decision intelligence
+  layer, and UAOS owns future mission execution/adapters.
+- [config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json](config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json)
+  — machine-readable Stage 6 schema for the first four Lists, intended views,
+  Planner buckets, and Teams/channel/tab layout.
+- [scripts/Invoke-M365Stage6ProvisionLists.ps1](scripts/Invoke-M365Stage6ProvisionLists.ps1)
+  — **live write** (gated/idempotent): creates the four Stage 6 Microsoft Lists,
+  columns, and first useful views from the schema. It does not create Teams,
+  Planner, mailbox rules, sharing changes, guests, or automation.
+- [scripts/Invoke-M365Stage6VerifyLists.ps1](scripts/Invoke-M365Stage6VerifyLists.ps1)
+  — **read-only** Stage 6 verification for the Lists, fields, and views.
+- [scripts/Start-M365Stage6ListsProvisioningInteractive.ps1](scripts/Start-M365Stage6ListsProvisioningInteractive.ps1)
+  — launches the Stage 6 Lists provisioning or verification in a visible
+  PowerShell/auth window so Adam can complete Microsoft sign-in/MFA and, for the
+  live write, type the confirmation.
+- [scripts/Invoke-M365Stage6EnsureSiteAdmins.ps1](scripts/Invoke-M365Stage6EnsureSiteAdmins.ps1)
+  — **live write already run 2026-06-14**: added `adamgoodwin@guidedailabs.com`
+  as secondary site collection admin on the Guided AI Labs and Change Leadership
+  Tools sites.
+- [scripts/Test-M365Stage6PnPPermissions.ps1](scripts/Test-M365Stage6PnPPermissions.ps1)
+  — **read-only** diagnostic for Stage 6 PnP/site permissions.
+- [scripts/Show-M365Stage6PnPConsentReviewChecklist.ps1](scripts/Show-M365Stage6PnPConsentReviewChecklist.ps1)
+  — prints the safer Entra admin center consent-review checklist for
+  `agent-pnp-provisioning`. It does not open a browser or raw consent URL.
+- [inventory/stage-6-operating-state/STAGE_6_PROVISIONING_AUDIT.md](inventory/stage-6-operating-state/STAGE_6_PROVISIONING_AUDIT.md)
+  — concise audit of the Stage 6 provisioning attempts, confirmed changes,
+  unauthorized-operation blocker, and consent-warning response.
+- [inventory/stage-6-operating-state/onboarding-readiness/STAGE_6_ONBOARDING_READINESS_RUNBOOK.md](inventory/stage-6-operating-state/onboarding-readiness/STAGE_6_ONBOARDING_READINESS_RUNBOOK.md)
+  — Stage 6 readiness ladder, partner onboarding checklist, client-readiness
+  checklist, training path, and scorecard for judging whether the operating
+  cockpit is ready to use with a partner or first client.
 - [scripts/Invoke-M365Stage5ExchangeInventory.ps1](scripts/Invoke-M365Stage5ExchangeInventory.ps1)
   — **read-only** Exchange Online inventory: mailboxes, aliases, forwarding,
   delegates, Send As, groups, recipients, and calendar-processing posture. Run this
-  before deciding any Stage 5 writes.
+  before deciding any Stage 5 writes. Defaults to device-code authentication;
+  add `-UseWam` only in a host where Exchange WAM auth works correctly.
+- [scripts/Start-M365Stage5ExchangeInventoryInteractive.ps1](scripts/Start-M365Stage5ExchangeInventoryInteractive.ps1)
+  — launches the read-only Stage 5 inventory in a visible PowerShell/auth window
+  so Adam can complete Microsoft sign-in or MFA, then runs the local summarizer.
+- [scripts/Summarize-M365Stage5ExchangeInventory.ps1](scripts/Summarize-M365Stage5ExchangeInventory.ps1)
+  — local post-processor that turns a completed Stage 5 inventory JSON folder into
+  a Markdown current-state summary for decisions.
 
-### Completed foundation stages
+### Current work — Stage 7 Security, Governance & External Sharing
+
+- [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
+  — Stage 7 working design for MFA/sign-in posture, admin-role review, app
+  consent, guest access, external sharing, labels/retention, device sync, audit
+  cadence, and agentic approval gates.
+- [config/M365_STAGE_7_GOVERNANCE_BASELINE.json](config/M365_STAGE_7_GOVERNANCE_BASELINE.json)
+  — machine-readable Stage 7 baseline, read-only inventory scopes, and exit
+  criteria.
+- [scripts/Invoke-M365Stage7SecurityInventory.ps1](scripts/Invoke-M365Stage7SecurityInventory.ps1)
+  — **read-only** Graph inventory for security/governance posture. It records
+  partial-permission gaps as `*.error.json` instead of changing the tenant.
+- [scripts/Start-M365Stage7SecurityInventoryInteractive.ps1](scripts/Start-M365Stage7SecurityInventoryInteractive.ps1)
+  — launches the Stage 7 read-only inventory in a visible PowerShell/auth window.
+- [scripts/Summarize-M365Stage7SecurityInventory.ps1](scripts/Summarize-M365Stage7SecurityInventory.ps1)
+  — local post-processor for a completed Stage 7 inventory folder.
+- [scripts/Test-M365Stage7LocalPreflight.ps1](scripts/Test-M365Stage7LocalPreflight.ps1)
+  — local-only Stage 7 validation. Latest run passed and does not connect to
+  Microsoft 365.
+- [inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md](inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md)
+  — latest Stage 7 local preflight report. The optional SharePoint Online
+  Management Shell module is not installed, so `-IncludeSharePointAdmin` is a
+  later optional enhancement.
 
 - [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) —
   Stage 2 account role matrix, target identity model, break-glass plan, role
@@ -139,9 +231,11 @@ change. This remains a human-supervised setup, not unattended automation.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-12.md](SESSION_TURNOVER_2026-06-12.md) — **most recent**
-  handoff: Stage 5 started, Exchange routing doc + read-only inventory runner added;
-  resume by running the Stage 5 Exchange inventory.
+- [SESSION_TURNOVER_2026-06-14.md](SESSION_TURNOVER_2026-06-14.md) — **most recent**
+  handoff: Stage 5 inventory auth path improved, visible launcher + summarizer
+  added, read-only Exchange inventory completed.
+- [SESSION_TURNOVER_2026-06-12.md](SESSION_TURNOVER_2026-06-12.md) — Stage 5
+  started, Exchange routing doc + read-only inventory runner added.
 - [SESSION_TURNOVER_2026-06-11.md](SESSION_TURNOVER_2026-06-11.md) — dated
   handoff after audit + consolidation + git/GitHub setup; now historical because
   Stages 2-4 have since completed.
@@ -208,9 +302,13 @@ Carry these forward; resolve at the noted stage.
    *tooling* app; consider adding a `tool-`/`setup-` prefix to the naming standard.
 9. **All writes run as the daily-driver GA** (`adamgoodwin@`) — compounds the accepted
    Stage 2 risk. Revisit with JIT/PIM at Stage 7 if Entra P1/P2 lands.
-10. **Stage 5 mailbox posture.** Decide whether `contact@` and `support@` remain
-    licensed users, become shared mailboxes, or act as aliases only after the
-    read-only Exchange inventory runs.
+10. ~~**Stage 5 mailbox posture.**~~ **RESOLVED 2026-06-14:** read-only Exchange
+    inventory is complete; `contact@` and `support@` remain licensed user
+    mailboxes for now to preserve direct sign-in, calendar, and future scoped
+    automation options.
+11. **Guided AI Labs agentic intake model.** Draft model exists; next step is Stage
+    6 operating-state design for intake/support Lists, Planner tasks, Teams
+    channels, and an Agent Action Log.
 
 ---
 
@@ -240,13 +338,25 @@ never in the committed `M365_ENVIRONMENT.template.env`.
 ## How to resume next session
 
 1. Read this index.
-2. Open
-   [M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md](M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md).
-3. Run the **read-only** Stage 5 Exchange inventory:
-
-```powershell
-pwsh -File .\scripts\Invoke-M365Stage5ExchangeInventory.ps1
-```
-
-4. Summarize the generated inventory before deciding any mailbox, alias,
-   forwarding, calendar, or license change.
+2. Open [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md).
+3. Open [GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md](GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md)
+   as the design context for why these operating surfaces exist.
+4. Review [config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json](config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json)
+   as the exact List/Planner/Teams schema behind the Stage 6 design.
+5. Lists are already provisioned and verified. Use read-back with:
+   `.\scripts\Start-M365Stage6ListOperatorInteractive.ps1 -Action Verify`.
+6. Current live gate: Planner/Teams. Use:
+   `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action ProvisionAndVerify`.
+   The visible window requires Microsoft device-code sign-in and typed
+   `planner-teams` confirmation.
+7. Use the onboarding readiness packet before adding a partner or shaping first
+   client onboarding:
+   `inventory\stage-6-operating-state\onboarding-readiness\STAGE_6_ONBOARDING_READINESS_RUNBOOK.md`.
+8. Stage 7 local preflight is ready:
+   `.\scripts\Test-M365Stage7LocalPreflight.ps1`.
+9. Stage 7 read-only live inventory is ready when Adam can sign in:
+   `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1`.
+10. Use [M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md](M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md)
+   and the generated inventory summary only as Stage 5 reference.
+11. Then run the first supervised agent loop from
+   `inventory\stage-6-operating-state\first-run-packet\`.
