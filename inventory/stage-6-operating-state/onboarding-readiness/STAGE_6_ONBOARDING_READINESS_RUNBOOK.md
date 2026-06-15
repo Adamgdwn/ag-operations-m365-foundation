@@ -1,6 +1,6 @@
 # Stage 6 Onboarding Readiness Runbook
 
-Generated: 2026-06-14 16:57
+Generated: 2026-06-14 19:04
 
 Purpose: define what finished well means before bringing in a business partner or using the setup as a client onboarding pattern.
 

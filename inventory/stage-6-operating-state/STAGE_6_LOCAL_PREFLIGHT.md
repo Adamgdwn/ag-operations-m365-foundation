@@ -1,6 +1,6 @@
 # Stage 6 Local Preflight
 
-Generated: 2026-06-14 17:35:29
+Generated: 2026-06-14 19:09:40
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 
@@ -11,7 +11,7 @@ Result: PASS
 | PASS | Schema parses as JSON | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json |
 | PASS | Schema has four Stage 6 Lists | Found 4 |
 | PASS | Schema has Planner buckets | Intake Triage, Client Discovery, Active Delivery, Content / IP, Agent Setup, Waiting / Follow-up, Admin / Governance |
-| PASS | Schema has Teams channels | General, Intake, Client Discovery, Active Delivery, Agent Setup, Methods & IP |
+| PASS | Schema has Teams channels | General, Intake, Client Discovery, Active Delivery, Agent Setup, Methods and IP |
 | PASS | List titles are unique | No duplicates |
 | PASS | Every List has a title | Missing: 0 |
 | PASS | Forms kit schema parses as JSON | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_FORMS_INTAKE_FEEDBACK_KIT.json |

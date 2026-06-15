@@ -120,7 +120,7 @@ foreach ($channel in $schema.teams.channels) {
         "Client Discovery" { "Readiness and discovery work before active delivery" }
         "Active Delivery" { "Current delivery coordination without making Teams the file cabinet" }
         "Agent Setup" { "Agentic intake, bridge, workflow, and tooling decisions" }
-        "Methods & IP" { "Reusable methods, templates, and productized knowledge" }
+        "Methods and IP" { "Reusable methods, templates, and productized knowledge" }
         default { "Stage 6 operating coordination" }
     }
     $tabs = ($channel.tabs | ForEach-Object { [string]$_ }) -join ", "

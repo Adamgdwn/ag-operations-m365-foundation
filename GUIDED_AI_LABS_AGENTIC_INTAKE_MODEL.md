@@ -173,7 +173,7 @@ Likely Stage 6 team/channel shape:
 
 | Team | Channels |
 |---|---|
-| Guided AI Labs - Operating Team | General, Intake, Client Discovery, Agent Setup, Methods & IP |
+| Guided AI Labs - Operating Team | General, Intake, Client Discovery, Agent Setup, Methods and IP |
 | Change Leadership Tools - Support | General, Support Triage, Product Feedback |
 
 Teams is for discussion and coordination. It should not become the durable filing

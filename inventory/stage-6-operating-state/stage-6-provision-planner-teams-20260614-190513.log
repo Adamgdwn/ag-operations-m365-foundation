@@ -1,0 +1,83 @@
+**********************
+PowerShell transcript start
+Start time: 20260614190513
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action ProvisionAndVerify
+Process ID: 10296
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Provision Planner/Teams
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Root:   https://agoperationsltd.sharepoint.com
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-provision-planner-teams-20260614-190513.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+This will create or confirm:
+- Planner plan: Guided AI Labs - Operating Plan
+- Planner buckets: Intake Triage, Client Discovery, Active Delivery, Content / IP, Agent Setup, Waiting / Follow-up, Admin / Governance
+- Team-enabled existing group: Guided AI Labs
+- Standard channels: General, Intake, Client Discovery, Active Delivery, Agent Setup, Methods and IP
+- Web tabs: best-effort website tabs for Lists, Planner, and existing libraries
+
+It will NOT create guests, external sharing, mailbox rules, sends, calendar commitments, or tenant policies.
+If Adam is an owner but not a member of the target group, it may ask for a separate typed approval to add Adam as an internal group member so Planner can work.
+Teams will inherit the existing Microsoft 365 group name; this avoids creating a duplicate group/team.
+
+Connected Graph account: adamgoodwin@guidedailabs.com
+Graph scopes: AllSites.FullControl, Channel.Create, email, Group.ReadWrite.All, openid, profile, Tasks.ReadWrite, TeamsTab.Create, User.Read
+
+== Microsoft 365 group ==
+[OK] Target group: Guided AI Labs (db49e096-5a34-48c5-9037-0f32c22bbda8)
+Signed-in user group role: member=True; owner=True
+
+== Planner ==
+[skip] Planner plan exists: Guided AI Labs - Operating Plan (EUh5TC3rLU62tTEQZmcojX0ABu10)
+[skip] Bucket exists: Intake Triage
+[skip] Bucket exists: Client Discovery
+[skip] Bucket exists: Active Delivery
+[skip] Bucket exists: Content / IP
+[skip] Bucket exists: Agent Setup
+[skip] Bucket exists: Waiting / Follow-up
+[skip] Bucket exists: Admin / Governance
+
+== Teams ==
+[skip] Team already exists for group: Guided AI Labs
+[note] Team display name is 'Guided AI Labs' because Teams inherits the existing group name. Schema operating label is 'Guided AI Labs - Operating Team'.
+[skip] Channel exists: General
+[skip] Channel exists: Intake
+[skip] Channel exists: Client Discovery
+[skip] Channel exists: Active Delivery
+[skip] Channel exists: Agent Setup
+[OK] Channel created: Methods and IP
+
+== Teams tabs ==
+[OK] Web tab pinned: General / Operating Plan
+[OK] Web tab pinned: General / Decisions
+[OK] Web tab pinned: Intake / Intake Register
+[OK] Web tab pinned: Intake / Operating Plan
+[OK] Web tab pinned: Intake / Agent Log
+[OK] Web tab pinned: Client Discovery / Intake Register
+[OK] Web tab pinned: Client Discovery / Operating Plan
+[OK] Web tab pinned: Active Delivery / Operating Plan
+[OK] Web tab pinned: Active Delivery / Client_Delivery
+[OK] Web tab pinned: Agent Setup / Agent Log
+[OK] Web tab pinned: Agent Setup / Decisions
+[OK] Web tab pinned: Agent Setup / Automation_Workflows
+[OK] Web tab pinned: Methods and IP / Templates_Methods
+[OK] Web tab pinned: Methods and IP / Decisions
+**********************
+PowerShell transcript end
+End time: 20260614190613
+**********************

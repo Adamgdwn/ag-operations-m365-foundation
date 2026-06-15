@@ -132,7 +132,7 @@
       { "name": "Client Discovery", "tabs": ["Intake Register", "Operating Plan"] },
       { "name": "Active Delivery", "tabs": ["Operating Plan", "Client_Delivery"] },
       { "name": "Agent Setup", "tabs": ["Agent Log", "Decisions", "Automation_Workflows"] },
-      { "name": "Methods & IP", "tabs": ["Templates_Methods", "Decisions"] }
+      { "name": "Methods and IP", "tabs": ["Templates_Methods", "Decisions"] }
     ]
   }
 }

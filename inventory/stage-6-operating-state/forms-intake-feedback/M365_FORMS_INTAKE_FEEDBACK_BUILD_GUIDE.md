@@ -154,7 +154,7 @@ Form id: `gal-session-feedback`
 | Sharing | Specific client/team link after approval; avoid broad public links for delivery feedback. |
 | Response setting | Use authenticated links for internal/team feedback and named links for client delivery where practical. |
 | Planner rule | Create a Planner task only for low scores, explicit follow-up requests, or reusable-method candidates. |
-| Teams notification | Post a short notice to Methods & IP or Intake only when follow-up is required. |
+| Teams notification | Post a short notice to Methods and IP or Intake only when follow-up is required. |
 
 Questions:
 
@@ -189,7 +189,7 @@ Power Automate checklist:
 | [ ] | 3 | SharePoint - Create item in target Microsoft List | Map questions and defaults into the target List. |
 | [ ] | 4 | Condition - if severity/urgency/follow-up requires action | Create a Planner task only for low scores, explicit follow-up requests, or reusable-method candidates. |
 | [ ] | 5 | Planner - Create task only when the condition is true | Create a Planner task only for low scores, explicit follow-up requests, or reusable-method candidates. Only create a task when the condition is true. |
-| [ ] | 6 | Microsoft Teams - Post message only for meaningful notifications | Post a short notice to Methods & IP or Intake only when follow-up is required. |
+| [ ] | 6 | Microsoft Teams - Post message only for meaningful notifications | Post a short notice to Methods and IP or Intake only when follow-up is required. |
 | [ ] | 7 | SharePoint - Update created List item with PlannerTaskUrl when a task was created | Store PlannerTaskUrl after task creation when available. |
 
 ### Guided AI Labs - Team Retrospective
@@ -206,7 +206,7 @@ Form id: `gal-team-retro`
 | Sharing | Internal only until partner onboarding governance is approved. |
 | Response setting | Authenticated internal responses preferred. |
 | Planner rule | Create Planner tasks only for committed improvements with an owner. |
-| Teams notification | Post decision candidates to the Agent Setup or Methods & IP channel for Adam review. |
+| Teams notification | Post decision candidates to the Agent Setup or Methods and IP channel for Adam review. |
 
 Questions:
 
@@ -234,7 +234,7 @@ Power Automate checklist:
 | [ ] | 3 | SharePoint - Create item in target Microsoft List | Map questions and defaults into the target List. |
 | [ ] | 4 | Condition - if severity/urgency/follow-up requires action | Create Planner tasks only for committed improvements with an owner. |
 | [ ] | 5 | Planner - Create task only when the condition is true | Create Planner tasks only for committed improvements with an owner. Only create a task when the condition is true. |
-| [ ] | 6 | Microsoft Teams - Post message only for meaningful notifications | Post decision candidates to the Agent Setup or Methods & IP channel for Adam review. |
+| [ ] | 6 | Microsoft Teams - Post message only for meaningful notifications | Post decision candidates to the Agent Setup or Methods and IP channel for Adam review. |
 | [ ] | 7 | SharePoint - Update created List item with PlannerTaskUrl when a task was created | Store PlannerTaskUrl after task creation when available. |
 
 ## Generated Companion Files

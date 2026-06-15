@@ -76,7 +76,7 @@ function Get-GraphCollection {
         }
     }
 
-    return @($items)
+    return $items.ToArray()
 }
 
 function Invoke-GraphGetOrNull {
@@ -109,7 +109,10 @@ function Invoke-GraphJson {
 function Connect-Stage6Graph {
     $scopes = @(
         "User.Read",
-        "Group.ReadWrite.All"
+        "Group.ReadWrite.All",
+        "Tasks.ReadWrite",
+        "Channel.Create",
+        "TeamsTab.Create"
     )
 
     $params = @{
@@ -149,7 +152,7 @@ function Get-Stage6Group {
     return $groups[0]
 }
 
-function Assert-ExpectedUserCanCreateGroupPlanner {
+function Ensure-ExpectedUserCanCreateGroupPlanner {
     param([string]$GroupId)
 
     $user = Invoke-MgGraphRequest -Method GET -Uri "https://graph.microsoft.com/v1.0/me?`$select=id,userPrincipalName,displayName" -OutputType PSObject
@@ -159,9 +162,29 @@ function Assert-ExpectedUserCanCreateGroupPlanner {
     $isOwner = @($owners | Where-Object { $_.id -eq $user.id }).Count -gt 0
 
     Write-Host ("Signed-in user group role: member={0}; owner={1}" -f $isMember, $isOwner) -ForegroundColor Gray
-    if (-not ($isMember -or $isOwner)) {
-        throw "Planner plan creation requires the signed-in user to be a member of the target Microsoft 365 group. This script will not change group membership automatically."
+    if ($isMember) {
+        return $false
     }
+
+    if (-not $isOwner) {
+        throw "Planner plan creation requires the signed-in user to be a member of the target Microsoft 365 group. The signed-in user is not currently a member or owner."
+    }
+
+    Write-Host ""
+    Write-Host "Planner requires the signed-in owner account to also be a member of the Microsoft 365 group." -ForegroundColor Yellow
+    Write-Host ("This will add {0} as a member of the existing '{1}' group." -f $user.userPrincipalName, $GroupDisplayName) -ForegroundColor Yellow
+    Write-Host "It will not add guests, external users, or change any other memberships." -ForegroundColor Yellow
+    $confirmMembership = Read-Host "Type 'add-owner-as-member' to make this internal membership repair now (anything else aborts)"
+    if ($confirmMembership -ne "add-owner-as-member") {
+        throw "Membership repair was not approved. Planner provisioning cannot continue."
+    }
+
+    $body = @{
+        "@odata.id" = "https://graph.microsoft.com/v1.0/directoryObjects/$($user.id)"
+    }
+    Invoke-GraphJson -Method POST -Uri "https://graph.microsoft.com/v1.0/groups/$GroupId/members/`$ref" -Body $body | Out-Null
+    Write-Host ("[created] Added {0} as a member of {1}" -f $user.userPrincipalName, $GroupDisplayName) -ForegroundColor Green
+    return $true
 }
 
 function Get-Stage6PlannerPlan {
@@ -180,7 +203,22 @@ function Ensure-Stage6PlannerPlan {
         [string]$PlanTitle
     )
 
-    $plan = Get-Stage6PlannerPlan -GroupId $GroupId -PlanTitle $PlanTitle
+    $plan = $null
+    for ($attempt = 1; $attempt -le 6; $attempt++) {
+        try {
+            $plan = Get-Stage6PlannerPlan -GroupId $GroupId -PlanTitle $PlanTitle
+            break
+        }
+        catch {
+            if ($_.Exception.Message -notmatch "403|Forbidden|required permissions|access this item" -or $attempt -eq 6) {
+                throw
+            }
+
+            Write-Host ("[wait] Planner still reports access is not ready after membership repair; retry {0}/6 in 30 seconds." -f $attempt) -ForegroundColor Yellow
+            Start-Sleep -Seconds 30
+        }
+    }
+
     if ($null -ne $plan -and -not [string]::IsNullOrWhiteSpace($plan.id)) {
         Write-Host ("[skip] Planner plan exists: {0} ({1})" -f $plan.title, $plan.id) -ForegroundColor Gray
         return $plan
@@ -231,7 +269,7 @@ function Get-Stage6ChannelPurpose {
         "Client Discovery" { "Readiness and discovery work before active delivery" }
         "Active Delivery" { "Current delivery coordination" }
         "Agent Setup" { "Agentic intake, bridge, workflow, and tooling decisions" }
-        "Methods & IP" { "Reusable methods, templates, and productized knowledge" }
+        "Methods and IP" { "Reusable methods, templates, and productized knowledge" }
         default { "Stage 6 operating coordination" }
     }
 }
@@ -450,7 +488,8 @@ else {
     Write-Host "- Web tabs: best-effort website tabs for Lists, Planner, and existing libraries" -ForegroundColor White
 }
 Write-Host ""
-Write-Host "It will NOT create guests, external sharing, mailbox rules, sends, calendar commitments, tenant policies, or membership changes." -ForegroundColor Yellow
+Write-Host "It will NOT create guests, external sharing, mailbox rules, sends, calendar commitments, or tenant policies." -ForegroundColor Yellow
+Write-Host "If Adam is an owner but not a member of the target group, it may ask for a separate typed approval to add Adam as an internal group member so Planner can work." -ForegroundColor Yellow
 Write-Host "Teams will inherit the existing Microsoft 365 group name; this avoids creating a duplicate group/team." -ForegroundColor Yellow
 Write-Host ""
 
@@ -471,7 +510,14 @@ try {
     Write-Section "Microsoft 365 group"
     $group = Get-Stage6Group -DisplayName $GroupDisplayName
     Write-Host ("[OK] Target group: {0} ({1})" -f $group.displayName, $group.id) -ForegroundColor Green
-    Assert-ExpectedUserCanCreateGroupPlanner -GroupId $group.id
+    $membershipWasRepaired = Ensure-ExpectedUserCanCreateGroupPlanner -GroupId $group.id
+    if ($membershipWasRepaired) {
+        Write-Host "[wait] Waiting 60 seconds for Microsoft 365 group membership to propagate to Planner." -ForegroundColor Yellow
+        Start-Sleep -Seconds 60
+        Write-Host "[auth] Reconnecting Graph so the current process sees the updated membership state." -ForegroundColor Gray
+        try { Disconnect-MgGraph | Out-Null } catch { }
+        Connect-Stage6Graph
+    }
 
     Write-Section "Planner"
     $plan = Ensure-Stage6PlannerPlan -GroupId $group.id -PlanTitle ([string]$schema.planner.planTitle)

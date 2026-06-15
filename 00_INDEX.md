@@ -54,17 +54,17 @@ The canonical execution plan is the **10-stage roadmap**:
 | 3 | SharePoint Information Architecture | ✅ Done 2026-06-12 — all 5 sites built (AG Operations, Guided AI Labs, Change Leadership Tools, Shared Libraries, Guided AI Journey) with Hybrid libraries + folders + 5 metadata columns, external sharing OFF; re-inventory PASS |
 | 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
-| **6** | **Teams, Planner, Lists & Operating State** | **Current live gate — Lists provisioned/verified; Planner/Teams live gate and onboarding readiness packet prepared** |
-| **7** | **Security, Governance & External Sharing** | **◀ Started locally — baseline, read-only inventory runner, summarizer, and local preflight prepared; no tenant changes** |
+| **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
+| **7** | **Security, Governance & External Sharing** | **◀ Current — baseline, read-only inventory runner, summarizer, and local preflight prepared; no tenant changes** |
 | 8 | Client Workspace Reference Pattern | ⬜ Planned — working doc added: [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md) |
 | 9 | Agentic OS Bridge Readiness | ⬜ Planned — working doc added: [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md) |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
-Stage 3 SharePoint site provisioning, and Stage 4 local OneDrive/browser cleanup.
-Each tenant write was gated and read-back-verified. Stage 5 Exchange design
-completed on 2026-06-14; no mailbox, alias, forwarding, calendar, or license
-changes were needed. This remains a human-supervised setup, not unattended
-automation.
+Stage 3 SharePoint site provisioning, Stage 4 local OneDrive/browser cleanup,
+and Stage 6 Lists/Planner/Teams provisioning. Each tenant write was gated and
+read-back-verified. Stage 5 Exchange design completed on 2026-06-14; no mailbox,
+alias, forwarding, calendar, or license changes were needed. This remains a
+human-supervised setup, not unattended automation.
 
 **Authorization pattern:** when a tenant action needs Adam's credentials, MFA, or
 approval, launch a visible interactive window and let Adam authorize there. Codex
@@ -361,10 +361,9 @@ never in the committed `M365_ENVIRONMENT.template.env`.
    as the exact List/Planner/Teams schema behind the Stage 6 design.
 5. Lists are already provisioned and verified. Use read-back with:
    `.\scripts\Start-M365Stage6ListOperatorInteractive.ps1 -Action Verify`.
-6. Current live gate: Planner/Teams. Use:
-   `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action ProvisionAndVerify`.
-   The visible window requires Microsoft device-code sign-in and typed
-   `planner-teams` confirmation.
+6. Planner/Teams is provisioned and verified. Use read-back after any manual
+   change with:
+   `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action Verify`.
 7. Use the onboarding readiness packet before adding a partner or shaping first
    client onboarding:
    `inventory\stage-6-operating-state\onboarding-readiness\STAGE_6_ONBOARDING_READINESS_RUNBOOK.md`.

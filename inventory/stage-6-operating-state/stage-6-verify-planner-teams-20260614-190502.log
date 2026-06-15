@@ -1,0 +1,67 @@
+**********************
+PowerShell transcript start
+Start time: 20260614190502
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action ProvisionAndVerify
+Process ID: 10296
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Verify Planner/Teams (READ-ONLY)
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-verify-planner-teams-20260614-190502.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+Connected Graph account: adamgoodwin@guidedailabs.com
+Graph scopes: AllSites.FullControl, Channel.Create, email, Group.ReadWrite.All, openid, profile, Tasks.ReadWrite, TeamsTab.Create, User.Read
+
+== Microsoft 365 group ==
+PASS: group found: Guided AI Labs (db49e096-5a34-48c5-9037-0f32c22bbda8)
+      mail: GuidedAILabs@agoperations.ca; visibility: Private; groupTypes: Unified
+
+== Planner ==
+PASS: Planner plan found: Guided AI Labs - Operating Plan (EUh5TC3rLU62tTEQZmcojX0ABu10)
+PASS: bucket found: Intake Triage
+PASS: bucket found: Client Discovery
+PASS: bucket found: Active Delivery
+PASS: bucket found: Content / IP
+PASS: bucket found: Agent Setup
+PASS: bucket found: Waiting / Follow-up
+PASS: bucket found: Admin / Governance
+
+== Teams ==
+PASS: Team found for existing group: Guided AI Labs
+NOTE: Teams inherits the existing group name 'Guided AI Labs'. Schema operating label is 'Guided AI Labs - Operating Team'.
+PASS: channel found: General - Low-volume operating announcements and top-level coordination
+WARN: tab not pinned yet: General / Operating Plan
+WARN: tab not pinned yet: General / Decisions
+PASS: channel found: Intake - Daily front-door triage and discussion around new inquiries
+WARN: tab not pinned yet: Intake / Intake Register
+WARN: tab not pinned yet: Intake / Operating Plan
+WARN: tab not pinned yet: Intake / Agent Log
+PASS: channel found: Client Discovery - Readiness and discovery work before active delivery
+WARN: tab not pinned yet: Client Discovery / Intake Register
+WARN: tab not pinned yet: Client Discovery / Operating Plan
+PASS: channel found: Active Delivery - Current delivery coordination
+WARN: tab not pinned yet: Active Delivery / Operating Plan
+WARN: tab not pinned yet: Active Delivery / Client_Delivery
+PASS: channel found: Agent Setup - Agentic intake, bridge, workflow, and tooling decisions
+WARN: tab not pinned yet: Agent Setup / Agent Log
+WARN: tab not pinned yet: Agent Setup / Decisions
+WARN: tab not pinned yet: Agent Setup / Automation_Workflows
+FAIL: channel missing: Methods and IP
+**********************
+PowerShell transcript end
+End time: 20260614190513
+**********************

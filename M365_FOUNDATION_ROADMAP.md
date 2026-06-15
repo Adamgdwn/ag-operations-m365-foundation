@@ -303,6 +303,9 @@ shared mailbox
 
 ## Stage 6 - Teams, Planner, Lists, And Operating State
 
+Status: live gate complete 2026-06-14. Lists, Planner plan/buckets, Teams
+channels, and web tabs are provisioned and read-back verified.
+
 ### What we are doing
 
 Set up collaboration and workflow surfaces after the record and identity model are clear.

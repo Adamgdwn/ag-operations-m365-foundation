@@ -1,0 +1,114 @@
+**********************
+PowerShell transcript start
+Start time: 20260614190253
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action ProvisionAndVerify
+Process ID: 8112
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Provision Planner/Teams
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Root:   https://agoperationsltd.sharepoint.com
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-provision-planner-teams-20260614-190253.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+This will create or confirm:
+- Planner plan: Guided AI Labs - Operating Plan
+- Planner buckets: Intake Triage, Client Discovery, Active Delivery, Content / IP, Agent Setup, Waiting / Follow-up, Admin / Governance
+- Team-enabled existing group: Guided AI Labs
+- Standard channels: General, Intake, Client Discovery, Active Delivery, Agent Setup, Methods & IP
+- Web tabs: best-effort website tabs for Lists, Planner, and existing libraries
+
+It will NOT create guests, external sharing, mailbox rules, sends, calendar commitments, or tenant policies.
+If Adam is an owner but not a member of the target group, it may ask for a separate typed approval to add Adam as an internal group member so Planner can work.
+Teams will inherit the existing Microsoft 365 group name; this avoids creating a duplicate group/team.
+
+Connected Graph account: adamgoodwin@guidedailabs.com
+Graph scopes: AllSites.FullControl, Channel.Create, email, Group.ReadWrite.All, openid, profile, Tasks.ReadWrite, TeamsTab.Create, User.Read
+
+== Microsoft 365 group ==
+[OK] Target group: Guided AI Labs (db49e096-5a34-48c5-9037-0f32c22bbda8)
+Signed-in user group role: member=True; owner=True
+
+== Planner ==
+[OK] Planner plan created: Guided AI Labs - Operating Plan (EUh5TC3rLU62tTEQZmcojX0ABu10)
+[OK] Bucket created: Intake Triage
+[OK] Bucket created: Client Discovery
+[OK] Bucket created: Active Delivery
+[OK] Bucket created: Content / IP
+[OK] Bucket created: Agent Setup
+[OK] Bucket created: Waiting / Follow-up
+[OK] Bucket created: Admin / Governance
+
+== Teams ==
+PS>TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/teams/db49e096-5a34-48c5-9037-0f32c22bbda8
+HTTP/1.1 404 Not Found
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: cc68f7e9-6280-494c-9c54-0aa35082a89e
+client-request-id: 0e56bca3-8a3f-48cd-9f37-8d49aebf42c3
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"005","RoleInstance":"MWH0EPF000C8E73"}}
+Date: Mon, 15 Jun 2026 01:03:05 GMT
+Content-Type: application/json
+
+{"error":{"code":"NotFound","message":"No team found with Group Id db49e096-5a34-48c5-9037-0f32c22bbda8","innerError":{"code":"ItemNotFound","message":"No team found with Group Id db49e096-5a34-48c5-9037-0f32c22bbda8","details":[],"date":"2026-06-15T01:03:06","request-id":"cc68f7e9-6280-494c-9c54-0aa35082a89e","client-request-id":"0e56bca3-8a3f-48cd-9f37-8d49aebf42c3"}}}"
+[OK] Team provisioning started for existing Microsoft 365 group.
+[note] Team display name is 'Guided AI Labs' because Teams inherits the existing group name. Schema operating label is 'Guided AI Labs - Operating Team'.
+[skip] Channel exists: General
+[OK] Channel created: Intake
+[OK] Channel created: Client Discovery
+[OK] Channel created: Active Delivery
+[OK] Channel created: Agent Setup
+PS>TerminatingError(Invoke-MgGraphRequest): "POST https://graph.microsoft.com/v1.0/teams/db49e096-5a34-48c5-9037-0f32c22bbda8/channels
+HTTP/1.1 400 Bad Request
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 0d93a971-10e9-4036-9122-bfddfee1ba49
+client-request-id: 25cbe68e-4618-4f3c-afa9-e4c792ed39bc
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"005","RoleInstance":"MWH0EPF000C8E73"}}
+Date: Mon, 15 Jun 2026 01:03:43 GMT
+Content-Type: application/json
+
+{"error":{"code":"BadRequest","message":"Channel.DisplayName doesn't contain allowed characters, please use the valid values.","innerError":{"code":"InvalidRequest","message":"Channel.DisplayName doesn't contain allowed characters, please use the valid values.","details":[],"date":"2026-06-15T01:03:44","request-id":"0d93a971-10e9-4036-9122-bfddfee1ba49","client-request-id":"25cbe68e-4618-4f3c-afa9-e4c792ed39bc"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "POST https://graph.microsoft.com/v1.0/teams/db49e096-5a34-48c5-9037-0f32c22bbda8/channels
+HTTP/1.1 400 Bad Request
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 0d93a971-10e9-4036-9122-bfddfee1ba49
+client-request-id: 25cbe68e-4618-4f3c-afa9-e4c792ed39bc
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"005","RoleInstance":"MWH0EPF000C8E73"}}
+Date: Mon, 15 Jun 2026 01:03:43 GMT
+Content-Type: application/json
+
+{"error":{"code":"BadRequest","message":"Channel.DisplayName doesn't contain allowed characters, please use the valid values.","innerError":{"code":"InvalidRequest","message":"Channel.DisplayName doesn't contain allowed characters, please use the valid values.","details":[],"date":"2026-06-15T01:03:44","request-id":"0d93a971-10e9-4036-9122-bfddfee1ba49","client-request-id":"25cbe68e-4618-4f3c-afa9-e4c792ed39bc"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "POST https://graph.microsoft.com/v1.0/teams/db49e096-5a34-48c5-9037-0f32c22bbda8/channels
+HTTP/1.1 400 Bad Request
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 0d93a971-10e9-4036-9122-bfddfee1ba49
+client-request-id: 25cbe68e-4618-4f3c-afa9-e4c792ed39bc
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"005","RoleInstance":"MWH0EPF000C8E73"}}
+Date: Mon, 15 Jun 2026 01:03:43 GMT
+Content-Type: application/json
+
+{"error":{"code":"BadRequest","message":"Channel.DisplayName doesn't contain allowed characters, please use the valid values.","innerError":{"code":"InvalidRequest","message":"Channel.DisplayName doesn't contain allowed characters, please use the valid values.","details":[],"date":"2026-06-15T01:03:44","request-id":"0d93a971-10e9-4036-9122-bfddfee1ba49","client-request-id":"25cbe68e-4618-4f3c-afa9-e4c792ed39bc"}}}"
+**********************
+PowerShell transcript end
+End time: 20260614190344
+**********************

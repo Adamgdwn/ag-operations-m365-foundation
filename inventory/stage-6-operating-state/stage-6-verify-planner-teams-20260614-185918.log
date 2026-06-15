@@ -1,0 +1,111 @@
+**********************
+PowerShell transcript start
+Start time: 20260614185918
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action ProvisionAndVerify
+Process ID: 19704
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Verify Planner/Teams (READ-ONLY)
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-verify-planner-teams-20260614-185918.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+Connected Graph account: adamgoodwin@guidedailabs.com
+Graph scopes: AllSites.FullControl, Channel.Create, email, Group.ReadWrite.All, openid, profile, Tasks.ReadWrite, TeamsTab.Create, User.Read
+
+== Microsoft 365 group ==
+PASS: group found: Guided AI Labs (db49e096-5a34-48c5-9037-0f32c22bbda8)
+      mail: GuidedAILabs@agoperations.ca; visibility: Private; groupTypes: Unified
+
+== Planner ==
+PS>TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 554d6e82-0911-4a2b-b37d-9b741195d779
+client-request-id: 68ef2252-4f20-43ad-b6be-b43bf524f035
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E05D"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: 8db5b215-e2c5-4db4-9262-b916a6588f12
+Date: Mon, 15 Jun 2026 00:59:20 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:20","request-id":"554d6e82-0911-4a2b-b37d-9b741195d779","client-request-id":"68ef2252-4f20-43ad-b6be-b43bf524f035"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 554d6e82-0911-4a2b-b37d-9b741195d779
+client-request-id: 68ef2252-4f20-43ad-b6be-b43bf524f035
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E05D"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: 8db5b215-e2c5-4db4-9262-b916a6588f12
+Date: Mon, 15 Jun 2026 00:59:20 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:20","request-id":"554d6e82-0911-4a2b-b37d-9b741195d779","client-request-id":"68ef2252-4f20-43ad-b6be-b43bf524f035"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 554d6e82-0911-4a2b-b37d-9b741195d779
+client-request-id: 68ef2252-4f20-43ad-b6be-b43bf524f035
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E05D"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: 8db5b215-e2c5-4db4-9262-b916a6588f12
+Date: Mon, 15 Jun 2026 00:59:20 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:20","request-id":"554d6e82-0911-4a2b-b37d-9b741195d779","client-request-id":"68ef2252-4f20-43ad-b6be-b43bf524f035"}}}"
+FAIL: Planner plans are not readable for this signed-in user/app context: Response status code does not indicate success: Forbidden (Forbidden).
+      The live provision step will perform the group membership/owner check before attempting Planner writes.
+
+== Teams ==
+PS>TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/teams/db49e096-5a34-48c5-9037-0f32c22bbda8
+HTTP/1.1 404 Not Found
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 94106429-833d-41af-9366-c399b4c5ac36
+client-request-id: b39125aa-b54d-4402-8250-372e550ecb3c
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E05D"}}
+Date: Mon, 15 Jun 2026 00:59:20 GMT
+Content-Type: application/json
+
+{"error":{"code":"NotFound","message":"No team found with Group Id db49e096-5a34-48c5-9037-0f32c22bbda8","innerError":{"code":"ItemNotFound","message":"No team found with Group Id db49e096-5a34-48c5-9037-0f32c22bbda8","details":[],"date":"2026-06-15T00:59:21","request-id":"94106429-833d-41af-9366-c399b4c5ac36","client-request-id":"b39125aa-b54d-4402-8250-372e550ecb3c"}}}"
+FAIL: group is not team-enabled yet: Guided AI Labs
+**********************
+PowerShell transcript end
+End time: 20260614185921
+**********************

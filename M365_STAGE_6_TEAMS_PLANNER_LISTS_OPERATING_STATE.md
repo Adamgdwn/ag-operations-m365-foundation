@@ -1,6 +1,6 @@
 # Microsoft 365 Stage 6 - Teams, Planner, Lists & Operating State
 
-Status: **Stage 6 Lists provisioned and verified; Planner/Teams operator and onboarding readiness packet prepared**
+Status: **Stage 6 Lists, Planner, Teams channels, and Teams tabs provisioned and verified**
 (2026-06-14). This is the
 Stage 6 working document per [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
 It follows completed Stages 2-4 and the Stage 5 Exchange inventory/posture
@@ -440,7 +440,7 @@ Channels:
 | Client Discovery | Readiness/discovery work before active delivery |
 | Active Delivery | Current client work coordination |
 | Agent Setup | Agentic intake, bridge, workflow, and tooling decisions |
-| Methods & IP | Reusable methods, templates, and productized knowledge |
+| Methods and IP | Reusable methods, templates, and productized knowledge |
 
 Recommended tab layout:
 
@@ -451,7 +451,7 @@ Recommended tab layout:
 | Client Discovery | Intake Register filtered to discovery/readiness, Operating Plan |
 | Active Delivery | Operating Plan, Client_Delivery library |
 | Agent Setup | Agent Log, Decisions, Automation_Workflows library |
-| Methods & IP | Templates_Methods library, Decisions filtered to Methods/IP |
+| Methods and IP | Templates_Methods library, Decisions filtered to Methods/IP |
 
 Optional later team:
 
@@ -511,9 +511,9 @@ invite, or tenant configuration change in this first loop.
 | 6.3 | Decide whether to create the Guided AI Labs operating Team now | no | recommended |
 | 6.4 | Create the intake/support/action/decision Lists | yes | complete |
 | 6.5 | Create Forms intake/feedback kit and Power Automate build guide | no | local artifacts prepared |
-| 6.6 | Create Planner plan and buckets | yes | pending approval |
-| 6.7 | Create Team/channels if approved | yes | pending approval |
-| 6.8 | Run read-back inventory/verification | read-only | Lists passed; Planner/Teams pending |
+| 6.6 | Create Planner plan and buckets | yes | complete |
+| 6.7 | Create Team/channels if approved | yes | complete |
+| 6.8 | Run read-back inventory/verification | read-only | complete |
 | 6.9 | Start first manual agent-assisted intake loop | mostly no | pending |
 
 Implementation artifacts:
@@ -551,7 +551,8 @@ Implementation artifacts:
 
 ### 10.1 Execution status - 2026-06-14
 
-Stage 6 Lists are provisioned and read-back verified.
+Stage 6 Lists, Planner, Teams channels, and Teams tabs are provisioned and
+read-back verified.
 
 What succeeded:
 
@@ -570,6 +571,15 @@ What succeeded:
 - `stage-6-provision-lists-20260614-134436.log` created all four Lists.
 - `stage-6-verify-lists-20260614-135144.log` passed verification for all Lists,
   fields, and views.
+- `stage-6-provision-planner-teams-20260614-190513.log` confirmed the Planner
+  plan/buckets, Team, channels, and web tabs.
+- `stage-6-verify-planner-teams-20260614-190613.log` passed verification for the
+  Planner plan, all buckets, Team, channels, and tabs.
+- Adam was added as an internal member of the existing `Guided AI Labs` group
+  after the script found he was an owner but not a member; this was required for
+  Planner access and was separately typed-approved with `add-owner-as-member`.
+- The Teams channel label `Methods & IP` was changed to `Methods and IP` because
+  Microsoft Teams rejected the ampersand in channel creation.
 - Planner/Teams automation has been added with the same operator pattern:
   read-only verify, typed-confirm live provisioning, then read-only verify.
 - A local onboarding readiness packet has been added so Stage 6 can be judged as
@@ -600,8 +610,7 @@ What succeeded:
   device-code timeout before Graph connection.
 - The visible M365 launchers now start through `cmd.exe`, pause before
   PowerShell begins, and then launch the Graph/PnP script only after Adam presses
-  a key in the visible window. A fixed Planner/Teams `ProvisionAndVerify` window
-  is parked before auth; no new Planner/Teams provision log exists yet.
+  a key in the visible window.
 
 What was blocked:
 
@@ -623,9 +632,8 @@ Safe next options:
 
 1. Use `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action Verify`
    for a read-only Planner/Teams check.
-2. Use `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action ProvisionAndVerify`
-   for the efficient live Planner/Teams gate. The visible window requires
-   device-code sign-in and typed `planner-teams` confirmation.
+2. Use `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action Verify`
+   for future read-back checks after any manual Teams/Planner change.
 3. Use `inventory/stage-6-operating-state/first-run-packet/` for the first
    human-approved agent loop after the collaboration surfaces are ready.
 4. Use `inventory/stage-6-operating-state/onboarding-readiness/` before adding a

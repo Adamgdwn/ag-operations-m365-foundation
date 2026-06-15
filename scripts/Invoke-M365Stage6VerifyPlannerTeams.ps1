@@ -67,7 +67,7 @@ function Get-GraphCollection {
         }
     }
 
-    return @($items)
+    return $items.ToArray()
 }
 
 function Invoke-GraphGetOrNull {
@@ -88,7 +88,10 @@ function Invoke-GraphGetOrNull {
 function Connect-Stage6Graph {
     $scopes = @(
         "User.Read",
-        "Group.ReadWrite.All"
+        "Group.ReadWrite.All",
+        "Tasks.ReadWrite",
+        "Channel.Create",
+        "TeamsTab.Create"
     )
 
     $params = @{
@@ -147,7 +150,7 @@ function Get-Stage6ChannelPurpose {
         "Client Discovery" { "Readiness and discovery work before active delivery" }
         "Active Delivery" { "Current delivery coordination" }
         "Agent Setup" { "Agentic intake, bridge, workflow, and tooling decisions" }
-        "Methods & IP" { "Reusable methods, templates, and productized knowledge" }
+        "Methods and IP" { "Reusable methods, templates, and productized knowledge" }
         default { "Stage 6 operating coordination" }
     }
 }
@@ -173,24 +176,41 @@ try {
 
     Write-Section "Planner"
     $planTitle = [string]$schema.planner.planTitle
-    $plan = Get-Stage6PlannerPlan -GroupId $group.id -PlanTitle $planTitle
-    if ($null -eq $plan -or [string]::IsNullOrWhiteSpace($plan.id)) {
-        $failures++
-        Write-Host ("FAIL: Planner plan missing: {0}" -f $planTitle) -ForegroundColor Red
+    $plannerReadFailed = $false
+    try {
+        $plan = Get-Stage6PlannerPlan -GroupId $group.id -PlanTitle $planTitle
     }
-    else {
-        Write-Host ("PASS: Planner plan found: {0} ({1})" -f $plan.title, $plan.id) -ForegroundColor Green
-        $buckets = @(Get-GraphCollection -Uri "https://graph.microsoft.com/v1.0/planner/plans/$($plan.id)/buckets")
-        foreach ($bucketName in $schema.planner.buckets) {
-            $bucket = @($buckets | Where-Object { $_.name -eq [string]$bucketName } | Select-Object -First 1)
-            if ($bucket.Count -eq 0) {
-                $failures++
-                Write-Host ("FAIL: bucket missing: {0}" -f $bucketName) -ForegroundColor Red
-            }
-            else {
-                Write-Host ("PASS: bucket found: {0}" -f $bucketName) -ForegroundColor Green
+    catch {
+        $failures++
+        $plannerReadFailed = $true
+        Write-Host ("FAIL: Planner plans are not readable for this signed-in user/app context: {0}" -f $_.Exception.Message) -ForegroundColor Red
+        Write-Host "      The live provision step will perform the group membership/owner check before attempting Planner writes." -ForegroundColor Yellow
+        $plan = $null
+    }
+
+    if ($null -ne $plan -and -not [string]::IsNullOrWhiteSpace($plan.id)) {
+        try {
+            Write-Host ("PASS: Planner plan found: {0} ({1})" -f $plan.title, $plan.id) -ForegroundColor Green
+            $buckets = @(Get-GraphCollection -Uri "https://graph.microsoft.com/v1.0/planner/plans/$($plan.id)/buckets")
+            foreach ($bucketName in $schema.planner.buckets) {
+                $bucket = @($buckets | Where-Object { $_.name -eq [string]$bucketName } | Select-Object -First 1)
+                if ($bucket.Count -eq 0) {
+                    $failures++
+                    Write-Host ("FAIL: bucket missing: {0}" -f $bucketName) -ForegroundColor Red
+                }
+                else {
+                    Write-Host ("PASS: bucket found: {0}" -f $bucketName) -ForegroundColor Green
+                }
             }
         }
+        catch {
+            $failures++
+            Write-Host ("FAIL: Planner buckets are not readable for this signed-in user/app context: {0}" -f $_.Exception.Message) -ForegroundColor Red
+        }
+    }
+    elseif (-not $plannerReadFailed -and ($null -eq $plan -or [string]::IsNullOrWhiteSpace($plan.id))) {
+        $failures++
+        Write-Host ("FAIL: Planner plan missing or inaccessible: {0}" -f $planTitle) -ForegroundColor Red
     }
 
     Write-Section "Teams"

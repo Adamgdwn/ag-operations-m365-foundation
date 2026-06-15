@@ -77,7 +77,7 @@ function Invoke-GraphCollection {
         }
         Export-Json -Path (Join-Path $script:OutputDir "$Name.json") -Data $items
         Write-Host "Saved $Name.json ($($items.Count) item(s))" -ForegroundColor Green
-        return $items
+        return $items.ToArray()
     }
     catch {
         $errorRecord = [pscustomobject]@{

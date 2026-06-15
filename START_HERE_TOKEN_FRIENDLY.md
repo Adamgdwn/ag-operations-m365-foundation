@@ -23,7 +23,7 @@ plan.
 Current stage:
 
 ```text
-Stage 6/7 transition - Stage 6 live gate pending; Stage 7 local governance prep started
+Stage 7 transition - Stage 6 live gate complete; Stage 7 local governance prep started
 ```
 
 Completed/design-complete:
@@ -37,11 +37,10 @@ Completed/design-complete:
 
 ## Current stop point
 
-Stage 6 Lists are provisioned and read-back verified. Planner/Teams automation
-is scaffolded as the next efficient operator flow, but the live Planner/Teams
-gate has not completed yet. Stage 7 has started locally with a security,
-governance, and external-sharing baseline plus read-only inventory tooling. No
-Stage 7 tenant changes have been made.
+Stage 6 Lists, Planner, Teams channels, and Teams web tabs are provisioned and
+read-back verified. Stage 7 has started locally with a security, governance, and
+external-sharing baseline plus read-only inventory tooling. No Stage 7 tenant
+changes have been made.
 
 Confirmed tenant change from Stage 6 attempt:
 
@@ -56,6 +55,16 @@ Done:
   - `Change Leadership Tools - Support Register`
   - `Agent Action Log`
   - `Decision Register`
+- Stage 6 Planner/Teams live gate is complete:
+  - Planner plan: `Guided AI Labs - Operating Plan`
+  - buckets: Intake Triage, Client Discovery, Active Delivery, Content / IP,
+    Agent Setup, Waiting / Follow-up, Admin / Governance
+  - Team: existing `Guided AI Labs` group team-enabled
+  - channels: General, Intake, Client Discovery, Active Delivery, Agent Setup,
+    Methods and IP
+  - web tabs: Planner/List/library/decision tabs verified
+  - read-back log:
+    `inventory/stage-6-operating-state/stage-6-verify-planner-teams-20260614-190613.log`
 - Local onboarding readiness artifacts were generated:
   - `inventory/stage-6-operating-state/onboarding-readiness/STAGE_6_ONBOARDING_READINESS_RUNBOOK.md`
   - `partner-onboarding-checklist.csv`
@@ -82,8 +91,6 @@ Done:
 
 Not done:
 
-- Planner Stage 6 writes have not run.
-- Teams Stage 6 writes have not run.
 - Stage 7 live read-only tenant inventory has not run.
 - No Stage 7 security, sharing, guest, policy, consent, or role changes have run.
 - First Planner/Teams operator run was launched at 2026-06-14 14:12 but Graph
@@ -102,6 +109,10 @@ Not done:
 - A fixed Planner/Teams `ProvisionAndVerify` window is parked before auth. Press
   any key in that window only when ready to complete Microsoft sign-in and the
   `planner-teams` live write gate.
+- Planner/Teams was completed after switching to browser/WAM auth, adding the
+  required Planner/Teams scopes, adding Adam as an internal member of the
+  existing Guided AI Labs group, and renaming the invalid Teams channel
+  `Methods & IP` to `Methods and IP`.
 
 ## Stage 6 blocker
 

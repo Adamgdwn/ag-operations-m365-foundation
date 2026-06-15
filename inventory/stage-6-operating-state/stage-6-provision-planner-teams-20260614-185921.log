@@ -1,0 +1,130 @@
+**********************
+PowerShell transcript start
+Start time: 20260614185921
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage6PlannerTeamsOperator.ps1 -Action ProvisionAndVerify
+Process ID: 19704
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 6 - Provision Planner/Teams
+Schema: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_6_OPERATING_STATE_SCHEMA.json
+Root:   https://agoperationsltd.sharepoint.com
+Log:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-6-operating-state\stage-6-provision-planner-teams-20260614-185921.log
+Group:  Guided AI Labs
+User:   expected signed-in user is adamgoodwin@guidedailabs.com
+
+This will create or confirm:
+- Planner plan: Guided AI Labs - Operating Plan
+- Planner buckets: Intake Triage, Client Discovery, Active Delivery, Content / IP, Agent Setup, Waiting / Follow-up, Admin / Governance
+- Team-enabled existing group: Guided AI Labs
+- Standard channels: General, Intake, Client Discovery, Active Delivery, Agent Setup, Methods & IP
+- Web tabs: best-effort website tabs for Lists, Planner, and existing libraries
+
+It will NOT create guests, external sharing, mailbox rules, sends, calendar commitments, or tenant policies.
+If Adam is an owner but not a member of the target group, it may ask for a separate typed approval to add Adam as an internal group member so Planner can work.
+Teams will inherit the existing Microsoft 365 group name; this avoids creating a duplicate group/team.
+
+Connected Graph account: adamgoodwin@guidedailabs.com
+Graph scopes: AllSites.FullControl, Channel.Create, email, Group.ReadWrite.All, openid, profile, Tasks.ReadWrite, TeamsTab.Create, User.Read
+
+== Microsoft 365 group ==
+[OK] Target group: Guided AI Labs (db49e096-5a34-48c5-9037-0f32c22bbda8)
+Signed-in user group role: member=False; owner=True
+
+Planner requires the signed-in owner account to also be a member of the Microsoft 365 group.
+This will add adamgoodwin@guidedailabs.com as a member of the existing 'Guided AI Labs' group.
+It will not add guests, external users, or change any other memberships.
+[created] Added adamgoodwin@guidedailabs.com as a member of Guided AI Labs
+
+== Planner ==
+PS>TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390
+client-request-id: 6b20620c-5128-4a15-a8d1-ad35cecd03ac
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E056"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: f423d6d3-865c-465b-98cc-8ab1f93b2a74
+Date: Mon, 15 Jun 2026 00:59:46 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:47","request-id":"c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390","client-request-id":"6b20620c-5128-4a15-a8d1-ad35cecd03ac"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390
+client-request-id: 6b20620c-5128-4a15-a8d1-ad35cecd03ac
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E056"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: f423d6d3-865c-465b-98cc-8ab1f93b2a74
+Date: Mon, 15 Jun 2026 00:59:46 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:47","request-id":"c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390","client-request-id":"6b20620c-5128-4a15-a8d1-ad35cecd03ac"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390
+client-request-id: 6b20620c-5128-4a15-a8d1-ad35cecd03ac
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E056"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: f423d6d3-865c-465b-98cc-8ab1f93b2a74
+Date: Mon, 15 Jun 2026 00:59:46 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:47","request-id":"c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390","client-request-id":"6b20620c-5128-4a15-a8d1-ad35cecd03ac"}}}"
+>> TerminatingError(Invoke-MgGraphRequest): "GET https://graph.microsoft.com/v1.0/groups/db49e096-5a34-48c5-9037-0f32c22bbda8/planner/plans
+HTTP/1.1 403 Forbidden
+Cache-Control: no-cache
+Transfer-Encoding: chunked
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390
+client-request-id: 6b20620c-5128-4a15-a8d1-ad35cecd03ac
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"West US 2","Slice":"E","Ring":"4","ScaleUnit":"004","RoleInstance":"MW2PEPF0000E056"}}
+Link: <https://developer.microsoft-tst.com/en-us/graph/changes?$filterby=v1.0,Tasks_And_Plans&from=2022-04-01&to=2022-05-01>;rel="deprecation";type="text/html"
+Deprecation: Mon, 25 Apr 2022 23:59:59 GMT
+Sunset: Thu, 25 Apr 2024 23:59:59 GMT
+X-ProxyCluster: canc-000.tasks.osi.office.net
+X-OfficeCluster: canc-000.tasks.osi.office.net
+X-Tasks-CorrelationId: f423d6d3-865c-465b-98cc-8ab1f93b2a74
+Date: Mon, 15 Jun 2026 00:59:46 GMT
+Content-Type: application/json
+
+{"error":{"code":"","message":"You do not have the required permissions to access this item.","innerError":{"date":"2026-06-15T00:59:47","request-id":"c6ae0dc4-ae67-432f-8c61-5e4e0dd3b390","client-request-id":"6b20620c-5128-4a15-a8d1-ad35cecd03ac"}}}"
+**********************
+PowerShell transcript end
+End time: 20260614185947
+**********************

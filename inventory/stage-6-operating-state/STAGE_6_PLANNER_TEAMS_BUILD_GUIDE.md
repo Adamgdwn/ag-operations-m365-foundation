@@ -62,7 +62,7 @@ Starter tasks to create only if they are still true:
 | [ ] | Client Discovery | Intake Register, Operating Plan | Readiness and discovery work before active delivery |
 | [ ] | Active Delivery | Operating Plan, Client_Delivery | Current delivery coordination without making Teams the file cabinet |
 | [ ] | Agent Setup | Agent Log, Decisions, Automation_Workflows | Agentic intake, bridge, workflow, and tooling decisions |
-| [ ] | Methods & IP | Templates_Methods, Decisions | Reusable methods, templates, and productized knowledge |
+| [ ] | Methods and IP | Templates_Methods, Decisions | Reusable methods, templates, and productized knowledge |
 
 Tab creation notes:
 

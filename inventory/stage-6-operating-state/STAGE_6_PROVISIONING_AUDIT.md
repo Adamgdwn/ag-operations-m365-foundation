@@ -2,11 +2,9 @@
 
 ## Summary
 
-Stage 6 Lists are provisioned and read-back verified. Planner/Teams automation
-has been scaffolded in the same operator style. The first visible run timed out
-at Graph device-code authentication before live writes. A local onboarding
-readiness packet now captures the partner/client readiness work that should
-surround the Microsoft 365 objects.
+Stage 6 Lists, Planner, Teams channels, and Teams web tabs are provisioned and
+read-back verified. A local onboarding readiness packet captures the
+partner/client readiness work that should surround the Microsoft 365 objects.
 
 The original automation blocker is resolved. PnP was authorized correctly, but
 the persisted delegated login was using `admin@agoperations.ca` instead of
@@ -23,6 +21,15 @@ the persisted delegated login was using `admin@agoperations.ca` instead of
   `stage-6-provision-lists-20260614-134436.log`.
 - The four Stage 6 Lists were verified by
   `stage-6-verify-lists-20260614-135144.log`.
+- The Stage 6 Planner/Teams live gate completed through
+  `stage-6-provision-planner-teams-20260614-190513.log`.
+- Planner/Teams read-back verification passed in
+  `stage-6-verify-planner-teams-20260614-190613.log`.
+- `adamgoodwin@guidedailabs.com` was added as an internal member of the existing
+  `Guided AI Labs` group after the provision script found he was an owner but
+  not a member; this was required for Planner access.
+- The schema channel name was changed from `Methods & IP` to `Methods and IP`
+  after Microsoft Teams rejected the ampersand in channel creation.
 - The Planner/Teams operator scripts parse and are included in local preflight:
   - `scripts\Invoke-M365Stage6VerifyPlannerTeams.ps1`
   - `scripts\Invoke-M365Stage6ProvisionPlannerTeams.ps1`
@@ -132,9 +139,18 @@ Planner/Teams operator preparation:
 - The visible M365 launchers were repaired to open `cmd.exe`, pause before
   PowerShell starts, and only then run the Graph/PnP script. A fixed
   `ProvisionAndVerify` Planner/Teams window is now parked before auth.
-- No Planner/Teams provision log exists yet, so no Planner/Teams tenant write is
-  recorded from this run.
-- The live write gate remains the typed phrase `planner-teams`.
+- `stage-6-provision-planner-teams-20260614-185921.log` added Adam as an
+  internal member of the existing group but Planner still returned 403 before
+  membership propagation.
+- `stage-6-provision-planner-teams-20260614-190253.log` created the Planner plan,
+  all seven buckets, Team-enabled the existing group, and created several
+  channels before Microsoft Teams rejected `Methods & IP` as an invalid channel
+  name.
+- `stage-6-provision-planner-teams-20260614-190513.log` reran idempotently after
+  the channel was renamed to `Methods and IP`; it created the remaining channel
+  and pinned all expected web tabs.
+- `stage-6-verify-planner-teams-20260614-190613.log` passed read-back
+  verification.
 
 ## Root Cause
 

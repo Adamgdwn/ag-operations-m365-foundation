@@ -88,7 +88,7 @@
       "sharing": "Specific client/team link after approval; avoid broad public links for delivery feedback.",
       "responseSetting": "Use authenticated links for internal/team feedback and named links for client delivery where practical.",
       "plannerRule": "Create a Planner task only for low scores, explicit follow-up requests, or reusable-method candidates.",
-      "teamsNotification": "Post a short notice to Methods & IP or Intake only when follow-up is required.",
+      "teamsNotification": "Post a short notice to Methods and IP or Intake only when follow-up is required.",
       "questions": [
         { "label": "Your name", "type": "text", "required": false, "mapsTo": "RequesterName" },
         { "label": "Email address", "type": "text", "required": false, "mapsTo": "RequesterEmail" },
@@ -119,7 +119,7 @@
       "sharing": "Internal only until partner onboarding governance is approved.",
       "responseSetting": "Authenticated internal responses preferred.",
       "plannerRule": "Create Planner tasks only for committed improvements with an owner.",
-      "teamsNotification": "Post decision candidates to the Agent Setup or Methods & IP channel for Adam review.",
+      "teamsNotification": "Post decision candidates to the Agent Setup or Methods and IP channel for Adam review.",
       "questions": [
         { "label": "What worked well?", "type": "longText", "required": true, "mapsTo": "Rationale" },
         { "label": "What should change?", "type": "longText", "required": true, "mapsTo": "Decision" },
