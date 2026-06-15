@@ -1,9 +1,12 @@
 param(
     [string]$TenantId = "1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
     [string]$ClientId = "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+    [string]$ExpectedUpn = "adamgoodwin@guidedailabs.com",
     [string]$OutputRoot = ".\inventory\stage-7-security-governance",
     [string]$SharePointAdminUrl = "https://agoperationsltd-admin.sharepoint.com",
     [switch]$IncludeSharePointAdmin,
+    [switch]$UseDeviceCode,
+    [switch]$PreserveGraphConnection,
     [switch]$SkipAuthReadyPrompt,
     [switch]$NoPause
 )
@@ -14,6 +17,11 @@ param(
 # the whole inventory.
 
 $ErrorActionPreference = "Stop"
+
+if (-not (Get-Module -ListAvailable -Name Microsoft.Graph.Authentication)) {
+    throw "Microsoft.Graph.Authentication is not available in this PowerShell host. Install Microsoft.Graph or run the local preflight first."
+}
+Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
 
 function Write-Section {
     param([string]$Message)
@@ -52,18 +60,16 @@ function Get-ErrorBody {
 function Invoke-GraphCollection {
     param(
         [Parameter(Mandatory = $true)] [string]$Name,
-        [Parameter(Mandatory = $true)] [string]$Uri,
-        [Parameter(Mandatory = $true)] [string]$AccessToken
+        [Parameter(Mandatory = $true)] [string]$Uri
     )
 
     Write-Section $Name
-    $headers = @{ Authorization = "Bearer $AccessToken" }
     $items = New-Object System.Collections.Generic.List[object]
     $next = $Uri
 
     try {
         while ($next) {
-            $response = Invoke-RestMethod -Method Get -Uri $next -Headers $headers
+            $response = Invoke-MgGraphRequest -Method GET -Uri $next -OutputType PSObject
             if ($null -ne $response.value) {
                 foreach ($item in $response.value) {
                     $items.Add($item)
@@ -95,15 +101,13 @@ function Invoke-GraphCollection {
 function Invoke-GraphSingleton {
     param(
         [Parameter(Mandatory = $true)] [string]$Name,
-        [Parameter(Mandatory = $true)] [string]$Uri,
-        [Parameter(Mandatory = $true)] [string]$AccessToken
+        [Parameter(Mandatory = $true)] [string]$Uri
     )
 
     Write-Section $Name
-    $headers = @{ Authorization = "Bearer $AccessToken" }
 
     try {
-        $response = Invoke-RestMethod -Method Get -Uri $Uri -Headers $headers
+        $response = Invoke-MgGraphRequest -Method GET -Uri $Uri -OutputType PSObject
         Export-Json -Path (Join-Path $script:OutputDir "$Name.json") -Data $response
         Write-Host "Saved $Name.json" -ForegroundColor Green
         return $response
@@ -121,67 +125,30 @@ function Invoke-GraphSingleton {
     }
 }
 
-function Invoke-DeviceCodeToken {
-    param(
-        [string]$TenantId,
-        [string]$ClientId,
-        [string]$Scope
-    )
+function Connect-Stage7Graph {
+    param([string[]]$Scopes)
 
-    $deviceCodeUri = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/devicecode"
-    $tokenUri = "https://login.microsoftonline.com/$TenantId/oauth2/v2.0/token"
-
-    $device = Invoke-RestMethod -Method Post -Uri $deviceCodeUri -ContentType "application/x-www-form-urlencoded" -Body @{
-        client_id = $ClientId
-        scope = $Scope
+    $params = @{
+        ClientId = $ClientId
+        TenantId = $TenantId
+        Scopes = $Scopes
+        ContextScope = "Process"
+        NoWelcome = $true
+    }
+    if ($UseDeviceCode) {
+        $params.UseDeviceCode = $true
     }
 
-    Write-Host ""
-    Write-Host $device.message -ForegroundColor Yellow
-    Write-Host ""
+    Connect-MgGraph @params | Out-Null
+    $context = Get-MgContext
+    Write-Host ("Connected Graph account: {0}" -f $context.Account) -ForegroundColor Gray
+    Write-Host ("Graph scopes: {0}" -f (($context.Scopes | Sort-Object) -join ", ")) -ForegroundColor Gray
 
-    $deadline = (Get-Date).AddSeconds([int]$device.expires_in)
-    $interval = [Math]::Max(5, [int]$device.interval)
-    $token = $null
-
-    while ((Get-Date) -lt $deadline -and $null -eq $token) {
-        Start-Sleep -Seconds $interval
-        try {
-            $token = Invoke-RestMethod -Method Post -Uri $tokenUri -ContentType "application/x-www-form-urlencoded" -Body @{
-                grant_type = "urn:ietf:params:oauth:grant-type:device_code"
-                client_id = $ClientId
-                device_code = $device.device_code
-            }
-        }
-        catch {
-            $body = Get-ErrorBody -ErrorRecord $_
-            try {
-                $details = $body | ConvertFrom-Json
-            }
-            catch {
-                throw "Authentication polling failed and the response was not JSON: $body"
-            }
-
-            if ($details.error -eq "authorization_pending") {
-                Write-Host "." -NoNewline
-                continue
-            }
-            elseif ($details.error -eq "slow_down") {
-                $interval += 5
-                Write-Host "." -NoNewline
-                continue
-            }
-            else {
-                throw "Authentication failed: $($details.error_description)"
-            }
-        }
+    if ($ExpectedUpn -and ($context.Account -ne $ExpectedUpn)) {
+        throw "Wrong signed-in user. Expected '$ExpectedUpn' but Graph connected as '$($context.Account)'. Re-run with -UseDeviceCode and choose the expected account."
     }
 
-    if ($null -eq $token) {
-        throw "Authentication timed out before approval completed."
-    }
-
-    return $token
+    return $context
 }
 
 $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
@@ -202,16 +169,16 @@ $scopes = @(
     "Policy.Read.All",
     "AuditLog.Read.All",
     "UserAuthenticationMethod.Read.All"
-) -join " "
+)
 
 if (-not $SkipAuthReadyPrompt) {
     Write-Host ""
-    Write-Host "Device-code auth can time out quickly if it sits unattended." -ForegroundColor Yellow
+    Write-Host "Browser sign-in may open a Microsoft window. Complete MFA promptly after the next prompt appears." -ForegroundColor Yellow
     Read-Host "Press Enter when you are ready to complete Microsoft sign-in for this read-only inventory" | Out-Null
     Write-Host ""
 }
 
-$token = Invoke-DeviceCodeToken -TenantId $TenantId -ClientId $ClientId -Scope $scopes
+$context = Connect-Stage7Graph -Scopes $scopes
 
 Write-Host ""
 Write-Host "Authenticated. Running read-only Stage 7 inventory..." -ForegroundColor Green
@@ -219,35 +186,36 @@ Write-Host "Authenticated. Running read-only Stage 7 inventory..." -ForegroundCo
 Export-Json -Path (Join-Path $script:OutputDir "auth-context.json") -Data ([pscustomobject]@{
     tenantId = $TenantId
     clientId = $ClientId
-    scopes = $scopes
-    tokenType = $token.token_type
-    expiresIn = $token.expires_in
+    account = $context.Account
+    authMode = $(if ($UseDeviceCode) { "Microsoft.Graph device-code" } else { "Microsoft.Graph browser/WAM" })
+    scopes = ($scopes -join " ")
+    consentedScopes = (($context.Scopes | Sort-Object) -join " ")
     generatedAt = (Get-Date).ToString("o")
 })
 
 $base = "https://graph.microsoft.com/v1.0"
 
-$organization = Invoke-GraphCollection -Name "organization" -Uri "$base/organization" -AccessToken $token.access_token
-$skus = Invoke-GraphCollection -Name "subscribed-skus" -Uri "$base/subscribedSkus" -AccessToken $token.access_token
-$users = Invoke-GraphCollection -Name "users" -Uri "$base/users?`$select=id,displayName,userPrincipalName,mail,userType,accountEnabled,createdDateTime,assignedLicenses" -AccessToken $token.access_token
-$groups = Invoke-GraphCollection -Name "groups" -Uri "$base/groups?`$select=id,displayName,mail,mailEnabled,securityEnabled,groupTypes,visibility,createdDateTime" -AccessToken $token.access_token
-$roles = Invoke-GraphCollection -Name "directory-roles" -Uri "$base/directoryRoles" -AccessToken $token.access_token
-$applications = Invoke-GraphCollection -Name "app-registrations" -Uri "$base/applications?`$select=id,appId,displayName,signInAudience,createdDateTime,requiredResourceAccess" -AccessToken $token.access_token
-$servicePrincipals = Invoke-GraphCollection -Name "enterprise-applications" -Uri "$base/servicePrincipals?`$select=id,appId,displayName,servicePrincipalType,accountEnabled,appOwnerOrganizationId,createdDateTime" -AccessToken $token.access_token
-$oauth2Grants = Invoke-GraphCollection -Name "oauth2-permission-grants" -Uri "$base/oauth2PermissionGrants" -AccessToken $token.access_token
+$organization = Invoke-GraphCollection -Name "organization" -Uri "$base/organization"
+$skus = Invoke-GraphCollection -Name "subscribed-skus" -Uri "$base/subscribedSkus"
+$users = Invoke-GraphCollection -Name "users" -Uri "$base/users?`$select=id,displayName,userPrincipalName,mail,userType,accountEnabled,createdDateTime,assignedLicenses"
+$groups = Invoke-GraphCollection -Name "groups" -Uri "$base/groups?`$select=id,displayName,mail,mailEnabled,securityEnabled,groupTypes,visibility,createdDateTime"
+$roles = Invoke-GraphCollection -Name "directory-roles" -Uri "$base/directoryRoles"
+$applications = Invoke-GraphCollection -Name "app-registrations" -Uri "$base/applications?`$select=id,appId,displayName,signInAudience,createdDateTime,requiredResourceAccess"
+$servicePrincipals = Invoke-GraphCollection -Name "enterprise-applications" -Uri "$base/servicePrincipals?`$select=id,appId,displayName,servicePrincipalType,accountEnabled,appOwnerOrganizationId,createdDateTime"
+$oauth2Grants = Invoke-GraphCollection -Name "oauth2-permission-grants" -Uri "$base/oauth2PermissionGrants"
 
-$authorizationPolicy = Invoke-GraphSingleton -Name "authorization-policy" -Uri "$base/policies/authorizationPolicy" -AccessToken $token.access_token
-$securityDefaults = Invoke-GraphSingleton -Name "identity-security-defaults" -Uri "$base/policies/identitySecurityDefaultsEnforcementPolicy" -AccessToken $token.access_token
-$conditionalAccess = Invoke-GraphCollection -Name "conditional-access-policies" -Uri "$base/identity/conditionalAccess/policies" -AccessToken $token.access_token
-$authenticationMethods = Invoke-GraphSingleton -Name "authentication-methods-policy" -Uri "$base/policies/authenticationMethodsPolicy" -AccessToken $token.access_token
-$adminConsentPolicy = Invoke-GraphSingleton -Name "admin-consent-request-policy" -Uri "$base/policies/adminConsentRequestPolicy" -AccessToken $token.access_token
-$signIns = Invoke-GraphCollection -Name "recent-signins" -Uri "$base/auditLogs/signIns?`$top=50&`$orderby=createdDateTime desc" -AccessToken $token.access_token
-$directoryAudits = Invoke-GraphCollection -Name "recent-directory-audits" -Uri "$base/auditLogs/directoryAudits?`$top=50&`$orderby=activityDateTime desc" -AccessToken $token.access_token
+$authorizationPolicy = Invoke-GraphSingleton -Name "authorization-policy" -Uri "$base/policies/authorizationPolicy"
+$securityDefaults = Invoke-GraphSingleton -Name "identity-security-defaults" -Uri "$base/policies/identitySecurityDefaultsEnforcementPolicy"
+$conditionalAccess = Invoke-GraphCollection -Name "conditional-access-policies" -Uri "$base/identity/conditionalAccess/policies"
+$authenticationMethods = Invoke-GraphSingleton -Name "authentication-methods-policy" -Uri "$base/policies/authenticationMethodsPolicy"
+$adminConsentPolicy = Invoke-GraphSingleton -Name "admin-consent-request-policy" -Uri "$base/policies/adminConsentRequestPolicy"
+$signIns = Invoke-GraphCollection -Name "recent-signins" -Uri "$base/auditLogs/signIns?`$top=50&`$orderby=createdDateTime desc"
+$directoryAudits = Invoke-GraphCollection -Name "recent-directory-audits" -Uri "$base/auditLogs/directoryAudits?`$top=50&`$orderby=activityDateTime desc"
 
 Write-Section "directory-role-members"
 $roleMembers = New-Object System.Collections.Generic.List[object]
 foreach ($role in $roles) {
-    $members = Invoke-GraphCollection -Name "directory-role-$($role.id)-members" -Uri "$base/directoryRoles/$($role.id)/members" -AccessToken $token.access_token
+    $members = Invoke-GraphCollection -Name "directory-role-$($role.id)-members" -Uri "$base/directoryRoles/$($role.id)/members"
     foreach ($member in $members) {
         $roleMembers.Add([pscustomobject]@{
             roleId = $role.id
@@ -266,7 +234,7 @@ Write-Section "user-authentication-methods"
 $authMethodRows = New-Object System.Collections.Generic.List[object]
 foreach ($user in @($users | Where-Object { $_.accountEnabled -eq $true })) {
     try {
-        $methods = Invoke-GraphCollection -Name "user-auth-methods-$($user.id)" -Uri "$base/users/$($user.id)/authentication/methods" -AccessToken $token.access_token
+        $methods = Invoke-GraphCollection -Name "user-auth-methods-$($user.id)" -Uri "$base/users/$($user.id)/authentication/methods"
         $authMethodRows.Add([pscustomobject]@{
             userPrincipalName = $user.userPrincipalName
             displayName = $user.displayName
@@ -342,6 +310,10 @@ if (Test-Path -LiteralPath $summarizer) {
     Write-Host ""
     Write-Host "Running local Stage 7 summarizer..." -ForegroundColor Cyan
     & $summarizer -InventoryPath $script:OutputDir
+}
+
+if (-not $PreserveGraphConnection) {
+    Disconnect-MgGraph -ErrorAction SilentlyContinue | Out-Null
 }
 
 if (-not $NoPause) {

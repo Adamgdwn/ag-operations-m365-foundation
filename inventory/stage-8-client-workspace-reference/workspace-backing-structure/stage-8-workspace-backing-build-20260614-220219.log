@@ -1,0 +1,82 @@
+**********************
+PowerShell transcript start
+Start time: 20260614220219
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+.\scripts\Invoke-M365Stage8WorkspaceBackingBuild.ps1 -NoPause
+Process ID: 19336
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8 - Workspace Backing Structure Build
+Mode:       DRY RUN
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8-client-workspace-reference\workspace-backing-structure\stage-8-workspace-backing-build-20260614-220219.log
+
+Planned routing pages:
+- Operating Model (Operating-Model.aspx)
+- Client Discovery (Client-Discovery.aspx)
+- Agent Setup (Agent-Setup.aspx)
+- Access Model (Access-Model.aspx)
+- External Sharing Rules (External-Sharing-Rules.aspx)
+- App Grants (App-Grants.aspx)
+
+Planned Lists:
+- Client Workspace Register
+- Handoff Packet Register
+- Tool Permission Review
+- Automation Backlog
+- Exception Register
+
+Planned libraries/folders:
+- Published Methods: Templates, Playbooks, Training Paths, Reusable Assets
+- Delivery Working Documents: Active Delivery, Client Discovery, Working Notes
+- Restricted Build Evidence: Agent Setup, App Grants, Tool Permission Review, Integration Evidence
+- Client Handoff Packets: Drafts, Ready For Review, Issued
+- Readiness Evidence: Assessments, Scorecards, Reviews
+- Archive: Completed Work, Historical Evidence
+
+Planned navigation targets:
+- Start Here / Operating Model -> Operating Model (Page)
+- Client Delivery / Client Discovery -> Client Discovery (Page)
+- Client Delivery / Handoff Packets -> Client Handoff Packets (Library)
+- Methods and IP / Templates -> Published Methods/Templates (LibraryFolder)
+- Methods and IP / Playbooks -> Published Methods/Playbooks (LibraryFolder)
+- Methods and IP / Training Paths -> Published Methods/Training Paths (LibraryFolder)
+- Methods and IP / Reusable Assets -> Published Methods/Reusable Assets (LibraryFolder)
+- AI and Automation / Agent Setup -> Agent Setup (Page)
+- AI and Automation / Automation Backlog -> Automation Backlog (List)
+- AI and Automation / Tool Permission Review -> Tool Permission Review (List)
+- Records and Evidence / Readiness Evidence -> Readiness Evidence (Library)
+- Governance / Access Model -> Access Model (Page)
+- Governance / External Sharing Rules -> External Sharing Rules (Page)
+- Governance / App Grants -> App Grants (Page)
+- Governance / Exceptions -> Exception Register (List)
+- Archive / Completed Work -> Archive/Completed Work (LibraryFolder)
+- Archive / Historical Evidence -> Archive/Historical Evidence (LibraryFolder)
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No page/list/library deletion
+- No overwrite of existing pages
+
+Dry run only. Re-run with -Apply and type the approval phrase to create missing backing structure.
+**********************
+PowerShell transcript end
+End time: 20260614220219
+**********************

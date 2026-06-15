@@ -1,0 +1,7 @@
+"Action","GovernanceLevel","ApprovalRequiredBeforeAction","EvidenceTarget"
+"Create Suggested Agent Action Log row","G1","False","Agent Action Log"
+"Create or update internal List row","G2","True","Agent Action Log"
+"Create or update Planner task","G2","True","Agent Action Log"
+"Create mailbox draft","G2","True","Agent Action Log"
+"Send external email","G3","True","Decision Register and Agent Action Log"
+"Change sharing, guests, permissions, app consent, or tenant policy","G3","True","Decision Register and Agent Action Log"

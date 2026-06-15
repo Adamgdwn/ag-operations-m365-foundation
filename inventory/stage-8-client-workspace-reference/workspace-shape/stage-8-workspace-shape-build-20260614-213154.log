@@ -1,0 +1,79 @@
+**********************
+PowerShell transcript start
+Start time: 20260614213154
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+.\scripts\Invoke-M365Stage8WorkspaceShapeBuild.ps1 -NoPause
+Process ID: 18588
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8 - Workspace Shape Build
+Mode:       DRY RUN
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8_WORKSPACE_SHAPE.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8-client-workspace-reference\workspace-shape\stage-8-workspace-shape-build-20260614-213154.log
+
+Planned page skeletons:
+- Guided AI Labs Home (Guided-AI-Labs-Home.aspx)
+- How To Use This Workspace (How-To-Use-This-Workspace.aspx)
+- Intake (Intake.aspx)
+- Active Delivery (Active-Delivery.aspx)
+- Decisions (Decisions.aspx)
+- Client Workspace Pattern (Client-Workspace-Pattern.aspx)
+- Methods And IP (Methods-And-IP.aspx)
+- AI And Automation Governance (AI-And-Automation-Governance.aspx)
+
+Planned navigation additions:
+- Start Here
+  - Home: ready (Guided AI Labs Home)
+  - How To Use This Workspace: ready (How To Use This Workspace)
+  - Operating Model: deferred (No concrete backing page/list/library target yet.)
+- Operating Cockpit
+  - Intake: ready (Intake)
+  - Active Delivery: ready (Active Delivery)
+  - Decisions: ready (Decisions)
+  - Action Log: ready (Action Log)
+- Client Delivery
+  - Client Discovery: deferred (No concrete backing page/list/library target yet.)
+  - Client Workspace Pattern: ready (Client Workspace Pattern)
+  - Handoff Packets: deferred (No concrete backing page/list/library target yet.)
+- Methods and IP
+  - Templates: deferred (No concrete backing page/list/library target yet.)
+  - Playbooks: deferred (No concrete backing page/list/library target yet.)
+  - Training Paths: deferred (No concrete backing page/list/library target yet.)
+  - Reusable Assets: deferred (No concrete backing page/list/library target yet.)
+- AI and Automation
+  - Agent Setup: deferred (No concrete backing page/list/library target yet.)
+  - Automation Backlog: deferred (No concrete backing page/list/library target yet.)
+  - Tool Permission Review: deferred (No concrete backing page/list/library target yet.)
+- Records and Evidence
+  - Decision Register: ready (Decision Register)
+  - Agent Action Log: ready (Agent Action Log)
+  - Readiness Evidence: deferred (No concrete backing page/list/library target yet.)
+- Governance
+  - Access Model: deferred (No concrete backing page/list/library target yet.)
+  - External Sharing Rules: deferred (No concrete backing page/list/library target yet.)
+  - App Grants: deferred (No concrete backing page/list/library target yet.)
+  - Exceptions: deferred (No concrete backing page/list/library target yet.)
+- Archive
+  - Completed Work: deferred (No concrete backing page/list/library target yet.)
+  - Historical Evidence: deferred (No concrete backing page/list/library target yet.)
+
+Safety limits: no permissions, guest invites, external sharing, app grants, public Forms, page deletion, or existing page overwrite.
+
+Dry run only. Re-run with -Apply and type the approval phrase to create missing pages/navigation.
+**********************
+PowerShell transcript end
+End time: 20260614213154
+**********************

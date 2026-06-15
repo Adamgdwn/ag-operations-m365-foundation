@@ -1,0 +1,246 @@
+**********************
+PowerShell transcript start
+Start time: 20260614220231
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage8WorkspaceBackingBuild.ps1 -Apply
+Process ID: 1112
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8 - Workspace Backing Structure Build
+Mode:       APPLY
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8-client-workspace-reference\workspace-backing-structure\stage-8-workspace-backing-build-20260614-220231.log
+
+Planned routing pages:
+- Operating Model (Operating-Model.aspx)
+- Client Discovery (Client-Discovery.aspx)
+- Agent Setup (Agent-Setup.aspx)
+- Access Model (Access-Model.aspx)
+- External Sharing Rules (External-Sharing-Rules.aspx)
+- App Grants (App-Grants.aspx)
+
+Planned Lists:
+- Client Workspace Register
+- Handoff Packet Register
+- Tool Permission Review
+- Automation Backlog
+- Exception Register
+
+Planned libraries/folders:
+- Published Methods: Templates, Playbooks, Training Paths, Reusable Assets
+- Delivery Working Documents: Active Delivery, Client Discovery, Working Notes
+- Restricted Build Evidence: Agent Setup, App Grants, Tool Permission Review, Integration Evidence
+- Client Handoff Packets: Drafts, Ready For Review, Issued
+- Readiness Evidence: Assessments, Scorecards, Reviews
+- Archive: Completed Work, Historical Evidence
+
+Planned navigation targets:
+- Start Here / Operating Model -> Operating Model (Page)
+- Client Delivery / Client Discovery -> Client Discovery (Page)
+- Client Delivery / Handoff Packets -> Client Handoff Packets (Library)
+- Methods and IP / Templates -> Published Methods/Templates (LibraryFolder)
+- Methods and IP / Playbooks -> Published Methods/Playbooks (LibraryFolder)
+- Methods and IP / Training Paths -> Published Methods/Training Paths (LibraryFolder)
+- Methods and IP / Reusable Assets -> Published Methods/Reusable Assets (LibraryFolder)
+- AI and Automation / Agent Setup -> Agent Setup (Page)
+- AI and Automation / Automation Backlog -> Automation Backlog (List)
+- AI and Automation / Tool Permission Review -> Tool Permission Review (List)
+- Records and Evidence / Readiness Evidence -> Readiness Evidence (Library)
+- Governance / Access Model -> Access Model (Page)
+- Governance / External Sharing Rules -> External Sharing Rules (Page)
+- Governance / App Grants -> App Grants (Page)
+- Governance / Exceptions -> Exception Register (List)
+- Archive / Completed Work -> Archive/Completed Work (LibraryFolder)
+- Archive / Historical Evidence -> Archive/Historical Evidence (LibraryFolder)
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No page/list/library deletion
+- No overwrite of existing pages
+
+
+Connecting to Guided AI Labs SharePoint site...
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Operating-Model.aspx' does not exist"
+Creating page: Operating-Model.aspx
+  [OK] Operating Model
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Client-Discovery.aspx' does not exist"
+Creating page: Client-Discovery.aspx
+  [OK] Client Discovery
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Agent-Setup.aspx' does not exist"
+Creating page: Agent-Setup.aspx
+  [OK] Agent Setup
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Access-Model.aspx' does not exist"
+Creating page: Access-Model.aspx
+  [OK] Access Model
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'External-Sharing-Rules.aspx' does not exist"
+Creating page: External-Sharing-Rules.aspx
+  [OK] External Sharing Rules
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'App-Grants.aspx' does not exist"
+Creating page: App-Grants.aspx
+  [OK] App Grants
+
+List: Client Workspace Register
+  [OK] List created: Client Workspace Register
+  [OK] Field created: Workspace Model
+  [OK] Field created: Ownership Posture
+  [OK] Field created: Status
+  [OK] Field created: Primary Owner
+  [OK] Field created: Tenant Of Record
+  [OK] Field created: Access Posture
+  [OK] Field created: External Access Approved
+  [OK] Field created: Handoff State
+  [OK] Field created: Review Date
+  [OK] Field created: Workspace Map URL
+  [OK] Field created: Notes
+  [OK] View created: Active Workspaces
+  [OK] View created: Handoff Needed
+  [OK] View created: Access Review
+
+List: Handoff Packet Register
+  [OK] List created: Handoff Packet Register
+  [OK] Field created: Client Or Workspace
+  [OK] Field created: Packet Status
+  [OK] Field created: Handoff Owner
+  [OK] Field created: Training State
+  [OK] Field created: Workspace Map URL
+  [OK] Field created: Packet Library URL
+  [OK] Field created: Closeout Export Path
+  [OK] Field created: Next Review Date
+  [OK] Field created: Notes
+  [OK] View created: Active Handoffs
+  [OK] View created: Ready For Review
+  [OK] View created: Archived Packets
+
+List: Tool Permission Review
+  [OK] List created: Tool Permission Review
+  [OK] Field created: Permission Area
+  [OK] Field created: Current Grant
+  [OK] Field created: Risk Level
+  [OK] Field created: Owner
+  [OK] Field created: Review Status
+  [OK] Field created: Review Date
+  [OK] Field created: Decision Register Link
+  [OK] Field created: Notes
+  [OK] View created: Needs Review
+  [OK] View created: High Risk
+
+List: Automation Backlog
+  [OK] List created: Automation Backlog
+  [OK] Field created: Workflow Area
+  [OK] Field created: Proposed Value
+  [OK] Field created: Risk Level
+  [OK] Field created: Approval Status
+  [OK] Field created: Owner
+  [OK] Field created: Source Surface
+  [OK] Field created: Target System
+  [OK] Field created: Human Approval Required
+  [OK] Field created: Review Date
+  [OK] Field created: Notes
+  [OK] View created: Backlog
+  [OK] View created: Needs Approval
+
+List: Exception Register
+  [OK] List created: Exception Register
+  [OK] Field created: Exception Area
+  [OK] Field created: Status
+  [OK] Field created: Approved By
+  [OK] Field created: Expiry Date
+  [OK] Field created: Review Date
+  [OK] Field created: Decision Register Link
+  [OK] Field created: Closure Path
+  [OK] Field created: Notes
+  [OK] View created: Open Exceptions
+  [OK] View created: Expiring Soon
+
+Library: Published Methods
+  [OK] Library created: Published Methods
+  [OK] Folder created: Templates
+  [OK] Folder created: Playbooks
+  [OK] Folder created: Training Paths
+  [OK] Folder created: Reusable Assets
+
+Library: Delivery Working Documents
+  [OK] Library created: Delivery Working Documents
+  [OK] Folder created: Active Delivery
+  [OK] Folder created: Client Discovery
+  [OK] Folder created: Working Notes
+
+Library: Restricted Build Evidence
+  [OK] Library created: Restricted Build Evidence
+  [OK] Folder created: Agent Setup
+  [OK] Folder created: App Grants
+  [OK] Folder created: Tool Permission Review
+  [OK] Folder created: Integration Evidence
+
+Library: Client Handoff Packets
+  [OK] Library created: Client Handoff Packets
+  [OK] Folder created: Drafts
+  [OK] Folder created: Ready For Review
+  [OK] Folder created: Issued
+
+Library: Readiness Evidence
+  [OK] Library created: Readiness Evidence
+  [OK] Folder created: Assessments
+  [OK] Folder created: Scorecards
+  [OK] Folder created: Reviews
+
+Library: Archive
+  [skip] Library exists: Archive
+  [OK] Folder created: Completed Work
+  [OK] Folder created: Historical Evidence
+Adding navigation link: Start Here / Operating Model -> /sites/GuidedAILabs/SitePages/Operating-Model.aspx
+  [OK] Operating Model
+Adding navigation link: Client Delivery / Client Discovery -> /sites/GuidedAILabs/SitePages/Client-Discovery.aspx
+  [OK] Client Discovery
+Adding navigation link: Client Delivery / Handoff Packets -> /sites/GuidedAILabs/Client Handoff Packets
+  [OK] Handoff Packets
+Adding navigation link: Methods and IP / Templates -> /sites/GuidedAILabs/Published Methods/Templates
+  [OK] Templates
+Adding navigation link: Methods and IP / Playbooks -> /sites/GuidedAILabs/Published Methods/Playbooks
+  [OK] Playbooks
+Adding navigation link: Methods and IP / Training Paths -> /sites/GuidedAILabs/Published Methods/Training%20Paths
+  [OK] Training Paths
+Adding navigation link: Methods and IP / Reusable Assets -> /sites/GuidedAILabs/Published Methods/Reusable%20Assets
+  [OK] Reusable Assets
+Adding navigation link: AI and Automation / Agent Setup -> /sites/GuidedAILabs/SitePages/Agent-Setup.aspx
+  [OK] Agent Setup
+Adding navigation link: AI and Automation / Automation Backlog -> /sites/GuidedAILabs/Lists/Automation Backlog/Backlog.aspx
+  [OK] Automation Backlog
+Adding navigation link: AI and Automation / Tool Permission Review -> /sites/GuidedAILabs/Lists/Tool Permission Review/Needs Review.aspx
+  [OK] Tool Permission Review
+Adding navigation link: Records and Evidence / Readiness Evidence -> /sites/GuidedAILabs/Readiness Evidence
+  [OK] Readiness Evidence
+Adding navigation link: Governance / Access Model -> /sites/GuidedAILabs/SitePages/Access-Model.aspx
+  [OK] Access Model
+Adding navigation link: Governance / External Sharing Rules -> /sites/GuidedAILabs/SitePages/External-Sharing-Rules.aspx
+  [OK] External Sharing Rules
+Adding navigation link: Governance / App Grants -> /sites/GuidedAILabs/SitePages/App-Grants.aspx
+  [OK] App Grants
+Adding navigation link: Governance / Exceptions -> /sites/GuidedAILabs/Lists/Exception Register/Open Exceptions.aspx
+  [OK] Exceptions
+Adding navigation link: Archive / Completed Work -> /sites/GuidedAILabs/Archive/Completed%20Work
+  [OK] Completed Work
+Adding navigation link: Archive / Historical Evidence -> /sites/GuidedAILabs/Archive/Historical%20Evidence
+  [OK] Historical Evidence
+
+Stage 8 workspace backing structure build complete. Run read-only verification next.
+**********************
+PowerShell transcript end
+End time: 20260614220738
+**********************

@@ -1,0 +1,9 @@
+{
+  "tenantId": "1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "clientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+  "account": "adamgoodwin@guidedailabs.com",
+  "authMode": "Microsoft.Graph browser/WAM",
+  "scopes": "User.Read Organization.Read.All Directory.Read.All Group.Read.All Application.Read.All Policy.Read.All AuditLog.Read.All UserAuthenticationMethod.Read.All",
+  "consentedScopes": "Application.Read.All AuditLog.Read.All Directory.Read.All Domain.Read.All email Files.Read.All Group.Read.All openid Organization.Read.All Policy.Read.All profile RoleManagement.ReadWrite.Directory Sites.Read.All Team.ReadBasic.All User.Read User.ReadWrite.All UserAuthenticationMethod.Read.All",
+  "generatedAt": "2026-06-14T19:18:27.9672436-06:00"
+}

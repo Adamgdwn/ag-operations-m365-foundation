@@ -1,0 +1,6 @@
+{
+  "@odata.type": "#microsoft.graph.passwordAuthenticationMethod",
+  "id": "28c10230-6103-485e-b985-444c60001490",
+  "password": null,
+  "createdDateTime": "2026-06-07T17:30:47Z"
+}

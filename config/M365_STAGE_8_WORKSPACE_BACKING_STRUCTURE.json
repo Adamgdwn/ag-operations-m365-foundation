@@ -1,0 +1,220 @@
+{
+  "version": "2026-06-14",
+  "stage": 8,
+  "name": "Client Workspace Reference Backing Structure",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+    "purpose": "Backing Lists, libraries, folders, and routing pages for the Stage 8 workspace shape."
+  },
+  "approvalPhrase": "apply-stage-8-backing-structure",
+  "safetyLimits": [
+    "No permission changes",
+    "No guest invitations",
+    "No external sharing changes",
+    "No app grants or consent changes",
+    "No public Forms links",
+    "No page/list/library deletion",
+    "No overwrite of existing pages"
+  ],
+  "pages": [
+    {
+      "title": "Operating Model",
+      "fileName": "Operating-Model.aspx",
+      "navGroup": "Start Here",
+      "role": "Plain-language operating map for how intake, tasks, decisions, records, and AI-assisted work move through the company.",
+      "sections": ["Operating loop", "Source-of-truth rules", "Human approval gates", "Weekly operating rhythm"]
+    },
+    {
+      "title": "Client Discovery",
+      "fileName": "Client-Discovery.aspx",
+      "navGroup": "Client Delivery",
+      "role": "Front door for client readiness, workspace ownership, handoff planning, and tenant-of-record decisions.",
+      "sections": ["Discovery intake", "Client workspace register", "Ownership decision", "Readiness evidence", "Next action"]
+    },
+    {
+      "title": "Agent Setup",
+      "fileName": "Agent-Setup.aspx",
+      "navGroup": "AI and Automation",
+      "role": "Controlled setup notes for agents and assisted workflows before they are promoted into client or operating use.",
+      "sections": ["Agent purpose", "Allowed actions", "Required human approvals", "Tool permission review", "Evidence trail"]
+    },
+    {
+      "title": "Access Model",
+      "fileName": "Access-Model.aspx",
+      "navGroup": "Governance",
+      "role": "Simple access zones and approval rules for internal, partner, builder, reviewer, and client-specific surfaces.",
+      "sections": ["Access zones", "Named access rule", "Review cadence", "Partner/client access gate"]
+    },
+    {
+      "title": "External Sharing Rules",
+      "fileName": "External-Sharing-Rules.aspx",
+      "navGroup": "Governance",
+      "role": "Stage 7 sharing posture translated into day-to-day operating rules.",
+      "sections": ["Default sharing posture", "Specific-people links", "Guest invite approval", "Exception handling"]
+    },
+    {
+      "title": "App Grants",
+      "fileName": "App-Grants.aspx",
+      "navGroup": "Governance",
+      "role": "Review surface for app grants, delegated permissions, risk notes, and owner-approved resting state.",
+      "sections": ["Current grants", "Risk level", "Owner decision", "Review date", "Related evidence"]
+    }
+  ],
+  "lists": [
+    {
+      "title": "Client Workspace Register",
+      "description": "Client and partner workspace model, tenant ownership, status, access posture, and handoff state.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "Workspace Model", "internalName": "WorkspaceModel", "type": "Choice", "choices": ["Client tenant first", "GAL-hosted light workspace", "Hybrid delivery workspace", "Internal partner workspace"], "default": "Client tenant first" },
+        { "displayName": "Ownership Posture", "internalName": "OwnershipPosture", "type": "Choice", "choices": ["Client owns records", "GAL owns operating records", "Split by sensitivity", "Pending decision"], "default": "Pending decision" },
+        { "displayName": "Status", "internalName": "WorkspaceStatus", "type": "Choice", "choices": ["Proposed", "Discovery", "Build", "Active", "Handoff", "Closed"], "default": "Proposed" },
+        { "displayName": "Primary Owner", "internalName": "PrimaryOwner", "type": "User" },
+        { "displayName": "Tenant Of Record", "internalName": "TenantOfRecord", "type": "Text" },
+        { "displayName": "Access Posture", "internalName": "AccessPosture", "type": "Choice", "choices": ["Internal only", "Named guests approved", "Client tenant", "Pending decision"], "default": "Pending decision" },
+        { "displayName": "External Access Approved", "internalName": "ExternalAccessApproved", "type": "Choice", "choices": ["No", "Pending", "Yes"], "default": "No" },
+        { "displayName": "Handoff State", "internalName": "HandoffState", "type": "Choice", "choices": ["Not started", "Drafting", "Ready for review", "Issued", "Accepted", "Not applicable"], "default": "Not started" },
+        { "displayName": "Review Date", "internalName": "ReviewDate", "type": "DateTime" },
+        { "displayName": "Workspace Map URL", "internalName": "WorkspaceMapUrl", "type": "URL" },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" }
+      ],
+      "views": [
+        { "title": "Active Workspaces", "fields": ["LinkTitle", "WorkspaceModel", "OwnershipPosture", "WorkspaceStatus", "PrimaryOwner", "AccessPosture", "HandoffState", "ReviewDate"], "default": true },
+        { "title": "Handoff Needed", "fields": ["LinkTitle", "WorkspaceStatus", "HandoffState", "PrimaryOwner", "ReviewDate", "WorkspaceMapUrl"] },
+        { "title": "Access Review", "fields": ["LinkTitle", "AccessPosture", "ExternalAccessApproved", "PrimaryOwner", "ReviewDate", "Notes"] }
+      ]
+    },
+    {
+      "title": "Handoff Packet Register",
+      "description": "Workspace handoff owner, links, training state, closeout/export path, and next review date.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "Client Or Workspace", "internalName": "ClientOrWorkspace", "type": "Text" },
+        { "displayName": "Packet Status", "internalName": "PacketStatus", "type": "Choice", "choices": ["Draft", "Ready for review", "Issued", "Accepted", "Archived"], "default": "Draft" },
+        { "displayName": "Handoff Owner", "internalName": "HandoffOwner", "type": "User" },
+        { "displayName": "Training State", "internalName": "TrainingState", "type": "Choice", "choices": ["Not started", "Scheduled", "Delivered", "Accepted", "Not applicable"], "default": "Not started" },
+        { "displayName": "Workspace Map URL", "internalName": "WorkspaceMapUrl", "type": "URL" },
+        { "displayName": "Packet Library URL", "internalName": "PacketLibraryUrl", "type": "URL" },
+        { "displayName": "Closeout Export Path", "internalName": "CloseoutExportPath", "type": "Note" },
+        { "displayName": "Next Review Date", "internalName": "NextReviewDate", "type": "DateTime" },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" }
+      ],
+      "views": [
+        { "title": "Active Handoffs", "fields": ["LinkTitle", "ClientOrWorkspace", "PacketStatus", "HandoffOwner", "TrainingState", "NextReviewDate"], "default": true },
+        { "title": "Ready For Review", "fields": ["LinkTitle", "ClientOrWorkspace", "PacketStatus", "HandoffOwner", "WorkspaceMapUrl", "PacketLibraryUrl"] },
+        { "title": "Archived Packets", "fields": ["LinkTitle", "ClientOrWorkspace", "PacketStatus", "NextReviewDate", "Notes"] }
+      ]
+    },
+    {
+      "title": "Tool Permission Review",
+      "description": "App grants, agent scopes, risky permissions, workflow owner, and review cadence.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "Permission Area", "internalName": "PermissionArea", "type": "Choice", "choices": ["Microsoft Graph", "SharePoint", "Teams", "Planner", "Forms", "Power Automate", "Local tool", "Other"], "default": "Microsoft Graph" },
+        { "displayName": "Current Grant", "internalName": "CurrentGrant", "type": "Text" },
+        { "displayName": "Risk Level", "internalName": "RiskLevel", "type": "Choice", "choices": ["Low", "Medium", "High", "Retire"], "default": "Medium" },
+        { "displayName": "Owner", "internalName": "Owner", "type": "User" },
+        { "displayName": "Review Status", "internalName": "ReviewStatus", "type": "Choice", "choices": ["Needs review", "Approved", "Reduce scope", "Retire", "Blocked"], "default": "Needs review" },
+        { "displayName": "Review Date", "internalName": "ReviewDate", "type": "DateTime" },
+        { "displayName": "Decision Register Link", "internalName": "DecisionRegisterLink", "type": "URL" },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" }
+      ],
+      "views": [
+        { "title": "Needs Review", "fields": ["LinkTitle", "PermissionArea", "CurrentGrant", "RiskLevel", "Owner", "ReviewStatus", "ReviewDate"], "default": true },
+        { "title": "High Risk", "fields": ["LinkTitle", "PermissionArea", "CurrentGrant", "RiskLevel", "Owner", "ReviewStatus", "DecisionRegisterLink"] }
+      ]
+    },
+    {
+      "title": "Automation Backlog",
+      "description": "Proposed automations before build, use, or client-facing approval.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "Workflow Area", "internalName": "WorkflowArea", "type": "Choice", "choices": ["Intake", "Delivery", "Governance", "Handoff", "Reporting", "Client-facing", "Internal operations"], "default": "Internal operations" },
+        { "displayName": "Proposed Value", "internalName": "ProposedValue", "type": "Note" },
+        { "displayName": "Risk Level", "internalName": "RiskLevel", "type": "Choice", "choices": ["Low", "Medium", "High"], "default": "Medium" },
+        { "displayName": "Approval Status", "internalName": "ApprovalStatus", "type": "Choice", "choices": ["Idea", "Needs approval", "Approved to build", "Approved to run", "Paused", "Retired"], "default": "Idea" },
+        { "displayName": "Owner", "internalName": "Owner", "type": "User" },
+        { "displayName": "Source Surface", "internalName": "SourceSurface", "type": "Text" },
+        { "displayName": "Target System", "internalName": "TargetSystem", "type": "Text" },
+        { "displayName": "Human Approval Required", "internalName": "HumanApprovalRequired", "type": "Boolean" },
+        { "displayName": "Review Date", "internalName": "ReviewDate", "type": "DateTime" },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" }
+      ],
+      "views": [
+        { "title": "Backlog", "fields": ["LinkTitle", "WorkflowArea", "RiskLevel", "ApprovalStatus", "Owner", "HumanApprovalRequired", "ReviewDate"], "default": true },
+        { "title": "Needs Approval", "fields": ["LinkTitle", "WorkflowArea", "RiskLevel", "ApprovalStatus", "Owner", "ProposedValue"] }
+      ]
+    },
+    {
+      "title": "Exception Register",
+      "description": "Approved deviations with owner, expiry, review date, and closure path.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "Exception Area", "internalName": "ExceptionArea", "type": "Choice", "choices": ["Access", "Sharing", "App grant", "Client records", "Automation", "Retention", "Other"], "default": "Other" },
+        { "displayName": "Status", "internalName": "ExceptionStatus", "type": "Choice", "choices": ["Proposed", "Approved", "Expiring", "Closed", "Rejected"], "default": "Proposed" },
+        { "displayName": "Approved By", "internalName": "ApprovedBy", "type": "User" },
+        { "displayName": "Expiry Date", "internalName": "ExpiryDate", "type": "DateTime" },
+        { "displayName": "Review Date", "internalName": "ReviewDate", "type": "DateTime" },
+        { "displayName": "Decision Register Link", "internalName": "DecisionRegisterLink", "type": "URL" },
+        { "displayName": "Closure Path", "internalName": "ClosurePath", "type": "Note" },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" }
+      ],
+      "views": [
+        { "title": "Open Exceptions", "fields": ["LinkTitle", "ExceptionArea", "ExceptionStatus", "ApprovedBy", "ExpiryDate", "ReviewDate"], "default": true },
+        { "title": "Expiring Soon", "fields": ["LinkTitle", "ExceptionArea", "ExceptionStatus", "ExpiryDate", "ReviewDate", "ClosurePath"] }
+      ]
+    }
+  ],
+  "libraries": [
+    {
+      "title": "Published Methods",
+      "description": "Approved templates, playbooks, training aids, reusable assets, and public-safe examples.",
+      "folders": ["Templates", "Playbooks", "Training Paths", "Reusable Assets"]
+    },
+    {
+      "title": "Delivery Working Documents",
+      "description": "Active internal delivery files and supporting material.",
+      "folders": ["Active Delivery", "Client Discovery", "Working Notes"]
+    },
+    {
+      "title": "Restricted Build Evidence",
+      "description": "App, agent, automation specs, sensitive evidence, prompt and integration risk notes. Permissions are not changed by this script.",
+      "folders": ["Agent Setup", "App Grants", "Tool Permission Review", "Integration Evidence"]
+    },
+    {
+      "title": "Client Handoff Packets",
+      "description": "Handoff-ready exports, guides, ownership notes, and review packets.",
+      "folders": ["Drafts", "Ready For Review", "Issued"]
+    },
+    {
+      "title": "Readiness Evidence",
+      "description": "Assessments, scorecards, reviews, and onboarding readiness evidence.",
+      "folders": ["Assessments", "Scorecards", "Reviews"]
+    },
+    {
+      "title": "Archive",
+      "description": "Closed and historical material.",
+      "folders": ["Completed Work", "Historical Evidence"]
+    }
+  ],
+  "navigationTargets": [
+    { "group": "Start Here", "link": "Operating Model", "kind": "Page", "target": "Operating Model" },
+    { "group": "Client Delivery", "link": "Client Discovery", "kind": "Page", "target": "Client Discovery" },
+    { "group": "Client Delivery", "link": "Handoff Packets", "kind": "Library", "target": "Client Handoff Packets" },
+    { "group": "Methods and IP", "link": "Templates", "kind": "LibraryFolder", "target": "Published Methods/Templates" },
+    { "group": "Methods and IP", "link": "Playbooks", "kind": "LibraryFolder", "target": "Published Methods/Playbooks" },
+    { "group": "Methods and IP", "link": "Training Paths", "kind": "LibraryFolder", "target": "Published Methods/Training Paths" },
+    { "group": "Methods and IP", "link": "Reusable Assets", "kind": "LibraryFolder", "target": "Published Methods/Reusable Assets" },
+    { "group": "AI and Automation", "link": "Agent Setup", "kind": "Page", "target": "Agent Setup" },
+    { "group": "AI and Automation", "link": "Automation Backlog", "kind": "List", "target": "Automation Backlog" },
+    { "group": "AI and Automation", "link": "Tool Permission Review", "kind": "List", "target": "Tool Permission Review" },
+    { "group": "Records and Evidence", "link": "Readiness Evidence", "kind": "Library", "target": "Readiness Evidence" },
+    { "group": "Governance", "link": "Access Model", "kind": "Page", "target": "Access Model" },
+    { "group": "Governance", "link": "External Sharing Rules", "kind": "Page", "target": "External Sharing Rules" },
+    { "group": "Governance", "link": "App Grants", "kind": "Page", "target": "App Grants" },
+    { "group": "Governance", "link": "Exceptions", "kind": "List", "target": "Exception Register" },
+    { "group": "Archive", "link": "Completed Work", "kind": "LibraryFolder", "target": "Archive/Completed Work" },
+    { "group": "Archive", "link": "Historical Evidence", "kind": "LibraryFolder", "target": "Archive/Historical Evidence" }
+  ]
+}

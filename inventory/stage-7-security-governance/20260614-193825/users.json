@@ -1,0 +1,82 @@
+[
+  {
+    "id": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com",
+    "mail": "adamgoodwin@guidedailabs.com",
+    "userType": "Member",
+    "accountEnabled": true,
+    "createdDateTime": "2026-06-03T20:17:31Z",
+    "assignedLicenses": [
+      {
+        "disabledPlans": [],
+        "skuId": "f245ecc8-75af-4f8e-b61f-27d8114de5f3"
+      }
+    ]
+  },
+  {
+    "id": "0bd5f6b7-0dad-4ef4-8151-0ad0f40520ff",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "admin@agoperations.ca",
+    "mail": "admin@agoperations.ca",
+    "userType": "Member",
+    "accountEnabled": true,
+    "createdDateTime": "2026-05-31T21:06:31Z",
+    "assignedLicenses": [
+      {
+        "disabledPlans": [],
+        "skuId": "f245ecc8-75af-4f8e-b61f-27d8114de5f3"
+      }
+    ]
+  },
+  {
+    "id": "b4cb187e-125c-4c0a-a66d-58e784cc4b21",
+    "displayName": "Break Glass 01 (Emergency Admin)",
+    "userPrincipalName": "breakglass-01@AGOperationsLtd.onmicrosoft.com",
+    "mail": null,
+    "userType": "Member",
+    "accountEnabled": true,
+    "createdDateTime": "2026-06-11T16:47:08Z",
+    "assignedLicenses": []
+  },
+  {
+    "id": "291eb318-6986-42d4-8d3e-e1e67c8f2ac1",
+    "displayName": "Break Glass 02 (Emergency Admin)",
+    "userPrincipalName": "breakglass-02@AGOperationsLtd.onmicrosoft.com",
+    "mail": null,
+    "userType": "Member",
+    "accountEnabled": true,
+    "createdDateTime": "2026-06-11T16:47:09Z",
+    "assignedLicenses": []
+  },
+  {
+    "id": "311b3307-e679-4c23-9e1f-3fabc0f5002e",
+    "displayName": "contact",
+    "userPrincipalName": "contact@guidedailabs.com",
+    "mail": "contact@guidedailabs.com",
+    "userType": "Member",
+    "accountEnabled": true,
+    "createdDateTime": "2026-05-31T21:21:50Z",
+    "assignedLicenses": [
+      {
+        "disabledPlans": [],
+        "skuId": "f245ecc8-75af-4f8e-b61f-27d8114de5f3"
+      }
+    ]
+  },
+  {
+    "id": "932f46df-e804-4a7d-a5e2-ce976ed25d79",
+    "displayName": "Support at ChangeTools",
+    "userPrincipalName": "support@changeleadershiptools.com",
+    "mail": "support@changeleadershiptools.com",
+    "userType": "Member",
+    "accountEnabled": true,
+    "createdDateTime": "2026-06-07T17:30:47Z",
+    "assignedLicenses": [
+      {
+        "disabledPlans": [],
+        "skuId": "f245ecc8-75af-4f8e-b61f-27d8114de5f3"
+      }
+    ]
+  }
+]

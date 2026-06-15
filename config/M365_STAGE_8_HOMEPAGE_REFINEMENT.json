@@ -1,0 +1,163 @@
+{
+  "version": "2026-06-14",
+  "stage": 8,
+  "name": "Guided AI Labs Command Center Homepage Refinement",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs"
+  },
+  "approvalPhrase": "create-stage-8-command-center-draft",
+  "safetyLimits": [
+    "No replacement of the current homepage",
+    "No page deletion",
+    "No permission changes",
+    "No guest invitations",
+    "No external sharing changes",
+    "No app grants or consent changes",
+    "No public Forms links",
+    "No client-facing automation"
+  ],
+  "homepage": {
+    "workingTitle": "Guided AI Labs Command Center",
+    "draftFileName": "Guided-AI-Labs-Command-Center-Draft.aspx",
+    "existingHomeFileName": "Guided-AI-Labs-Home.aspx",
+    "purpose": "AI-first company command center with operating cockpit access immediately visible.",
+    "labelStyle": "Plain operational labels",
+    "routingDefault": "Pages first, with direct List, Planner, library, or evidence links near the top of each page.",
+    "cardMode": "Text-only first; dashboard counts later after source records are stable.",
+    "layout": [
+      "Compact AI-first command header",
+      "Six command cards",
+      "Active Work Snapshot",
+      "Client Pathway Snapshot",
+      "Light governance / automation safety signal",
+      "Methods, IP, and evidence shortcuts"
+    ]
+  },
+  "commandCards": [
+    {
+      "title": "New Intake",
+      "statusLine": "Open items, new requests, and discovery starts.",
+      "pageTitle": "Intake",
+      "pageFileName": "Intake.aspx",
+      "futureSources": ["Guided AI Labs - Intake Register", "Forms intake kit"]
+    },
+    {
+      "title": "Active Delivery",
+      "statusLine": "Work in motion across clients, builds, and operations.",
+      "pageTitle": "Active Delivery",
+      "pageFileName": "Active-Delivery.aspx",
+      "futureSources": ["Guided AI Labs - Operating Plan", "Delivery Working Documents"]
+    },
+    {
+      "title": "Decisions Needed",
+      "statusLine": "Scope, access, governance, and delivery choices to clear.",
+      "pageTitle": "Decisions",
+      "pageFileName": "Decisions.aspx",
+      "futureSources": ["Decision Register", "Exception Register"]
+    },
+    {
+      "title": "Client Readiness",
+      "statusLine": "Discovery, assessments, workspace models, and next reviews.",
+      "pageTitle": "Client Discovery",
+      "pageFileName": "Client-Discovery.aspx",
+      "futureSources": ["Client Workspace Register", "Readiness Evidence"]
+    },
+    {
+      "title": "Automation And Agents",
+      "statusLine": "Proposed automations, agent setup, and tool permission reviews.",
+      "pageTitle": "AI And Automation Governance",
+      "pageFileName": "AI-And-Automation-Governance.aspx",
+      "futureSources": ["Automation Backlog", "Tool Permission Review", "Agent Action Log"]
+    },
+    {
+      "title": "Handoffs And Evidence",
+      "statusLine": "Handoff packets, readiness evidence, and closeout records.",
+      "pageTitle": "Client Workspace Pattern",
+      "pageFileName": "Client-Workspace-Pattern.aspx",
+      "futureSources": ["Handoff Packet Register", "Client Handoff Packets", "Readiness Evidence"]
+    }
+  ],
+  "activeWorkSnapshot": [
+    {
+      "column": "Now Moving",
+      "purpose": "Active delivery, internal build, client discovery, or operating work in motion."
+    },
+    {
+      "column": "Waiting On Adam",
+      "purpose": "Approvals, reviews, access, decisions, or clarifications that need Adam."
+    },
+    {
+      "column": "Blocked / At Risk",
+      "purpose": "Stuck work, unresolved governance, permission gaps, stale handoffs, or risks."
+    },
+    {
+      "column": "Next Best Actions",
+      "purpose": "The few actions that keep momentum without opening a new branch of work."
+    }
+  ],
+  "clientPathwaySnapshot": [
+    {
+      "stage": "Discover",
+      "toolsetDirection": "Intake form, discovery checklist, stakeholder/context capture, initial fit notes."
+    },
+    {
+      "stage": "Assess",
+      "toolsetDirection": "Readiness worksheet, evidence prompts, governance/access review, risk and opportunity summary."
+    },
+    {
+      "stage": "Design Workspace",
+      "toolsetDirection": "Workspace model decision, tenant/client ownership map, access model, minimum surface plan."
+    },
+    {
+      "stage": "Deliver",
+      "toolsetDirection": "Active delivery plan, tasks, decisions, working docs, automation/tool review."
+    },
+    {
+      "stage": "Handoff",
+      "toolsetDirection": "Handoff packet, training path, ownership notes, review date, archive/export plan."
+    }
+  ],
+  "operationalReadiness": {
+    "name": "Operational Readiness",
+    "placement": "Homepage band first; dedicated page later only if real use justifies it.",
+    "orientation": "Operations and readiness are combined. Internal clients and external clients both move through the same operating cockpit.",
+    "dashboardRunway": [
+      {
+        "phase": "Phase 1",
+        "shape": "Text-only cards and static bands",
+        "sourceCandidates": "SharePoint pages and navigation"
+      },
+      {
+        "phase": "Phase 2",
+        "shape": "Manual snapshot fields",
+        "sourceCandidates": "List views, Planner buckets, Decision Register, Handoff Packet Register"
+      },
+      {
+        "phase": "Phase 3",
+        "shape": "Filtered SharePoint/List views embedded on pages",
+        "sourceCandidates": "Microsoft Lists views, Planner, document libraries"
+      },
+      {
+        "phase": "Phase 4",
+        "shape": "Power BI or Microsoft Graph-backed dashboard",
+        "sourceCandidates": "Cross-list metrics, delivery cycle, readiness score, automation review aging"
+      },
+      {
+        "phase": "Phase 5",
+        "shape": "UAOS/Graphify bridge dashboard",
+        "sourceCandidates": "Reviewed summaries, graph handoffs, mission status, evidence references"
+      }
+    ],
+    "futureMetrics": [
+      "Open intake items",
+      "Active delivery items",
+      "Decisions waiting",
+      "Internal and external client readiness reviews due",
+      "Automations awaiting review",
+      "Handoff packets ready or overdue",
+      "Permission reviews due",
+      "Exceptions expiring"
+    ]
+  }
+}

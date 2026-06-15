@@ -10,7 +10,8 @@ what decision is waiting next.
 
 For fast agent/session restart, read
 [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md) first. It is the
-compact current-state brief and safety stop for the Stage 6/7 transition.
+compact current-state brief and safety stop for the current Stage 8 command
+center work.
 
 ---
 
@@ -55,16 +56,18 @@ The canonical execution plan is the **10-stage roadmap**:
 | 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
-| **7** | **Security, Governance & External Sharing** | **◀ Current — baseline, read-only inventory runner, summarizer, and local preflight prepared; no tenant changes** |
-| 8 | Client Workspace Reference Pattern | ⬜ Planned — working doc added: [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md) |
+| **7** | **◀ Security, Governance & External Sharing** | **Current — core guest/sharing governance changes applied, verified, and logged; app-grant resting state + support MFA next** |
+| 8 | Client Workspace Reference Pattern | ▶ Page/navigation skeleton and backing Lists/libraries live-built and read-back verified; look/feel and workflow walkthrough next |
 | 9 | Agentic OS Bridge Readiness | ⬜ Planned — working doc added: [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md) |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
 Stage 3 SharePoint site provisioning, Stage 4 local OneDrive/browser cleanup,
-and Stage 6 Lists/Planner/Teams provisioning. Each tenant write was gated and
-read-back-verified. Stage 5 Exchange design completed on 2026-06-14; no mailbox,
-alias, forwarding, calendar, or license changes were needed. This remains a
-human-supervised setup, not unattended automation.
+Stage 6 Lists/Planner/Teams provisioning, and Stage 7 guest/share-link governance
+tightening. Each tenant write was gated, read-back-verified, and the Stage 7
+governance batch is logged in the operating Lists. Stage 5 Exchange design
+completed on 2026-06-14; no mailbox, alias, forwarding, calendar, or license
+changes were needed. This remains a human-supervised setup, not
+unattended automation.
 
 **Authorization pattern:** when a tenant action needs Adam's credentials, MFA, or
 approval, launch a visible interactive window and let Adam authorize there. Codex
@@ -95,7 +98,7 @@ should not sit waiting for private credentials.
   `support@` become structured intake, tasks, records, central OS/Graphify
   references, and eventually a governed agentic workflow.
 
-### Current work — Stage 6 Teams, Planner, Lists & Operating State
+### Completed work — Stage 6 Teams, Planner, Lists & Operating State
 
 - [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md)
   — current working design for the Microsoft Lists, Planner buckets, Teams
@@ -157,7 +160,12 @@ should not sit waiting for private credentials.
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
   — Stage 7 working design for MFA/sign-in posture, admin-role review, app
   consent, guest access, external sharing, labels/retention, device sync, audit
-  cadence, and agentic approval gates.
+  cadence, and agentic approval gates. Graph and SharePoint sharing inventory was
+  captured before changes in `inventory/stage-7-security-governance/20260614-191812/`
+  and verified after changes in `inventory/stage-7-security-governance/20260614-193825/`.
+  The approved governance write was recorded in Decision Register item #1 and
+  Agent Action Log item #1. The local-only review pack is
+  `inventory/stage-7-security-governance/20260614-193825/stage-7-governance-review-pack.md`.
 - [config/M365_STAGE_7_GOVERNANCE_BASELINE.json](config/M365_STAGE_7_GOVERNANCE_BASELINE.json)
   — machine-readable Stage 7 baseline, read-only inventory scopes, and exit
   criteria.
@@ -165,7 +173,31 @@ should not sit waiting for private credentials.
   — **read-only** Graph inventory for security/governance posture. It records
   partial-permission gaps as `*.error.json` instead of changing the tenant.
 - [scripts/Start-M365Stage7SecurityInventoryInteractive.ps1](scripts/Start-M365Stage7SecurityInventoryInteractive.ps1)
-  — launches the Stage 7 read-only inventory in a visible PowerShell/auth window.
+  — launches the Stage 7 Graph read-only inventory in a visible PowerShell/auth
+  window, using browser/WAM auth by default.
+- [scripts/Invoke-M365Stage7SharePointSharingInventory.ps1](scripts/Invoke-M365Stage7SharePointSharingInventory.ps1)
+  — **read-only** PnP inventory for SharePoint tenant/site sharing posture.
+- [scripts/Start-M365Stage7SharePointSharingInventoryInteractive.ps1](scripts/Start-M365Stage7SharePointSharingInventoryInteractive.ps1)
+  — launches the focused SharePoint sharing read-back in a visible auth window.
+- [scripts/Invoke-M365Stage7GovernanceWriteWindow.ps1](scripts/Invoke-M365Stage7GovernanceWriteWindow.ps1)
+  — dry-run-first, typed-approval operator for Stage 7 tenant policy changes.
+- [scripts/Start-M365Stage7GovernanceWriteWindowInteractive.ps1](scripts/Start-M365Stage7GovernanceWriteWindowInteractive.ps1)
+  — launches the Stage 7 governance write window in a visible auth window.
+- [scripts/Invoke-M365Stage7RecordGovernanceDecision.ps1](scripts/Invoke-M365Stage7RecordGovernanceDecision.ps1)
+  — writes the approved Stage 7 governance decision into Decision Register and
+  Agent Action Log only.
+- [scripts/Start-M365Stage7RecordGovernanceDecisionInteractive.ps1](scripts/Start-M365Stage7RecordGovernanceDecisionInteractive.ps1)
+  — visible launcher for the Stage 7 governance decision record.
+- [scripts/Invoke-M365Stage7GovernanceReviewPack.ps1](scripts/Invoke-M365Stage7GovernanceReviewPack.ps1)
+  — local-only review generator for app grants, MFA gaps, and site sharing
+  exceptions from saved inventory.
+- [scripts/Invoke-M365Stage7AppGrantRestingStatePlan.ps1](scripts/Invoke-M365Stage7AppGrantRestingStatePlan.ps1)
+  — local-only generator for the broad delegated app grant resting-state plan.
+- [scripts/Invoke-M365Stage7SiteSharingExceptionWindow.ps1](scripts/Invoke-M365Stage7SiteSharingExceptionWindow.ps1)
+  — dry-run-first, typed-approval operator for disabling root/legacy site
+  sharing exceptions.
+- [scripts/Start-M365Stage7SiteSharingExceptionWindowInteractive.ps1](scripts/Start-M365Stage7SiteSharingExceptionWindowInteractive.ps1)
+  — visible launcher for the Stage 7 site sharing exception window.
 - [scripts/Summarize-M365Stage7SecurityInventory.ps1](scripts/Summarize-M365Stage7SecurityInventory.ps1)
   — local post-processor for a completed Stage 7 inventory folder.
 - [scripts/Test-M365Stage7LocalPreflight.ps1](scripts/Test-M365Stage7LocalPreflight.ps1)
@@ -175,12 +207,90 @@ should not sit waiting for private credentials.
   — latest Stage 7 local preflight report. The optional SharePoint Online
   Management Shell module is not installed, so `-IncludeSharePointAdmin` is a
   later optional enhancement.
+- [inventory/stage-7-security-governance/20260614-193825/stage-7-governance-review-pack.md](inventory/stage-7-security-governance/20260614-193825/stage-7-governance-review-pack.md)
+  — local-only review pack for app grant, MFA, and site sharing exception
+  closeout.
+- [inventory/stage-7-security-governance/20260614-193825/stage-7-app-grant-resting-state-plan.md](inventory/stage-7-security-governance/20260614-193825/stage-7-app-grant-resting-state-plan.md)
+  — local-only app grant resting-state plan; no app grants revoked.
+- [inventory/stage-7-security-governance/stage-7-site-sharing-exception-window-20260614-210942.log](inventory/stage-7-security-governance/stage-7-site-sharing-exception-window-20260614-210942.log)
+  — approval-gated site sharing cleanup apply log; root, A.G. Operations Ltd,
+  and All Company were disabled for external sharing.
+- [inventory/stage-7-security-governance/20260614-193825/stage-7-sharepoint-sharing-20260614-211128.log](inventory/stage-7-security-governance/20260614-193825/stage-7-sharepoint-sharing-20260614-211128.log)
+  — read-only SharePoint sharing verification after the cleanup apply.
+- [inventory/stage-7-security-governance/STAGE_7_CLOSEOUT_ACTION_PLAN.md](inventory/stage-7-security-governance/STAGE_7_CLOSEOUT_ACTION_PLAN.md)
+  — remaining Stage 7 closeout sequence for support MFA, app grants, and
+  root/legacy site sharing.
 
 ### Upcoming work — Stage 8/9 Reference Pattern & Bridge Readiness
 
+- [M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md)
+  — planning baseline adapted from the local Prime Operations SharePoint
+  Workspace reference: page/navigation shape, Lists/libraries, permission zones,
+  and build sequence for a Guided AI Labs operating command center.
+- [config/M365_STAGE_8_WORKSPACE_SHAPE.json](config/M365_STAGE_8_WORKSPACE_SHAPE.json)
+  — machine-readable Stage 8 page, navigation, List, library, and approval-gate
+  shape for the Guided AI Labs command center.
+- [config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json](config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json)
+  — machine-readable Stage 8 backing pages, Lists, libraries, folders, and
+  navigation targets for the Guided AI Labs command center.
+- [scripts/New-M365Stage8WorkspaceShapePacket.ps1](scripts/New-M365Stage8WorkspaceShapePacket.ps1)
+  — local-only generator for the Stage 8 workspace shape build guide and CSV
+  maps.
+- [scripts/Invoke-M365Stage8WorkspaceShapeBuild.ps1](scripts/Invoke-M365Stage8WorkspaceShapeBuild.ps1)
+  — dry-run-first, typed-approval operator for creating the Guided AI Labs
+  command-center page skeleton and resolvable SharePoint quick-launch links.
+- [scripts/Start-M365Stage8WorkspaceShapeBuildInteractive.ps1](scripts/Start-M365Stage8WorkspaceShapeBuildInteractive.ps1)
+  — visible launcher for the Stage 8 workspace shape build.
+- [scripts/Invoke-M365Stage8VerifyWorkspaceShape.ps1](scripts/Invoke-M365Stage8VerifyWorkspaceShape.ps1)
+  — read-only verifier for expected Stage 8 pages and resolvable quick-launch
+  links.
+- [scripts/Start-M365Stage8VerifyWorkspaceShapeInteractive.ps1](scripts/Start-M365Stage8VerifyWorkspaceShapeInteractive.ps1)
+  — visible launcher for the Stage 8 page/navigation verification.
+- [scripts/Test-M365Stage8LocalPreflight.ps1](scripts/Test-M365Stage8LocalPreflight.ps1)
+  — local-only Stage 8 validation for config, scripts, generated packet, and
+  PnP page/navigation command availability.
+- [inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md)
+  — generated Stage 8 page/navigation/List/library build guide; no tenant
+  writes.
+- [inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md)
+  — read-back verification for the live Stage 8 page/navigation skeleton; latest
+  result is PASS.
+- [scripts/New-M365Stage8WorkspaceBackingPacket.ps1](scripts/New-M365Stage8WorkspaceBackingPacket.ps1)
+  — local-only generator for the Stage 8 backing-structure build guide and CSV
+  maps.
+- [scripts/Invoke-M365Stage8WorkspaceBackingBuild.ps1](scripts/Invoke-M365Stage8WorkspaceBackingBuild.ps1)
+  — dry-run-first, typed-approval operator for creating Stage 8 backing pages,
+  Lists, libraries, folders, and remaining quick-launch links.
+- [scripts/Invoke-M365Stage8VerifyWorkspaceBacking.ps1](scripts/Invoke-M365Stage8VerifyWorkspaceBacking.ps1)
+  — read-only verifier for Stage 8 backing pages, Lists, fields, views,
+  libraries, folders, and navigation targets.
+- [inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md](inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md)
+  — read-back verification for the live Stage 8 backing structure; latest result
+  is PASS.
 - [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
   — planned client workspace reference pattern: client-vs-GAL tenant ownership,
   discovery inputs, workspace components, handoff packet, and safety gates.
+- [M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md](M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md)
+  — Stage 8 boundary note aligning SharePoint page refinement with the UAOS
+  cockpit repo, Graphify Workspace Cockpit, and the Prime Operations reference.
+- [config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json](config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json)
+  — machine-readable Guided AI Labs Command Center homepage refinement: six
+  command cards, Active Work Snapshot, Client Pathway Snapshot, Operational
+  Readiness dashboard runway, and draft-first live gate.
+- [scripts/New-M365Stage8HomepageRefinementPacket.ps1](scripts/New-M365Stage8HomepageRefinementPacket.ps1)
+  — local-only homepage refinement packet and static preview generator.
+- [scripts/Invoke-M365Stage8HomepageRefinementBuild.ps1](scripts/Invoke-M365Stage8HomepageRefinementBuild.ps1)
+  — dry-run-first, typed-approval operator that can create the command-center
+  draft review page without replacing the current homepage.
+- [scripts/Start-M365Stage8HomepageRefinementInteractive.ps1](scripts/Start-M365Stage8HomepageRefinementInteractive.ps1)
+  — visible launcher for the homepage refinement draft builder.
+- [scripts/Invoke-M365Stage8VerifyHomepageRefinement.ps1](scripts/Invoke-M365Stage8VerifyHomepageRefinement.ps1)
+  — read-only verifier for the command-center draft page and current-homepage
+  safety check.
+- [scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1](scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1)
+  — visible launcher for the homepage refinement verifier.
+- [inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md)
+  — generated build guide for the homepage refinement layer.
 - [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
   — planned M365/Graphify/UAOS bridge readiness: adapter surface map,
   read/propose/write categories, app posture, action logging, stop/rollback
@@ -247,9 +357,14 @@ should not sit waiting for private credentials.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-14.md](SESSION_TURNOVER_2026-06-14.md) — **most recent**
-  handoff: Stage 5 inventory auth path improved, visible launcher + summarizer
-  added, read-only Exchange inventory completed.
+- [SESSION_TURNOVER_2026-06-15.md](SESSION_TURNOVER_2026-06-15.md) — **most recent**
+  handoff: Stage 8 workspace skeleton/backing structure are live-built and
+  verified; command-center homepage refinement is locally prepared; next live
+  step is draft-only page creation plus read-only verification.
+- [SESSION_TURNOVER_2026-06-14.md](SESSION_TURNOVER_2026-06-14.md) — Stage 5/6/7
+  transition history, including Exchange inventory, Stage 6 provisioning audit,
+  and early Stage 6 authorization issues. Now historical because Stages 6-8 have
+  advanced.
 - [SESSION_TURNOVER_2026-06-12.md](SESSION_TURNOVER_2026-06-12.md) — Stage 5
   started, Exchange routing doc + read-only inventory runner added.
 - [SESSION_TURNOVER_2026-06-11.md](SESSION_TURNOVER_2026-06-11.md) — dated

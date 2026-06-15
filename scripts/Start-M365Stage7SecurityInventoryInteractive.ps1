@@ -1,5 +1,6 @@
 param(
-    [switch]$IncludeSharePointAdmin
+    [switch]$IncludeSharePointAdmin,
+    [switch]$UseDeviceCode
 )
 
 # Opens a visible PowerShell 7 window for Stage 7 read-only security inventory.
@@ -56,16 +57,26 @@ Write-Host "Tenant writes: none" -ForegroundColor Gray
 if ($IncludeSharePointAdmin) {
     Write-Host "Optional SharePoint admin read-back: enabled" -ForegroundColor Gray
 }
+if ($UseDeviceCode) {
+    Write-Host "Auth mode: Microsoft Graph device-code fallback" -ForegroundColor Gray
+}
+else {
+    Write-Host "Auth mode: Microsoft Graph browser/WAM" -ForegroundColor Gray
+}
 
 $arguments = @(
     "-NoProfile",
     "-ExecutionPolicy", "Bypass",
     "-NoExit",
-    "-File", $targetScript
+    "-File", $targetScript,
+    "-SkipAuthReadyPrompt"
 )
 
 if ($IncludeSharePointAdmin) {
     $arguments += "-IncludeSharePointAdmin"
+}
+if ($UseDeviceCode) {
+    $arguments += "-UseDeviceCode"
 }
 
 Start-VisiblePowerShellConsole -Title "M365 Stage 7 Inventory" -PowerShellPath $powerShellHost.Source -Arguments $arguments -WorkingDirectory $workspaceRoot

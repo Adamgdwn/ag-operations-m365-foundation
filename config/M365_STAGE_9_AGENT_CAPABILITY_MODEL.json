@@ -1,0 +1,310 @@
+{
+  "version": "2026-06-15",
+  "stage": 9,
+  "title": "M365 Coordinator and Support Agent Capability Model",
+  "scope": "Local planning model for governed read-write M365 agent capability. This file does not grant permissions, create apps, send mail, invite guests, or change tenant policy.",
+  "principles": [
+    "Purpose-built access, not inherited setup power.",
+    "Read/propose/log first; write only through named governance lanes.",
+    "External sends, guest invites, sharing changes, app consent, tenant policy, destructive deletes, and calendar commitments require human approval.",
+    "Every meaningful action must land in Agent Action Log and, when policy or scope changes, Decision Register."
+  ],
+  "governanceLevels": [
+    {
+      "id": "G0",
+      "name": "Read Only",
+      "description": "Inventory, classify, summarize, and detect gaps. No M365 writes.",
+      "humanApprovalRequired": false
+    },
+    {
+      "id": "G1",
+      "name": "Propose And Log",
+      "description": "Create draft recommendations and Suggested Agent Action Log rows only.",
+      "humanApprovalRequired": false
+    },
+    {
+      "id": "G2",
+      "name": "Approved Internal Write",
+      "description": "Create or update internal operating records after a named approval gate.",
+      "humanApprovalRequired": true
+    },
+    {
+      "id": "G3",
+      "name": "Restricted External Or Access Write",
+      "description": "External messages, public/client forms, guest access, sharing, permissions, app grants, and tenant policy changes.",
+      "humanApprovalRequired": true
+    },
+    {
+      "id": "G4",
+      "name": "Blocked Autonomous Action",
+      "description": "Secrets, break-glass accounts, destructive tenant actions, broad grants, anonymous sharing, and unattended client-impacting commitments.",
+      "humanApprovalRequired": true
+    }
+  ],
+  "agents": [
+    {
+      "name": "M365 Coordinator",
+      "shortName": "m365-coordinator",
+      "persona": "Internal operating coordinator for Guided AI Labs",
+      "initialMode": "Codex/local supervised delegated session",
+      "targetMode": "Purpose-built Entra app or UAOS adapter after Stage 9 approval",
+      "primarySites": [
+        "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs"
+      ],
+      "mailboxes": [],
+      "readSurfaces": [
+        "Guided AI Labs - Intake Register",
+        "Guided AI Labs - Operating Plan",
+        "Decision Register",
+        "Agent Action Log",
+        "Client Workspace Register",
+        "Handoff Packet Register",
+        "Tool Permission Review",
+        "Automation Backlog",
+        "Exception Register",
+        "Readiness Evidence"
+      ],
+      "writeSurfaces": [
+        {
+          "surface": "Agent Action Log",
+          "governanceLevel": "G1",
+          "allowedWrites": ["suggested actions", "dry-run evidence", "verification notes"]
+        },
+        {
+          "surface": "Guided AI Labs - Intake Register",
+          "governanceLevel": "G2",
+          "allowedWrites": ["create/update internal intake rows", "set next action", "link durable home"]
+        },
+        {
+          "surface": "Decision Register",
+          "governanceLevel": "G2",
+          "allowedWrites": ["record approved operating/governance decisions"]
+        },
+        {
+          "surface": "Automation Backlog",
+          "governanceLevel": "G2",
+          "allowedWrites": ["record proposed automation", "update readiness/status"]
+        },
+        {
+          "surface": "Tool Permission Review",
+          "governanceLevel": "G2",
+          "allowedWrites": ["record permission review candidates", "record approved review outcomes"]
+        },
+        {
+          "surface": "Guided AI Labs - Operating Plan",
+          "governanceLevel": "G2",
+          "allowedWrites": ["create/update supervised Planner tasks after approval"]
+        }
+      ],
+      "blockedActions": [
+        "send external email",
+        "invite guests",
+        "change sharing or permissions",
+        "grant app consent",
+        "change tenant policy",
+        "delete records",
+        "publish client-facing forms",
+        "make calendar commitments"
+      ]
+    },
+    {
+      "name": "M365 Support Agent",
+      "shortName": "m365-support-agent",
+      "persona": "Support intake and resolution assistant for Change Leadership Tools",
+      "initialMode": "Codex/local supervised delegated session",
+      "targetMode": "Scoped mailbox/list adapter after support MFA and Stage 9 approval",
+      "primarySites": [
+        "https://agoperationsltd.sharepoint.com/sites/ChangeLeadershipTools",
+        "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs"
+      ],
+      "mailboxes": [
+        "support@changeleadershiptools.com"
+      ],
+      "readSurfaces": [
+        "Change Leadership Tools - Support Register",
+        "Agent Action Log",
+        "Decision Register",
+        "support mailbox metadata and approved message bodies",
+        "support knowledge candidates"
+      ],
+      "writeSurfaces": [
+        {
+          "surface": "Agent Action Log",
+          "governanceLevel": "G1",
+          "allowedWrites": ["suggested support actions", "draft-response evidence", "triage notes"]
+        },
+        {
+          "surface": "Change Leadership Tools - Support Register",
+          "governanceLevel": "G2",
+          "allowedWrites": ["create/update support rows", "set severity/status", "record resolution summary", "flag knowledge candidate"]
+        },
+        {
+          "surface": "support mailbox drafts",
+          "governanceLevel": "G2",
+          "allowedWrites": ["create draft replies only after approval"]
+        },
+        {
+          "surface": "Guided AI Labs - Operating Plan",
+          "governanceLevel": "G2",
+          "allowedWrites": ["create/update supervised support follow-up tasks after approval"]
+        }
+      ],
+      "blockedActions": [
+        "send external email without Adam approval",
+        "change support mailbox forwarding or delegates",
+        "invite guests",
+        "change sharing or permissions",
+        "grant app consent",
+        "delete support records",
+        "collect sensitive client data through public forms"
+      ]
+    }
+  ],
+  "permissionLanes": [
+    {
+      "lane": "Supervised Delegated",
+      "recommendedFirst": true,
+      "description": "Use Adam-approved interactive Graph/PnP sessions and typed approval gates for first write loops.",
+      "fit": ["Planner writes", "first records writes", "manual review runs"],
+      "avoidAsRestingState": true
+    },
+    {
+      "lane": "SharePoint Selected Permissions",
+      "recommendedFirst": false,
+      "description": "Use Selected scopes plus explicit site/list grants for durable app-based List and SharePoint access.",
+      "fit": ["selected Guided AI Labs Lists", "selected Change Leadership Tools Support Register", "selected evidence libraries"],
+      "avoidAsRestingState": false
+    },
+    {
+      "lane": "Exchange Application RBAC",
+      "recommendedFirst": false,
+      "description": "Use Exchange Online Application RBAC to scope mailbox access for app-based support processing.",
+      "fit": ["support@changeleadershiptools.com mailbox access"],
+      "avoidAsRestingState": false
+    },
+    {
+      "lane": "Broad Setup Grants",
+      "recommendedFirst": false,
+      "description": "Existing setup-helper grants such as AllSites.FullControl and Group.ReadWrite.All.",
+      "fit": ["time-boxed provisioning only"],
+      "avoidAsRestingState": true
+    }
+  ],
+  "firstLiveLoopCandidates": [
+    {
+      "id": "stage9-loop-001",
+      "agent": "M365 Coordinator",
+      "name": "Read intake state and create a suggested Agent Action Log row",
+      "governanceLevel": "G1",
+      "writes": ["Agent Action Log"],
+      "approvalPhrase": "record-stage-9-coordinator-suggestion",
+      "exitCriteria": "A suggested row exists, links to source context, and no restricted action occurred."
+    },
+    {
+      "id": "stage9-loop-002",
+      "agent": "M365 Support Agent",
+      "name": "Create a supervised support triage row and draft response evidence",
+      "governanceLevel": "G2",
+      "writes": ["Change Leadership Tools - Support Register", "Agent Action Log"],
+      "approvalPhrase": "record-stage-9-support-triage",
+      "exitCriteria": "A support row and log row exist; no external email was sent."
+    }
+  ],
+  "approvalGates": [
+    {
+      "action": "Create Suggested Agent Action Log row",
+      "governanceLevel": "G1",
+      "approvalRequiredBeforeAction": false,
+      "evidenceTarget": "Agent Action Log"
+    },
+    {
+      "action": "Create or update internal List row",
+      "governanceLevel": "G2",
+      "approvalRequiredBeforeAction": true,
+      "evidenceTarget": "Agent Action Log"
+    },
+    {
+      "action": "Create or update Planner task",
+      "governanceLevel": "G2",
+      "approvalRequiredBeforeAction": true,
+      "evidenceTarget": "Agent Action Log"
+    },
+    {
+      "action": "Create mailbox draft",
+      "governanceLevel": "G2",
+      "approvalRequiredBeforeAction": true,
+      "evidenceTarget": "Agent Action Log"
+    },
+    {
+      "action": "Send external email",
+      "governanceLevel": "G3",
+      "approvalRequiredBeforeAction": true,
+      "evidenceTarget": "Decision Register and Agent Action Log"
+    },
+    {
+      "action": "Change sharing, guests, permissions, app consent, or tenant policy",
+      "governanceLevel": "G3",
+      "approvalRequiredBeforeAction": true,
+      "evidenceTarget": "Decision Register and Agent Action Log"
+    }
+  ],
+  "rolloutSequence": [
+    {
+      "step": 1,
+      "name": "Finish Stage 8 command-center draft review",
+      "doneWhen": "Draft page is created, read-back verified, and browser-reviewed."
+    },
+    {
+      "step": 2,
+      "name": "Record Stage 9 capability decision",
+      "doneWhen": "Decision Register records coordinator/support scope and blocked actions."
+    },
+    {
+      "step": 3,
+      "name": "Run G1 coordinator loop",
+      "doneWhen": "Coordinator creates only a Suggested Agent Action Log row."
+    },
+    {
+      "step": 4,
+      "name": "Run G2 support triage loop",
+      "doneWhen": "Support row and log row are created after approval; no external send occurs."
+    },
+    {
+      "step": 5,
+      "name": "Choose app posture",
+      "doneWhen": "Adam chooses delegated-only, Selected permissions, Exchange App RBAC, or a mixed adapter path."
+    },
+    {
+      "step": 6,
+      "name": "Create separate app registrations if needed",
+      "doneWhen": "Apps are created through a separate approval-gated operator and do not reuse agent-pnp-provisioning."
+    }
+  ],
+  "sourceNotes": [
+    {
+      "title": "Microsoft Graph permissions reference",
+      "url": "https://learn.microsoft.com/en-us/graph/permissions-reference",
+      "checked": "2026-06-15"
+    },
+    {
+      "title": "Overview of Selected permissions in OneDrive and SharePoint",
+      "url": "https://learn.microsoft.com/en-us/graph/permissions-selected-overview",
+      "checked": "2026-06-15"
+    },
+    {
+      "title": "Role Based Access Control for Applications in Exchange Online",
+      "url": "https://learn.microsoft.com/en-us/exchange/permissions-exo/application-rbac",
+      "checked": "2026-06-15"
+    },
+    {
+      "title": "Microsoft Graph Planner task permissions",
+      "url": "https://learn.microsoft.com/en-us/graph/api/planneruser-list-tasks?view=graph-rest-1.0",
+      "checked": "2026-06-15"
+    },
+    {
+      "title": "Microsoft Graph user sendMail",
+      "url": "https://learn.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0",
+      "checked": "2026-06-15"
+    }
+  ]
+}

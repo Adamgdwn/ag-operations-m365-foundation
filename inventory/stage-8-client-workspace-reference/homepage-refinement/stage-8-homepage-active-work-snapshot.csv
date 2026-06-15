@@ -1,0 +1,5 @@
+"column","purpose"
+"Now Moving","Active delivery, internal build, client discovery, or operating work in motion."
+"Waiting On Adam","Approvals, reviews, access, decisions, or clarifications that need Adam."
+"Blocked / At Risk","Stuck work, unresolved governance, permission gaps, stale handoffs, or risks."
+"Next Best Actions","The few actions that keep momentum without opening a new branch of work."

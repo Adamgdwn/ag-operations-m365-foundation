@@ -1,0 +1,3 @@
+"Id","Agent","Name","GovernanceLevel","Writes","ApprovalPhrase","ExitCriteria"
+"stage9-loop-001","M365 Coordinator","Read intake state and create a suggested Agent Action Log row","G1","Agent Action Log","record-stage-9-coordinator-suggestion","A suggested row exists, links to source context, and no restricted action occurred."
+"stage9-loop-002","M365 Support Agent","Create a supervised support triage row and draft response evidence","G2","Change Leadership Tools - Support Register; Agent Action Log","record-stage-9-support-triage","A support row and log row exist; no external email was sent."

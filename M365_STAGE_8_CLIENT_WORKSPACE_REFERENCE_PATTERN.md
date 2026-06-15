@@ -1,6 +1,6 @@
 # Microsoft 365 Stage 8 - Client Workspace Reference Pattern
 
-Status: **planned - ready after Stage 7 governance decisions**
+Status: **in progress - backing structure live-built and verified**
 (2026-06-14).
 
 Stage 8 turns the Guided AI Labs / AG Operations foundation into a repeatable
@@ -9,10 +9,31 @@ can confidently explain, teach, and adapt for a business partner or client.
 
 Related:
 
+- [M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md)
+- [config/M365_STAGE_8_WORKSPACE_SHAPE.json](config/M365_STAGE_8_WORKSPACE_SHAPE.json)
+- [config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json](config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json)
+- [scripts/Invoke-M365Stage8WorkspaceShapeBuild.ps1](scripts/Invoke-M365Stage8WorkspaceShapeBuild.ps1)
+- [scripts/Start-M365Stage8WorkspaceShapeBuildInteractive.ps1](scripts/Start-M365Stage8WorkspaceShapeBuildInteractive.ps1)
+- [scripts/Invoke-M365Stage8VerifyWorkspaceShape.ps1](scripts/Invoke-M365Stage8VerifyWorkspaceShape.ps1)
+- [scripts/Start-M365Stage8VerifyWorkspaceShapeInteractive.ps1](scripts/Start-M365Stage8VerifyWorkspaceShapeInteractive.ps1)
+- [scripts/Invoke-M365Stage8WorkspaceBackingBuild.ps1](scripts/Invoke-M365Stage8WorkspaceBackingBuild.ps1)
+- [scripts/Start-M365Stage8WorkspaceBackingBuildInteractive.ps1](scripts/Start-M365Stage8WorkspaceBackingBuildInteractive.ps1)
+- [scripts/Invoke-M365Stage8VerifyWorkspaceBacking.ps1](scripts/Invoke-M365Stage8VerifyWorkspaceBacking.ps1)
+- [scripts/Start-M365Stage8VerifyWorkspaceBackingInteractive.ps1](scripts/Start-M365Stage8VerifyWorkspaceBackingInteractive.ps1)
+- [config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json](config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json)
+- [scripts/New-M365Stage8HomepageRefinementPacket.ps1](scripts/New-M365Stage8HomepageRefinementPacket.ps1)
+- [scripts/Invoke-M365Stage8HomepageRefinementBuild.ps1](scripts/Invoke-M365Stage8HomepageRefinementBuild.ps1)
+- [scripts/Start-M365Stage8HomepageRefinementInteractive.ps1](scripts/Start-M365Stage8HomepageRefinementInteractive.ps1)
+- [scripts/Invoke-M365Stage8VerifyHomepageRefinement.ps1](scripts/Invoke-M365Stage8VerifyHomepageRefinement.ps1)
+- [scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1](scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1)
+- [scripts/Test-M365Stage8LocalPreflight.ps1](scripts/Test-M365Stage8LocalPreflight.ps1)
+- [inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md)
+- [inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_BUILD_GUIDE.md)
 - [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md)
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 - [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md)
 - [M365_GRAPHIFY_UAOS_ALIGNMENT.md](M365_GRAPHIFY_UAOS_ALIGNMENT.md)
+- [M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md](M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md)
 - [GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md](GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md)
 
 ---
@@ -33,6 +54,52 @@ what future AI can safely read or write
 Stage 8 is not a one-off client folder. It is the reference pattern for how
 Guided AI Labs teaches and delivers clean Microsoft 365 operating infrastructure.
 
+The internal SharePoint shape should follow the command-center pattern captured
+in [M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md):
+pages route humans, Lists hold operating state, libraries hold files/evidence,
+permissions create safety, and navigation creates usability.
+
+The page refinement layer should also follow
+[M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md](M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md):
+SharePoint is the governed business workspace and client-delivery surface,
+UAOS owns request/mission/approval/validation/learning mechanics, and Graphify
+owns knowledge lookup, recommendations, and handoff records.
+
+Homepage command-card decision:
+
+```text
+New Intake
+Active Delivery
+Decisions Needed
+Client Readiness
+Automation And Agents
+Handoffs And Evidence
+```
+
+Use these as compact operating-state doors, not broad marketing tiles.
+
+Homepage refinement build packet:
+
+- [config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json](config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json)
+- [inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md)
+- [inventory/stage-8-client-workspace-reference/homepage-refinement/stage-8-command-center-preview.html](inventory/stage-8-client-workspace-reference/homepage-refinement/stage-8-command-center-preview.html)
+
+The apply operator is draft-first only. It can create
+`Guided-AI-Labs-Command-Center-Draft.aspx` after the approval phrase
+`create-stage-8-command-center-draft`. It does not replace the current homepage
+or change navigation, permissions, sharing, guests, app grants, public Forms,
+deletion, or automation.
+
+After the draft page is created, verify it with:
+
+```powershell
+.\scripts\Start-M365Stage8VerifyHomepageRefinementInteractive.ps1
+```
+
+The verifier is read-only. It checks that the draft page exists, has the
+expected command-center title/markers, and that the draft has not become the
+current homepage.
+
 ---
 
 ## 2. Operating Principle
@@ -50,6 +117,49 @@ usually live where the client can govern them after the engagement closes.
 
 Stage 8 turns this into a repeatable decision instead of a judgment call made in
 the middle of a project.
+
+Local automation now supports a dry-run-first SharePoint page/navigation build:
+
+```powershell
+.\scripts\Start-M365Stage8WorkspaceShapeBuildInteractive.ps1
+```
+
+The live apply path requires the visible-window approval phrase:
+
+```text
+apply-stage-8-workspace-shape
+```
+
+The operator creates missing modern pages and adds resolvable navigation links.
+It does not change permissions, invite guests, widen sharing, revoke app grants,
+publish public Forms, delete pages, overwrite existing pages, or create
+client-facing automation.
+
+Live apply evidence:
+
+- apply log:
+  `inventory/stage-8-client-workspace-reference/workspace-shape/stage-8-workspace-shape-build-20260614-213203.log`
+- read-back verification:
+  `inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md`
+- latest result: PASS
+
+The live skeleton currently includes 14 modern pages, the Stage 6 operating
+Lists, 5 Stage 8 backing Lists, 5 new Stage 8 document libraries, the existing
+Archive library with Stage 8 archive folders, and all planned quick-launch links.
+
+Stage 8 backing structure was applied with the approval phrase:
+
+```text
+apply-stage-8-backing-structure
+```
+
+Live apply and verification evidence:
+
+- apply log:
+  `inventory/stage-8-client-workspace-reference/workspace-backing-structure/stage-8-workspace-backing-build-20260614-220231.log`
+- read-back verification:
+  `inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md`
+- latest result: PASS
 
 ---
 

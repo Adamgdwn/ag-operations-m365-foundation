@@ -354,10 +354,19 @@ Where do official files go after collaboration?
 
 ## Stage 7 - Security, Governance, And External Sharing
 
-Status: started locally 2026-06-14. See
+Status: active 2026-06-14. Graph and SharePoint sharing read-only inventory
+captured before and after the core guest/sharing governance write window. Guest
+invites are now restricted to admins/Guest Inviters, SharePoint tenant sharing is
+authenticated external users only, and default sharing links are specific-people
+style. The approved governance batch is recorded in the Guided AI Labs Decision
+Register and Agent Action Log. See
 [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 and [config/M365_STAGE_7_GOVERNANCE_BASELINE.json](config/M365_STAGE_7_GOVERNANCE_BASELINE.json).
-No Stage 7 tenant changes have been made.
+Stage 7 tenant changes made so far: guest invitation policy restricted to
+admins/Guest Inviters; SharePoint/OneDrive tenant sharing tightened to
+authenticated external users only; default sharing link changed to Direct.
+Operating evidence was written to Decision Register item #1 and Agent Action Log
+item #1 on 2026-06-14.
 
 ### What we are doing
 
@@ -397,12 +406,32 @@ Future AI access only works if Microsoft 365 already has clean permissions, labe
 - `config/M365_STAGE_7_GOVERNANCE_BASELINE.json`
 - `scripts/Invoke-M365Stage7SecurityInventory.ps1`
 - `scripts/Start-M365Stage7SecurityInventoryInteractive.ps1`
+- `scripts/Invoke-M365Stage7SharePointSharingInventory.ps1`
+- `scripts/Start-M365Stage7SharePointSharingInventoryInteractive.ps1`
+- `scripts/Invoke-M365Stage7GovernanceWriteWindow.ps1`
+- `scripts/Start-M365Stage7GovernanceWriteWindowInteractive.ps1`
+- `scripts/Invoke-M365Stage7RecordGovernanceDecision.ps1`
+- `scripts/Start-M365Stage7RecordGovernanceDecisionInteractive.ps1`
+- `scripts/Invoke-M365Stage7GovernanceReviewPack.ps1`
+- `scripts/Invoke-M365Stage7AppGrantRestingStatePlan.ps1`
+- `scripts/Invoke-M365Stage7SiteSharingExceptionWindow.ps1`
+- `scripts/Start-M365Stage7SiteSharingExceptionWindowInteractive.ps1`
 - `scripts/Summarize-M365Stage7SecurityInventory.ps1`
 - `scripts/Test-M365Stage7LocalPreflight.ps1`
 - `inventory/stage-7-security-governance/STAGE_7_LOCAL_PREFLIGHT.md`
+- `inventory/stage-7-security-governance/STAGE_7_CLOSEOUT_ACTION_PLAN.md`
+- `inventory/stage-7-security-governance/20260614-191812/stage-7-security-inventory-summary.md`
+- `inventory/stage-7-security-governance/20260614-193825/stage-7-security-inventory-summary.md`
+- `inventory/stage-7-security-governance/20260614-193825/stage-7-governance-review-pack.md`
+- `inventory/stage-7-security-governance/20260614-193825/stage-7-app-grant-resting-state-plan.md`
 
-The first Stage 7 implementation path is read-only inventory. Policy, guest,
-sharing, consent, and role changes remain explicit human-approved gates.
+The first Stage 7 Graph and SharePoint sharing read-only inventory is captured,
+the initial guest/sharing policy batch is applied, verified, and logged in the
+operating Lists. Root/legacy site sharing cleanup was then applied and
+read-back verified for the root, A.G. Operations Ltd, and All Company sites. The
+local-only review pack and app-grant resting-state plan are ready. Remaining
+policy, consent, role, and system-site exception changes remain explicit
+human-approved gates.
 
 ### Done when
 
@@ -419,12 +448,46 @@ what should not sync locally
 
 ## Stage 8 - Client Workspace Reference Pattern
 
-Status: planned. See
+Status: in progress. Page/navigation skeleton and backing structure are
+live-built and read-back verified; the command-center homepage draft was
+created and read-back verified on 2026-06-15. Browser review is next before any
+separate homepage promotion operator is created or run. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
+The live SharePoint shape should also follow the local Prime Operations-inspired
+planning baseline in
+[M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md).
+Page refinement should follow the UAOS/Graphify/SharePoint boundary captured in
+[M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md](M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md):
+SharePoint is the governed business workspace, UAOS owns mission and approval
+mechanics, and Graphify owns knowledge lookup and recommendations.
+Local build-shape inputs are now captured in
+[config/M365_STAGE_8_WORKSPACE_SHAPE.json](config/M365_STAGE_8_WORKSPACE_SHAPE.json)
+and
+[inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md).
+The dry-run-first live page/navigation operator is
+[scripts/Start-M365Stage8WorkspaceShapeBuildInteractive.ps1](scripts/Start-M365Stage8WorkspaceShapeBuildInteractive.ps1).
+Latest read-back verification:
+[inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md).
+Backing-structure config and verification:
+[config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json](config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json)
+and
+[inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md](inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md).
+Homepage refinement is now consolidated into a draft-first command-center
+packet:
+[config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json](config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json),
+[inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md),
+and
+[inventory/stage-8-client-workspace-reference/homepage-refinement/stage-8-command-center-preview.html](inventory/stage-8-client-workspace-reference/homepage-refinement/stage-8-command-center-preview.html).
+The draft apply path creates `Guided-AI-Labs-Command-Center-Draft.aspx` only; it
+does not replace the current homepage or change navigation/permissions/sharing.
+The companion verifier read the draft page back and confirmed that it has not
+become the current homepage.
 
 ### What we are doing
 
-Turn Guided AI Labs' own setup into a repeatable client setup model.
+Turn Guided AI Labs' own setup into a repeatable client setup model, with the
+internal SharePoint site shaped as the first command-center reference
+implementation.
 
 ### Why
 
@@ -437,6 +500,13 @@ This becomes part of the consulting offer. Clients need to understand how M365 s
 - client workspace template
 - handoff/ownership model
 - "what lives in the client tenant versus Guided AI Labs tenant" rule
+- Guided AI Labs command-center pages and navigation created from the Stage 8
+  workspace shape config
+- Stage 8 client/handoff/governance Lists, document libraries, folders, and
+  backing navigation created from the Stage 8 backing-structure config
+- Guided AI Labs Command Center homepage refinement packet with six command
+  cards, Active Work Snapshot, Client Pathway Snapshot, and Operational
+  Readiness dashboard runway
 
 ### Done when
 
@@ -452,7 +522,8 @@ Here is what you own when we leave.
 
 ## Stage 9 - Agentic OS Bridge Readiness
 
-Status: planned. See
+Status: planned; local coordinator/support capability model started 2026-06-15.
+See
 [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md).
 
 ### What we are doing
@@ -471,6 +542,8 @@ The Agentic OS will be built elsewhere, but Microsoft 365 needs to be ready for 
 - separate setup helper app from future production bridge app
 - define read/write/approval categories
 - define audit and rollback expectations
+- define first governed M365 Coordinator and M365 Support Agent capability lanes
+  before creating app registrations or consenting new permissions
 
 ### Main tools
 

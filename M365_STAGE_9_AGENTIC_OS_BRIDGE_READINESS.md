@@ -1,7 +1,7 @@
 # Microsoft 365 Stage 9 - Agentic OS Bridge Readiness
 
-Status: **planned - prepare after Stage 7 governance and Stage 8 workspace pattern**
-(2026-06-14).
+Status: **planned / local capability model started - prepare after Stage 7
+governance and Stage 8 workspace pattern** (updated 2026-06-15).
 
 Stage 9 prepares Microsoft 365 to become a governed spoke for the future Guided
 AI Labs User AI Operating System and Graphify Workspace Cockpit. It does not
@@ -15,6 +15,7 @@ Related:
 - [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 - [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md)
+- [config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json](config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json)
 
 ---
 
@@ -118,6 +119,83 @@ Stage 9 should separate:
 
 No future production bridge should simply reuse `agent-pnp-provisioning` because
 it was convenient during setup.
+
+### 6.1 Coordinator and support agent capability model
+
+The first two governed agent roles are now defined locally in
+[config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json](config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json):
+
+| Agent | Purpose | First posture | Target posture |
+|---|---|---|---|
+| M365 Coordinator | Internal Guided AI Labs operating-state coordinator | Codex/local supervised delegated session | Purpose-built Entra app or UAOS adapter after Stage 9 approval |
+| M365 Support Agent | Change Leadership Tools support intake and resolution assistant | Codex/local supervised delegated session | Scoped mailbox/List adapter after support MFA and Stage 9 approval |
+
+The governance ladder is:
+
+| Level | Meaning |
+|---|---|
+| G0 | Read-only inventory, classification, summary, and gap detection |
+| G1 | Propose and log, especially Suggested Agent Action Log rows |
+| G2 | Approved internal writes to Lists, Planner, mailbox drafts, and evidence |
+| G3 | Restricted external/access writes such as sends, guests, sharing, app consent, tenant policy, and public/client forms |
+| G4 | Blocked autonomous actions such as secrets, break-glass accounts, destructive tenant actions, broad grants, and anonymous sharing |
+
+Practical first implementation:
+
+1. Finish the Stage 8 command-center draft review.
+2. Record the Stage 9 capability decision in the Decision Register and Agent
+   Action Log.
+3. Demonstrate a G1 coordinator loop that creates only a Suggested Agent Action
+   Log row.
+4. Demonstrate a G2 support loop only after `support@changeleadershiptools.com`
+   has MFA and Adam approves the write.
+5. Defer app registrations, consent, Exchange Application RBAC, and SharePoint
+   Selected permission grants to separate dry-run-first operators.
+
+Permission posture:
+
+- SharePoint and Lists should use Selected permissions where app-based access is
+  justified, because those scopes can be paired with explicit site/list grants.
+- Exchange mailbox access should use Exchange Online Application RBAC for any
+  app-based support mailbox access.
+- Planner writes remain supervised/delegated first because the practical Planner
+  write permission posture is broader than the first safe bridge loop needs.
+- `agent-pnp-provisioning` remains a setup helper only. It is not the production
+  coordinator or support bridge.
+
+Local packet:
+
+```powershell
+.\scripts\New-M365Stage9AgentCapabilityPacket.ps1
+.\scripts\Test-M365Stage9LocalPreflight.ps1
+```
+
+Generated guide:
+
+```text
+inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BUILD_GUIDE.md
+```
+
+Dry-run-first live loop operator:
+
+```powershell
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action RecordDecision
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage
+```
+
+Apply mode requires typed approval:
+
+```text
+record-stage-9-agent-capability-decision
+record-stage-9-coordinator-suggestion
+record-stage-9-support-triage
+```
+
+The loop operator writes only to approved operating Lists. It does not create app
+registrations, grant consent, send mail, invite guests, change sharing, alter
+permissions, change tenant policy, publish Forms, delete records, or run
+unattended automation.
 
 ---
 

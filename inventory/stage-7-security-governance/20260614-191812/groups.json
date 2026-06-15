@@ -1,0 +1,62 @@
+[
+  {
+    "id": "133765cd-ca39-4070-9e33-15e9d3d1c3cf",
+    "displayName": "Group for Answers in Viva Engage – DO NOT DELETE 1521570944958464",
+    "mail": "groupforanswersinvivaengagedonotdelete1521570944958464273@agoperations.ca",
+    "mailEnabled": true,
+    "securityEnabled": false,
+    "groupTypes": [
+      "Unified"
+    ],
+    "visibility": "Public",
+    "createdDateTime": "2026-05-31T21:16:04Z"
+  },
+  {
+    "id": "b5134968-6e7d-4c46-9998-e71d370f027b",
+    "displayName": "Change Leadership Tools",
+    "mail": "ChangeLeadershipTools@agoperations.ca",
+    "mailEnabled": true,
+    "securityEnabled": false,
+    "groupTypes": [
+      "Unified"
+    ],
+    "visibility": "Private",
+    "createdDateTime": "2026-06-11T20:41:00Z"
+  },
+  {
+    "id": "bd6b1fdc-d05b-4c26-b319-f16b0dbf1428",
+    "displayName": "A.G. Operations Ltd",
+    "mail": "A.G.OperationsLtd@AGOperationsLtd.onmicrosoft.com",
+    "mailEnabled": true,
+    "securityEnabled": false,
+    "groupTypes": [
+      "Unified"
+    ],
+    "visibility": "Public",
+    "createdDateTime": "2026-05-31T21:13:54Z"
+  },
+  {
+    "id": "c27179f4-0da6-4416-8450-8216998407e4",
+    "displayName": "All Company",
+    "mail": "allcompany@AGOperationsLtd.onmicrosoft.com",
+    "mailEnabled": true,
+    "securityEnabled": false,
+    "groupTypes": [
+      "Unified"
+    ],
+    "visibility": "Public",
+    "createdDateTime": "2026-05-31T21:14:24Z"
+  },
+  {
+    "id": "db49e096-5a34-48c5-9037-0f32c22bbda8",
+    "displayName": "Guided AI Labs",
+    "mail": "GuidedAILabs@agoperations.ca",
+    "mailEnabled": true,
+    "securityEnabled": false,
+    "groupTypes": [
+      "Unified"
+    ],
+    "visibility": "Private",
+    "createdDateTime": "2026-06-11T20:39:30Z"
+  }
+]

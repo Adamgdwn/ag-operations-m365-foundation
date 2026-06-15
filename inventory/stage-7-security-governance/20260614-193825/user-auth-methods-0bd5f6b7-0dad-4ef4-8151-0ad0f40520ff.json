@@ -1,0 +1,16 @@
+[
+  {
+    "@odata.type": "#microsoft.graph.passwordAuthenticationMethod",
+    "id": "28c10230-6103-485e-b985-444c60001490",
+    "password": null,
+    "createdDateTime": "2026-05-31T21:06:31Z"
+  },
+  {
+    "@odata.type": "#microsoft.graph.microsoftAuthenticatorAuthenticationMethod",
+    "id": "5e7fff3b-0ed6-47ae-a7a4-ce08b3193f85",
+    "displayName": "CPH2655",
+    "deviceTag": "SoftwareTokenActivated",
+    "phoneAppVersion": "6.2605.3042",
+    "createdDateTime": null
+  }
+]

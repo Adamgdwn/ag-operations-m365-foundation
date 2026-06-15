@@ -23,11 +23,16 @@
     {
       "title": "Manage sharing settings for SharePoint and OneDrive",
       "url": "https://learn.microsoft.com/en-us/sharepoint/turn-external-sharing-on-or-off"
+    },
+    {
+      "title": "SharingCapabilities enumeration",
+      "url": "https://learn.microsoft.com/en-us/previous-versions/office/sharepoint-csom/dn174825(v=office.15)"
     }
   ],
   "readOnlyInventory": {
     "tenantId": "1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
     "defaultClientId": "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+    "defaultAuthMode": "Microsoft Graph browser/WAM; device-code fallback only when needed",
     "outputRoot": ".\\inventory\\stage-7-security-governance",
     "graphScopes": [
       "User.Read",
@@ -43,6 +48,42 @@
       "adminUrl": "https://agoperationsltd-admin.sharepoint.com",
       "module": "Microsoft.Online.SharePoint.PowerShell",
       "default": "off"
+    },
+    "focusedSharePointSharingRead": {
+      "adminUrl": "https://agoperationsltd-admin.sharepoint.com",
+      "module": "PnP.PowerShell",
+      "default": "preferred after Graph inventory"
+    },
+    "appliedWriteWindow": {
+      "appliedAt": "2026-06-14",
+      "guestInviteSetting": "adminsAndGuestInviters",
+      "sharePointSharingCapability": "ExternalUserSharingOnly",
+      "defaultSharingLinkType": "Direct",
+      "approvalPhrase": "apply-stage-7-governance",
+      "verifiedInventoryPath": ".\\inventory\\stage-7-security-governance\\20260614-193825"
+    },
+    "operatingEvidenceRecord": {
+      "recordedAt": "2026-06-14",
+      "siteUrl": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+      "decisionRegisterTitle": "Stage 7 governance baseline tightened and verified",
+      "decisionRegisterItemId": 1,
+      "agentActionLogTitle": "Stage 7 governance write window applied and verified",
+      "agentActionLogItemId": 1,
+      "transcriptPath": ".\\inventory\\stage-7-security-governance\\stage-7-record-governance-decision-20260614-200637.log"
+    },
+    "siteSharingExceptionCleanup": {
+      "appliedAt": "2026-06-14",
+      "approvalPhrase": "apply-stage-7-site-sharing-cleanup",
+      "targetSites": [
+        "https://agoperationsltd.sharepoint.com/",
+        "https://agoperationsltd.sharepoint.com/sites/A.G.OperationsLtd",
+        "https://agoperationsltd.sharepoint.com/sites/allcompany"
+      ],
+      "result": "Disabled external sharing on the root, A.G. Operations Ltd, and All Company sites.",
+      "transcriptPath": ".\\inventory\\stage-7-security-governance\\stage-7-site-sharing-exception-window-20260614-210942.log",
+      "verifiedInventoryPath": ".\\inventory\\stage-7-security-governance\\20260614-193825",
+      "verificationTranscriptPath": ".\\inventory\\stage-7-security-governance\\20260614-193825\\stage-7-sharepoint-sharing-20260614-211128.log",
+      "remainingException": "Viva Engage system site remains ExternalUserSharingOnly; do not delete and review dependency before changing."
     }
   },
   "baseline": [

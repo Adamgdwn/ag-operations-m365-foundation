@@ -1,0 +1,106 @@
+[
+  {
+    "roleId": "34cccf54-ca2a-4464-8980-1a59e7834e7b",
+    "roleName": "Teams Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "6048c2e2-9c01-4033-b48b-86f5320e9fa5",
+    "roleName": "User Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "6acaf2f6-9c43-4ffa-be4c-d5e3b9ba559f",
+    "roleName": "SharePoint Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "6f48b1eb-2f53-470f-ad4b-e699bd6d1007",
+    "roleName": "Global Reader",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "73629f98-8602-4bd7-94e1-e7c26a527cbd",
+    "roleName": "Exchange Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "afa4f128-8e6b-435f-9038-f949d16fa49d",
+    "roleName": "AI Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "cb2001d6-51f4-4a4c-97fe-c9ad03178874",
+    "roleName": "Global Administrator",
+    "memberId": "0bd5f6b7-0dad-4ef4-8151-0ad0f40520ff",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "admin@agoperations.ca"
+  },
+  {
+    "roleId": "cb2001d6-51f4-4a4c-97fe-c9ad03178874",
+    "roleName": "Global Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "cb2001d6-51f4-4a4c-97fe-c9ad03178874",
+    "roleName": "Global Administrator",
+    "memberId": "b4cb187e-125c-4c0a-a66d-58e784cc4b21",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Break Glass 01 (Emergency Admin)",
+    "userPrincipalName": "breakglass-01@AGOperationsLtd.onmicrosoft.com"
+  },
+  {
+    "roleId": "cb2001d6-51f4-4a4c-97fe-c9ad03178874",
+    "roleName": "Global Administrator",
+    "memberId": "291eb318-6986-42d4-8d3e-e1e67c8f2ac1",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Break Glass 02 (Emergency Admin)",
+    "userPrincipalName": "breakglass-02@AGOperationsLtd.onmicrosoft.com"
+  },
+  {
+    "roleId": "eda9d06c-4a15-4f50-925c-4df6d5f15d95",
+    "roleName": "User Experience Success Manager",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "f593efbe-dcb5-4fe6-8b9f-61a97d1fe751",
+    "roleName": "Service Support Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "roleId": "f77afdc6-e70b-4004-8460-c7b124a815d8",
+    "roleName": "Helpdesk Administrator",
+    "memberId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "memberType": "#microsoft.graph.user",
+    "displayName": "Adam Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  }
+]

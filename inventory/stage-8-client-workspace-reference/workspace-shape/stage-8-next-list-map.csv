@@ -1,0 +1,6 @@
+"title","purpose","stage"
+"Client Workspace Register","Client/partner workspace model, tenant ownership, status, access posture, and handoff state.","Stage 8 first wave"
+"Handoff Packet Register","Workspace handoff owner, links, training state, closeout/export path, and next review date.","Stage 8 first wave"
+"Tool Permission Review","App grants, agent scopes, risky permissions, workflow owner, and review cadence.","Stage 8 second wave after governance permissions are confirmed"
+"Automation Backlog","Proposed automations before build/use approval.","Stage 8 second wave"
+"Exception Register","Approved deviations with owner, expiry, review date, and closure path.","Stage 8 second wave"

@@ -1,0 +1,175 @@
+{
+  "version": "2026-06-14",
+  "stage": 8,
+  "name": "Client Workspace Reference Pattern And SharePoint Command Center Shape",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+    "purpose": "AI-first operating command center and teachable client workspace reference pattern."
+  },
+  "principle": "Pages route humans; Lists hold operating state; libraries hold files and evidence; permissions create safety; navigation creates usability.",
+  "navigationGroups": [
+    {
+      "title": "Start Here",
+      "links": ["Home", "How To Use This Workspace", "Operating Model"]
+    },
+    {
+      "title": "Operating Cockpit",
+      "links": ["Intake", "Active Delivery", "Decisions", "Action Log"]
+    },
+    {
+      "title": "Client Delivery",
+      "links": ["Client Discovery", "Client Workspace Pattern", "Handoff Packets"]
+    },
+    {
+      "title": "Methods and IP",
+      "links": ["Templates", "Playbooks", "Training Paths", "Reusable Assets"]
+    },
+    {
+      "title": "AI and Automation",
+      "links": ["Agent Setup", "Automation Backlog", "Tool Permission Review"]
+    },
+    {
+      "title": "Records and Evidence",
+      "links": ["Decision Register", "Agent Action Log", "Readiness Evidence"]
+    },
+    {
+      "title": "Governance",
+      "links": ["Access Model", "External Sharing Rules", "App Grants", "Exceptions"]
+    },
+    {
+      "title": "Archive",
+      "links": ["Completed Work", "Historical Evidence"]
+    }
+  ],
+  "pages": [
+    {
+      "title": "Guided AI Labs Home",
+      "fileName": "Guided-AI-Labs-Home.aspx",
+      "navGroup": "Start Here",
+      "role": "Compact operating cockpit.",
+      "sourceOfTruth": ["Guided AI Labs - Intake Register", "Decision Register", "Agent Action Log", "Guided AI Labs - Operating Plan"],
+      "sections": ["Current priorities", "New intake and support", "Active delivery snapshot", "Decisions needed", "Ready to promote", "Methods and IP", "Governance signals"]
+    },
+    {
+      "title": "How To Use This Workspace",
+      "fileName": "How-To-Use-This-Workspace.aspx",
+      "navGroup": "Start Here",
+      "role": "Onboarding page for a business partner or trusted collaborator.",
+      "sourceOfTruth": ["Decision Register", "M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md"],
+      "sections": ["Where intake starts", "Where tasks live", "Where decisions live", "Client-owned records rule", "Approval gates", "Before changing structure"]
+    },
+    {
+      "title": "Intake",
+      "fileName": "Intake.aspx",
+      "navGroup": "Operating Cockpit",
+      "role": "Front door for opportunities, client discovery, support, feedback, and improvement requests.",
+      "sourceOfTruth": ["Guided AI Labs - Intake Register", "M365_FORMS_INTAKE_FEEDBACK_KIT.json"],
+      "sections": ["New inquiry path", "Client readiness intake", "Support and feedback routing", "Triage views", "Human approval gates"]
+    },
+    {
+      "title": "Active Delivery",
+      "fileName": "Active-Delivery.aspx",
+      "navGroup": "Operating Cockpit",
+      "role": "Current work in motion.",
+      "sourceOfTruth": ["Guided AI Labs - Operating Plan", "Guided AI Labs - Intake Register", "Agent Action Log"],
+      "sections": ["Active Planner buckets", "Client discovery work", "Waiting follow-up", "Agent-assisted actions", "Delivery files"]
+    },
+    {
+      "title": "Decisions",
+      "fileName": "Decisions.aspx",
+      "navGroup": "Operating Cockpit",
+      "role": "Durable memory for governance, client scope, delivery commitments, automation boundaries, and exceptions.",
+      "sourceOfTruth": ["Decision Register"],
+      "sections": ["Recent decisions", "Revisit soon", "Governance decisions", "Client and delivery decisions"]
+    },
+    {
+      "title": "Client Workspace Pattern",
+      "fileName": "Client-Workspace-Pattern.aspx",
+      "navGroup": "Client Delivery",
+      "role": "Stage 8 reference page for how Guided AI Labs structures client work.",
+      "sourceOfTruth": ["M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md", "Client Workspace Register", "Handoff Packet Register"],
+      "sections": ["Client tenant first rule", "Workspace models", "Discovery inputs", "Minimum working surfaces", "Handoff packet"]
+    },
+    {
+      "title": "Methods And IP",
+      "fileName": "Methods-And-IP.aspx",
+      "navGroup": "Methods and IP",
+      "role": "Reusable delivery knowledge without mixing it into client-owned records.",
+      "sourceOfTruth": ["Published Methods", "Templates and Standards"],
+      "sections": ["Templates", "Playbooks", "Training paths", "Reusable prompts and method notes", "Publishing gates"]
+    },
+    {
+      "title": "AI And Automation Governance",
+      "fileName": "AI-And-Automation-Governance.aspx",
+      "navGroup": "AI and Automation",
+      "role": "Controlled surface for agents, automations, tool permissions, app grants, and human approval rules.",
+      "sourceOfTruth": ["Tool Permission Review", "Automation Backlog", "Exception Register", "Agent Action Log"],
+      "sections": ["Read/propose/write boundary", "App grants", "Automation backlog", "Human approval gates", "Rollback and stop rules"]
+    }
+  ],
+  "nextLists": [
+    {
+      "title": "Client Workspace Register",
+      "purpose": "Client/partner workspace model, tenant ownership, status, access posture, and handoff state.",
+      "stage": "Stage 8 first wave"
+    },
+    {
+      "title": "Handoff Packet Register",
+      "purpose": "Workspace handoff owner, links, training state, closeout/export path, and next review date.",
+      "stage": "Stage 8 first wave"
+    },
+    {
+      "title": "Tool Permission Review",
+      "purpose": "App grants, agent scopes, risky permissions, workflow owner, and review cadence.",
+      "stage": "Stage 8 second wave after governance permissions are confirmed"
+    },
+    {
+      "title": "Automation Backlog",
+      "purpose": "Proposed automations before build/use approval.",
+      "stage": "Stage 8 second wave"
+    },
+    {
+      "title": "Exception Register",
+      "purpose": "Approved deviations with owner, expiry, review date, and closure path.",
+      "stage": "Stage 8 second wave"
+    }
+  ],
+  "libraryRoles": [
+    {
+      "title": "Published Methods",
+      "purpose": "Approved templates, playbooks, training aids, and public-safe examples.",
+      "visibility": "Broad internal read, controlled edit"
+    },
+    {
+      "title": "Delivery Working Documents",
+      "purpose": "Active internal delivery files and supporting material.",
+      "visibility": "Members/contributors"
+    },
+    {
+      "title": "Restricted Build Evidence",
+      "purpose": "App, agent, automation specs, sensitive evidence, prompt/integration risk notes.",
+      "visibility": "Restricted builders/governance reviewers"
+    },
+    {
+      "title": "Client Handoff Packets",
+      "purpose": "Handoff-ready exports, guides, ownership notes, and review packets.",
+      "visibility": "Client/partner-specific"
+    },
+    {
+      "title": "Archive",
+      "purpose": "Closed and historical material.",
+      "visibility": "Controlled"
+    }
+  ],
+  "liveChangeGates": [
+    "Navigation/page rewrites",
+    "Permission changes",
+    "New external sharing",
+    "Partner/client guest invitation",
+    "Public or anonymous Forms links",
+    "App grant changes",
+    "Client-facing automation",
+    "Storing sensitive AI/automation details in broadly readable areas"
+  ]
+}

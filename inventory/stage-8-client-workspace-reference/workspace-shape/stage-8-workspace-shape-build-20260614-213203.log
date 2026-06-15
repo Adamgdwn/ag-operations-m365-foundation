@@ -1,0 +1,148 @@
+**********************
+PowerShell transcript start
+Start time: 20260614213204
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage8WorkspaceShapeBuild.ps1 -Apply
+Process ID: 340
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8 - Workspace Shape Build
+Mode:       APPLY
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8_WORKSPACE_SHAPE.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8-client-workspace-reference\workspace-shape\stage-8-workspace-shape-build-20260614-213203.log
+
+Planned page skeletons:
+- Guided AI Labs Home (Guided-AI-Labs-Home.aspx)
+- How To Use This Workspace (How-To-Use-This-Workspace.aspx)
+- Intake (Intake.aspx)
+- Active Delivery (Active-Delivery.aspx)
+- Decisions (Decisions.aspx)
+- Client Workspace Pattern (Client-Workspace-Pattern.aspx)
+- Methods And IP (Methods-And-IP.aspx)
+- AI And Automation Governance (AI-And-Automation-Governance.aspx)
+
+Planned navigation additions:
+- Start Here
+  - Home: ready (Guided AI Labs Home)
+  - How To Use This Workspace: ready (How To Use This Workspace)
+  - Operating Model: deferred (No concrete backing page/list/library target yet.)
+- Operating Cockpit
+  - Intake: ready (Intake)
+  - Active Delivery: ready (Active Delivery)
+  - Decisions: ready (Decisions)
+  - Action Log: ready (Action Log)
+- Client Delivery
+  - Client Discovery: deferred (No concrete backing page/list/library target yet.)
+  - Client Workspace Pattern: ready (Client Workspace Pattern)
+  - Handoff Packets: deferred (No concrete backing page/list/library target yet.)
+- Methods and IP
+  - Templates: deferred (No concrete backing page/list/library target yet.)
+  - Playbooks: deferred (No concrete backing page/list/library target yet.)
+  - Training Paths: deferred (No concrete backing page/list/library target yet.)
+  - Reusable Assets: deferred (No concrete backing page/list/library target yet.)
+- AI and Automation
+  - Agent Setup: deferred (No concrete backing page/list/library target yet.)
+  - Automation Backlog: deferred (No concrete backing page/list/library target yet.)
+  - Tool Permission Review: deferred (No concrete backing page/list/library target yet.)
+- Records and Evidence
+  - Decision Register: ready (Decision Register)
+  - Agent Action Log: ready (Agent Action Log)
+  - Readiness Evidence: deferred (No concrete backing page/list/library target yet.)
+- Governance
+  - Access Model: deferred (No concrete backing page/list/library target yet.)
+  - External Sharing Rules: deferred (No concrete backing page/list/library target yet.)
+  - App Grants: deferred (No concrete backing page/list/library target yet.)
+  - Exceptions: deferred (No concrete backing page/list/library target yet.)
+- Archive
+  - Completed Work: deferred (No concrete backing page/list/library target yet.)
+  - Historical Evidence: deferred (No concrete backing page/list/library target yet.)
+
+Safety limits: no permissions, guest invites, external sharing, app grants, public Forms, page deletion, or existing page overwrite.
+
+
+Connecting to Guided AI Labs SharePoint site...
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Guided-AI-Labs-Home.aspx' does not exist"
+Creating page: Guided-AI-Labs-Home.aspx
+  [OK] Guided AI Labs Home
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'How-To-Use-This-Workspace.aspx' does not exist"
+Creating page: How-To-Use-This-Workspace.aspx
+  [OK] How To Use This Workspace
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Intake.aspx' does not exist"
+Creating page: Intake.aspx
+  [OK] Intake
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Active-Delivery.aspx' does not exist"
+Creating page: Active-Delivery.aspx
+  [OK] Active Delivery
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Decisions.aspx' does not exist"
+Creating page: Decisions.aspx
+  [OK] Decisions
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Client-Workspace-Pattern.aspx' does not exist"
+Creating page: Client-Workspace-Pattern.aspx
+  [OK] Client Workspace Pattern
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Methods-And-IP.aspx' does not exist"
+Creating page: Methods-And-IP.aspx
+  [OK] Methods And IP
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'AI-And-Automation-Governance.aspx' does not exist"
+Creating page: AI-And-Automation-Governance.aspx
+  [OK] AI And Automation Governance
+Creating navigation group: Start Here
+  Adding link: Home -> /sites/GuidedAILabs/SitePages/Guided-AI-Labs-Home.aspx
+    [OK] Home
+  Adding link: How To Use This Workspace -> /sites/GuidedAILabs/SitePages/How-To-Use-This-Workspace.aspx
+    [OK] How To Use This Workspace
+  Deferred navigation link: Operating Model (No concrete backing page/list/library target yet.)
+Creating navigation group: Operating Cockpit
+  Adding link: Intake -> /sites/GuidedAILabs/SitePages/Intake.aspx
+    [OK] Intake
+  Adding link: Active Delivery -> /sites/GuidedAILabs/SitePages/Active-Delivery.aspx
+    [OK] Active Delivery
+  Adding link: Decisions -> /sites/GuidedAILabs/SitePages/Decisions.aspx
+    [OK] Decisions
+  Adding link: Action Log -> /sites/GuidedAILabs/Lists/Agent%20Action%20Log/AllItems.aspx
+    [OK] Action Log
+Creating navigation group: Client Delivery
+  Deferred navigation link: Client Discovery (No concrete backing page/list/library target yet.)
+  Adding link: Client Workspace Pattern -> /sites/GuidedAILabs/SitePages/Client-Workspace-Pattern.aspx
+    [OK] Client Workspace Pattern
+  Deferred navigation link: Handoff Packets (No concrete backing page/list/library target yet.)
+Creating navigation group: Methods and IP
+  Deferred navigation link: Templates (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Playbooks (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Training Paths (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Reusable Assets (No concrete backing page/list/library target yet.)
+Creating navigation group: AI and Automation
+  Deferred navigation link: Agent Setup (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Automation Backlog (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Tool Permission Review (No concrete backing page/list/library target yet.)
+Creating navigation group: Records and Evidence
+  Adding link: Decision Register -> /sites/GuidedAILabs/Lists/Decision%20Register/AllItems.aspx
+    [OK] Decision Register
+  Adding link: Agent Action Log -> /sites/GuidedAILabs/Lists/Agent%20Action%20Log/AllItems.aspx
+    [OK] Agent Action Log
+  Deferred navigation link: Readiness Evidence (No concrete backing page/list/library target yet.)
+Creating navigation group: Governance
+  Deferred navigation link: Access Model (No concrete backing page/list/library target yet.)
+  Deferred navigation link: External Sharing Rules (No concrete backing page/list/library target yet.)
+  Deferred navigation link: App Grants (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Exceptions (No concrete backing page/list/library target yet.)
+Navigation group exists: Archive
+  Deferred navigation link: Completed Work (No concrete backing page/list/library target yet.)
+  Deferred navigation link: Historical Evidence (No concrete backing page/list/library target yet.)
+
+Stage 8 workspace shape build complete. Review the Guided AI Labs site pages/navigation in the browser before adding Lists, libraries, or permissions.
+**********************
+PowerShell transcript end
+End time: 20260614213435
+**********************

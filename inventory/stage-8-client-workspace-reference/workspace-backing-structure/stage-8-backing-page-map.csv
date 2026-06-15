@@ -1,0 +1,7 @@
+"title","fileName","navGroup","role"
+"Operating Model","Operating-Model.aspx","Start Here","Plain-language operating map for how intake, tasks, decisions, records, and AI-assisted work move through the company."
+"Client Discovery","Client-Discovery.aspx","Client Delivery","Front door for client readiness, workspace ownership, handoff planning, and tenant-of-record decisions."
+"Agent Setup","Agent-Setup.aspx","AI and Automation","Controlled setup notes for agents and assisted workflows before they are promoted into client or operating use."
+"Access Model","Access-Model.aspx","Governance","Simple access zones and approval rules for internal, partner, builder, reviewer, and client-specific surfaces."
+"External Sharing Rules","External-Sharing-Rules.aspx","Governance","Stage 7 sharing posture translated into day-to-day operating rules."
+"App Grants","App-Grants.aspx","Governance","Review surface for app grants, delegated permissions, risk notes, and owner-approved resting state."

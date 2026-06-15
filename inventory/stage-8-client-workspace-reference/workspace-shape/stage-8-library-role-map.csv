@@ -1,0 +1,6 @@
+"title","purpose","visibility"
+"Published Methods","Approved templates, playbooks, training aids, and public-safe examples.","Broad internal read, controlled edit"
+"Delivery Working Documents","Active internal delivery files and supporting material.","Members/contributors"
+"Restricted Build Evidence","App, agent, automation specs, sensitive evidence, prompt/integration risk notes.","Restricted builders/governance reviewers"
+"Client Handoff Packets","Handoff-ready exports, guides, ownership notes, and review packets.","Client/partner-specific"
+"Archive","Closed and historical material.","Controlled"

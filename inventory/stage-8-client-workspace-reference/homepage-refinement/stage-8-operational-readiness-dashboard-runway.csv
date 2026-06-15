@@ -1,0 +1,6 @@
+"phase","shape","sourceCandidates"
+"Phase 1","Text-only cards and static bands","SharePoint pages and navigation"
+"Phase 2","Manual snapshot fields","List views, Planner buckets, Decision Register, Handoff Packet Register"
+"Phase 3","Filtered SharePoint/List views embedded on pages","Microsoft Lists views, Planner, document libraries"
+"Phase 4","Power BI or Microsoft Graph-backed dashboard","Cross-list metrics, delivery cycle, readiness score, automation review aging"
+"Phase 5","UAOS/Graphify bridge dashboard","Reviewed summaries, graph handoffs, mission status, evidence references"

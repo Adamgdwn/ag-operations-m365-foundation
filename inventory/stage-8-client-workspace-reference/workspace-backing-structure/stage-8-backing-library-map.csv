@@ -1,0 +1,7 @@
+"Title","Description","Folders"
+"Published Methods","Approved templates, playbooks, training aids, reusable assets, and public-safe examples.","Templates; Playbooks; Training Paths; Reusable Assets"
+"Delivery Working Documents","Active internal delivery files and supporting material.","Active Delivery; Client Discovery; Working Notes"
+"Restricted Build Evidence","App, agent, automation specs, sensitive evidence, prompt and integration risk notes. Permissions are not changed by this script.","Agent Setup; App Grants; Tool Permission Review; Integration Evidence"
+"Client Handoff Packets","Handoff-ready exports, guides, ownership notes, and review packets.","Drafts; Ready For Review; Issued"
+"Readiness Evidence","Assessments, scorecards, reviews, and onboarding readiness evidence.","Assessments; Scorecards; Reviews"
+"Archive","Closed and historical material.","Completed Work; Historical Evidence"

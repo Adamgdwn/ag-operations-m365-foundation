@@ -1,0 +1,7 @@
+"Check","Status","Detail"
+"Draft page exists","PASS","Guided-AI-Labs-Command-Center-Draft.aspx"
+"Draft page title matches","PASS","Guided AI Labs Command Center"
+"Draft page contains expected command-center markers","PASS","all expected markers found"
+"Existing home page still exists","PASS","Guided-AI-Labs-Home.aspx"
+"Current homepage is not the draft page","PASS","SitePages/Home.aspx"
+"Draft and existing homepage filenames are distinct","PASS","Draft: Guided-AI-Labs-Command-Center-Draft.aspx; Existing: Guided-AI-Labs-Home.aspx"

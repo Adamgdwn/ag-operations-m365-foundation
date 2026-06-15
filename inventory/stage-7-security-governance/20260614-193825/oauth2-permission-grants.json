@@ -1,0 +1,122 @@
+[
+  {
+    "clientId": "01de1025-543e-4041-9486-dca599020768",
+    "consentType": "AllPrincipals",
+    "id": "JRDeAT5UQUCUhtylmQIHaOKGd0036PxJiU68hNt4PVU",
+    "principalId": null,
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": " EWS.AccessAsUser.All offline_access IMAP.AccessAsUser.All POP.AccessAsUser.All SMTP.Send"
+  },
+  {
+    "clientId": "01de1025-543e-4041-9486-dca599020768",
+    "consentType": "Principal",
+    "id": "JRDeAT5UQUCUhtylmQIHaOKGd0036PxJiU68hNt4PVUq8USD6U61S5VKBW7AoJAI",
+    "principalId": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": " EWS.AccessAsUser.All offline_access IMAP.AccessAsUser.All POP.AccessAsUser.All SMTP.Send"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8OKGd0036PxJiU68hNt4PVU",
+    "principalId": null,
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": "AppCatalog.Read.All AppCatalog.Submit Channel.ReadBasic.All EduAssignments.ReadBasic EduRoster.ReadBasic Files.Read.All Files.ReadWrite.All Group.Read.All People.Read People.Read.All Presence.Read.All User.Read User.ReadBasic.All Tasks.ReadWrite TeamsAppInstallation.ReadWriteForTeam TeamsAppInstallation.ReadWriteSelfForTeam Group-Conversation.ReadWrite.All Team.ReadBasic.All TeamsTab.Create Channel.Create Sites.Read.All PrinterShare.ReadBasic.All PrintJob.Create PrintJob.ReadBasic FileStorageContainer.Selected Group-Conversation.ReadWrite.All ChatMember.Read GroupMember.Read.All Files.Read Calendars.Read InformationProtectionPolicy.Read SensitivityLabel.Read"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8LHOKercIjdLqxAf_42fTf8",
+    "principalId": null,
+    "resourceId": "ea29ceb1-22dc-4b37-ab10-1fff8d9f4dff",
+    "scope": "User.Read User.ReadBasic.All Calendars.Read"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8NYssK-NTVdPlDuXEpDpPgU",
+    "principalId": null,
+    "resourceId": "afb02cd6-4d8d-4f57-943b-971290e93e05",
+    "scope": "Files.ReadWrite.All TermStore.ReadWrite.All Sites.ReadWrite.All Sites.FullControl.All M365BillingPlatform.Read.All"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8KwM7cGo4eVIqr8PCcSM5ws",
+    "principalId": null,
+    "resourceId": "c1ed0cac-e1a8-48e5-aabf-0f09c48ce70b",
+    "scope": "Report.Read.All UserState.ReadWrite.All Dataset.Read.All MLModel.Execute.All"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8CY4R_BatulMp89uPzJGDdE",
+    "principalId": null,
+    "resourceId": "f0473826-b65a-4ce9-a7cf-6e3f32460dd1",
+    "scope": "user_impersonation"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8BQCCCceIppNjNJMqVp2sG4",
+    "principalId": null,
+    "resourceId": "27080214-221e-4d9a-8cd2-4ca95a76b06e",
+    "scope": "Forms.ReadWrite"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8E2feBnTcOtNkXFLbpZrefo",
+    "principalId": null,
+    "resourceId": "19789f4d-70d3-4deb-9171-4b6e966b79fa",
+    "scope": "user_impersonation"
+  },
+  {
+    "clientId": "1b17f028-aadc-4332-9ef9-09cb33782bf0",
+    "consentType": "AllPrincipals",
+    "id": "KPAXG9yqMkOe-QnLM3gr8Jw-EFCujfdEl2hBm8YY9d4",
+    "principalId": null,
+    "resourceId": "50103e9c-8dae-44f7-9768-419bc618f5de",
+    "scope": "Sites.FullControl.All ExternalConnection.ReadWrite.All"
+  },
+  {
+    "clientId": "9272b2ff-b069-43b4-95c3-39bbaf5d6532",
+    "consentType": "AllPrincipals",
+    "id": "_7JykmmwtEOVwzm7r11lMuKGd0036PxJiU68hNt4PVU",
+    "principalId": null,
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": " User.Read Organization.Read.All Domain.Read.All Directory.Read.All Group.Read.All Sites.Read.All Files.Read.All Team.ReadBasic.All offline_access profile openid User.ReadWrite.All RoleManagement.ReadWrite.Directory AuditLog.Read.All Application.Read.All Policy.Read.All UserAuthenticationMethod.Read.All Policy.ReadWrite.Authorization"
+  },
+  {
+    "clientId": "c02d7d2e-5729-4f38-88fc-bbbc8104f0f6",
+    "consentType": "AllPrincipals",
+    "id": "Ln0twClXOE-I_Lu8gQTw9uKGd0036PxJiU68hNt4PVU",
+    "principalId": null,
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": " openid email profile offline_access User.Read Calendars.ReadWrite Calendars.ReadWrite.Shared"
+  },
+  {
+    "clientId": "e9447124-150f-405e-a882-541291004fe4",
+    "consentType": "AllPrincipals",
+    "id": "JHFE6Q8VXkCoglQSkQBP5OKGd0036PxJiU68hNt4PVU",
+    "principalId": null,
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": " openid profile"
+  },
+  {
+    "clientId": "f840cbb4-dd15-44f2-8ce6-fed5dcf5d7f4",
+    "consentType": "AllPrincipals",
+    "id": "tMtA-BXd8kSM5v7V3PXX9OKGd0036PxJiU68hNt4PVU",
+    "principalId": null,
+    "resourceId": "4d7786e2-e837-49fc-894e-bc84db783d55",
+    "scope": "Group.ReadWrite.All User.Read Tasks.ReadWrite openid TeamsTab.Create Channel.Create offline_access profile"
+  },
+  {
+    "clientId": "f840cbb4-dd15-44f2-8ce6-fed5dcf5d7f4",
+    "consentType": "AllPrincipals",
+    "id": "tMtA-BXd8kSM5v7V3PXX9NYssK-NTVdPlDuXEpDpPgU",
+    "principalId": null,
+    "resourceId": "afb02cd6-4d8d-4f57-943b-971290e93e05",
+    "scope": "AllSites.FullControl"
+  }
+]

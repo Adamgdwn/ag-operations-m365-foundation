@@ -78,8 +78,19 @@ $requiredFiles = @(
     "config\M365_STAGE_7_GOVERNANCE_BASELINE.json",
     "scripts\Invoke-M365Stage7SecurityInventory.ps1",
     "scripts\Start-M365Stage7SecurityInventoryInteractive.ps1",
+    "scripts\Invoke-M365Stage7SharePointSharingInventory.ps1",
+    "scripts\Start-M365Stage7SharePointSharingInventoryInteractive.ps1",
+    "scripts\Invoke-M365Stage7GovernanceWriteWindow.ps1",
+    "scripts\Start-M365Stage7GovernanceWriteWindowInteractive.ps1",
+    "scripts\Invoke-M365Stage7RecordGovernanceDecision.ps1",
+    "scripts\Start-M365Stage7RecordGovernanceDecisionInteractive.ps1",
+    "scripts\Invoke-M365Stage7GovernanceReviewPack.ps1",
+    "scripts\Invoke-M365Stage7AppGrantRestingStatePlan.ps1",
+    "scripts\Invoke-M365Stage7SiteSharingExceptionWindow.ps1",
+    "scripts\Start-M365Stage7SiteSharingExceptionWindowInteractive.ps1",
     "scripts\Summarize-M365Stage7SecurityInventory.ps1",
-    "scripts\Test-M365Stage7LocalPreflight.ps1"
+    "scripts\Test-M365Stage7LocalPreflight.ps1",
+    "inventory\stage-7-security-governance\STAGE_7_CLOSEOUT_ACTION_PLAN.md"
 )
 
 foreach ($relativeFile in $requiredFiles) {
@@ -90,6 +101,16 @@ foreach ($relativeFile in $requiredFiles) {
 $requiredScripts = @(
     "scripts\Invoke-M365Stage7SecurityInventory.ps1",
     "scripts\Start-M365Stage7SecurityInventoryInteractive.ps1",
+    "scripts\Invoke-M365Stage7SharePointSharingInventory.ps1",
+    "scripts\Start-M365Stage7SharePointSharingInventoryInteractive.ps1",
+    "scripts\Invoke-M365Stage7GovernanceWriteWindow.ps1",
+    "scripts\Start-M365Stage7GovernanceWriteWindowInteractive.ps1",
+    "scripts\Invoke-M365Stage7RecordGovernanceDecision.ps1",
+    "scripts\Start-M365Stage7RecordGovernanceDecisionInteractive.ps1",
+    "scripts\Invoke-M365Stage7GovernanceReviewPack.ps1",
+    "scripts\Invoke-M365Stage7AppGrantRestingStatePlan.ps1",
+    "scripts\Invoke-M365Stage7SiteSharingExceptionWindow.ps1",
+    "scripts\Start-M365Stage7SiteSharingExceptionWindowInteractive.ps1",
     "scripts\Summarize-M365Stage7SecurityInventory.ps1",
     "scripts\Test-M365Stage7LocalPreflight.ps1"
 )
@@ -108,8 +129,14 @@ foreach ($relativeScript in $requiredScripts) {
 $pwsh = Get-Command "pwsh.exe" -ErrorAction SilentlyContinue
 Add-Result -Results $results -Check "PowerShell 7 host available" -Passed ($null -ne $pwsh) -Detail ($(if ($null -ne $pwsh) { $pwsh.Source } else { "pwsh.exe not found" }))
 
+$graphAuth = Get-Module -ListAvailable -Name Microsoft.Graph.Authentication | Sort-Object Version -Descending | Select-Object -First 1
+Add-Result -Results $results -Check "Microsoft.Graph.Authentication module available" -Passed ($null -ne $graphAuth) -Detail ($(if ($null -ne $graphAuth) { ("{0} {1}" -f $graphAuth.Name, $graphAuth.Version) } else { "required module not found" }))
+
 $graphSignIns = Get-Module -ListAvailable -Name Microsoft.Graph.Identity.SignIns | Sort-Object Version -Descending | Select-Object -First 1
 Add-Result -Results $results -Check "Microsoft.Graph.Identity.SignIns module available" -Passed ($null -ne $graphSignIns) -Detail ($(if ($null -ne $graphSignIns) { ("{0} {1}" -f $graphSignIns.Name, $graphSignIns.Version) } else { "optional module not found" }))
+
+$pnp = Get-Module -ListAvailable -Name PnP.PowerShell | Sort-Object Version -Descending | Select-Object -First 1
+Add-Result -Results $results -Check "PnP.PowerShell module available" -Passed ($null -ne $pnp) -Detail ($(if ($null -ne $pnp) { ("{0} {1}" -f $pnp.Name, $pnp.Version) } else { "required for focused SharePoint sharing read-back" }))
 
 $spo = Get-Module -ListAvailable -Name Microsoft.Online.SharePoint.PowerShell | Sort-Object Version -Descending | Select-Object -First 1
 Add-Result -Results $results -Check "SharePoint Online Management Shell module available" -Passed ($null -ne $spo) -Detail ($(if ($null -ne $spo) { ("{0} {1}" -f $spo.Name, $spo.Version) } else { "optional module not found; -IncludeSharePointAdmin will skip/fail gracefully" }))
@@ -140,10 +167,17 @@ foreach ($result in $results) {
 $lines.Add("")
 $lines.Add("Next safe actions:")
 $lines.Add("")
-$lines.Add('1. Run `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1` for read-only Graph inventory when Adam is ready to sign in.')
-$lines.Add('2. Run `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1 -IncludeSharePointAdmin` only after the SharePoint Online module is installed and a second admin prompt is acceptable.')
-$lines.Add('3. Summarize a completed inventory with `.\scripts\Summarize-M365Stage7SecurityInventory.ps1`.')
-$lines.Add('4. Use `M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md` to record the Security Defaults / Conditional Access and external sharing decisions.')
+$lines.Add('1. Run `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1` for read-only Graph inventory through browser/WAM auth when Adam is ready to sign in.')
+$lines.Add('2. If browser/WAM auth fails, run `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1 -UseDeviceCode` as the fallback.')
+$lines.Add('3. Run `.\scripts\Start-M365Stage7SharePointSharingInventoryInteractive.ps1` for focused read-only SharePoint tenant/site sharing inventory.')
+$lines.Add('4. Run `.\scripts\Start-M365Stage7GovernanceWriteWindowInteractive.ps1` for a dry-run of the approval-gated governance write batch.')
+$lines.Add('5. Run `.\scripts\Start-M365Stage7RecordGovernanceDecisionInteractive.ps1 -Apply` to record the approved Stage 7 governance decision in the Decision Register and Agent Action Log.')
+$lines.Add('6. Run `.\scripts\Invoke-M365Stage7GovernanceReviewPack.ps1` to generate the local-only app grant, MFA, and site sharing exception review pack.')
+$lines.Add('7. Run `.\scripts\Invoke-M365Stage7AppGrantRestingStatePlan.ps1` to generate the local-only broad app grant resting-state plan.')
+$lines.Add('8. Run `.\scripts\Start-M365Stage7SiteSharingExceptionWindowInteractive.ps1` for a dry-run of the root/legacy site sharing cleanup batch.')
+$lines.Add('9. Run `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1 -IncludeSharePointAdmin` only if the legacy SharePoint Online module is installed and a second admin prompt is acceptable.')
+$lines.Add('10. Summarize a completed inventory with `.\scripts\Summarize-M365Stage7SecurityInventory.ps1`.')
+$lines.Add('11. Use `M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md` to record the Security Defaults / Conditional Access and external sharing decisions.')
 $lines.Add("")
 
 Set-Content -LiteralPath $resolvedOutputPath -Value $lines -Encoding UTF8

@@ -1,0 +1,36 @@
+**********************
+PowerShell transcript start
+Start time: 20260614193959
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage7SharePointSharingInventory.ps1 -InventoryPath .\inventory\stage-7-security-governance\20260614-193825
+Process ID: 1404
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 7 - SharePoint Sharing Read-Only Inventory
+Admin URL:     https://agoperationsltd-admin.sharepoint.com
+Output folder: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-7-security-governance\20260614-193825
+Tenant writes: none
+
+This reads SharePoint tenant/site sharing posture only. It does not change sharing, guests, links, permissions, or content.
+
+Connecting to SharePoint admin endpoint...
+Connected. Reading tenant and site sharing posture...
+Saved sharepoint-tenant.json and sharepoint-sites.json (11 site(s)).
+
+Running local Stage 7 summarizer...
+Stage 7 summary written: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-7-security-governance\20260614-193825\stage-7-security-inventory-summary.md
+**********************
+PowerShell transcript end
+End time: 20260614194007
+**********************

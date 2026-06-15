@@ -1,0 +1,52 @@
+**********************
+PowerShell transcript start
+Start time: 20260614232742
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+.\scripts\Invoke-M365Stage8HomepageRefinementBuild.ps1 -NoPause
+Process ID: 22280
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8 - Homepage Refinement Build
+Mode:       DRY RUN
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Draft page: Guided-AI-Labs-Command-Center-Draft.aspx
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8_HOMEPAGE_REFINEMENT.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8-client-workspace-reference\homepage-refinement\stage-8-homepage-refinement-build-20260614-232742.log
+
+Planned homepage refinement:
+- Title: Guided AI Labs Command Center
+- Purpose: AI-first company command center with operating cockpit access immediately visible.
+- Command cards:
+  - New Intake: Open items, new requests, and discovery starts.
+  - Active Delivery: Work in motion across clients, builds, and operations.
+  - Decisions Needed: Scope, access, governance, and delivery choices to clear.
+  - Client Readiness: Discovery, assessments, workspace models, and next reviews.
+  - Automation And Agents: Proposed automations, agent setup, and tool permission reviews.
+  - Handoffs And Evidence: Handoff packets, readiness evidence, and closeout records.
+- Active Work Snapshot:
+  - Now Moving
+  - Waiting On Adam
+  - Blocked / At Risk
+  - Next Best Actions
+- Client Pathway: Discover -> Assess -> Design Workspace -> Deliver -> Handoff
+- Operational Readiness: Homepage band first; dedicated page later only if real use justifies it.
+
+Safety limits: draft page only; no homepage replacement, navigation, permissions, sharing, app grants, public Forms, deletion, or automation.
+
+Dry run only. Re-run with -Apply and type the approval phrase to create the draft review page.
+**********************
+PowerShell transcript end
+End time: 20260614232743
+**********************

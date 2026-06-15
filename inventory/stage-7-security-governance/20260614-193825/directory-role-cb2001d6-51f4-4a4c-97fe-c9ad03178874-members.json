@@ -1,0 +1,60 @@
+[
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "id": "0bd5f6b7-0dad-4ef4-8151-0ad0f40520ff",
+    "businessPhones": [
+      "4033029432"
+    ],
+    "displayName": "Adam Goodwin",
+    "givenName": "Adam",
+    "jobTitle": null,
+    "mail": "admin@agoperations.ca",
+    "mobilePhone": null,
+    "officeLocation": null,
+    "preferredLanguage": "en",
+    "surname": "Goodwin",
+    "userPrincipalName": "admin@agoperations.ca"
+  },
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "id": "8344f12a-4ee9-4bb5-954a-056ec0a09008",
+    "businessPhones": [],
+    "displayName": "Adam Goodwin",
+    "givenName": "Adam",
+    "jobTitle": null,
+    "mail": "adamgoodwin@guidedailabs.com",
+    "mobilePhone": null,
+    "officeLocation": null,
+    "preferredLanguage": null,
+    "surname": "Goodwin",
+    "userPrincipalName": "adamgoodwin@guidedailabs.com"
+  },
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "id": "b4cb187e-125c-4c0a-a66d-58e784cc4b21",
+    "businessPhones": [],
+    "displayName": "Break Glass 01 (Emergency Admin)",
+    "givenName": null,
+    "jobTitle": null,
+    "mail": null,
+    "mobilePhone": null,
+    "officeLocation": null,
+    "preferredLanguage": null,
+    "surname": null,
+    "userPrincipalName": "breakglass-01@AGOperationsLtd.onmicrosoft.com"
+  },
+  {
+    "@odata.type": "#microsoft.graph.user",
+    "id": "291eb318-6986-42d4-8d3e-e1e67c8f2ac1",
+    "businessPhones": [],
+    "displayName": "Break Glass 02 (Emergency Admin)",
+    "givenName": null,
+    "jobTitle": null,
+    "mail": null,
+    "mobilePhone": null,
+    "officeLocation": null,
+    "preferredLanguage": null,
+    "surname": null,
+    "userPrincipalName": "breakglass-02@AGOperationsLtd.onmicrosoft.com"
+  }
+]

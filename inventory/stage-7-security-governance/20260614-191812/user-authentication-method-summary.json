@@ -1,0 +1,38 @@
+[
+  {
+    "userPrincipalName": "adamgoodwin@guidedailabs.com",
+    "displayName": "Adam Goodwin",
+    "methodCount": 2,
+    "methodTypes": "#microsoft.graph.passwordAuthenticationMethod; #microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+  },
+  {
+    "userPrincipalName": "admin@agoperations.ca",
+    "displayName": "Adam Goodwin",
+    "methodCount": 2,
+    "methodTypes": "#microsoft.graph.passwordAuthenticationMethod; #microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+  },
+  {
+    "userPrincipalName": "breakglass-01@AGOperationsLtd.onmicrosoft.com",
+    "displayName": "Break Glass 01 (Emergency Admin)",
+    "methodCount": 2,
+    "methodTypes": "#microsoft.graph.passwordAuthenticationMethod; #microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+  },
+  {
+    "userPrincipalName": "breakglass-02@AGOperationsLtd.onmicrosoft.com",
+    "displayName": "Break Glass 02 (Emergency Admin)",
+    "methodCount": 2,
+    "methodTypes": "#microsoft.graph.passwordAuthenticationMethod; #microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+  },
+  {
+    "userPrincipalName": "contact@guidedailabs.com",
+    "displayName": "contact",
+    "methodCount": 2,
+    "methodTypes": "#microsoft.graph.passwordAuthenticationMethod; #microsoft.graph.microsoftAuthenticatorAuthenticationMethod"
+  },
+  {
+    "userPrincipalName": "support@changeleadershiptools.com",
+    "displayName": "Support at ChangeTools",
+    "methodCount": 1,
+    "methodTypes": "#microsoft.graph.passwordAuthenticationMethod"
+  }
+]

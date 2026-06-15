@@ -1,0 +1,5 @@
+"Lane","RecommendedFirst","AvoidAsRestingState","Fit","Description"
+"Supervised Delegated","True","True","Planner writes; first records writes; manual review runs","Use Adam-approved interactive Graph/PnP sessions and typed approval gates for first write loops."
+"SharePoint Selected Permissions","False","False","selected Guided AI Labs Lists; selected Change Leadership Tools Support Register; selected evidence libraries","Use Selected scopes plus explicit site/list grants for durable app-based List and SharePoint access."
+"Exchange Application RBAC","False","False","support@changeleadershiptools.com mailbox access","Use Exchange Online Application RBAC to scope mailbox access for app-based support processing."
+"Broad Setup Grants","False","True","time-boxed provisioning only","Existing setup-helper grants such as AllSites.FullControl and Group.ReadWrite.All."

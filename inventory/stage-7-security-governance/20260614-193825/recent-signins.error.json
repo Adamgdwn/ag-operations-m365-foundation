@@ -1,0 +1,6 @@
+{
+  "area": "recent-signins",
+  "uri": "https://graph.microsoft.com/v1.0/auditLogs/signIns?$top=50&$orderby=createdDateTime desc",
+  "error": "Response status code does not indicate success: Forbidden (Forbidden).",
+  "body": "GET https://graph.microsoft.com/v1.0/auditLogs/signIns?$top=50&$orderby=createdDateTime%20desc\r\nHTTP/1.1 403 Forbidden\r\nTransfer-Encoding: chunked\r\nVary: Accept-Encoding\r\nStrict-Transport-Security: max-age=31536000\r\nrequest-id: 1ecac0d0-6076-49de-967b-660ad73854d1\r\nclient-request-id: 5918f8f1-0548-4de1-a0ef-fdc1e7f64adb\r\nx-ms-ags-diagnostic: {\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"4\",\"ScaleUnit\":\"002\",\"RoleInstance\":\"MWH0EPF000BC273\"}}\r\nDate: Mon, 15 Jun 2026 01:38:38 GMT\r\nContent-Type: application/json\r\n\r\n{\"error\":{\"code\":\"Authentication_RequestFromNonPremiumTenantOrB2CTenant\",\"message\":\"Tenant is not a B2C tenant and doesn't have premium license\",\"innerError\":{\"date\":\"2026-06-15T01:38:38\",\"request-id\":\"1ecac0d0-6076-49de-967b-660ad73854d1\",\"client-request-id\":\"5918f8f1-0548-4de1-a0ef-fdc1e7f64adb\"}}}"
+}
