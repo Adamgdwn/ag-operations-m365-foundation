@@ -23,8 +23,8 @@ plan.
 Current stage:
 
 ```text
-Stage 8 command-center homepage draft is live-created and read-back verified;
-browser review is next
+Stage 8 command-center homepage draft is live-created/read-back verified.
+Stage 9 supervised coordinator/support List-write loops are live-proven.
 ```
 
 Completed/design-complete:
@@ -44,7 +44,8 @@ Stop point for the next session:
 Stage 8 live SharePoint skeleton and backing structure are built and verified.
 The Guided AI Labs Command Center draft page is live-created and read-back
 verified. Browser review with Adam is next before any homepage promotion
-operator is created or run.
+operator is created or run. Stage 9 capability decision, coordinator suggestion,
+and support triage supervised List-write loops are also recorded in M365.
 ```
 
 Completed live action on 2026-06-15:
@@ -77,10 +78,20 @@ sharing, guests, app grants, public Forms, deletion, or automation.
 Next action: browser-review the draft with Adam. Only then decide whether to
 build a separate promotion operator to make it the real homepage.
 
-Stage 9 local prep has also started for Adam's requested governed M365
-coordinator/support agent capability. This is local-only planning so far: no app
+Stage 9 supervised agent loops are now live-proven for Adam's requested governed
+M365 coordinator/support agent capability:
+
+- Decision Register item `#2`: Stage 9 M365 coordinator and support agent
+  capability approved for supervised loops.
+- Agent Action Log item `#2`: Stage 9 agent capability model prepared.
+- Agent Action Log item `#3`: Stage 9 coordinator suggestion loop.
+- Change Leadership Tools Support Register item `#1`: Stage 9 supervised
+  support triage test.
+- Agent Action Log item `#4`: Stage 9 support triage loop.
+
+This is still supervised delegated List-write posture only. No app
 registrations, consent grants, mail sends, guests, sharing, permissions, tenant
-policy changes, or unattended automation were created.
+policy changes, public Forms, deletion, or unattended automation were created.
 
 ## Current foundation state
 
@@ -168,7 +179,8 @@ Done:
   - `M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md`
   - `M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md`
   - `M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md`
-- Stage 9 coordinator/support agent capability model was added locally:
+- Stage 9 coordinator/support agent capability model was added and first
+  supervised loops were live-proven:
   - `config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json`
   - `scripts/New-M365Stage9AgentCapabilityPacket.ps1`
   - `scripts/Invoke-M365Stage9AgentCapabilityLoop.ps1`
@@ -176,7 +188,13 @@ Done:
   - `scripts/Test-M365Stage9LocalPreflight.ps1`
   - generated packet:
     `inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BUILD_GUIDE.md`
-  - current posture: model and dry-run-first List-write operators only; no new
+  - live evidence:
+    `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-recorddecision-20260615-110540.log`
+  - live evidence:
+    `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-coordinatorsuggestion-20260615-110719.log`
+  - live evidence:
+    `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-supporttriage-20260615-110951.log`
+  - current posture: supervised delegated List-write loops are proven; no new
     app registrations, consent, mailbox sends, guests, sharing, permissions,
     tenant policy, public Forms, deletion, or unattended automation.
 - Stage 8 workspace-shape build packet and live operator were added:
@@ -273,6 +291,9 @@ Latest local checks:
 - Homepage refinement live draft apply: PASS.
 - Homepage refinement read-only verification: PASS.
 - Stage 9 local preflight: PASS.
+- Stage 9 capability decision apply: PASS.
+- Stage 9 coordinator suggestion dry run/apply: PASS.
+- Stage 9 support triage dry run/apply: PASS.
 - `git diff --check`: clean except normal LF/CRLF working-copy warnings.
 - No homepage promotion, navigation change, permission change, sharing change,
   guest invite, app grant, public Form, deletion, external send, or unattended
@@ -382,27 +403,30 @@ https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Guided-AI-La
 4. Decide whether to build a separate homepage promotion operator. Do not
    promote manually from the command-center build script.
 
-5. Review the Stage 9 agent capability packet:
+5. Review the Stage 9 agent capability packet if changing capability scope:
 
 ```text
 inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BUILD_GUIDE.md
 ```
 
-6. Dry-run the Stage 9 capability decision record:
+6. Stage 9 capability decision and first supervised coordinator/support loops
+   are already recorded. For any next Stage 9 loop, start dry-run-first:
 
 ```powershell
-.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action RecordDecision
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage
 ```
 
-7. Apply the Stage 9 capability decision only after Adam approves and types:
+7. Apply any next Stage 9 loop only after Adam approves and types the
+   action-specific phrase:
 
 ```text
-record-stage-9-agent-capability-decision
+record-stage-9-coordinator-suggestion
+record-stage-9-support-triage
 ```
 
-8. After the command-center page and Stage 9 capability decision are approved,
-   run the first functional workflow
-   walkthrough:
+8. After the command-center page is browser-approved, run the first functional
+   workflow walkthrough:
    `New Intake -> triage -> decision -> active delivery -> handoff evidence`.
 
 ## Useful scripts

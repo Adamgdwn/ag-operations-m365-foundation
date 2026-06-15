@@ -1,0 +1,47 @@
+**********************
+PowerShell transcript start
+Start time: 20260615110540
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage9AgentCapabilityLoop.ps1 -Action RecordDecision -Apply
+Process ID: 20092
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 9 - Agent capability loop
+Action:     RecordDecision
+Mode:       APPLY with typed approval
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-9-agentic-os-bridge\stage-9-agent-capability-loop-recorddecision-20260615-110540.log
+Safety:     List records only; no mail sends, guests, sharing, consent, tenant policy, deletion, or automation.
+
+Live write approval required.
+Type exactly: record-stage-9-agent-capability-decision
+
+== Connect to Guided AI Labs ==
+Connected to https://agoperationsltd.sharepoint.com/sites/GuidedAILabs using O365
+Connected user: adamgoodwin@guidedailabs.com
+Preflight OK: readable site 'Guided AI Labs'
+
+== Verify target Lists ==
+  Found Decision Register and Agent Action Log
+
+== Record operating evidence ==
+  [OK] Created Decision Register item #2: Stage 9 M365 coordinator and support agent capability approved for supervised loops
+  [OK] Created Agent Action Log item #2: Stage 9 agent capability model prepared
+
+== Done ==
+Stage 9 agent capability loop completed with approved List writes only.
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-9-agentic-os-bridge\stage-9-agent-capability-loop-recorddecision-20260615-110540.log
+**********************
+PowerShell transcript end
+End time: 20260615110604
+**********************

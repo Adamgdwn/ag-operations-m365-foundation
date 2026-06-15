@@ -522,7 +522,8 @@ Here is what you own when we leave.
 
 ## Stage 9 - Agentic OS Bridge Readiness
 
-Status: planned; local coordinator/support capability model started 2026-06-15.
+Status: in progress; supervised coordinator/support List-write loops live-proven
+2026-06-15.
 See
 [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md).
 
@@ -544,6 +545,8 @@ The Agentic OS will be built elsewhere, but Microsoft 365 needs to be ready for 
 - define audit and rollback expectations
 - define first governed M365 Coordinator and M365 Support Agent capability lanes
   before creating app registrations or consenting new permissions
+- record the first supervised G1/G2 List-write loops before granting standing
+  app permissions
 
 ### Main tools
 

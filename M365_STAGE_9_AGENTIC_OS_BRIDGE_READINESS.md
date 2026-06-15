@@ -143,12 +143,13 @@ The governance ladder is:
 Practical first implementation:
 
 1. Finish the Stage 8 command-center draft review.
-2. Record the Stage 9 capability decision in the Decision Register and Agent
-   Action Log.
-3. Demonstrate a G1 coordinator loop that creates only a Suggested Agent Action
-   Log row.
-4. Demonstrate a G2 support loop only after `support@changeleadershiptools.com`
-   has MFA and Adam approves the write.
+2. Done 2026-06-15: record the Stage 9 capability decision in the Decision
+   Register and Agent Action Log.
+3. Done 2026-06-15: demonstrate a G1 coordinator loop that creates only a
+   Suggested Agent Action Log row.
+4. Done 2026-06-15: demonstrate a supervised G2 support List triage loop after
+   Adam approval. Mailbox/app-based support access still waits for
+   `support@changeleadershiptools.com` MFA.
 5. Defer app registrations, consent, Exchange Application RBAC, and SharePoint
    Selected permission grants to separate dry-run-first operators.
 
@@ -196,6 +197,14 @@ The loop operator writes only to approved operating Lists. It does not create ap
 registrations, grant consent, send mail, invite guests, change sharing, alter
 permissions, change tenant policy, publish Forms, delete records, or run
 unattended automation.
+
+Live evidence recorded 2026-06-15:
+
+| Loop | M365 record(s) | Transcript |
+|---|---|---|
+| Capability decision | Decision Register item `#2`; Agent Action Log item `#2` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-recorddecision-20260615-110540.log` |
+| Coordinator suggestion | Agent Action Log item `#3` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-coordinatorsuggestion-20260615-110719.log` |
+| Support triage | Change Leadership Tools Support Register item `#1`; Agent Action Log item `#4` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-supporttriage-20260615-110951.log` |
 
 ---
 

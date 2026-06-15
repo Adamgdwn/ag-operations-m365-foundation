@@ -216,32 +216,32 @@ inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BU
 inventory/stage-9-agentic-os-bridge/STAGE_9_LOCAL_PREFLIGHT.md
 ```
 
-Current posture: model plus dry-run-first List-write operators only. No new app
-registrations, consent grants, mailbox sends, guests, sharing, permissions,
+Current posture: supervised delegated List-write loops are live-proven. No new
+app registrations, consent grants, mailbox sends, guests, sharing, permissions,
 tenant policy, public Forms, deletion, or unattended automation were created.
 
-First Stage 9 live actions, after browser review:
+Completed Stage 9 live actions on 2026-06-15:
 
-```powershell
-.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action RecordDecision
-.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion
-.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage
-```
+- Decision Register item `#2`: Stage 9 M365 coordinator and support agent
+  capability approved for supervised loops.
+- Agent Action Log item `#2`: Stage 9 agent capability model prepared.
+- Agent Action Log item `#3`: Stage 9 coordinator suggestion loop.
+- Change Leadership Tools Support Register item `#1`: Stage 9 supervised
+  support triage test.
+- Agent Action Log item `#4`: Stage 9 support triage loop.
 
-Apply phrases:
+Evidence:
 
-```text
-record-stage-9-agent-capability-decision
-record-stage-9-coordinator-suggestion
-record-stage-9-support-triage
-```
+- `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-recorddecision-20260615-110540.log`
+- `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-coordinatorsuggestion-20260615-110719.log`
+- `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-supporttriage-20260615-110951.log`
 
 ## Exact Resume Sequence
 
 1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 2. Browser-review the draft command-center page.
 3. Decide whether to create a separate homepage promotion operator.
-4. Review and record the Stage 9 agent capability decision.
+4. Do not repeat the Stage 9 capability decision write unless scope changes.
 5. After homepage review, run the first real functional workflow walkthrough:
 
    ```text
