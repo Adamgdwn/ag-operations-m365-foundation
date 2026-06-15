@@ -102,6 +102,10 @@ Libraries, Guided AI Journey) are synced — they are browser-only today.
 A Chrome **"AI Labs"** profile shell already exists but is not signed into the
 `guidedailabs.com` identity.
 
+**2026-06-15 update:** a fourth Chrome lane now exists for City of Red Deer:
+`Profile 3` / "City of Red Deer". The desktop launcher is
+`C:\Users\adamg\OneDrive\Desktop\Chrome - City of Red Deer.lnk`.
+
 ### 2.7 Local top-level lanes (`C:\Users\adamg`)
 
 `Personal`, `AG Operations` (with the README's `00.–06.` + `Consulting` + `Prime
@@ -208,6 +212,17 @@ Ordered so earlier decisions gate later ones. Nothing below is executed yet.
   `Remove-Item -Recurse -Force`. **854.8 MB freed.** Verified: folder gone; sibling
   `01. Code Projects` intact; no bare `C:\Users\adamg\01` recreated. Harmless stale
   Windows-Recent `01.lnk` left to clear itself. **F7 resolved.**
+- **2026-06-15 — City of Red Deer browser lane added.** Investigated recurring
+  Microsoft 365 sign-in collisions across Chrome profiles and Windows WAM. Found
+  Chrome `Default` carrying both personal Google identity and an
+  `admin@agoperations.ca` account hint, plus a Windows workplace join to
+  `A.G. Operations Ltd` with join record email `contact@guidedailabs.com`.
+  Created Chrome `Profile 3` named "City of Red Deer", removed an accidental blank
+  `Profile` / "Your Chrome" profile created during first-launch testing, and added
+  desktop shortcut `Chrome - City of Red Deer.lnk`. Backed up Chrome `Local State` to
+  `Local State.codex-backup-20260615-110914` before editing. See
+  [M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md](M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md)
+  for the full account-broker notes.
 
 ---
 
@@ -230,6 +245,7 @@ SharePoint-or-client / sync or browser-only*. The answers are now:
 Personal  → Hotmail/Gmail · Chrome Default · OneDrive (personal life: Desktop/Docs/Pics)
 Operator  → adamgoodwin@guidedailabs.com · Chrome "AI Labs" · OneDrive - A.G. Operations Ltd · SharePoint ×5
 Client    → adam.goodwin@primeboiler.com · Chrome "Prime Boiler 2026" · OneDrive - Prime Boiler Services Ltd
+City      → City of Red Deer account · Chrome "City of Red Deer" · browser-only M365 lane
 ```
 
 **What changed on the machine:** (1) connected the operator OneDrive (`Business2`);

@@ -6,6 +6,10 @@ Canonical restart file:
 This handoff captures the stop point after Stage 8 workspace-shape, backing
 structure, and command-center homepage planning/build prep.
 
+It also includes a late local-machine update: Chrome `Profile 3` was created for
+the City of Red Deer Microsoft 365 lane, and the desktop account-conflict note was
+updated with the browser/WAM inventory.
+
 ## Stop Point
 
 Stage 8 is very close to the next live review step.

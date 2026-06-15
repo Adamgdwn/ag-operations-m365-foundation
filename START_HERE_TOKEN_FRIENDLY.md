@@ -25,6 +25,7 @@ Current stage:
 ```text
 Stage 8 command-center homepage draft is live-created/read-back verified.
 Stage 9 supervised coordinator/support List-write loops are live-proven.
+Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
 ```
 
 Completed/design-complete:
@@ -92,6 +93,13 @@ M365 coordinator/support agent capability:
 This is still supervised delegated List-write posture only. No app
 registrations, consent grants, mail sends, guests, sharing, permissions, tenant
 policy changes, public Forms, deletion, or unattended automation were created.
+
+Local account/session note from 2026-06-15:
+
+- Chrome `Profile 3` was created as `City of Red Deer`.
+- Desktop shortcut: `C:\Users\adamg\OneDrive\Desktop\Chrome - City of Red Deer.lnk`.
+- Chrome `Default` should remain personal-only; do not mix work/school tenants there.
+- Full notes: [M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md](M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md).
 
 ## Current foundation state
 

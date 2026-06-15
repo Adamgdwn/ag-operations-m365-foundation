@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-14
+Last updated: 2026-06-15
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
@@ -353,7 +353,8 @@ should not sit waiting for private credentials.
 - [SYSTEM_NOTES_FROM_INITIAL_DIG.md](SYSTEM_NOTES_FROM_INITIAL_DIG.md) — machine
   findings from the first pass.
 - [M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md](M365_DESKTOP_ACCOUNT_CONFLICT_DISCUSSION.md)
-  — desktop Office license/identity conflict notes.
+  — desktop Office license/identity conflict notes, now including the 2026-06-15
+  browser-profile/WAM inventory and the new Chrome `City of Red Deer` lane.
 
 ### Session history
 
