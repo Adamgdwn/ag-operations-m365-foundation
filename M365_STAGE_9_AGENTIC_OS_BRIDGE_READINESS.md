@@ -13,6 +13,7 @@ Related:
 - [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md)
 - [M365_GRAPHIFY_UAOS_ALIGNMENT.md](M365_GRAPHIFY_UAOS_ALIGNMENT.md)
 - [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
+- [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 - [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md)
 - [config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json](config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json)
@@ -100,6 +101,7 @@ Initial M365 bridge candidates:
 | Teams | Channel context and coordination | Post summaries/notices | No guest invites or broad posts without approval |
 | Forms | Intake/feedback schema and response routing | Propose forms/flows; later create/update if supported | Public/client links require approval |
 | Entra/app registrations | Inventory, consent posture, app ownership | None by default | Consent/permissions always approval-gated |
+| Relationship CRM Lists | Organizations, contacts, engagements, stakeholders, touchpoints, lifecycle checklist | Create/update internal relationship records after approval | G2 only; external/client-impacting commitments remain G3/G4 |
 
 This map should become the future UAOS adapter contract.
 
@@ -152,6 +154,9 @@ Practical first implementation:
    `support@changeleadershiptools.com` MFA.
 5. Defer app registrations, consent, Exchange Application RBAC, and SharePoint
    Selected permission grants to separate dry-run-first operators.
+6. Stage 8A CRM Lists are a local capability-scope addition. The M365
+   Coordinator may read them at G0 and create/update internal CRM rows only at
+   G2 after a named approval gate.
 
 Permission posture:
 

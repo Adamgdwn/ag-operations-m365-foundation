@@ -82,6 +82,9 @@ should not sit waiting for private credentials.
 
 - [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) — **canonical** staged
   execution order (Stages 0–9). This is the source of truth for *what happens next*.
+- [M365_LOGIN_AND_ACCOUNT_GUIDE.md](M365_LOGIN_AND_ACCOUNT_GUIDE.md) — quick
+  chart for which account to use, MFA/auth-code handling, Chrome profile lanes,
+  and the recovery path when Microsoft account routing gets messy.
 - [guided-ai-labs-m365-foundation-build-brief.md](guided-ai-labs-m365-foundation-build-brief.md)
   — comprehensive reference/design spec behind the roadmap (the "why" and the
   detailed target architecture). Defers to the roadmap for sequencing.
@@ -291,6 +294,77 @@ should not sit waiting for private credentials.
   — visible launcher for the homepage refinement verifier.
 - [inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md)
   — generated build guide for the homepage refinement layer.
+- [scripts/Set-GuidedAILabsOperationsPortal.ps1](scripts/Set-GuidedAILabsOperationsPortal.ps1)
+  — live cleanup operator that created the Guided AI Labs Operations Cockpit,
+  set it as the site homepage, removed duplicate daily CRM nav links, embedded
+  the four live attention queues, and left `App Grants` as governance rather
+  than a live agent connection.
+- [inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md](inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md)
+  — read-back evidence for the Guided AI Labs homepage cockpit; extra CRM nav
+  count is 0 and homepage is `Guided-AI-Labs-Operations-Cockpit.aspx`.
+- [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
+  — Stage 8A relationship CRM model: Organizations, Contacts, Engagements,
+  Stakeholder Map, Touchpoints, Lifecycle Checklist, offer-package path,
+  onboarding/offboarding, and future custom CRM migration hooks.
+- [config/M365_STAGE_8A_RELATIONSHIP_CRM.json](config/M365_STAGE_8A_RELATIONSHIP_CRM.json)
+  — machine-readable Stage 8A CRM Lists, fields, views, Relationship CRM page,
+  navigation target, workflows, Teams-tabs-later map, and approval gate.
+- [scripts/New-M365Stage8ARelationshipCrmPacket.ps1](scripts/New-M365Stage8ARelationshipCrmPacket.ps1)
+  — local-only generator for the Stage 8A CRM build guide and CSV maps.
+- [scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1](scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1)
+  — dry-run-first, typed-approval operator for creating the Stage 8A CRM Lists,
+  fields, views, Relationship CRM page, and Client Delivery navigation link.
+- [scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1](scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1)
+  — visible launcher for the Stage 8A CRM build.
+- [scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1](scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1)
+  — read-only verifier for the Stage 8A CRM Lists, fields, views, page, and
+  navigation link.
+- [scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1](scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1)
+  — visible launcher for the Stage 8A CRM verifier.
+- [scripts/Test-M365Stage8ALocalPreflight.ps1](scripts/Test-M365Stage8ALocalPreflight.ps1)
+  — local-only Stage 8A validation for config, scripts, generated packet, and
+  PnP command availability.
+- [M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md](M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md)
+  — Stage 8B operational hardening layer for lookup-backed CRM relationships,
+  daily queues, due dates, risk/health fields, filtered views, and an operations
+  cockpit page.
+- [config/M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json](config/M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json)
+  — machine-readable Stage 8B CRM operations config.
+- [scripts/Invoke-M365Stage8BRelationshipCrmOperationalize.ps1](scripts/Invoke-M365Stage8BRelationshipCrmOperationalize.ps1)
+  — dry-run-first, typed-approval operator for Stage 8B CRM operational fields,
+  lookup columns, filtered views, operations page, and navigation.
+- [scripts/Start-M365Stage8BRelationshipCrmOperationalizeInteractive.ps1](scripts/Start-M365Stage8BRelationshipCrmOperationalizeInteractive.ps1)
+  — visible launcher for the Stage 8B CRM operations apply.
+- [scripts/Invoke-M365Stage8BVerifyRelationshipCrmOperations.ps1](scripts/Invoke-M365Stage8BVerifyRelationshipCrmOperations.ps1)
+  — read-only verifier for Stage 8B CRM operational readiness.
+- [scripts/Start-M365Stage8BVerifyRelationshipCrmOperationsInteractive.ps1](scripts/Start-M365Stage8BVerifyRelationshipCrmOperationsInteractive.ps1)
+  — visible launcher for the Stage 8B verifier.
+- [inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_BUILD_GUIDE.md](inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_BUILD_GUIDE.md)
+  — generated Stage 8B local build guide.
+- [inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md](inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md)
+  — Stage 8B live read-back verification summary; result PASS.
+- [M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md)
+  — Stage 8C operator workflow layer for CRM action queue, qualification,
+  meeting notes, artifacts, health reviews, and command-center page.
+- [config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json](config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json)
+  — machine-readable Stage 8C CRM operator workflow config.
+- [scripts/Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1](scripts/Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1)
+  — dry-run-first, typed-approval operator for Stage 8C CRM workflow lists,
+  lookup columns, filtered views, command-center page, and navigation.
+- [scripts/Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1](scripts/Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1)
+  — visible launcher for the Stage 8C CRM workflow apply.
+- [scripts/Invoke-M365Stage8CVerifyRelationshipCrmOperatorWorkflow.ps1](scripts/Invoke-M365Stage8CVerifyRelationshipCrmOperatorWorkflow.ps1)
+  — read-only verifier for Stage 8C CRM operator workflow readiness.
+- [scripts/Start-M365Stage8CVerifyRelationshipCrmOperatorWorkflowInteractive.ps1](scripts/Start-M365Stage8CVerifyRelationshipCrmOperatorWorkflowInteractive.ps1)
+  — visible launcher for the Stage 8C verifier.
+- [inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md)
+  — generated Stage 8C local build guide.
+- [inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md)
+  — Stage 8C live read-back verification summary; result PASS.
+- [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md)
+  — generated Stage 8A CRM build guide; no tenant writes.
+- [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md)
+  — Stage 8A CRM live read-back verification summary; result PASS.
 - [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
   — planned M365/Graphify/UAOS bridge readiness: adapter surface map,
   read/propose/write categories, app posture, action logging, stop/rollback

@@ -1,0 +1,5 @@
+"GroupName","GroupId","UserUpn","OwnerAddAttempt","MemberAddAttempt","Message"
+"All Company","c27179f4-0da6-4416-8450-8216998407e4","adamgoodwin@guidedailabs.com","True","True","OK"
+"All Company","c27179f4-0da6-4416-8450-8216998407e4","admin@agoperations.ca","False","False","Owner: Forbidden (403): Insufficient privileges to complete the operation.; Member: Forbidden (403): Insufficient privileges to complete the operation."
+"Group for Answers in Viva Engage - DO NOT DELETE","133765cd-ca39-4070-9e33-15e9d3d1c3cf","adamgoodwin@guidedailabs.com","True","True","OK"
+"Group for Answers in Viva Engage - DO NOT DELETE","133765cd-ca39-4070-9e33-15e9d3d1c3cf","admin@agoperations.ca","False","False","Owner: Forbidden (403): Insufficient privileges to complete the operation.; Member: Forbidden (403): Insufficient privileges to complete the operation."

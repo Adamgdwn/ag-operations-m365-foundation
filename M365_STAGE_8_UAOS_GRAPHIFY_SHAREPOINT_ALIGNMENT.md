@@ -175,6 +175,9 @@ Stage 8 should leave behind clean bridge surfaces for Stage 9:
 | `Automation Backlog` | proposed automations before build/use approval |
 | `Exception Register` | deviations with owner, expiry, and closure path |
 | `Readiness Evidence` | reviewed supporting artifacts |
+| `CRM - Engagements` | relationship stage, package path, current state, target/offramp, and next action |
+| `CRM - Organizations` / `CRM - Contacts` | relationship context and stakeholder identity |
+| `CRM - Touchpoints` / `CRM - Lifecycle Checklist` | interaction history, onboarding/offboarding evidence, and closeout blockers |
 
 The bridge should start with metadata and reviewed summaries, not broad content
 reads.

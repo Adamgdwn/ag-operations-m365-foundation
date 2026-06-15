@@ -1,0 +1,36 @@
+**********************
+PowerShell transcript start
+Start time: 20260615161025
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -File .\scripts\Set-GuidedAILabsOperationsPortal.ps1 -NoPause
+Process ID: 14496
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Guided AI Labs SharePoint operations portal cleanup
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\gail-sharepoint-portal\gail-operations-portal-20260615-161025.log
+
+Refreshing portal page: Guided-AI-Labs-Operations-Portal.aspx
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id dcd65b64-d626-43a6-9741-0ce1b4b9dab2 does not exist on this page"
+>> TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id dcd65b64-d626-43a6-9741-0ce1b4b9dab2 does not exist on this page"
+Remove-PnPPageComponent: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Set-GuidedAILabsOperationsPortal.ps1:269
+Line |
+ 269 |              Remove-PnPPageComponent -Page $portalFileName -InstanceId …
+     |              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Component with id dcd65b64-d626-43a6-9741-0ce1b4b9dab2 does not exist on this page
+
+**********************
+PowerShell transcript end
+End time: 20260615161031
+**********************

@@ -10,6 +10,10 @@ workspace. Read this first, then open detailed docs only as needed.
 Build Microsoft 365 into a clean, governed operating substrate for AG Operations
 and Guided AI Labs.
 
+Operating-site rule: **Guided AI Labs is the daily workplace and source of
+truth. AG Operations SharePoint surfaces are portfolio/router landing sites
+only** for Guided AI Labs and any future companies underneath AG Operations.
+
 M365 is not the whole future Agentic OS. It is one fully functional operating
 layer: identity, records, tasks, decisions, collaboration, email signals, and
 audit. The future central OS / Graphify map can integrate across M365, local and
@@ -24,6 +28,17 @@ Current stage:
 
 ```text
 Stage 8 command-center homepage draft is live-created/read-back verified.
+Stage 8A Relationship CRM is live-created/read-back verified.
+Stage 8B Relationship CRM operations layer is live-applied/read-back verified.
+Stage 8C Relationship CRM operator workflow is live-applied/read-back verified.
+AG Operations root and `/sites/AGOperations` SharePoint sites now route to
+Guided AI Labs as the single daily workplace.
+Owner access for `adamgoodwin@guidedailabs.com` and `admin@agoperations.ca` is
+granted/read-back verified across all 10 targeted tenant SharePoint sites;
+`contact@agoperations.ca` remains intentionally excluded.
+`Login-And-Account-Guide.aspx` is published with a `Login Guide` nav link on the
+8 human-facing SharePoint sites, and the local source is
+`M365_LOGIN_AND_ACCOUNT_GUIDE.md`.
 Stage 9 supervised coordinator/support List-write loops are live-proven.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
 ```
@@ -45,8 +60,24 @@ Stop point for the next session:
 Stage 8 live SharePoint skeleton and backing structure are built and verified.
 The Guided AI Labs Command Center draft page is live-created and read-back
 verified. Browser review with Adam is next before any homepage promotion
-operator is created or run. Stage 9 capability decision, coordinator suggestion,
-and support triage supervised List-write loops are also recorded in M365.
+operator is created or run. Stage 8A Relationship CRM is live-created and
+read-back verified in SharePoint. Stage 8B CRM operational hardening is
+live-applied/read-back verified with lookup fields, operational fields, filtered
+views, operations page, and navigation. Stage 8C CRM operator workflow is
+live-applied/read-back verified with action queue, qualification, meeting notes,
+artifacts, health reviews, command-center page, and navigation. Stage 9
+capability decision, coordinator suggestion, and support triage supervised
+List-write loops are also recorded in M365. Adam confirmed the operating model:
+Guided AI Labs is the workplace/source of truth; AG Operations SharePoint
+surfaces are only router/portfolio landing sites. The AG Operations root and
+`/sites/AGOperations` homepages now point to
+`Guided-AI-Labs-Operating-Door.aspx` and link onward to Guided AI Labs. Owner
+access for `adamgoodwin@guidedailabs.com` and `admin@agoperations.ca` now passes
+read-back across all 10 targeted SharePoint sites:
+`inventory/access-repair/SHAREPOINT_OWNER_ACCESS_ALL_SITES_20260615-152220.md`.
+The account/MFA/browser-profile guide is published across the 8 human-facing
+SharePoint sites:
+`inventory/access-repair/LOGIN_ACCOUNT_GUIDE_PUBLISH_20260615-153224.md`.
 ```
 
 Completed live action on 2026-06-15:
@@ -186,6 +217,7 @@ Done:
   - `M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md`
   - `M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md`
   - `M365_STAGE_8_UAOS_GRAPHIFY_SHAREPOINT_ALIGNMENT.md`
+  - `M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md`
   - `M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md`
 - Stage 9 coordinator/support agent capability model was added and first
   supervised loops were live-proven:
@@ -291,20 +323,82 @@ Not done:
     public Forms, deletion, or automation.
   - read-only verification passed:
     `inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_VERIFY.md`.
+- Stage 8A Relationship CRM local build layer was added and live-applied:
+  - `config/M365_STAGE_8A_RELATIONSHIP_CRM.json`
+  - `M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md`
+  - `scripts/New-M365Stage8ARelationshipCrmPacket.ps1`
+  - `scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1`
+  - `scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1`
+  - `scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1`
+  - `scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1`
+  - `scripts/Test-M365Stage8ALocalPreflight.ps1`
+  - generated packet:
+    `inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md`
+  - live apply created the six CRM Lists, fields, views, `Relationship-CRM.aspx`,
+    and the `Client Delivery / Relationship CRM` navigation link:
+    `inventory/stage-8a-relationship-crm/stage-8a-relationship-crm-build-20260615-130604.log`
+  - read-only verification passed:
+    `inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md`
+- Stage 8B Relationship CRM operations layer was added locally:
+  - `config/M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json`
+  - `M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md`
+  - `scripts/New-M365Stage8BRelationshipCrmOperationsPacket.ps1`
+  - `scripts/Test-M365Stage8BLocalPreflight.ps1`
+  - `scripts/Invoke-M365Stage8BRelationshipCrmOperationalize.ps1`
+  - `scripts/Start-M365Stage8BRelationshipCrmOperationalizeInteractive.ps1`
+  - `scripts/Invoke-M365Stage8BVerifyRelationshipCrmOperations.ps1`
+  - `scripts/Start-M365Stage8BVerifyRelationshipCrmOperationsInteractive.ps1`
+  - generated packet:
+    `inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_BUILD_GUIDE.md`
+  - live apply completed:
+    `inventory/stage-8b-relationship-crm-operations/stage-8b-crm-operationalize-20260615-134054.log`
+  - read-only verification passed:
+    `inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md`
+- Stage 8C Relationship CRM operator workflow layer was added and live-applied:
+  - `config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json`
+  - `M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md`
+  - `scripts/New-M365Stage8CRelationshipCrmOperatorWorkflowPacket.ps1`
+  - `scripts/Test-M365Stage8CLocalPreflight.ps1`
+  - `scripts/Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1`
+  - `scripts/Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1`
+  - `scripts/Invoke-M365Stage8CVerifyRelationshipCrmOperatorWorkflow.ps1`
+  - `scripts/Start-M365Stage8CVerifyRelationshipCrmOperatorWorkflowInteractive.ps1`
+  - generated packet:
+    `inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md`
+  - live apply completed:
+    `inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260615-142931.log`
+  - read-only verification passed:
+    `inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md`
 
 Latest local checks:
 
 - Stage 8 local preflight: PASS.
+- Stage 8A local preflight: PASS.
+- Stage 8A Relationship CRM packet generation: PASS.
+- Stage 8A Relationship CRM dry run: PASS.
+- Stage 8A Relationship CRM live apply: PASS.
+- Stage 8A Relationship CRM read-only verification: PASS.
+- Stage 8B Relationship CRM operations packet generation: PASS.
+- Stage 8B Relationship CRM operations local preflight: PASS.
+- Stage 8B Relationship CRM operations dry run: PASS.
+- Stage 8B Relationship CRM operations live apply: PASS.
+- Stage 8B Relationship CRM operations read-only verification: PASS.
+- Stage 8C Relationship CRM operator workflow packet generation: PASS.
+- Stage 8C Relationship CRM operator workflow local preflight: PASS.
+- Stage 8C Relationship CRM operator workflow dry run: PASS.
+- Stage 8C Relationship CRM operator workflow live apply: PASS.
+- Stage 8C Relationship CRM operator workflow read-only verification: PASS.
 - Homepage refinement dry run: PASS.
 - Homepage refinement live draft apply: PASS.
 - Homepage refinement read-only verification: PASS.
 - Stage 9 local preflight: PASS.
+- Stage 9 capability packet regeneration after CRM scope update: PASS.
 - Stage 9 capability decision apply: PASS.
 - Stage 9 coordinator suggestion dry run/apply: PASS.
 - Stage 9 support triage dry run/apply: PASS.
 - `git diff --check`: clean except normal LF/CRLF working-copy warnings.
-- No homepage promotion, navigation change, permission change, sharing change,
-  guest invite, app grant, public Form, deletion, external send, or unattended
+- No homepage promotion, permission change, sharing change, guest invite, app
+  grant, public Form, deletion, external send, Dynamics/Dataverse, or unattended
   automation has been made.
 
 ## Stage 6 blocker
@@ -362,6 +456,7 @@ Read before retrying:
 
 - [M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md)
 - [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
+- [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
 - [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
 - [config/M365_STAGE_8_WORKSPACE_SHAPE.json](config/M365_STAGE_8_WORKSPACE_SHAPE.json)
 - [config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json](config/M365_STAGE_8_WORKSPACE_BACKING_STRUCTURE.json)
@@ -382,6 +477,14 @@ Read before retrying:
 - [scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1](scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1)
 - [inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAGE_REFINEMENT_BUILD_GUIDE.md)
 - [scripts/Test-M365Stage8LocalPreflight.ps1](scripts/Test-M365Stage8LocalPreflight.ps1)
+- [config/M365_STAGE_8A_RELATIONSHIP_CRM.json](config/M365_STAGE_8A_RELATIONSHIP_CRM.json)
+- [scripts/New-M365Stage8ARelationshipCrmPacket.ps1](scripts/New-M365Stage8ARelationshipCrmPacket.ps1)
+- [scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1](scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1)
+- [scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1](scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1)
+- [scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1](scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1)
+- [scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1](scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1)
+- [scripts/Test-M365Stage8ALocalPreflight.ps1](scripts/Test-M365Stage8ALocalPreflight.ps1)
+- [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md)
 - [inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md)
 - [inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_BUILD_GUIDE.md)
 - [inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md](inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md)
@@ -411,13 +514,25 @@ https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Guided-AI-La
 4. Decide whether to build a separate homepage promotion operator. Do not
    promote manually from the command-center build script.
 
-5. Review the Stage 9 agent capability packet if changing capability scope:
+5. Browser-review the Relationship CRM, CRM Operations, and CRM Command Center
+   pages:
+
+```text
+https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM.aspx
+https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Operations.aspx
+https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Command-Center.aspx
+```
+
+6. Do not create the planned Teams tabs until browser review confirms the
+   SharePoint CRM pages are usable.
+
+7. Review the Stage 9 agent capability packet if changing capability scope:
 
 ```text
 inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BUILD_GUIDE.md
 ```
 
-6. Stage 9 capability decision and first supervised coordinator/support loops
+8. Stage 9 capability decision and first supervised coordinator/support loops
    are already recorded. For any next Stage 9 loop, start dry-run-first:
 
 ```powershell
@@ -425,7 +540,7 @@ inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BU
 .\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage
 ```
 
-7. Apply any next Stage 9 loop only after Adam approves and types the
+9. Apply any next Stage 9 loop only after Adam approves and types the
    action-specific phrase:
 
 ```text
@@ -433,9 +548,17 @@ record-stage-9-coordinator-suggestion
 record-stage-9-support-triage
 ```
 
-8. After the command-center page is browser-approved, run the first functional
-   workflow walkthrough:
-   `New Intake -> triage -> decision -> active delivery -> handoff evidence`.
+10. Guided AI Labs homepage is now the live Operations Cockpit:
+   `https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Guided-AI-Labs-Operations-Cockpit.aspx`.
+   It has top cards for CRM, Operations, Tools, and Projects In Flight, plus
+   embedded live queues for Open CRM Actions, Qualification Triage, Attention
+   Now, and Agent Action Log / Needs Review. The single daily CRM door is the
+   CRM Command Center; older Relationship CRM and CRM Operations pages remain
+   reference pages only.
+
+11. After the Operations Cockpit and CRM Command Center are browser-approved,
+   run the first functional workflow walkthrough:
+   `New Intake -> triage -> CRM engagement -> decision -> active delivery -> handoff evidence`.
 
 ## Useful scripts
 
@@ -467,8 +590,15 @@ Read-only / diagnostic:
 .\scripts\New-M365Stage8WorkspaceShapePacket.ps1
 .\scripts\New-M365Stage8WorkspaceBackingPacket.ps1
 .\scripts\New-M365Stage8HomepageRefinementPacket.ps1
+.\scripts\New-M365Stage8ARelationshipCrmPacket.ps1
+.\scripts\New-M365Stage8BRelationshipCrmOperationsPacket.ps1
+.\scripts\Test-M365Stage8ALocalPreflight.ps1
+.\scripts\Test-M365Stage8BLocalPreflight.ps1
 .\scripts\Invoke-M365Stage8HomepageRefinementBuild.ps1
+.\scripts\Invoke-M365Stage8ARelationshipCrmBuild.ps1
+.\scripts\Invoke-M365Stage8BRelationshipCrmOperationalize.ps1
 .\scripts\Start-M365Stage8VerifyHomepageRefinementInteractive.ps1
+.\scripts\Set-GuidedAILabsOperationsPortal.ps1
 ```
 
 Live writes, use only after review:
@@ -484,6 +614,9 @@ Live writes, use only after review:
 .\scripts\Start-M365Stage8WorkspaceShapeBuildInteractive.ps1 -Apply
 .\scripts\Start-M365Stage8WorkspaceBackingBuildInteractive.ps1 -Apply
 .\scripts\Start-M365Stage8HomepageRefinementInteractive.ps1 -Apply
+.\scripts\Start-M365Stage8ARelationshipCrmBuildInteractive.ps1 -Apply
+.\scripts\Start-M365Stage8BRelationshipCrmOperationalizeInteractive.ps1 -Apply
+.\scripts\Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1 -Apply
 ```
 
 Stage 7 live read-only inventory:

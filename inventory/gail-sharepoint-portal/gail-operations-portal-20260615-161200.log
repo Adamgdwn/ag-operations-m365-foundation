@@ -1,0 +1,45 @@
+**********************
+PowerShell transcript start
+Start time: 20260615161200
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -File .\scripts\Set-GuidedAILabsOperationsPortal.ps1 -NoPause
+Process ID: 3448
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Guided AI Labs SharePoint operations portal cleanup
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\gail-sharepoint-portal\gail-operations-portal-20260615-161200.log
+
+Refreshing portal page: Guided-AI-Labs-Operations-Portal.aspx
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id af75c4ba-3b12-4926-9cc5-dd173efdba7e does not exist on this page"
+  [warn] Could not remove stale page component af75c4ba-3b12-4926-9cc5-dd173efdba7e: Component with id af75c4ba-3b12-4926-9cc5-dd173efdba7e does not exist on this page
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id 4f1602b6-a1fe-4d83-94e2-cf2753ebc0be does not exist on this page"
+  [warn] Could not remove stale page component 4f1602b6-a1fe-4d83-94e2-cf2753ebc0be: Component with id 4f1602b6-a1fe-4d83-94e2-cf2753ebc0be does not exist on this page
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id f63f51f9-8912-4a4b-8fa2-d8e61e116ef8 does not exist on this page"
+  [warn] Could not remove stale page component f63f51f9-8912-4a4b-8fa2-d8e61e116ef8: Component with id f63f51f9-8912-4a4b-8fa2-d8e61e116ef8 does not exist on this page
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id 1b9b6c58-2a4a-421b-9419-5fbb7be07583 does not exist on this page"
+  [warn] Could not remove stale page component 1b9b6c58-2a4a-421b-9419-5fbb7be07583: Component with id 1b9b6c58-2a4a-421b-9419-5fbb7be07583 does not exist on this page
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id 4e60edcf-821d-4f4d-88d8-dca5b35010e2 does not exist on this page"
+  [warn] Could not remove stale page component 4e60edcf-821d-4f4d-88d8-dca5b35010e2: Component with id 4e60edcf-821d-4f4d-88d8-dca5b35010e2 does not exist on this page
+Adding live dashboard list web parts
+  [OK] CRM - Action Queue / Open CRM Actions
+  [OK] CRM - Qualification / Qualification Triage
+  [OK] Guided AI Labs - Intake Register / Attention Now
+  [OK] Agent Action Log / Needs Review
+Homepage set to: SitePages/Guided-AI-Labs-Operations-Portal.aspx
+Evidence written: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\gail-sharepoint-portal\GAIL_OPERATIONS_PORTAL_20260615-161200.md
+**********************
+PowerShell transcript end
+End time: 20260615161315
+**********************

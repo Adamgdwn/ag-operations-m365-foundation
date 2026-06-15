@@ -1,0 +1,152 @@
+**********************
+PowerShell transcript start
+Start time: 20260615134054
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage8BRelationshipCrmOperationalize.ps1 -Apply
+Process ID: 14112
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8B - Relationship CRM Operations
+Mode:       APPLY
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operationalize-20260615-134054.log
+
+Planned operational additions:
+- Lookup fields: 8
+- List operation blocks: 6
+- Operations page: Relationship-CRM-Operations.aspx
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No mail sends
+- No item or list deletions
+- No unattended automation
+- No Dynamics or Dataverse provisioning
+
+
+Connecting to Guided AI Labs SharePoint site...
+
+Adding lookup fields...
+  [OK] Lookup created: CRM - Contacts / Organization
+  [OK] Lookup indexed: CRM - Contacts / Organization
+  [OK] Lookup created: CRM - Engagements / Organization
+  [OK] Lookup indexed: CRM - Engagements / Organization
+  [OK] Lookup created: CRM - Engagements / Primary Contact
+  [OK] Lookup indexed: CRM - Engagements / Primary Contact
+  [OK] Lookup created: CRM - Stakeholder Map / Engagement
+  [OK] Lookup indexed: CRM - Stakeholder Map / Engagement
+  [OK] Lookup created: CRM - Stakeholder Map / Contact
+  [OK] Lookup indexed: CRM - Stakeholder Map / Contact
+  [OK] Lookup created: CRM - Touchpoints / Engagement
+  [OK] Lookup indexed: CRM - Touchpoints / Engagement
+  [OK] Lookup created: CRM - Touchpoints / Contact
+  [OK] Lookup indexed: CRM - Touchpoints / Contact
+  [OK] Lookup created: CRM - Lifecycle Checklist / Engagement
+  [OK] Lookup indexed: CRM - Lifecycle Checklist / Engagement
+
+Operationalizing list: CRM - Organizations
+  [OK] Field created: NextActionDueDate
+  [OK] Field indexed: NextActionDueDate
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: OperationalHealth
+  [OK] Field indexed: OperationalHealth
+  [OK] Field created: ReviewCadence
+  [OK] Field created: AccountTier
+  [OK] Field indexed: AccountTier
+  [OK] Field created: BackupOwner
+  [OK] View created: Relationship Review Queue
+  [OK] View created: Strategic Relationships
+
+Operationalizing list: CRM - Contacts
+  [OK] Field created: NextActionDueDate
+  [OK] Field indexed: NextActionDueDate
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: LastContacted
+  [OK] Field created: ContactBoundary
+  [OK] Field indexed: ContactBoundary
+  [OK] Field created: BackupOwner
+  [OK] View created: Contact Follow-up Queue
+  [OK] View created: Key People
+
+Operationalizing list: CRM - Engagements
+  [OK] Field created: NextActionDueDate
+  [OK] Field indexed: NextActionDueDate
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: OperationalHealth
+  [OK] Field indexed: OperationalHealth
+  [OK] Field created: DecisionStatus
+  [OK] Field indexed: DecisionStatus
+  [OK] Field created: DecisionDueDate
+  [OK] Field indexed: DecisionDueDate
+  [OK] Field created: EstimatedValue
+  [OK] Field created: ProbabilityPercent
+  [OK] Field created: NextMilestone
+  [OK] Field created: TargetGoLiveDate
+  [OK] Field created: HandoffStatus
+  [OK] Field indexed: HandoffStatus
+  [OK] Field created: BackupOwner
+  [OK] View created: Daily CRM Queue
+  [OK] View created: Pipeline by Stage
+  [OK] View created: Delivery Control
+  [OK] View created: Decision Deadlines
+
+Operationalizing list: CRM - Stakeholder Map
+  [OK] Field created: NextActionDueDate
+  [OK] Field indexed: NextActionDueDate
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: Sentiment
+  [OK] Field indexed: Sentiment
+  [OK] Field created: RelationshipRisk
+  [OK] Field indexed: RelationshipRisk
+  [OK] View created: Stakeholder Attention
+
+Operationalizing list: CRM - Touchpoints
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: TouchpointOutcome
+  [OK] Field indexed: TouchpointOutcome
+  [OK] Field created: NextTouchpointType
+  [OK] View created: Follow-ups Due
+  [OK] View created: Relationship History
+
+Operationalizing list: CRM - Lifecycle Checklist
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: Workstream
+  [OK] Field indexed: Workstream
+  [OK] Field created: RequiredForGoLive
+  [OK] Field indexed: RequiredForGoLive
+  [OK] Field created: SortOrder
+  [OK] View created: Go-Live / Offramp Blockers
+  [OK] View created: Checklist Due
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Relationship-CRM-Operations.aspx' does not exist"
+Creating operations page: Relationship-CRM-Operations.aspx
+  [OK] Relationship CRM Operations
+Adding navigation link: Client Delivery / CRM Operations -> /sites/GuidedAILabs/SitePages/Relationship-CRM-Operations.aspx
+  [OK] CRM Operations
+
+Stage 8B Relationship CRM operations apply complete. Run read-only verification next.
+**********************
+PowerShell transcript end
+End time: 20260615134407
+**********************

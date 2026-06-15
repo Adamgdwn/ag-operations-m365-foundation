@@ -1,0 +1,235 @@
+**********************
+PowerShell transcript start
+Start time: 20260615144419
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -Command -
+Process ID: 12600
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+    Write-Host "Connecting to $siteUrl" -ForegroundColor Cyan
+    Connect-PnPOnline -Url $siteUrl -OSLogin
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+    Write-Host "Connecting to $siteUrl" -ForegroundColor Cyan
+    Connect-PnPOnline -Url $siteUrl -OSLogin
+    $web = Get-PnPWeb -Includes AssociatedOwnerGroup,AssociatedMemberGroup,AssociatedVisitorGroup,Title,Url
+    Write-Host "Site: $($web.Title) <$($web.Url)>" -ForegroundColor White
+    Write-Host "Owners group: $($web.AssociatedOwnerGroup.Title)" -ForegroundColor White
+    Write-Host "Members group: $($web.AssociatedMemberGroup.Title)" -ForegroundColor White
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+    Write-Host "Connecting to $siteUrl" -ForegroundColor Cyan
+    Connect-PnPOnline -Url $siteUrl -OSLogin
+    $web = Get-PnPWeb -Includes AssociatedOwnerGroup,AssociatedMemberGroup,AssociatedVisitorGroup,Title,Url
+    Write-Host "Site: $($web.Title) <$($web.Url)>" -ForegroundColor White
+    Write-Host "Owners group: $($web.AssociatedOwnerGroup.Title)" -ForegroundColor White
+    Write-Host "Members group: $($web.AssociatedMemberGroup.Title)" -ForegroundColor White
+    Write-Host "Ensuring user exists: $userUpn" -ForegroundColor Cyan
+    $user = New-PnPUser -LoginName $userUpn
+    Write-Host "Resolved user: $($user.Title) <$($user.LoginName)>" -ForegroundColor White
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+    Write-Host "Connecting to $siteUrl" -ForegroundColor Cyan
+    Connect-PnPOnline -Url $siteUrl -OSLogin
+    $web = Get-PnPWeb -Includes AssociatedOwnerGroup,AssociatedMemberGroup,AssociatedVisitorGroup,Title,Url
+    Write-Host "Site: $($web.Title) <$($web.Url)>" -ForegroundColor White
+    Write-Host "Owners group: $($web.AssociatedOwnerGroup.Title)" -ForegroundColor White
+    Write-Host "Members group: $($web.AssociatedMemberGroup.Title)" -ForegroundColor White
+    Write-Host "Ensuring user exists: $userUpn" -ForegroundColor Cyan
+    $user = New-PnPUser -LoginName $userUpn
+    Write-Host "Resolved user: $($user.Title) <$($user.LoginName)>" -ForegroundColor White
+    $ownersGroup = $web.AssociatedOwnerGroup.Title
+    $ownerMembersBefore = @(Get-PnPGroupMember -Identity $ownersGroup | Select-Object Title,LoginName,Email)
+    $alreadyOwner = @($ownerMembersBefore | Where-Object { $_.Email -eq $userUpn -or $_.LoginName -like "*$userUpn*" }).Count -gt 0
+    if (-not $alreadyOwner) {
+        Write-Host "Adding $userUpn to site owners group: $ownersGroup" -ForegroundColor Yellow
+        Add-PnPGroupMember -Identity $ownersGroup -LoginName $userUpn | Out-Null
+    } else {
+        Write-Host "$userUpn is already in the site owners group." -ForegroundColor Green
+    }
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+    Write-Host "Connecting to $siteUrl" -ForegroundColor Cyan
+    Connect-PnPOnline -Url $siteUrl -OSLogin
+    $web = Get-PnPWeb -Includes AssociatedOwnerGroup,AssociatedMemberGroup,AssociatedVisitorGroup,Title,Url
+    Write-Host "Site: $($web.Title) <$($web.Url)>" -ForegroundColor White
+    Write-Host "Owners group: $($web.AssociatedOwnerGroup.Title)" -ForegroundColor White
+    Write-Host "Members group: $($web.AssociatedMemberGroup.Title)" -ForegroundColor White
+    Write-Host "Ensuring user exists: $userUpn" -ForegroundColor Cyan
+    $user = New-PnPUser -LoginName $userUpn
+    Write-Host "Resolved user: $($user.Title) <$($user.LoginName)>" -ForegroundColor White
+    $ownersGroup = $web.AssociatedOwnerGroup.Title
+    $ownerMembersBefore = @(Get-PnPGroupMember -Identity $ownersGroup | Select-Object Title,LoginName,Email)
+    $alreadyOwner = @($ownerMembersBefore | Where-Object { $_.Email -eq $userUpn -or $_.LoginName -like "*$userUpn*" }).Count -gt 0
+    if (-not $alreadyOwner) {
+        Write-Host "Adding $userUpn to site owners group: $ownersGroup" -ForegroundColor Yellow
+        Add-PnPGroupMember -Identity $ownersGroup -LoginName $userUpn | Out-Null
+    } else {
+        Write-Host "$userUpn is already in the site owners group." -ForegroundColor Green
+    }
+    $siteAdminsBefore = @(Get-PnPSiteCollectionAdmin | Select-Object Title,LoginName,Email)
+    $alreadyAdmin = @($siteAdminsBefore | Where-Object { $_.Email -eq $userUpn -or $_.LoginName -like "*$userUpn*" }).Count -gt 0
+    if (-not $alreadyAdmin) {
+        Write-Host "Adding $userUpn as a site collection admin for direct recovery access" -ForegroundColor Yellow
+        Add-PnPSiteCollectionAdmin -Owners $userUpn
+    } else {
+        Write-Host "$userUpn is already a site collection admin." -ForegroundColor Green
+    }
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> try {
+    Write-Host "Connecting to $siteUrl" -ForegroundColor Cyan
+    Connect-PnPOnline -Url $siteUrl -OSLogin
+    $web = Get-PnPWeb -Includes AssociatedOwnerGroup,AssociatedMemberGroup,AssociatedVisitorGroup,Title,Url
+    Write-Host "Site: $($web.Title) <$($web.Url)>" -ForegroundColor White
+    Write-Host "Owners group: $($web.AssociatedOwnerGroup.Title)" -ForegroundColor White
+    Write-Host "Members group: $($web.AssociatedMemberGroup.Title)" -ForegroundColor White
+    Write-Host "Ensuring user exists: $userUpn" -ForegroundColor Cyan
+    $user = New-PnPUser -LoginName $userUpn
+    Write-Host "Resolved user: $($user.Title) <$($user.LoginName)>" -ForegroundColor White
+    $ownersGroup = $web.AssociatedOwnerGroup.Title
+    $ownerMembersBefore = @(Get-PnPGroupMember -Identity $ownersGroup | Select-Object Title,LoginName,Email)
+    $alreadyOwner = @($ownerMembersBefore | Where-Object { $_.Email -eq $userUpn -or $_.LoginName -like "*$userUpn*" }).Count -gt 0
+    if (-not $alreadyOwner) {
+        Write-Host "Adding $userUpn to site owners group: $ownersGroup" -ForegroundColor Yellow
+        Add-PnPGroupMember -Identity $ownersGroup -LoginName $userUpn | Out-Null
+    } else {
+        Write-Host "$userUpn is already in the site owners group." -ForegroundColor Green
+    }
+    $siteAdminsBefore = @(Get-PnPSiteCollectionAdmin | Select-Object Title,LoginName,Email)
+    $alreadyAdmin = @($siteAdminsBefore | Where-Object { $_.Email -eq $userUpn -or $_.LoginName -like "*$userUpn*" }).Count -gt 0
+    if (-not $alreadyAdmin) {
+        Write-Host "Adding $userUpn as a site collection admin for direct recovery access" -ForegroundColor Yellow
+        Add-PnPSiteCollectionAdmin -Owners $userUpn
+    } else {
+        Write-Host "$userUpn is already a site collection admin." -ForegroundColor Green
+    }
+    $ownerMembersAfter = @(Get-PnPGroupMember -Identity $ownersGroup | Select-Object Title,LoginName,Email)
+    $siteAdminsAfter = @(Get-PnPSiteCollectionAdmin | Select-Object Title,LoginName,Email)
+    $ownerMembersAfter | Export-Csv -NoTypeInformation -Encoding UTF8 -Path (Join-Path $outDir "guided-ai-labs-owners-after-$stamp.csv")
+    $siteAdminsAfter | Export-Csv -NoTypeInformation -Encoding UTF8 -Path (Join-Path $outDir "guided-ai-labs-site-admins-after-$stamp.csv")
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS>TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $global:?
+True
+**********************
+PowerShell transcript end
+End time: 20260615144419
+**********************

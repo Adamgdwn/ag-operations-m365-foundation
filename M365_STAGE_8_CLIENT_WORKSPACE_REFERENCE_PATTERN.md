@@ -1,7 +1,7 @@
 # Microsoft 365 Stage 8 - Client Workspace Reference Pattern
 
-Status: **in progress - backing structure live-built and verified**
-(2026-06-14).
+Status: **in progress - backing structure and Stage 8A CRM live-built and
+verified** (2026-06-15).
 
 Stage 8 turns the Guided AI Labs / AG Operations foundation into a repeatable
 client workspace pattern. This is where the internal build becomes something Adam
@@ -21,11 +21,19 @@ Related:
 - [scripts/Invoke-M365Stage8VerifyWorkspaceBacking.ps1](scripts/Invoke-M365Stage8VerifyWorkspaceBacking.ps1)
 - [scripts/Start-M365Stage8VerifyWorkspaceBackingInteractive.ps1](scripts/Start-M365Stage8VerifyWorkspaceBackingInteractive.ps1)
 - [config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json](config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json)
+- [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
+- [config/M365_STAGE_8A_RELATIONSHIP_CRM.json](config/M365_STAGE_8A_RELATIONSHIP_CRM.json)
 - [scripts/New-M365Stage8HomepageRefinementPacket.ps1](scripts/New-M365Stage8HomepageRefinementPacket.ps1)
 - [scripts/Invoke-M365Stage8HomepageRefinementBuild.ps1](scripts/Invoke-M365Stage8HomepageRefinementBuild.ps1)
 - [scripts/Start-M365Stage8HomepageRefinementInteractive.ps1](scripts/Start-M365Stage8HomepageRefinementInteractive.ps1)
 - [scripts/Invoke-M365Stage8VerifyHomepageRefinement.ps1](scripts/Invoke-M365Stage8VerifyHomepageRefinement.ps1)
 - [scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1](scripts/Start-M365Stage8VerifyHomepageRefinementInteractive.ps1)
+- [scripts/New-M365Stage8ARelationshipCrmPacket.ps1](scripts/New-M365Stage8ARelationshipCrmPacket.ps1)
+- [scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1](scripts/Invoke-M365Stage8ARelationshipCrmBuild.ps1)
+- [scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1](scripts/Start-M365Stage8ARelationshipCrmBuildInteractive.ps1)
+- [scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1](scripts/Invoke-M365Stage8AVerifyRelationshipCrm.ps1)
+- [scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1](scripts/Start-M365Stage8AVerifyRelationshipCrmInteractive.ps1)
+- [scripts/Test-M365Stage8ALocalPreflight.ps1](scripts/Test-M365Stage8ALocalPreflight.ps1)
 - [scripts/Test-M365Stage8LocalPreflight.ps1](scripts/Test-M365Stage8LocalPreflight.ps1)
 - [inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_BUILD_GUIDE.md)
 - [inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_BUILD_GUIDE.md](inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_BUILD_GUIDE.md)
@@ -99,6 +107,22 @@ After the draft page is created, verify it with:
 The verifier is read-only. It checks that the draft page exists, has the
 expected command-center title/markers, and that the draft has not become the
 current homepage.
+
+Stage 8A Relationship CRM build packet:
+
+- [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
+- [config/M365_STAGE_8A_RELATIONSHIP_CRM.json](config/M365_STAGE_8A_RELATIONSHIP_CRM.json)
+- [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md)
+
+Stage 8A was live-applied and read-back verified on 2026-06-15. It created six
+CRM Lists, the Relationship CRM page, CRM views, and one Client Delivery
+navigation link after the approval phrase `apply-stage-8a-relationship-crm`. It
+did not create Dynamics, Dataverse, permissions, guests, sharing, app grants,
+public Forms, mail sends, deletes, or unattended automation.
+
+Verification summary:
+
+- [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md)
 
 ---
 
@@ -185,6 +209,7 @@ Labs delivery operations, reusable methods, and internal decisions.
 
 | Component | Purpose | Owner |
 |---|---|---|
+| Relationship CRM | Organizations, contacts, engagements, touchpoints, onboarding/offboarding, and next actions | GAL |
 | Client discovery form | Structured intake/readiness information | GAL or client, depending on collection path |
 | Client readiness checklist | Current-state review of identity, files, comms, collaboration, and AI readiness | GAL |
 | Client workspace map | Simple visual/index of where records, tasks, decisions, and conversations live | Client/GAL jointly |

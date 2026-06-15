@@ -1,0 +1,4 @@
+"Name","Steps"
+"Convert Intake Into CRM","Intake Register row -> Organization -> Contact -> Engagement -> Touchpoint -> Lifecycle Checklist -> Planner task if action-bearing -> Agent Action Log evidence -> Decision Register only for scope/governance/commercial decisions"
+"Onboarding","Set EngagementStage to Onboarding -> Select EntryPackage and TargetPackage -> Create Lifecycle Checklist items -> Assign owner and due dates -> Add evidence links -> Move to Active Delivery only when blockers clear"
+"Offboarding","Confirm PlannedOfframpPackage -> Complete OffboardingRequirements -> Link Handoff Packet Register if applicable -> Record access/review decision if needed -> Move EngagementStage to Offboarding -> Archive as Alumni / Archived after evidence and next-review date"

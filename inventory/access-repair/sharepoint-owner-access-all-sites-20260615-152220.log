@@ -1,0 +1,123 @@
+**********************
+PowerShell transcript start
+Start time: 20260615152220
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -File .\scripts\Grant-M365SharePointOwnerAccessToSites.ps1
+Process ID: 23232
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 SharePoint owner access grant - all tenant sites
+Admin URL: https://agoperationsltd-admin.sharepoint.com
+Users: adamgoodwin@guidedailabs.com, admin@agoperations.ca
+Safety: named internal users only; no guests, external sharing, anonymous links, tenant policy, CRM data, mail, or automation changes.
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+Tenant sites found: 11; targeted: 10
+
+Site: Communication site <https://agoperationsltd.sharepoint.com/> [SitePagePublishing#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: Communication site Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: Communication site Owners
+    Already site collection admin.
+
+Site:  <https://agoperationsltd.sharepoint.com/search> [SRCHCEN#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: Owners
+    Already site collection admin.
+
+Site: A.G. Operations Ltd <https://agoperationsltd.sharepoint.com/sites/A.G.OperationsLtd> [GROUP#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: A.G. Operations Ltd Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: A.G. Operations Ltd Owners
+    Already site collection admin.
+
+Site: AG Operations <https://agoperationsltd.sharepoint.com/sites/AGOperations> [SITEPAGEPUBLISHING#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: AG Operations Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: AG Operations Owners
+    Already site collection admin.
+
+Site: All Company <https://agoperationsltd.sharepoint.com/sites/allcompany> [GROUP#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Added to owners group: All Company Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Added to owners group: All Company Owners
+    Already site collection admin.
+
+Site: Change Leadership Tools <https://agoperationsltd.sharepoint.com/sites/ChangeLeadershipTools> [GROUP#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: Change Leadership Tools Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: Change Leadership Tools Owners
+    Already site collection admin.
+
+Site: Group for Answers in Viva Engage – DO NOT DELETE 1521570944958464 <https://agoperationsltd.sharepoint.com/sites/groupforanswersinvivaengagedonotdelete1521570944958464273> [GROUP#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Added to owners group: Group for Answers in Viva Engage – DO NOT DELETE 1521570944958464 Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Added to owners group: Group for Answers in Viva Engage – DO NOT DELETE 1521570944958464 Owners
+    Already site collection admin.
+
+Site: Guided AI Journey <https://agoperationsltd.sharepoint.com/sites/GuidedAIJourney> [SITEPAGEPUBLISHING#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: Guided AI Journey Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: Guided AI Journey Owners
+    Already site collection admin.
+
+Site: Guided AI Labs <https://agoperationsltd.sharepoint.com/sites/GuidedAILabs> [GROUP#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: Guided AI Labs Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: Guided AI Labs Owners
+    Already site collection admin.
+
+Site: Shared Libraries <https://agoperationsltd.sharepoint.com/sites/SharedLibraries> [SITEPAGEPUBLISHING#0]
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+  Ensuring adamgoodwin@guidedailabs.com
+    Already in owners group: Shared Libraries Owners
+    Already site collection admin.
+  Ensuring admin@agoperations.ca
+    Already in owners group: Shared Libraries Owners
+    Already site collection admin.
+
+All-site owner access result: PASS
+Summary: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\access-repair\SHAREPOINT_OWNER_ACCESS_ALL_SITES_20260615-152220.md
+Result CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\access-repair\sharepoint-owner-access-all-sites-results-20260615-152220.csv
+**********************
+PowerShell transcript end
+End time: 20260615152247
+**********************

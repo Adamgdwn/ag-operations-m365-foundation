@@ -6,6 +6,10 @@ Captured on 2026-06-10.
 
 Build Microsoft 365 into the clean operating foundation for AG Operations and Guided AI Labs.
 
+Current operating-site rule: **Guided AI Labs is the daily workplace and source
+of truth. AG Operations root SharePoint is the portfolio/router landing site**
+for Guided AI Labs and any future companies underneath AG Operations.
+
 This roadmap is for the human-supervised setup phase. It does not create unattended automation or the future Agentic OS. It prepares Microsoft 365 so a future Agentic OS can safely connect through governed access.
 
 ## North Star
@@ -450,8 +454,11 @@ what should not sync locally
 
 Status: in progress. Page/navigation skeleton and backing structure are
 live-built and read-back verified; the command-center homepage draft was
-created and read-back verified on 2026-06-15. Browser review is next before any
-separate homepage promotion operator is created or run. See
+created and read-back verified on 2026-06-15. Stage 8A Relationship CRM is also
+live-built and read-back verified. Stage 8B Relationship CRM operational
+hardening is live-applied and read-back verified. Stage 8C Relationship CRM
+operator workflow is live-applied and read-back verified. Browser review follows
+before any separate homepage promotion operator or CRM Teams tabs are created. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
 The live SharePoint shape should also follow the local Prime Operations-inspired
 planning baseline in
@@ -482,6 +489,35 @@ The draft apply path creates `Guided-AI-Labs-Command-Center-Draft.aspx` only; it
 does not replace the current homepage or change navigation/permissions/sharing.
 The companion verifier read the draft page back and confirmed that it has not
 become the current homepage.
+Stage 8A Relationship CRM Spine is now consolidated into a Lists-first,
+future-own-CRM-ready packet:
+[M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md),
+[config/M365_STAGE_8A_RELATIONSHIP_CRM.json](config/M365_STAGE_8A_RELATIONSHIP_CRM.json),
+and
+[inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md).
+The apply path creates six CRM Lists, `Relationship-CRM.aspx`, CRM views, and a
+Client Delivery navigation link only after the approval phrase
+`apply-stage-8a-relationship-crm`. It does not create Dynamics, Dataverse,
+permissions, sharing, guests, app grants, public Forms, mail sends, deletes, or
+unattended automation.
+Stage 8B Relationship CRM Operations adds the functional operating layer:
+[M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md](M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md),
+[config/M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json](config/M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json),
+and
+[inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_BUILD_GUIDE.md](inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_BUILD_GUIDE.md).
+It is additive and approval-gated, adding lookup-backed relationships, due
+dates, priority/health fields, filtered work queues, and
+`Relationship-CRM-Operations.aspx`. Verification passed:
+[inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md](inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md).
+Stage 8C Relationship CRM Operator Workflow adds the practical working layer:
+[M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md),
+[config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json](config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json),
+and
+[inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md).
+It is additive and approval-gated, adding CRM Action Queue, Qualification,
+Meeting Notes, Artifacts, Health Reviews, filtered workflow views, and
+`Relationship-CRM-Command-Center.aspx`. Verification passed:
+[inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md).
 
 ### What we are doing
 
@@ -507,6 +543,14 @@ This becomes part of the consulting offer. Clients need to understand how M365 s
 - Guided AI Labs Command Center homepage refinement packet with six command
   cards, Active Work Snapshot, Client Pathway Snapshot, and Operational
   Readiness dashboard runway
+- Stage 8A Relationship CRM packet with Organizations, Contacts, Engagements,
+  Stakeholder Map, Touchpoints, Lifecycle Checklist, and a Relationship CRM
+  routing page
+- Stage 8B Relationship CRM operations packet with lookup fields, filtered
+  queues, due dates, priority/health fields, and CRM Operations page
+- Stage 8C Relationship CRM operator workflow packet with action queue,
+  qualification, meeting notes, artifacts, health reviews, and CRM Command
+  Center page
 
 ### Done when
 
@@ -519,6 +563,69 @@ Here is where your tasks and decisions live.
 Here is how future AI safely connects.
 Here is what you own when we leave.
 ```
+
+## Stage 8A - Relationship CRM Spine
+
+Status: live-built and read-back verified 2026-06-15.
+
+### What we are doing
+
+Add a lightweight relationship CRM inside the Guided AI Labs command center,
+using Microsoft Lists as the current governed operating layer and preserving a
+clean migration path to a future custom CRM.
+
+### Why
+
+Client delivery needs a relationship spine, not only an intake register or
+workspace register. Adam and future staff need to see organizations, contacts,
+engagement stage, offer package, onboarding, offboarding, touchpoints, and next
+actions in one operating surface.
+
+### Main outputs
+
+- `CRM - Organizations`
+- `CRM - Contacts`
+- `CRM - Engagements`
+- `CRM - Stakeholder Map`
+- `CRM - Touchpoints`
+- `CRM - Lifecycle Checklist`
+- `Relationship-CRM.aspx` under the Client Delivery navigation group
+- portable CRM migration hooks: `RecordKey`, `FutureCrmId`, `CentralOSLink`,
+  and `GraphNodeId`
+
+### Done when
+
+The CRM Lists, fields, views, page, and navigation link are read-back verified,
+and a harmless internal workflow can move:
+
+```text
+Intake -> organization/contact -> engagement -> touchpoint -> lifecycle checklist
+```
+
+No external guest, sharing, app grant, Forms, mail send, Dynamics, Dataverse, or
+unattended automation is part of this stage.
+
+## Stage 8B - Relationship CRM Operations
+
+Status: live-applied and read-back verified 2026-06-15.
+
+Stage 8B adds lookup-backed relationships, operational fields, due dates,
+priority, health, filtered CRM queues, the CRM Operations page, and navigation.
+See [M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md](M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md).
+
+## Stage 8C - Relationship CRM Operator Workflow
+
+Status: live-applied and read-back verified 2026-06-15.
+
+Stage 8C adds the practical working layer for day-to-day CRM operation:
+`CRM - Action Queue`, `CRM - Qualification`, `CRM - Meeting Notes`,
+`CRM - Artifacts`, `CRM - Health Reviews`, lookup fields back to the CRM spine,
+filtered workflow views, `Relationship-CRM-Command-Center.aspx`, and Client
+Delivery navigation. See
+[M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md).
+
+No external guest, sharing, app grant, Forms, mail send, Dynamics, Dataverse,
+deletion, or unattended automation is part of this stage.
 
 ## Stage 9 - Agentic OS Bridge Readiness
 
@@ -584,7 +691,10 @@ Use this order for the actual build:
 7. Stage 6 - Teams, Planner, Lists, And Operating State
 8. Stage 7 - Security, Governance, And External Sharing
 9. Stage 8 - Client Workspace Reference Pattern
-10. Stage 9 - Agentic OS Bridge Readiness
+10. Stage 8A - Relationship CRM Spine
+11. Stage 8B - Relationship CRM Operations
+12. Stage 8C - Relationship CRM Operator Workflow
+13. Stage 9 - Agentic OS Bridge Readiness
 
 ## The Big Practical Sequence
 

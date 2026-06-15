@@ -62,7 +62,13 @@
         "Tool Permission Review",
         "Automation Backlog",
         "Exception Register",
-        "Readiness Evidence"
+        "Readiness Evidence",
+        "CRM - Organizations",
+        "CRM - Contacts",
+        "CRM - Engagements",
+        "CRM - Stakeholder Map",
+        "CRM - Touchpoints",
+        "CRM - Lifecycle Checklist"
       ],
       "writeSurfaces": [
         {
@@ -89,6 +95,11 @@
           "surface": "Tool Permission Review",
           "governanceLevel": "G2",
           "allowedWrites": ["record permission review candidates", "record approved review outcomes"]
+        },
+        {
+          "surface": "Stage 8A Relationship CRM Lists",
+          "governanceLevel": "G2",
+          "allowedWrites": ["create/update internal organization/contact/engagement rows", "record touchpoints", "update lifecycle checklist items after approval"]
         },
         {
           "surface": "Guided AI Labs - Operating Plan",

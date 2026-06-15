@@ -1,0 +1,44 @@
+**********************
+PowerShell transcript start
+Start time: 20260615144518
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -File .\scripts\Repair-M365SharePointOwnerAccess.ps1
+Process ID: 13784
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 SharePoint owner access repair
+User: adamgoodwin@guidedailabs.com
+Safety: named internal owner only; no guests, external sharing, anonymous links, tenant policy, or CRM data changes.
+
+Connecting to https://agoperationsltd.sharepoint.com
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+Site: Communication site <https://agoperationsltd.sharepoint.com>
+Resolved user: Adam Goodwin <i:0#.f|membership|adamgoodwin@guidedailabs.com>
+Adding adamgoodwin@guidedailabs.com to owners group: Communication site Owners
+Adding adamgoodwin@guidedailabs.com as site collection admin
+
+Connecting to https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+Site: Guided AI Labs <https://agoperationsltd.sharepoint.com/sites/GuidedAILabs>
+Resolved user: Adam Goodwin <i:0#.f|membership|adamgoodwin@guidedailabs.com>
+Adding adamgoodwin@guidedailabs.com to owners group: Guided AI Labs Owners
+Already a site collection admin.
+
+Access repair complete.
+Summary: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\access-repair\SHAREPOINT_OWNER_ACCESS_REPAIR_20260615-144518.md
+CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\access-repair\sharepoint-owner-access-repair-20260615-144518.csv
+**********************
+PowerShell transcript end
+End time: 20260615144526
+**********************

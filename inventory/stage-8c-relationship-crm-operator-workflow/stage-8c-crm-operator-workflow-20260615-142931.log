@@ -1,0 +1,200 @@
+**********************
+PowerShell transcript start
+Start time: 20260615142931
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1 -Apply
+Process ID: 7672
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8C - Relationship CRM Operator Workflow
+Mode:       APPLY
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-20260615-142931.log
+
+Planned workflow additions:
+- New operator lists: 5
+- Workflow lookup fields: 14
+- Workflow views: 19
+- Command center page: Relationship-CRM-Command-Center.aspx
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No mail sends
+- No item or list deletions
+- No unattended automation
+- No Dynamics or Dataverse provisioning
+
+
+Connecting to Guided AI Labs SharePoint site...
+
+Creating CRM operator workflow lists...
+  [OK] List created: CRM - Action Queue
+  [OK] List created: CRM - Qualification
+  [OK] List created: CRM - Meeting Notes
+  [OK] List created: CRM - Artifacts
+  [OK] List created: CRM - Health Reviews
+
+Configuring workflow list: CRM - Action Queue
+  [OK] Field created: RecordKey
+  [OK] Field created: Owner
+  [OK] Field created: ActionType
+  [OK] Field indexed: ActionType
+  [OK] Field created: ActionStatus
+  [OK] Field indexed: ActionStatus
+  [OK] Field created: Priority
+  [OK] Field indexed: Priority
+  [OK] Field created: DueDate
+  [OK] Field indexed: DueDate
+  [OK] Field created: CompletedDate
+  [OK] Field created: NextAction
+  [OK] Field created: Outcome
+  [OK] Field created: BlocksDecision
+  [OK] Field indexed: BlocksDecision
+  [OK] Field created: BlocksGoLive
+  [OK] Field indexed: BlocksGoLive
+  [OK] Field created: SourceSystem
+  [OK] Lookup created: CRM - Action Queue / Organization
+  [OK] Lookup indexed: CRM - Action Queue / Organization
+  [OK] Lookup created: CRM - Action Queue / Engagement
+  [OK] Lookup indexed: CRM - Action Queue / Engagement
+  [OK] Lookup created: CRM - Action Queue / Contact
+  [OK] Lookup indexed: CRM - Action Queue / Contact
+  [OK] Lookup created: CRM - Action Queue / Touchpoint
+  [OK] View created: Open CRM Actions
+  [OK] View created: Due / Overdue Actions
+  [OK] View created: Decision / Go-Live Blockers
+  [OK] View created: Completed Actions
+
+Configuring workflow list: CRM - Qualification
+  [OK] Field created: SignalSource
+  [OK] Field indexed: SignalSource
+  [OK] Field created: QualificationStatus
+  [OK] Field indexed: QualificationStatus
+  [OK] Field created: FitScore
+  [OK] Field indexed: FitScore
+  [OK] Field created: Urgency
+  [OK] Field indexed: Urgency
+  [OK] Field created: BudgetSignal
+  [OK] Field created: AuthoritySignal
+  [OK] Field created: NeedSummary
+  [OK] Field created: RecommendedPackage
+  [OK] Field created: DisqualificationReason
+  [OK] Field created: NextAction
+  [OK] Field created: NextActionDueDate
+  [OK] Field indexed: NextActionDueDate
+  [OK] Field created: Owner
+  [OK] Lookup created: CRM - Qualification / Organization
+  [OK] Lookup indexed: CRM - Qualification / Organization
+  [OK] Lookup created: CRM - Qualification / Contact
+  [OK] Lookup created: CRM - Qualification / Engagement
+  [OK] View created: Qualification Triage
+  [OK] View created: Qualified / Proposal Recommended
+  [OK] View created: Nurture / Disqualified
+
+Configuring workflow list: CRM - Meeting Notes
+  [OK] Field created: MeetingDate
+  [OK] Field indexed: MeetingDate
+  [OK] Field created: MeetingType
+  [OK] Field indexed: MeetingType
+  [OK] Field created: MeetingStatus
+  [OK] Field indexed: MeetingStatus
+  [OK] Field created: Agenda
+  [OK] Field created: Notes
+  [OK] Field created: Commitments
+  [OK] Field created: Decisions
+  [OK] Field created: FollowUpRequired
+  [OK] Field indexed: FollowUpRequired
+  [OK] Field created: FollowUpDueDate
+  [OK] Field indexed: FollowUpDueDate
+  [OK] Field created: Sentiment
+  [OK] Field created: RelatedLink
+  [OK] Field created: Owner
+  [OK] Lookup created: CRM - Meeting Notes / Organization
+  [OK] Lookup indexed: CRM - Meeting Notes / Organization
+  [OK] Lookup created: CRM - Meeting Notes / Engagement
+  [OK] Lookup indexed: CRM - Meeting Notes / Engagement
+  [OK] Lookup created: CRM - Meeting Notes / Primary Contact
+  [OK] View created: Upcoming Meetings
+  [OK] View created: Meeting Prep Needed
+  [OK] View created: Meeting Debrief Needed
+  [OK] View created: Meeting History
+
+Configuring workflow list: CRM - Artifacts
+  [OK] Field created: ArtifactType
+  [OK] Field indexed: ArtifactType
+  [OK] Field created: ArtifactStatus
+  [OK] Field indexed: ArtifactStatus
+  [OK] Field created: ArtifactLink
+  [OK] Field created: VersionLabel
+  [OK] Field created: EvidenceDate
+  [OK] Field indexed: EvidenceDate
+  [OK] Field created: ReviewDueDate
+  [OK] Field indexed: ReviewDueDate
+  [OK] Field created: ApprovedForClientUse
+  [OK] Field indexed: ApprovedForClientUse
+  [OK] Field created: Notes
+  [OK] Field created: Owner
+  [OK] Lookup created: CRM - Artifacts / Organization
+  [OK] Lookup indexed: CRM - Artifacts / Organization
+  [OK] Lookup created: CRM - Artifacts / Engagement
+  [OK] Lookup indexed: CRM - Artifacts / Engagement
+  [OK] View created: Active Artifacts
+  [OK] View created: Proposal / Scope Artifacts
+  [OK] View created: Handoff Evidence
+  [OK] View created: Review Due
+
+Configuring workflow list: CRM - Health Reviews
+  [OK] Field created: ReviewDate
+  [OK] Field indexed: ReviewDate
+  [OK] Field created: NextReviewDate
+  [OK] Field indexed: NextReviewDate
+  [OK] Field created: RelationshipHealth
+  [OK] Field indexed: RelationshipHealth
+  [OK] Field created: DeliveryHealth
+  [OK] Field indexed: DeliveryHealth
+  [OK] Field created: CommercialHealth
+  [OK] Field indexed: CommercialHealth
+  [OK] Field created: HealthScore
+  [OK] Field indexed: HealthScore
+  [OK] Field created: RenewalSignal
+  [OK] Field created: ExpansionSignal
+  [OK] Field indexed: ExpansionSignal
+  [OK] Field created: RiskSummary
+  [OK] Field created: WinSummary
+  [OK] Field created: NextAction
+  [OK] Field created: Owner
+  [OK] Lookup created: CRM - Health Reviews / Organization
+  [OK] Lookup indexed: CRM - Health Reviews / Organization
+  [OK] Lookup created: CRM - Health Reviews / Engagement
+  [OK] Lookup indexed: CRM - Health Reviews / Engagement
+  [OK] View created: Health Review Queue
+  [OK] View created: At Risk Health Reviews
+  [OK] View created: Expansion Signals
+  [OK] View created: Health Review History
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Relationship-CRM-Command-Center.aspx' does not exist"
+Creating command center page: Relationship-CRM-Command-Center.aspx
+  [OK] Relationship CRM Command Center
+Adding navigation link: Client Delivery / CRM Command Center -> /sites/GuidedAILabs/SitePages/Relationship-CRM-Command-Center.aspx
+  [OK] CRM Command Center
+
+Stage 8C Relationship CRM operator workflow apply complete. Run read-only verification next.
+**********************
+PowerShell transcript end
+End time: 20260615143423
+**********************

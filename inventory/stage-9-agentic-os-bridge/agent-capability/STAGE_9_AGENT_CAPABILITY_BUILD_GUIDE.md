@@ -1,6 +1,6 @@
 # Stage 9 Agent Capability Build Guide
 
-Generated: 2026-06-15 10:37:14
+Generated: 2026-06-15 11:42:10
 
 Scope: local-only capability packet. This packet does not connect to Microsoft 365, grant permissions, create apps, send mail, invite guests, change sharing, or alter tenant policy.
 
@@ -48,6 +48,12 @@ Read surfaces:
 - Automation Backlog
 - Exception Register
 - Readiness Evidence
+- CRM - Organizations
+- CRM - Contacts
+- CRM - Engagements
+- CRM - Stakeholder Map
+- CRM - Touchpoints
+- CRM - Lifecycle Checklist
 
 | Write surface | Governance level | Allowed writes |
 |---|---|---|
@@ -56,6 +62,7 @@ Read surfaces:
 | Decision Register | G2 | record approved operating/governance decisions |
 | Automation Backlog | G2 | record proposed automation; update readiness/status |
 | Tool Permission Review | G2 | record permission review candidates; record approved review outcomes |
+| Stage 8A Relationship CRM Lists | G2 | create/update internal organization/contact/engagement rows; record touchpoints; update lifecycle checklist items after approval |
 | Guided AI Labs - Operating Plan | G2 | create/update supervised Planner tasks after approval |
 
 ## M365 Support Agent

@@ -1,0 +1,215 @@
+{
+  "version": "2026-06-15",
+  "stage": "8B",
+  "name": "Relationship CRM Operations Layer",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+    "purpose": "Operational hardening for the Stage 8A Relationship CRM: lookup-backed relationships, daily queues, due dates, risk views, and an operations cockpit."
+  },
+  "approvalPhrase": "apply-stage-8b-crm-operations",
+  "safetyLimits": [
+    "No permission changes",
+    "No guest invitations",
+    "No external sharing changes",
+    "No app grants or consent changes",
+    "No public Forms links",
+    "No mail sends",
+    "No item or list deletions",
+    "No unattended automation",
+    "No Dynamics or Dataverse provisioning"
+  ],
+  "pages": [
+    {
+      "title": "Relationship CRM Operations",
+      "fileName": "Relationship-CRM-Operations.aspx",
+      "navGroup": "Client Delivery",
+      "role": "Daily operator cockpit for CRM queues, follow-ups, risk, delivery control, stakeholder attention, and onboarding/offboarding blockers.",
+      "directLinks": [
+        { "label": "Daily CRM Queue", "list": "CRM - Engagements", "view": "Daily CRM Queue" },
+        { "label": "Pipeline by Stage", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+        { "label": "Delivery Control", "list": "CRM - Engagements", "view": "Delivery Control" },
+        { "label": "Follow-ups Due", "list": "CRM - Touchpoints", "view": "Follow-ups Due" },
+        { "label": "Stakeholder Attention", "list": "CRM - Stakeholder Map", "view": "Stakeholder Attention" },
+        { "label": "Go-Live / Offramp Blockers", "list": "CRM - Lifecycle Checklist", "view": "Go-Live / Offramp Blockers" },
+        { "label": "Relationship Review Queue", "list": "CRM - Organizations", "view": "Relationship Review Queue" },
+        { "label": "Contact Follow-up Queue", "list": "CRM - Contacts", "view": "Contact Follow-up Queue" }
+      ]
+    }
+  ],
+  "navigationTargets": [
+    { "group": "Client Delivery", "link": "CRM Operations", "kind": "Page", "target": "Relationship CRM Operations" }
+  ],
+  "lookupFields": [
+    { "list": "CRM - Contacts", "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Engagements", "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Engagements", "displayName": "Primary Contact", "internalName": "PrimaryContactLookup", "targetList": "CRM - Contacts", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Stakeholder Map", "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Stakeholder Map", "displayName": "Contact", "internalName": "ContactLookup", "targetList": "CRM - Contacts", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Touchpoints", "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Touchpoints", "displayName": "Contact", "internalName": "ContactLookup", "targetList": "CRM - Contacts", "targetField": "Title", "indexed": true },
+    { "list": "CRM - Lifecycle Checklist", "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true }
+  ],
+  "lists": [
+    {
+      "title": "CRM - Organizations",
+      "columns": [
+        { "displayName": "NextActionDueDate", "internalName": "NextActionDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "OperationalHealth", "internalName": "OperationalHealth", "type": "Choice", "choices": ["Green", "Yellow", "Red", "Unknown"], "default": "Unknown", "indexed": true },
+        { "displayName": "ReviewCadence", "internalName": "ReviewCadence", "type": "Choice", "choices": ["Weekly", "Biweekly", "Monthly", "Quarterly", "As needed"], "default": "Monthly" },
+        { "displayName": "AccountTier", "internalName": "AccountTier", "type": "Choice", "choices": ["Strategic", "Core", "Emerging", "Dormant", "Not a fit"], "default": "Emerging", "indexed": true },
+        { "displayName": "BackupOwner", "internalName": "BackupOwner", "type": "User" }
+      ],
+      "views": [
+        {
+          "title": "Relationship Review Queue",
+          "fields": ["LinkTitle", "RelationshipStatus", "CRMStatus", "AccountTier", "OperationalHealth", "Priority", "PrimaryOwner", "NextAction", "NextActionDueDate", "LastReviewed"],
+          "query": "<Where><And><Neq><FieldRef Name='CRMStatus' /><Value Type='Choice'>Archived</Value></Neq><Neq><FieldRef Name='RelationshipStatus' /><Value Type='Choice'>Archived</Value></Neq></And></Where><OrderBy><FieldRef Name='NextActionDueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Strategic Relationships",
+          "fields": ["LinkTitle", "OrganizationType", "RelationshipStatus", "AccountTier", "OperationalHealth", "PrimaryOwner", "NextAction", "NextActionDueDate"],
+          "query": "<Where><Eq><FieldRef Name='AccountTier' /><Value Type='Choice'>Strategic</Value></Eq></Where><OrderBy><FieldRef Name='OperationalHealth' Ascending='FALSE' /><FieldRef Name='NextActionDueDate' Ascending='TRUE' /></OrderBy>",
+          "rowLimit": 100
+        }
+      ]
+    },
+    {
+      "title": "CRM - Contacts",
+      "columns": [
+        { "displayName": "NextActionDueDate", "internalName": "NextActionDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "LastContacted", "internalName": "LastContacted", "type": "DateTime" },
+        { "displayName": "ContactBoundary", "internalName": "ContactBoundary", "type": "Choice", "choices": ["Normal", "Sensitive", "Do not contact", "Requires Adam review"], "default": "Normal", "indexed": true },
+        { "displayName": "BackupOwner", "internalName": "BackupOwner", "type": "User" }
+      ],
+      "views": [
+        {
+          "title": "Contact Follow-up Queue",
+          "fields": ["LinkTitle", "OrganizationLookup", "ContactEmail", "RelationshipRole", "CommunicationStatus", "ContactBoundary", "Priority", "NextAction", "NextActionDueDate", "LastContacted"],
+          "query": "<Where><And><Neq><FieldRef Name='CommunicationStatus' /><Value Type='Choice'>Do not contact</Value></Neq><Neq><FieldRef Name='CommunicationStatus' /><Value Type='Choice'>Archived</Value></Neq></And></Where><OrderBy><FieldRef Name='NextActionDueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Key People",
+          "fields": ["LinkTitle", "OrganizationLookup", "RoleTitle", "RelationshipRole", "PreferredChannel", "CommunicationStatus", "NextAction"],
+          "query": "<Where><Or><Or><Eq><FieldRef Name='RelationshipRole' /><Value Type='Choice'>Sponsor</Value></Eq><Eq><FieldRef Name='RelationshipRole' /><Value Type='Choice'>Decision maker</Value></Eq></Or><Eq><FieldRef Name='RelationshipRole' /><Value Type='Choice'>Champion</Value></Eq></Or></Where><OrderBy><FieldRef Name='OrganizationLookup' Ascending='TRUE' /></OrderBy>",
+          "rowLimit": 100
+        }
+      ]
+    },
+    {
+      "title": "CRM - Engagements",
+      "columns": [
+        { "displayName": "NextActionDueDate", "internalName": "NextActionDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "OperationalHealth", "internalName": "OperationalHealth", "type": "Choice", "choices": ["Green", "Yellow", "Red", "Unknown"], "default": "Unknown", "indexed": true },
+        { "displayName": "DecisionStatus", "internalName": "DecisionStatus", "type": "Choice", "choices": ["Not started", "Discovery", "Awaiting Adam", "Awaiting client", "Proposal sent", "Verbal yes", "Won", "Lost", "Paused"], "default": "Not started", "indexed": true },
+        { "displayName": "DecisionDueDate", "internalName": "DecisionDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "EstimatedValue", "internalName": "EstimatedValue", "type": "Currency" },
+        { "displayName": "ProbabilityPercent", "internalName": "ProbabilityPercent", "type": "Number" },
+        { "displayName": "NextMilestone", "internalName": "NextMilestone", "type": "Text" },
+        { "displayName": "TargetGoLiveDate", "internalName": "TargetGoLiveDate", "type": "DateTime" },
+        { "displayName": "HandoffStatus", "internalName": "HandoffStatus", "type": "Choice", "choices": ["Not started", "In progress", "Ready for review", "Delivered", "Accepted", "Not applicable"], "default": "Not started", "indexed": true },
+        { "displayName": "BackupOwner", "internalName": "BackupOwner", "type": "User" }
+      ],
+      "views": [
+        {
+          "title": "Daily CRM Queue",
+          "fields": ["LinkTitle", "OrganizationLookup", "PrimaryContactLookup", "EngagementStage", "ExecutionStage", "CRMStatus", "RiskLevel", "OperationalHealth", "Priority", "NextAction", "NextActionDueDate"],
+          "query": "<Where><Or><Or><Eq><FieldRef Name='CRMStatus' /><Value Type='Choice'>Waiting on Adam</Value></Eq><Eq><FieldRef Name='CRMStatus' /><Value Type='Choice'>At Risk</Value></Eq></Or><Leq><FieldRef Name='NextActionDueDate' /><Value Type='DateTime'><Today /></Value></Leq></Or></Where><OrderBy><FieldRef Name='NextActionDueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Pipeline by Stage",
+          "fields": ["LinkTitle", "OrganizationLookup", "DecisionStatus", "EntryPackage", "TargetPackage", "EngagementStage", "EstimatedValue", "ProbabilityPercent", "DecisionDueDate", "NextAction"],
+          "query": "<Where><And><Neq><FieldRef Name='EngagementStage' /><Value Type='Choice'>Alumni / Archived</Value></Neq><Neq><FieldRef Name='EngagementStage' /><Value Type='Choice'>Paused / Lost</Value></Neq></And></Where><OrderBy><FieldRef Name='EngagementStage' Ascending='TRUE' /><FieldRef Name='DecisionDueDate' Ascending='TRUE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Delivery Control",
+          "fields": ["LinkTitle", "OrganizationLookup", "CurrentPackage", "EngagementStage", "ExecutionStage", "OperationalHealth", "RiskLevel", "TargetGoLiveDate", "NextMilestone", "NextAction"],
+          "query": "<Where><Or><Or><Or><Eq><FieldRef Name='EngagementStage' /><Value Type='Choice'>Onboarding</Value></Eq><Eq><FieldRef Name='EngagementStage' /><Value Type='Choice'>Active Delivery</Value></Eq></Or><Eq><FieldRef Name='EngagementStage' /><Value Type='Choice'>Sustainment</Value></Eq></Or><Eq><FieldRef Name='ExecutionStage' /><Value Type='Choice'>Blocked</Value></Eq></Or></Where><OrderBy><FieldRef Name='TargetGoLiveDate' Ascending='TRUE' /><FieldRef Name='RiskLevel' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Decision Deadlines",
+          "fields": ["LinkTitle", "OrganizationLookup", "PrimaryContactLookup", "DecisionStatus", "DecisionDueDate", "EstimatedValue", "ProbabilityPercent", "NextAction"],
+          "query": "<Where><IsNotNull><FieldRef Name='DecisionDueDate' /></IsNotNull></Where><OrderBy><FieldRef Name='DecisionDueDate' Ascending='TRUE' /></OrderBy>",
+          "rowLimit": 100
+        }
+      ]
+    },
+    {
+      "title": "CRM - Stakeholder Map",
+      "columns": [
+        { "displayName": "NextActionDueDate", "internalName": "NextActionDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "Sentiment", "internalName": "Sentiment", "type": "Choice", "choices": ["Positive", "Neutral", "Concerned", "Resistant", "Unknown"], "default": "Unknown", "indexed": true },
+        { "displayName": "RelationshipRisk", "internalName": "RelationshipRisk", "type": "Choice", "choices": ["Low", "Medium", "High", "Critical", "Unknown"], "default": "Unknown", "indexed": true }
+      ],
+      "views": [
+        {
+          "title": "Stakeholder Attention",
+          "fields": ["LinkTitle", "EngagementLookup", "ContactLookup", "StakeholderRole", "DecisionRole", "InfluenceLevel", "EngagementLevel", "Sentiment", "RelationshipRisk", "NextAction"],
+          "query": "<Where><Or><Or><Eq><FieldRef Name='RelationshipRisk' /><Value Type='Choice'>High</Value></Eq><Eq><FieldRef Name='RelationshipRisk' /><Value Type='Choice'>Critical</Value></Eq></Or><Eq><FieldRef Name='EngagementLevel' /><Value Type='Choice'>Resistant</Value></Eq></Or></Where><OrderBy><FieldRef Name='RelationshipRisk' Ascending='FALSE' /><FieldRef Name='InfluenceLevel' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        }
+      ]
+    },
+    {
+      "title": "CRM - Touchpoints",
+      "columns": [
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "TouchpointOutcome", "internalName": "TouchpointOutcome", "type": "Choice", "choices": ["Info captured", "Decision advanced", "Follow-up promised", "Blocked", "No response", "Relationship risk", "Other"], "default": "Info captured", "indexed": true },
+        { "displayName": "NextTouchpointType", "internalName": "NextTouchpointType", "type": "Choice", "choices": ["Email", "Meeting", "Phone", "Teams", "Proposal", "Internal review", "Other"], "default": "Email" }
+      ],
+      "views": [
+        {
+          "title": "Follow-ups Due",
+          "fields": ["LinkTitle", "TouchpointDate", "EngagementLookup", "ContactLookup", "FollowUpDueDate", "Priority", "NextAction", "ItemOwner"],
+          "query": "<Where><And><Eq><FieldRef Name='FollowUpRequired' /><Value Type='Boolean'>1</Value></Eq><Leq><FieldRef Name='FollowUpDueDate' /><Value Type='DateTime'><Today /></Value></Leq></And></Where><OrderBy><FieldRef Name='FollowUpDueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Relationship History",
+          "fields": ["LinkTitle", "TouchpointDate", "EngagementLookup", "ContactLookup", "Channel", "Direction", "TouchpointOutcome", "Summary"],
+          "query": "<OrderBy><FieldRef Name='TouchpointDate' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        }
+      ]
+    },
+    {
+      "title": "CRM - Lifecycle Checklist",
+      "columns": [
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "Workstream", "internalName": "Workstream", "type": "Choice", "choices": ["Commercial", "Delivery", "Technical", "Training", "Governance", "Handoff", "Support", "Other"], "default": "Delivery", "indexed": true },
+        { "displayName": "RequiredForGoLive", "internalName": "RequiredForGoLive", "type": "Boolean", "default": "0", "indexed": true },
+        { "displayName": "SortOrder", "internalName": "SortOrder", "type": "Number" }
+      ],
+      "views": [
+        {
+          "title": "Go-Live / Offramp Blockers",
+          "fields": ["LinkTitle", "EngagementLookup", "ChecklistPhase", "Workstream", "ChecklistItem", "DueDate", "ChecklistStatus", "RequiredForGoLive", "BlocksOfframp", "NextAction"],
+          "query": "<Where><And><Neq><FieldRef Name='ChecklistStatus' /><Value Type='Choice'>Complete</Value></Neq><Or><Eq><FieldRef Name='RequiredForGoLive' /><Value Type='Boolean'>1</Value></Eq><Eq><FieldRef Name='BlocksOfframp' /><Value Type='Boolean'>1</Value></Eq></Or></And></Where><OrderBy><FieldRef Name='DueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        },
+        {
+          "title": "Checklist Due",
+          "fields": ["LinkTitle", "EngagementLookup", "ChecklistPhase", "Workstream", "ChecklistItem", "DueDate", "ChecklistStatus", "Priority", "ItemOwner"],
+          "query": "<Where><And><Leq><FieldRef Name='DueDate' /><Value Type='DateTime'><Today /></Value></Leq><Neq><FieldRef Name='ChecklistStatus' /><Value Type='Choice'>Complete</Value></Neq></And></Where><OrderBy><FieldRef Name='DueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>",
+          "rowLimit": 100
+        }
+      ]
+    }
+  ],
+  "workflowProof": [
+    "Create Organization and Contact records, then set lookup fields when records exist.",
+    "Create one Engagement with Organization and Primary Contact lookups, stage, package, owner, priority, health, due date, and next action.",
+    "Capture each meaningful call/email/meeting as a Touchpoint with follow-up due date when needed.",
+    "Use Daily CRM Queue every working day; use Follow-ups Due and Checklist Due as the work queue.",
+    "Use Stakeholder Attention and Go-Live / Offramp Blockers before client meetings and handoffs."
+  ]
+}

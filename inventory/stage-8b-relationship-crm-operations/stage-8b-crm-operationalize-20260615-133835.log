@@ -1,0 +1,47 @@
+**********************
+PowerShell transcript start
+Start time: 20260615133835
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+.\scripts\Invoke-M365Stage8BRelationshipCrmOperationalize.ps1 -NoPause
+Process ID: 13628
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8B - Relationship CRM Operations
+Mode:       DRY RUN
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operationalize-20260615-133835.log
+
+Planned operational additions:
+- Lookup fields: 8
+- List operation blocks: 6
+- Operations page: Relationship-CRM-Operations.aspx
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No mail sends
+- No item or list deletions
+- No unattended automation
+- No Dynamics or Dataverse provisioning
+
+Dry run only. Re-run with -Apply and type the approval phrase to operationalize Stage 8B.
+**********************
+PowerShell transcript end
+End time: 20260615133835
+**********************

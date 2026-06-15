@@ -1,0 +1,210 @@
+**********************
+PowerShell transcript start
+Start time: 20260615130604
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365Stage8ARelationshipCrmBuild.ps1 -Apply
+Process ID: 6336
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8A - Relationship CRM Build
+Mode:       APPLY
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8A_RELATIONSHIP_CRM.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8a-relationship-crm\stage-8a-relationship-crm-build-20260615-130604.log
+
+Planned page:
+- Relationship CRM (Relationship-CRM.aspx)
+
+Planned CRM Lists:
+- CRM - Organizations
+- CRM - Contacts
+- CRM - Engagements
+- CRM - Stakeholder Map
+- CRM - Touchpoints
+- CRM - Lifecycle Checklist
+
+Planned navigation targets:
+- Client Delivery / Relationship CRM -> Relationship CRM (Page)
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No mail sends
+- No deletions
+- No unattended automation
+- No Dynamics or Dataverse provisioning
+
+
+Connecting to Guided AI Labs SharePoint site...
+
+List: CRM - Organizations
+  [OK] List created: CRM - Organizations
+  [OK] Field created: RecordKey
+  [OK] Field created: SourceSystem
+  [OK] Field created: Owner
+  [OK] Field created: Status
+  [OK] Field created: NextAction
+  [OK] Field created: LastReviewed
+  [OK] Field created: CentralOSLink
+  [OK] Field created: GraphNodeId
+  [OK] Field created: FutureCrmId
+  [OK] Field created: Notes
+  [OK] Field created: OrganizationType
+  [OK] Field created: RelationshipStatus
+  [OK] Field created: PrimaryDomain
+  [OK] Field created: Website
+  [OK] Field created: PrimaryOwner
+  [OK] Field created: CurrentEngagementKey
+  [OK] View created: Active Organizations
+  [OK] View created: Prospects / Signals
+  [OK] View created: Partners / Clients
+  [OK] View created: Archived
+
+List: CRM - Contacts
+  [OK] List created: CRM - Contacts
+  [OK] Field created: RecordKey
+  [OK] Field created: SourceSystem
+  [OK] Field created: Owner
+  [OK] Field created: Status
+  [OK] Field created: NextAction
+  [OK] Field created: LastReviewed
+  [OK] Field created: CentralOSLink
+  [OK] Field created: GraphNodeId
+  [OK] Field created: FutureCrmId
+  [OK] Field created: Notes
+  [OK] Field created: ContactEmail
+  [OK] Field created: OrganizationKey
+  [OK] Field created: RoleTitle
+  [OK] Field created: RelationshipRole
+  [OK] Field created: CommunicationStatus
+  [OK] Field created: PreferredChannel
+  [OK] View created: Active Contacts
+  [OK] View created: Waiting on Adam
+  [OK] View created: By Organization
+  [OK] View created: Do Not Contact / Archived
+
+List: CRM - Engagements
+  [OK] List created: CRM - Engagements
+  [OK] Field created: RecordKey
+  [OK] Field created: SourceSystem
+  [OK] Field created: Owner
+  [OK] Field created: Status
+  [OK] Field created: NextAction
+  [OK] Field created: LastReviewed
+  [OK] Field created: CentralOSLink
+  [OK] Field created: GraphNodeId
+  [OK] Field created: FutureCrmId
+  [OK] Field created: Notes
+  [OK] Field created: OrganizationKey
+  [OK] Field created: PrimaryContactKey
+  [OK] Field created: EntryPackage
+  [OK] Field created: CurrentPackage
+  [OK] Field created: TargetPackage
+  [OK] Field created: PlannedOfframpPackage
+  [OK] Field created: EngagementStage
+  [OK] Field created: ExecutionStage
+  [OK] Field created: SuccessCriteria
+  [OK] Field created: OffboardingRequirements
+  [OK] Field created: RiskLevel
+  [OK] View created: Active Engagements
+  [OK] View created: New / Discovery
+  [OK] View created: Waiting on Adam
+  [OK] View created: At Risk
+  [OK] View created: Offboarding / Alumni
+
+List: CRM - Stakeholder Map
+  [OK] List created: CRM - Stakeholder Map
+  [OK] Field created: RecordKey
+  [OK] Field created: SourceSystem
+  [OK] Field created: Owner
+  [OK] Field created: Status
+  [OK] Field created: NextAction
+  [OK] Field created: LastReviewed
+  [OK] Field created: CentralOSLink
+  [OK] Field created: GraphNodeId
+  [OK] Field created: FutureCrmId
+  [OK] Field created: Notes
+  [OK] Field created: EngagementKey
+  [OK] Field created: ContactKey
+  [OK] Field created: StakeholderRole
+  [OK] Field created: InfluenceLevel
+  [OK] Field created: EngagementLevel
+  [OK] Field created: DecisionRole
+  [OK] View created: Active Stakeholders
+  [OK] View created: Decision Makers
+  [OK] View created: Needs Attention
+
+List: CRM - Touchpoints
+  [OK] List created: CRM - Touchpoints
+  [OK] Field created: RecordKey
+  [OK] Field created: SourceSystem
+  [OK] Field created: Owner
+  [OK] Field created: Status
+  [OK] Field created: NextAction
+  [OK] Field created: LastReviewed
+  [OK] Field created: CentralOSLink
+  [OK] Field created: GraphNodeId
+  [OK] Field created: FutureCrmId
+  [OK] Field created: Notes
+  [OK] Field created: EngagementKey
+  [OK] Field created: ContactKey
+  [OK] Field created: TouchpointDate
+  [OK] Field created: Channel
+  [OK] Field created: Direction
+  [OK] Field created: Summary
+  [OK] Field created: FollowUpRequired
+  [OK] Field created: FollowUpDueDate
+  [OK] Field created: RelatedLink
+  [OK] View created: Recent Touchpoints
+  [OK] View created: Follow Up Required
+  [OK] View created: By Engagement
+
+List: CRM - Lifecycle Checklist
+  [OK] List created: CRM - Lifecycle Checklist
+  [OK] Field created: RecordKey
+  [OK] Field created: SourceSystem
+  [OK] Field created: Owner
+  [OK] Field created: Status
+  [OK] Field created: NextAction
+  [OK] Field created: LastReviewed
+  [OK] Field created: CentralOSLink
+  [OK] Field created: GraphNodeId
+  [OK] Field created: FutureCrmId
+  [OK] Field created: Notes
+  [OK] Field created: EngagementKey
+  [OK] Field created: ChecklistPhase
+  [OK] Field created: ChecklistItem
+  [OK] Field created: DueDate
+  [OK] Field created: ChecklistStatus
+  [OK] Field created: EvidenceLink
+  [OK] Field created: BlocksOfframp
+  [OK] View created: Open Checklist
+  [OK] View created: Onboarding Checklist
+  [OK] View created: Offboarding Checklist
+  [OK] View created: Blocked / Waiting
+  [OK] View created: Completed
+PS>TerminatingError(Get-PnPPage): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Page 'Relationship-CRM.aspx' does not exist"
+Creating page: Relationship-CRM.aspx
+  [OK] Relationship CRM
+Adding navigation link: Client Delivery / Relationship CRM -> /sites/GuidedAILabs/SitePages/Relationship-CRM.aspx
+  [OK] Relationship CRM
+
+Stage 8A Relationship CRM build complete. Run read-only verification next.
+**********************
+PowerShell transcript end
+End time: 20260615131122
+**********************

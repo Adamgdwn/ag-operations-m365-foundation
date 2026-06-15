@@ -1,0 +1,37 @@
+**********************
+PowerShell transcript start
+Start time: 20260615152034
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -File C:\Users\adamg\AppData\Local\Temp\m365-group-owner-repair.ps1
+Process ID: 25040
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Cache used. Clear the cache entry with Disconnect-PnPOnline
+Adding adamgoodwin@guidedailabs.com to All Company (c27179f4-0da6-4416-8450-8216998407e4) as owner/member
+Adding admin@agoperations.ca to All Company (c27179f4-0da6-4416-8450-8216998407e4) as owner/member
+PS>TerminatingError(Add-PnPMicrosoft365GroupOwner): "Forbidden (403): Insufficient privileges to complete the operation."
+Owner: Forbidden (403): Insufficient privileges to complete the operation.
+PS>TerminatingError(Add-PnPMicrosoft365GroupMember): "Forbidden (403): Insufficient privileges to complete the operation."
+Owner: Forbidden (403): Insufficient privileges to complete the operation.; Member: Forbidden (403): Insufficient privileges to complete the operation.
+Adding adamgoodwin@guidedailabs.com to Group for Answers in Viva Engage - DO NOT DELETE (133765cd-ca39-4070-9e33-15e9d3d1c3cf) as owner/member
+Adding admin@agoperations.ca to Group for Answers in Viva Engage - DO NOT DELETE (133765cd-ca39-4070-9e33-15e9d3d1c3cf) as owner/member
+PS>TerminatingError(Add-PnPMicrosoft365GroupOwner): "Forbidden (403): Insufficient privileges to complete the operation."
+Owner: Forbidden (403): Insufficient privileges to complete the operation.
+PS>TerminatingError(Add-PnPMicrosoft365GroupMember): "Forbidden (403): Insufficient privileges to complete the operation."
+Owner: Forbidden (403): Insufficient privileges to complete the operation.; Member: Forbidden (403): Insufficient privileges to complete the operation.
+Summary: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\access-repair\M365_GROUP_OWNER_REPAIR_20260615-152034.md
+**********************
+PowerShell transcript end
+End time: 20260615152038
+**********************

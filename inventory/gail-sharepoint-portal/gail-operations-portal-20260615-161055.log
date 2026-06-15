@@ -1,0 +1,44 @@
+**********************
+PowerShell transcript start
+Start time: 20260615161055
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -File .\scripts\Set-GuidedAILabsOperationsPortal.ps1 -NoPause
+Process ID: 6864
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Guided AI Labs SharePoint operations portal cleanup
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\gail-sharepoint-portal\gail-operations-portal-20260615-161055.log
+
+Refreshing portal page: Guided-AI-Labs-Operations-Portal.aspx
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id c98491aa-aec6-4062-8d04-f0a1b77f5db7 does not exist on this page"
+  [warn] Could not remove stale page component c98491aa-aec6-4062-8d04-f0a1b77f5db7: Component with id c98491aa-aec6-4062-8d04-f0a1b77f5db7 does not exist on this page
+PS>TerminatingError(Remove-PnPPageComponent): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Component with id 189345f7-a307-483a-8d02-d812a0a0a113 does not exist on this page"
+  [warn] Could not remove stale page component 189345f7-a307-483a-8d02-d812a0a0a113: Component with id 189345f7-a307-483a-8d02-d812a0a0a113 does not exist on this page
+Adding live dashboard list web parts
+  [OK] CRM - Action Queue / Open CRM Actions
+PS>TerminatingError(Add-PnPPageTextPart): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')"
+PS>TerminatingError(Add-PnPPageTextPart): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')"
+>> TerminatingError(Add-PnPPageTextPart): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')"
+>> TerminatingError(Add-PnPPageTextPart): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')"
+Add-PnPPageTextPart: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Set-GuidedAILabsOperationsPortal.ps1:187
+Line |
+ 187 |          Add-PnPPageTextPart -Page $PageName -Section $Section -Column …
+     |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Index was out of range. Must be non-negative and less than the size of the collection. (Parameter 'index')
+
+**********************
+PowerShell transcript end
+End time: 20260615161117
+**********************

@@ -1,0 +1,6 @@
+"title","description","quickLaunch"
+"CRM - Action Queue","Single CRM task queue for follow-ups, proposals, decisions, handoffs, delivery actions, and relationship work.","False"
+"CRM - Qualification","Qualification and fit review records for incoming signals, prospects, and expansion opportunities.","False"
+"CRM - Meeting Notes","Structured meeting prep, notes, debriefs, commitments, decisions, and next actions.","False"
+"CRM - Artifacts","Evidence, proposals, scope documents, work products, handoff packets, and related CRM links.","False"
+"CRM - Health Reviews","Periodic account and engagement health snapshots for risk, renewal, expansion, and relationship management.","False"

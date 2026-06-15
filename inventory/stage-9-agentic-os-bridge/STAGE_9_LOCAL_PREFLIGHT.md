@@ -1,6 +1,6 @@
 # Stage 9 Local Preflight
 
-Generated: 2026-06-15 11:12:22
+Generated: 2026-06-15 11:42:32
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 
@@ -41,4 +41,3 @@ Next safe actions:
 3. Record the coordinator/support agent scope as a Decision Register item before any new app registration or consent.
 4. Dry-run the first G1/G2 live-loop operators with `.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion` and `.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage`.
 5. Do not reuse `agent-pnp-provisioning` as the production bridge.
-

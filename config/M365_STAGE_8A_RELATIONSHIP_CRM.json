@@ -1,0 +1,303 @@
+{
+  "version": "2026-06-15",
+  "stage": "8A",
+  "name": "Relationship CRM Spine",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+    "purpose": "Lists-first, future-own-CRM-ready relationship cockpit for organizations, contacts, engagements, touchpoints, onboarding, and offboarding."
+  },
+  "approvalPhrase": "apply-stage-8a-relationship-crm",
+  "safetyLimits": [
+    "No permission changes",
+    "No guest invitations",
+    "No external sharing changes",
+    "No app grants or consent changes",
+    "No public Forms links",
+    "No mail sends",
+    "No deletions",
+    "No unattended automation",
+    "No Dynamics or Dataverse provisioning"
+  ],
+  "offerPackages": [
+    "Relationship Nurture",
+    "Readiness Snapshot",
+    "Operating Blueprint",
+    "Workspace Build",
+    "Guided Implementation",
+    "Operating Support",
+    "AI OS Integration",
+    "Handoff / Alumni"
+  ],
+  "engagementStages": [
+    "Signal",
+    "Discovery",
+    "Qualified Fit",
+    "Proposal / Scope",
+    "Onboarding",
+    "Active Delivery",
+    "Sustainment",
+    "Expansion / Renewal",
+    "Offboarding",
+    "Alumni / Archived",
+    "Paused / Lost"
+  ],
+  "executionStages": [
+    "Not Started",
+    "Mobilizing",
+    "Building",
+    "Validating",
+    "Training",
+    "Closeout",
+    "Complete",
+    "Blocked"
+  ],
+  "pages": [
+    {
+      "title": "Relationship CRM",
+      "fileName": "Relationship-CRM.aspx",
+      "navGroup": "Client Delivery",
+      "role": "Operator-facing CRM cockpit for relationship stage, current engagement, onboarding/offboarding, and next touchpoint visibility.",
+      "operatorLanes": [
+        {
+          "title": "New / Discovery",
+          "purpose": "Signals, discovery conversations, qualified-fit review, and early relationship shaping."
+        },
+        {
+          "title": "Active Engagements",
+          "purpose": "Current clients, partners, builds, operating support, and next actions in motion."
+        },
+        {
+          "title": "Onboarding / Offboarding",
+          "purpose": "Entry package, target package, planned offramp, handoff requirements, and closeout blockers."
+        },
+        {
+          "title": "Follow-ups / Touchpoints",
+          "purpose": "Relationship history, recent conversations, promised follow-ups, and waiting-on states."
+        }
+      ],
+      "directLinks": [
+        { "label": "Active Engagements", "list": "CRM - Engagements", "view": "Active Engagements" },
+        { "label": "Waiting on Adam", "list": "CRM - Engagements", "view": "Waiting on Adam" },
+        { "label": "At Risk", "list": "CRM - Engagements", "view": "At Risk" },
+        { "label": "Onboarding Checklist", "list": "CRM - Lifecycle Checklist", "view": "Onboarding Checklist" },
+        { "label": "Offboarding Checklist", "list": "CRM - Lifecycle Checklist", "view": "Offboarding Checklist" },
+        { "label": "Recent Touchpoints", "list": "CRM - Touchpoints", "view": "Recent Touchpoints" }
+      ]
+    }
+  ],
+  "lists": [
+    {
+      "title": "CRM - Organizations",
+      "description": "One row per company, partner, client, prospect, school, municipality, nonprofit, or internal operating entity.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text", "required": false },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "required": false, "choices": ["Manual", "Intake Register", "Support Register", "Forms", "Email", "Teams", "Planner", "Agent Suggested", "Future CRM", "Other"], "default": "Manual" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": false },
+        { "displayName": "Status", "internalName": "CRMStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "At Risk", "Paused", "Complete", "Archived"], "default": "New" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "LastReviewed", "internalName": "LastReviewed", "type": "DateTime", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "FutureCrmId", "internalName": "FutureCrmId", "type": "Text", "required": false },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note", "required": false },
+        { "displayName": "OrganizationType", "internalName": "OrganizationType", "type": "Choice", "required": true, "choices": ["Company", "Partner", "Client", "Prospect", "School", "Municipality", "Nonprofit", "Internal", "Vendor", "Other"], "default": "Prospect" },
+        { "displayName": "RelationshipStatus", "internalName": "RelationshipStatus", "type": "Choice", "required": true, "choices": ["Signal", "Prospect", "Active", "Dormant", "Partner", "Client", "Alumni", "Archived", "Not a fit"], "default": "Signal" },
+        { "displayName": "PrimaryDomain", "internalName": "PrimaryDomain", "type": "Text", "required": false },
+        { "displayName": "Website", "internalName": "Website", "type": "URL", "required": false },
+        { "displayName": "PrimaryOwner", "internalName": "PrimaryOwner", "type": "User", "required": false },
+        { "displayName": "CurrentEngagementKey", "internalName": "CurrentEngagementKey", "type": "Text", "required": false }
+      ],
+      "views": [
+        { "title": "Active Organizations", "fields": ["LinkTitle", "OrganizationType", "RelationshipStatus", "CRMStatus", "PrimaryOwner", "CurrentEngagementKey", "NextAction", "LastReviewed"], "default": true },
+        { "title": "Prospects / Signals", "fields": ["LinkTitle", "OrganizationType", "RelationshipStatus", "PrimaryOwner", "NextAction", "LastReviewed"] },
+        { "title": "Partners / Clients", "fields": ["LinkTitle", "OrganizationType", "RelationshipStatus", "PrimaryDomain", "PrimaryOwner", "CurrentEngagementKey"] },
+        { "title": "Archived", "fields": ["LinkTitle", "OrganizationType", "RelationshipStatus", "CRMStatus", "LastReviewed", "Notes"] }
+      ]
+    },
+    {
+      "title": "CRM - Contacts",
+      "description": "One row per person or stakeholder, linked by portable keys to organization and engagement records.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text", "required": false },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "required": false, "choices": ["Manual", "Intake Register", "Support Register", "Forms", "Email", "Teams", "Planner", "Agent Suggested", "Future CRM", "Other"], "default": "Manual" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": false },
+        { "displayName": "Status", "internalName": "CRMStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "At Risk", "Paused", "Complete", "Archived"], "default": "New" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "LastReviewed", "internalName": "LastReviewed", "type": "DateTime", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "FutureCrmId", "internalName": "FutureCrmId", "type": "Text", "required": false },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note", "required": false },
+        { "displayName": "ContactEmail", "internalName": "ContactEmail", "type": "Text", "required": false },
+        { "displayName": "OrganizationKey", "internalName": "OrganizationKey", "type": "Text", "required": false },
+        { "displayName": "RoleTitle", "internalName": "RoleTitle", "type": "Text", "required": false },
+        { "displayName": "RelationshipRole", "internalName": "RelationshipRole", "type": "Choice", "required": false, "choices": ["Sponsor", "Decision maker", "Operator", "Technical", "Finance", "Legal", "Champion", "Blocker", "Advisor", "Other"] },
+        { "displayName": "CommunicationStatus", "internalName": "CommunicationStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "Do not contact", "Archived"], "default": "New" },
+        { "displayName": "PreferredChannel", "internalName": "PreferredChannel", "type": "Choice", "required": false, "choices": ["Email", "Teams", "Phone", "Meeting", "LinkedIn", "Other"] }
+      ],
+      "views": [
+        { "title": "Active Contacts", "fields": ["LinkTitle", "ContactEmail", "OrganizationKey", "RelationshipRole", "CommunicationStatus", "ItemOwner", "NextAction"], "default": true },
+        { "title": "Waiting on Adam", "fields": ["LinkTitle", "ContactEmail", "OrganizationKey", "CommunicationStatus", "NextAction", "LastReviewed"] },
+        { "title": "By Organization", "fields": ["LinkTitle", "OrganizationKey", "RoleTitle", "RelationshipRole", "PreferredChannel"] },
+        { "title": "Do Not Contact / Archived", "fields": ["LinkTitle", "ContactEmail", "CommunicationStatus", "LastReviewed", "Notes"] }
+      ]
+    },
+    {
+      "title": "CRM - Engagements",
+      "description": "Central relationship/work record; one row per meaningful engagement, offer path, onboarding, delivery, support, or offramp.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text", "required": false },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "required": false, "choices": ["Manual", "Intake Register", "Support Register", "Forms", "Email", "Teams", "Planner", "Agent Suggested", "Future CRM", "Other"], "default": "Manual" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": false },
+        { "displayName": "Status", "internalName": "CRMStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "At Risk", "Paused", "Complete", "Archived"], "default": "New" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "LastReviewed", "internalName": "LastReviewed", "type": "DateTime", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "FutureCrmId", "internalName": "FutureCrmId", "type": "Text", "required": false },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note", "required": false },
+        { "displayName": "OrganizationKey", "internalName": "OrganizationKey", "type": "Text", "required": false },
+        { "displayName": "PrimaryContactKey", "internalName": "PrimaryContactKey", "type": "Text", "required": false },
+        { "displayName": "EntryPackage", "internalName": "EntryPackage", "type": "Choice", "required": false, "choices": ["Relationship Nurture", "Readiness Snapshot", "Operating Blueprint", "Workspace Build", "Guided Implementation", "Operating Support", "AI OS Integration", "Handoff / Alumni"] },
+        { "displayName": "CurrentPackage", "internalName": "CurrentPackage", "type": "Choice", "required": false, "choices": ["Relationship Nurture", "Readiness Snapshot", "Operating Blueprint", "Workspace Build", "Guided Implementation", "Operating Support", "AI OS Integration", "Handoff / Alumni"] },
+        { "displayName": "TargetPackage", "internalName": "TargetPackage", "type": "Choice", "required": false, "choices": ["Relationship Nurture", "Readiness Snapshot", "Operating Blueprint", "Workspace Build", "Guided Implementation", "Operating Support", "AI OS Integration", "Handoff / Alumni"] },
+        { "displayName": "PlannedOfframpPackage", "internalName": "PlannedOfframpPackage", "type": "Choice", "required": false, "choices": ["Relationship Nurture", "Readiness Snapshot", "Operating Blueprint", "Workspace Build", "Guided Implementation", "Operating Support", "AI OS Integration", "Handoff / Alumni"] },
+        { "displayName": "EngagementStage", "internalName": "EngagementStage", "type": "Choice", "required": true, "choices": ["Signal", "Discovery", "Qualified Fit", "Proposal / Scope", "Onboarding", "Active Delivery", "Sustainment", "Expansion / Renewal", "Offboarding", "Alumni / Archived", "Paused / Lost"], "default": "Signal" },
+        { "displayName": "ExecutionStage", "internalName": "ExecutionStage", "type": "Choice", "required": true, "choices": ["Not Started", "Mobilizing", "Building", "Validating", "Training", "Closeout", "Complete", "Blocked"], "default": "Not Started" },
+        { "displayName": "SuccessCriteria", "internalName": "SuccessCriteria", "type": "Note", "required": false },
+        { "displayName": "OffboardingRequirements", "internalName": "OffboardingRequirements", "type": "Note", "required": false },
+        { "displayName": "RiskLevel", "internalName": "RiskLevel", "type": "Choice", "required": true, "choices": ["Low", "Normal", "High", "At Risk"], "default": "Normal" }
+      ],
+      "views": [
+        { "title": "Active Engagements", "fields": ["LinkTitle", "OrganizationKey", "PrimaryContactKey", "CurrentPackage", "EngagementStage", "ExecutionStage", "CRMStatus", "RiskLevel", "ItemOwner", "NextAction"], "default": true },
+        { "title": "New / Discovery", "fields": ["LinkTitle", "OrganizationKey", "EntryPackage", "TargetPackage", "EngagementStage", "ItemOwner", "NextAction", "LastReviewed"] },
+        { "title": "Waiting on Adam", "fields": ["LinkTitle", "OrganizationKey", "EngagementStage", "CRMStatus", "RiskLevel", "NextAction", "LastReviewed"] },
+        { "title": "At Risk", "fields": ["LinkTitle", "OrganizationKey", "EngagementStage", "ExecutionStage", "CRMStatus", "RiskLevel", "NextAction"] },
+        { "title": "Offboarding / Alumni", "fields": ["LinkTitle", "OrganizationKey", "PlannedOfframpPackage", "EngagementStage", "ExecutionStage", "OffboardingRequirements", "LastReviewed"] }
+      ]
+    },
+    {
+      "title": "CRM - Stakeholder Map",
+      "description": "Connects contacts to engagements with role, influence, engagement level, and decision responsibility.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text", "required": false },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "required": false, "choices": ["Manual", "Intake Register", "Support Register", "Forms", "Email", "Teams", "Planner", "Agent Suggested", "Future CRM", "Other"], "default": "Manual" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": false },
+        { "displayName": "Status", "internalName": "CRMStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "At Risk", "Paused", "Complete", "Archived"], "default": "New" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "LastReviewed", "internalName": "LastReviewed", "type": "DateTime", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "FutureCrmId", "internalName": "FutureCrmId", "type": "Text", "required": false },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note", "required": false },
+        { "displayName": "EngagementKey", "internalName": "EngagementKey", "type": "Text", "required": false },
+        { "displayName": "ContactKey", "internalName": "ContactKey", "type": "Text", "required": false },
+        { "displayName": "StakeholderRole", "internalName": "StakeholderRole", "type": "Choice", "required": false, "choices": ["Sponsor", "Decision maker", "Operator", "Technical", "Finance", "Legal", "Champion", "Blocker", "Advisor", "Other"] },
+        { "displayName": "InfluenceLevel", "internalName": "InfluenceLevel", "type": "Choice", "required": false, "choices": ["Low", "Medium", "High", "Critical"] },
+        { "displayName": "EngagementLevel", "internalName": "EngagementLevel", "type": "Choice", "required": false, "choices": ["Unaware", "Aware", "Interested", "Active", "Champion", "Resistant", "Inactive"] },
+        { "displayName": "DecisionRole", "internalName": "DecisionRole", "type": "Choice", "required": false, "choices": ["Approver", "Recommender", "Influencer", "User", "Reviewer", "No decision role", "Unknown"] }
+      ],
+      "views": [
+        { "title": "Active Stakeholders", "fields": ["LinkTitle", "EngagementKey", "ContactKey", "StakeholderRole", "InfluenceLevel", "EngagementLevel", "DecisionRole", "NextAction"], "default": true },
+        { "title": "Decision Makers", "fields": ["LinkTitle", "EngagementKey", "ContactKey", "DecisionRole", "InfluenceLevel", "EngagementLevel", "NextAction"] },
+        { "title": "Needs Attention", "fields": ["LinkTitle", "EngagementKey", "ContactKey", "StakeholderRole", "EngagementLevel", "CRMStatus", "NextAction"] }
+      ]
+    },
+    {
+      "title": "CRM - Touchpoints",
+      "description": "Calls, emails, meetings, notes, follow-ups, and relationship history.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text", "required": false },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "required": false, "choices": ["Manual", "Intake Register", "Support Register", "Forms", "Email", "Teams", "Planner", "Agent Suggested", "Future CRM", "Other"], "default": "Manual" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": false },
+        { "displayName": "Status", "internalName": "CRMStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "At Risk", "Paused", "Complete", "Archived"], "default": "New" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "LastReviewed", "internalName": "LastReviewed", "type": "DateTime", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "FutureCrmId", "internalName": "FutureCrmId", "type": "Text", "required": false },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note", "required": false },
+        { "displayName": "EngagementKey", "internalName": "EngagementKey", "type": "Text", "required": false },
+        { "displayName": "ContactKey", "internalName": "ContactKey", "type": "Text", "required": false },
+        { "displayName": "TouchpointDate", "internalName": "TouchpointDate", "type": "DateTime", "required": true },
+        { "displayName": "Channel", "internalName": "Channel", "type": "Choice", "required": true, "choices": ["Email", "Meeting", "Phone", "Teams", "Form", "Support", "Event", "Other"], "default": "Email" },
+        { "displayName": "Direction", "internalName": "Direction", "type": "Choice", "required": true, "choices": ["Inbound", "Outbound", "Internal", "Meeting", "System note"], "default": "Inbound" },
+        { "displayName": "Summary", "internalName": "Summary", "type": "Note", "required": false },
+        { "displayName": "FollowUpRequired", "internalName": "FollowUpRequired", "type": "Boolean", "required": true, "default": "0" },
+        { "displayName": "FollowUpDueDate", "internalName": "FollowUpDueDate", "type": "DateTime", "required": false },
+        { "displayName": "RelatedLink", "internalName": "RelatedLink", "type": "URL", "required": false }
+      ],
+      "views": [
+        { "title": "Recent Touchpoints", "fields": ["LinkTitle", "TouchpointDate", "EngagementKey", "ContactKey", "Channel", "Direction", "FollowUpRequired", "FollowUpDueDate", "ItemOwner"], "default": true },
+        { "title": "Follow Up Required", "fields": ["LinkTitle", "TouchpointDate", "EngagementKey", "ContactKey", "FollowUpDueDate", "NextAction", "ItemOwner"] },
+        { "title": "By Engagement", "fields": ["LinkTitle", "EngagementKey", "ContactKey", "TouchpointDate", "Channel", "Summary"] }
+      ]
+    },
+    {
+      "title": "CRM - Lifecycle Checklist",
+      "description": "Onboarding, delivery, offboarding, handoff, and closeout checklist items.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text", "required": false },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "required": false, "choices": ["Manual", "Intake Register", "Support Register", "Forms", "Email", "Teams", "Planner", "Agent Suggested", "Future CRM", "Other"], "default": "Manual" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": false },
+        { "displayName": "Status", "internalName": "CRMStatus", "type": "Choice", "required": true, "choices": ["New", "Active", "Waiting on Adam", "Waiting on External", "At Risk", "Paused", "Complete", "Archived"], "default": "New" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "LastReviewed", "internalName": "LastReviewed", "type": "DateTime", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "FutureCrmId", "internalName": "FutureCrmId", "type": "Text", "required": false },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note", "required": false },
+        { "displayName": "EngagementKey", "internalName": "EngagementKey", "type": "Text", "required": false },
+        { "displayName": "ChecklistPhase", "internalName": "ChecklistPhase", "type": "Choice", "required": true, "choices": ["Discovery", "Onboarding", "Delivery", "Handoff", "Offboarding", "Follow-up"], "default": "Onboarding" },
+        { "displayName": "ChecklistItem", "internalName": "ChecklistItem", "type": "Text", "required": false },
+        { "displayName": "DueDate", "internalName": "DueDate", "type": "DateTime", "required": false },
+        { "displayName": "ChecklistStatus", "internalName": "ChecklistStatus", "type": "Choice", "required": true, "choices": ["Not started", "In progress", "Waiting on Adam", "Waiting on External", "Complete", "Blocked", "Not applicable"], "default": "Not started" },
+        { "displayName": "EvidenceLink", "internalName": "EvidenceLink", "type": "URL", "required": false },
+        { "displayName": "BlocksOfframp", "internalName": "BlocksOfframp", "type": "Boolean", "required": true, "default": "0" }
+      ],
+      "views": [
+        { "title": "Open Checklist", "fields": ["LinkTitle", "EngagementKey", "ChecklistPhase", "ChecklistItem", "DueDate", "ChecklistStatus", "BlocksOfframp", "ItemOwner"], "default": true },
+        { "title": "Onboarding Checklist", "fields": ["LinkTitle", "EngagementKey", "ChecklistPhase", "ChecklistItem", "DueDate", "ChecklistStatus", "EvidenceLink"] },
+        { "title": "Offboarding Checklist", "fields": ["LinkTitle", "EngagementKey", "ChecklistPhase", "ChecklistItem", "DueDate", "ChecklistStatus", "BlocksOfframp", "EvidenceLink"] },
+        { "title": "Blocked / Waiting", "fields": ["LinkTitle", "EngagementKey", "ChecklistPhase", "ChecklistItem", "ChecklistStatus", "BlocksOfframp", "NextAction"] },
+        { "title": "Completed", "fields": ["LinkTitle", "EngagementKey", "ChecklistPhase", "ChecklistItem", "ChecklistStatus", "EvidenceLink", "LastReviewed"] }
+      ]
+    }
+  ],
+  "navigationTargets": [
+    { "group": "Client Delivery", "link": "Relationship CRM", "kind": "Page", "target": "Relationship CRM" }
+  ],
+  "teamsTabsLater": [
+    { "channel": "Client Discovery", "tab": "Relationship CRM", "target": "Relationship CRM page" },
+    { "channel": "Client Discovery", "tab": "CRM - Engagements", "target": "CRM - Engagements list" },
+    { "channel": "Active Delivery", "tab": "Active Engagements", "target": "CRM - Engagements / Active Engagements view" },
+    { "channel": "Active Delivery", "tab": "Lifecycle Checklist", "target": "CRM - Lifecycle Checklist list" }
+  ],
+  "workflows": [
+    {
+      "name": "Convert Intake Into CRM",
+      "steps": ["Intake Register row", "Organization", "Contact", "Engagement", "Touchpoint", "Lifecycle Checklist", "Planner task if action-bearing", "Agent Action Log evidence", "Decision Register only for scope/governance/commercial decisions"]
+    },
+    {
+      "name": "Onboarding",
+      "steps": ["Set EngagementStage to Onboarding", "Select EntryPackage and TargetPackage", "Create Lifecycle Checklist items", "Assign owner and due dates", "Add evidence links", "Move to Active Delivery only when blockers clear"]
+    },
+    {
+      "name": "Offboarding",
+      "steps": ["Confirm PlannedOfframpPackage", "Complete OffboardingRequirements", "Link Handoff Packet Register if applicable", "Record access/review decision if needed", "Move EngagementStage to Offboarding", "Archive as Alumni / Archived after evidence and next-review date"]
+    }
+  ],
+  "agentPermissions": [
+    "M365 Coordinator may read CRM Lists at G0.",
+    "M365 Coordinator may suggest Agent Action Log rows at G1.",
+    "M365 Coordinator may create/update internal CRM rows only at G2 after approval.",
+    "External sends, guest access, sharing, permission changes, app grants, public Forms, and client-impacting commitments remain G3/G4 approval-gated or blocked."
+  ]
+}
