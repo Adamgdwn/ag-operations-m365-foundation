@@ -1,2 +1,2 @@
-"group","link","kind","target"
-"Client Delivery","CRM Operations","Page","Relationship CRM Operations"
+"group","link","kind","target","expectedStatus","supersededBy","note"
+"Client Delivery","CRM Operations","Page","Relationship CRM Operations","Superseded","Client Delivery / CRM Command Center","Stage 8C made the CRM Command Center the single daily CRM door. The Stage 8B operations page remains a reference surface and no longer requires a Quick Launch link."

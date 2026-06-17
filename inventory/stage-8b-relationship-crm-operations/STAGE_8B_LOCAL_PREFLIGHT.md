@@ -1,6 +1,6 @@
 # Stage 8B Relationship CRM Operations Local Preflight
 
-Generated: 2026-06-15 13:46:20
+Generated: 2026-06-17 09:14:42
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 

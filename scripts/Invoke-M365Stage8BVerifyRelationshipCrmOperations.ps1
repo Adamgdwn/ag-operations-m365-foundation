@@ -240,13 +240,27 @@ $navResults = foreach ($target in $config.navigationTargets) {
     }
 
     $match = @($flatNav | Where-Object { $_.ParentTitle -eq [string]$target.group -and $_.Title -eq [string]$target.link } | Select-Object -First 1)
+    $expectedStatus = [string]$target.expectedStatus
+    $status = if ($match.Count -gt 0) {
+        "Present"
+    }
+    elseif ($expectedStatus -eq "Superseded") {
+        "Superseded"
+    }
+    else {
+        "Missing"
+    }
+
     [pscustomobject]@{
         Group = [string]$target.group
         Link = [string]$target.link
         Kind = [string]$target.kind
         ExpectedUrl = $expectedUrl
-        Status = if ($match.Count -gt 0) { "Present" } else { "Missing" }
+        ExpectedStatus = if ([string]::IsNullOrWhiteSpace($expectedStatus)) { "Present" } else { $expectedStatus }
+        Status = $status
         ActualUrl = if ($match.Count -gt 0) { [string]$match[0].Url } else { "" }
+        SupersededBy = if ($null -ne $target.supersededBy) { [string]$target.supersededBy } else { "" }
+        Note = if ($null -ne $target.note) { [string]$target.note } else { "" }
     }
 }
 
@@ -260,7 +274,7 @@ $badPages = @($pageResults | Where-Object { $_.Status -ne "Present" })
 $badLookups = @($lookupResults | Where-Object { $_.Status -ne "Present" })
 $badFields = @($fieldResults | Where-Object { $_.Status -ne "Present" })
 $badViews = @($viewResults | Where-Object { $_.Status -ne "Present" })
-$badNav = @($navResults | Where-Object { $_.Status -ne "Present" })
+$badNav = @($navResults | Where-Object { $_.Status -ne "Present" -and $_.Status -ne "Superseded" })
 $result = if ($badPages.Count -eq 0 -and $badLookups.Count -eq 0 -and $badFields.Count -eq 0 -and $badViews.Count -eq 0 -and $badNav.Count -eq 0) { "PASS" } else { "PARTIAL" }
 
 $lines = New-Object System.Collections.Generic.List[string]

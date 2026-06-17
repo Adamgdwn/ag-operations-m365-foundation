@@ -33,6 +33,9 @@ Stage 8B Relationship CRM operations layer is live-applied/read-back verified.
 Stage 8C Relationship CRM operator workflow is live-applied/read-back verified.
 Stage 8D local functional workflow walkthrough packet and capture worksheets
 are generated/preflighted.
+Stage 8B read-only verification was re-run on 2026-06-17 and passes after the
+old `Client Delivery / CRM Operations` nav check was marked superseded by the
+Stage 8C `CRM Command Center` daily door.
 AG Operations root and `/sites/AGOperations` SharePoint sites now route to
 Guided AI Labs as the single daily workplace.
 Owner access for `adamgoodwin@guidedailabs.com` and `admin@agoperations.ca` is
@@ -382,6 +385,10 @@ Not done:
     `inventory/stage-8b-relationship-crm-operations/stage-8b-crm-operationalize-20260615-134054.log`
   - read-only verification passed:
     `inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md`
+  - 2026-06-17 note: the Stage 8B `CRM Operations` Quick Launch link is now
+    treated as superseded by the Stage 8C `CRM Command Center` daily door; the
+    Stage 8B page remains a reference surface and verification still checks its
+    page, fields, lookups, and views.
 - Stage 8C Relationship CRM operator workflow layer was added and live-applied:
   - `config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json`
   - `M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md`
@@ -426,7 +433,8 @@ Latest local checks:
 - Stage 8B Relationship CRM operations local preflight: PASS.
 - Stage 8B Relationship CRM operations dry run: PASS.
 - Stage 8B Relationship CRM operations live apply: PASS.
-- Stage 8B Relationship CRM operations read-only verification: PASS.
+- Stage 8B Relationship CRM operations read-only verification: PASS
+  (2026-06-17 rerun; superseded nav target handled as expected).
 - Stage 8C Relationship CRM operator workflow packet generation: PASS.
 - Stage 8C Relationship CRM operator workflow local preflight: PASS.
 - Stage 8C Relationship CRM operator workflow dry run: PASS.

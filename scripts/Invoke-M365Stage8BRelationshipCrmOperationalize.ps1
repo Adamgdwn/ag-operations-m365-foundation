@@ -391,6 +391,13 @@ $topNodes = @(Get-PnPNavigationNode -Location QuickLaunch)
 foreach ($target in $config.navigationTargets) {
     $groupTitle = [string]$target.group
     $linkTitle = [string]$target.link
+    $expectedStatus = [string]$target.expectedStatus
+
+    if ($expectedStatus -eq "Superseded") {
+        Write-Host ("Skipping superseded navigation link: {0} / {1}" -f $groupTitle, $linkTitle) -ForegroundColor Yellow
+        continue
+    }
+
     $url = Resolve-NavigationUrl -Config $config -Target $target
 
     $groupNode = @($topNodes | Where-Object { $_.Title -eq $groupTitle } | Select-Object -First 1)

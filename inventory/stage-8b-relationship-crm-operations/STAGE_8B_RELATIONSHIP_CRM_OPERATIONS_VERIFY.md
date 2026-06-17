@@ -1,16 +1,16 @@
 # Stage 8B Relationship CRM Operations Verification
 
-Generated: 2026-06-15 13:45:27
+Generated: 2026-06-17 09:15:56
 
 Result: PASS
 
 Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
-Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-verify-20260615-134416.log
-Page CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-pages-20260615-134416.csv
-Lookup CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-lookups-20260615-134416.csv
-Field CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-fields-20260615-134416.csv
-View CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-views-20260615-134416.csv
-Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-navigation-20260615-134416.csv
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-verify-20260617-091447.log
+Page CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-pages-20260617-091447.csv
+Lookup CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-lookups-20260617-091447.csv
+Field CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-fields-20260617-091447.csv
+View CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-views-20260617-091447.csv
+Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8b-relationship-crm-operations\stage-8b-crm-operations-navigation-20260617-091447.csv
 
 ## Summary
 

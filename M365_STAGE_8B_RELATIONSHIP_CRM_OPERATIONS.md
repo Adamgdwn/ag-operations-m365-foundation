@@ -19,7 +19,12 @@ Stage 8B adds:
 - filtered views for overdue work, pipeline, delivery control, follow-ups,
   stakeholder attention, and blockers;
 - an operator page: `Relationship-CRM-Operations.aspx`;
-- a `Client Delivery / CRM Operations` navigation link.
+- a `Client Delivery / CRM Operations` navigation link for the original Stage
+  8B operator surface.
+
+After Stage 8C, `CRM Command Center` is the single daily CRM door. The Stage 8B
+operations page remains a reference surface; its old Quick Launch link is now
+treated as superseded rather than required.
 
 Stage 8B does not create permissions, invite guests, widen sharing, grant app
 consent, publish public forms, send mail, delete items or lists, provision
@@ -116,7 +121,7 @@ Verified with zero bad counts:
 - lookup fields;
 - operational fields;
 - filtered operational views;
-- navigation link.
+- navigation link, before Stage 8C superseded the daily CRM door.
 
 ## Done Criteria
 
@@ -126,6 +131,7 @@ Stage 8B is done when:
 - all operational fields exist;
 - all operational views exist and have CAML filters/sorts;
 - the `Relationship-CRM-Operations.aspx` page exists;
-- the `Client Delivery / CRM Operations` navigation link exists;
+- the `Client Delivery / CRM Operations` navigation link exists or is marked
+  superseded by the Stage 8C `CRM Command Center` daily door;
 - read-only verification writes a PASS summary to
   `inventory/stage-8b-relationship-crm-operations/STAGE_8B_RELATIONSHIP_CRM_OPERATIONS_VERIFY.md`.

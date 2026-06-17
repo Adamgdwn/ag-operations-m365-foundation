@@ -71,7 +71,7 @@ $viewRows | Export-Csv -LiteralPath $viewCsvPath -NoTypeInformation -Encoding UT
 $config.pages | Select-Object title,fileName,navGroup,role |
     Export-Csv -LiteralPath $pageCsvPath -NoTypeInformation -Encoding UTF8
 
-$config.navigationTargets | Select-Object group,link,kind,target |
+$config.navigationTargets | Select-Object group,link,kind,target,expectedStatus,supersededBy,note |
     Export-Csv -LiteralPath $navCsvPath -NoTypeInformation -Encoding UTF8
 
 $lines = New-Object System.Collections.Generic.List[string]

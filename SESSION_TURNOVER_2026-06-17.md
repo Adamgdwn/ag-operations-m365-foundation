@@ -20,6 +20,12 @@ The walkthrough should start from the live Operations Cockpit, then open the CRM
 Command Center. Older Relationship CRM and CRM Operations pages remain reference
 surfaces only.
 
+Follow-on local alignment on 2026-06-17: the Stage 8B verifier was updated so
+the old `Client Delivery / CRM Operations` Quick Launch link is treated as
+superseded by the Stage 8C `CRM Command Center` daily door. Fresh read-only
+verification now passes while still checking the Stage 8B page, fields, lookups,
+and views.
+
 Stage 9 is also advanced from "supervised loops proven" to "bridge readiness
 control packet generated/preflighted and live posture recorded/read-back
 verified." The default posture remains supervised delegated: no production
@@ -92,6 +98,9 @@ Result:
 
 - Stage 8D packet generation: PASS.
 - Stage 8D local preflight: PASS.
+- Stage 8B packet generation/local preflight/read-only verification after
+  superseded-nav alignment: PASS.
+- Stage 8C read-only verification rerun: PASS.
 - Stage 9 bridge readiness control packet generation: PASS.
 - Stage 9 bridge readiness control preflight: PASS.
 - Stage 9 bridge readiness control live dry run/apply/read-back: PASS.
@@ -133,6 +142,7 @@ Result:
 
 ## Git Note
 
-The current working set is uncommitted. It includes the Stage 8D local packet,
-the Stage 9 bridge readiness control packet, generated inventory artifacts, and
-updates to the start-here/index/roadmap docs.
+The Stage 8D and Stage 9 bridge readiness control work was committed and pushed
+on branch `codex/m365-agent-capability-bridge` as `72e175a`. Later local
+follow-on changes align the Stage 8B verifier with the Stage 8C daily-door
+posture and add fresh read-only verification artifacts.

@@ -1,6 +1,6 @@
 # Stage 8B Relationship CRM Operations Build Guide
 
-Generated: 2026-06-15 13:39:08
+Generated: 2026-06-17 09:14:42
 Config: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.json`
 
 Scope: local-only packet. This does not connect to Microsoft 365 and performs no tenant writes.

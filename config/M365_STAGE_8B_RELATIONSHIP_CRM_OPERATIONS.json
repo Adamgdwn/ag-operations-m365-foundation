@@ -38,7 +38,15 @@
     }
   ],
   "navigationTargets": [
-    { "group": "Client Delivery", "link": "CRM Operations", "kind": "Page", "target": "Relationship CRM Operations" }
+    {
+      "group": "Client Delivery",
+      "link": "CRM Operations",
+      "kind": "Page",
+      "target": "Relationship CRM Operations",
+      "expectedStatus": "Superseded",
+      "supersededBy": "Client Delivery / CRM Command Center",
+      "note": "Stage 8C made the CRM Command Center the single daily CRM door. The Stage 8B operations page remains a reference surface and no longer requires a Quick Launch link."
+    }
   ],
   "lookupFields": [
     { "list": "CRM - Contacts", "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
