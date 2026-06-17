@@ -33,7 +33,7 @@ function Start-VisiblePowerShellConsole {
         "title $Title",
         "cd /d $(ConvertTo-CmdArgument -Argument $WorkingDirectory)",
         "echo Ready to start $Title.",
-        "echo This adds Stage 8C CRM workflow lists, lookup columns, filtered views, page, and navigation when -Apply and typed approval are used.",
+        "echo This adds or refreshes Stage 8C CRM workflow lists, lookup columns, filtered views, command-center stage path, page, and navigation when -Apply and typed approval are used.",
         "echo Complete any Microsoft sign-in promptly after the next prompt appears.",
         "pause",
         $powerShellCommand

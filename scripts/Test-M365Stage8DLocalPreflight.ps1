@@ -82,6 +82,7 @@ $requiredFiles = @(
     "config\M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json",
     "scripts\New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1",
     "scripts\Test-M365Stage8DLocalPreflight.ps1",
+    "scripts\Invoke-M365Stage8DWorkflowProof.ps1",
     "inventory\stage-8d-functional-workflow-walkthrough\STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md",
     "inventory\stage-8d-functional-workflow-walkthrough\stage-8d-workflow-step-map.csv",
     "inventory\stage-8d-functional-workflow-walkthrough\stage-8d-stop-gate-map.csv",
@@ -97,7 +98,8 @@ foreach ($relativeFile in $requiredFiles) {
 
 $requiredScripts = @(
     "scripts\New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1",
-    "scripts\Test-M365Stage8DLocalPreflight.ps1"
+    "scripts\Test-M365Stage8DLocalPreflight.ps1",
+    "scripts\Invoke-M365Stage8DWorkflowProof.ps1"
 )
 
 foreach ($relativeScript in $requiredScripts) {
@@ -134,8 +136,8 @@ $lines.Add("Next safe actions:")
 $lines.Add("")
 $lines.Add('1. Open the Guided AI Labs Operations Cockpit in Adam''s browser profile.')
 $lines.Add('2. Open the CRM Command Center from the cockpit.')
-$lines.Add('3. Use the Stage 8D walkthrough guide to test one internal dummy path.')
-$lines.Add('4. Fill the walkthrough capture template and findings register with any confusion points before creating Teams tabs or more automation.')
+$lines.Add('3. Inspect the Stage 8D proof read-back before creating another internal dummy path.')
+$lines.Add('4. Fill the walkthrough capture template and findings register with any remaining browser confusion points before creating Teams tabs or more automation.')
 
 Set-Content -LiteralPath $resolvedOutputPath -Value $lines -Encoding UTF8
 

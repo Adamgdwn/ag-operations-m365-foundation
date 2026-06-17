@@ -1,12 +1,14 @@
 # Microsoft 365 Stage 8D - Functional Workflow Walkthrough
 
-Status: **local-only packet added** (2026-06-17).
+Status: **internal production workflow proof live-recorded and read-back
+verified** (2026-06-17).
 
 Stage 8D is the first practical workflow proof after the Guided AI Labs
 Operations Cockpit and CRM Command Center were live-created and read-back
 verified. It does not provision another system layer. It gives Adam and Codex a
-safe browser/manual walkthrough for proving that the daily operating path is
-usable before creating Teams tabs, widening access, or designing more automation.
+safe browser/manual walkthrough plus an approval-gated internal production proof
+for proving that the daily operating path is usable before widening access or
+designing more automation.
 
 Related:
 
@@ -40,7 +42,7 @@ Where does the system still feel confusing or too manual?
 
 ## 2. Scope
 
-Stage 8D creates only local planning artifacts:
+Stage 8D started as a local planning layer:
 
 - a machine-readable walkthrough config;
 - a generated browser/manual walkthrough guide;
@@ -48,11 +50,13 @@ Stage 8D creates only local planning artifacts:
 - a walkthrough capture template and findings register starter;
 - a local preflight script.
 
-The Stage 8D scripts do not connect to Microsoft 365 and do not create or update
-tenant content.
+The packet generator and local preflight do not connect to Microsoft 365 and do
+not create or update tenant content.
 
-Manual browser writes during the walkthrough are optional and require Adam's
-approval in the browser. If performed, they must use internal dummy records only.
+The follow-on production proof operator
+`scripts/Invoke-M365Stage8DWorkflowProof.ps1` writes only clearly labelled
+internal dummy records after the typed approval phrase
+`record-stage-8d-internal-workflow-proof`.
 
 ---
 
@@ -99,7 +103,81 @@ daily entry points.
 
 ---
 
-## 5. Local Commands
+## 5. Live Walkthrough And Proof Finding
+
+The first browser checkpoint found a real usability gap: the Operations Cockpit
+has a CRM Command Center card, but opening it did not present a recognizable CRM
+stage or pipeline workflow. The underlying Stage 8B/8C lists and views existed,
+including qualification, pipeline, delivery control, actions, artifacts, and
+handoff evidence, but the daily command surface did not behave like the front
+door to a CRM.
+
+The second browser checkpoint found the next usability gap: the stage path was
+functional, but still presented as a wall of text. The intake link opened the raw
+SharePoint list item form, exposing source mailbox, source message id, received
+date, and other system fields before the human intake questions.
+
+The Stage 8C production refresh was then applied and read-back verified so the
+CRM Command Center is an action hub and the intake form exposes a cleaner first
+pass:
+
+```text
+Intake -> Qualification -> Engagement Pipeline -> Decision / Proposal -> Active Delivery -> Handoff Evidence
+```
+
+```text
+Quick intake: Intake summary, Person name, Email, Organization
+Triage: Signal type, Priority, What should happen next?, Context / notes, Needs Adam review
+```
+
+Capture evidence:
+
+```text
+inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv
+inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-command-center-stage-path.csv
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-frictionless-intake-map.csv
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-110134.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-verify-20260617-110545.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-112206.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-verify-20260617-112546.log
+```
+
+On 2026-06-17, Adam approved moving the next steps straight to production. The
+Stage 8D internal proof operator created and then idempotently refreshed one
+internal dummy workflow chain:
+
+```text
+RecordKey: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617
+Intake item: #1
+Organization: #1
+Contact: #1
+Engagement: #1
+Qualification: #1
+Stakeholder role: #1
+Touchpoint: #1
+Action queue item: #1
+Lifecycle checklist item: #1
+Artifact/evidence item: #1
+Agent Action Log item: #6
+```
+
+Production proof evidence:
+
+```text
+inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-20260617-120746.log
+inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-20260617-121052.log
+inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-readback-20260617-121052.csv
+```
+
+The proof did not create permission changes, guests, sharing links, app grants,
+public Forms, mail sends, deletions, Dynamics/Dataverse resources, or unattended
+automation. No Decision Register item was created because the internal proof did
+not require a real scope/governance/commercial decision.
+
+---
+
+## 6. Local Commands
 
 Generate the walkthrough packet:
 
@@ -111,6 +189,18 @@ Run local preflight:
 
 ```powershell
 .\scripts\Test-M365Stage8DLocalPreflight.ps1
+```
+
+Dry-run the internal production proof:
+
+```powershell
+.\scripts\Invoke-M365Stage8DWorkflowProof.ps1 -NoPause
+```
+
+Apply the internal production proof after approval:
+
+```powershell
+.\scripts\Invoke-M365Stage8DWorkflowProof.ps1 -Apply -ApprovalPhrase record-stage-8d-internal-workflow-proof -NoPause
 ```
 
 Generated guide:
@@ -128,15 +218,19 @@ inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-st
 
 ---
 
-## 6. Done Criteria
+## 7. Done Criteria
 
 Stage 8D is done when:
 
 - the local packet and preflight pass;
-- Adam has browser-reviewed the Operations Cockpit and CRM Command Center;
 - one internal example can move from intake signal to handoff/evidence pointer;
 - the capture template has one outcome per walkthrough step;
 - all confusion points are captured in the findings register as changes, not
   worked around silently;
 - no external sharing, guest access, public Forms, mail sends, app grants,
   permission changes, deletes, or unattended automation were required.
+
+As of 2026-06-17, the production back-end proof satisfies the record/evidence
+criteria. Adam's visual browser review remains the subjective polish check
+before turning these surfaces into Teams tabs or broader staff/client-facing
+operations.

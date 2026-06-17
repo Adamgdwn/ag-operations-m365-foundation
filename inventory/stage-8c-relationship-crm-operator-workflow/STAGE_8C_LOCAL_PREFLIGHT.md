@@ -1,6 +1,6 @@
 # Stage 8C Relationship CRM Operator Workflow Local Preflight
 
-Generated: 2026-06-15 14:38:20
+Generated: 2026-06-17 12:16:13
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 
@@ -14,6 +14,10 @@ Result: PASS
 | PASS | Config has five operator workflow lists | Lists: 5 |
 | PASS | Config has workflow lookup fields | Lookups: 14 |
 | PASS | Config has filtered workflow views | Views: 19 |
+| PASS | Config has visible CRM command center stage path | Stage path links: 6 |
+| PASS | Config has frictionless intake experience | Guided AI Labs - Intake Register |
+| PASS | Frictionless intake has quick sections | Sections: 2 |
+| PASS | Frictionless intake hides system fields | System fields: 10 |
 | PASS | Config has approval phrase | apply-stage-8c-crm-workflow |
 | PASS | File exists: M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md |
 | PASS | File exists: config\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\config\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json |
@@ -42,6 +46,7 @@ Result: PASS
 | PASS | PnP command available: Get-PnPView | PnP.PowerShell |
 | PASS | PnP command available: Add-PnPView | PnP.PowerShell |
 | PASS | PnP command available: Set-PnPView | PnP.PowerShell |
+| PASS | PnP command available: Get-PnPContentType | PnP.PowerShell |
 | PASS | PnP command available: Add-PnPPage | PnP.PowerShell |
 | PASS | PnP command available: Add-PnPPageSection | PnP.PowerShell |
 | PASS | PnP command available: Add-PnPPageTextPart | PnP.PowerShell |

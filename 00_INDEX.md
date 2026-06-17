@@ -57,7 +57,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; Stage 8D walkthrough packet ready; Stage 8B verifier aligned to Stage 8C daily door** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; Stage 8C frictionless command-center/intake refresh live-applied/read-back verified; Stage 8D internal workflow proof live-recorded/read-back verified** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -345,12 +345,14 @@ should not sit waiting for private credentials.
   — Stage 8B live read-back verification summary; result PASS.
 - [M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md)
   — Stage 8C operator workflow layer for CRM action queue, qualification,
-  meeting notes, artifacts, health reviews, and command-center page.
+  meeting notes, artifacts, health reviews, and command-center page; 2026-06-17
+  production refresh adds a visible command-center CRM stage path and simplified
+  intake form.
 - [config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json](config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json)
   — machine-readable Stage 8C CRM operator workflow config.
 - [scripts/Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1](scripts/Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1)
   — dry-run-first, typed-approval operator for Stage 8C CRM workflow lists,
-  lookup columns, filtered views, command-center page, and navigation.
+  lookup columns, filtered views, command-center page refresh, and navigation.
 - [scripts/Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1](scripts/Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1)
   — visible launcher for the Stage 8C CRM workflow apply.
 - [scripts/Invoke-M365Stage8CVerifyRelationshipCrmOperatorWorkflow.ps1](scripts/Invoke-M365Stage8CVerifyRelationshipCrmOperatorWorkflow.ps1)
@@ -359,11 +361,18 @@ should not sit waiting for private credentials.
   — visible launcher for the Stage 8C verifier.
 - [inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_BUILD_GUIDE.md)
   — generated Stage 8C local build guide.
+- [inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-command-center-stage-path.csv](inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-command-center-stage-path.csv)
+  — generated command-center stage path: intake, qualification, engagement
+  pipeline, decision/proposal, active delivery, and handoff evidence.
+- [inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-frictionless-intake-map.csv](inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-frictionless-intake-map.csv)
+  — generated map for the simplified intake form labels, quick sections, and
+  read-only source/system fields.
 - [inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md)
   — Stage 8C live read-back verification summary; result PASS.
 - [M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md](M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md)
-  — Stage 8D local-only walkthrough layer for proving the daily path from
-  intake to handoff evidence without tenant-write automation.
+  — Stage 8D walkthrough/proof layer for proving the daily path from intake to
+  handoff evidence; internal production proof records are live-recorded and
+  read-back verified.
 - [config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json](config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json)
   — machine-readable Stage 8D browser/manual walkthrough config.
 - [scripts/New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1](scripts/New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1)
@@ -371,6 +380,10 @@ should not sit waiting for private credentials.
   capture template, and findings starter.
 - [scripts/Test-M365Stage8DLocalPreflight.ps1](scripts/Test-M365Stage8DLocalPreflight.ps1)
   — local-only Stage 8D validation for config, scripts, and generated packet.
+- [scripts/Invoke-M365Stage8DWorkflowProof.ps1](scripts/Invoke-M365Stage8DWorkflowProof.ps1)
+  — approval-gated production operator that creates/updates one clearly
+  labelled internal dummy workflow chain across intake, CRM, actions, lifecycle,
+  artifact evidence, and Agent Action Log.
 - [inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md](inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md)
   — generated Stage 8D walkthrough guide; no tenant writes.
 - [inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv)
@@ -378,6 +391,9 @@ should not sit waiting for private credentials.
 - [inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv)
   — starter register for navigation, list/view, ownership, evidence, automation,
   policy, and training/page-copy findings.
+- [inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-readback-20260617-121052.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-readback-20260617-121052.csv)
+  — read-back evidence for the Stage 8D internal production workflow proof;
+  steps 8d-01 through 8d-07 pass.
 - [inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_LOCAL_PREFLIGHT.md](inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_LOCAL_PREFLIGHT.md)
   — Stage 8D local preflight summary; result PASS.
 - [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md)

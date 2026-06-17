@@ -1,9 +1,9 @@
 # Stage 9 Bridge Readiness Control Guide
 
-Generated: 2026-06-17 08:38:17
+Generated: 2026-06-17 12:17:32
 Config: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_9_BRIDGE_READINESS_CONTROL.json`
 
-Scope: readiness packet plus live posture evidence. The packet generator does not connect to Microsoft 365, create apps, grant consent, send mail, invite guests, change sharing, change permissions, change tenant policy, publish public forms, delete records, or run unattended automation. On 2026-06-17, the posture was recorded with approved supervised List writes only.
+Scope: local-only readiness packet. This guide does not connect to Microsoft 365, create apps, grant consent, send mail, invite guests, change sharing, change permissions, change tenant policy, publish public forms, delete records, or run unattended automation.
 
 ## Goal
 
@@ -28,10 +28,10 @@ Turn Stage 9 from proven supervised loops into a clear bridge control plane: wha
 
 | Track | Current state | Required evidence | Default status | Owner |
 |---|---|---|---|---|
-| Functional workflow evidence | Stage 8D local walkthrough packet exists; browser/manual dummy run still needs captured outcomes. | Completed Stage 8D capture worksheet and findings register. | Needs walkthrough evidence | Adam plus Codex |
+| Functional workflow evidence | Stage 8D local walkthrough packet exists and one internal production proof chain is live-recorded/read-back verified. | Completed Stage 8D capture worksheet, findings register, and proof read-back CSV. | Internal proof complete; Adam visual polish review remains | Adam plus Codex |
 | Action logging | Agent Action Log exists and Stage 9 supervised loops wrote evidence rows. | Action log row for each bridge action with source, approval state, result, and links. | Ready for supervised loops | Codex/local operator |
-| Decision logging | Decision Register item #2 approved the coordinator/support capability for supervised loops; item #3 approved the bridge readiness control posture. | New Decision Register item before any app registration, consent, or adapter permission change. | Ready for supervised loops | Adam |
-| App identity posture | No production bridge app is approved; setup helper app is not a production bridge; Decision Register #3 rejects setup-helper reuse as production bridge power. | Chosen app posture and resting-state decision for broad setup grants. | Supervised delegated approved; setup-helper resting-state still open | Adam plus Codex |
+| Decision logging | Decision Register item #2 approved the coordinator/support capability for supervised loops. | New Decision Register item before any app registration, consent, or adapter permission change. | Ready for supervised loops | Adam |
+| App identity posture | No production bridge app is approved; setup helper app is not a production bridge. | Chosen app posture and resting-state decision for broad setup grants. | Needs decision | Adam plus Codex |
 | Support mailbox readiness | Support List loop is proven; support mailbox app/delegated access waits for support MFA. | MFA method exists for support@changeleadershiptools.com before mailbox adapter testing. | Blocked pending MFA | Adam |
 | Permission scope design | Selected permissions and Exchange Application RBAC are target options, not granted. | Reviewed permission design with least-privilege scope, revocation path, and test plan. | Needs design approval | Adam plus Codex |
 | Rollback and pause path | Stop rules are documented; adapter-specific pause/revoke checklist needs a worksheet. | Rollback owner, revoke command/manual path, and evidence target for each adapter lane. | Needs worksheet | Codex/local operator |
@@ -43,8 +43,8 @@ Turn Stage 9 from proven supervised loops into a clear bridge control plane: wha
 |---|---|---|---|---|---|
 | Agent Action Log | Read all action log rows needed for audit, status, and suggestions. | Create suggested, dry-run, verification, and completed-action rows. | G1/G2 | Agent Action Log | Required for every later adapter lane. |
 | Decision Register | Read prior governance, app posture, and operating decisions. | Record approved decisions only; never infer approval from context. | G2/G3 | Decision Register and Agent Action Log | Required before new app, consent, permission, sharing, or external-send posture. |
-| Guided AI Labs operating Lists | Read intake, workspace, handoff, tool review, automation backlog, exceptions, readiness, and CRM records. | Create/update internal records only after approval; no real client commitments without review. | G2 | Agent Action Log plus target List item link | Stage 8D dummy path must be captured before broader internal writes. |
-| Relationship CRM Lists | Read organizations, contacts, engagements, stakeholders, touchpoints, lifecycle, actions, qualification, notes, artifacts, and health. | Create/update internal relationship records and follow-ups after approval; do not create external commitments. | G2 | Agent Action Log plus CRM item link | CRM command center and Stage 8D walkthrough must be usable by Adam. |
+| Guided AI Labs operating Lists | Read intake, workspace, handoff, tool review, automation backlog, exceptions, readiness, and CRM records. | Create/update internal records only after approval; no real client commitments without review. | G2 | Agent Action Log plus target List item link | Stage 8D internal proof is captured; broader internal writes still require named approval and evidence. |
+| Relationship CRM Lists | Read organizations, contacts, engagements, stakeholders, touchpoints, lifecycle, actions, qualification, notes, artifacts, and health. | Create/update internal relationship records and follow-ups after approval; do not create external commitments. | G2 | Agent Action Log plus CRM item link | CRM command center and Stage 8D proof records must remain easy for Adam to inspect. |
 | Planner | Read tasks and bucket state for coordination. | Create/update supervised internal tasks only; no calendar/deadline commitment without approval. | G2 | Agent Action Log plus task link or title | Remain delegated/supervised until a narrower app posture is approved. |
 | SharePoint evidence libraries | Read approved evidence, methods, handoff packets, and readiness materials. | Create folders/files only in approved workspace paths; no permission/share changes. | G2/G3 | Agent Action Log plus file/folder link | Selected permissions design must be approved before app-based writes. |
 | Exchange support mailbox | Read approved support mailbox metadata and message bodies only after support MFA/access posture is complete. | Create draft replies only; sending remains approval-gated. | G2/G3 | Support Register and Agent Action Log | Support MFA and Exchange Application RBAC design must be complete before app-based access. |
@@ -56,21 +56,21 @@ Turn Stage 9 from proven supervised loops into a clear bridge control plane: wha
 
 | Option | Recommended now | Fit | Decision needed |
 |---|---|---|---|
-| Stay supervised delegated | True | Next local/manual Stage 8D proof and low-volume internal List writes. | Approved live in Decision Register #3 on 2026-06-17; use as default until Stage 8D capture and app resting-state decisions are complete. |
+| Stay supervised delegated | True | Low-volume approved internal List writes after Stage 8D proof. | Use as default until app resting-state, support MFA, permission design, and rollback decisions are complete. |
 | Selected SharePoint/List adapter | False | Future app-based access to specific Guided AI Labs Lists and evidence libraries. | Approve only after adapter contract and rollback worksheet are complete. |
 | Exchange Application RBAC support adapter | False | Future support mailbox read/draft loop for Change Leadership Tools. | Wait until support@changeleadershiptools.com MFA is complete. |
 | Mixed M365 bridge adapter | False | Later UAOS bridge that combines selected Lists/SharePoint plus scoped support mailbox access. | Only after individual lanes prove safe. |
-| Reuse broad setup helper app | False | None for production bridge. | Rejected as production bridge posture in Decision Register #3; setup-helper resting-state decision still open. |
+| Reuse broad setup helper app | False | None for production bridge. | Reject as production posture; decide resting state for setup-helper grants. |
 
 ## Risk Controls
 
 | Risk | Severity | Control | Owner | Status |
 |---|---|---|---|---|
 | Broad setup helper grants remain idle but consented. | High | Record resting-state decision; disable/revoke/time-box broad setup grants when idle. | Adam | Open |
-| Stage 8D workflow is not browser-proven. | High | Complete dummy walkthrough capture before creating Teams tabs or new automation. | Adam plus Codex | Open |
+| Stage 8D workflow proof still needs Adam visual polish review. | High | Use the Stage 8D proof read-back and findings register before Teams tab expansion or new automation. | Adam plus Codex | Partially mitigated |
 | Support mailbox MFA/access is incomplete. | Medium | Complete MFA method for support@changeleadershiptools.com before mailbox adapter work. | Adam | Open |
 | Draft response is mistaken for sent response. | Medium | Separate draft-created evidence from send-approved evidence in Agent Action Log. | Codex/local operator | Open |
-| Client or external records enter the bridge before ownership rules are reviewed. | High | Use internal dummy records only until Stage 8D findings are reviewed. | Adam | Open |
+| Client or external records enter the bridge before ownership rules are reviewed. | High | Use internal dummy records only until Stage 8D findings and ownership rules are reviewed. | Adam | Open |
 | Permission grant lacks a tested revocation path. | High | Document revoke/disable path and evidence target before granting app permissions. | Adam plus Codex | Open |
 | Action logs become too vague to audit. | Medium | Require source, classification, proposed action, approval state, result, and links. | Codex/local operator | Open |
 
@@ -78,18 +78,10 @@ Turn Stage 9 from proven supervised loops into a clear bridge control plane: wha
 
 | Gate | Required before | Evidence | Status |
 |---|---|---|---|
-| Stage 8D walkthrough captured | Any broader internal CRM/List write automation or Teams tab expansion. | Completed stage-8d-walkthrough-capture-template.csv and findings register. | Not yet complete |
-| Setup-helper resting-state decision recorded | Any production bridge app approval. | Decision Register entry plus Agent Action Log row. | Partial: production reuse rejected; resting-state open |
+| Stage 8D walkthrough captured | Any broader internal CRM/List write automation or Teams tab expansion. | Completed stage-8d-walkthrough-capture-template.csv, findings register, and stage-8d-workflow-proof-readback-20260617-121052.csv. | Internal proof complete; visual polish review remains |
+| Setup-helper resting-state decision recorded | Any production bridge app approval. | Decision Register entry plus Agent Action Log row. | Open |
 | Support MFA completed | Support mailbox adapter or mailbox draft loop. | Account/session guide update or verified support MFA note. | Open |
-| Adapter permission design approved | Selected permissions or Exchange Application RBAC grant. | Bridge readiness guide reviewed and Decision Register approval. | Control posture recorded; adapter permission approval open |
-
-## Live Evidence
-
-| Evidence | M365 record(s) | Transcript |
-|---|---|---|
-| Bridge readiness control live dry run | No writes; verified target Lists and planned records | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084557.log` |
-| Bridge readiness control apply | Decision Register item `#3`; Agent Action Log item `#5` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084614.log` |
-| Bridge readiness control read-back | Decision Register item `#3`; Agent Action Log item `#5` read-back verified | `inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-084643.log` |
+| Adapter permission design approved | Selected permissions or Exchange Application RBAC grant. | Bridge readiness guide reviewed and Decision Register approval. | Open |
 | Rollback worksheet complete | Any app-based write permission. | Risk register and adapter contract include pause/revoke owner and target. | Open |
 | G0/G1 adapter dry run designed | Any unattended or app-based G2 write test. | Dry-run transcript showing no restricted write. | Open |
 | Production bridge decision recorded | Creating or granting a production UAOS M365 adapter. | Decision Register item with scope, owner, expiry/review cadence, blocked actions, and rollback path. | Open |

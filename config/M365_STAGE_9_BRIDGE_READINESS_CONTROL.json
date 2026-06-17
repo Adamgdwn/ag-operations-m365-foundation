@@ -19,9 +19,9 @@
   "readinessTracks": [
     {
       "track": "Functional workflow evidence",
-      "currentState": "Stage 8D local walkthrough packet exists; browser/manual dummy run still needs captured outcomes.",
-      "requiredEvidence": "Completed Stage 8D capture worksheet and findings register.",
-      "defaultStatus": "Needs walkthrough evidence",
+      "currentState": "Stage 8D local walkthrough packet exists and one internal production proof chain is live-recorded/read-back verified.",
+      "requiredEvidence": "Completed Stage 8D capture worksheet, findings register, and proof read-back CSV.",
+      "defaultStatus": "Internal proof complete; Adam visual polish review remains",
       "owner": "Adam plus Codex"
     },
     {
@@ -103,7 +103,7 @@
       "governanceLevel": "G2",
       "approvalGate": "Named internal List-write approval.",
       "evidenceTarget": "Agent Action Log plus target List item link",
-      "graduationRule": "Stage 8D dummy path must be captured before broader internal writes."
+      "graduationRule": "Stage 8D internal proof is captured; broader internal writes still require named approval and evidence."
     },
     {
       "surface": "Relationship CRM Lists",
@@ -113,7 +113,7 @@
       "governanceLevel": "G2",
       "approvalGate": "Named CRM internal-write approval.",
       "evidenceTarget": "Agent Action Log plus CRM item link",
-      "graduationRule": "CRM command center and Stage 8D walkthrough must be usable by Adam."
+      "graduationRule": "CRM command center and Stage 8D proof records must remain easy for Adam to inspect."
     },
     {
       "surface": "Planner",
@@ -180,10 +180,10 @@
     {
       "option": "Stay supervised delegated",
       "recommendedNow": true,
-      "fit": "Next local/manual Stage 8D proof and low-volume internal List writes.",
+      "fit": "Low-volume approved internal List writes after Stage 8D proof.",
       "benefit": "Lowest new permission risk.",
       "tradeoff": "Requires Adam/session presence and is not a durable production bridge.",
-      "decisionNeeded": "Use as default until Stage 8D capture and app resting-state decisions are complete."
+      "decisionNeeded": "Use as default until app resting-state, support MFA, permission design, and rollback decisions are complete."
     },
     {
       "option": "Selected SharePoint/List adapter",
@@ -228,12 +228,12 @@
       "status": "Open"
     },
     {
-      "risk": "Stage 8D workflow is not browser-proven.",
-      "impact": "Automation may encode a workflow Adam does not actually want to use.",
-      "control": "Complete dummy walkthrough capture before creating Teams tabs or new automation.",
+      "risk": "Stage 8D workflow proof still needs Adam visual polish review.",
+      "impact": "Automation or tabs may surface a workflow that is technically proven but still awkward to use.",
+      "control": "Use the Stage 8D proof read-back and findings register before Teams tab expansion or new automation.",
       "severity": "High",
       "owner": "Adam plus Codex",
-      "status": "Open"
+      "status": "Partially mitigated"
     },
     {
       "risk": "Support mailbox MFA/access is incomplete.",
@@ -254,7 +254,7 @@
     {
       "risk": "Client or external records enter the bridge before ownership rules are reviewed.",
       "impact": "Privacy, sharing, or delivery expectations may be wrong.",
-      "control": "Use internal dummy records only until Stage 8D findings are reviewed.",
+      "control": "Use internal dummy records only until Stage 8D findings and ownership rules are reviewed.",
       "severity": "High",
       "owner": "Adam",
       "status": "Open"
@@ -280,8 +280,8 @@
     {
       "gate": "Stage 8D walkthrough captured",
       "requiredBefore": "Any broader internal CRM/List write automation or Teams tab expansion.",
-      "evidence": "Completed stage-8d-walkthrough-capture-template.csv and findings register.",
-      "status": "Not yet complete"
+      "evidence": "Completed stage-8d-walkthrough-capture-template.csv, findings register, and stage-8d-workflow-proof-readback-20260617-121052.csv.",
+      "status": "Internal proof complete; visual polish review remains"
     },
     {
       "gate": "Setup-helper resting-state decision recorded",

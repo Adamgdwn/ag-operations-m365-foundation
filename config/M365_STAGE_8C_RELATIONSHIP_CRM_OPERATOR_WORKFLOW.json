@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-15",
+  "version": "2026-06-17-frictionless",
   "stage": "8C",
   "name": "Relationship CRM Operator Workflow",
   "site": {
@@ -24,11 +24,23 @@
       "title": "Relationship CRM Command Center",
       "fileName": "Relationship-CRM-Command-Center.aspx",
       "navGroup": "Client Delivery",
-      "role": "Daily command center for triage, open CRM actions, meeting preparation, evidence, health reviews, and handoff readiness.",
+      "role": "Daily command center for triage, CRM stages, open CRM actions, meeting preparation, evidence, health reviews, and handoff readiness.",
+      "stagePath": [
+        { "label": "1. Intake", "description": "New internal signals, referrals, support notes, and discovery starts enter here before CRM qualification.", "list": "Guided AI Labs - Intake Register", "view": "Attention Now" },
+        { "label": "2. Qualification", "description": "Decide whether the signal is qualified, disqualified, nurture, proposal recommended, or converted.", "list": "CRM - Qualification", "view": "Qualification Triage" },
+        { "label": "3. Engagement Pipeline", "description": "Track the relationship stage, package path, decision status, value, probability, and next action.", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+        { "label": "4. Decision / Proposal", "description": "Keep decision blockers, proposal work, and go-live blockers visible until resolved.", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
+        { "label": "5. Active Delivery", "description": "Move qualified work into onboarding, active delivery, sustainment, or blocked execution control.", "list": "CRM - Engagements", "view": "Delivery Control" },
+        { "label": "6. Handoff Evidence", "description": "End each workflow with a durable evidence, scope, artifact, or handoff packet pointer.", "list": "CRM - Artifacts", "view": "Handoff Evidence" }
+      ],
       "directLinks": [
+        { "label": "Intake - Attention Now", "list": "Guided AI Labs - Intake Register", "view": "Attention Now" },
         { "label": "Open CRM Actions", "list": "CRM - Action Queue", "view": "Open CRM Actions" },
         { "label": "Due / Overdue Actions", "list": "CRM - Action Queue", "view": "Due / Overdue Actions" },
         { "label": "Qualification Triage", "list": "CRM - Qualification", "view": "Qualification Triage" },
+        { "label": "Pipeline by Stage", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+        { "label": "Delivery Control", "list": "CRM - Engagements", "view": "Delivery Control" },
+        { "label": "Decision / Go-Live Blockers", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
         { "label": "Upcoming Meetings", "list": "CRM - Meeting Notes", "view": "Upcoming Meetings" },
         { "label": "Meeting Debrief Needed", "list": "CRM - Meeting Notes", "view": "Meeting Debrief Needed" },
         { "label": "Proposal / Scope Artifacts", "list": "CRM - Artifacts", "view": "Proposal / Scope Artifacts" },
@@ -38,6 +50,44 @@
       ]
     }
   ],
+  "intakeExperience": {
+    "title": "Frictionless CRM Intake",
+    "list": "Guided AI Labs - Intake Register",
+    "contentTypeName": "Item",
+    "purpose": "Keep the intake form focused on the few human questions needed to start CRM work. System/source/automation fields stay on the record but are hidden from the new-item form or shown read-only later.",
+    "friendlyFieldNames": [
+      { "internalName": "Title", "displayName": "Intake summary" },
+      { "internalName": "RequesterName", "displayName": "Person name" },
+      { "internalName": "RequesterEmail", "displayName": "Email" },
+      { "internalName": "IntakeClass", "displayName": "Signal type" },
+      { "internalName": "NextAction", "displayName": "What should happen next?" },
+      { "internalName": "AgentNotes", "displayName": "Context / notes" },
+      { "internalName": "HumanApprovalRequired", "displayName": "Needs Adam review" }
+    ],
+    "notRequiredFields": ["ReceivedDate", "ItemOwner"],
+    "formSections": [
+      {
+        "displayName": "Quick intake",
+        "fields": ["Intake summary", "Person name", "Email", "Organization"]
+      },
+      {
+        "displayName": "Triage",
+        "fields": ["Signal type", "Priority", "What should happen next?", "Context / notes", "Needs Adam review"]
+      }
+    ],
+    "readOnlySystemFields": [
+      "SourceMailbox",
+      "SourceMessageId",
+      "ReceivedDate",
+      "IntakeStatus",
+      "ItemOwner",
+      "DurableHome",
+      "PlannerTaskUrl",
+      "CentralOSLink",
+      "GraphNodeId",
+      "AgentConfidence"
+    ]
+  },
   "navigationTargets": [
     { "group": "Client Delivery", "link": "CRM Command Center", "kind": "Page", "target": "Relationship CRM Command Center" }
   ],

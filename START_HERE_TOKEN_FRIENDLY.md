@@ -32,7 +32,8 @@ Stage 8A Relationship CRM is live-created/read-back verified.
 Stage 8B Relationship CRM operations layer is live-applied/read-back verified.
 Stage 8C Relationship CRM operator workflow is live-applied/read-back verified.
 Stage 8D local functional workflow walkthrough packet and capture worksheets
-are generated/preflighted.
+are generated/preflighted; the internal production workflow proof is
+live-recorded/read-back verified.
 Stage 8B read-only verification was re-run on 2026-06-17 and passes after the
 old `Client Delivery / CRM Operations` nav check was marked superseded by the
 Stage 8C `CRM Command Center` daily door.
@@ -74,6 +75,11 @@ live-applied/read-back verified with action queue, qualification, meeting notes,
 artifacts, health reviews, command-center page, and navigation. Stage 9
 capability decision, coordinator suggestion, support triage, and bridge
 readiness control posture supervised List-write loops are also recorded in M365.
+Stage 8D internal production proof records were created/read-back verified on
+2026-06-17 with record key `GAIL-INTERNAL-WALKTHROUGH-PROD-20260617`; no
+external sharing, guests, permission changes, app grants, mail sends, public
+Forms, deletes, Dynamics/Dataverse resources, or unattended automation were
+created.
 Adam confirmed the operating model:
 Guided AI Labs is the workplace/source of truth; AG Operations SharePoint
 surfaces are only router/portfolio landing sites. The AG Operations root and
@@ -134,11 +140,11 @@ M365 coordinator/support agent capability:
 This is still supervised delegated List-write posture only. The Stage 9 bridge
 readiness control packet now defines readiness tracks, adapter contracts, app
 posture options, risk controls, and graduation gates before any move to a
-purpose-built adapter. The live bridge decision explicitly does not approve a
-production UAOS/M365 adapter, app registration, consent grant, SharePoint
-Selected permission grant, Exchange Application RBAC assignment, tenant policy
-change, external send, guest access, public Form, sharing change, deletion, or
-unattended automation.
+purpose-built adapter. The live bridge decision was refreshed after the Stage 8D
+internal proof and explicitly does not approve a production UAOS/M365 adapter,
+app registration, consent grant, SharePoint Selected permission grant, Exchange
+Application RBAC assignment, tenant policy change, external send, guest access,
+public Form, sharing change, deletion, or unattended automation.
 
 Local account/session note from 2026-06-15:
 
@@ -265,9 +271,14 @@ Done:
     `inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-adapter-contract.csv`
   - local preflight:
     `inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_PREFLIGHT.md`
-  - current posture: stay supervised delegated until Stage 8D capture,
-    setup-helper resting-state decision, support MFA, permission-scope design,
-    and rollback worksheet are complete.
+  - current posture: Stage 8D internal proof is complete; stay supervised
+    delegated until setup-helper resting-state decision, support MFA,
+    permission-scope design, rollback worksheet, G0/G1 adapter dry run, and a
+    separate production bridge decision are complete.
+  - refreshed live evidence:
+    `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-121810.log`
+  - refreshed read-back:
+    `inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-121908.log`
 - Stage 8 workspace-shape build packet and live operator were added:
   - `config/M365_STAGE_8_WORKSPACE_SHAPE.json`
   - `scripts/New-M365Stage8WorkspaceShapePacket.ps1`
@@ -442,13 +453,15 @@ Latest local checks:
 - Stage 8C Relationship CRM operator workflow read-only verification: PASS.
 - Stage 8D functional workflow walkthrough packet generation: PASS.
 - Stage 8D functional workflow walkthrough local preflight: PASS.
+- Stage 8D internal production proof dry run/apply/read-back: PASS.
 - Homepage refinement dry run: PASS.
 - Homepage refinement live draft apply: PASS.
 - Homepage refinement read-only verification: PASS.
 - Stage 9 local preflight: PASS.
 - Stage 9 bridge readiness control packet generation: PASS.
 - Stage 9 bridge readiness control preflight: PASS.
-- Stage 9 bridge readiness control live dry run/apply/read-back: PASS.
+- Stage 9 bridge readiness control live dry run/apply/read-back: PASS
+  (refreshed after Stage 8D internal proof).
 - Stage 9 capability packet regeneration after CRM scope update: PASS.
 - Stage 9 capability decision apply: PASS.
 - Stage 9 coordinator suggestion dry run/apply: PASS.
@@ -576,10 +589,27 @@ https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Guided-AI-La
 https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Command-Center.aspx
 ```
 
-5. Use the Stage 8D walkthrough guide to run one internal dummy path only:
+5. Stage 8D browser checkpoints found two usability gaps: the cockpit had a CRM
+   Command Center card, but the command center did not initially present an
+   obvious CRM stage/pipeline path; after that was refreshed, the page still
+   felt like a wall of text and the intake link opened the raw SharePoint list
+   form. The Stage 8C frictionless CRM refresh was applied and read-back
+   verified on 2026-06-17 so the CRM Command Center now shows:
+
+```text
+Intake -> Qualification -> Engagement Pipeline -> Decision / Proposal -> Active Delivery -> Handoff Evidence
+```
+
+   The intake form now starts with `Quick intake` and `Triage` sections instead
+   of source/system fields.
+
+6. Stage 8D internal dummy proof records now exist in production. Use the Stage
+   8D guide and the read-back CSV to inspect the path before creating another
+   proof chain:
 
 ```text
 inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md
+inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-readback-20260617-121052.csv
 ```
 
 Capture every step outcome and friction point here:
@@ -595,7 +625,7 @@ Target path:
 New Intake -> triage -> CRM engagement -> decision -> active delivery -> handoff evidence
 ```
 
-6. The old command-center draft page and older Relationship CRM / CRM Operations
+7. The old command-center draft page and older Relationship CRM / CRM Operations
    pages are reference/review surfaces, not the daily homepage or daily CRM door:
 
 ```text
@@ -604,10 +634,10 @@ https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship
 https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Operations.aspx
 ```
 
-7. Do not create the planned Teams tabs until browser review confirms the
-   Operations Cockpit, CRM Command Center, and Stage 8D walkthrough are usable.
+8. Do not create the planned Teams tabs until the live proof records are visually
+   checked from the Operations Cockpit and CRM Command Center.
 
-8. Review the Stage 9 agent capability packet if changing capability scope:
+9. Review the Stage 9 agent capability packet if changing capability scope:
 
 ```text
 inventory/stage-9-agentic-os-bridge/agent-capability/STAGE_9_AGENT_CAPABILITY_BUILD_GUIDE.md
@@ -686,6 +716,7 @@ Read-only / diagnostic:
 .\scripts\Test-M365Stage8BLocalPreflight.ps1
 .\scripts\New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1
 .\scripts\Test-M365Stage8DLocalPreflight.ps1
+.\scripts\Invoke-M365Stage8DWorkflowProof.ps1
 .\scripts\New-M365Stage9BridgeReadinessControlPacket.ps1
 .\scripts\Test-M365Stage9BridgeReadinessControlPreflight.ps1
 .\scripts\Invoke-M365Stage8HomepageRefinementBuild.ps1

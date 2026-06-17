@@ -213,7 +213,7 @@ Live evidence recorded:
 | Capability decision, 2026-06-15 | Decision Register item `#2`; Agent Action Log item `#2` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-recorddecision-20260615-110540.log` |
 | Coordinator suggestion, 2026-06-15 | Agent Action Log item `#3` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-coordinatorsuggestion-20260615-110719.log` |
 | Support triage, 2026-06-15 | Change Leadership Tools Support Register item `#1`; Agent Action Log item `#4` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-supporttriage-20260615-110951.log` |
-| Bridge readiness control, 2026-06-17 | Decision Register item `#3`; Agent Action Log item `#5` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084614.log`; read-back: `inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-084643.log` |
+| Bridge readiness control, 2026-06-17 | Decision Register item `#3`; Agent Action Log item `#5` | Initial: `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084614.log`; Stage 8D-proof refresh: `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-121810.log`; read-back: `inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-121908.log` |
 
 ---
 
@@ -251,9 +251,13 @@ controls, and graduation gates.
 Current live-recorded posture:
 
 ```text
-Stay supervised delegated until Stage 8D walkthrough capture, setup-helper
-resting-state decision, support MFA, permission-scope design, and rollback
-worksheet are complete.
+Stay supervised delegated. Stage 8D internal workflow proof is now
+live-recorded/read-back verified, but setup-helper resting-state decision,
+support MFA, permission-scope design, rollback worksheet, G0/G1 adapter dry run,
+and a separate production bridge decision are still required before any
+production UAOS/M365 adapter, app registration, consent grant, Selected
+permission grant, Exchange Application RBAC assignment, external send, guest
+access, public Form, sharing change, deletion, or unattended automation.
 ```
 
 Decision Register item `#3` and Agent Action Log item `#5` record that this

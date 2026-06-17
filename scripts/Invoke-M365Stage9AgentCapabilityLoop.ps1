@@ -345,15 +345,15 @@ Approved the Stage 9 bridge readiness control posture for the next live work win
 
 The current production posture remains supervised delegated. No production UAOS/M365 adapter is approved yet. No new app registration, consent grant, SharePoint Selected permission grant, Exchange Application RBAC assignment, tenant policy change, external send, guest access, public Form, sharing change, deletion, or unattended automation is approved by this decision.
 
-The setup helper app remains setup-only and must not be reused as production bridge power. Future adapter work requires the named graduation gates: Stage 8D walkthrough capture, setup-helper resting-state decision, support MFA, permission-scope design, rollback/pause worksheet, G0/G1 dry run, and a separate production bridge decision.
+The setup helper app remains setup-only and must not be reused as production bridge power. The Stage 8D internal workflow proof is now live-recorded/read-back verified, but future adapter work still requires the remaining named graduation gates: setup-helper resting-state decision, support MFA, permission-scope design, rollback/pause worksheet, G0/G1 dry run, and a separate production bridge decision.
 "@.Trim()
 
     $rationale = @"
-Stage 9 now has live-proven supervised List loops and a local bridge readiness control packet. Recording the posture in M365 keeps the system auditable while preventing quiet drift from setup tooling into permanent automation authority.
+Stage 9 now has live-proven supervised List loops, a local bridge readiness control packet, and Stage 8D internal workflow proof evidence. Recording the updated posture in M365 keeps the system auditable while preventing quiet drift from setup tooling into permanent automation authority.
 "@.Trim()
 
     $result = @"
-Stage 9 bridge readiness control was recorded as a governed M365 decision and action-log entry. The approved next posture is supervised delegated evidence work only; app registrations, consent, permission grants, mailbox adapter work, external/client-impacting actions, and unattended automation remain blocked pending separate approval gates.
+Stage 9 bridge readiness control was recorded as a governed M365 decision and action-log entry after the Stage 8D internal proof. The approved next posture is supervised delegated evidence work only; app registrations, consent, permission grants, mailbox adapter work, external/client-impacting actions, and unattended automation remain blocked pending separate approval gates.
 "@.Trim()
 
     $decisionValues = @{

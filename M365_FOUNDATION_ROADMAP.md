@@ -622,7 +622,8 @@ unattended automation is part of this stage.
 
 ## Stage 8B - Relationship CRM Operations
 
-Status: live-applied and read-back verified 2026-06-15.
+Status: live-applied and read-back verified 2026-06-15; frictionless
+command-center/intake refresh live-applied and read-back verified 2026-06-17.
 
 Stage 8B adds lookup-backed relationships, operational fields, due dates,
 priority, health, filtered CRM queues, the CRM Operations page, and navigation.
@@ -639,12 +640,25 @@ filtered workflow views, `Relationship-CRM-Command-Center.aspx`, and Client
 Delivery navigation. See
 [M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md).
 
+The 2026-06-17 production refresh updates the existing CRM Command Center page
+to act as a short action hub, show a visible stage path, and simplify the intake
+form so the first human pass starts with quick intake and triage fields:
+
+```text
+Intake -> Qualification -> Engagement Pipeline -> Decision / Proposal -> Active Delivery -> Handoff Evidence
+```
+
+```text
+Quick intake -> Triage -> source/system fields read-only after creation
+```
+
 No external guest, sharing, app grant, Forms, mail send, Dynamics, Dataverse,
 deletion, or unattended automation is part of this stage.
 
 ## Stage 8D - Functional Workflow Walkthrough
 
-Status: local-only packet generated and preflighted 2026-06-17.
+Status: internal production workflow proof live-recorded/read-back verified
+after frictionless CRM command-center/intake production refresh 2026-06-17.
 
 Stage 8D proves the daily operating path after the Operations Cockpit and CRM
 Command Center are live:
@@ -654,10 +668,18 @@ New Intake -> triage -> CRM engagement -> decision -> active delivery -> handoff
 ```
 
 It adds a generated walkthrough guide, workflow-step map, stop-gate map,
-review-question map, capture worksheet, and findings register starter. It does
-not connect to Microsoft 365 and does not perform tenant writes. Any manual
-browser records created during the walkthrough must be internal dummy records
-approved by Adam.
+review-question map, capture worksheet, findings register starter, and a
+typed-approval production proof operator for one internal dummy chain.
+
+The browser checkpoints confirmed that the cockpit has a CRM Command Center
+card, but the CRM experience first lacked a recognizable stage/pipeline path and
+then still felt like a wall of text with a raw SharePoint intake form. The Stage
+8C frictionless command-center/intake refresh is now production applied and
+read-back verified. The Stage 8D proof operator then created/read-back verified
+the internal dummy chain `GAIL-INTERNAL-WALKTHROUGH-PROD-20260617` from intake
+through qualification, engagement, action, lifecycle checklist, handoff evidence,
+and Agent Action Log. No guest, sharing, permission, app grant, mail, public
+Forms, deletion, Dynamics/Dataverse, or unattended automation change was made.
 
 See
 [M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md](M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md).
@@ -665,8 +687,8 @@ See
 ## Stage 9 - Agentic OS Bridge Readiness
 
 Status: in progress; supervised coordinator/support List-write loops live-proven
-2026-06-15, and bridge readiness control posture live-recorded/read-back
-verified 2026-06-17.
+2026-06-15, bridge readiness control posture live-recorded/read-back verified
+2026-06-17, and refreshed after the Stage 8D internal workflow proof.
 See
 [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md).
 
@@ -695,6 +717,9 @@ The Agentic OS will be built elsewhere, but Microsoft 365 needs to be ready for 
 - record the bridge readiness posture in Decision Register and Agent Action Log
   before any app, consent, permission, mailbox, external/client, or unattended
   automation work
+- keep the production bridge/app posture closed after Stage 8D proof until
+  setup-helper resting state, support MFA, permission design, rollback, G0/G1
+  dry run, and a separate production bridge decision are complete
 
 ### Main tools
 

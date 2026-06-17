@@ -1,0 +1,58 @@
+**********************
+PowerShell transcript start
+Start time: 20260617121909
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -Command $ErrorActionPreference='Stop'; Import-Module PnP.PowerShell; Start-Transcript -Path 'C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-9-agentic-os-bridge\stage-9-bridge-readiness-control-readback-20260617-121908.log' -Force | Out-Null; Connect-PnPOnline -Url 'https://agoperationsltd.sharepoint.com/sites/GuidedAILabs' -ClientId '46a71fd0-068c-4f89-9575-65c6405ca067' -Interactive -PersistLogin; $decision = Get-PnPListItem -List 'Decision Register' -Id 3; $action = Get-PnPListItem -List 'Agent Action Log' -Id 5; [pscustomobject]@{ List='Decision Register'; Id=$decision.Id; Title=$decision.FieldValues['Title']; DecisionDate=$decision.FieldValues['DecisionDate']; DecisionArea=$decision.FieldValues['DecisionArea']; Decision=$decision.FieldValues['Decision']; Rationale=$decision.FieldValues['Rationale'] } | Format-List; [pscustomobject]@{ List='Agent Action Log'; Id=$action.Id; Title=$action.FieldValues['Title']; ActionDate=$action.FieldValues['ActionDate']; AgentSurface=$action.FieldValues['AgentSurface']; ActionType=$action.FieldValues['ActionType']; ActionStatus=$action.FieldValues['ActionStatus']; Result=$action.FieldValues['Result'] } | Format-List; Stop-Transcript | Out-Null; 'Readback log: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-9-agentic-os-bridge\stage-9-bridge-readiness-control-readback-20260617-121908.log'
+Process ID: 2872
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+
+List         : Decision Register
+Id           : 3
+Title        : Stage 9 bridge readiness control posture approved
+DecisionDate : 2026-06-17 12:18:14 PM
+DecisionArea : Agent
+Decision     : Approved the Stage 9 bridge readiness control posture for the next live work window.
+
+               The current production posture remains supervised delegated. No production UAOS/M365 adapter is
+               approved yet. No new app registration, consent grant, SharePoint Selected permission grant, Exchange
+               Application RBAC assignment, tenant policy change, external send, guest access, public Form, sharing
+               change, deletion, or unattended automation is approved by this decision.
+
+               The setup helper app remains setup-only and must not be reused as production bridge power. The Stage 8D
+               internal workflow proof is now live-recorded/read-back verified, but future adapter work still requires
+               the remaining named graduation gates: setup-helper resting-state decision, support MFA,
+               permission-scope design, rollback/pause worksheet, G0/G1 dry run, and a separate production bridge
+               decision.
+Rationale    : Stage 9 now has live-proven supervised List loops, a local bridge readiness control packet, and Stage
+               8D internal workflow proof evidence. Recording the updated posture in M365 keeps the system auditable
+               while preventing quiet drift from setup tooling into permanent automation authority.
+
+
+List         : Agent Action Log
+Id           : 5
+Title        : Stage 9 bridge readiness control recorded
+ActionDate   : 2026-06-17 12:18:14 PM
+AgentSurface : Codex
+ActionType   : recommend
+ActionStatus : Completed
+Result       : Stage 9 bridge readiness control was recorded as a governed M365 decision and action-log entry after
+               the Stage 8D internal proof. The approved next posture is supervised delegated evidence work only; app
+               registrations, consent, permission grants, mailbox adapter work, external/client-impacting actions, and
+               unattended automation remain blocked pending separate approval gates.
+
+**********************
+PowerShell transcript end
+End time: 20260617121911
+**********************

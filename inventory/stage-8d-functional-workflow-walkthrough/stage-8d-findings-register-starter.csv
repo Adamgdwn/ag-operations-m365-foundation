@@ -1,6 +1,6 @@
 "Category","Severity","Surface","Finding","ProposedFix","Owner","Status"
-"Navigation or daily door","","","","","","Open"
-"List field or view","","","","","","Open"
+"Navigation or daily door","High","CRM Command Center","The Operations Cockpit has a CRM Command Center card, but the target page did not initially present a recognizable CRM stage or pipeline workflow. Adam expected the CRM door to open into a stage-based path.","Production refresh applied/read-back verified on 2026-06-17. Stage 8D internal proof records were then created/read-back verified from intake through handoff evidence.","Adam/Codex","Production proof recorded; Adam visual polish review remains"
+"List field or view","High","Guided AI Labs - Intake Register","The intake link opened a raw SharePoint list form with source mailbox, source message id, received date, owner, and automation fields in the first human path.","Production refresh applied/read-back verified on 2026-06-17. Intake form now uses Quick intake and Triage sections, and the Stage 8D internal proof created a live intake item successfully.","Adam/Codex","Production proof recorded; Adam visual polish review remains"
 "Record ownership","","","","","","Open"
 "Evidence link","","","","","","Open"
 "Automation candidate","","","","","","Open"

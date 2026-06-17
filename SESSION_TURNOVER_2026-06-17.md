@@ -3,9 +3,9 @@
 Canonical restart file:
 [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 
-This handoff captures the local Stage 8D continuation work and the Stage 9
-bridge readiness control packet. No live Microsoft 365 tenant changes were made
-in this session.
+This handoff captures the Stage 8D continuation work and the Stage 9 bridge
+readiness control packet. Later follow-on work on 2026-06-17 made approved live
+Microsoft 365 List writes for one internal Stage 8D workflow proof only.
 
 ## Stop Point
 
@@ -16,9 +16,43 @@ Guided AI Labs operating path:
 New Intake -> triage -> CRM engagement -> decision -> active delivery -> handoff evidence
 ```
 
-The walkthrough should start from the live Operations Cockpit, then open the CRM
-Command Center. Older Relationship CRM and CRM Operations pages remain reference
-surfaces only.
+The walkthrough started from the live Operations Cockpit and found usability
+stop-gates: the cockpit has a CRM Command Center card, but the command center
+did not initially present an obvious CRM stage or pipeline path; after that was
+refreshed, the page still felt like a wall of text and the intake link opened a
+raw SharePoint form with source/system fields first. Older Relationship CRM and
+CRM Operations pages remain reference surfaces only.
+
+The Stage 8C frictionless CRM refresh has been applied and read-back verified,
+and the page now exposes this path:
+
+```text
+Intake -> Qualification -> Engagement Pipeline -> Decision / Proposal -> Active Delivery -> Handoff Evidence
+```
+
+The intake form now starts with:
+
+```text
+Quick intake: Intake summary, Person name, Email, Organization
+Triage: Signal type, Priority, What should happen next?, Context / notes, Needs Adam review
+```
+
+Follow-on completed on 2026-06-17: the Stage 8C config, packet generator, apply
+script, and verifier now include the command-center action hub, stage path, and
+frictionless intake form. The existing CRM Command Center page text and intake
+form layout were refreshed in production after the typed
+`apply-stage-8c-crm-workflow` approval phrase.
+
+Additional follow-on completed on 2026-06-17: the Stage 8D internal workflow
+proof operator was added and run in production after the typed
+`record-stage-8d-internal-workflow-proof` approval phrase. It created and then
+idempotently refreshed one internal dummy chain with record key
+`GAIL-INTERNAL-WALKTHROUGH-PROD-20260617` across the Intake Register, CRM
+Organizations, Contacts, Engagements, Qualification, Stakeholder Map,
+Touchpoints, Action Queue, Lifecycle Checklist, Artifacts, and Agent Action Log.
+No external sharing, guest access, public Forms, mail sends, app grants,
+permission changes, deletion, real client data, Dynamics/Dataverse resources, or
+unattended automation were involved.
 
 Follow-on local alignment on 2026-06-17: the Stage 8B verifier was updated so
 the old `Client Delivery / CRM Operations` Quick Launch link is treated as
@@ -28,11 +62,12 @@ and views.
 
 Stage 9 is also advanced from "supervised loops proven" to "bridge readiness
 control packet generated/preflighted and live posture recorded/read-back
-verified." The default posture remains supervised delegated: no production
-adapter, app registration, consent grant, SharePoint Selected permission grant,
-Exchange Application RBAC assignment, mail send, guest, sharing change,
-permission change, tenant policy change, public Form, deletion, or unattended
-automation.
+verified." After the Stage 8D internal proof, the Stage 9 bridge readiness
+posture was refreshed in Decision Register item `#3` and Agent Action Log item
+`#5`. The default posture remains supervised delegated: no production adapter,
+app registration, consent grant, SharePoint Selected permission grant, Exchange
+Application RBAC assignment, mail send, guest, sharing change, permission
+change, tenant policy change, public Form, deletion, or unattended automation.
 
 Daily URLs:
 
@@ -88,6 +123,8 @@ Commands run:
 ```powershell
 .\scripts\New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1
 .\scripts\Test-M365Stage8DLocalPreflight.ps1
+.\scripts\Invoke-M365Stage8DWorkflowProof.ps1 -NoPause
+.\scripts\Invoke-M365Stage8DWorkflowProof.ps1 -Apply -ApprovalPhrase record-stage-8d-internal-workflow-proof -NoPause
 .\scripts\New-M365Stage9BridgeReadinessControlPacket.ps1
 .\scripts\Test-M365Stage9BridgeReadinessControlPreflight.ps1
 .\scripts\Test-M365Stage9LocalPreflight.ps1
@@ -98,12 +135,21 @@ Result:
 
 - Stage 8D packet generation: PASS.
 - Stage 8D local preflight: PASS.
+- Stage 8D internal production proof dry run/apply/read-back: PASS.
+  Latest evidence:
+  `inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-20260617-121052.log`
+  and
+  `inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-readback-20260617-121052.csv`.
 - Stage 8B packet generation/local preflight/read-only verification after
   superseded-nav alignment: PASS.
 - Stage 8C read-only verification rerun: PASS.
 - Stage 9 bridge readiness control packet generation: PASS.
 - Stage 9 bridge readiness control preflight: PASS.
 - Stage 9 bridge readiness control live dry run/apply/read-back: PASS.
+  Latest refreshed evidence:
+  `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-121810.log`
+  and
+  `inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-121908.log`.
 - Existing Stage 9 local preflight: PASS.
 - `git diff --check`: no whitespace errors; only existing LF/CRLF working-copy
   warnings on markdown files.
@@ -113,23 +159,25 @@ Result:
 1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 2. Open the Guided AI Labs Operations Cockpit.
 3. Open the CRM Command Center from the cockpit.
-4. Use the Stage 8D walkthrough guide:
+4. Browser-recheck the refreshed CRM Command Center and simplified intake form.
+5. Inspect the Stage 8D proof read-back and walkthrough guide:
 
    ```text
+   inventory/stage-8d-functional-workflow-walkthrough/stage-8d-workflow-proof-readback-20260617-121052.csv
    inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md
    ```
 
-5. Capture each step result and friction point:
+6. Capture each step result and friction point:
 
    ```text
    inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv
    inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv
    ```
 
-6. Stop if the walkthrough requires external sharing, guest access, public
+7. Stop if the walkthrough requires external sharing, guest access, public
    Forms, mail sends, app grants, permission changes, deletion, real client data,
    or unattended automation.
-7. Before any Stage 9 app registration, consent, Selected permission grant,
+8. Before any Stage 9 app registration, consent, Selected permission grant,
    Exchange Application RBAC change, or production adapter discussion, review:
 
    ```text

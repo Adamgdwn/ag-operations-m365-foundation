@@ -1,6 +1,6 @@
 # Stage 8C Relationship CRM Operator Workflow Build Guide
 
-Generated: 2026-06-15 14:28:20
+Generated: 2026-06-17 11:20:11
 Config: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json`
 
 Scope: local-only packet. This does not connect to Microsoft 365 and performs no tenant writes.
@@ -85,6 +85,28 @@ Read-only verification:
 | CRM - Health Reviews | Expansion Signals | 100 |
 | CRM - Health Reviews | Health Review History | 100 |
 
+## CRM Command Center Stage Path
+
+| Stage | List | View |
+|---|---|---|
+| 1. Intake | Guided AI Labs - Intake Register | Attention Now |
+| 2. Qualification | CRM - Qualification | Qualification Triage |
+| 3. Engagement Pipeline | CRM - Engagements | Pipeline by Stage |
+| 4. Decision / Proposal | CRM - Action Queue | Decision / Go-Live Blockers |
+| 5. Active Delivery | CRM - Engagements | Delivery Control |
+| 6. Handoff Evidence | CRM - Artifacts | Handoff Evidence |
+
+## Frictionless Intake
+
+List: `Guided AI Labs - Intake Register`
+
+| Section | Fields |
+|---|---|
+| Quick intake | Intake summary; Person name; Email; Organization |
+| Triage | Signal type; Priority; What should happen next?; Context / notes; Needs Adam review |
+
+System/source/automation fields are kept on the record and made read-only so they do not block the first human intake pass.
+
 ## Workflow Proof
 
 - New signals are triaged in CRM - Qualification before becoming a committed engagement.
@@ -100,4 +122,6 @@ Read-only verification:
 - Lookup map: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lookup-map.csv`
 - View map: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-view-map.csv`
 - Page map: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-page-map.csv`
+- Command center stage path: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-command-center-stage-path.csv`
+- Frictionless intake map: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-frictionless-intake-map.csv`
 - Navigation map: `C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-navigation-map.csv`

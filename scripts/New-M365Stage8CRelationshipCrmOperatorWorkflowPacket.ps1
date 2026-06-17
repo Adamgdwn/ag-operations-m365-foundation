@@ -35,6 +35,8 @@ $fieldCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-workflow-field-map.c
 $lookupCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-workflow-lookup-map.csv"
 $viewCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-workflow-view-map.csv"
 $pageCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-workflow-page-map.csv"
+$stagePathCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-command-center-stage-path.csv"
+$intakeCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-frictionless-intake-map.csv"
 $navCsvPath = Join-Path $resolvedOutputRoot "stage-8c-crm-workflow-navigation-map.csv"
 
 $config.lists | Select-Object title,description,quickLaunch |
@@ -85,6 +87,48 @@ $viewRows | Export-Csv -LiteralPath $viewCsvPath -NoTypeInformation -Encoding UT
 
 $config.pages | Select-Object title,fileName,navGroup,role |
     Export-Csv -LiteralPath $pageCsvPath -NoTypeInformation -Encoding UTF8
+
+$stagePathRows = foreach ($page in $config.pages) {
+    foreach ($stage in $page.stagePath) {
+        [pscustomobject]@{
+            Page = [string]$page.title
+            Label = [string]$stage.label
+            Description = [string]$stage.description
+            List = [string]$stage.list
+            View = [string]$stage.view
+        }
+    }
+}
+$stagePathRows | Export-Csv -LiteralPath $stagePathCsvPath -NoTypeInformation -Encoding UTF8
+
+if ($config.PSObject.Properties.Name -contains "intakeExperience") {
+    $intakeRows = New-Object System.Collections.Generic.List[object]
+    foreach ($field in $config.intakeExperience.friendlyFieldNames) {
+        $intakeRows.Add([pscustomobject]@{
+            Area = "Friendly field label"
+            List = [string]$config.intakeExperience.list
+            Item = [string]$field.internalName
+            Value = [string]$field.displayName
+        })
+    }
+    foreach ($section in $config.intakeExperience.formSections) {
+        $intakeRows.Add([pscustomobject]@{
+            Area = "Form section"
+            List = [string]$config.intakeExperience.list
+            Item = [string]$section.displayName
+            Value = (@($section.fields | ForEach-Object { [string]$_ }) -join "; ")
+        })
+    }
+    foreach ($fieldName in $config.intakeExperience.readOnlySystemFields) {
+        $intakeRows.Add([pscustomobject]@{
+            Area = "Read-only system field"
+            List = [string]$config.intakeExperience.list
+            Item = [string]$fieldName
+            Value = "Hidden from new item form; read-only after creation"
+        })
+    }
+    $intakeRows | Export-Csv -LiteralPath $intakeCsvPath -NoTypeInformation -Encoding UTF8
+}
 
 $config.navigationTargets | Select-Object group,link,kind,target |
     Export-Csv -LiteralPath $navCsvPath -NoTypeInformation -Encoding UTF8
@@ -155,6 +199,33 @@ foreach ($list in $config.lists) {
     }
 }
 $lines.Add("")
+$lines.Add("## CRM Command Center Stage Path")
+$lines.Add("")
+$lines.Add("| Stage | List | View |")
+$lines.Add("|---|---|---|")
+foreach ($page in $config.pages) {
+    foreach ($stage in $page.stagePath) {
+        $lines.Add(("| {0} | {1} | {2} |" -f $stage.label, $stage.list, $stage.view))
+    }
+}
+$lines.Add("")
+$lines.Add("## Frictionless Intake")
+$lines.Add("")
+if ($config.PSObject.Properties.Name -contains "intakeExperience") {
+    $lines.Add(('List: `{0}`' -f $config.intakeExperience.list))
+    $lines.Add("")
+    $lines.Add("| Section | Fields |")
+    $lines.Add("|---|---|")
+    foreach ($section in $config.intakeExperience.formSections) {
+        $lines.Add(("| {0} | {1} |" -f $section.displayName, (@($section.fields | ForEach-Object { [string]$_ }) -join "; ")))
+    }
+    $lines.Add("")
+    $lines.Add("System/source/automation fields are kept on the record and made read-only so they do not block the first human intake pass.")
+}
+else {
+    $lines.Add("No frictionless intake experience is configured.")
+}
+$lines.Add("")
 $lines.Add("## Workflow Proof")
 $lines.Add("")
 foreach ($step in $config.workflowProof) {
@@ -168,6 +239,8 @@ $lines.Add(('- Field map: `{0}`' -f $fieldCsvPath))
 $lines.Add(('- Lookup map: `{0}`' -f $lookupCsvPath))
 $lines.Add(('- View map: `{0}`' -f $viewCsvPath))
 $lines.Add(('- Page map: `{0}`' -f $pageCsvPath))
+$lines.Add(('- Command center stage path: `{0}`' -f $stagePathCsvPath))
+$lines.Add(('- Frictionless intake map: `{0}`' -f $intakeCsvPath))
 $lines.Add(('- Navigation map: `{0}`' -f $navCsvPath))
 $lines.Add("")
 

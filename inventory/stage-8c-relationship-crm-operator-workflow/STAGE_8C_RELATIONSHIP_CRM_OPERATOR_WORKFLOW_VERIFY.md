@@ -1,17 +1,18 @@
 # Stage 8C Relationship CRM Operator Workflow Verification
 
-Generated: 2026-06-17 09:12:55
+Generated: 2026-06-17 11:27:46
 
 Result: PASS
 
 Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
-Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-verify-20260617-091058.log
-List CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lists-20260617-091058.csv
-Field CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-fields-20260617-091058.csv
-Lookup CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lookups-20260617-091058.csv
-View CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-views-20260617-091058.csv
-Page CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-pages-20260617-091058.csv
-Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-navigation-20260617-091058.csv
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-verify-20260617-112546.log
+List CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lists-20260617-112546.csv
+Field CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-fields-20260617-112546.csv
+Lookup CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lookups-20260617-112546.csv
+View CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-views-20260617-112546.csv
+Page CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-pages-20260617-112546.csv
+Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-navigation-20260617-112546.csv
+Intake experience CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-intake-experience-20260617-112546.csv
 
 ## Summary
 
@@ -23,6 +24,7 @@ Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.
 | Views | 0 |
 | Pages | 0 |
 | Navigation | 0 |
+| Intake experience | 0 |
 
 ## Workflow Views
 

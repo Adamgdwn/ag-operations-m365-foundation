@@ -1,6 +1,8 @@
 # Microsoft 365 Stage 8C - Relationship CRM Operator Workflow
 
-Status: **live-applied and read-back verified** (2026-06-15).
+Status: **live-applied and read-back verified** (2026-06-15);
+**frictionless command-center and intake refresh live-applied and verified**
+(2026-06-17).
 
 Stage 8C takes the verified Stage 8A/8B CRM and adds the operator-facing
 workflow pieces needed for real daily use. Stage 8A created the CRM spine.
@@ -22,7 +24,10 @@ Stage 8C adds:
 - filtered views for open actions, overdue work, qualification triage, meeting
   prep/debrief, proposal/scope evidence, handoff evidence, health reviews, risk,
   and expansion signals;
-- `Relationship-CRM-Command-Center.aspx`;
+- `Relationship-CRM-Command-Center.aspx`, with a visible stage path from intake
+  through handoff evidence and short action tiles for the daily CRM moves;
+- a frictionless intake form layout for `Guided AI Labs - Intake Register`,
+  keeping human intake fields up front and source/automation fields read-only;
 - `Client Delivery / CRM Command Center` navigation.
 
 Stage 8C does not create permissions, invite guests, widen sharing, grant app
@@ -65,6 +70,10 @@ Live apply after explicit approval:
 .\scripts\Start-M365Stage8CRelationshipCrmOperatorWorkflowInteractive.ps1 -Apply
 ```
 
+The apply script now refreshes the existing command-center page text when the
+page already exists, instead of leaving stale content unchanged. It also applies
+the governed intake form layout. It still requires the typed approval phrase.
+
 Approval phrase:
 
 ```text
@@ -100,6 +109,40 @@ Verified with zero bad counts:
 - command-center page;
 - navigation link.
 
+Stage 8D browser review on 2026-06-17 found that the live CRM Command Center
+did not yet present an obvious CRM stage/pipeline path. The first production
+refresh added the stage path, but Adam's follow-up browser review found a second
+real friction point: the page still felt like a wall of text and the intake link
+opened a raw SharePoint list form with source mailbox, source message id,
+received date, owner, and other system fields in the first human path.
+
+The Stage 8C config, packet generator, apply script, and verifier were updated
+again. The approved production refresh applied and read-back verified:
+
+```text
+Intake -> Qualification -> Engagement Pipeline -> Decision / Proposal -> Active Delivery -> Handoff Evidence
+```
+
+It also applied the frictionless intake form:
+
+```text
+Quick intake: Intake summary, Person name, Email, Organization
+Triage: Signal type, Priority, What should happen next?, Context / notes, Needs Adam review
+System fields: kept on the record, hidden from new intake or read-only after creation
+```
+
+Local evidence:
+
+```text
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-command-center-stage-path.csv
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-frictionless-intake-map.csv
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-110134.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-verify-20260617-110545.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-112206.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-verify-20260617-112546.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-104803.log
+```
+
 ## Done Criteria
 
 Stage 8C is done when:
@@ -108,6 +151,11 @@ Stage 8C is done when:
 - all workflow fields and lookup fields exist;
 - all filtered operational views exist and have CAML filters/sorts;
 - `Relationship-CRM-Command-Center.aspx` exists;
+- the command-center page exposes the visible CRM stage path;
+- the command-center page exposes short action tiles including `Add intake
+  signal`;
+- the intake form exposes the frictionless quick-intake sections and keeps
+  system/source fields read-only;
 - the `Client Delivery / CRM Command Center` navigation link exists;
 - read-only verification writes a PASS summary to
   `inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md`.

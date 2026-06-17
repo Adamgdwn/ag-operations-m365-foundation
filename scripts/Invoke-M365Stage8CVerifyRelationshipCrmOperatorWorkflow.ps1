@@ -110,6 +110,7 @@ $lookupCsvPath = Join-Path $resolvedOutputRoot ("stage-8c-crm-workflow-lookups-{
 $viewCsvPath = Join-Path $resolvedOutputRoot ("stage-8c-crm-workflow-views-{0}.csv" -f $timestamp)
 $pageCsvPath = Join-Path $resolvedOutputRoot ("stage-8c-crm-workflow-pages-{0}.csv" -f $timestamp)
 $navCsvPath = Join-Path $resolvedOutputRoot ("stage-8c-crm-workflow-navigation-{0}.csv" -f $timestamp)
+$intakeCsvPath = Join-Path $resolvedOutputRoot ("stage-8c-crm-intake-experience-{0}.csv" -f $timestamp)
 $summaryPath = Join-Path $resolvedOutputRoot "STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md"
 
 try {
@@ -212,11 +213,30 @@ $pageResults = foreach ($page in $config.pages) {
         $found = $null
     }
 
+    $stagePathPresent = $false
+    if ($null -ne $found) {
+        try {
+            $components = @(Get-PnPPageComponent -Page ([string]$page.fileName) -ErrorAction SilentlyContinue)
+            $pageText = @($components | Where-Object { [string]$_.Type -like "*PageText*" -or [string]$_.ControlType -eq "4" } | ForEach-Object { [string]$_.Text }) -join "`n"
+            $stagePathPresent = (
+                $pageText -like "*CRM stage path*" -and
+                $pageText -like "*Add intake signal*" -and
+                $pageText -like "*Use this as the CRM workspace*" -and
+                $pageText -like "*Engagement Pipeline*" -and
+                $pageText -like "*Handoff Evidence*"
+            )
+        }
+        catch {
+            $stagePathPresent = $false
+        }
+    }
+
     [pscustomobject]@{
         Title = [string]$page.title
         FileName = [string]$page.fileName
         Exists = ($null -ne $found)
-        Status = if ($null -ne $found) { "Present" } else { "Missing" }
+        ContentStatus = if ($stagePathPresent) { "StagePathPresent" } elseif ($null -ne $found) { "StagePathMissing" } else { "" }
+        Status = if ($null -ne $found -and $stagePathPresent) { "Present" } elseif ($null -ne $found) { "ContentMissing" } else { "Missing" }
     }
 }
 
@@ -239,6 +259,67 @@ foreach ($topNode in $topNav) {
             Title = [string]$child.Title
             Url = [string]$child.Url
         })
+    }
+}
+
+$intakeResults = @()
+if ($config.PSObject.Properties.Name -contains "intakeExperience") {
+    $intake = $config.intakeExperience
+    $intakeList = [string]$intake.list
+    $formatterJson = ""
+    $contentTypeFound = $false
+    try {
+        $clientContext = Get-PnPContext
+        $contentType = Get-PnPContentType -List $intakeList | Where-Object { $_.Name -eq [string]$intake.contentTypeName } | Select-Object -First 1
+        if ($null -ne $contentType) {
+            $clientContext.Load($contentType)
+            $clientContext.ExecuteQuery()
+            $formatterJson = [string]$contentType.ClientFormCustomFormatter
+            $contentTypeFound = $true
+        }
+    }
+    catch {
+        $formatterJson = ""
+    }
+
+    $intakeResults += [pscustomobject]@{
+        Area = "Form formatter"
+        Item = $intakeList
+        Expected = [string]$intake.contentTypeName
+        Actual = if ($contentTypeFound) { "ContentTypePresent" } else { "ContentTypeMissing" }
+        Status = if ($contentTypeFound -and $formatterJson -like "*Quick intake*" -and $formatterJson -like "*Triage*") { "Present" } else { "Missing" }
+    }
+
+    foreach ($field in $intake.friendlyFieldNames) {
+        $actualField = Get-PnPField -List $intakeList -Identity ([string]$field.internalName) -Includes Title -ErrorAction SilentlyContinue
+        $intakeResults += [pscustomobject]@{
+            Area = "Friendly field label"
+            Item = [string]$field.internalName
+            Expected = [string]$field.displayName
+            Actual = if ($null -ne $actualField) { [string]$actualField.Title } else { "" }
+            Status = if ($null -ne $actualField -and [string]$actualField.Title -eq [string]$field.displayName) { "Present" } elseif ($null -ne $actualField) { "Mismatch" } else { "Missing" }
+        }
+    }
+
+    foreach ($fieldName in $intake.notRequiredFields) {
+        $actualField = Get-PnPField -List $intakeList -Identity ([string]$fieldName) -Includes Required -ErrorAction SilentlyContinue
+        $intakeResults += [pscustomobject]@{
+            Area = "Manual intake blocker"
+            Item = [string]$fieldName
+            Expected = "Required=False"
+            Actual = if ($null -ne $actualField) { "Required=$($actualField.Required)" } else { "" }
+            Status = if ($null -ne $actualField -and $actualField.Required -eq $false) { "Present" } elseif ($null -ne $actualField) { "Mismatch" } else { "Missing" }
+        }
+    }
+
+    foreach ($fieldName in $intake.readOnlySystemFields) {
+        $intakeResults += [pscustomobject]@{
+            Area = "Read-only system field"
+            Item = [string]$fieldName
+            Expected = "readonly"
+            Actual = if ($formatterJson -like "*$fieldName*") { "FormatterContainsField" } else { "" }
+            Status = if ($formatterJson -like "*$fieldName*" -and $formatterJson -like "*readonly*") { "Present" } else { "Missing" }
+        }
     }
 }
 
@@ -268,6 +349,7 @@ $lookupResults | Export-Csv -LiteralPath $lookupCsvPath -NoTypeInformation -Enco
 $viewResults | Export-Csv -LiteralPath $viewCsvPath -NoTypeInformation -Encoding UTF8
 $pageResults | Export-Csv -LiteralPath $pageCsvPath -NoTypeInformation -Encoding UTF8
 $navResults | Export-Csv -LiteralPath $navCsvPath -NoTypeInformation -Encoding UTF8
+$intakeResults | Export-Csv -LiteralPath $intakeCsvPath -NoTypeInformation -Encoding UTF8
 
 $badLists = @($listResults | Where-Object { $_.Status -ne "Present" })
 $badFields = @($fieldResults | Where-Object { $_.Status -ne "Present" })
@@ -275,7 +357,8 @@ $badLookups = @($lookupResults | Where-Object { $_.Status -ne "Present" })
 $badViews = @($viewResults | Where-Object { $_.Status -ne "Present" })
 $badPages = @($pageResults | Where-Object { $_.Status -ne "Present" })
 $badNav = @($navResults | Where-Object { $_.Status -ne "Present" })
-$result = if ($badLists.Count -eq 0 -and $badFields.Count -eq 0 -and $badLookups.Count -eq 0 -and $badViews.Count -eq 0 -and $badPages.Count -eq 0 -and $badNav.Count -eq 0) { "PASS" } else { "PARTIAL" }
+$badIntake = @($intakeResults | Where-Object { $_.Status -ne "Present" })
+$result = if ($badLists.Count -eq 0 -and $badFields.Count -eq 0 -and $badLookups.Count -eq 0 -and $badViews.Count -eq 0 -and $badPages.Count -eq 0 -and $badNav.Count -eq 0 -and $badIntake.Count -eq 0) { "PASS" } else { "PARTIAL" }
 
 $lines = New-Object System.Collections.Generic.List[string]
 $lines.Add("# Stage 8C Relationship CRM Operator Workflow Verification")
@@ -292,6 +375,7 @@ $lines.Add(("Lookup CSV: {0}" -f $lookupCsvPath))
 $lines.Add(("View CSV: {0}" -f $viewCsvPath))
 $lines.Add(("Page CSV: {0}" -f $pageCsvPath))
 $lines.Add(("Navigation CSV: {0}" -f $navCsvPath))
+$lines.Add(("Intake experience CSV: {0}" -f $intakeCsvPath))
 $lines.Add("")
 $lines.Add("## Summary")
 $lines.Add("")
@@ -303,6 +387,7 @@ $lines.Add(("| Lookup fields | {0} |" -f $badLookups.Count))
 $lines.Add(("| Views | {0} |" -f $badViews.Count))
 $lines.Add(("| Pages | {0} |" -f $badPages.Count))
 $lines.Add(("| Navigation | {0} |" -f $badNav.Count))
+$lines.Add(("| Intake experience | {0} |" -f $badIntake.Count))
 $lines.Add("")
 $lines.Add("## Workflow Views")
 $lines.Add("")

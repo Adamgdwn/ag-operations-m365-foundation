@@ -67,11 +67,18 @@ else {
 if ($null -ne $config) {
     $viewCount = ((@($config.lists | ForEach-Object { @($_.views).Count }) | Measure-Object -Sum).Sum)
     $lookupCount = ((@($config.lists | ForEach-Object { @($_.lookupFields).Count }) | Measure-Object -Sum).Sum)
+    $stagePathCount = ((@($config.pages | ForEach-Object { @($_.stagePath).Count }) | Measure-Object -Sum).Sum)
     Add-Result -Results $results -Check "Config is Stage 8C" -Passed ([string]$config.stage -eq "8C") -Detail ("Stage: {0}" -f $config.stage)
     Add-Result -Results $results -Check "Config has target site URL" -Passed (-not [string]::IsNullOrWhiteSpace([string]$config.site.url)) -Detail ([string]$config.site.url)
     Add-Result -Results $results -Check "Config has five operator workflow lists" -Passed (@($config.lists).Count -eq 5) -Detail ("Lists: {0}" -f @($config.lists).Count)
     Add-Result -Results $results -Check "Config has workflow lookup fields" -Passed ($lookupCount -ge 12) -Detail ("Lookups: {0}" -f $lookupCount)
     Add-Result -Results $results -Check "Config has filtered workflow views" -Passed ($viewCount -ge 15) -Detail ("Views: {0}" -f $viewCount)
+    Add-Result -Results $results -Check "Config has visible CRM command center stage path" -Passed ($stagePathCount -ge 5) -Detail ("Stage path links: {0}" -f $stagePathCount)
+    Add-Result -Results $results -Check "Config has frictionless intake experience" -Passed ($config.PSObject.Properties.Name -contains "intakeExperience") -Detail ($(if ($config.PSObject.Properties.Name -contains "intakeExperience") { [string]$config.intakeExperience.list } else { "missing" }))
+    if ($config.PSObject.Properties.Name -contains "intakeExperience") {
+        Add-Result -Results $results -Check "Frictionless intake has quick sections" -Passed (@($config.intakeExperience.formSections).Count -ge 2) -Detail ("Sections: {0}" -f @($config.intakeExperience.formSections).Count)
+        Add-Result -Results $results -Check "Frictionless intake hides system fields" -Passed (@($config.intakeExperience.readOnlySystemFields).Count -ge 8) -Detail ("System fields: {0}" -f @($config.intakeExperience.readOnlySystemFields).Count)
+    }
     Add-Result -Results $results -Check "Config has approval phrase" -Passed ([string]$config.approvalPhrase -eq "apply-stage-8c-crm-workflow") -Detail ([string]$config.approvalPhrase)
 }
 
@@ -108,7 +115,7 @@ Add-Result -Results $results -Check "PowerShell 7 host available" -Passed ($null
 $pnp = Get-Module -ListAvailable -Name PnP.PowerShell | Sort-Object Version -Descending | Select-Object -First 1
 Add-Result -Results $results -Check "PnP.PowerShell module available" -Passed ($null -ne $pnp) -Detail ($(if ($null -ne $pnp) { ("{0} {1}" -f $pnp.Name, $pnp.Version) } else { "required for live CRM workflow apply" }))
 
-$pnpCommands = @("Connect-PnPOnline", "Get-PnPList", "New-PnPList", "Set-PnPList", "Get-PnPField", "Add-PnPField", "Add-PnPFieldFromXml", "Set-PnPField", "Get-PnPView", "Add-PnPView", "Set-PnPView", "Add-PnPPage", "Add-PnPPageSection", "Add-PnPPageTextPart", "Set-PnPPage", "Get-PnPNavigationNode", "Add-PnPNavigationNode")
+$pnpCommands = @("Connect-PnPOnline", "Get-PnPList", "New-PnPList", "Set-PnPList", "Get-PnPField", "Add-PnPField", "Add-PnPFieldFromXml", "Set-PnPField", "Get-PnPView", "Add-PnPView", "Set-PnPView", "Get-PnPContentType", "Add-PnPPage", "Add-PnPPageSection", "Add-PnPPageTextPart", "Set-PnPPage", "Get-PnPNavigationNode", "Add-PnPNavigationNode")
 foreach ($commandName in $pnpCommands) {
     $command = Get-Command $commandName -ErrorAction SilentlyContinue
     Add-Result -Results $results -Check ("PnP command available: {0}" -f $commandName) -Passed ($null -ne $command) -Detail ($(if ($null -ne $command) { $command.Source } else { "missing" }))

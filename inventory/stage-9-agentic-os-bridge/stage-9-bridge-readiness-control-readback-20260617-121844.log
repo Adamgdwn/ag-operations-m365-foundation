@@ -1,0 +1,173 @@
+**********************
+PowerShell transcript start
+Start time: 20260617121845
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -Command $ErrorActionPreference='Stop'; Import-Module PnP.PowerShell; Start-Transcript -Path 'C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-9-agentic-os-bridge\stage-9-bridge-readiness-control-readback-20260617-121844.log' -Force | Out-Null; Connect-PnPOnline -Url 'https://agoperationsltd.sharepoint.com/sites/GuidedAILabs' -ClientId '46a71fd0-068c-4f89-9575-65c6405ca067' -Interactive -PersistLogin; $decision = Get-PnPListItem -List 'Decision Register' -Id 3; $action = Get-PnPListItem -List 'Agent Action Log' -Id 5; 'Decision Register #3'; $decision.FieldValues | Format-List Title,DecisionDate,DecisionArea,Decision,Rationale; 'Agent Action Log #5'; $action.FieldValues | Format-List Title,ActionDate,AgentSurface,ActionType,ActionStatus,Result; Stop-Transcript | Out-Null; 'Readback log: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-9-agentic-os-bridge\stage-9-bridge-readiness-control-readback-20260617-121844.log'
+Process ID: 30112
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Decision Register #3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Agent Action Log #5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**********************
+PowerShell transcript end
+End time: 20260617121848
+**********************
