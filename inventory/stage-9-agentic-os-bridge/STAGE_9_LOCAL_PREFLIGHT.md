@@ -1,6 +1,6 @@
 # Stage 9 Local Preflight
 
-Generated: 2026-06-15 11:42:32
+Generated: 2026-06-17 08:54:21
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 

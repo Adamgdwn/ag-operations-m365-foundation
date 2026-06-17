@@ -1,0 +1,8 @@
+"Gate","RequiredBefore","Evidence","Status","DecisionLink"
+"Stage 8D walkthrough captured","Any broader internal CRM/List write automation or Teams tab expansion.","Completed stage-8d-walkthrough-capture-template.csv and findings register.","Not yet complete",""
+"Setup-helper resting-state decision recorded","Any production bridge app approval.","Decision Register entry plus Agent Action Log row.","Partial: production reuse rejected; resting-state open","Decision Register #3; Agent Action Log #5"
+"Support MFA completed","Support mailbox adapter or mailbox draft loop.","Account/session guide update or verified support MFA note.","Open",""
+"Adapter permission design approved","Selected permissions or Exchange Application RBAC grant.","Bridge readiness guide reviewed and Decision Register approval.","Control posture recorded; adapter permission approval open","Decision Register #3; Agent Action Log #5"
+"Rollback worksheet complete","Any app-based write permission.","Risk register and adapter contract include pause/revoke owner and target.","Open",""
+"G0/G1 adapter dry run designed","Any unattended or app-based G2 write test.","Dry-run transcript showing no restricted write.","Open",""
+"Production bridge decision recorded","Creating or granting a production UAOS M365 adapter.","Decision Register item with scope, owner, expiry/review cadence, blocked actions, and rollback path.","Open",""

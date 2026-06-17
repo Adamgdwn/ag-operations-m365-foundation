@@ -1,7 +1,7 @@
 # Microsoft 365 Stage 9 - Agentic OS Bridge Readiness
 
-Status: **planned / local capability model started - prepare after Stage 7
-governance and Stage 8 workspace pattern** (updated 2026-06-15).
+Status: **in progress - supervised coordinator/support loops live-proven, bridge
+readiness control posture live-recorded/read-back verified** (updated 2026-06-17).
 
 Stage 9 prepares Microsoft 365 to become a governed spoke for the future Guided
 AI Labs User AI Operating System and Graphify Workspace Cockpit. It does not
@@ -17,6 +17,7 @@ Related:
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 - [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md)
 - [config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json](config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json)
+- [config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json](config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json)
 
 ---
 
@@ -188,6 +189,7 @@ Dry-run-first live loop operator:
 .\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action RecordDecision
 .\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion
 .\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action BridgeReadinessControl
 ```
 
 Apply mode requires typed approval:
@@ -196,6 +198,7 @@ Apply mode requires typed approval:
 record-stage-9-agent-capability-decision
 record-stage-9-coordinator-suggestion
 record-stage-9-support-triage
+record-stage-9-bridge-readiness-control
 ```
 
 The loop operator writes only to approved operating Lists. It does not create app
@@ -203,13 +206,62 @@ registrations, grant consent, send mail, invite guests, change sharing, alter
 permissions, change tenant policy, publish Forms, delete records, or run
 unattended automation.
 
-Live evidence recorded 2026-06-15:
+Live evidence recorded:
 
 | Loop | M365 record(s) | Transcript |
 |---|---|---|
-| Capability decision | Decision Register item `#2`; Agent Action Log item `#2` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-recorddecision-20260615-110540.log` |
-| Coordinator suggestion | Agent Action Log item `#3` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-coordinatorsuggestion-20260615-110719.log` |
-| Support triage | Change Leadership Tools Support Register item `#1`; Agent Action Log item `#4` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-supporttriage-20260615-110951.log` |
+| Capability decision, 2026-06-15 | Decision Register item `#2`; Agent Action Log item `#2` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-recorddecision-20260615-110540.log` |
+| Coordinator suggestion, 2026-06-15 | Agent Action Log item `#3` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-coordinatorsuggestion-20260615-110719.log` |
+| Support triage, 2026-06-15 | Change Leadership Tools Support Register item `#1`; Agent Action Log item `#4` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-supporttriage-20260615-110951.log` |
+| Bridge readiness control, 2026-06-17 | Decision Register item `#3`; Agent Action Log item `#5` | `inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084614.log`; read-back: `inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-084643.log` |
+
+---
+
+### 6.2 Bridge readiness control packet
+
+The next Stage 9 layer is now local-generated, preflighted, and recorded in M365
+as the current governed posture:
+
+```powershell
+.\scripts\New-M365Stage9BridgeReadinessControlPacket.ps1
+.\scripts\Test-M365Stage9BridgeReadinessControlPreflight.ps1
+```
+
+Generated guide:
+
+```text
+inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md
+```
+
+Generated worksheets:
+
+```text
+inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-readiness-checklist.csv
+inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-adapter-contract.csv
+inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture-decision-worksheet.csv
+inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-risk-control-register.csv
+inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-graduation-gates.csv
+```
+
+This control packet does not connect to Microsoft 365. It defines the decision
+surface for moving from supervised delegated loops to any purpose-built adapter:
+readiness tracks, adapter read/write boundaries, app posture options, risk
+controls, and graduation gates.
+
+Current live-recorded posture:
+
+```text
+Stay supervised delegated until Stage 8D walkthrough capture, setup-helper
+resting-state decision, support MFA, permission-scope design, and rollback
+worksheet are complete.
+```
+
+Decision Register item `#3` and Agent Action Log item `#5` record that this
+does not approve a production UAOS/M365 adapter, app registration, consent
+grant, SharePoint Selected permission grant, Exchange Application RBAC
+assignment, tenant policy change, external send, guest access, public Form,
+sharing change, deletion, or unattended automation. The packet explicitly
+rejects reusing broad setup-helper grants as production bridge power.
 
 ---
 
@@ -273,6 +325,8 @@ Stage 9 is done when:
 - read/propose/write/restricted categories are defined;
 - setup helper app resting-state decision is complete;
 - future UAOS app registration posture is documented;
+- bridge readiness control packet is reviewed and any adapter graduation gates
+  are either completed or intentionally deferred;
 - action logging schema is aligned with Stage 6 Lists;
 - stop/rollback/review rules are documented;
 - at least one low-risk read/propose/log bridge loop is demonstrated without

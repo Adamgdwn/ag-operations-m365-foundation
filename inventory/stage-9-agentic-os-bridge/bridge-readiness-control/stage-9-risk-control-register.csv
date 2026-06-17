@@ -1,0 +1,8 @@
+"Risk","Impact","Control","Severity","Owner","Status","FollowUp"
+"Broad setup helper grants remain idle but consented.","Production bridge could inherit provisioning-level power by accident.","Record resting-state decision; disable/revoke/time-box broad setup grants when idle.","High","Adam","Open",""
+"Stage 8D workflow is not browser-proven.","Automation may encode a workflow Adam does not actually want to use.","Complete dummy walkthrough capture before creating Teams tabs or new automation.","High","Adam plus Codex","Open",""
+"Support mailbox MFA/access is incomplete.","Support adapter testing could fail or drift into the wrong account lane.","Complete MFA method for support@changeleadershiptools.com before mailbox adapter work.","Medium","Adam","Open",""
+"Draft response is mistaken for sent response.","External communications could appear completed without human approval.","Separate draft-created evidence from send-approved evidence in Agent Action Log.","Medium","Codex/local operator","Open",""
+"Client or external records enter the bridge before ownership rules are reviewed.","Privacy, sharing, or delivery expectations may be wrong.","Use internal dummy records only until Stage 8D findings are reviewed.","High","Adam","Open",""
+"Permission grant lacks a tested revocation path.","Access cannot be paused quickly if behavior is wrong.","Document revoke/disable path and evidence target before granting app permissions.","High","Adam plus Codex","Open",""
+"Action logs become too vague to audit.","Future UAOS/Graphify cannot prove what happened or why.","Require source, classification, proposed action, approval state, result, and links.","Medium","Codex/local operator","Open",""

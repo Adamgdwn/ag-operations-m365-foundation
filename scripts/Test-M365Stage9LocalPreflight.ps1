@@ -143,7 +143,6 @@ $lines.Add('2. Review `inventory\stage-9-agentic-os-bridge\agent-capability\STAG
 $lines.Add('3. Record the coordinator/support agent scope as a Decision Register item before any new app registration or consent.')
 $lines.Add('4. Dry-run the first G1/G2 live-loop operators with `.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion` and `.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage`.')
 $lines.Add('5. Do not reuse `agent-pnp-provisioning` as the production bridge.')
-$lines.Add("")
 
 Set-Content -LiteralPath $resolvedOutputPath -Value $lines -Encoding UTF8
 

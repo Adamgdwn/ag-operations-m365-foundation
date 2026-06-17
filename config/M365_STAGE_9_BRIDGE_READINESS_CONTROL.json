@@ -1,0 +1,331 @@
+{
+  "version": "2026-06-17",
+  "stage": "9",
+  "title": "M365 Agentic OS Bridge Readiness Control Plane",
+  "scope": "Local-only control packet for deciding when the future UAOS/Graphify/M365 bridge can move beyond supervised delegated loops. This file does not create apps, grant consent, send mail, invite guests, change sharing, change permissions, change tenant policy, publish public forms, delete records, or run unattended automation.",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+    "operationsCockpitUrl": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Guided-AI-Labs-Operations-Cockpit.aspx",
+    "crmCommandCenterUrl": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Command-Center.aspx"
+  },
+  "principles": [
+    "Keep supervised delegated loops as the default until evidence proves the workflow, app posture, and rollback path.",
+    "Use purpose-built bridge identities; do not reuse setup-helper app grants as production agent power.",
+    "Keep reads, proposals, internal writes, restricted writes, and blocked autonomous actions visibly separate.",
+    "Every write-capable bridge action must leave durable evidence in Agent Action Log and, when scope or policy changes, Decision Register.",
+    "External sends, guest access, sharing, app consent, permissions, tenant policy, public forms, destructive actions, and real client commitments remain approval-gated."
+  ],
+  "readinessTracks": [
+    {
+      "track": "Functional workflow evidence",
+      "currentState": "Stage 8D local walkthrough packet exists; browser/manual dummy run still needs captured outcomes.",
+      "requiredEvidence": "Completed Stage 8D capture worksheet and findings register.",
+      "defaultStatus": "Needs walkthrough evidence",
+      "owner": "Adam plus Codex"
+    },
+    {
+      "track": "Action logging",
+      "currentState": "Agent Action Log exists and Stage 9 supervised loops wrote evidence rows.",
+      "requiredEvidence": "Action log row for each bridge action with source, approval state, result, and links.",
+      "defaultStatus": "Ready for supervised loops",
+      "owner": "Codex/local operator"
+    },
+    {
+      "track": "Decision logging",
+      "currentState": "Decision Register item #2 approved the coordinator/support capability for supervised loops.",
+      "requiredEvidence": "New Decision Register item before any app registration, consent, or adapter permission change.",
+      "defaultStatus": "Ready for supervised loops",
+      "owner": "Adam"
+    },
+    {
+      "track": "App identity posture",
+      "currentState": "No production bridge app is approved; setup helper app is not a production bridge.",
+      "requiredEvidence": "Chosen app posture and resting-state decision for broad setup grants.",
+      "defaultStatus": "Needs decision",
+      "owner": "Adam plus Codex"
+    },
+    {
+      "track": "Support mailbox readiness",
+      "currentState": "Support List loop is proven; support mailbox app/delegated access waits for support MFA.",
+      "requiredEvidence": "MFA method exists for support@changeleadershiptools.com before mailbox adapter testing.",
+      "defaultStatus": "Blocked pending MFA",
+      "owner": "Adam"
+    },
+    {
+      "track": "Permission scope design",
+      "currentState": "Selected permissions and Exchange Application RBAC are target options, not granted.",
+      "requiredEvidence": "Reviewed permission design with least-privilege scope, revocation path, and test plan.",
+      "defaultStatus": "Needs design approval",
+      "owner": "Adam plus Codex"
+    },
+    {
+      "track": "Rollback and pause path",
+      "currentState": "Stop rules are documented; adapter-specific pause/revoke checklist needs a worksheet.",
+      "requiredEvidence": "Rollback owner, revoke command/manual path, and evidence target for each adapter lane.",
+      "defaultStatus": "Needs worksheet",
+      "owner": "Codex/local operator"
+    },
+    {
+      "track": "External/client impact",
+      "currentState": "No autonomous external sends, guest access, public forms, client commitments, or sharing changes are allowed.",
+      "requiredEvidence": "Named approval gate and Decision Register entry before any external/client-impacting action.",
+      "defaultStatus": "Blocked for autonomous use",
+      "owner": "Adam"
+    }
+  ],
+  "adapterContracts": [
+    {
+      "surface": "Agent Action Log",
+      "sourceOfTruth": "Guided AI Labs SharePoint List",
+      "readBoundary": "Read all action log rows needed for audit, status, and suggestions.",
+      "writeBoundary": "Create suggested, dry-run, verification, and completed-action rows.",
+      "governanceLevel": "G1/G2",
+      "approvalGate": "G1 proposals may be logged; G2 completed internal writes need named approval.",
+      "evidenceTarget": "Agent Action Log",
+      "graduationRule": "Required for every later adapter lane."
+    },
+    {
+      "surface": "Decision Register",
+      "sourceOfTruth": "Guided AI Labs SharePoint List",
+      "readBoundary": "Read prior governance, app posture, and operating decisions.",
+      "writeBoundary": "Record approved decisions only; never infer approval from context.",
+      "governanceLevel": "G2/G3",
+      "approvalGate": "Adam approval required before decision write.",
+      "evidenceTarget": "Decision Register and Agent Action Log",
+      "graduationRule": "Required before new app, consent, permission, sharing, or external-send posture."
+    },
+    {
+      "surface": "Guided AI Labs operating Lists",
+      "sourceOfTruth": "Guided AI Labs SharePoint Lists",
+      "readBoundary": "Read intake, workspace, handoff, tool review, automation backlog, exceptions, readiness, and CRM records.",
+      "writeBoundary": "Create/update internal records only after approval; no real client commitments without review.",
+      "governanceLevel": "G2",
+      "approvalGate": "Named internal List-write approval.",
+      "evidenceTarget": "Agent Action Log plus target List item link",
+      "graduationRule": "Stage 8D dummy path must be captured before broader internal writes."
+    },
+    {
+      "surface": "Relationship CRM Lists",
+      "sourceOfTruth": "CRM Lists in Guided AI Labs SharePoint",
+      "readBoundary": "Read organizations, contacts, engagements, stakeholders, touchpoints, lifecycle, actions, qualification, notes, artifacts, and health.",
+      "writeBoundary": "Create/update internal relationship records and follow-ups after approval; do not create external commitments.",
+      "governanceLevel": "G2",
+      "approvalGate": "Named CRM internal-write approval.",
+      "evidenceTarget": "Agent Action Log plus CRM item link",
+      "graduationRule": "CRM command center and Stage 8D walkthrough must be usable by Adam."
+    },
+    {
+      "surface": "Planner",
+      "sourceOfTruth": "Guided AI Labs - Operating Plan",
+      "readBoundary": "Read tasks and bucket state for coordination.",
+      "writeBoundary": "Create/update supervised internal tasks only; no calendar/deadline commitment without approval.",
+      "governanceLevel": "G2",
+      "approvalGate": "Named Planner-write approval.",
+      "evidenceTarget": "Agent Action Log plus task link or title",
+      "graduationRule": "Remain delegated/supervised until a narrower app posture is approved."
+    },
+    {
+      "surface": "SharePoint evidence libraries",
+      "sourceOfTruth": "Guided AI Labs SharePoint libraries",
+      "readBoundary": "Read approved evidence, methods, handoff packets, and readiness materials.",
+      "writeBoundary": "Create folders/files only in approved workspace paths; no permission/share changes.",
+      "governanceLevel": "G2/G3",
+      "approvalGate": "Internal file creation G2; sharing/permission changes G3.",
+      "evidenceTarget": "Agent Action Log plus file/folder link",
+      "graduationRule": "Selected permissions design must be approved before app-based writes."
+    },
+    {
+      "surface": "Exchange support mailbox",
+      "sourceOfTruth": "support@changeleadershiptools.com mailbox",
+      "readBoundary": "Read approved support mailbox metadata and message bodies only after support MFA/access posture is complete.",
+      "writeBoundary": "Create draft replies only; sending remains approval-gated.",
+      "governanceLevel": "G2/G3",
+      "approvalGate": "Draft G2 after approval; external send G3 after explicit review.",
+      "evidenceTarget": "Support Register and Agent Action Log",
+      "graduationRule": "Support MFA and Exchange Application RBAC design must be complete before app-based access."
+    },
+    {
+      "surface": "Teams",
+      "sourceOfTruth": "Guided AI Labs Team channels",
+      "readBoundary": "Read approved channel context for coordination summaries.",
+      "writeBoundary": "Post internal summaries only after approval; no broad announcements or guest-impacting posts.",
+      "governanceLevel": "G2/G3",
+      "approvalGate": "Internal channel post G2; broad/external-sensitive post G3.",
+      "evidenceTarget": "Agent Action Log plus channel/post link when available",
+      "graduationRule": "Keep manual/supervised until posting etiquette and channel scope are reviewed."
+    },
+    {
+      "surface": "Forms and intake routing",
+      "sourceOfTruth": "Microsoft Forms plus target Lists",
+      "readBoundary": "Read approved form schema and response routing evidence.",
+      "writeBoundary": "Propose form/flow updates locally; public/client-facing publishing requires approval.",
+      "governanceLevel": "G1/G3",
+      "approvalGate": "Public/client form changes G3.",
+      "evidenceTarget": "Decision Register and Agent Action Log",
+      "graduationRule": "No public/client form publishing until Stage 8D and access decisions are reviewed."
+    },
+    {
+      "surface": "Entra app registrations and enterprise apps",
+      "sourceOfTruth": "Entra ID",
+      "readBoundary": "Read app ownership, permissions, consent posture, and sign-in/audit evidence.",
+      "writeBoundary": "No default writes. App creation, consent, permission grants, and tenant policy changes require separate approval-gated operators.",
+      "governanceLevel": "G3/G4",
+      "approvalGate": "Decision Register approval and typed approval phrase.",
+      "evidenceTarget": "Decision Register, Agent Action Log, and inventory transcript",
+      "graduationRule": "Must not reuse broad setup helper grants as production bridge capability."
+    }
+  ],
+  "appPostureOptions": [
+    {
+      "option": "Stay supervised delegated",
+      "recommendedNow": true,
+      "fit": "Next local/manual Stage 8D proof and low-volume internal List writes.",
+      "benefit": "Lowest new permission risk.",
+      "tradeoff": "Requires Adam/session presence and is not a durable production bridge.",
+      "decisionNeeded": "Use as default until Stage 8D capture and app resting-state decisions are complete."
+    },
+    {
+      "option": "Selected SharePoint/List adapter",
+      "recommendedNow": false,
+      "fit": "Future app-based access to specific Guided AI Labs Lists and evidence libraries.",
+      "benefit": "Purpose-built and narrower than broad site grants.",
+      "tradeoff": "Requires app registration, selected grants, review, and revocation plan.",
+      "decisionNeeded": "Approve only after adapter contract and rollback worksheet are complete."
+    },
+    {
+      "option": "Exchange Application RBAC support adapter",
+      "recommendedNow": false,
+      "fit": "Future support mailbox read/draft loop for Change Leadership Tools.",
+      "benefit": "Mailbox-scoped support access instead of broad mail permissions.",
+      "tradeoff": "Requires support MFA/access readiness and Exchange RBAC design.",
+      "decisionNeeded": "Wait until support@changeleadershiptools.com MFA is complete."
+    },
+    {
+      "option": "Mixed M365 bridge adapter",
+      "recommendedNow": false,
+      "fit": "Later UAOS bridge that combines selected Lists/SharePoint plus scoped support mailbox access.",
+      "benefit": "Closer to production operating model.",
+      "tradeoff": "More moving parts; needs explicit audit, rollback, and owner review cadence.",
+      "decisionNeeded": "Only after individual lanes prove safe."
+    },
+    {
+      "option": "Reuse broad setup helper app",
+      "recommendedNow": false,
+      "fit": "None for production bridge.",
+      "benefit": "Convenient but not appropriate.",
+      "tradeoff": "Over-permissioned, hard to explain, and contrary to Stage 9 principle.",
+      "decisionNeeded": "Reject as production posture; decide resting state for setup-helper grants."
+    }
+  ],
+  "riskControls": [
+    {
+      "risk": "Broad setup helper grants remain idle but consented.",
+      "impact": "Production bridge could inherit provisioning-level power by accident.",
+      "control": "Record resting-state decision; disable/revoke/time-box broad setup grants when idle.",
+      "severity": "High",
+      "owner": "Adam",
+      "status": "Open"
+    },
+    {
+      "risk": "Stage 8D workflow is not browser-proven.",
+      "impact": "Automation may encode a workflow Adam does not actually want to use.",
+      "control": "Complete dummy walkthrough capture before creating Teams tabs or new automation.",
+      "severity": "High",
+      "owner": "Adam plus Codex",
+      "status": "Open"
+    },
+    {
+      "risk": "Support mailbox MFA/access is incomplete.",
+      "impact": "Support adapter testing could fail or drift into the wrong account lane.",
+      "control": "Complete MFA method for support@changeleadershiptools.com before mailbox adapter work.",
+      "severity": "Medium",
+      "owner": "Adam",
+      "status": "Open"
+    },
+    {
+      "risk": "Draft response is mistaken for sent response.",
+      "impact": "External communications could appear completed without human approval.",
+      "control": "Separate draft-created evidence from send-approved evidence in Agent Action Log.",
+      "severity": "Medium",
+      "owner": "Codex/local operator",
+      "status": "Open"
+    },
+    {
+      "risk": "Client or external records enter the bridge before ownership rules are reviewed.",
+      "impact": "Privacy, sharing, or delivery expectations may be wrong.",
+      "control": "Use internal dummy records only until Stage 8D findings are reviewed.",
+      "severity": "High",
+      "owner": "Adam",
+      "status": "Open"
+    },
+    {
+      "risk": "Permission grant lacks a tested revocation path.",
+      "impact": "Access cannot be paused quickly if behavior is wrong.",
+      "control": "Document revoke/disable path and evidence target before granting app permissions.",
+      "severity": "High",
+      "owner": "Adam plus Codex",
+      "status": "Open"
+    },
+    {
+      "risk": "Action logs become too vague to audit.",
+      "impact": "Future UAOS/Graphify cannot prove what happened or why.",
+      "control": "Require source, classification, proposed action, approval state, result, and links.",
+      "severity": "Medium",
+      "owner": "Codex/local operator",
+      "status": "Open"
+    }
+  ],
+  "graduationGates": [
+    {
+      "gate": "Stage 8D walkthrough captured",
+      "requiredBefore": "Any broader internal CRM/List write automation or Teams tab expansion.",
+      "evidence": "Completed stage-8d-walkthrough-capture-template.csv and findings register.",
+      "status": "Not yet complete"
+    },
+    {
+      "gate": "Setup-helper resting-state decision recorded",
+      "requiredBefore": "Any production bridge app approval.",
+      "evidence": "Decision Register entry plus Agent Action Log row.",
+      "status": "Open"
+    },
+    {
+      "gate": "Support MFA completed",
+      "requiredBefore": "Support mailbox adapter or mailbox draft loop.",
+      "evidence": "Account/session guide update or verified support MFA note.",
+      "status": "Open"
+    },
+    {
+      "gate": "Adapter permission design approved",
+      "requiredBefore": "Selected permissions or Exchange Application RBAC grant.",
+      "evidence": "Bridge readiness guide reviewed and Decision Register approval.",
+      "status": "Open"
+    },
+    {
+      "gate": "Rollback worksheet complete",
+      "requiredBefore": "Any app-based write permission.",
+      "evidence": "Risk register and adapter contract include pause/revoke owner and target.",
+      "status": "Open"
+    },
+    {
+      "gate": "G0/G1 adapter dry run designed",
+      "requiredBefore": "Any unattended or app-based G2 write test.",
+      "evidence": "Dry-run transcript showing no restricted write.",
+      "status": "Open"
+    },
+    {
+      "gate": "Production bridge decision recorded",
+      "requiredBefore": "Creating or granting a production UAOS M365 adapter.",
+      "evidence": "Decision Register item with scope, owner, expiry/review cadence, blocked actions, and rollback path.",
+      "status": "Open"
+    }
+  ],
+  "outputs": {
+    "guide": "inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md",
+    "readinessChecklist": "inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-readiness-checklist.csv",
+    "adapterContract": "inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-adapter-contract.csv",
+    "appPostureDecision": "inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture-decision-worksheet.csv",
+    "riskControlRegister": "inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-risk-control-register.csv",
+    "graduationGates": "inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-graduation-gates.csv"
+  }
+}

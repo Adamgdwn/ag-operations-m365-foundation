@@ -1,0 +1,8 @@
+"RunDate","BrowserProfile","RecordPrefix","StepId","Phase","Outcome","RecordOrEvidenceLink","FrictionPoint","FollowUp"
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-01","Open daily cockpit","","","",""
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-02","Create intake signal","","","",""
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-03","Qualify signal","","","",""
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-04","Create CRM spine records","","","",""
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-05","Record decision and action","","","",""
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-06","Move to active delivery","","","",""
+"","","GAIL-INTERNAL-WALKTHROUGH","8d-07","Capture handoff evidence","","","",""

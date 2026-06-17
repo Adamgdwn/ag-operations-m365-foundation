@@ -457,8 +457,10 @@ live-built and read-back verified; the command-center homepage draft was
 created and read-back verified on 2026-06-15. Stage 8A Relationship CRM is also
 live-built and read-back verified. Stage 8B Relationship CRM operational
 hardening is live-applied and read-back verified. Stage 8C Relationship CRM
-operator workflow is live-applied and read-back verified. Browser review follows
-before any separate homepage promotion operator or CRM Teams tabs are created. See
+operator workflow is live-applied and read-back verified. The Guided AI Labs
+Operations Cockpit is now the live homepage, and Stage 8D adds a local-only
+functional walkthrough packet and capture worksheets for browser/manual proof
+before any CRM Teams tabs or additional automation are created. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
 The live SharePoint shape should also follow the local Prime Operations-inspired
 planning baseline in
@@ -518,6 +520,17 @@ It is additive and approval-gated, adding CRM Action Queue, Qualification,
 Meeting Notes, Artifacts, Health Reviews, filtered workflow views, and
 `Relationship-CRM-Command-Center.aspx`. Verification passed:
 [inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md).
+Stage 8D Functional Workflow Walkthrough adds the local browser/manual proof
+packet for the first real operating path:
+[M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md](M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md),
+[config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json](config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json),
+and
+[inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md](inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md).
+The walkthrough capture worksheet and findings starter live in
+[inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv)
+and
+[inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv).
+It is local-only and does not connect to Microsoft 365.
 
 ### What we are doing
 
@@ -551,6 +564,8 @@ This becomes part of the consulting offer. Clients need to understand how M365 s
 - Stage 8C Relationship CRM operator workflow packet with action queue,
   qualification, meeting notes, artifacts, health reviews, and CRM Command
   Center page
+- Stage 8D functional walkthrough packet for proving
+  `New Intake -> triage -> CRM engagement -> decision -> active delivery -> handoff evidence`
 
 ### Done when
 
@@ -627,10 +642,31 @@ Delivery navigation. See
 No external guest, sharing, app grant, Forms, mail send, Dynamics, Dataverse,
 deletion, or unattended automation is part of this stage.
 
+## Stage 8D - Functional Workflow Walkthrough
+
+Status: local-only packet generated and preflighted 2026-06-17.
+
+Stage 8D proves the daily operating path after the Operations Cockpit and CRM
+Command Center are live:
+
+```text
+New Intake -> triage -> CRM engagement -> decision -> active delivery -> handoff evidence
+```
+
+It adds a generated walkthrough guide, workflow-step map, stop-gate map,
+review-question map, capture worksheet, and findings register starter. It does
+not connect to Microsoft 365 and does not perform tenant writes. Any manual
+browser records created during the walkthrough must be internal dummy records
+approved by Adam.
+
+See
+[M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md](M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md).
+
 ## Stage 9 - Agentic OS Bridge Readiness
 
 Status: in progress; supervised coordinator/support List-write loops live-proven
-2026-06-15.
+2026-06-15, and bridge readiness control posture live-recorded/read-back
+verified 2026-06-17.
 See
 [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md).
 
@@ -654,6 +690,11 @@ The Agentic OS will be built elsewhere, but Microsoft 365 needs to be ready for 
   before creating app registrations or consenting new permissions
 - record the first supervised G1/G2 List-write loops before granting standing
   app permissions
+- generate the bridge readiness control packet before moving from delegated
+  loops to any purpose-built app adapter
+- record the bridge readiness posture in Decision Register and Agent Action Log
+  before any app, consent, permission, mailbox, external/client, or unattended
+  automation work
 
 ### Main tools
 
@@ -678,6 +719,14 @@ what requires approval,
 and how actions are logged.
 ```
 
+Current Stage 9 bridge control artifacts:
+
+- [config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json](config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json)
+- [inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md](inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md)
+- [inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture-decision-worksheet.csv](inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture-decision-worksheet.csv)
+- Decision Register item `#3` and Agent Action Log item `#5`: Stage 9 bridge
+  readiness control posture recorded.
+
 ## Recommended Working Order
 
 Use this order for the actual build:
@@ -694,7 +743,8 @@ Use this order for the actual build:
 10. Stage 8A - Relationship CRM Spine
 11. Stage 8B - Relationship CRM Operations
 12. Stage 8C - Relationship CRM Operator Workflow
-13. Stage 9 - Agentic OS Bridge Readiness
+13. Stage 8D - Functional Workflow Walkthrough
+14. Stage 9 - Agentic OS Bridge Readiness
 
 ## The Big Practical Sequence
 

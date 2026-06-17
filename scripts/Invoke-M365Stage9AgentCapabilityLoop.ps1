@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("RecordDecision", "CoordinatorSuggestion", "SupportTriage")]
+    [ValidateSet("RecordDecision", "CoordinatorSuggestion", "SupportTriage", "BridgeReadinessControl")]
     [string]$Action = "RecordDecision",
     [string]$ClientId = "46a71fd0-068c-4f89-9575-65c6405ca067",
     [string]$GuidedSiteUrl = "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
@@ -8,6 +8,7 @@ param(
     [string]$ExpectedUpn = "adamgoodwin@guidedailabs.com",
     [string]$OwnerUpn = "adamgoodwin@guidedailabs.com",
     [switch]$Apply,
+    [string]$ApprovalPhrase,
     [switch]$ForceFreshLogin,
     [switch]$UseDeviceLogin,
     [switch]$NoPause
@@ -188,7 +189,13 @@ function Assert-ApprovalPhrase {
     Write-Host ""
     Write-Host "Live write approval required." -ForegroundColor Yellow
     Write-Host ("Type exactly: {0}" -f $ExpectedPhrase) -ForegroundColor Yellow
-    $typed = Read-Host "Approval phrase"
+    if (-not [string]::IsNullOrWhiteSpace($ApprovalPhrase)) {
+        Write-Host "Approval phrase supplied by command parameter." -ForegroundColor Gray
+        $typed = $ApprovalPhrase
+    }
+    else {
+        $typed = Read-Host "Approval phrase"
+    }
     if ($typed -ne $ExpectedPhrase) {
         throw "Approval phrase did not match. No live writes performed."
     }
@@ -325,10 +332,60 @@ G2 support triage loop created or updated the supervised support triage test row
     Set-Stage9ListItem -ListTitle "Agent Action Log" -Values $actionValues
 }
 
+function Invoke-BridgeReadinessControl {
+    param([string]$OwnerLogin)
+
+    Write-Section "Verify target Lists"
+    Get-PnPList -Identity "Decision Register" -ErrorAction Stop | Out-Null
+    Get-PnPList -Identity "Agent Action Log" -ErrorAction Stop | Out-Null
+    Write-Host "  Found Decision Register and Agent Action Log" -ForegroundColor Green
+
+    $decisionText = @"
+Approved the Stage 9 bridge readiness control posture for the next live work window.
+
+The current production posture remains supervised delegated. No production UAOS/M365 adapter is approved yet. No new app registration, consent grant, SharePoint Selected permission grant, Exchange Application RBAC assignment, tenant policy change, external send, guest access, public Form, sharing change, deletion, or unattended automation is approved by this decision.
+
+The setup helper app remains setup-only and must not be reused as production bridge power. Future adapter work requires the named graduation gates: Stage 8D walkthrough capture, setup-helper resting-state decision, support MFA, permission-scope design, rollback/pause worksheet, G0/G1 dry run, and a separate production bridge decision.
+"@.Trim()
+
+    $rationale = @"
+Stage 9 now has live-proven supervised List loops and a local bridge readiness control packet. Recording the posture in M365 keeps the system auditable while preventing quiet drift from setup tooling into permanent automation authority.
+"@.Trim()
+
+    $result = @"
+Stage 9 bridge readiness control was recorded as a governed M365 decision and action-log entry. The approved next posture is supervised delegated evidence work only; app registrations, consent, permission grants, mailbox adapter work, external/client-impacting actions, and unattended automation remain blocked pending separate approval gates.
+"@.Trim()
+
+    $decisionValues = @{
+        Title = "Stage 9 bridge readiness control posture approved"
+        DecisionDate = Get-Date
+        DecisionOwner = $OwnerLogin
+        DecisionArea = "Agent"
+        Decision = $decisionText
+        Rationale = $rationale
+        RevisitDate = (Get-Date).AddDays(14)
+    }
+
+    $actionValues = @{
+        Title = "Stage 9 bridge readiness control recorded"
+        ActionDate = Get-Date
+        AgentSurface = "Codex"
+        ActionType = "recommend"
+        ActionStatus = "Completed"
+        HumanApprover = $OwnerLogin
+        Result = $result
+    }
+
+    Write-Section "Record bridge readiness evidence"
+    Set-Stage9ListItem -ListTitle "Decision Register" -Values $decisionValues
+    Set-Stage9ListItem -ListTitle "Agent Action Log" -Values $actionValues
+}
+
 $approvalPhrases = @{
     RecordDecision = "record-stage-9-agent-capability-decision"
     CoordinatorSuggestion = "record-stage-9-coordinator-suggestion"
     SupportTriage = "record-stage-9-support-triage"
+    BridgeReadinessControl = "record-stage-9-bridge-readiness-control"
 }
 
 Write-Host "Microsoft 365 Stage 9 - Agent capability loop" -ForegroundColor Cyan
@@ -357,6 +414,12 @@ switch ($Action) {
         Connect-Stage9PnP -TargetSiteUrl $SupportSiteUrl
         $ownerLogin = Resolve-Stage9UserFieldValue -UserPrincipalName $OwnerUpn
         Invoke-SupportTriage -OwnerLogin $ownerLogin
+    }
+    "BridgeReadinessControl" {
+        Write-Section "Connect to Guided AI Labs"
+        Connect-Stage9PnP -TargetSiteUrl $GuidedSiteUrl
+        $ownerLogin = Resolve-Stage9UserFieldValue -UserPrincipalName $OwnerUpn
+        Invoke-BridgeReadinessControl -OwnerLogin $ownerLogin
     }
 }
 

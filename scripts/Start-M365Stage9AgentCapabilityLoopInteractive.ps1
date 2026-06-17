@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("RecordDecision", "CoordinatorSuggestion", "SupportTriage")]
+    [ValidateSet("RecordDecision", "CoordinatorSuggestion", "SupportTriage", "BridgeReadinessControl")]
     [string]$Action = "RecordDecision",
     [switch]$Apply,
     [switch]$ForceFreshLogin,

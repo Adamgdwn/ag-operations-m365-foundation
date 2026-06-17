@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-15
+Last updated: 2026-06-17
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
@@ -56,9 +56,9 @@ The canonical execution plan is the **10-stage roadmap**:
 | 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
-| **7** | **◀ Security, Governance & External Sharing** | **Current — core guest/sharing governance changes applied, verified, and logged; app-grant resting state + support MFA next** |
-| 8 | Client Workspace Reference Pattern | ▶ Page/navigation skeleton and backing Lists/libraries live-built and read-back verified; look/feel and workflow walkthrough next |
-| 9 | Agentic OS Bridge Readiness | ⬜ Planned — working doc added: [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md) |
+| **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; Stage 8D walkthrough packet ready** |
+| **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
 Stage 3 SharePoint site provisioning, Stage 4 local OneDrive/browser cleanup,
@@ -361,14 +361,57 @@ should not sit waiting for private credentials.
   — generated Stage 8C local build guide.
 - [inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md](inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md)
   — Stage 8C live read-back verification summary; result PASS.
+- [M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md](M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md)
+  — Stage 8D local-only walkthrough layer for proving the daily path from
+  intake to handoff evidence without tenant-write automation.
+- [config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json](config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json)
+  — machine-readable Stage 8D browser/manual walkthrough config.
+- [scripts/New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1](scripts/New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1)
+  — local-only generator for the Stage 8D walkthrough guide, CSV maps,
+  capture template, and findings starter.
+- [scripts/Test-M365Stage8DLocalPreflight.ps1](scripts/Test-M365Stage8DLocalPreflight.ps1)
+  — local-only Stage 8D validation for config, scripts, and generated packet.
+- [inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md](inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH_GUIDE.md)
+  — generated Stage 8D walkthrough guide; no tenant writes.
+- [inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv)
+  — browser/manual run capture worksheet with one row per workflow step.
+- [inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv](inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv)
+  — starter register for navigation, list/view, ownership, evidence, automation,
+  policy, and training/page-copy findings.
+- [inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_LOCAL_PREFLIGHT.md](inventory/stage-8d-functional-workflow-walkthrough/STAGE_8D_LOCAL_PREFLIGHT.md)
+  — Stage 8D local preflight summary; result PASS.
 - [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_BUILD_GUIDE.md)
   — generated Stage 8A CRM build guide; no tenant writes.
 - [inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md](inventory/stage-8a-relationship-crm/STAGE_8A_RELATIONSHIP_CRM_VERIFY.md)
   — Stage 8A CRM live read-back verification summary; result PASS.
 - [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
-  — planned M365/Graphify/UAOS bridge readiness: adapter surface map,
+  — M365/Graphify/UAOS bridge readiness: adapter surface map,
   read/propose/write categories, app posture, action logging, stop/rollback
-  rules, and low-risk bridge-loop exit criteria.
+  rules, low-risk bridge-loop exit criteria, and current bridge control packet.
+- [config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json](config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json)
+  — machine-readable Stage 9 readiness control model for adapter contracts, app
+  posture choices, risk controls, and graduation gates.
+- [scripts/New-M365Stage9BridgeReadinessControlPacket.ps1](scripts/New-M365Stage9BridgeReadinessControlPacket.ps1)
+  — local-only generator for the Stage 9 bridge readiness guide and worksheets.
+- [scripts/Test-M365Stage9BridgeReadinessControlPreflight.ps1](scripts/Test-M365Stage9BridgeReadinessControlPreflight.ps1)
+  — local-only validation for the Stage 9 bridge readiness control packet.
+- [inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md](inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md)
+  — generated Stage 9 bridge control guide plus live posture evidence
+  references; generator itself performs no tenant writes.
+- [inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-adapter-contract.csv](inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-adapter-contract.csv)
+  — read/write boundary contract for each candidate M365 bridge surface.
+- [inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture-decision-worksheet.csv](inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture-decision-worksheet.csv)
+  — decision worksheet for staying delegated, using Selected permissions,
+  Exchange Application RBAC, a later mixed adapter, or rejecting setup-helper
+  reuse.
+- [inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_PREFLIGHT.md](inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_PREFLIGHT.md)
+  — Stage 9 bridge readiness preflight summary; result PASS.
+- [inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084614.log](inventory/stage-9-agentic-os-bridge/stage-9-agent-capability-loop-bridgereadinesscontrol-20260617-084614.log)
+  — live Stage 9 bridge readiness control apply transcript; Decision Register
+  item `#3` and Agent Action Log item `#5`.
+- [inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-084643.log](inventory/stage-9-agentic-os-bridge/stage-9-bridge-readiness-control-readback-20260617-084643.log)
+  — read-back verification transcript for Decision Register `#3` and Agent
+  Action Log `#5`.
 
 - [M365_STAGE_2_IDENTITY_FOUNDATION.md](M365_STAGE_2_IDENTITY_FOUNDATION.md) —
   Stage 2 account role matrix, target identity model, break-glass plan, role
@@ -432,7 +475,13 @@ should not sit waiting for private credentials.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-15.md](SESSION_TURNOVER_2026-06-15.md) — **most recent**
+- [SESSION_TURNOVER_2026-06-17.md](SESSION_TURNOVER_2026-06-17.md) — **most recent**
+  handoff: Stage 8D walkthrough capture packet and Stage 9 bridge readiness
+  control packet are local-generated/preflighted, and the Stage 9 bridge
+  posture is live-recorded/read-back verified; next step is browser/manual
+  review from Operations Cockpit to CRM Command Center using internal dummy
+  records only, then Stage 9 app-posture review.
+- [SESSION_TURNOVER_2026-06-15.md](SESSION_TURNOVER_2026-06-15.md) —
   handoff: Stage 8 workspace skeleton/backing structure are live-built and
   verified; command-center homepage refinement is locally prepared; next live
   step is draft-only page creation plus read-only verification.
