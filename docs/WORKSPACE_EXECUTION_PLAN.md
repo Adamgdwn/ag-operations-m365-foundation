@@ -13,6 +13,9 @@ before each card receives a deeper functional pass.
 Work one chunk at a time. A chunk is complete only when the listed outputs exist
 and the acceptance gate is met.
 
+After each major chunk completion, commit and push the completed chunk snapshot
+before starting the next major chunk.
+
 No tenant-writing command may run unless Adam gives the specific approval phrase
 for that chunk. CRM recovery writes continue to use:
 
