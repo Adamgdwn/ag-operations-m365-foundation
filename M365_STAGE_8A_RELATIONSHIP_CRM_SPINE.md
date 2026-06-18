@@ -1,5 +1,11 @@
 # Microsoft 365 Stage 8A - Relationship CRM Spine
 
+> Superseded for active CRM operating guidance.
+>
+> This document is now historical/provenance for the Stage 8A build. Use
+> `docs/START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`, `docs/CRM_DATA_MODEL.md`,
+> and `docs/CRM_RUNBOOK.md` for the current employee-ready CRM path.
+
 Status: **live-built and read-back verified** (2026-06-15).
 
 Stage 8A adds a Lists-first relationship CRM spine inside the Guided AI Labs

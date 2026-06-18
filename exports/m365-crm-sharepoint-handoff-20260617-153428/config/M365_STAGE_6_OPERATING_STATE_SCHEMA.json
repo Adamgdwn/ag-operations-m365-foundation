@@ -1,0 +1,138 @@
+{
+  "version": "2026-06-14",
+  "rootUrl": "https://agoperationsltd.sharepoint.com",
+  "lists": [
+    {
+      "siteTitle": "Guided AI Labs",
+      "sitePath": "/sites/GuidedAILabs",
+      "title": "Guided AI Labs - Intake Register",
+      "quickLaunch": true,
+      "description": "One row per meaningful Guided AI Labs inquiry, discovery signal, partnership lead, or agent-surfaced opportunity.",
+      "columns": [
+        { "displayName": "SourceMailbox", "internalName": "SourceMailbox", "type": "Choice", "required": true, "choices": ["contact@", "adam@", "support@", "admin@", "other"], "default": "contact@" },
+        { "displayName": "SourceMessageId", "internalName": "SourceMessageId", "type": "Text", "required": false },
+        { "displayName": "ReceivedDate", "internalName": "ReceivedDate", "type": "DateTime", "required": true },
+        { "displayName": "RequesterName", "internalName": "RequesterName", "type": "Text", "required": false },
+        { "displayName": "RequesterEmail", "internalName": "RequesterEmail", "type": "Text", "required": false },
+        { "displayName": "Organization", "internalName": "Organization", "type": "Text", "required": false },
+        { "displayName": "IntakeClass", "internalName": "IntakeClass", "type": "Choice", "required": true, "choices": ["new-inquiry", "client-readiness", "scheduling", "decision-or-commitment", "knowledge-candidate", "noise-or-spam"], "default": "new-inquiry" },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "required": true, "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal" },
+        { "displayName": "Status", "internalName": "IntakeStatus", "type": "Choice", "required": true, "choices": ["New", "Triage", "Waiting on Adam", "Waiting on External", "In Progress", "Done", "Archived"], "default": "New" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": true },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "DurableHome", "internalName": "DurableHome", "type": "URL", "required": false },
+        { "displayName": "PlannerTaskUrl", "internalName": "PlannerTaskUrl", "type": "URL", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "HumanApprovalRequired", "internalName": "HumanApprovalRequired", "type": "Boolean", "required": true, "default": "1" },
+        { "displayName": "AgentConfidence", "internalName": "AgentConfidence", "type": "Number", "required": false },
+        { "displayName": "AgentNotes", "internalName": "AgentNotes", "type": "Note", "required": false }
+      ],
+      "views": [
+        { "title": "Attention Now", "fields": ["LinkTitle", "Priority", "IntakeStatus", "IntakeClass", "RequesterName", "Organization", "ReceivedDate", "ItemOwner", "NextAction", "HumanApprovalRequired"], "default": true },
+        { "title": "Waiting External", "fields": ["LinkTitle", "IntakeStatus", "RequesterName", "Organization", "ReceivedDate", "NextAction"] },
+        { "title": "Agent Suggested", "fields": ["LinkTitle", "HumanApprovalRequired", "AgentConfidence", "AgentNotes", "ReceivedDate", "ItemOwner"] },
+        { "title": "Done / Archived", "fields": ["LinkTitle", "IntakeStatus", "RequesterName", "Organization", "ReceivedDate"] }
+      ]
+    },
+    {
+      "siteTitle": "Change Leadership Tools",
+      "sitePath": "/sites/ChangeLeadershipTools",
+      "title": "Change Leadership Tools - Support Register",
+      "quickLaunch": true,
+      "description": "One row per Change Leadership Tools support issue, bug report, product question, or feedback item.",
+      "columns": [
+        { "displayName": "SourceMailbox", "internalName": "SourceMailbox", "type": "Choice", "required": true, "choices": ["support@", "contact@", "adam@", "admin@", "other"], "default": "support@" },
+        { "displayName": "SourceMessageId", "internalName": "SourceMessageId", "type": "Text", "required": false },
+        { "displayName": "ReceivedDate", "internalName": "ReceivedDate", "type": "DateTime", "required": true },
+        { "displayName": "RequesterName", "internalName": "RequesterName", "type": "Text", "required": false },
+        { "displayName": "RequesterEmail", "internalName": "RequesterEmail", "type": "Text", "required": false },
+        { "displayName": "Organization", "internalName": "Organization", "type": "Text", "required": false },
+        { "displayName": "ProductArea", "internalName": "ProductArea", "type": "Choice", "required": false, "choices": ["Site", "Download", "Account", "Document/tool", "Payment", "Other"] },
+        { "displayName": "IssueType", "internalName": "IssueType", "type": "Choice", "required": true, "choices": ["Question", "Bug", "Access issue", "Feedback", "Refund/billing", "Other"], "default": "Question" },
+        { "displayName": "Severity", "internalName": "Severity", "type": "Choice", "required": true, "choices": ["Low", "Normal", "High", "Blocking"], "default": "Normal" },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "required": true, "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal" },
+        { "displayName": "Status", "internalName": "SupportStatus", "type": "Choice", "required": true, "choices": ["New", "Triage", "Waiting on Adam", "Waiting on External", "In Progress", "Done", "Archived"], "default": "New" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User", "required": true },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note", "required": false },
+        { "displayName": "ResolutionSummary", "internalName": "ResolutionSummary", "type": "Note", "required": false },
+        { "displayName": "KnowledgeCandidate", "internalName": "KnowledgeCandidate", "type": "Boolean", "required": true, "default": "0" },
+        { "displayName": "DurableHome", "internalName": "DurableHome", "type": "URL", "required": false },
+        { "displayName": "PlannerTaskUrl", "internalName": "PlannerTaskUrl", "type": "URL", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false },
+        { "displayName": "HumanApprovalRequired", "internalName": "HumanApprovalRequired", "type": "Boolean", "required": true, "default": "1" },
+        { "displayName": "AgentNotes", "internalName": "AgentNotes", "type": "Note", "required": false }
+      ],
+      "views": [
+        { "title": "Active Support", "fields": ["LinkTitle", "Severity", "SupportStatus", "IssueType", "ProductArea", "RequesterName", "ReceivedDate", "ItemOwner", "NextAction"], "default": true },
+        { "title": "Knowledge Candidates", "fields": ["LinkTitle", "KnowledgeCandidate", "IssueType", "ResolutionSummary", "ReceivedDate"] },
+        { "title": "Blocking / High", "fields": ["LinkTitle", "Severity", "SupportStatus", "RequesterName", "NextAction", "ReceivedDate"] },
+        { "title": "Resolved", "fields": ["LinkTitle", "SupportStatus", "IssueType", "ResolutionSummary", "ReceivedDate"] }
+      ]
+    },
+    {
+      "siteTitle": "Guided AI Labs",
+      "sitePath": "/sites/GuidedAILabs",
+      "title": "Agent Action Log",
+      "quickLaunch": true,
+      "description": "Human-readable log of agent suggestions, approvals, and completed actions.",
+      "columns": [
+        { "displayName": "ActionDate", "internalName": "ActionDate", "type": "DateTime", "required": true },
+        { "displayName": "AgentSurface", "internalName": "AgentSurface", "type": "Choice", "required": true, "choices": ["Codex", "future bridge", "Power Automate", "n8n", "manual"], "default": "Codex" },
+        { "displayName": "Source", "internalName": "ActionSource", "type": "URL", "required": false },
+        { "displayName": "ActionType", "internalName": "ActionType", "type": "Choice", "required": true, "choices": ["Read", "summarize", "draft", "create-record", "create-task", "update-record", "recommend"], "default": "recommend" },
+        { "displayName": "Status", "internalName": "ActionStatus", "type": "Choice", "required": true, "choices": ["Suggested", "Approved", "Completed", "Rejected", "Superseded"], "default": "Suggested" },
+        { "displayName": "HumanApprover", "internalName": "HumanApprover", "type": "User", "required": false },
+        { "displayName": "Result", "internalName": "Result", "type": "Note", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false }
+      ],
+      "views": [
+        { "title": "Needs Review", "fields": ["LinkTitle", "ActionDate", "AgentSurface", "ActionType", "ActionStatus", "HumanApprover", "Result"], "default": true },
+        { "title": "Approved / Completed", "fields": ["LinkTitle", "ActionDate", "AgentSurface", "ActionType", "ActionStatus", "Result"] },
+        { "title": "Rejected / Superseded", "fields": ["LinkTitle", "ActionDate", "AgentSurface", "ActionType", "ActionStatus", "Result"] },
+        { "title": "By Surface", "fields": ["LinkTitle", "AgentSurface", "ActionDate", "ActionType", "ActionStatus"] }
+      ]
+    },
+    {
+      "siteTitle": "Guided AI Labs",
+      "sitePath": "/sites/GuidedAILabs",
+      "title": "Decision Register",
+      "quickLaunch": true,
+      "description": "Commitments, approvals, scope decisions, unresolved questions, and revisit points.",
+      "columns": [
+        { "displayName": "DecisionDate", "internalName": "DecisionDate", "type": "DateTime", "required": true },
+        { "displayName": "DecisionOwner", "internalName": "DecisionOwner", "type": "User", "required": true },
+        { "displayName": "Area", "internalName": "DecisionArea", "type": "Choice", "required": true, "choices": ["Client", "Product", "Operations", "Agent", "Governance", "Admin"], "default": "Operations" },
+        { "displayName": "Decision", "internalName": "Decision", "type": "Note", "required": true },
+        { "displayName": "Rationale", "internalName": "Rationale", "type": "Note", "required": false },
+        { "displayName": "RevisitDate", "internalName": "RevisitDate", "type": "DateTime", "required": false },
+        { "displayName": "SourceLink", "internalName": "SourceLink", "type": "URL", "required": false },
+        { "displayName": "CentralOSLink", "internalName": "CentralOSLink", "type": "URL", "required": false },
+        { "displayName": "GraphNodeId", "internalName": "GraphNodeId", "type": "Text", "required": false }
+      ],
+      "views": [
+        { "title": "Recent Decisions", "fields": ["LinkTitle", "DecisionDate", "DecisionOwner", "DecisionArea", "Decision", "RevisitDate"], "default": true },
+        { "title": "Revisit Soon", "fields": ["LinkTitle", "RevisitDate", "DecisionArea", "DecisionOwner", "Decision"] },
+        { "title": "Agent / Governance", "fields": ["LinkTitle", "DecisionDate", "DecisionArea", "Decision", "Rationale", "SourceLink"] },
+        { "title": "Client / Delivery", "fields": ["LinkTitle", "DecisionDate", "DecisionArea", "DecisionOwner", "Decision", "SourceLink"] }
+      ]
+    }
+  ],
+  "planner": {
+    "planTitle": "Guided AI Labs - Operating Plan",
+    "buckets": ["Intake Triage", "Client Discovery", "Active Delivery", "Content / IP", "Agent Setup", "Waiting / Follow-up", "Admin / Governance"]
+  },
+  "teams": {
+    "teamTitle": "Guided AI Labs - Operating Team",
+    "channels": [
+      { "name": "General", "tabs": ["Operating Plan", "Decisions"] },
+      { "name": "Intake", "tabs": ["Intake Register", "Operating Plan", "Agent Log"] },
+      { "name": "Client Discovery", "tabs": ["Intake Register", "Operating Plan"] },
+      { "name": "Active Delivery", "tabs": ["Operating Plan", "Client_Delivery"] },
+      { "name": "Agent Setup", "tabs": ["Agent Log", "Decisions", "Automation_Workflows"] },
+      { "name": "Methods and IP", "tabs": ["Templates_Methods", "Decisions"] }
+    ]
+  }
+}

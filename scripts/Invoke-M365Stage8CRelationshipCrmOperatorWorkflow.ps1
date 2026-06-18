@@ -257,26 +257,36 @@ function New-CommandCenterPageHtml {
     $title = ConvertTo-HtmlText -Value ([string]$page.title)
     $role = ConvertTo-HtmlText -Value ([string]$page.role)
     $intakeList = [string]$Config.intakeExperience.list
-    $newIntakeUrl = Get-ListNewFormUrl -Title $intakeList
-    $intakeViewUrl = Get-ListViewUrl -ListTitle $intakeList -ViewTitle "Attention Now"
+    $newSignalUrl = Get-ListNewFormUrl -Title $intakeList
+    $intakeViewUrl = Get-ListViewUrl -ListTitle $intakeList -ViewTitle "New Signal Queue"
+    $followUpUrl = Get-ListViewUrl -ListTitle $intakeList -ViewTitle "Signals Needing Follow-up"
     $qualificationUrl = Get-ListViewUrl -ListTitle "CRM - Qualification" -ViewTitle "Qualification Triage"
     $actionsUrl = Get-ListViewUrl -ListTitle "CRM - Action Queue" -ViewTitle "Open CRM Actions"
+    $blockersUrl = Get-ListViewUrl -ListTitle "CRM - Action Queue" -ViewTitle "Decision / Go-Live Blockers"
     $pipelineUrl = Get-ListViewUrl -ListTitle "CRM - Engagements" -ViewTitle "Pipeline by Stage"
     $deliveryUrl = Get-ListViewUrl -ListTitle "CRM - Engagements" -ViewTitle "Delivery Control"
     $evidenceUrl = Get-ListViewUrl -ListTitle "CRM - Artifacts" -ViewTitle "Handoff Evidence"
+    $closeoutUrl = Get-ListViewUrl -ListTitle "CRM - Closeout Invoice Queue" -ViewTitle "Closeout / Invoice Watch"
 
     $actionCards = @(
-        @{ Label = "Add intake signal"; Url = $newIntakeUrl; Note = "Start here when a new relationship, referral, support signal, or discovery note appears." }
-        @{ Label = "Review intake queue"; Url = $intakeViewUrl; Note = "Clear what is waiting, what matters, and what Adam needs to review." }
-        @{ Label = "Qualify next"; Url = $qualificationUrl; Note = "Decide fit, urgency, recommended package, and next action." }
-        @{ Label = "Work open actions"; Url = $actionsUrl; Note = "Follow-ups, proposals, blockers, meetings, handoff, and relationship work." }
+        @{ Label = "New Signal"; Url = $newSignalUrl; Note = "Capture a referral, opportunity, support signal, discovery start, or pasted email/context in a clean business form." }
+        @{ Label = "Triage Queue"; Url = $intakeViewUrl; Note = "Review new CRM signals and decide whether they need qualification, nurture, or follow-up." }
+        @{ Label = "Follow Up Today"; Url = $followUpUrl; Note = "Work the signals that have a due follow-up date or a waiting next action." }
+        @{ Label = "Proposal / Decision Blockers"; Url = $blockersUrl; Note = "Clear proposal, decision, and go-live blockers before work stalls." }
+        @{ Label = "Active Delivery"; Url = $deliveryUrl; Note = "Watch active delivery, blocked execution, sustainment, and handoff readiness." }
+        @{ Label = "Closeout / Invoice Watch"; Url = $closeoutUrl; Note = "Track accepted work, closeout evidence, invoice handoff, and payment follow-up." }
     )
 
-    $actionCardHtml = foreach ($card in $actionCards) {
-        $label = ConvertTo-HtmlText -Value ([string]$card.Label)
-        $url = ConvertTo-HtmlText -Value ([string]$card.Url)
-        $note = ConvertTo-HtmlText -Value ([string]$card.Note)
-        "<td style=""width:25%;vertical-align:top;padding:8px;""><div style=""border:1px solid #d0d7de;border-top:5px solid #0f766e;border-radius:6px;padding:12px;min-height:135px;background:#ffffff;""><h3 style=""margin:0 0 8px 0;font-size:18px;""><a href=""$url"">$label</a></h3><p style=""margin:0;color:#475569;"">$note</p></div></td>"
+    $actionRows = New-Object System.Collections.Generic.List[string]
+    for ($i = 0; $i -lt $actionCards.Count; $i += 3) {
+        $rowCells = New-Object System.Collections.Generic.List[string]
+        foreach ($card in @($actionCards[$i..([Math]::Min($i + 2, $actionCards.Count - 1))])) {
+            $label = ConvertTo-HtmlText -Value ([string]$card.Label)
+            $url = ConvertTo-HtmlText -Value ([string]$card.Url)
+            $note = ConvertTo-HtmlText -Value ([string]$card.Note)
+            $rowCells.Add("<td style=""width:33.333%;vertical-align:top;padding:8px;""><div style=""border:1px solid #d0d7de;border-top:5px solid #0f766e;border-radius:6px;padding:12px;min-height:130px;background:#ffffff;""><h3 style=""margin:0 0 8px 0;font-size:18px;""><a href=""$url"">$label</a></h3><p style=""margin:0;color:#475569;"">$note</p></div></td>")
+        }
+        $actionRows.Add("<tr>$($rowCells -join '')</tr>")
     }
 
     $stagePathHtml = @()
@@ -304,8 +314,8 @@ function New-CommandCenterPageHtml {
     return @"
 <h2>$title</h2>
 <p><strong>Role:</strong> $role</p>
-<p>Use this as the CRM workspace, not a reference page. Start with one of the four action tiles, then move the record through the stage path only when the next decision is clear.</p>
-<table style="width:100%;border-collapse:collapse;margin:10px 0 18px 0;"><tr>$($actionCardHtml -join '')</tr></table>
+<p>Use this as the CRM workspace, not a reference page. Start with the business action tiles, then move the record through the stage path only when the next decision is clear. This SharePoint-native version uses pages, lists, views, and document links only.</p>
+<table style="width:100%;border-collapse:collapse;margin:10px 0 18px 0;">$($actionRows -join '')</table>
 <h3>CRM stage path</h3>
 <table style="width:100%;border-collapse:collapse;margin-bottom:18px;">$($stagePathHtml -join '')</table>
 <table style="width:100%;border-collapse:collapse;">
@@ -324,7 +334,7 @@ function New-CommandCenterPageHtml {
     </td>
   </tr>
 </table>
-<p><em>Generated from the Stage 8C CRM operator workflow config. This page does not create permissions, guests, sharing, app consent, mail sends, public forms, item deletions, Dynamics, Dataverse, or unattended automation.</em></p>
+<p><em>Generated from the Stage 8C CRM operator workflow config. This page uses SharePoint and OneDrive-compatible links only. It does not create permissions, guests, sharing, app consent, mail sends, public forms, item deletions, Dynamics, Dataverse, paid Power Platform dependencies, or unattended automation.</em></p>
 "@
 }
 
@@ -338,19 +348,27 @@ function New-IntakeFormFormatterJson {
         }
     }
 
-    $fieldSettings = foreach ($fieldName in $IntakeExperience.readOnlySystemFields) {
-        [ordered]@{
-            name = [string]$fieldName
-            readonly = $true
-        }
-    }
-
     $formatter = [ordered]@{
         sections = @($sections)
-        fieldsettings = @($fieldSettings)
     }
 
     return ($formatter | ConvertTo-Json -Depth 8)
+}
+
+function Set-IntakeFieldFormVisibility {
+    param(
+        [string]$ListTitle,
+        [string]$FieldName,
+        [bool]$Visible
+    )
+
+    $field = Get-PnPField -List $ListTitle -Identity $FieldName -ErrorAction Stop
+    $field.SetShowInNewForm($Visible)
+    $field.SetShowInEditForm($Visible)
+    $field.SetShowInDisplayForm($Visible)
+    $field.Update()
+    $clientContext = Get-PnPContext
+    $clientContext.ExecuteQuery()
 }
 
 function Set-IntakeFieldExperience {
@@ -358,6 +376,23 @@ function Set-IntakeFieldExperience {
 
     $listTitle = [string]$IntakeExperience.list
     Write-Host ("Configuring frictionless intake form: {0}" -f $listTitle) -ForegroundColor Cyan
+
+    try {
+        $clientContext = Get-PnPContext
+        $list = Get-PnPList -Identity $listTitle -Includes ContentTypesEnabled
+        if (-not [bool]$list.ContentTypesEnabled) {
+            $list.ContentTypesEnabled = $true
+            $list.Update()
+            $clientContext.ExecuteQuery()
+            Write-Host "  [OK] Content types enabled so the custom intake form is used" -ForegroundColor Green
+        }
+        else {
+            Write-Host "  [skip] Content types already enabled for custom intake form" -ForegroundColor Gray
+        }
+    }
+    catch {
+        Write-Host ("  [warn] Could not enable content types for intake form: {0}" -f $_.Exception.Message) -ForegroundColor Yellow
+    }
 
     foreach ($field in $IntakeExperience.friendlyFieldNames) {
         try {
@@ -369,13 +404,35 @@ function Set-IntakeFieldExperience {
         }
     }
 
-    foreach ($fieldName in $IntakeExperience.notRequiredFields) {
+    $nonBlockingFields = @($IntakeExperience.notRequiredFields) + @($IntakeExperience.readOnlySystemFields) | Select-Object -Unique
+    foreach ($fieldName in $nonBlockingFields) {
         try {
             Set-PnPField -List $listTitle -Identity ([string]$fieldName) -Values @{ Required = $false } | Out-Null
             Write-Host ("  [OK] Field no longer blocks manual intake: {0}" -f $fieldName) -ForegroundColor Green
         }
         catch {
             Write-Host ("  [warn] Could not relax required flag for {0}: {1}" -f $fieldName, $_.Exception.Message) -ForegroundColor Yellow
+        }
+    }
+
+    $visibleFields = @($IntakeExperience.formSections | ForEach-Object { @($_.fields) }) | ForEach-Object { [string]$_ } | Select-Object -Unique
+    foreach ($fieldName in $visibleFields) {
+        try {
+            Set-IntakeFieldFormVisibility -ListTitle $listTitle -FieldName ([string]$fieldName) -Visible $true
+            Write-Host ("  [OK] Field shown on human intake form: {0}" -f $fieldName) -ForegroundColor Green
+        }
+        catch {
+            Write-Host ("  [warn] Could not show intake field {0}: {1}" -f $fieldName, $_.Exception.Message) -ForegroundColor Yellow
+        }
+    }
+
+    foreach ($fieldName in $IntakeExperience.readOnlySystemFields) {
+        try {
+            Set-IntakeFieldFormVisibility -ListTitle $listTitle -FieldName ([string]$fieldName) -Visible $false
+            Write-Host ("  [OK] Field hidden from human intake form: {0}" -f $fieldName) -ForegroundColor Green
+        }
+        catch {
+            Write-Host ("  [warn] Could not hide system field {0}: {1}" -f $fieldName, $_.Exception.Message) -ForegroundColor Yellow
         }
     }
 

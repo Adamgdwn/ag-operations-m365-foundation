@@ -48,6 +48,36 @@ function Get-ListUrl {
     return ([string]$list.RootFolder.ServerRelativeUrl)
 }
 
+function Get-FieldFormExperience {
+    param(
+        [string]$ListTitle,
+        [string]$FieldName
+    )
+
+    $field = Get-PnPField -List $ListTitle -Identity $FieldName -Includes Required,SchemaXml -ErrorAction SilentlyContinue
+    if ($null -eq $field) {
+        return $null
+    }
+
+    $schema = [xml]([string]$field.SchemaXml)
+    $showInNewForm = [string]$schema.Field.ShowInNewForm
+    $showInEditForm = [string]$schema.Field.ShowInEditForm
+    $showInDisplayForm = [string]$schema.Field.ShowInDisplayForm
+
+    [pscustomobject]@{
+        Required = [bool]$field.Required
+        ShowInNewForm = if ([string]::IsNullOrWhiteSpace($showInNewForm)) { "DefaultTrue" } else { $showInNewForm }
+        ShowInEditForm = if ([string]::IsNullOrWhiteSpace($showInEditForm)) { "DefaultTrue" } else { $showInEditForm }
+        ShowInDisplayForm = if ([string]::IsNullOrWhiteSpace($showInDisplayForm)) { "DefaultTrue" } else { $showInDisplayForm }
+    }
+}
+
+function Test-FormFlagVisible {
+    param([string]$Value)
+
+    return ([string]$Value -notin @("FALSE", "False", "false", "0"))
+}
+
 function Resolve-NavigationUrl {
     param(
         [object]$Config,
@@ -218,12 +248,26 @@ $pageResults = foreach ($page in $config.pages) {
         try {
             $components = @(Get-PnPPageComponent -Page ([string]$page.fileName) -ErrorAction SilentlyContinue)
             $pageText = @($components | Where-Object { [string]$_.Type -like "*PageText*" -or [string]$_.ControlType -eq "4" } | ForEach-Object { [string]$_.Text }) -join "`n"
+            $legacyTechnicalIntake = ""
+            if ($config.PSObject.Properties.Name -contains "intakeExperience" -and $config.intakeExperience.PSObject.Properties.Name -contains "legacyTechnicalIntakeList") {
+                $legacyTechnicalIntake = [string]$config.intakeExperience.legacyTechnicalIntakeList
+            }
+            $legacyIntakeNewFormAbsent = (
+                [string]::IsNullOrWhiteSpace($legacyTechnicalIntake) -or
+                (
+                    $pageText -notlike "*$legacyTechnicalIntake/NewForm.aspx*" -and
+                    $pageText -notlike "*Guided%20AI%20Labs%20%20Intake%20Register/NewForm.aspx*" -and
+                    $pageText -notlike "*Guided%20AI%20Labs%20-%20Intake%20Register/NewForm.aspx*"
+                )
+            )
             $stagePathPresent = (
                 $pageText -like "*CRM stage path*" -and
-                $pageText -like "*Add intake signal*" -and
+                $pageText -like "*New Signal*" -and
+                $pageText -like "*Triage Queue*" -and
+                $pageText -like "*Closeout / Invoice Watch*" -and
                 $pageText -like "*Use this as the CRM workspace*" -and
-                $pageText -like "*Engagement Pipeline*" -and
-                $pageText -like "*Handoff Evidence*"
+                $pageText -like "*SharePoint-native*" -and
+                $legacyIntakeNewFormAbsent
             )
         }
         catch {
@@ -235,7 +279,7 @@ $pageResults = foreach ($page in $config.pages) {
         Title = [string]$page.title
         FileName = [string]$page.fileName
         Exists = ($null -ne $found)
-        ContentStatus = if ($stagePathPresent) { "StagePathPresent" } elseif ($null -ne $found) { "StagePathMissing" } else { "" }
+            ContentStatus = if ($stagePathPresent) { "StagePathPresent" } elseif ($null -ne $found) { "StagePathMissingOrLegacyLinkPresent" } else { "" }
         Status = if ($null -ne $found -and $stagePathPresent) { "Present" } elseif ($null -ne $found) { "ContentMissing" } else { "Missing" }
     }
 }
@@ -268,6 +312,23 @@ if ($config.PSObject.Properties.Name -contains "intakeExperience") {
     $intakeList = [string]$intake.list
     $formatterJson = ""
     $contentTypeFound = $false
+    $contentTypesEnabled = $false
+    try {
+        $liveIntakeList = Get-PnPList -Identity $intakeList -Includes ContentTypesEnabled -ErrorAction Stop
+        $contentTypesEnabled = [bool]$liveIntakeList.ContentTypesEnabled
+    }
+    catch {
+        $contentTypesEnabled = $false
+    }
+
+    $intakeResults += [pscustomobject]@{
+        Area = "Form mode"
+        Item = $intakeList
+        Expected = "ContentTypesEnabled=True"
+        Actual = "ContentTypesEnabled=$contentTypesEnabled"
+        Status = if ($contentTypesEnabled) { "Present" } else { "Mismatch" }
+    }
+
     try {
         $clientContext = Get-PnPContext
         $contentType = Get-PnPContentType -List $intakeList | Where-Object { $_.Name -eq [string]$intake.contentTypeName } | Select-Object -First 1
@@ -282,12 +343,28 @@ if ($config.PSObject.Properties.Name -contains "intakeExperience") {
         $formatterJson = ""
     }
 
+    $expectedFormatterSections = @($intake.formSections | ForEach-Object { [string]$_.displayName })
+    $expectedFormatterFields = @($intake.formSections | ForEach-Object { @($_.fields) }) | ForEach-Object { [string]$_ } | Select-Object -Unique
+    $missingFormatterSections = @($expectedFormatterSections | Where-Object { $formatterJson -notlike "*$_*" })
+    $missingFormatterFields = @($expectedFormatterFields | Where-Object { $formatterJson -notlike "*$_*" })
+    $formatterMatchesConfig = (
+        $contentTypeFound -and
+        -not [string]::IsNullOrWhiteSpace($formatterJson) -and
+        $missingFormatterSections.Count -eq 0 -and
+        $missingFormatterFields.Count -eq 0
+    )
+
     $intakeResults += [pscustomobject]@{
         Area = "Form formatter"
         Item = $intakeList
-        Expected = [string]$intake.contentTypeName
-        Actual = if ($contentTypeFound) { "ContentTypePresent" } else { "ContentTypeMissing" }
-        Status = if ($contentTypeFound -and $formatterJson -like "*Quick intake*" -and $formatterJson -like "*Triage*") { "Present" } else { "Missing" }
+        Expected = "Content type '$($intake.contentTypeName)' has configured sections and fields"
+        Actual = if ($contentTypeFound) {
+            "ContentTypePresent; FormatterLength=$($formatterJson.Length); MissingSections=$($missingFormatterSections -join ','); MissingFields=$($missingFormatterFields -join ',')"
+        }
+        else {
+            "ContentTypeMissing"
+        }
+        Status = if ($formatterMatchesConfig) { "Present" } elseif ($contentTypeFound) { "Mismatch" } else { "Missing" }
     }
 
     foreach ($field in $intake.friendlyFieldNames) {
@@ -312,13 +389,61 @@ if ($config.PSObject.Properties.Name -contains "intakeExperience") {
         }
     }
 
-    foreach ($fieldName in $intake.readOnlySystemFields) {
+    $visibleFormFields = @($intake.formSections | ForEach-Object { @($_.fields) }) | ForEach-Object { [string]$_ }
+    foreach ($fieldName in $visibleFormFields) {
+        $formExperience = Get-FieldFormExperience -ListTitle $intakeList -FieldName ([string]$fieldName)
+        $isShownOnForm = (
+            $null -ne $formExperience -and
+            (Test-FormFlagVisible -Value ([string]$formExperience.ShowInNewForm)) -and
+            (Test-FormFlagVisible -Value ([string]$formExperience.ShowInEditForm))
+        )
         $intakeResults += [pscustomobject]@{
-            Area = "Read-only system field"
+            Area = "Visible intake form field"
             Item = [string]$fieldName
-            Expected = "readonly"
-            Actual = if ($formatterJson -like "*$fieldName*") { "FormatterContainsField" } else { "" }
-            Status = if ($formatterJson -like "*$fieldName*" -and $formatterJson -like "*readonly*") { "Present" } else { "Missing" }
+            Expected = "FormatterContainsField; ShowInNewForm=True; ShowInEditForm=True"
+            Actual = if ($null -ne $formExperience) {
+                "FormatterContainsField=$($formatterJson -like "*$fieldName*"); ShowInNewForm=$($formExperience.ShowInNewForm); ShowInEditForm=$($formExperience.ShowInEditForm)"
+            }
+            else {
+                ""
+            }
+            Status = if (($formatterJson -like "*$fieldName*") -and $isShownOnForm) { "Present" } elseif ($null -ne $formExperience) { "Mismatch" } else { "Missing" }
+        }
+    }
+
+    foreach ($fieldName in $intake.readOnlySystemFields) {
+        $formExperience = Get-FieldFormExperience -ListTitle $intakeList -FieldName ([string]$fieldName)
+        $formatterContainsField = ($formatterJson -like "*$fieldName*")
+        $isNonBlocking = ($null -ne $formExperience -and $formExperience.Required -eq $false)
+        $isHiddenFromForm = (
+            $null -ne $formExperience -and
+            -not (Test-FormFlagVisible -Value ([string]$formExperience.ShowInNewForm)) -and
+            -not (Test-FormFlagVisible -Value ([string]$formExperience.ShowInEditForm))
+        )
+        $intakeResults += [pscustomobject]@{
+            Area = "Hidden system field"
+            Item = [string]$fieldName
+            Expected = "Not in formatter; Required=False; ShowInNewForm=False; ShowInEditForm=False"
+            Actual = if ($null -ne $formExperience) {
+                "FormatterContainsField=$formatterContainsField; Required=$($formExperience.Required); ShowInNewForm=$($formExperience.ShowInNewForm); ShowInEditForm=$($formExperience.ShowInEditForm)"
+            }
+            else {
+                ""
+            }
+            Status = if ((-not $formatterContainsField) -and $isNonBlocking -and $isHiddenFromForm) { "Present" } elseif ($null -ne $formExperience) { "Mismatch" } else { "Missing" }
+        }
+    }
+
+    if ($intake.PSObject.Properties.Name -contains "blockedFieldNames") {
+        foreach ($fieldName in $intake.blockedFieldNames) {
+            $blockedField = Get-PnPField -List $intakeList -Identity ([string]$fieldName) -ErrorAction SilentlyContinue
+            $intakeResults += [pscustomobject]@{
+                Area = "Blocked technical field absent"
+                Item = [string]$fieldName
+                Expected = "Field does not exist on CRM business intake list"
+                Actual = if ($null -eq $blockedField) { "NotFound" } else { "Exists" }
+                Status = if ($null -eq $blockedField) { "Present" } else { "Mismatch" }
+            }
         }
     }
 }

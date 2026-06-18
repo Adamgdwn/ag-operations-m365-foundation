@@ -3,7 +3,9 @@
 Last updated: 2026-06-17
 
 This is the short restart/orientation note for Codex or any agent working in this
-workspace. Read this first, then open detailed docs only as needed.
+workspace. For current workspace usability work, read `docs/START_HERE.md` first.
+For the wider M365 foundation, read this file, then open detailed docs only as
+needed.
 
 ## Project purpose
 

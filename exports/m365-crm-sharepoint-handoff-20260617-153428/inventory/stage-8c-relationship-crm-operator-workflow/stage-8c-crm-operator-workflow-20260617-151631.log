@@ -1,0 +1,230 @@
+**********************
+PowerShell transcript start
+Start time: 20260617151631
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File .\scripts\Invoke-M365Stage8CRelationshipCrmOperatorWorkflow.ps1 -Apply -NoPause
+Process ID: 13452
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8C - Relationship CRM Operator Workflow
+Mode:       APPLY
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-20260617-151631.log
+
+Planned workflow additions:
+- New operator lists: 5
+- Workflow lookup fields: 14
+- Workflow views: 19
+- Command center page: Relationship-CRM-Command-Center.aspx
+- Frictionless intake form: Guided AI Labs - Intake Register
+
+Safety limits:
+- No permission changes
+- No guest invitations
+- No external sharing changes
+- No app grants or consent changes
+- No public Forms links
+- No mail sends
+- No item or list deletions
+- No unattended automation
+- No Dynamics or Dataverse provisioning
+
+
+Connecting to Guided AI Labs SharePoint site...
+
+Creating CRM operator workflow lists...
+  [skip] List exists: CRM - Action Queue
+  [skip] List exists: CRM - Qualification
+  [skip] List exists: CRM - Meeting Notes
+  [skip] List exists: CRM - Artifacts
+  [skip] List exists: CRM - Health Reviews
+
+Configuring workflow list: CRM - Action Queue
+  [skip] Field exists: RecordKey
+  [skip] Field exists: Owner
+  [skip] Field exists: ActionType
+  [OK] Field indexed: ActionType
+  [skip] Field exists: ActionStatus
+  [OK] Field indexed: ActionStatus
+  [skip] Field exists: Priority
+  [OK] Field indexed: Priority
+  [skip] Field exists: DueDate
+  [OK] Field indexed: DueDate
+  [skip] Field exists: CompletedDate
+  [skip] Field exists: NextAction
+  [skip] Field exists: Outcome
+  [skip] Field exists: BlocksDecision
+  [OK] Field indexed: BlocksDecision
+  [skip] Field exists: BlocksGoLive
+  [OK] Field indexed: BlocksGoLive
+  [skip] Field exists: SourceSystem
+  [skip] Lookup exists: CRM - Action Queue / Organization
+  [OK] Lookup indexed: CRM - Action Queue / Organization
+  [skip] Lookup exists: CRM - Action Queue / Engagement
+  [OK] Lookup indexed: CRM - Action Queue / Engagement
+  [skip] Lookup exists: CRM - Action Queue / Contact
+  [OK] Lookup indexed: CRM - Action Queue / Contact
+  [skip] Lookup exists: CRM - Action Queue / Touchpoint
+  [OK] View updated: Open CRM Actions
+  [OK] View updated: Due / Overdue Actions
+  [OK] View updated: Decision / Go-Live Blockers
+  [OK] View updated: Completed Actions
+
+Configuring workflow list: CRM - Qualification
+  [skip] Field exists: SignalSource
+  [OK] Field indexed: SignalSource
+  [skip] Field exists: QualificationStatus
+  [OK] Field indexed: QualificationStatus
+  [skip] Field exists: FitScore
+  [OK] Field indexed: FitScore
+  [skip] Field exists: Urgency
+  [OK] Field indexed: Urgency
+  [skip] Field exists: BudgetSignal
+  [skip] Field exists: AuthoritySignal
+  [skip] Field exists: NeedSummary
+  [skip] Field exists: RecommendedPackage
+  [skip] Field exists: DisqualificationReason
+  [skip] Field exists: NextAction
+  [skip] Field exists: NextActionDueDate
+  [OK] Field indexed: NextActionDueDate
+  [skip] Field exists: Owner
+  [skip] Lookup exists: CRM - Qualification / Organization
+  [OK] Lookup indexed: CRM - Qualification / Organization
+  [skip] Lookup exists: CRM - Qualification / Contact
+  [skip] Lookup exists: CRM - Qualification / Engagement
+  [OK] View updated: Qualification Triage
+  [OK] View updated: Qualified / Proposal Recommended
+  [OK] View updated: Nurture / Disqualified
+
+Configuring workflow list: CRM - Meeting Notes
+  [skip] Field exists: MeetingDate
+  [OK] Field indexed: MeetingDate
+  [skip] Field exists: MeetingType
+  [OK] Field indexed: MeetingType
+  [skip] Field exists: MeetingStatus
+  [OK] Field indexed: MeetingStatus
+  [skip] Field exists: Agenda
+  [skip] Field exists: Notes
+  [skip] Field exists: Commitments
+  [skip] Field exists: Decisions
+  [skip] Field exists: FollowUpRequired
+  [OK] Field indexed: FollowUpRequired
+  [skip] Field exists: FollowUpDueDate
+  [OK] Field indexed: FollowUpDueDate
+  [skip] Field exists: Sentiment
+  [skip] Field exists: RelatedLink
+  [skip] Field exists: Owner
+  [skip] Lookup exists: CRM - Meeting Notes / Organization
+  [OK] Lookup indexed: CRM - Meeting Notes / Organization
+  [skip] Lookup exists: CRM - Meeting Notes / Engagement
+  [OK] Lookup indexed: CRM - Meeting Notes / Engagement
+  [skip] Lookup exists: CRM - Meeting Notes / Primary Contact
+  [OK] View updated: Upcoming Meetings
+  [OK] View updated: Meeting Prep Needed
+  [OK] View updated: Meeting Debrief Needed
+  [OK] View updated: Meeting History
+
+Configuring workflow list: CRM - Artifacts
+  [skip] Field exists: ArtifactType
+  [OK] Field indexed: ArtifactType
+  [skip] Field exists: ArtifactStatus
+  [OK] Field indexed: ArtifactStatus
+  [skip] Field exists: ArtifactLink
+  [skip] Field exists: VersionLabel
+  [skip] Field exists: EvidenceDate
+  [OK] Field indexed: EvidenceDate
+  [skip] Field exists: ReviewDueDate
+  [OK] Field indexed: ReviewDueDate
+  [skip] Field exists: ApprovedForClientUse
+  [OK] Field indexed: ApprovedForClientUse
+  [skip] Field exists: Notes
+  [skip] Field exists: Owner
+  [skip] Lookup exists: CRM - Artifacts / Organization
+  [OK] Lookup indexed: CRM - Artifacts / Organization
+  [skip] Lookup exists: CRM - Artifacts / Engagement
+  [OK] Lookup indexed: CRM - Artifacts / Engagement
+  [OK] View updated: Active Artifacts
+  [OK] View updated: Proposal / Scope Artifacts
+  [OK] View updated: Handoff Evidence
+  [OK] View updated: Review Due
+
+Configuring workflow list: CRM - Health Reviews
+  [skip] Field exists: ReviewDate
+  [OK] Field indexed: ReviewDate
+  [skip] Field exists: NextReviewDate
+  [OK] Field indexed: NextReviewDate
+  [skip] Field exists: RelationshipHealth
+  [OK] Field indexed: RelationshipHealth
+  [skip] Field exists: DeliveryHealth
+  [OK] Field indexed: DeliveryHealth
+  [skip] Field exists: CommercialHealth
+  [OK] Field indexed: CommercialHealth
+  [skip] Field exists: HealthScore
+  [OK] Field indexed: HealthScore
+  [skip] Field exists: RenewalSignal
+  [skip] Field exists: ExpansionSignal
+  [OK] Field indexed: ExpansionSignal
+  [skip] Field exists: RiskSummary
+  [skip] Field exists: WinSummary
+  [skip] Field exists: NextAction
+  [skip] Field exists: Owner
+  [skip] Lookup exists: CRM - Health Reviews / Organization
+  [OK] Lookup indexed: CRM - Health Reviews / Organization
+  [skip] Lookup exists: CRM - Health Reviews / Engagement
+  [OK] Lookup indexed: CRM - Health Reviews / Engagement
+  [OK] View updated: Health Review Queue
+  [OK] View updated: At Risk Health Reviews
+  [OK] View updated: Expansion Signals
+  [OK] View updated: Health Review History
+
+Configuring frictionless intake form: Guided AI Labs - Intake Register
+  [OK] Field label: Title -> Intake summary
+  [OK] Field label: RequesterName -> Person name
+  [OK] Field label: RequesterEmail -> Email
+  [OK] Field label: IntakeClass -> Signal type
+  [OK] Field label: NextAction -> What should happen next?
+  [OK] Field label: AgentNotes -> Context / notes
+  [OK] Field label: HumanApprovalRequired -> Needs Adam review
+  [OK] Field no longer blocks manual intake: ReceivedDate
+  [OK] Field no longer blocks manual intake: ItemOwner
+  [OK] Field no longer blocks manual intake: SourceMailbox
+  [OK] Field no longer blocks manual intake: SourceMessageId
+  [OK] Field no longer blocks manual intake: IntakeStatus
+  [OK] Field no longer blocks manual intake: DurableHome
+  [OK] Field no longer blocks manual intake: PlannerTaskUrl
+  [OK] Field no longer blocks manual intake: CentralOSLink
+  [OK] Field no longer blocks manual intake: GraphNodeId
+  [OK] Field no longer blocks manual intake: AgentConfidence
+  [OK] Field shown on human intake form: Title
+  [OK] Field shown on human intake form: RequesterName
+  [OK] Field shown on human intake form: RequesterEmail
+  [OK] Field shown on human intake form: Organization
+  [OK] Field shown on human intake form: IntakeClass
+  [OK] Field shown on human intake form: Priority
+  [OK] Field shown on human intake form: AgentNotes
+  [OK] Field shown on human intake form: NextAction
+  [OK] Field shown on human intake form: HumanApprovalRequired
+  [OK] Field hidden from human intake form: SourceMailbox
+  [OK] Field hidden from human intake form: SourceMessageId
+  [OK] Field hidden from human intake form: ReceivedDate
+  [OK] Field hidden from human intake form: IntakeStatus
+  [OK] Field hidden from human intake form: ItemOwner
+  [OK] Field hidden from human intake form: DurableHome
+  [OK] Field hidden from human intake form: PlannerTaskUrl
+  [OK] Field hidden from human intake form: CentralOSLink
+  [OK] Field hidden from human intake form: GraphNodeId
+  [OK] Field hidden from human intake form: AgentConfidence
+  [OK] Intake form layout applied
+Refreshing command center page content: Relationship-CRM-Command-Center.aspx

@@ -1,0 +1,5 @@
+"Gate","Trigger","Response"
+"Daily path unclear","Adam cannot tell which page/list should be used next from the cockpit or CRM Command Center.","Stop and refine navigation/page copy before creating Teams tabs or automation."
+"Record ownership unclear","A record could belong in client tenant, Guided AI Labs tenant, OneDrive draft space, or SharePoint official record space and the owner is unclear.","Stop and record the ownership decision before continuing."
+"External action needed","The walkthrough appears to require guest access, external sharing, a public Form, or an email send.","Stop. Treat it as a Stage 7/9 approval-gated decision, not a Stage 8D walkthrough action."
+"Evidence cannot be found","A decision, action, handoff, or artifact cannot be linked back to the source signal.","Stop and add the missing evidence link before adding more records."

@@ -1,0 +1,31 @@
+**********************
+PowerShell transcript start
+Start time: 20260617152413
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File .\scripts\Invoke-M365Stage8CVerifyRelationshipCrmOperatorWorkflow.ps1 -NoPause
+Process ID: 16560
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8C - Relationship CRM Operator Workflow Verification
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config\M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-verify-20260617-152413.log
+
+Scope: read-only verification.
+
+Stage 8C Relationship CRM operator workflow verification PASS: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md
+**********************
+PowerShell transcript end
+End time: 20260617152629
+**********************

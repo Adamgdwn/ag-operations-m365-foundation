@@ -1,0 +1,63 @@
+**********************
+PowerShell transcript start
+Start time: 20260617120707
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -File .\scripts\Invoke-M365Stage8DWorkflowProof.ps1 -NoPause
+Process ID: 12976
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 8D - Internal workflow proof
+Mode:       DRY RUN
+RecordKey:  GAIL-INTERNAL-WALKTHROUGH-PROD-20260617
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-8d-functional-workflow-walkthrough\stage-8d-workflow-proof-20260617-120707.log
+Safety:     Internal dummy List records only; no mail, sharing, guests, permissions, consent, policy, deletion, or automation.
+
+== Connect to Guided AI Labs ==
+Connected to https://agoperationsltd.sharepoint.com/sites/GuidedAILabs using O365
+Connected user: adamgoodwin@guidedailabs.com
+Preflight OK: readable site 'Guided AI Labs'
+
+== Verify target Lists ==
+  [OK] Found List: Guided AI Labs - Intake Register
+  [OK] Found List: CRM - Organizations
+  [OK] Found List: CRM - Contacts
+  [OK] Found List: CRM - Engagements
+  [OK] Found List: CRM - Qualification
+  [OK] Found List: CRM - Stakeholder Map
+  [OK] Found List: CRM - Touchpoints
+  [OK] Found List: CRM - Action Queue
+  [OK] Found List: CRM - Lifecycle Checklist
+  [OK] Found List: CRM - Artifacts
+  [OK] Found List: Agent Action Log
+
+== Create or update workflow proof records ==
+  DRY RUN: would create Guided AI Labs - Intake Register item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Internal readiness signal
+  DRY RUN: would create CRM - Organizations item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof
+  DRY RUN: would create CRM - Contacts item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Adam Internal Operator
+  DRY RUN: would create CRM - Engagements item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - CRM workflow proof
+  DRY RUN: would create CRM - Qualification item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Qualification
+  DRY RUN: would create CRM - Stakeholder Map item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Stakeholder role
+  DRY RUN: would create CRM - Touchpoints item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Internal touchpoint
+  DRY RUN: would create CRM - Action Queue item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Next CRM action
+  DRY RUN: would create CRM - Lifecycle Checklist item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Handoff checklist
+  DRY RUN: would create CRM - Artifacts item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Handoff evidence
+  DRY RUN: would create Agent Action Log item: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Stage 8D workflow proof logged
+Dry run complete. No tenant records were created or updated.
+
+== Done ==
+Stage 8D internal workflow proof completed.
+**********************
+PowerShell transcript end
+End time: 20260617120740
+**********************

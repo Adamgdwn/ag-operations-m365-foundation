@@ -1,5 +1,11 @@
 # Microsoft 365 Stage 8B - Relationship CRM Operations Layer
 
+> Superseded for active CRM operating guidance.
+>
+> This document is now historical/provenance for the Stage 8B build. Use
+> `docs/START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`, `docs/CRM_DATA_MODEL.md`,
+> and `docs/CRM_RUNBOOK.md` for the current employee-ready CRM path.
+
 Status: **live-applied and read-back verified** (2026-06-15).
 
 Stage 8B hardens the Stage 8A Relationship CRM from a useful structure into a

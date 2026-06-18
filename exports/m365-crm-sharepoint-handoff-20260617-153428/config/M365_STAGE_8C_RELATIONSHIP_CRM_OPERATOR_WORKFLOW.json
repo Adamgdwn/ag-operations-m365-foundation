@@ -1,0 +1,248 @@
+{
+  "version": "2026-06-17-frictionless",
+  "stage": "8C",
+  "name": "Relationship CRM Operator Workflow",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+    "purpose": "Turns the Stage 8A/8B CRM structure into a working operator system with action queue, qualification, meeting notes, artifacts, health reviews, and a CRM command center."
+  },
+  "approvalPhrase": "apply-stage-8c-crm-workflow",
+  "safetyLimits": [
+    "No permission changes",
+    "No guest invitations",
+    "No external sharing changes",
+    "No app grants or consent changes",
+    "No public Forms links",
+    "No mail sends",
+    "No item or list deletions",
+    "No unattended automation",
+    "No Dynamics or Dataverse provisioning"
+  ],
+  "pages": [
+    {
+      "title": "Relationship CRM Command Center",
+      "fileName": "Relationship-CRM-Command-Center.aspx",
+      "navGroup": "Client Delivery",
+      "role": "Daily command center for triage, CRM stages, open CRM actions, meeting preparation, evidence, health reviews, and handoff readiness.",
+      "stagePath": [
+        { "label": "1. Intake", "description": "New internal signals, referrals, support notes, and discovery starts enter here before CRM qualification.", "list": "Guided AI Labs - Intake Register", "view": "Attention Now" },
+        { "label": "2. Qualification", "description": "Decide whether the signal is qualified, disqualified, nurture, proposal recommended, or converted.", "list": "CRM - Qualification", "view": "Qualification Triage" },
+        { "label": "3. Engagement Pipeline", "description": "Track the relationship stage, package path, decision status, value, probability, and next action.", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+        { "label": "4. Decision / Proposal", "description": "Keep decision blockers, proposal work, and go-live blockers visible until resolved.", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
+        { "label": "5. Active Delivery", "description": "Move qualified work into onboarding, active delivery, sustainment, or blocked execution control.", "list": "CRM - Engagements", "view": "Delivery Control" },
+        { "label": "6. Handoff Evidence", "description": "End each workflow with a durable evidence, scope, artifact, or handoff packet pointer.", "list": "CRM - Artifacts", "view": "Handoff Evidence" }
+      ],
+      "directLinks": [
+        { "label": "Intake - Attention Now", "list": "Guided AI Labs - Intake Register", "view": "Attention Now" },
+        { "label": "Open CRM Actions", "list": "CRM - Action Queue", "view": "Open CRM Actions" },
+        { "label": "Due / Overdue Actions", "list": "CRM - Action Queue", "view": "Due / Overdue Actions" },
+        { "label": "Qualification Triage", "list": "CRM - Qualification", "view": "Qualification Triage" },
+        { "label": "Pipeline by Stage", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+        { "label": "Delivery Control", "list": "CRM - Engagements", "view": "Delivery Control" },
+        { "label": "Decision / Go-Live Blockers", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
+        { "label": "Upcoming Meetings", "list": "CRM - Meeting Notes", "view": "Upcoming Meetings" },
+        { "label": "Meeting Debrief Needed", "list": "CRM - Meeting Notes", "view": "Meeting Debrief Needed" },
+        { "label": "Proposal / Scope Artifacts", "list": "CRM - Artifacts", "view": "Proposal / Scope Artifacts" },
+        { "label": "Handoff Evidence", "list": "CRM - Artifacts", "view": "Handoff Evidence" },
+        { "label": "Health Review Queue", "list": "CRM - Health Reviews", "view": "Health Review Queue" },
+        { "label": "At Risk Health Reviews", "list": "CRM - Health Reviews", "view": "At Risk Health Reviews" }
+      ]
+    }
+  ],
+  "intakeExperience": {
+    "title": "Frictionless CRM Intake",
+    "list": "Guided AI Labs - Intake Register",
+    "contentTypeName": "Item",
+    "purpose": "Keep the intake form focused on the few human questions needed to start CRM work. System/source/automation fields stay on the record for later capture or audit, but they are not part of the business-development intake form.",
+    "friendlyFieldNames": [
+      { "internalName": "Title", "displayName": "Intake summary" },
+      { "internalName": "RequesterName", "displayName": "Person name" },
+      { "internalName": "RequesterEmail", "displayName": "Email" },
+      { "internalName": "IntakeClass", "displayName": "Signal type" },
+      { "internalName": "NextAction", "displayName": "What should happen next?" },
+      { "internalName": "AgentNotes", "displayName": "Context / notes" },
+      { "internalName": "HumanApprovalRequired", "displayName": "Needs Adam review" }
+    ],
+    "notRequiredFields": ["ReceivedDate", "ItemOwner"],
+    "formSections": [
+      {
+        "displayName": "Quick intake",
+        "fields": ["Title", "RequesterName", "RequesterEmail", "Organization"]
+      },
+      {
+        "displayName": "Triage",
+        "fields": ["IntakeClass", "Priority", "AgentNotes", "NextAction", "HumanApprovalRequired"]
+      }
+    ],
+    "readOnlySystemFields": [
+      "SourceMailbox",
+      "SourceMessageId",
+      "ReceivedDate",
+      "IntakeStatus",
+      "ItemOwner",
+      "DurableHome",
+      "PlannerTaskUrl",
+      "CentralOSLink",
+      "GraphNodeId",
+      "AgentConfidence"
+    ]
+  },
+  "navigationTargets": [
+    { "group": "Client Delivery", "link": "CRM Command Center", "kind": "Page", "target": "Relationship CRM Command Center" }
+  ],
+  "lists": [
+    {
+      "title": "CRM - Action Queue",
+      "description": "Single CRM task queue for follow-ups, proposals, decisions, handoffs, delivery actions, and relationship work.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "RecordKey", "internalName": "RecordKey", "type": "Text" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" },
+        { "displayName": "ActionType", "internalName": "ActionType", "type": "Choice", "choices": ["Follow-up", "Proposal / Scope", "Decision", "Meeting prep", "Meeting debrief", "Delivery", "Checklist", "Relationship", "Handoff", "Admin"], "default": "Follow-up", "indexed": true },
+        { "displayName": "ActionStatus", "internalName": "ActionStatus", "type": "Choice", "choices": ["Not started", "In progress", "Waiting on Adam", "Waiting on client", "Blocked", "Complete", "Cancelled"], "default": "Not started", "indexed": true },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "DueDate", "internalName": "DueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "CompletedDate", "internalName": "CompletedDate", "type": "DateTime" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note" },
+        { "displayName": "Outcome", "internalName": "Outcome", "type": "Note" },
+        { "displayName": "BlocksDecision", "internalName": "BlocksDecision", "type": "Boolean", "default": "0", "indexed": true },
+        { "displayName": "BlocksGoLive", "internalName": "BlocksGoLive", "type": "Boolean", "default": "0", "indexed": true },
+        { "displayName": "SourceSystem", "internalName": "SourceSystem", "type": "Choice", "choices": ["Manual", "Intake Register", "CRM Touchpoint", "Meeting", "Checklist", "Agent Suggested", "Other"], "default": "Manual" }
+      ],
+      "lookupFields": [
+        { "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+        { "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true },
+        { "displayName": "Contact", "internalName": "ContactLookup", "targetList": "CRM - Contacts", "targetField": "Title", "indexed": true },
+        { "displayName": "Touchpoint", "internalName": "TouchpointLookup", "targetList": "CRM - Touchpoints", "targetField": "Title" }
+      ],
+      "views": [
+        { "title": "Open CRM Actions", "fields": ["LinkTitle", "ActionType", "ActionStatus", "Priority", "DueDate", "OrganizationLookup", "EngagementLookup", "ContactLookup", "ItemOwner", "NextAction"], "query": "<Where><And><Neq><FieldRef Name='ActionStatus' /><Value Type='Choice'>Complete</Value></Neq><Neq><FieldRef Name='ActionStatus' /><Value Type='Choice'>Cancelled</Value></Neq></And></Where><OrderBy><FieldRef Name='DueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "Due / Overdue Actions", "fields": ["LinkTitle", "ActionType", "ActionStatus", "Priority", "DueDate", "OrganizationLookup", "EngagementLookup", "BlocksDecision", "BlocksGoLive", "NextAction"], "query": "<Where><And><Leq><FieldRef Name='DueDate' /><Value Type='DateTime'><Today /></Value></Leq><And><Neq><FieldRef Name='ActionStatus' /><Value Type='Choice'>Complete</Value></Neq><Neq><FieldRef Name='ActionStatus' /><Value Type='Choice'>Cancelled</Value></Neq></And></And></Where><OrderBy><FieldRef Name='DueDate' Ascending='TRUE' /><FieldRef Name='Priority' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Decision / Go-Live Blockers", "fields": ["LinkTitle", "ActionType", "ActionStatus", "Priority", "DueDate", "OrganizationLookup", "EngagementLookup", "BlocksDecision", "BlocksGoLive", "NextAction"], "query": "<Where><And><Or><Eq><FieldRef Name='BlocksDecision' /><Value Type='Boolean'>1</Value></Eq><Eq><FieldRef Name='BlocksGoLive' /><Value Type='Boolean'>1</Value></Eq></Or><Neq><FieldRef Name='ActionStatus' /><Value Type='Choice'>Complete</Value></Neq></And></Where><OrderBy><FieldRef Name='DueDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Completed Actions", "fields": ["LinkTitle", "ActionType", "CompletedDate", "OrganizationLookup", "EngagementLookup", "Outcome"], "query": "<Where><Eq><FieldRef Name='ActionStatus' /><Value Type='Choice'>Complete</Value></Eq></Where><OrderBy><FieldRef Name='CompletedDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
+      ]
+    },
+    {
+      "title": "CRM - Qualification",
+      "description": "Qualification and fit review records for incoming signals, prospects, and expansion opportunities.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "SignalSource", "internalName": "SignalSource", "type": "Choice", "choices": ["Referral", "Website", "Direct outreach", "Existing relationship", "Partner", "Event", "Support signal", "Internal idea", "Other"], "default": "Existing relationship", "indexed": true },
+        { "displayName": "QualificationStatus", "internalName": "QualificationStatus", "type": "Choice", "choices": ["New", "Researching", "Qualified", "Disqualified", "Nurture", "Proposal recommended", "Converted"], "default": "New", "indexed": true },
+        { "displayName": "FitScore", "internalName": "FitScore", "type": "Number", "indexed": true },
+        { "displayName": "Urgency", "internalName": "Urgency", "type": "Choice", "choices": ["Low", "Medium", "High", "Immediate", "Unknown"], "default": "Unknown", "indexed": true },
+        { "displayName": "BudgetSignal", "internalName": "BudgetSignal", "type": "Choice", "choices": ["Confirmed", "Likely", "Unclear", "No budget", "Not applicable"], "default": "Unclear" },
+        { "displayName": "AuthoritySignal", "internalName": "AuthoritySignal", "type": "Choice", "choices": ["Decision maker", "Champion", "Influencer", "Unknown", "No authority"], "default": "Unknown" },
+        { "displayName": "NeedSummary", "internalName": "NeedSummary", "type": "Note" },
+        { "displayName": "RecommendedPackage", "internalName": "RecommendedPackage", "type": "Choice", "choices": ["Relationship Nurture", "Readiness Snapshot", "Operating Blueprint", "Workspace Build", "Guided Implementation", "Operating Support", "AI OS Integration", "Handoff / Alumni"] },
+        { "displayName": "DisqualificationReason", "internalName": "DisqualificationReason", "type": "Choice", "choices": ["Not a fit", "Too early", "No budget", "No authority", "Unsupported need", "Capacity constraint", "Other"] },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note" },
+        { "displayName": "NextActionDueDate", "internalName": "NextActionDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+      ],
+      "lookupFields": [
+        { "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+        { "displayName": "Contact", "internalName": "ContactLookup", "targetList": "CRM - Contacts", "targetField": "Title" },
+        { "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title" }
+      ],
+      "views": [
+        { "title": "Qualification Triage", "fields": ["LinkTitle", "SignalSource", "QualificationStatus", "FitScore", "Urgency", "OrganizationLookup", "ContactLookup", "RecommendedPackage", "NextActionDueDate", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='QualificationStatus' /><Value Type='Choice'>New</Value></Eq><Eq><FieldRef Name='QualificationStatus' /><Value Type='Choice'>Researching</Value></Eq></Or></Where><OrderBy><FieldRef Name='NextActionDueDate' Ascending='TRUE' /><FieldRef Name='FitScore' Ascending='FALSE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "Qualified / Proposal Recommended", "fields": ["LinkTitle", "QualificationStatus", "FitScore", "Urgency", "OrganizationLookup", "EngagementLookup", "RecommendedPackage", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='QualificationStatus' /><Value Type='Choice'>Qualified</Value></Eq><Eq><FieldRef Name='QualificationStatus' /><Value Type='Choice'>Proposal recommended</Value></Eq></Or></Where><OrderBy><FieldRef Name='FitScore' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Nurture / Disqualified", "fields": ["LinkTitle", "QualificationStatus", "DisqualificationReason", "OrganizationLookup", "RecommendedPackage", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='QualificationStatus' /><Value Type='Choice'>Nurture</Value></Eq><Eq><FieldRef Name='QualificationStatus' /><Value Type='Choice'>Disqualified</Value></Eq></Or></Where><OrderBy><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
+      ]
+    },
+    {
+      "title": "CRM - Meeting Notes",
+      "description": "Structured meeting prep, notes, debriefs, commitments, decisions, and next actions.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "MeetingDate", "internalName": "MeetingDate", "type": "DateTime", "indexed": true },
+        { "displayName": "MeetingType", "internalName": "MeetingType", "type": "Choice", "choices": ["Discovery", "Proposal", "Delivery", "Health review", "Training", "Handoff", "Internal", "Other"], "default": "Discovery", "indexed": true },
+        { "displayName": "MeetingStatus", "internalName": "MeetingStatus", "type": "Choice", "choices": ["Scheduled", "Prep needed", "Complete - debrief needed", "Debrief complete", "Cancelled"], "default": "Scheduled", "indexed": true },
+        { "displayName": "Agenda", "internalName": "Agenda", "type": "Note" },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" },
+        { "displayName": "Commitments", "internalName": "Commitments", "type": "Note" },
+        { "displayName": "Decisions", "internalName": "Decisions", "type": "Note" },
+        { "displayName": "FollowUpRequired", "internalName": "FollowUpRequired", "type": "Boolean", "default": "0", "indexed": true },
+        { "displayName": "FollowUpDueDate", "internalName": "FollowUpDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "Sentiment", "internalName": "Sentiment", "type": "Choice", "choices": ["Positive", "Neutral", "Concerned", "Resistant", "Unknown"], "default": "Unknown" },
+        { "displayName": "RelatedLink", "internalName": "RelatedLink", "type": "URL" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+      ],
+      "lookupFields": [
+        { "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+        { "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true },
+        { "displayName": "Primary Contact", "internalName": "PrimaryContactLookup", "targetList": "CRM - Contacts", "targetField": "Title" }
+      ],
+      "views": [
+        { "title": "Upcoming Meetings", "fields": ["LinkTitle", "MeetingDate", "MeetingType", "MeetingStatus", "OrganizationLookup", "EngagementLookup", "PrimaryContactLookup", "Agenda", "ItemOwner"], "query": "<Where><Geq><FieldRef Name='MeetingDate' /><Value Type='DateTime'><Today /></Value></Geq></Where><OrderBy><FieldRef Name='MeetingDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "Meeting Prep Needed", "fields": ["LinkTitle", "MeetingDate", "MeetingType", "MeetingStatus", "OrganizationLookup", "EngagementLookup", "Agenda"], "query": "<Where><Eq><FieldRef Name='MeetingStatus' /><Value Type='Choice'>Prep needed</Value></Eq></Where><OrderBy><FieldRef Name='MeetingDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Meeting Debrief Needed", "fields": ["LinkTitle", "MeetingDate", "MeetingType", "MeetingStatus", "OrganizationLookup", "EngagementLookup", "Commitments", "FollowUpDueDate"], "query": "<Where><Eq><FieldRef Name='MeetingStatus' /><Value Type='Choice'>Complete - debrief needed</Value></Eq></Where><OrderBy><FieldRef Name='MeetingDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Meeting History", "fields": ["LinkTitle", "MeetingDate", "MeetingType", "OrganizationLookup", "EngagementLookup", "Sentiment", "Decisions"], "query": "<OrderBy><FieldRef Name='MeetingDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
+      ]
+    },
+    {
+      "title": "CRM - Artifacts",
+      "description": "Evidence, proposals, scope documents, work products, handoff packets, and related CRM links.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "ArtifactType", "internalName": "ArtifactType", "type": "Choice", "choices": ["Proposal", "Scope", "Blueprint", "Workspace link", "Evidence", "Decision record", "Training material", "Handoff packet", "Support note", "Other"], "default": "Evidence", "indexed": true },
+        { "displayName": "ArtifactStatus", "internalName": "ArtifactStatus", "type": "Choice", "choices": ["Draft", "Ready for review", "Shared", "Accepted", "Superseded", "Archived"], "default": "Draft", "indexed": true },
+        { "displayName": "ArtifactLink", "internalName": "ArtifactLink", "type": "URL" },
+        { "displayName": "VersionLabel", "internalName": "VersionLabel", "type": "Text" },
+        { "displayName": "EvidenceDate", "internalName": "EvidenceDate", "type": "DateTime", "indexed": true },
+        { "displayName": "ReviewDueDate", "internalName": "ReviewDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "ApprovedForClientUse", "internalName": "ApprovedForClientUse", "type": "Boolean", "default": "0", "indexed": true },
+        { "displayName": "Notes", "internalName": "Notes", "type": "Note" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+      ],
+      "lookupFields": [
+        { "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+        { "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true }
+      ],
+      "views": [
+        { "title": "Active Artifacts", "fields": ["LinkTitle", "ArtifactType", "ArtifactStatus", "OrganizationLookup", "EngagementLookup", "ArtifactLink", "ReviewDueDate", "ItemOwner"], "query": "<Where><And><Neq><FieldRef Name='ArtifactStatus' /><Value Type='Choice'>Archived</Value></Neq><Neq><FieldRef Name='ArtifactStatus' /><Value Type='Choice'>Superseded</Value></Neq></And></Where><OrderBy><FieldRef Name='ReviewDueDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "Proposal / Scope Artifacts", "fields": ["LinkTitle", "ArtifactType", "ArtifactStatus", "OrganizationLookup", "EngagementLookup", "ArtifactLink", "ApprovedForClientUse"], "query": "<Where><Or><Eq><FieldRef Name='ArtifactType' /><Value Type='Choice'>Proposal</Value></Eq><Eq><FieldRef Name='ArtifactType' /><Value Type='Choice'>Scope</Value></Eq></Or></Where><OrderBy><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Handoff Evidence", "fields": ["LinkTitle", "ArtifactType", "ArtifactStatus", "OrganizationLookup", "EngagementLookup", "ArtifactLink", "EvidenceDate"], "query": "<Where><Or><Eq><FieldRef Name='ArtifactType' /><Value Type='Choice'>Handoff packet</Value></Eq><Eq><FieldRef Name='ArtifactType' /><Value Type='Choice'>Evidence</Value></Eq></Or></Where><OrderBy><FieldRef Name='EvidenceDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Review Due", "fields": ["LinkTitle", "ArtifactType", "ArtifactStatus", "ReviewDueDate", "OrganizationLookup", "EngagementLookup", "ArtifactLink"], "query": "<Where><And><Leq><FieldRef Name='ReviewDueDate' /><Value Type='DateTime'><Today /></Value></Leq><Neq><FieldRef Name='ArtifactStatus' /><Value Type='Choice'>Accepted</Value></Neq></And></Where><OrderBy><FieldRef Name='ReviewDueDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100 }
+      ]
+    },
+    {
+      "title": "CRM - Health Reviews",
+      "description": "Periodic account and engagement health snapshots for risk, renewal, expansion, and relationship management.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "ReviewDate", "internalName": "ReviewDate", "type": "DateTime", "indexed": true },
+        { "displayName": "NextReviewDate", "internalName": "NextReviewDate", "type": "DateTime", "indexed": true },
+        { "displayName": "RelationshipHealth", "internalName": "RelationshipHealth", "type": "Choice", "choices": ["Green", "Yellow", "Red", "Unknown"], "default": "Unknown", "indexed": true },
+        { "displayName": "DeliveryHealth", "internalName": "DeliveryHealth", "type": "Choice", "choices": ["Green", "Yellow", "Red", "Unknown", "Not applicable"], "default": "Unknown", "indexed": true },
+        { "displayName": "CommercialHealth", "internalName": "CommercialHealth", "type": "Choice", "choices": ["Green", "Yellow", "Red", "Unknown", "Not applicable"], "default": "Unknown", "indexed": true },
+        { "displayName": "HealthScore", "internalName": "HealthScore", "type": "Number", "indexed": true },
+        { "displayName": "RenewalSignal", "internalName": "RenewalSignal", "type": "Choice", "choices": ["Strong", "Likely", "Unclear", "At risk", "Not applicable"], "default": "Unclear" },
+        { "displayName": "ExpansionSignal", "internalName": "ExpansionSignal", "type": "Choice", "choices": ["Strong", "Possible", "None", "Unknown"], "default": "Unknown", "indexed": true },
+        { "displayName": "RiskSummary", "internalName": "RiskSummary", "type": "Note" },
+        { "displayName": "WinSummary", "internalName": "WinSummary", "type": "Note" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+      ],
+      "lookupFields": [
+        { "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+        { "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true }
+      ],
+      "views": [
+        { "title": "Health Review Queue", "fields": ["LinkTitle", "ReviewDate", "NextReviewDate", "OrganizationLookup", "EngagementLookup", "RelationshipHealth", "DeliveryHealth", "CommercialHealth", "HealthScore", "NextAction"], "query": "<Where><Leq><FieldRef Name='NextReviewDate' /><Value Type='DateTime'><Today /></Value></Leq></Where><OrderBy><FieldRef Name='NextReviewDate' Ascending='TRUE' /><FieldRef Name='HealthScore' Ascending='TRUE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "At Risk Health Reviews", "fields": ["LinkTitle", "OrganizationLookup", "EngagementLookup", "RelationshipHealth", "DeliveryHealth", "CommercialHealth", "HealthScore", "RiskSummary", "NextAction"], "query": "<Where><Or><Or><Eq><FieldRef Name='RelationshipHealth' /><Value Type='Choice'>Red</Value></Eq><Eq><FieldRef Name='DeliveryHealth' /><Value Type='Choice'>Red</Value></Eq></Or><Eq><FieldRef Name='CommercialHealth' /><Value Type='Choice'>Red</Value></Eq></Or></Where><OrderBy><FieldRef Name='HealthScore' Ascending='TRUE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Expansion Signals", "fields": ["LinkTitle", "OrganizationLookup", "EngagementLookup", "ExpansionSignal", "RenewalSignal", "WinSummary", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='ExpansionSignal' /><Value Type='Choice'>Strong</Value></Eq><Eq><FieldRef Name='ExpansionSignal' /><Value Type='Choice'>Possible</Value></Eq></Or></Where><OrderBy><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Health Review History", "fields": ["LinkTitle", "ReviewDate", "OrganizationLookup", "EngagementLookup", "RelationshipHealth", "DeliveryHealth", "CommercialHealth", "HealthScore"], "query": "<OrderBy><FieldRef Name='ReviewDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
+      ]
+    }
+  ],
+  "workflowProof": [
+    "New signals are triaged in CRM - Qualification before becoming a committed engagement.",
+    "Every promised action lives in CRM - Action Queue with an owner, status, priority, and due date.",
+    "Meetings get prep and debrief records so commitments are not trapped in memory.",
+    "Artifacts track proposals, scopes, evidence, and handoff materials without widening sharing.",
+    "Health Reviews provide an explicit risk, renewal, and expansion rhythm for active relationships."
+  ]
+}

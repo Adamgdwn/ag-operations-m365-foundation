@@ -12,6 +12,13 @@ for Guided AI Labs and any future companies underneath AG Operations.
 
 This roadmap is for the human-supervised setup phase. It does not create unattended automation or the future Agentic OS. It prepares Microsoft 365 so a future Agentic OS can safely connect through governed access.
 
+Workspace usability note: for active workspace direction, use
+`docs/START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`, and
+`docs/AGENTIC_M365_READINESS.md`. For the CRM card specifically, use
+`docs/CRM_EXECUTION_PLAN.md` and `docs/CRM_RECOVERY_PLAN.md`. The
+Stage 8A/8B/8C/8D/8E CRM documents remain useful as build provenance, but they no
+longer define the employee-ready CRM completion path.
+
 ## North Star
 
 Microsoft 365 should become the trusted operating substrate:

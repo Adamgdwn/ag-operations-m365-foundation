@@ -1,5 +1,12 @@
 # Microsoft 365 Stage 8D - Functional Workflow Walkthrough
 
+> Superseded for active CRM operating guidance.
+>
+> This document is now historical/provenance for the Stage 8D proof. Use
+> `docs/START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
+> `docs/CRM_ACCEPTANCE_TESTS.md`, and `docs/CRM_RUNBOOK.md` for the current
+> employee-ready CRM completion path.
+
 Status: **internal production workflow proof live-recorded and read-back
 verified** (2026-06-17).
 
@@ -16,6 +23,7 @@ Related:
 - [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
 - [M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md](M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md)
 - [M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md)
+- [M365_STAGE_8E_FRICTIONLESS_CRM_BUSINESS_FLOW.md](M365_STAGE_8E_FRICTIONLESS_CRM_BUSINESS_FLOW.md)
 - [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md)
 - [config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json](config/M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.json)
 
@@ -130,11 +138,40 @@ Quick intake: Intake summary, Person name, Email, Organization
 Triage: Signal type, Priority, What should happen next?, Context / notes, Needs Adam review
 ```
 
+The next browser checkpoint found a smaller but important daily-door friction:
+the Operations Cockpit command cards still treated the title as text and used a
+separate `Open` link below the card. For CRM, the expected behavior is that the
+`CRM` title itself opens the CRM Command Center directly, not a same-page jump or
+another button. The Operations Cockpit publisher was updated and live-refreshed
+on 2026-06-17 so all four command card titles are direct links and the separate
+`Open` links are removed.
+
+The following intake-form browser checkpoint found that the claimed
+frictionless intake experience still exposed implementation fields in the new
+item form, including `SourceMailbox` and `SourceMessageId`. That is not a
+business-development intake experience. The Stage 8C config and formatter were
+corrected to use stable internal field names in the form sections, system/source
+fields were made non-blocking, and the live Stage 8C workflow was reapplied and
+read-only verified. A later browser recheck still showed the raw fields because
+the intake list had content types disabled, so the content-type form formatter
+was attached but not used by NewForm. Content types were enabled on the live
+intake list, the Stage 8C apply script was updated to keep that setting, and the
+verifier now checks `ContentTypesEnabled=True` before accepting the intake form
+as complete. The broader operator design now lives in
+`M365_STAGE_8E_FRICTIONLESS_CRM_BUSINESS_FLOW.md`.
+
 Capture evidence:
 
 ```text
 inventory/stage-8d-functional-workflow-walkthrough/stage-8d-walkthrough-capture-template.csv
 inventory/stage-8d-functional-workflow-walkthrough/stage-8d-findings-register-starter.csv
+inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260617-144536.md
+inventory/gail-sharepoint-portal/gail-operations-portal-20260617-144536.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-145712.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-verify-20260617-150340.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-151631.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-verify-20260617-152413.log
+inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-intake-experience-20260617-152413.csv
 inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-command-center-stage-path.csv
 inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-frictionless-intake-map.csv
 inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-110134.log

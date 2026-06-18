@@ -1,18 +1,18 @@
 # Stage 8C Relationship CRM Operator Workflow Verification
 
-Generated: 2026-06-17 11:27:46
+Generated: 2026-06-17 17:59:07
 
 Result: PASS
 
 Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
-Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-verify-20260617-112546.log
-List CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lists-20260617-112546.csv
-Field CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-fields-20260617-112546.csv
-Lookup CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lookups-20260617-112546.csv
-View CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-views-20260617-112546.csv
-Page CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-pages-20260617-112546.csv
-Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-navigation-20260617-112546.csv
-Intake experience CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-intake-experience-20260617-112546.csv
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-operator-workflow-verify-20260617-175608.log
+List CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lists-20260617-175608.csv
+Field CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-fields-20260617-175608.csv
+Lookup CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-lookups-20260617-175608.csv
+View CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-views-20260617-175608.csv
+Page CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-pages-20260617-175608.csv
+Navigation CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-workflow-navigation-20260617-175608.csv
+Intake experience CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\stage-8c-relationship-crm-operator-workflow\stage-8c-crm-intake-experience-20260617-175608.csv
 
 ## Summary
 
@@ -30,6 +30,9 @@ Intake experience CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace 
 
 | Status | List | View | Has query |
 |---|---|---|---|
+| Present | CRM - New Signals | New Signal Queue | True |
+| Present | CRM - New Signals | Signals Needing Follow-up | True |
+| Present | CRM - New Signals | Converted / Closed Signals | True |
 | Present | CRM - Action Queue | Open CRM Actions | True |
 | Present | CRM - Action Queue | Due / Overdue Actions | True |
 | Present | CRM - Action Queue | Decision / Go-Live Blockers | True |
@@ -49,3 +52,7 @@ Intake experience CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace 
 | Present | CRM - Health Reviews | At Risk Health Reviews | True |
 | Present | CRM - Health Reviews | Expansion Signals | True |
 | Present | CRM - Health Reviews | Health Review History | True |
+| Present | CRM - Closeout Invoice Queue | Closeout / Invoice Watch | True |
+| Present | CRM - Closeout Invoice Queue | Ready to Invoice | True |
+| Present | CRM - Closeout Invoice Queue | Payment Follow-up | True |
+| Present | CRM - Closeout Invoice Queue | Closed Out | True |

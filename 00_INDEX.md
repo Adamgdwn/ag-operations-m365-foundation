@@ -2,16 +2,17 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-17
+Last updated: 2026-06-18
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
 what decision is waiting next.
 
-For fast agent/session restart, read
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md) first. It is the
-compact current-state brief and safety stop for the current Stage 8 command
-center work.
+For current workspace usability work, read [docs/START_HERE.md](docs/START_HERE.md)
+first. It is the active source of truth for the Guided AI Labs operating
+workspace, with CRM treated as one operating card inside the broader card map.
+For fast agent/session restart across the wider M365 foundation, read
+[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 
 ---
 

@@ -1,13 +1,13 @@
 {
-  "version": "2026-06-17-frictionless",
+  "version": "2026-06-17-sharepoint-native",
   "stage": "8C",
   "name": "Relationship CRM Operator Workflow",
   "site": {
     "title": "Guided AI Labs",
     "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
-    "purpose": "Turns the Stage 8A/8B CRM structure into a working operator system with action queue, qualification, meeting notes, artifacts, health reviews, and a CRM command center."
+    "purpose": "Turns the Stage 8A/8B CRM structure into a working SharePoint-native business interface with clean CRM intake, triage, qualification, proposals, delivery, closeout, invoice handoff, and a CRM command center."
   },
-  "approvalPhrase": "apply-stage-8c-crm-workflow",
+  "approvalPhrase": "apply-gail-crm-recovery",
   "safetyLimits": [
     "No permission changes",
     "No guest invitations",
@@ -24,17 +24,18 @@
       "title": "Relationship CRM Command Center",
       "fileName": "Relationship-CRM-Command-Center.aspx",
       "navGroup": "Client Delivery",
-      "role": "Daily command center for triage, CRM stages, open CRM actions, meeting preparation, evidence, health reviews, and handoff readiness.",
+      "role": "Daily command center for business development intake, triage, CRM stages, open actions, meeting preparation, evidence, health reviews, closeout, and invoice handoff readiness.",
       "stagePath": [
-        { "label": "1. Intake", "description": "New internal signals, referrals, support notes, and discovery starts enter here before CRM qualification.", "list": "Guided AI Labs - Intake Register", "view": "Attention Now" },
+        { "label": "1. Capture", "description": "New opportunities, referrals, support signals, discovery starts, and pasted email/context enter here without source-message or mailbox fields.", "list": "CRM - New Signals", "view": "New Signal Queue" },
         { "label": "2. Qualification", "description": "Decide whether the signal is qualified, disqualified, nurture, proposal recommended, or converted.", "list": "CRM - Qualification", "view": "Qualification Triage" },
         { "label": "3. Engagement Pipeline", "description": "Track the relationship stage, package path, decision status, value, probability, and next action.", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
         { "label": "4. Decision / Proposal", "description": "Keep decision blockers, proposal work, and go-live blockers visible until resolved.", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
         { "label": "5. Active Delivery", "description": "Move qualified work into onboarding, active delivery, sustainment, or blocked execution control.", "list": "CRM - Engagements", "view": "Delivery Control" },
-        { "label": "6. Handoff Evidence", "description": "End each workflow with a durable evidence, scope, artifact, or handoff packet pointer.", "list": "CRM - Artifacts", "view": "Handoff Evidence" }
+        { "label": "6. Closeout / Invoice", "description": "Track closeout readiness, acceptance, invoice handoff, payment follow-up, and final evidence links.", "list": "CRM - Closeout Invoice Queue", "view": "Closeout / Invoice Watch" }
       ],
       "directLinks": [
-        { "label": "Intake - Attention Now", "list": "Guided AI Labs - Intake Register", "view": "Attention Now" },
+        { "label": "New Signal Queue", "list": "CRM - New Signals", "view": "New Signal Queue" },
+        { "label": "Signals Needing Follow-up", "list": "CRM - New Signals", "view": "Signals Needing Follow-up" },
         { "label": "Open CRM Actions", "list": "CRM - Action Queue", "view": "Open CRM Actions" },
         { "label": "Due / Overdue Actions", "list": "CRM - Action Queue", "view": "Due / Overdue Actions" },
         { "label": "Qualification Triage", "list": "CRM - Qualification", "view": "Qualification Triage" },
@@ -46,52 +47,85 @@
         { "label": "Proposal / Scope Artifacts", "list": "CRM - Artifacts", "view": "Proposal / Scope Artifacts" },
         { "label": "Handoff Evidence", "list": "CRM - Artifacts", "view": "Handoff Evidence" },
         { "label": "Health Review Queue", "list": "CRM - Health Reviews", "view": "Health Review Queue" },
-        { "label": "At Risk Health Reviews", "list": "CRM - Health Reviews", "view": "At Risk Health Reviews" }
+        { "label": "At Risk Health Reviews", "list": "CRM - Health Reviews", "view": "At Risk Health Reviews" },
+        { "label": "Closeout / Invoice Watch", "list": "CRM - Closeout Invoice Queue", "view": "Closeout / Invoice Watch" },
+        { "label": "Ready to Invoice", "list": "CRM - Closeout Invoice Queue", "view": "Ready to Invoice" },
+        { "label": "Payment Follow-up", "list": "CRM - Closeout Invoice Queue", "view": "Payment Follow-up" }
       ]
     }
   ],
   "intakeExperience": {
-    "title": "Frictionless CRM Intake",
-    "list": "Guided AI Labs - Intake Register",
+    "title": "SharePoint Native CRM Intake",
+    "list": "CRM - New Signals",
     "contentTypeName": "Item",
-    "purpose": "Keep the intake form focused on the few human questions needed to start CRM work. System/source/automation fields stay on the record but are hidden from the new-item form or shown read-only later.",
+    "purpose": "Keep the first business-development intake focused on what Adam actually knows at capture time. This is a clean CRM intake surface; source-mailbox, message-id, automation, and audit fields are not part of this list.",
     "friendlyFieldNames": [
-      { "internalName": "Title", "displayName": "Intake summary" },
-      { "internalName": "RequesterName", "displayName": "Person name" },
-      { "internalName": "RequesterEmail", "displayName": "Email" },
-      { "internalName": "IntakeClass", "displayName": "Signal type" },
-      { "internalName": "NextAction", "displayName": "What should happen next?" },
-      { "internalName": "AgentNotes", "displayName": "Context / notes" },
-      { "internalName": "HumanApprovalRequired", "displayName": "Needs Adam review" }
+      { "internalName": "Title", "displayName": "Signal summary" },
+      { "internalName": "PersonName", "displayName": "Person" },
+      { "internalName": "PersonEmail", "displayName": "Email" },
+      { "internalName": "OrganizationName", "displayName": "Organization" },
+      { "internalName": "SignalType", "displayName": "Signal type" },
+      { "internalName": "SignalStatus", "displayName": "Status" },
+      { "internalName": "NeedSummary", "displayName": "Need / opportunity" },
+      { "internalName": "SourceText", "displayName": "Email or context paste" },
+      { "internalName": "NextAction", "displayName": "Next action" },
+      { "internalName": "FollowUpDueDate", "displayName": "Follow-up date" },
+      { "internalName": "RelatedLink", "displayName": "Related file/link" }
     ],
-    "notRequiredFields": ["ReceivedDate", "ItemOwner"],
+    "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "RelatedLink", "ItemOwner"],
     "formSections": [
       {
-        "displayName": "Quick intake",
-        "fields": ["Intake summary", "Person name", "Email", "Organization"]
+        "displayName": "Capture",
+        "fields": ["Title", "PersonName", "PersonEmail", "OrganizationName", "SignalType", "Priority"]
       },
       {
-        "displayName": "Triage",
-        "fields": ["Signal type", "Priority", "What should happen next?", "Context / notes", "Needs Adam review"]
+        "displayName": "Context",
+        "fields": ["NeedSummary", "SourceText", "NextAction", "FollowUpDueDate", "RelatedLink", "SignalStatus", "ItemOwner"]
       }
     ],
-    "readOnlySystemFields": [
+    "readOnlySystemFields": [],
+    "blockedFieldNames": [
       "SourceMailbox",
       "SourceMessageId",
       "ReceivedDate",
       "IntakeStatus",
-      "ItemOwner",
       "DurableHome",
       "PlannerTaskUrl",
       "CentralOSLink",
       "GraphNodeId",
       "AgentConfidence"
-    ]
+    ],
+    "legacyTechnicalIntakeList": "Guided AI Labs - Intake Register"
   },
   "navigationTargets": [
     { "group": "Client Delivery", "link": "CRM Command Center", "kind": "Page", "target": "Relationship CRM Command Center" }
   ],
   "lists": [
+    {
+      "title": "CRM - New Signals",
+      "description": "Clean SharePoint-native business-development intake for new opportunities, referrals, support signals, discovery starts, and pasted email/context. This is the daily CRM capture surface.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "SignalStatus", "internalName": "SignalStatus", "type": "Choice", "choices": ["New", "Triage", "Waiting on Adam", "Follow-up scheduled", "Qualified", "Nurture", "Disqualified", "Converted", "Closed"], "default": "New", "indexed": true },
+        { "displayName": "SignalType", "internalName": "SignalType", "type": "Choice", "choices": ["Referral", "Website", "Direct outreach", "Existing client", "Partner", "Support signal", "Internal idea", "Email", "Other"], "default": "Referral", "indexed": true },
+        { "displayName": "Priority", "internalName": "Priority", "type": "Choice", "choices": ["Low", "Normal", "High", "Urgent"], "default": "Normal", "indexed": true },
+        { "displayName": "PersonName", "internalName": "PersonName", "type": "Text" },
+        { "displayName": "PersonEmail", "internalName": "PersonEmail", "type": "Text" },
+        { "displayName": "OrganizationName", "internalName": "OrganizationName", "type": "Text", "indexed": true },
+        { "displayName": "NeedSummary", "internalName": "NeedSummary", "type": "Note" },
+        { "displayName": "SourceText", "internalName": "SourceText", "type": "Note" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note" },
+        { "displayName": "FollowUpDueDate", "internalName": "FollowUpDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "RelatedLink", "internalName": "RelatedLink", "type": "URL" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+      ],
+      "lookupFields": [],
+      "views": [
+        { "title": "New Signal Queue", "fields": ["LinkTitle", "SignalStatus", "SignalType", "Priority", "PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='SignalStatus' /><Value Type='Choice'>New</Value></Eq><Eq><FieldRef Name='SignalStatus' /><Value Type='Choice'>Triage</Value></Eq></Or></Where><OrderBy><FieldRef Name='Priority' Ascending='FALSE' /><FieldRef Name='Created' Ascending='FALSE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "Signals Needing Follow-up", "fields": ["LinkTitle", "SignalStatus", "SignalType", "Priority", "OrganizationName", "PersonName", "FollowUpDueDate", "NextAction"], "query": "<Where><And><Leq><FieldRef Name='FollowUpDueDate' /><Value Type='DateTime'><Today /></Value></Leq><Neq><FieldRef Name='SignalStatus' /><Value Type='Choice'>Closed</Value></Neq></And></Where><OrderBy><FieldRef Name='FollowUpDueDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Converted / Closed Signals", "fields": ["LinkTitle", "SignalStatus", "SignalType", "OrganizationName", "PersonName", "Modified"], "query": "<Where><Or><Eq><FieldRef Name='SignalStatus' /><Value Type='Choice'>Converted</Value></Eq><Eq><FieldRef Name='SignalStatus' /><Value Type='Choice'>Closed</Value></Eq></Or></Where><OrderBy><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
+      ]
+    },
     {
       "title": "CRM - Action Queue",
       "description": "Single CRM task queue for follow-ups, proposals, decisions, handoffs, delivery actions, and relationship work.",
@@ -236,13 +270,46 @@
         { "title": "Expansion Signals", "fields": ["LinkTitle", "OrganizationLookup", "EngagementLookup", "ExpansionSignal", "RenewalSignal", "WinSummary", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='ExpansionSignal' /><Value Type='Choice'>Strong</Value></Eq><Eq><FieldRef Name='ExpansionSignal' /><Value Type='Choice'>Possible</Value></Eq></Or></Where><OrderBy><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
         { "title": "Health Review History", "fields": ["LinkTitle", "ReviewDate", "OrganizationLookup", "EngagementLookup", "RelationshipHealth", "DeliveryHealth", "CommercialHealth", "HealthScore"], "query": "<OrderBy><FieldRef Name='ReviewDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
       ]
+    },
+    {
+      "title": "CRM - Closeout Invoice Queue",
+      "description": "SharePoint-native closeout and invoice handoff queue for accepted work, final evidence, invoice readiness, payment follow-up, and operational closure.",
+      "quickLaunch": false,
+      "columns": [
+        { "displayName": "CloseoutStatus", "internalName": "CloseoutStatus", "type": "Choice", "choices": ["Not started", "In progress", "Waiting on client", "Ready to invoice", "Invoice sent", "Payment follow-up", "Paid", "Closed", "Blocked"], "default": "Not started", "indexed": true },
+        { "displayName": "InvoiceStatus", "internalName": "InvoiceStatus", "type": "Choice", "choices": ["Not ready", "Ready", "Sent", "Payment pending", "Paid", "Not billable", "Blocked"], "default": "Not ready", "indexed": true },
+        { "displayName": "PaymentStatus", "internalName": "PaymentStatus", "type": "Choice", "choices": ["Not applicable", "Not requested", "Requested", "Partial", "Paid", "Overdue", "Write off"], "default": "Not applicable", "indexed": true },
+        { "displayName": "DeliveryCompleteDate", "internalName": "DeliveryCompleteDate", "type": "DateTime", "indexed": true },
+        { "displayName": "ClientAcceptanceDate", "internalName": "ClientAcceptanceDate", "type": "DateTime", "indexed": true },
+        { "displayName": "InvoiceDate", "internalName": "InvoiceDate", "type": "DateTime", "indexed": true },
+        { "displayName": "InvoiceDueDate", "internalName": "InvoiceDueDate", "type": "DateTime", "indexed": true },
+        { "displayName": "InvoiceAmount", "internalName": "InvoiceAmount", "type": "Currency" },
+        { "displayName": "InvoiceNumber", "internalName": "InvoiceNumber", "type": "Text" },
+        { "displayName": "InvoiceLink", "internalName": "InvoiceLink", "type": "URL" },
+        { "displayName": "FinalEvidenceLink", "internalName": "FinalEvidenceLink", "type": "URL" },
+        { "displayName": "CloseoutNotes", "internalName": "CloseoutNotes", "type": "Note" },
+        { "displayName": "NextAction", "internalName": "NextAction", "type": "Note" },
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+      ],
+      "lookupFields": [
+        { "displayName": "Organization", "internalName": "OrganizationLookup", "targetList": "CRM - Organizations", "targetField": "Title", "indexed": true },
+        { "displayName": "Engagement", "internalName": "EngagementLookup", "targetList": "CRM - Engagements", "targetField": "Title", "indexed": true }
+      ],
+      "views": [
+        { "title": "Closeout / Invoice Watch", "fields": ["LinkTitle", "CloseoutStatus", "InvoiceStatus", "PaymentStatus", "OrganizationLookup", "EngagementLookup", "DeliveryCompleteDate", "InvoiceDueDate", "InvoiceAmount", "NextAction"], "query": "<Where><And><Neq><FieldRef Name='CloseoutStatus' /><Value Type='Choice'>Closed</Value></Neq><Neq><FieldRef Name='PaymentStatus' /><Value Type='Choice'>Paid</Value></Neq></And></Where><OrderBy><FieldRef Name='InvoiceDueDate' Ascending='TRUE' /><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100, "default": true },
+        { "title": "Ready to Invoice", "fields": ["LinkTitle", "CloseoutStatus", "InvoiceStatus", "OrganizationLookup", "EngagementLookup", "ClientAcceptanceDate", "InvoiceAmount", "InvoiceLink", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='CloseoutStatus' /><Value Type='Choice'>Ready to invoice</Value></Eq><Eq><FieldRef Name='InvoiceStatus' /><Value Type='Choice'>Ready</Value></Eq></Or></Where><OrderBy><FieldRef Name='ClientAcceptanceDate' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Payment Follow-up", "fields": ["LinkTitle", "InvoiceStatus", "PaymentStatus", "OrganizationLookup", "EngagementLookup", "InvoiceDate", "InvoiceDueDate", "InvoiceAmount", "InvoiceNumber", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='PaymentStatus' /><Value Type='Choice'>Overdue</Value></Eq><Eq><FieldRef Name='CloseoutStatus' /><Value Type='Choice'>Payment follow-up</Value></Eq></Or></Where><OrderBy><FieldRef Name='InvoiceDueDate' Ascending='TRUE' /></OrderBy>", "rowLimit": 100 },
+        { "title": "Closed Out", "fields": ["LinkTitle", "CloseoutStatus", "InvoiceStatus", "PaymentStatus", "OrganizationLookup", "EngagementLookup", "FinalEvidenceLink", "InvoiceLink"], "query": "<Where><Eq><FieldRef Name='CloseoutStatus' /><Value Type='Choice'>Closed</Value></Eq></Where><OrderBy><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>", "rowLimit": 100 }
+      ]
     }
   ],
   "workflowProof": [
-    "New signals are triaged in CRM - Qualification before becoming a committed engagement.",
+    "New signals are captured in CRM - New Signals before triage and qualification.",
+    "Qualified signals are triaged in CRM - Qualification before becoming a committed engagement.",
     "Every promised action lives in CRM - Action Queue with an owner, status, priority, and due date.",
     "Meetings get prep and debrief records so commitments are not trapped in memory.",
     "Artifacts track proposals, scopes, evidence, and handoff materials without widening sharing.",
-    "Health Reviews provide an explicit risk, renewal, and expansion rhythm for active relationships."
+    "Health Reviews provide an explicit risk, renewal, and expansion rhythm for active relationships.",
+    "Closeout and invoice handoff work lives in CRM - Closeout Invoice Queue before final closure."
   ]
 }

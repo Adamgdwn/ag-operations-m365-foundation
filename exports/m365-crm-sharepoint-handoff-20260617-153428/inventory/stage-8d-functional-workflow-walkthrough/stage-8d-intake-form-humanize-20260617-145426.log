@@ -1,0 +1,310 @@
+**********************
+PowerShell transcript start
+Start time: 20260617145426
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoLogo -NoProfile -ExecutionPolicy Bypass -
+Process ID: 1316
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> Import-Module PnP.PowerShell -ErrorAction Stop
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> Connect-PnPOnline -Url $site -ClientId $clientId -Interactive -PersistLogin
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $hideFromManualIntake = @(
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $hideFromManualIntake = @(
+  'SourceMailbox',
+  'SourceMessageId',
+  'ReceivedDate',
+  'IntakeStatus',
+  'ItemOwner',
+  'DurableHome',
+  'PlannerTaskUrl',
+  'CentralOSLink',
+  'GraphNodeId',
+  'AgentConfidence'
+)
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $humanFields = @(
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $humanFields = @(
+  'Title',
+  'RequesterName',
+  'RequesterEmail',
+  'Organization',
+  'IntakeClass',
+  'Priority',
+  'AgentNotes',
+  'NextAction',
+  'HumanApprovalRequired'
+)
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $labelMap = @{
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $labelMap = @{
+  Title = 'Intake summary'
+  RequesterName = 'Person name'
+  RequesterEmail = 'Email'
+  IntakeClass = 'Signal type'
+  AgentNotes = 'Paste email / notes'
+  NextAction = 'Best next step'
+  HumanApprovalRequired = 'Needs Adam review'
+}
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> Write-Host 'Humanizing Guided AI Labs intake form...' -ForegroundColor Cyan
+Humanizing Guided AI Labs intake form...
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> foreach ($name in $hideFromManualIntake) {
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> foreach ($name in $hideFromManualIntake) {
+  try {
+    Set-PnPField -List $listTitle -Identity $name -Values @{ Required = $false; ShowInNewForm = $false; ShowInEditForm = $false } | Out-Null
+    Write-Host "  [OK] Hidden/non-required: $name" -ForegroundColor Green
+  }
+  catch {
+    Write-Host "  [warn] Could not hide $name: $($_.Exception.Message)" -ForegroundColor Yellow
+  }
+}
+ParserError:
+Line |
+   7 |      Write-Host "  [warn] Could not hide $name: $($_.Exception.Message …
+     |                                          ~~~~~~
+     | Variable reference is not valid. ':' was not followed by a valid variable name character. Consider using ${} to
+     | delimit the name.
+
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> foreach ($name in $humanFields) {
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> foreach ($name in $humanFields) {
+  $values = @{ ShowInNewForm = $true; ShowInEditForm = $true }
+  if ($labelMap.ContainsKey($name)) { $values.Title = $labelMap[$name] }
+  try {
+    Set-PnPField -List $listTitle -Identity $name -Values $values | Out-Null
+    Write-Host "  [OK] Human field visible: $name" -ForegroundColor Green
+  }
+  catch {
+    Write-Host "  [warn] Could not set visible $name: $($_.Exception.Message)" -ForegroundColor Yellow
+  }
+}
+ParserError:
+Line |
+   9 |      Write-Host "  [warn] Could not set visible $name: $($_.Exception. …
+     |                                                 ~~~~~~
+     | Variable reference is not valid. ':' was not followed by a valid variable name character. Consider using ${} to
+     | delimit the name.
+
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> # Keep the first pass light: only the triage choice fields and human review flag remain required.
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> foreach ($name in @('Title','RequesterName','RequesterEmail','Organization','AgentNotes','NextAction')) {
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> foreach ($name in @('Title','RequesterName','RequesterEmail','Organization','AgentNotes','NextAction')) {
+  try { Set-PnPField -List $listTitle -Identity $name -Values @{ Required = $false } | Out-Null } catch {}
+}
+foreach ($name in @('IntakeClass','Priority','HumanApprovalRequired')) {
+  try { Set-PnPField -List $listTitle -Identity $name -Values @{ Required = $true } | Out-Null } catch {}
+}
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $list = Get-PnPList -Identity $listTitle -Includes EnableAttachments
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> if (-not $list.EnableAttachments) {
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> if (-not $list.EnableAttachments) {
+  Set-PnPList -Identity $listTitle -EnableAttachments $true | Out-Null
+  Write-Host '  [OK] Attachments enabled for uploaded emails/files.' -ForegroundColor Green
+}
+else {
+  Write-Host '  [OK] Attachments already enabled for uploaded emails/files.' -ForegroundColor Green
+}
+  [OK] Attachments already enabled for uploaded emails/files.
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $checkNames = $hideFromManualIntake + $humanFields | Select-Object -Unique
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $rows = foreach ($name in $checkNames) {
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+PS C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup> TerminatingError(): "Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported.""
+Exception calling "ReadLine" with "3" argument(s): "Specified method is not supported."
+>> $global:?
+True
+**********************
+PowerShell transcript end
+End time: 20260617145437
+**********************
