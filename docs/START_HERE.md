@@ -29,6 +29,10 @@ access stay as separate controlled grants.
 ## Active Workspace Docs
 
 - `docs/WORKSPACE_EXECUTION_PLAN.md` - executable chunks for the full usability pass.
+- `docs/COCKPIT_USABILITY_INVENTORY.md` - current cockpit cards, queues, links,
+  navigation, and categories.
+- `docs/COCKPIT_CARD_GAP_LIST.md` - cleanup, card-plan, and access/runbook gaps
+  found in Chunk 2.
 - `docs/AGENTIC_M365_READINESS.md` - recommendations for becoming agentic and AI-centric.
 - `docs/CARD_PLAN_TEMPLATE.md` - repeatable structure for each card deep dive.
 - `docs/CRM_EXECUTION_PLAN.md` - executable chunks for the CRM card.
@@ -64,6 +68,10 @@ It also embeds four live queues:
 The target operating-card map below is broader than the current visual card
 labels. It is the structure we will use for completion, access, onboarding, and
 card-by-card deep dives.
+
+Chunk 2 categorized the current cockpit surface in
+`docs/COCKPIT_USABILITY_INVENTORY.md`. The next workspace chunk is Chunk 3 -
+Card Template And Acceptance Standard.
 
 | Operating card | Current live surface | Primary workflow | Plan status | Completion requirement |
 |---|---|---|---|---|

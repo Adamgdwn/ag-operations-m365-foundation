@@ -8,6 +8,9 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
+Box-up note 2026-06-18: Chunk 2 is committed and pushed. Stop here for the day
+unless Adam explicitly resumes with Chunk 3.
+
 ## Execution Rule
 
 Work one chunk at a time. A chunk is complete only when the listed outputs exist

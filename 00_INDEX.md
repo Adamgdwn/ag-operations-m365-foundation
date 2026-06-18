@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; Stage 8C frictionless command-center/intake refresh live-applied/read-back verified; Stage 8D internal workflow proof live-recorded/read-back verified** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-2 complete/pushed; next is Chunk 3 card template/acceptance standard** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -228,7 +228,7 @@ should not sit waiting for private credentials.
   — remaining Stage 7 closeout sequence for support MFA, app grants, and
   root/legacy site sharing.
 
-### Upcoming work — Stage 8/9 Reference Pattern & Bridge Readiness
+### Current work — Workspace Usability, Stage 8/9 Reference Pattern & Bridge Readiness
 
 - [M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md)
   — planning baseline adapted from the local Prime Operations SharePoint
@@ -303,6 +303,13 @@ should not sit waiting for private credentials.
   set it as the site homepage, removed duplicate daily CRM nav links, embedded
   the four live attention queues, and left `App Grants` as governance rather
   than a live agent connection.
+- [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
+  — Chunk 2 local evidence output categorizing the current cockpit cards,
+  queues, page links, known navigation, superseded surfaces, and controlled
+  governance/admin surfaces.
+- [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md)
+  — Chunk 2 gap list for broad labels, controlled Tools/App Grants surfaces,
+  missing card runbooks, Knowledge/Records visibility, and Access/Onboarding.
 - [inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md](inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md)
   — read-back evidence for the Guided AI Labs homepage cockpit; extra CRM nav
   count is 0 and homepage is `Guided-AI-Labs-Operations-Cockpit.aspx`.
@@ -495,12 +502,14 @@ should not sit waiting for private credentials.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-17.md](SESSION_TURNOVER_2026-06-17.md) — **most recent**
-  handoff: Stage 8D walkthrough capture packet and Stage 9 bridge readiness
-  control packet are local-generated/preflighted, and the Stage 9 bridge
-  posture is live-recorded/read-back verified; next step is browser/manual
-  review from Operations Cockpit to CRM Command Center using internal dummy
-  records only, then Stage 9 app-posture review.
+- [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md) — **most recent**
+  handoff: workspace usability Chunk 2 is complete and pushed; cockpit cards,
+  queues, links, and navigation are categorized from local evidence; next step
+  is Chunk 3, Card Template And Acceptance Standard.
+- [SESSION_TURNOVER_2026-06-17.md](SESSION_TURNOVER_2026-06-17.md) — Stage 8D
+  walkthrough capture packet and Stage 9 bridge readiness control packet are
+  local-generated/preflighted, and the Stage 9 bridge posture is
+  live-recorded/read-back verified.
 - [SESSION_TURNOVER_2026-06-15.md](SESSION_TURNOVER_2026-06-15.md) —
   handoff: Stage 8 workspace skeleton/backing structure are live-built and
   verified; command-center homepage refinement is locally prepared; next live

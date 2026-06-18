@@ -1,6 +1,6 @@
 # Start Here - Token-Friendly Project State
 
-Last updated: 2026-06-17
+Last updated: 2026-06-18
 
 This is the short restart/orientation note for Codex or any agent working in this
 workspace. For current workspace usability work, read `docs/START_HERE.md` first.
@@ -50,6 +50,10 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
+Workspace usability Chunk 1 and Chunk 2 are complete and pushed. Chunk 2
+categorized the current Operations Cockpit cards, queues, links, superseded
+surfaces, and admin-only/controlled governance surfaces from local evidence.
+Next workspace chunk is Chunk 3 - Card Template And Acceptance Standard.
 ```
 
 Completed/design-complete:
@@ -61,39 +65,26 @@ Completed/design-complete:
 - Stage 4: OneDrive/local machine dovetail
 - Stage 5: Exchange/communication routing design
 
-## Current stop point - 2026-06-17
+## Current stop point - 2026-06-18
 
 Stop point for the next session:
 
 ```text
-Stage 8 live SharePoint skeleton and backing structure are built and verified.
-The Guided AI Labs Command Center draft page is live-created and read-back
-verified. Browser review with Adam is next before any homepage promotion
-operator is created or run. Stage 8A Relationship CRM is live-created and
-read-back verified in SharePoint. Stage 8B CRM operational hardening is
-live-applied/read-back verified with lookup fields, operational fields, filtered
-views, operations page, and navigation. Stage 8C CRM operator workflow is
-live-applied/read-back verified with action queue, qualification, meeting notes,
-artifacts, health reviews, command-center page, and navigation. Stage 9
-capability decision, coordinator suggestion, support triage, and bridge
-readiness control posture supervised List-write loops are also recorded in M365.
-Stage 8D internal production proof records were created/read-back verified on
-2026-06-17 with record key `GAIL-INTERNAL-WALKTHROUGH-PROD-20260617`; no
-external sharing, guests, permission changes, app grants, mail sends, public
-Forms, deletes, Dynamics/Dataverse resources, or unattended automation were
-created.
-Adam confirmed the operating model:
-Guided AI Labs is the workplace/source of truth; AG Operations SharePoint
-surfaces are only router/portfolio landing sites. The AG Operations root and
-`/sites/AGOperations` homepages now point to
-`Guided-AI-Labs-Operating-Door.aspx` and link onward to Guided AI Labs. Owner
-access for `adamgoodwin@guidedailabs.com` and `admin@agoperations.ca` now passes
-read-back across all 10 targeted SharePoint sites:
-`inventory/access-repair/SHAREPOINT_OWNER_ACCESS_ALL_SITES_20260615-152220.md`.
-The account/MFA/browser-profile guide is published across the 8 human-facing
-SharePoint sites:
-`inventory/access-repair/LOGIN_ACCOUNT_GUIDE_PUBLISH_20260615-153224.md`.
+Workspace usability Chunk 2 is complete and pushed.
+The current Operations Cockpit has been inventoried from local evidence.
+No live tenant read was needed and no tenant write was performed.
+Next workspace chunk is Chunk 3 - Card Template And Acceptance Standard.
+
+Start with:
+docs/START_HERE.md
+docs/WORKSPACE_EXECUTION_PLAN.md
+docs/COCKPIT_USABILITY_INVENTORY.md
+docs/COCKPIT_CARD_GAP_LIST.md
+docs/CARD_PLAN_TEMPLATE.md
 ```
+
+The most recent handoff is
+[SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md).
 
 Completed live action on 2026-06-15:
 
@@ -122,8 +113,9 @@ Guided-AI-Labs-Command-Center-Draft.aspx
 It does **not** replace the real homepage, change navigation, permissions,
 sharing, guests, app grants, public Forms, deletion, or automation.
 
-Next action: browser-review the draft with Adam. Only then decide whether to
-build a separate promotion operator to make it the real homepage.
+Historical next action from 2026-06-15: browser-review the draft with Adam
+before any homepage promotion operator. The current 2026-06-18 workspace resume
+point is Chunk 3 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
 
 Stage 9 supervised agent loops are now live-proven for Adam's requested governed
 M365 coordinator/support agent capability:
@@ -339,9 +331,9 @@ Not done:
   should be reviewed only if no external community workflow exists.
 - No real partner/client guest invite, external link, or client-facing public
   Form should be issued until the Stage 8 workspace/access decision is approved.
-- Stage 8 look/feel page refinement, homepage composition, and a first
-  end-to-end workflow walkthrough are still next. Do not invite partners/clients
-  or widen access until that workflow and Stage 7 access decisions are reviewed.
+- Stage 8 look/feel and CRM walkthrough work is now provenance for the broader
+  workspace usability pass. Do not invite partners/clients or widen access until
+  card plans, role access, and final usability acceptance are reviewed.
 - Stage 8 page refinement should follow the UAOS/Graphify/SharePoint boundary:
   SharePoint is the governed business workspace and human-facing operating
   surface; UAOS owns mission envelope, approvals, validation, relay, and

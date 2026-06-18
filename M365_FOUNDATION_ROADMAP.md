@@ -13,8 +13,9 @@ for Guided AI Labs and any future companies underneath AG Operations.
 This roadmap is for the human-supervised setup phase. It does not create unattended automation or the future Agentic OS. It prepares Microsoft 365 so a future Agentic OS can safely connect through governed access.
 
 Workspace usability note: for active workspace direction, use
-`docs/START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`, and
-`docs/AGENTIC_M365_READINESS.md`. For the CRM card specifically, use
+`docs/START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`,
+`docs/COCKPIT_USABILITY_INVENTORY.md`, `docs/COCKPIT_CARD_GAP_LIST.md`,
+and `docs/AGENTIC_M365_READINESS.md`. For the CRM card specifically, use
 `docs/CRM_EXECUTION_PLAN.md` and `docs/CRM_RECOVERY_PLAN.md`. The
 Stage 8A/8B/8C/8D/8E CRM documents remain useful as build provenance, but they no
 longer define the employee-ready CRM completion path.
@@ -465,9 +466,11 @@ created and read-back verified on 2026-06-15. Stage 8A Relationship CRM is also
 live-built and read-back verified. Stage 8B Relationship CRM operational
 hardening is live-applied and read-back verified. Stage 8C Relationship CRM
 operator workflow is live-applied and read-back verified. The Guided AI Labs
-Operations Cockpit is now the live homepage, and Stage 8D adds a local-only
-functional walkthrough packet and capture worksheets for browser/manual proof
-before any CRM Teams tabs or additional automation are created. See
+Operations Cockpit is now the live homepage. The broader workspace usability
+pass has completed Chunk 1 and Chunk 2 locally/pushed; Chunk 2 categorized the
+cockpit cards, queues, page links, navigation, superseded surfaces, and
+admin-only/controlled surfaces from local evidence. The next workspace chunk is
+Chunk 3 - Card Template And Acceptance Standard. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
 The live SharePoint shape should also follow the local Prime Operations-inspired
 planning baseline in
