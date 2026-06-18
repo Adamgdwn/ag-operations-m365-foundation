@@ -27,15 +27,16 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunk 1 is complete locally. The next workspace chunk is Chunk 2 - Cockpit
-Usability Inventory.
+Chunk 2 is complete locally. The next workspace chunk is Chunk 3 - Card Template
+And Acceptance Standard.
 
 Chunk status:
 
 | Chunk | Status | Notes |
 |---|---|---|
 | Chunk 1 - Workspace Card Map | Complete locally 2026-06-18 | Card map, active-plan/placeholders, completion requirements, and source-of-truth routing are recorded. |
-| Chunk 2 - Cockpit Usability Inventory | Next | Requires reading or inspecting the current Operations Cockpit and categorizing every visible card, queue, and link. |
+| Chunk 2 - Cockpit Usability Inventory | Complete locally 2026-06-18 | Cockpit cards, queues, page links, and known navigation links are categorized from local evidence. |
+| Chunk 3 - Card Template And Acceptance Standard | Next | Requires validating the template against the card inventory and deciding whether CRM should be the first applied example. |
 
 ## Completion Requirements
 
@@ -158,6 +159,8 @@ Stop conditions:
 
 ## Chunk 2 - Cockpit Usability Inventory
 
+Status: Complete locally 2026-06-18.
+
 Objective:
 
 Read the live or configured Operations Cockpit and list every visible card,
@@ -178,18 +181,19 @@ Actions:
 
 Outputs:
 
-- cockpit inventory evidence
-- card gap list
+- `docs/COCKPIT_USABILITY_INVENTORY.md`
+- `docs/COCKPIT_CARD_GAP_LIST.md`
 
 Acceptance gate:
 
-- Every visible card is categorized as active, needs cleanup, admin-only,
-  superseded, or future.
+- Met. Every visible card, embedded queue, cockpit page link, and known broader
+  navigation link from local evidence is categorized as active, needs cleanup,
+  admin-only/controlled, superseded, or future.
 
 Stop conditions:
 
-- Live SharePoint cannot be read.
-- The page requires a tenant write to inspect.
+- None hit. Local evidence was sufficient, so live SharePoint was not read and
+  no tenant write was required.
 
 ## Chunk 3 - Card Template And Acceptance Standard
 

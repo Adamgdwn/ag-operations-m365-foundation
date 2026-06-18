@@ -11,6 +11,9 @@ what decision is waiting next.
 For current workspace usability work, read [docs/START_HERE.md](docs/START_HERE.md)
 first. It is the active source of truth for the Guided AI Labs operating
 workspace, with CRM treated as one operating card inside the broader card map.
+The current cockpit inventory and gap list are in
+[docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
+and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).
 For fast agent/session restart across the wider M365 foundation, read
 [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 
