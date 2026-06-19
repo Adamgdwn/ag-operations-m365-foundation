@@ -8,7 +8,7 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
-Box-up note 2026-06-19: Chunk 3 is complete and pushed. Stop here unless Adam
+Box-up note 2026-06-19: Chunks 1-3 are complete and pushed. Stop here unless Adam
 explicitly resumes with Chunk 4.
 
 ## Execution Rule
@@ -30,15 +30,15 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunk 3 is complete and pushed. The next workspace chunk is Chunk 4 - Access And
+Chunks 1-3 are complete and pushed. The next workspace chunk is Chunk 4 - Access And
 Onboarding Model.
 
 Chunk status:
 
 | Chunk | Status | Notes |
 |---|---|---|
-| Chunk 1 - Workspace Card Map | Complete locally 2026-06-18 | Card map, active-plan/placeholders, completion requirements, and source-of-truth routing are recorded. |
-| Chunk 2 - Cockpit Usability Inventory | Complete locally 2026-06-18 | Cockpit cards, queues, page links, and known navigation links are categorized from local evidence. |
+| Chunk 1 - Workspace Card Map | Complete and pushed 2026-06-18 | Card map, active-plan/placeholders, completion requirements, and source-of-truth routing are recorded. |
+| Chunk 2 - Cockpit Usability Inventory | Complete and pushed 2026-06-18 | Cockpit cards, queues, page links, and known navigation links are categorized from local evidence. |
 | Chunk 3 - Card Template And Acceptance Standard | Complete and pushed 2026-06-19 | Template hardened, CRM applied example created, and remaining card placeholders recorded in the card-plan index. |
 | Chunk 4 - Access And Onboarding Model | Next | Requires role definitions, operating-access matrix, admin-authority separation, and first-day onboarding instructions. |
 
@@ -86,7 +86,7 @@ Card-deep-dive requirements:
 
 ## Chunk 1 - Workspace Card Map
 
-Status: Complete locally 2026-06-18.
+Status: Complete and pushed 2026-06-18.
 
 Objective:
 
@@ -165,7 +165,7 @@ Stop conditions:
 
 ## Chunk 2 - Cockpit Usability Inventory
 
-Status: Complete locally 2026-06-18.
+Status: Complete and pushed 2026-06-18.
 
 Objective:
 

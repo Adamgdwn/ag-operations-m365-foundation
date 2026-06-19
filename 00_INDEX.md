@@ -509,7 +509,7 @@ should not sit waiting for private credentials.
 ### Session history
 
 - [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
-  handoff: workspace usability Chunk 3 is complete; card template, card-plan
+  handoff: workspace usability Chunks 1-3 are complete and pushed; card template, card-plan
   index, and CRM card-plan example are in place; next step is Chunk 4, Access
   And Onboarding Model.
 - [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)

@@ -50,7 +50,7 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
-Workspace usability Chunks 1-3 are complete. Chunk 2 categorized the current
+Workspace usability Chunks 1-3 are complete and pushed. Chunk 2 categorized the current
 Operations Cockpit cards, queues, links, superseded surfaces, and
 admin-only/controlled governance surfaces from local evidence. Chunk 3 hardened
 the card-plan template, created the card-plan index, and applied CRM as the
@@ -71,7 +71,7 @@ Completed/design-complete:
 Stop point for the next session:
 
 ```text
-Workspace usability Chunk 3 is complete and pushed.
+Workspace usability Chunks 1-3 are complete and pushed.
 The card-plan standard is created and CRM is the first applied example.
 No live tenant read was needed and no tenant write was performed.
 Next workspace chunk is Chunk 4 - Access And Onboarding Model.
