@@ -8,8 +8,8 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
-Box-up note 2026-06-19: Chunks 1-4 are complete and pushed. Stop here unless Adam
-explicitly resumes with Chunk 5.
+Box-up note 2026-06-19: Chunks 1-5 are complete and pushed. Stop here unless Adam
+explicitly resumes with Chunk 6.
 
 ## Execution Rule
 
@@ -30,8 +30,8 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunks 1-4 are complete and pushed. The next workspace chunk is Chunk 5 - Card
-Deep Dives.
+Chunks 1-5 are complete and pushed. The next workspace chunk is Chunk 6 -
+Agentic M365 Readiness Pass.
 
 Chunk status:
 
@@ -41,7 +41,8 @@ Chunk status:
 | Chunk 2 - Cockpit Usability Inventory | Complete and pushed 2026-06-18 | Cockpit cards, queues, page links, and known navigation links are categorized from local evidence. |
 | Chunk 3 - Card Template And Acceptance Standard | Complete and pushed 2026-06-19 | Template hardened, CRM applied example created, and remaining card placeholders recorded in the card-plan index. |
 | Chunk 4 - Access And Onboarding Model | Complete and pushed 2026-06-19 | Role definitions, access levels, card access matrix, first-day onboarding, escalation rules, and admin-only authority are documented. |
-| Chunk 5 - Card Deep Dives | Next | Review each card for workflow, runbook, ownership, access, acceptance tests, and remaining cleanup. |
+| Chunk 5 - Card Deep Dives | Complete and pushed 2026-06-19 | Active card plans were created for Workspace Home, Delivery, Decisions, Tasks, Knowledge, Support, Finance, and Agent Control Plane. |
+| Chunk 6 - Agentic M365 Readiness Pass | Next | Review agentic readiness against the new card plans before any AI/agent expansion. |
 
 ## Completion Requirements
 
@@ -82,8 +83,7 @@ Card-deep-dive requirements:
 - Each card has a functional checklist before it is called done.
 - The CRM card uses `docs/CARD_PLAN_CRM_RELATIONSHIPS.md` and
   `docs/CRM_EXECUTION_PLAN.md`.
-- Other cards start from `docs/CARD_PLAN_TEMPLATE.md` and the placeholders in
-  `docs/CARD_PLAN_INDEX.md`.
+- Other cards use the active plan files recorded in `docs/CARD_PLAN_INDEX.md`.
 
 ## Chunk 1 - Workspace Card Map
 
@@ -282,6 +282,8 @@ Stop conditions:
 
 ## Chunk 5 - Card Deep Dives
 
+Status: Complete and pushed 2026-06-19.
+
 Objective:
 
 Review each card for full function.
@@ -294,26 +296,42 @@ Inputs:
 
 Actions:
 
-1. Review one card at a time.
+1. Review one card at a time. Done for all non-CRM placeholder cards from local
+   evidence.
 2. Define its workflow, lists/libraries/pages, access, runbook, and acceptance
-   tests.
-3. Separate recovery blockers from future enhancements.
-4. Create card-specific execution plans where needed.
+   tests. Done.
+3. Separate recovery blockers from future enhancements. Done.
+4. Create card-specific execution plans where needed. Done.
 
 Outputs:
 
-- card-specific plans and runbooks
-- acceptance tests per card
+- `docs/CARD_PLAN_WORKSPACE_HOME.md`
+- `docs/CARD_PLAN_DELIVERY_PROJECTS.md`
+- `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md`
+- `docs/CARD_PLAN_TASKS_ACTIONS.md`
+- `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md`
+- `docs/CARD_PLAN_SUPPORT_INTAKE.md`
+- `docs/CARD_PLAN_FINANCE_CLOSEOUT.md`
+- `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
+- updated `docs/CARD_PLAN_INDEX.md`
+- updated `docs/START_HERE.md`
+- updated restart/routing docs
 
 Acceptance gate:
 
-- Each card can be handed to a capable employee/operator/partner with login,
-  links, role access, and instructions.
+- Met for documentation and runbook readiness. Each operating card now has an
+  active plan or active model with purpose, workflow, surfaces, owner/cadence,
+  access boundaries, data model, runbook, acceptance test, blockers, future
+  enhancements, and stop conditions. Browser/live-user proof remains the Chunk 7
+  final walkthrough.
 
 Stop conditions:
 
-- A card depends on licensing, app consent, permissions, or automation not yet
-  approved.
+- None hit for this documentation chunk. No live tenant read or write was
+  performed. Future live grants, page/navigation changes, app consent, public
+  forms, production mail, permission changes, deletes, Dynamics/Dataverse,
+  premium Power Platform, or unattended automation remain explicit stop
+  conditions.
 
 ## Chunk 6 - Agentic M365 Readiness Pass
 

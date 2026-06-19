@@ -178,7 +178,7 @@ Human owner:
 
 Backup owner:
 
-- TBD in the access/onboarding chunk.
+- Adam until a CRM backup owner is explicitly delegated.
 
 Review cadence:
 

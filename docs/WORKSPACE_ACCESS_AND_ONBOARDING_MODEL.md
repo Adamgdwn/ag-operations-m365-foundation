@@ -285,7 +285,8 @@ or broader onboarding:
 - `support@changeleadershiptools.com` needs Authenticator/MFA before support
   workflows depend on it.
 - Broad delegated setup grants still need their resting-state decision.
-- Role-specific backup owners remain TBD for most cards.
+- Role-specific backup owners remain delegated later for most cards; current
+  card plans use Adam until a backup owner is explicitly assigned.
 - No non-CRM tenant-writing approval phrase is currently defined for access
   grants or onboarding changes.
 

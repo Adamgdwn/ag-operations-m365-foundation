@@ -1,8 +1,9 @@
 # Cockpit Card Gap List
 
-Date: 2026-06-18
+Date: 2026-06-19
 
-Status: Chunk 2 local output.
+Status: Chunk 5 card plans added; remaining items are acceptance, live read-back,
+or future tenant-change candidates.
 
 Source inventory: `docs/COCKPIT_USABILITY_INVENTORY.md`.
 
@@ -18,25 +19,25 @@ acceptance test obvious.
 
 | Gap | Category | Impact | Next action |
 |---|---|---|---|
-| Operations card is too broad | Needs cleanup | It mixes intake, decisions, agent review, and delivery signals. | Split its meaning in the card plan: Support / Intake, Decisions / Governance, and Tasks / Actions. |
-| Tools card exposes sensitive governance work | Admin-only / controlled | Tool permissions, app grants, and agent setup can imply authority a normal operator should not have. | Define role labels, approval gates, and human owners before expanding use. |
-| Projects In Flight lacks a card runbook | Active but incomplete | Delivery and closeout surfaces exist, but the primary workflow is not yet documented for a new operator. | Create Delivery / Projects card plan from `docs/CARD_PLAN_TEMPLATE.md`. |
-| Knowledge / Records is present mostly through navigation, not a cockpit card | Future / needs card plan | Records, methods, evidence, and archive locations exist but are not yet obvious from the cockpit card set. | Create Knowledge / Records card plan and decide whether cockpit needs a visible records path. |
-| Access / Onboarding is scattered | Needs cleanup | Login Guide, Access Model, External Sharing Rules, and App Grants are separate surfaces without a single first-day path. | Use `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`; future live grants require exact permission read-back. |
+| Operations card is too broad | Needs cleanup | It mixes intake, decisions, agent review, and delivery signals. | Use `docs/CARD_PLAN_SUPPORT_INTAKE.md`, `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md`, and `docs/CARD_PLAN_TASKS_ACTIONS.md` during walkthrough. |
+| Tools card exposes sensitive governance work | Admin-only / controlled | Tool permissions, app grants, and agent setup can imply authority a normal operator should not have. | Use `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`; do not expand use before readiness and approval gates. |
+| Projects In Flight needs live acceptance | Active plan created | Delivery and closeout surfaces exist and now have runbooks, but browser/live-user proof is still pending. | Use `docs/CARD_PLAN_DELIVERY_PROJECTS.md` and `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` in Chunk 7. |
+| Knowledge / Records is present mostly through navigation, not a cockpit card | Active plan created; possible future UX cleanup | Records, methods, evidence, and archive locations exist but may not be obvious from the current top card set. | Use `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md`; decide after walkthrough whether a visible records path is needed. |
+| Access / Onboarding is scattered | Active access model created | Login Guide, Access Model, External Sharing Rules, and App Grants are separate surfaces without a single first-day page. | Use `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`; future live grants require exact permission read-back. |
 
 ## Card By Card Gaps
 
 | Operating card | Current state | Gap | Recommended next chunk |
 |---|---|---|---|
-| Workspace Home | Cockpit is homepage and visible through Start Here / Operations Portal. | Needs a plain operator-facing explanation of which card to open for common work. | Chunk 5 card deep dive or final walkthrough. |
+| Workspace Home | Cockpit is homepage and visible through Start Here / Operations Portal. | Plan exists; first-day browser proof is pending. | Use `docs/CARD_PLAN_WORKSPACE_HOME.md` during Chunk 7. |
 | CRM / Relationships | Strongest current card. CRM Command Center, Open CRM Actions, and Qualification Triage are visible. | CRM recovery still needs its own config/script/operator acceptance chunks. | Continue through `docs/CRM_EXECUTION_PLAN.md` when CRM is selected. |
-| Delivery / Projects | Projects In Flight points to Active Delivery and links delivery control, lifecycle checklist, handoff packets, and client discovery. | Needs purpose, owner, runbook, closeout handoff, and acceptance test. | Chunk 5 card deep dive. |
-| Decisions / Governance | Decision Register and Exceptions exist; App Grants and External Sharing Rules exist. | Governance links are split across Operations, Tools, and navigation. Approval boundaries need operator/admin separation. | Chunk 5 card deep dive using the Chunk 4 access model. |
-| Tasks / Actions | Open CRM Actions is visible; Planner/List task surfaces are implied by delivery and operating state docs. | Source of truth for non-CRM tasks is not obvious from the cockpit. | Chunk 5 card deep dive. |
-| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Client Handoff Packets, and Archive exist. | No visible top cockpit card dedicated to records/search/evidence. | Chunk 5 card deep dive. |
-| Support / Intake | Operations card points to Intake and the Attention Now queue is embedded. | Intake is broad and must not be confused with the clean CRM New Signal path. | Chunk 5 card deep dive; CRM-specific work remains in CRM plan. |
-| Finance / Closeout | Handoff Packets and lifecycle/handoff surfaces exist; CRM plan names closeout invoice queue. | Closeout/invoice workflow is not yet obvious from the cockpit. | CRM recovery and Finance / Closeout card deep dive. |
-| Agent Control Plane | Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, and App Grants are visible. | Needs governed operating rules before broad AI/agent use. | Use `docs/AGENTIC_M365_READINESS.md`; later Chunk 6. |
+| Delivery / Projects | Projects In Flight points to Active Delivery and links delivery control, lifecycle checklist, handoff packets, and client discovery. | Plan exists; browser/live-user proof is pending. | Use `docs/CARD_PLAN_DELIVERY_PROJECTS.md` during Chunk 7. |
+| Decisions / Governance | Decision Register and Exceptions exist; App Grants and External Sharing Rules exist. | Plan exists; approval boundaries still need to be proven in walkthrough. | Use `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md` and Chunk 4 access model. |
+| Tasks / Actions | Open CRM Actions is visible; Planner/List task surfaces are implied by delivery and operating state docs. | Plan exists; source-of-truth routing needs walkthrough proof. | Use `docs/CARD_PLAN_TASKS_ACTIONS.md` during Chunk 7. |
+| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Client Handoff Packets, and Archive exist. | Plan exists; possible cockpit visibility gap remains. | Use `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` during Chunk 7. |
+| Support / Intake | Operations card points to Intake and the Attention Now queue is embedded. | Plan exists; lane separation from clean CRM New Signal needs walkthrough proof. | Use `docs/CARD_PLAN_SUPPORT_INTAKE.md`; CRM-specific work remains in CRM plan. |
+| Finance / Closeout | Handoff Packets and lifecycle/handoff surfaces exist; CRM plan names closeout invoice queue. | Plan exists; handoff/invoice readiness needs walkthrough proof. | Use `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` during Chunk 7. |
+| Agent Control Plane | Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, and App Grants are visible. | Plan exists; broad AI/agent expansion remains blocked until readiness gates mature. | Use `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` and `docs/AGENTIC_M365_READINESS.md`; later Chunk 6. |
 | Access / Onboarding | Login Guide, Access Model, External Sharing Rules, and App Grants exist. | Access model exists; exact live permission targets still need read-back before any grant. | Use `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` during Chunk 5 and final walkthrough. |
 
 ## Cleanup Candidates
@@ -58,11 +59,8 @@ No tenant changes are required to complete Chunk 2.
 
 Likely documentation/runbook-only next work:
 
-- Delivery / Projects card plan.
-- Decisions / Governance card plan.
-- Knowledge / Records card plan.
-- Support / Intake card plan.
-- Agent Control Plane operating rules.
+- Chunk 6 agentic readiness pass using the new Agent Control Plane plan.
+- Chunk 7 final usability walkthrough using each active card plan.
 - Access / Onboarding live permission read-back before any grant.
 
 Possible future tenant changes, only after explicit approval:

@@ -10,6 +10,10 @@ or automated actions.
 
 Workspace card: Agent Control Plane.
 
+Current card plan:
+
+- `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
+
 Current live surfaces:
 
 - Tools card on the Operations Cockpit
@@ -197,9 +201,10 @@ AI increases the value of clean governance and the blast radius of messy access.
 
 ## Recommended Build Order
 
-1. Finish full workspace usability map.
+1. Finish full workspace usability map. Done through Chunk 5 card plans.
 2. Finish CRM card recovery as the first complete operating-card example.
-3. Build card template and acceptance tests for all other cards.
+3. Build card template and acceptance tests for all other cards. Done for
+   workspace usability in `docs/CARD_PLAN_INDEX.md`.
 4. Establish access matrix and onboarding instructions. Done for workspace
    usability in `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`.
 5. Harden records, permissions, labels, and audit.

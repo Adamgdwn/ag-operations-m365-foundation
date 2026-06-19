@@ -35,8 +35,16 @@ access stay as separate controlled grants.
   found in Chunk 2.
 - `docs/AGENTIC_M365_READINESS.md` - recommendations for becoming agentic and AI-centric.
 - `docs/CARD_PLAN_TEMPLATE.md` - repeatable structure for each card deep dive.
-- `docs/CARD_PLAN_INDEX.md` - card-plan standard, placeholder map, and next plan routing.
+- `docs/CARD_PLAN_INDEX.md` - card-plan standard, active plan map, and next acceptance routing.
+- `docs/CARD_PLAN_WORKSPACE_HOME.md` - Workspace Home front-door plan.
 - `docs/CARD_PLAN_CRM_RELATIONSHIPS.md` - first applied card-plan example for CRM.
+- `docs/CARD_PLAN_DELIVERY_PROJECTS.md` - Delivery / Projects plan.
+- `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md` - Decisions / Governance plan.
+- `docs/CARD_PLAN_TASKS_ACTIONS.md` - Tasks / Actions plan.
+- `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` - Knowledge / Records plan.
+- `docs/CARD_PLAN_SUPPORT_INTAKE.md` - Support / Intake plan.
+- `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` - Finance / Closeout plan.
+- `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` - Agent Control Plane plan.
 - `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` - role access matrix, first-day
   onboarding, admin-only boundaries, and escalation rules.
 - `docs/CRM_EXECUTION_PLAN.md` - executable chunks for the CRM card.
@@ -77,19 +85,20 @@ Chunk 2 categorized the current cockpit surface in
 `docs/COCKPIT_USABILITY_INVENTORY.md`. Chunk 3 created the card-plan standard,
 the card-plan index, and the first applied CRM card example. Chunk 4 created
 the access/onboarding model that separates operating access from admin
-authority. The next workspace chunk is Chunk 5 - Card Deep Dives.
+authority. Chunk 5 created active deep-dive plans for the remaining operating
+cards. The next workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
 
 | Operating card | Current live surface | Primary workflow | Plan status | Completion requirement |
 |---|---|---|---|---|
-| Workspace Home | Operations Cockpit homepage, Start Here nav, Login Guide | Open the front door, choose the right card, see live queues. | Placeholder in `docs/CARD_PLAN_INDEX.md` | A capable person can reach the cockpit and choose the right next surface without repo history. |
+| Workspace Home | Operations Cockpit homepage, Start Here nav, Login Guide | Open the front door, choose the right card, see live queues. | Active: `docs/CARD_PLAN_WORKSPACE_HOME.md` | A capable person can reach the cockpit and choose the right next surface without repo history. |
 | CRM / Relationships | CRM card, CRM Command Center, Open CRM Actions, Qualification Triage | Capture signals, qualify, propose, hand off delivery, close out. | Active: `docs/CARD_PLAN_CRM_RELATIONSHIPS.md`; execution in `docs/CRM_EXECUTION_PLAN.md` | CRM runbook and acceptance tests pass with role-appropriate access. |
-| Delivery / Projects | Projects In Flight card, Active Delivery page, Delivery Control, Lifecycle Checklist, Handoff Packets | Run active engagements and internal work from assignment through handoff. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Card plan, owner, runbook, queue, evidence location, and acceptance test are built. |
-| Decisions / Governance | Operations card, Decisions page, Decision Register, App Grants, Exception Register | Record approvals, scope decisions, risks, exceptions, and review dates. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Decision workflow, approval gate, exception handling, and escalation rules are usable. |
-| Tasks / Actions | Operations card, Open CRM Actions queue, Planner/List task surfaces | Track assigned work, due dates, blockers, and completion state. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Task source of truth is clear across cards and does not split daily work invisibly. |
-| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | Find official records, reusable IP, source material, and evidence. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Record locations, permissions, retention posture, and search grounding are clear. |
-| Support / Intake | Operations card, Intake page, Guided AI Labs - Intake Register, Change Leadership Tools Support Register | Capture and triage support requests, internal asks, and client signals. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Support/intake front doors, triage ownership, and handoff rules are defined. |
-| Finance / Closeout | Projects In Flight card, Handoff Packets, CRM Closeout Invoice Queue | Prepare final evidence, closeout notes, invoice readiness, and payment follow-up. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Closeout ownership, evidence, invoice handoff, and blocked-payment escalation are defined. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | Review AI suggestions, approvals, tool scopes, action logs, and rollback notes. | Active readiness map: `docs/AGENTIC_M365_READINESS.md` | Agent actions have a human owner, approval gate, evidence record, and rollback note. |
+| Delivery / Projects | Projects In Flight card, Active Delivery page, Delivery Control, Lifecycle Checklist, Handoff Packets | Run active engagements and internal work from assignment through handoff. | Active: `docs/CARD_PLAN_DELIVERY_PROJECTS.md` | Card plan, owner, runbook, queue, evidence location, and acceptance test are built. |
+| Decisions / Governance | Operations card, Decisions page, Decision Register, App Grants, Exception Register | Record approvals, scope decisions, risks, exceptions, and review dates. | Active: `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md` | Decision workflow, approval gate, exception handling, and escalation rules are usable. |
+| Tasks / Actions | Operations card, Open CRM Actions queue, Planner/List task surfaces | Track assigned work, due dates, blockers, and completion state. | Active: `docs/CARD_PLAN_TASKS_ACTIONS.md` | Task source of truth is clear across cards and does not split daily work invisibly. |
+| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | Find official records, reusable IP, source material, and evidence. | Active: `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Record locations, permissions, retention posture, and search grounding are clear. |
+| Support / Intake | Operations card, Intake page, Guided AI Labs - Intake Register, Change Leadership Tools Support Register | Capture and triage support requests, internal asks, and client signals. | Active: `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Support/intake front doors, triage ownership, and handoff rules are defined. |
+| Finance / Closeout | Projects In Flight card, Handoff Packets, CRM Closeout Invoice Queue | Prepare final evidence, closeout notes, invoice readiness, and payment follow-up. | Active: `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Closeout ownership, evidence, invoice handoff, and blocked-payment escalation are defined. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | Review AI suggestions, approvals, tool scopes, action logs, and rollback notes. | Active: `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`; readiness map: `docs/AGENTIC_M365_READINESS.md` | Agent actions have a human owner, approval gate, evidence record, and rollback note. |
 | Access / Onboarding | Login Guide, Access Model page, External Sharing Rules, App Grants | Grant role-appropriate access and give first-day operating instructions. | Active: `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Employee, operator, trusted partner, and admin authority are separated and documented. |
 
 ## Current Live CRM Path

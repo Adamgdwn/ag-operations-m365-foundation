@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-4 complete/pushed; next is Chunk 5 card deep dives** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-5 complete/pushed; next is Chunk 6 agentic readiness pass** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -313,9 +313,26 @@ should not sit waiting for private credentials.
 - [docs/CARD_PLAN_TEMPLATE.md](docs/CARD_PLAN_TEMPLATE.md)
   — Chunk 3 reusable card-plan structure for operating-card deep dives.
 - [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md)
-  — Chunk 4 card-plan index with the access/onboarding model added.
+  — Chunk 5 card-plan index with active plan routing for all ten operating
+  cards.
+- [docs/CARD_PLAN_WORKSPACE_HOME.md](docs/CARD_PLAN_WORKSPACE_HOME.md)
+  — Chunk 5 Workspace Home front-door plan.
 - [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md)
   — Chunk 3 first applied card-plan example for CRM / Relationships.
+- [docs/CARD_PLAN_DELIVERY_PROJECTS.md](docs/CARD_PLAN_DELIVERY_PROJECTS.md)
+  — Chunk 5 Delivery / Projects plan.
+- [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md)
+  — Chunk 5 Decisions / Governance plan.
+- [docs/CARD_PLAN_TASKS_ACTIONS.md](docs/CARD_PLAN_TASKS_ACTIONS.md)
+  — Chunk 5 Tasks / Actions plan.
+- [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md)
+  — Chunk 5 Knowledge / Records plan.
+- [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md)
+  — Chunk 5 Support / Intake plan.
+- [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md)
+  — Chunk 5 Finance / Closeout plan.
+- [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md)
+  — Chunk 5 Agent Control Plane plan.
 - [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md)
   — Chunk 4 role tiers, operating-card access matrix, first-day onboarding
   walkthrough, escalation rules, and admin-only authority boundary.
@@ -512,9 +529,9 @@ should not sit waiting for private credentials.
 ### Session history
 
 - [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
-  handoff: workspace usability Chunks 1-4 are complete and pushed; card template,
-  CRM card-plan example, and access/onboarding model are in place; next step is
-  Chunk 5, Card Deep Dives.
+  handoff: workspace usability Chunks 1-5 are complete and pushed; card template,
+  CRM card-plan example, access/onboarding model, and the Chunk 5 card plans are
+  in place; next step is Chunk 6, Agentic M365 Readiness Pass.
 - [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)
   — workspace usability Chunk 2 is complete and pushed; cockpit cards, queues,
   links, and navigation are categorized from local evidence.

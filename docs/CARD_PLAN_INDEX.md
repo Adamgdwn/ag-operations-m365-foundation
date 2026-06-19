@@ -2,11 +2,13 @@
 
 Date: 2026-06-19
 
-Status: Chunk 4 access model added; card-plan standard and placeholder map.
+Status: Chunk 5 card deep-dive plans added; browser/live-user acceptance
+evidence remains for the final usability walkthrough.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
-`docs/CARD_PLAN_TEMPLATE.md` for each future card plan.
+the active plan file for each card before granting access, onboarding a person,
+or calling that card operator-ready.
 
 ## Card Plan Standard
 
@@ -25,159 +27,139 @@ A card plan is complete only when it defines:
 
 | Operating card | Current live surface | Plan file | Status | Next action |
 |---|---|---|---|---|
-| Workspace Home | Operations Cockpit homepage, Start Here nav, Login Guide | TBD | Placeholder | Define card chooser standard and first-day orientation during Chunk 5 or final walkthrough. |
+| Workspace Home | Operations Cockpit homepage, Start Here nav, Login Guide | `docs/CARD_PLAN_WORKSPACE_HOME.md` | Active Chunk 5 plan | Run first-day orientation acceptance in final usability walkthrough. |
 | CRM / Relationships | CRM card, CRM Command Center, Open CRM Actions, Qualification Triage | `docs/CARD_PLAN_CRM_RELATIONSHIPS.md` | Active applied example | Continue functional recovery through `docs/CRM_EXECUTION_PLAN.md` when CRM is selected. |
-| Delivery / Projects | Projects In Flight card, Active Delivery, Delivery Control, Lifecycle Checklist, Handoff Packets | TBD | Placeholder | Create Delivery / Projects plan from the template. |
-| Decisions / Governance | Operations card signals, Decisions page, Decision Register, App Grants, Exception Register | TBD | Placeholder | Define approval workflow and separate operator access from governance/admin authority. |
-| Tasks / Actions | Operations card signals, CRM Action Queue, Planner/List task surfaces | TBD | Placeholder | Decide source of truth for non-CRM tasks and daily work queues. |
-| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | TBD | Placeholder | Define record locations, search/use rules, permissions, and archive posture. |
-| Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | TBD | Placeholder | Separate support/intake routing from clean CRM New Signal routing. |
-| Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | TBD | Placeholder | Define closeout evidence, invoice handoff, payment follow-up, and blocked-payment escalation. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | TBD | Placeholder with active readiness map | Use `docs/AGENTIC_M365_READINESS.md` before any AI/agent expansion. |
-| Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model | Use this model before any employee, trusted partner, guest, admin, or service/agent access grant. |
+| Delivery / Projects | Projects In Flight card, Active Delivery, Delivery Control, Lifecycle Checklist, Handoff Packets | `docs/CARD_PLAN_DELIVERY_PROJECTS.md` | Active Chunk 5 plan | Run safe internal delivery/lifecycle acceptance in final walkthrough. |
+| Decisions / Governance | Operations card signals, Decisions page, Decision Register, App Grants, Exception Register | `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md` | Active Chunk 5 plan | Run safe decision/exception acceptance and keep admin authority separated. |
+| Tasks / Actions | Operations card signals, CRM Action Queue, Planner/List task surfaces | `docs/CARD_PLAN_TASKS_ACTIONS.md` | Active Chunk 5 plan | Prove source-of-truth routing for CRM, Planner, intake, support, and agent tasks. |
+| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Active Chunk 5 plan | Prove a role can find approved methods, evidence, restricted material, and archive paths. |
+| Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Active Chunk 5 plan | Prove lane routing between broad intake, support, CRM New Signal, and escalation. |
+| Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Active Chunk 5 plan | Prove handoff, invoice-readiness, payment follow-up, and billing-authority separation. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active Chunk 5 plan with readiness map | Use with `docs/AGENTIC_M365_READINESS.md` before any AI/agent expansion. |
+| Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model | Read back exact live SharePoint groups and permission groups before any grant. |
 
-## Placeholder Notes
+## Chunk 5 Card Notes
 
 ### Workspace Home
 
-Known surfaces:
+Current plan:
 
-- Operations Cockpit homepage
-- Start Here / Operations Portal navigation
-- Login Guide
+- `docs/CARD_PLAN_WORKSPACE_HOME.md`
 
-First plan question:
+First acceptance question:
 
 - Can a new person choose the right card for common work without reading build
   history?
 
-### Delivery / Projects
-
-Known surfaces:
-
-- Projects In Flight card
-- Active Delivery page
-- Delivery Control
-- Lifecycle Checklist
-- Client Handoff Packets
-- Client Discovery
-
-First plan question:
-
-- What is the exact workflow from assigned work to evidence, handoff, and
-  closeout?
-
-### Decisions / Governance
-
-Known surfaces:
-
-- Decision Register
-- Exception Register
-- App Grants
-- External Sharing Rules
-- Tool Permission Review
-
-First plan question:
-
-- Which decisions can an operator record, and which require Adam or admin
-  authority?
-
-### Tasks / Actions
-
-Known surfaces:
-
-- Open CRM Actions
-- Planner / Teams operating plan
-- list-based task queues
-
-First plan question:
-
-- Where should a non-CRM daily task live so work is not split invisibly across
-  Planner, Lists, Teams, and pages?
-
-### Knowledge / Records
-
-Known surfaces:
-
-- Published Methods
-- Delivery Working Documents
-- Readiness Evidence
-- Restricted Build Evidence
-- Archive
-- Methods and IP navigation
-
-First plan question:
-
-- Where should an operator look for official methods, evidence, reusable IP,
-  and historical records?
-
-### Support / Intake
-
-Known surfaces:
-
-- Operations card
-- Intake page
-- Guided AI Labs Intake Register
-- Change Leadership Tools Support Register
-
-First plan question:
-
-- What enters support/intake versus CRM New Signal, and who triages each lane?
-
-### Finance / Closeout
-
-Known surfaces:
-
-- Client Handoff Packets
-- CRM Closeout Invoice Queue
-- Lifecycle Checklist
-- final evidence locations
-
-First plan question:
-
-- What must be true before a handoff is invoice-ready or closed?
-
-### Agent Control Plane
-
-Known surfaces:
-
-- Tools card
-- Agent Action Log
-- Automation Backlog
-- Tool Permission Review
-- Agent Setup
-- App Grants
-
-First plan question:
-
-- Which actions are read-only suggestions, which are drafts, and which are
-  write-capable actions requiring explicit approval and rollback evidence?
-
-### Access / Onboarding
-
-Known surfaces:
-
-- Login Guide
-- Access Model
-- External Sharing Rules
-- App Grants
+### CRM / Relationships
 
 Current plan:
 
-- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` defines role tiers, access
-  levels, operating-card access, first-day onboarding, escalation rules, and
-  admin-only authority.
+- `docs/CARD_PLAN_CRM_RELATIONSHIPS.md`
+- `docs/CRM_EXECUTION_PLAN.md`
 
-First follow-up question:
+First acceptance question:
+
+- Can the clean CRM path create a safe internal New Signal and show it in the
+  expected triage/next-action flow?
+
+### Delivery / Projects
+
+Current plan:
+
+- `docs/CARD_PLAN_DELIVERY_PROJECTS.md`
+
+First acceptance question:
+
+- Can an assigned operator move a safe internal delivery item through status,
+  lifecycle, evidence, handoff, and closeout prep without admin authority?
+
+### Decisions / Governance
+
+Current plan:
+
+- `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md`
+
+First acceptance question:
+
+- Can an operator record or find the right decision while knowing which choices
+  require Adam or admin authority?
+
+### Tasks / Actions
+
+Current plan:
+
+- `docs/CARD_PLAN_TASKS_ACTIONS.md`
+
+First acceptance question:
+
+- Can an operator choose the correct task source of truth and avoid orphan tasks
+  across Planner, Lists, Teams, and agent suggestions?
+
+### Knowledge / Records
+
+Current plan:
+
+- `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md`
+
+First acceptance question:
+
+- Can an operator find official methods, evidence, restricted build material,
+  handoff packets, and archive paths without guessing?
+
+### Support / Intake
+
+Current plan:
+
+- `docs/CARD_PLAN_SUPPORT_INTAKE.md`
+
+First acceptance question:
+
+- Can an operator route broad intake, product support, CRM opportunities, and
+  escalation items into the correct lane?
+
+### Finance / Closeout
+
+Current plan:
+
+- `docs/CARD_PLAN_FINANCE_CLOSEOUT.md`
+
+First acceptance question:
+
+- Can an operator prepare closeout evidence and invoice-readiness notes while
+  Adam retains billing, payment, legal, and client-commitment authority?
+
+### Agent Control Plane
+
+Current plan:
+
+- `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
+- `docs/AGENTIC_M365_READINESS.md`
+
+First acceptance question:
+
+- Can a reviewer classify an AI/agent action as G0-G4 and identify required
+  approval, evidence, and rollback before any write-capable action?
+
+### Access / Onboarding
+
+Current plan:
+
+- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
+
+First acceptance question:
 
 - Which exact live SharePoint groups and permission groups should be used for
   the first employee/operator or trusted partner grant after read-back?
 
-## Chunk 3 Acceptance
+## Chunk 5 Acceptance
 
-Chunk 3 is complete when:
+Chunk 5 is complete when:
 
-- the shared card template is explicit enough to copy for any operating card;
-- CRM is documented as the first applied example;
-- the remaining cards have placeholders and first plan questions;
-- future card deep dives can start without reopening Stage 8 build packet docs.
+- all ten target operating cards have an active plan or active model;
+- every non-CRM placeholder card has a workflow, runbook, access boundary,
+  acceptance test, and stop conditions;
+- recovery blockers are separated from future enhancements;
+- no tenant-writing command has run;
+- final browser/live-user proof is deferred to Chunk 7 unless Adam explicitly
+  approves a read-back or write window.

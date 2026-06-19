@@ -50,13 +50,16 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
-Workspace usability Chunks 1-4 are complete and pushed. Chunk 2 categorized the current
+Workspace usability Chunks 1-5 are complete and pushed. Chunk 2 categorized the current
 Operations Cockpit cards, queues, links, superseded surfaces, and
 admin-only/controlled governance surfaces from local evidence. Chunk 3 hardened
 the card-plan template, created the card-plan index, and applied CRM as the
 first example. Chunk 4 created the access/onboarding model, role tiers,
 card-by-card access matrix, first-day walkthrough, escalation rules, and
-admin-only boundary. Next workspace chunk is Chunk 5 - Card Deep Dives.
+admin-only boundary. Chunk 5 created active card deep-dive plans for Workspace
+Home, Delivery / Projects, Decisions / Governance, Tasks / Actions, Knowledge /
+Records, Support / Intake, Finance / Closeout, and Agent Control Plane. Next
+workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
 ```
 
 Completed/design-complete:
@@ -73,11 +76,12 @@ Completed/design-complete:
 Stop point for the next session:
 
 ```text
-Workspace usability Chunks 1-4 are complete and pushed.
-The card-plan standard is created and CRM is the first applied example.
-The access/onboarding model now separates operating access from admin authority.
-No live tenant read was needed and no tenant write was performed.
-Next workspace chunk is Chunk 5 - Card Deep Dives.
+Workspace usability Chunks 1-5 are complete and pushed.
+The card-plan standard is created, CRM is the first applied example, and all
+remaining non-CRM placeholder cards now have active Chunk 5 plans.
+The access/onboarding model separates operating access from admin authority.
+No live tenant read was needed and no tenant write was performed during Chunk 5.
+Next workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
 
 Start with:
 docs/START_HERE.md
@@ -86,7 +90,15 @@ docs/COCKPIT_USABILITY_INVENTORY.md
 docs/COCKPIT_CARD_GAP_LIST.md
 docs/CARD_PLAN_TEMPLATE.md
 docs/CARD_PLAN_INDEX.md
+docs/CARD_PLAN_WORKSPACE_HOME.md
 docs/CARD_PLAN_CRM_RELATIONSHIPS.md
+docs/CARD_PLAN_DELIVERY_PROJECTS.md
+docs/CARD_PLAN_DECISIONS_GOVERNANCE.md
+docs/CARD_PLAN_TASKS_ACTIONS.md
+docs/CARD_PLAN_KNOWLEDGE_RECORDS.md
+docs/CARD_PLAN_SUPPORT_INTAKE.md
+docs/CARD_PLAN_FINANCE_CLOSEOUT.md
+docs/CARD_PLAN_AGENT_CONTROL_PLANE.md
 docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 ```
 
@@ -122,7 +134,7 @@ sharing, guests, app grants, public Forms, deletion, or automation.
 
 Historical next action from 2026-06-15: browser-review the draft with Adam
 before any homepage promotion operator. The current 2026-06-19 workspace resume
-point is Chunk 5 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
+point is Chunk 6 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
 
 Stage 9 supervised agent loops are now live-proven for Adam's requested governed
 M365 coordinator/support agent capability:
@@ -341,8 +353,9 @@ Not done:
 - Stage 8 look/feel and CRM walkthrough work is now provenance for the broader
   workspace usability pass. The Chunk 4 access model is documented in
   `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`; do not invite
-  partners/clients or widen access until exact live permission targets,
-  card-specific runbooks, and final usability acceptance are reviewed.
+  partners/clients or widen access until exact live permission targets and
+  final usability acceptance are reviewed. Chunk 5 card-specific runbooks now
+  live under `docs/CARD_PLAN_*.md`.
 - Stage 8 page refinement should follow the UAOS/Graphify/SharePoint boundary:
   SharePoint is the governed business workspace and human-facing operating
   surface; UAOS owns mission envelope, approvals, validation, relay, and
