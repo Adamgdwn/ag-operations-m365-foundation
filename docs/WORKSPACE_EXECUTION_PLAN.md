@@ -8,8 +8,8 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
-Box-up note 2026-06-19: Chunks 1-5 are complete and pushed. Stop here unless Adam
-explicitly resumes with Chunk 6.
+Box-up note 2026-06-19: Chunks 1-6 are complete and pushed. Stop here unless Adam
+explicitly resumes with Chunk 7.
 
 ## Execution Rule
 
@@ -30,8 +30,8 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunks 1-5 are complete and pushed. The next workspace chunk is Chunk 6 -
-Agentic M365 Readiness Pass.
+Chunks 1-6 are complete and pushed. The next workspace chunk is Chunk 7 -
+Final Usability Walkthrough.
 
 Chunk status:
 
@@ -42,7 +42,8 @@ Chunk status:
 | Chunk 3 - Card Template And Acceptance Standard | Complete and pushed 2026-06-19 | Template hardened, CRM applied example created, and remaining card placeholders recorded in the card-plan index. |
 | Chunk 4 - Access And Onboarding Model | Complete and pushed 2026-06-19 | Role definitions, access levels, card access matrix, first-day onboarding, escalation rules, and admin-only authority are documented. |
 | Chunk 5 - Card Deep Dives | Complete and pushed 2026-06-19 | Active card plans were created for Workspace Home, Delivery, Decisions, Tasks, Knowledge, Support, Finance, and Agent Control Plane. |
-| Chunk 6 - Agentic M365 Readiness Pass | Next | Review agentic readiness against the new card plans before any AI/agent expansion. |
+| Chunk 6 - Agentic M365 Readiness Pass | Complete and pushed 2026-06-19 | Agentic readiness verdict, governed path, approval pattern, action-log fields, surface lane decisions, and Adam decision queue are documented. |
+| Chunk 7 - Final Usability Walkthrough | Next | Prove the workspace end to end with the active card plans and access/onboarding model. |
 
 ## Completion Requirements
 
@@ -77,6 +78,8 @@ Agentic readiness requirements:
 - Microsoft 365 identity, records, permissions, labels, audit, and connectors are
   prepared before unattended or external-impacting agent work.
 - Agentic recommendations are recorded in `docs/AGENTIC_M365_READINESS.md`.
+- Agentic approval patterns and Adam decision queue are recorded in
+  `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`.
 
 Card-deep-dive requirements:
 
@@ -335,6 +338,8 @@ Stop conditions:
 
 ## Chunk 6 - Agentic M365 Readiness Pass
 
+Status: Complete and pushed 2026-06-19.
+
 Objective:
 
 Prepare the Microsoft 365 environment for safe agentic and AI-centric operation.
@@ -348,25 +353,35 @@ Inputs:
 Actions:
 
 1. Review identity, permissions, data governance, audit, and records posture.
-2. Define agent action log and approval patterns.
+   Done from local Stage 7/9 evidence and Chunk 5 card plans.
+2. Define agent action log and approval patterns. Done.
 3. Decide what stays SharePoint-native, what uses Copilot agents, what uses
-   Copilot connectors, and what waits for custom integrations.
-4. Record licensing, consent, security, and DLP decisions.
+   Copilot connectors, and what waits for custom integrations. Done.
+4. Record licensing, consent, security, and DLP decisions. Done as decision
+   queue and blocked/default posture.
 
 Outputs:
 
-- updated agentic readiness recommendations
-- decision list for Adam
+- updated `docs/AGENTIC_M365_READINESS.md`
+- new `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
+- updated routing/restart docs
 
 Acceptance gate:
 
-- The organization has a governed path from "AI suggests" to "human approves" to
-  "system acts" with evidence and rollback notes.
+- Met for documentation/readiness purposes. Guided AI Labs has a governed path
+  from "AI suggests" to "human approves" to "system acts" through a recorded
+  G0-G4 action model, Agent Action Log fields/statuses, approval pattern,
+  surface lane decisions, licensing/consent/security/DLP decision queue, and
+  explicit stop conditions before any write-capable or external-impacting agent
+  work.
 
 Stop conditions:
 
-- Required licensing, Purview capability, app consent, or admin authority is not
-  available.
+- No blocker prevented the local documentation pass.
+- Required licensing, Purview capability, app consent, admin authority,
+  support MFA, permission-scope design, rollback worksheet, public Forms,
+  connectors, production bridge app, external sends, sharing, guests, deletes,
+  or unattended automation remain stop conditions for future tenant work.
 
 ## Chunk 7 - Final Usability Walkthrough
 

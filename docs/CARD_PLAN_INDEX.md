@@ -2,7 +2,7 @@
 
 Date: 2026-06-19
 
-Status: Chunk 5 card deep-dive plans added; browser/live-user acceptance
+Status: Chunk 6 agentic readiness pass complete; browser/live-user acceptance
 evidence remains for the final usability walkthrough.
 
 This index tracks the operating-card deep dives. The current cockpit has four
@@ -35,7 +35,7 @@ A card plan is complete only when it defines:
 | Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Active Chunk 5 plan | Prove a role can find approved methods, evidence, restricted material, and archive paths. |
 | Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Active Chunk 5 plan | Prove lane routing between broad intake, support, CRM New Signal, and escalation. |
 | Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Active Chunk 5 plan | Prove handoff, invoice-readiness, payment follow-up, and billing-authority separation. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active Chunk 5 plan with readiness map | Use with `docs/AGENTIC_M365_READINESS.md` before any AI/agent expansion. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active plan with Chunk 6 readiness map and decision list | Use with `docs/AGENTIC_M365_READINESS.md` and `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; do not expand AI/agent capability before the listed decisions and stop gates. |
 | Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model | Read back exact live SharePoint groups and permission groups before any grant. |
 
 ## Chunk 5 Card Notes
@@ -135,11 +135,18 @@ Current plan:
 
 - `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
 - `docs/AGENTIC_M365_READINESS.md`
+- `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
 
 First acceptance question:
 
 - Can a reviewer classify an AI/agent action as G0-G4 and identify required
   approval, evidence, and rollback before any write-capable action?
+
+Chunk 6 readiness result:
+
+- Complete for documentation/readiness purposes. The current approved posture is
+  G0/G1 first, supervised approval-gated G2 only, G3 only with Decision Register
+  approval and typed approval phrase, and G4 blocked autonomously.
 
 ### Access / Onboarding
 

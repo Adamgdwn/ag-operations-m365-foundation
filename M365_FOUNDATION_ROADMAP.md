@@ -16,7 +16,8 @@ Workspace usability note: for active workspace direction, use
 `docs/START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`,
 `docs/COCKPIT_USABILITY_INVENTORY.md`, `docs/COCKPIT_CARD_GAP_LIST.md`,
 `docs/CARD_PLAN_INDEX.md`, `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`, and
-`docs/AGENTIC_M365_READINESS.md`. For the CRM card specifically, use
+`docs/AGENTIC_M365_READINESS.md` plus
+`docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`. For the CRM card specifically, use
 `docs/CRM_EXECUTION_PLAN.md` and `docs/CRM_RECOVERY_PLAN.md`. The
 Stage 8A/8B/8C/8D/8E CRM documents remain useful as build provenance, but they no
 longer define the employee-ready CRM completion path.
@@ -468,16 +469,18 @@ live-built and read-back verified. Stage 8B Relationship CRM operational
 hardening is live-applied and read-back verified. Stage 8C Relationship CRM
 operator workflow is live-applied and read-back verified. The Guided AI Labs
 Operations Cockpit is now the live homepage. The broader workspace usability
-pass has completed Chunks 1-5 and pushed them; Chunk 2 categorized the cockpit cards,
-queues, page links, navigation, superseded surfaces, and admin-only/controlled
-surfaces from local evidence. Chunk 3 created the card-plan standard, the
-card-plan index, and the CRM / Relationships card-plan example. Chunk 4 created
-the workspace access/onboarding model, role tiers, operating-card access matrix,
-first-day walkthrough, escalation rules, and admin-only authority boundary. Chunk
-5 created active deep-dive plans for Workspace Home, Delivery / Projects,
-Decisions / Governance, Tasks / Actions, Knowledge / Records, Support / Intake,
-Finance / Closeout, and Agent Control Plane. The next workspace chunk is Chunk 6
-- Agentic M365 Readiness Pass. See
+pass has completed Chunks 1-6 and pushed them; Chunk 2 categorized the cockpit
+cards, queues, page links, navigation, superseded surfaces, and
+admin-only/controlled surfaces from local evidence. Chunk 3 created the
+card-plan standard, the card-plan index, and the CRM / Relationships card-plan
+example. Chunk 4 created the workspace access/onboarding model, role tiers,
+operating-card access matrix, first-day walkthrough, escalation rules, and
+admin-only authority boundary. Chunk 5 created active deep-dive plans for
+Workspace Home, Delivery / Projects, Decisions / Governance, Tasks / Actions,
+Knowledge / Records, Support / Intake, Finance / Closeout, and Agent Control
+Plane. Chunk 6 recorded the agentic readiness verdict, approval pattern,
+surface lane decisions, and Adam decision queue. The next workspace chunk is
+Chunk 7 - Final Usability Walkthrough. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
 The live SharePoint shape should also follow the local Prime Operations-inspired
 planning baseline in

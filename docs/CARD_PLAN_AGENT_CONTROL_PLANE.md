@@ -2,9 +2,10 @@
 
 Date: 2026-06-19
 
-Status: Active Chunk 5 card plan. This plan complements
-`docs/AGENTIC_M365_READINESS.md`; it does not approve app registrations,
-consent, unattended automation, or production bridge work.
+Status: Active card plan with Chunk 6 readiness pass complete. This plan
+complements `docs/AGENTIC_M365_READINESS.md` and
+`docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; it does not approve app
+registrations, consent, unattended automation, or production bridge work.
 
 ## Card Plan Header
 
@@ -44,6 +45,7 @@ unattended automation change.
 Related docs:
 
 - `docs/AGENTIC_M365_READINESS.md`
+- `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
 - `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
 - `config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json`
 - `config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json`

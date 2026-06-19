@@ -34,6 +34,8 @@ access stay as separate controlled grants.
 - `docs/COCKPIT_CARD_GAP_LIST.md` - cleanup, card-plan, and access/runbook gaps
   found in Chunk 2.
 - `docs/AGENTIC_M365_READINESS.md` - recommendations for becoming agentic and AI-centric.
+- `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` - Chunk 6 agentic approval
+  pattern, surface lane decisions, blockers, and Adam decision queue.
 - `docs/CARD_PLAN_TEMPLATE.md` - repeatable structure for each card deep dive.
 - `docs/CARD_PLAN_INDEX.md` - card-plan standard, active plan map, and next acceptance routing.
 - `docs/CARD_PLAN_WORKSPACE_HOME.md` - Workspace Home front-door plan.
@@ -86,7 +88,8 @@ Chunk 2 categorized the current cockpit surface in
 the card-plan index, and the first applied CRM card example. Chunk 4 created
 the access/onboarding model that separates operating access from admin
 authority. Chunk 5 created active deep-dive plans for the remaining operating
-cards. The next workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
+cards. Chunk 6 created the governed agentic readiness verdict and decision
+queue. The next workspace chunk is Chunk 7 - Final Usability Walkthrough.
 
 | Operating card | Current live surface | Primary workflow | Plan status | Completion requirement |
 |---|---|---|---|---|
@@ -98,7 +101,7 @@ cards. The next workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
 | Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | Find official records, reusable IP, source material, and evidence. | Active: `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Record locations, permissions, retention posture, and search grounding are clear. |
 | Support / Intake | Operations card, Intake page, Guided AI Labs - Intake Register, Change Leadership Tools Support Register | Capture and triage support requests, internal asks, and client signals. | Active: `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Support/intake front doors, triage ownership, and handoff rules are defined. |
 | Finance / Closeout | Projects In Flight card, Handoff Packets, CRM Closeout Invoice Queue | Prepare final evidence, closeout notes, invoice readiness, and payment follow-up. | Active: `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Closeout ownership, evidence, invoice handoff, and blocked-payment escalation are defined. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | Review AI suggestions, approvals, tool scopes, action logs, and rollback notes. | Active: `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`; readiness map: `docs/AGENTIC_M365_READINESS.md` | Agent actions have a human owner, approval gate, evidence record, and rollback note. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | Review AI suggestions, approvals, tool scopes, action logs, and rollback notes. | Active: `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`; readiness map: `docs/AGENTIC_M365_READINESS.md`; decision list: `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` | Agent actions have a human owner, approval gate, evidence record, and rollback note. |
 | Access / Onboarding | Login Guide, Access Model page, External Sharing Rules, App Grants | Grant role-appropriate access and give first-day operating instructions. | Active: `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Employee, operator, trusted partner, and admin authority are separated and documented. |
 
 ## Current Live CRM Path
@@ -151,4 +154,5 @@ For the full workspace usability pass, work from
 For a CRM-specific chunk, work from `docs/CRM_EXECUTION_PLAN.md`.
 
 For agentic and AI-centric Microsoft 365 recommendations, work from
-`docs/AGENTIC_M365_READINESS.md`.
+`docs/AGENTIC_M365_READINESS.md` and
+`docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`.

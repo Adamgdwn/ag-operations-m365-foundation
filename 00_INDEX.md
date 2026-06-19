@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-5 complete/pushed; next is Chunk 6 agentic readiness pass** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-6 complete/pushed; next is Chunk 7 final usability walkthrough** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -441,6 +441,11 @@ should not sit waiting for private credentials.
   — M365/Graphify/UAOS bridge readiness: adapter surface map,
   read/propose/write categories, app posture, action logging, stop/rollback
   rules, low-risk bridge-loop exit criteria, and current bridge control packet.
+- [docs/AGENTIC_M365_READINESS.md](docs/AGENTIC_M365_READINESS.md)
+  — workspace-level agentic readiness map for the Agent Control Plane card.
+- [docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md](docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md)
+  — Chunk 6 readiness verdict, G0-G4 approval pattern, surface lane decisions,
+  and Adam decision queue before AI/agent expansion.
 - [config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json](config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json)
   — machine-readable Stage 9 readiness control model for adapter contracts, app
   posture choices, risk controls, and graduation gates.
@@ -529,9 +534,10 @@ should not sit waiting for private credentials.
 ### Session history
 
 - [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
-  handoff: workspace usability Chunks 1-5 are complete and pushed; card template,
-  CRM card-plan example, access/onboarding model, and the Chunk 5 card plans are
-  in place; next step is Chunk 6, Agentic M365 Readiness Pass.
+  handoff: workspace usability Chunks 1-6 are complete and pushed; card
+  template, CRM card-plan example, access/onboarding model, Chunk 5 card plans,
+  and Chunk 6 agentic readiness decisions are in place; next step is Chunk 7,
+  Final Usability Walkthrough.
 - [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)
   — workspace usability Chunk 2 is complete and pushed; cockpit cards, queues,
   links, and navigation are categorized from local evidence.

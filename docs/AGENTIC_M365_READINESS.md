@@ -2,7 +2,8 @@
 
 Date: 2026-06-19
 
-Status: Active recommendation map for becoming agentic and AI-centric.
+Status: Active recommendation map for becoming agentic and AI-centric. Chunk 6
+readiness pass complete and ready for final workspace walkthrough use.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -13,6 +14,10 @@ Workspace card: Agent Control Plane.
 Current card plan:
 
 - `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
+
+Current Chunk 6 decision list:
+
+- `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
 
 Current live surfaces:
 
@@ -29,6 +34,13 @@ Agentic readiness is not complete until AI suggestions, approvals, write-capable
 actions, evidence, and rollback notes can be reviewed through these operating
 surfaces by a role-appropriate human owner.
 
+Chunk 6 acceptance gate:
+
+Guided AI Labs has a governed documented path from "AI suggests" to "human
+approves" to "system acts" with action-log evidence, Decision Register approval
+when required, and rollback/pause notes before write-capable or external-impact
+work.
+
 ## Guiding Model
 
 Microsoft 365 should become the governed operating substrate:
@@ -40,6 +52,54 @@ identity -> records -> permissions -> signals -> recommendations -> approvals ->
 AI should first produce recommendations and drafts. Write-capable agents should
 come later, after approval gates, logs, rollback notes, and permission boundaries
 are proven.
+
+## Chunk 6 Readiness Verdict
+
+Current approved posture:
+
+- G0 read-only review, classification, summarization, and gap detection are the
+  safe starting point.
+- G1 propose-and-log work may create or prepare Agent Action Log suggestions
+  only inside the existing supervised pattern.
+- G2 internal writes remain supervised, approval-gated, and evidence-backed.
+- G3 external/access writes require Decision Register approval, a typed approval
+  phrase, and read-back evidence.
+- G4 autonomous actions remain blocked.
+
+Current blocked posture:
+
+- no production UAOS/M365 bridge app;
+- no app registration, consent grant, or selected permission grant;
+- no Exchange Application RBAC support adapter;
+- no public/client Forms publishing;
+- no external sends, guest invites, sharing changes, permission changes, tenant
+  policy changes, deletes, or unattended automation;
+- no reuse of broad setup-helper grants as production bridge capability.
+
+No live tenant read or write was performed during Chunk 6. This pass used local
+Stage 7 governance evidence, Stage 9 bridge-readiness evidence, the Chunk 5 card
+plans, and the access/onboarding model.
+
+## Governed Path
+
+Use this operating path for every AI/agent action:
+
+```text
+source record -> G0-G4 classification -> proposed action -> human owner ->
+approval check -> execution, if allowed -> evidence link -> rollback/pause note
+```
+
+Default lane:
+
+- SharePoint-native pages, Lists, libraries, Planner, Teams, and Exchange remain
+  the first operating substrate.
+- Copilot agents should start as read-only retrieval and drafting helpers after
+  records and access are reviewed.
+- Copilot connectors should wait until an external system has a named owner,
+  clear ACL mapping, and a Decision Register approval.
+- Power Platform, Copilot Studio, custom actions, and custom UAOS integrations
+  wait until DLP, licensing, environment ownership, approval gates, and rollback
+  paths are decided.
 
 ## Recommendations
 
@@ -105,6 +165,34 @@ Needed:
 - separate statuses for suggested, approved, executed, failed, reverted, and
   retired.
 
+Chunk 6 minimum fields:
+
+- action title;
+- action date;
+- actor or agent surface;
+- source link;
+- affected card or surface;
+- governance level;
+- action type;
+- status;
+- human owner;
+- approver when approved;
+- result;
+- evidence link;
+- rollback, pause, rejection, or superseded note.
+
+Recommended status flow:
+
+```text
+Suggested -> Needs Review -> Approved -> Executed -> Verified
+```
+
+Alternative closure states:
+
+```text
+Rejected | Superseded | Failed | Reverted
+```
+
 Why it matters:
 
 The organization needs memory of what agents suggested and what humans allowed.
@@ -121,6 +209,16 @@ Needed:
 Why it matters:
 
 Agentic work should be auditable and reversible, not vibes plus scripts.
+
+Chunk 6 approval pattern:
+
+| Level | Action posture | Required gate | Evidence |
+|---|---|---|---|
+| G0 | Read only. | Role-appropriate read access. | Optional action-log note when the review changes a decision or blocker. |
+| G1 | Propose and log. | Source, owner, affected card, and no restricted action. | Agent Action Log row with status `Suggested`. |
+| G2 | Approved internal write. | Named human approval and rollback note. | Agent Action Log plus target List/task/draft/evidence link. |
+| G3 | Restricted external or access write. | Decision Register approval and typed approval phrase. | Decision Register, Agent Action Log, and read-back/transcript evidence. |
+| G4 | Blocked autonomous action. | Separate Adam decision for a controlled project, if ever. | Decision Register only; do not execute from this readiness pass. |
 
 ### 6. Copilot Agents
 
@@ -207,11 +305,14 @@ AI increases the value of clean governance and the blast radius of messy access.
    workspace usability in `docs/CARD_PLAN_INDEX.md`.
 4. Establish access matrix and onboarding instructions. Done for workspace
    usability in `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`.
-5. Harden records, permissions, labels, and audit.
-6. Prove Agent Action Log and Decision Register workflow.
-7. Pilot read-only recommendation agents.
-8. Add connector-grounded knowledge where SharePoint is not enough.
-9. Add write-capable agents only behind explicit approval gates.
+5. Establish the agentic decision list and governed path. Done for Chunk 6 in
+   `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`.
+6. Harden records, permissions, labels, and audit before broader Copilot use.
+7. Prove Agent Action Log and Decision Register workflow during the final
+   workspace walkthrough and any future supervised loops.
+8. Pilot read-only recommendation agents.
+9. Add connector-grounded knowledge where SharePoint is not enough.
+10. Add write-capable agents only behind explicit approval gates.
 
 ## Microsoft 365 Surfaces To Evaluate
 
@@ -232,13 +333,38 @@ AI increases the value of clean governance and the blast radius of messy access.
 
 ## Open Decisions
 
-- Which Microsoft 365 licensing path is worth paying for first.
-- Whether Copilot will be used as a daily employee tool, an admin-only tool, or a
-  staged pilot.
-- Which external data sources deserve connectors.
-- Whether agent actions should remain SharePoint/List writes first.
-- Which partner/operator roles can use AI features.
-- What content is too sensitive for broad Copilot grounding.
+Chunk 6 decision queue lives in
+`docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`.
+
+Highest-priority open decisions:
+
+- Whether to keep Security Defaults or move to Business Premium / Entra P1
+  Conditional Access.
+- Resting state for broad setup-helper grants, especially
+  `agent-pnp-provisioning`.
+- Support MFA before mailbox adapter or support draft loops.
+- Permission-scope design and rollback worksheet before selected permissions or
+  Exchange Application RBAC.
+- Copilot pilot scope: read-only internal retrieval/drafting first, not
+  write-capable custom actions.
+- Which content is too sensitive for broad Copilot grounding.
+- Whether any external source deserves a Copilot connector after ACL mapping.
+
+## Chunk 6 Acceptance Test
+
+Given a proposed AI/agent action, Adam can now answer:
+
+1. Is it G0, G1, G2, G3, or G4?
+2. Which card owns the source record?
+3. Which human owns the action?
+4. What approval is required before anything writes, sends, grants, shares, or
+   deletes?
+5. Where will evidence be recorded?
+6. What is the rollback, pause, rejection, or superseded note?
+7. Which stop condition prevents execution today?
+
+Chunk 6 is complete for documentation/readiness purposes. Browser/live-user
+proof of the Agent Control Plane still belongs in Chunk 7.
 
 ## Current Official References
 

@@ -50,7 +50,7 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
-Workspace usability Chunks 1-5 are complete and pushed. Chunk 2 categorized the current
+Workspace usability Chunks 1-6 are complete and pushed. Chunk 2 categorized the current
 Operations Cockpit cards, queues, links, superseded surfaces, and
 admin-only/controlled governance surfaces from local evidence. Chunk 3 hardened
 the card-plan template, created the card-plan index, and applied CRM as the
@@ -58,8 +58,10 @@ first example. Chunk 4 created the access/onboarding model, role tiers,
 card-by-card access matrix, first-day walkthrough, escalation rules, and
 admin-only boundary. Chunk 5 created active card deep-dive plans for Workspace
 Home, Delivery / Projects, Decisions / Governance, Tasks / Actions, Knowledge /
-Records, Support / Intake, Finance / Closeout, and Agent Control Plane. Next
-workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
+Records, Support / Intake, Finance / Closeout, and Agent Control Plane. Chunk 6
+recorded the agentic readiness verdict, G0-G4 approval pattern, surface lane
+decisions, and Adam decision queue. Next workspace chunk is Chunk 7 - Final
+Usability Walkthrough.
 ```
 
 Completed/design-complete:
@@ -76,12 +78,15 @@ Completed/design-complete:
 Stop point for the next session:
 
 ```text
-Workspace usability Chunks 1-5 are complete and pushed.
+Workspace usability Chunks 1-6 are complete and pushed.
 The card-plan standard is created, CRM is the first applied example, and all
 remaining non-CRM placeholder cards now have active Chunk 5 plans.
 The access/onboarding model separates operating access from admin authority.
-No live tenant read was needed and no tenant write was performed during Chunk 5.
-Next workspace chunk is Chunk 6 - Agentic M365 Readiness Pass.
+The agentic readiness pass records what can stay SharePoint-native, what can
+use read-only/draft Copilot-style help later, what waits for connectors, and
+what remains blocked until custom integration decisions.
+No live tenant read was needed and no tenant write was performed during Chunk 6.
+Next workspace chunk is Chunk 7 - Final Usability Walkthrough.
 
 Start with:
 docs/START_HERE.md
@@ -100,6 +105,8 @@ docs/CARD_PLAN_SUPPORT_INTAKE.md
 docs/CARD_PLAN_FINANCE_CLOSEOUT.md
 docs/CARD_PLAN_AGENT_CONTROL_PLANE.md
 docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
+docs/AGENTIC_M365_READINESS.md
+docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
 ```
 
 The most recent handoff is
@@ -134,7 +141,7 @@ sharing, guests, app grants, public Forms, deletion, or automation.
 
 Historical next action from 2026-06-15: browser-review the draft with Adam
 before any homepage promotion operator. The current 2026-06-19 workspace resume
-point is Chunk 6 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
+point is Chunk 7 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
 
 Stage 9 supervised agent loops are now live-proven for Adam's requested governed
 M365 coordinator/support agent capability:
