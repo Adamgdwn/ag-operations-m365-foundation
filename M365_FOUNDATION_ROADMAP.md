@@ -467,10 +467,11 @@ live-built and read-back verified. Stage 8B Relationship CRM operational
 hardening is live-applied and read-back verified. Stage 8C Relationship CRM
 operator workflow is live-applied and read-back verified. The Guided AI Labs
 Operations Cockpit is now the live homepage. The broader workspace usability
-pass has completed Chunk 1 and Chunk 2 locally/pushed; Chunk 2 categorized the
-cockpit cards, queues, page links, navigation, superseded surfaces, and
-admin-only/controlled surfaces from local evidence. The next workspace chunk is
-Chunk 3 - Card Template And Acceptance Standard. See
+pass has completed Chunks 1-3 locally; Chunk 2 categorized the cockpit cards,
+queues, page links, navigation, superseded surfaces, and admin-only/controlled
+surfaces from local evidence. Chunk 3 created the card-plan standard, the
+card-plan index, and the CRM / Relationships card-plan example. The next
+workspace chunk is Chunk 4 - Access And Onboarding Model. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
 The live SharePoint shape should also follow the local Prime Operations-inspired
 planning baseline in

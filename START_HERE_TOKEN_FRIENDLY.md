@@ -1,6 +1,6 @@
 # Start Here - Token-Friendly Project State
 
-Last updated: 2026-06-18
+Last updated: 2026-06-19
 
 This is the short restart/orientation note for Codex or any agent working in this
 workspace. For current workspace usability work, read `docs/START_HERE.md` first.
@@ -50,10 +50,11 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
-Workspace usability Chunk 1 and Chunk 2 are complete and pushed. Chunk 2
-categorized the current Operations Cockpit cards, queues, links, superseded
-surfaces, and admin-only/controlled governance surfaces from local evidence.
-Next workspace chunk is Chunk 3 - Card Template And Acceptance Standard.
+Workspace usability Chunks 1-3 are complete. Chunk 2 categorized the current
+Operations Cockpit cards, queues, links, superseded surfaces, and
+admin-only/controlled governance surfaces from local evidence. Chunk 3 hardened
+the card-plan template, created the card-plan index, and applied CRM as the
+first example. Next workspace chunk is Chunk 4 - Access And Onboarding Model.
 ```
 
 Completed/design-complete:
@@ -65,15 +66,15 @@ Completed/design-complete:
 - Stage 4: OneDrive/local machine dovetail
 - Stage 5: Exchange/communication routing design
 
-## Current stop point - 2026-06-18
+## Current stop point - 2026-06-19
 
 Stop point for the next session:
 
 ```text
-Workspace usability Chunk 2 is complete and pushed.
-The current Operations Cockpit has been inventoried from local evidence.
+Workspace usability Chunk 3 is complete locally.
+The card-plan standard is created and CRM is the first applied example.
 No live tenant read was needed and no tenant write was performed.
-Next workspace chunk is Chunk 3 - Card Template And Acceptance Standard.
+Next workspace chunk is Chunk 4 - Access And Onboarding Model.
 
 Start with:
 docs/START_HERE.md
@@ -81,10 +82,12 @@ docs/WORKSPACE_EXECUTION_PLAN.md
 docs/COCKPIT_USABILITY_INVENTORY.md
 docs/COCKPIT_CARD_GAP_LIST.md
 docs/CARD_PLAN_TEMPLATE.md
+docs/CARD_PLAN_INDEX.md
+docs/CARD_PLAN_CRM_RELATIONSHIPS.md
 ```
 
 The most recent handoff is
-[SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md).
+[SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md).
 
 Completed live action on 2026-06-15:
 
@@ -114,8 +117,8 @@ It does **not** replace the real homepage, change navigation, permissions,
 sharing, guests, app grants, public Forms, deletion, or automation.
 
 Historical next action from 2026-06-15: browser-review the draft with Adam
-before any homepage promotion operator. The current 2026-06-18 workspace resume
-point is Chunk 3 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
+before any homepage promotion operator. The current 2026-06-19 workspace resume
+point is Chunk 4 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
 
 Stage 9 supervised agent loops are now live-proven for Adam's requested governed
 M365 coordinator/support agent capability:

@@ -1,6 +1,6 @@
 # Workspace Execution Plan
 
-Date: 2026-06-18
+Date: 2026-06-19
 
 Status: Active chunk plan for full workspace usability.
 
@@ -8,8 +8,8 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
-Box-up note 2026-06-18: Chunk 2 is committed and pushed. Stop here for the day
-unless Adam explicitly resumes with Chunk 3.
+Box-up note 2026-06-19: Chunk 3 is complete locally. Commit and push the chunk
+snapshot before starting Chunk 4.
 
 ## Execution Rule
 
@@ -30,8 +30,8 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunk 2 is complete locally. The next workspace chunk is Chunk 3 - Card Template
-And Acceptance Standard.
+Chunk 3 is complete locally. The next workspace chunk is Chunk 4 - Access And
+Onboarding Model.
 
 Chunk status:
 
@@ -39,7 +39,8 @@ Chunk status:
 |---|---|---|
 | Chunk 1 - Workspace Card Map | Complete locally 2026-06-18 | Card map, active-plan/placeholders, completion requirements, and source-of-truth routing are recorded. |
 | Chunk 2 - Cockpit Usability Inventory | Complete locally 2026-06-18 | Cockpit cards, queues, page links, and known navigation links are categorized from local evidence. |
-| Chunk 3 - Card Template And Acceptance Standard | Next | Requires validating the template against the card inventory and deciding whether CRM should be the first applied example. |
+| Chunk 3 - Card Template And Acceptance Standard | Complete locally 2026-06-19 | Template hardened, CRM applied example created, and remaining card placeholders recorded in the card-plan index. |
+| Chunk 4 - Access And Onboarding Model | Next | Requires role definitions, operating-access matrix, admin-authority separation, and first-day onboarding instructions. |
 
 ## Completion Requirements
 
@@ -78,8 +79,10 @@ Agentic readiness requirements:
 Card-deep-dive requirements:
 
 - Each card has a functional checklist before it is called done.
-- The CRM card uses `docs/CRM_EXECUTION_PLAN.md`.
-- Other cards get their own focused plans as Adam reviews them.
+- The CRM card uses `docs/CARD_PLAN_CRM_RELATIONSHIPS.md` and
+  `docs/CRM_EXECUTION_PLAN.md`.
+- Other cards start from `docs/CARD_PLAN_TEMPLATE.md` and the placeholders in
+  `docs/CARD_PLAN_INDEX.md`.
 
 ## Chunk 1 - Workspace Card Map
 
@@ -200,6 +203,8 @@ Stop conditions:
 
 ## Chunk 3 - Card Template And Acceptance Standard
 
+Status: Complete locally 2026-06-19.
+
 Objective:
 
 Create one repeatable template for each card's deep dive.
@@ -214,22 +219,25 @@ Actions:
 
 1. Create a card-plan template with purpose, users, access, data model,
    workflow, runbook, acceptance tests, agentic opportunities, and stop
-   conditions.
-2. Apply the template to CRM as the example.
-3. Leave placeholders for other cards.
+   conditions. Done.
+2. Apply the template to CRM as the example. Done.
+3. Leave placeholders for other cards. Done.
 
 Outputs:
 
 - `docs/CARD_PLAN_TEMPLATE.md`
-- optional card-specific skeleton docs
+- `docs/CARD_PLAN_INDEX.md`
+- `docs/CARD_PLAN_CRM_RELATIONSHIPS.md`
 
 Acceptance gate:
 
-- Each future card deep dive can start from the same structure.
+- Met. Each future card deep dive can start from the same structure, and the
+  CRM example shows how to separate operator readiness, access boundaries,
+  data model, runbook, acceptance evidence, and stop conditions.
 
 Stop conditions:
 
-- The card list changes materially during review.
+- None hit. The card list did not change materially during review.
 
 ## Chunk 4 - Access And Onboarding Model
 

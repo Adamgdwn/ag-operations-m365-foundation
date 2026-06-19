@@ -1,10 +1,26 @@
 # Card Plan Template
 
-Date: 2026-06-18
+Date: 2026-06-19
 
 Status: Active template for operating-card deep dives.
 
-Copy this structure when Adam reviews a card for full function.
+Use this structure when Adam reviews a card for full function. A card plan is
+not a build-history summary. It is the operating standard for a capable
+employee, operator, or trusted partner who needs to do useful work from the
+Operations Cockpit without reading repo history.
+
+## How To Use This Template
+
+1. Copy this structure into a card-specific plan.
+2. Replace every `TBD` before the card is called operator-ready.
+3. Keep future enhancements separate from completion blockers.
+4. Keep tenant/global admin authority separate from operating access.
+5. Stop before any permission, sharing, app consent, public form, production
+   mail, delete, Dynamics, Dataverse, premium Power Platform, or unattended
+   automation change unless the active execution plan has an approval phrase for
+   that exact work.
+
+## Card Plan Header
 
 ## Card Name
 
@@ -16,15 +32,26 @@ Owner:
 
 Primary users:
 
+Primary workflow:
+
 Current live surface:
 
 Plan status:
 
 Completion gate:
 
+Related docs:
+
+- TBD
+
 ## Purpose
 
 What this card helps a capable employee, operator, or trusted partner do.
+
+## Operator Promise
+
+A one-paragraph statement of what a new role-appropriate person should be able
+to accomplish with this card after receiving their login, access, and runbook.
 
 ## Daily Workflow
 
@@ -35,6 +62,12 @@ What this card helps a capable employee, operator, or trusted partner do.
 5. Assign or record next action.
 6. Link evidence, decision, handoff, or source material.
 7. Escalate anything outside role authority.
+
+## Common Scenarios
+
+| Scenario | Start surface | Expected output | Escalate when |
+|---|---|---|---|
+| TBD | TBD | TBD | TBD |
 
 ## Surfaces
 
@@ -66,6 +99,28 @@ Reference-only or superseded surfaces:
 
 - TBD
 
+Admin-only or controlled surfaces:
+
+- TBD
+
+## Ownership And Cadence
+
+Human owner:
+
+- TBD
+
+Backup owner:
+
+- TBD
+
+Review cadence:
+
+- TBD
+
+Evidence location:
+
+- TBD
+
 ## Access Model
 
 Employee/operator access:
@@ -77,6 +132,10 @@ Trusted partner/operator full access:
 - TBD
 
 Admin-only authority:
+
+- TBD
+
+Blocked access escalation:
 
 - TBD
 
@@ -98,6 +157,14 @@ Required views:
 
 - TBD
 
+Record and file ownership:
+
+- TBD
+
+Data quality rules:
+
+- TBD
+
 ## Runbook
 
 Start of day:
@@ -115,6 +182,12 @@ End of day:
 Escalation:
 
 - TBD
+
+## Acceptance Standard
+
+This card is not complete because pages, lists, or links exist. It is complete
+only when a role-appropriate person can complete the primary workflow and leave
+behind clear records, next actions, evidence, and escalation notes.
 
 ## Agentic Opportunities
 
@@ -149,6 +222,7 @@ This card is complete only when:
 - the card purpose is clear without repo docs;
 - all daily operator links are business-facing;
 - the primary workflow can be completed with role-appropriate access;
+- the owner, backup owner, review cadence, and evidence location are known;
 - official records, next actions, decisions, and evidence land in known places;
 - trusted partner/operator full access is defined if needed;
 - tenant/global admin authority remains separately controlled;
@@ -166,6 +240,15 @@ Given a capable employee, operator, or trusted partner with the right role:
 5. Find the resulting record in the expected queue or library.
 6. Identify next action, owner, due date, evidence, and escalation path.
 7. Confirm no daily path requires admin links, build history, or technical forms.
+
+Evidence to record:
+
+- date of test;
+- role used;
+- safe internal test record name;
+- screenshots or exported read-back evidence when available;
+- friction points;
+- remaining blockers versus future enhancements.
 
 ## Stop Conditions
 

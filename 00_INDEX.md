@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-18
+Last updated: 2026-06-19
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-2 complete/pushed; next is Chunk 3 card template/acceptance standard** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-3 complete locally; next is Chunk 4 access/onboarding model** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -310,6 +310,12 @@ should not sit waiting for private credentials.
 - [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md)
   — Chunk 2 gap list for broad labels, controlled Tools/App Grants surfaces,
   missing card runbooks, Knowledge/Records visibility, and Access/Onboarding.
+- [docs/CARD_PLAN_TEMPLATE.md](docs/CARD_PLAN_TEMPLATE.md)
+  — Chunk 3 reusable card-plan structure for operating-card deep dives.
+- [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md)
+  — Chunk 3 card-plan standard, placeholder map, and next plan routing.
+- [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md)
+  — Chunk 3 first applied card-plan example for CRM / Relationships.
 - [inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md](inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md)
   — read-back evidence for the Guided AI Labs homepage cockpit; extra CRM nav
   count is 0 and homepage is `Guided-AI-Labs-Operations-Cockpit.aspx`.
@@ -502,10 +508,13 @@ should not sit waiting for private credentials.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md) — **most recent**
-  handoff: workspace usability Chunk 2 is complete and pushed; cockpit cards,
-  queues, links, and navigation are categorized from local evidence; next step
-  is Chunk 3, Card Template And Acceptance Standard.
+- [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
+  handoff: workspace usability Chunk 3 is complete; card template, card-plan
+  index, and CRM card-plan example are in place; next step is Chunk 4, Access
+  And Onboarding Model.
+- [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)
+  — workspace usability Chunk 2 is complete and pushed; cockpit cards, queues,
+  links, and navigation are categorized from local evidence.
 - [SESSION_TURNOVER_2026-06-17.md](SESSION_TURNOVER_2026-06-17.md) — Stage 8D
   walkthrough capture packet and Stage 9 bridge readiness control packet are
   local-generated/preflighted, and the Stage 9 bridge posture is
