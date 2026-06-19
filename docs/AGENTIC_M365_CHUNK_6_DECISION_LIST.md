@@ -31,7 +31,7 @@ Guided AI Labs is not yet ready for:
 
 | Area | Chunk 6 default | Why | Blocks |
 |---|---|---|---|
-| Agent posture | Stay supervised delegated. | Lowest new permission risk while card runbooks and final walkthrough are still pending. | Production bridge, unattended writes, app-based adapters. |
+| Agent posture | Stay supervised delegated. | Lowest new permission risk while card runbooks are active and production bridge gates remain unresolved. | Production bridge, unattended writes, app-based adapters. |
 | Action logging | Every meaningful suggestion or assisted action needs an Agent Action Log row. | Creates durable evidence before agent work becomes normal. | Any agent action without source, owner, approval state, evidence, and rollback note. |
 | Approval source | Decision Register owns approval for policy, app, permission, connector, external/client, mailbox, or automation posture. | Keeps approval separate from execution. | App consent, connectors, external sends, public Forms, sharing, permissions. |
 | App posture | Do not reuse broad setup-helper grants as production bridge power. | Setup power and operating power must remain separate. | Production UAOS/M365 adapter until resting-state decision exists. |

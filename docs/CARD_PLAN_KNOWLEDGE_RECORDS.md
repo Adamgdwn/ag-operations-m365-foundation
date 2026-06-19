@@ -314,10 +314,9 @@ This card is complete only when:
 - publication and archive decisions have owners and review cadence;
 - acceptance evidence is recorded.
 
-Current blockers before final workspace acceptance:
+Chunk 7 closeout carry-forwards:
 
-- Browser/live-user acceptance evidence remains for Chunk 7.
-- A visible cockpit route may be needed if final walkthrough shows records are
+- A visible cockpit route may be needed if live onboarding shows records are
   too hidden.
 
 Future enhancements:

@@ -36,6 +36,8 @@ access stay as separate controlled grants.
 - `docs/AGENTIC_M365_READINESS.md` - recommendations for becoming agentic and AI-centric.
 - `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` - Chunk 6 agentic approval
   pattern, surface lane decisions, blockers, and Adam decision queue.
+- `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` - final usability
+  evidence, remaining gap list, and closeout note.
 - `docs/CARD_PLAN_TEMPLATE.md` - repeatable structure for each card deep dive.
 - `docs/CARD_PLAN_INDEX.md` - card-plan standard, active plan map, and next acceptance routing.
 - `docs/CARD_PLAN_WORKSPACE_HOME.md` - Workspace Home front-door plan.
@@ -89,7 +91,8 @@ the card-plan index, and the first applied CRM card example. Chunk 4 created
 the access/onboarding model that separates operating access from admin
 authority. Chunk 5 created active deep-dive plans for the remaining operating
 cards. Chunk 6 created the governed agentic readiness verdict and decision
-queue. The next workspace chunk is Chunk 7 - Final Usability Walkthrough.
+queue. Chunk 7 closed the final usability walkthrough and recorded the handoff
+evidence. The broad workspace usability pass is complete.
 
 | Operating card | Current live surface | Primary workflow | Plan status | Completion requirement |
 |---|---|---|---|---|
@@ -149,7 +152,9 @@ employee operating manual and should not be used as the next execution plan.
 ## When Adam Says Go Ahead
 
 For the full workspace usability pass, work from
-`docs/WORKSPACE_EXECUTION_PLAN.md`.
+`docs/WORKSPACE_EXECUTION_PLAN.md`. That pass is now closed; use it for
+history, acceptance evidence, and choosing the next named card-specific or
+governance task.
 
 For a CRM-specific chunk, work from `docs/CRM_EXECUTION_PLAN.md`.
 

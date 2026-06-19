@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-6 complete/pushed; next is Chunk 7 final usability walkthrough** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-7 complete/pushed; broad usability handoff closed** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -446,6 +446,11 @@ should not sit waiting for private credentials.
 - [docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md](docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md)
   — Chunk 6 readiness verdict, G0-G4 approval pattern, surface lane decisions,
   and Adam decision queue before AI/agent expansion.
+- [docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md](docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md)
+  — Chunk 7 final usability evidence, remaining gaps, stop gates, and closeout
+  verdict for workspace handoff.
+- [inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md](inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md)
+  — local sanity-check report for the Chunk 7 closeout.
 - [config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json](config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json)
   — machine-readable Stage 9 readiness control model for adapter contracts, app
   posture choices, risk controls, and graduation gates.
@@ -534,10 +539,11 @@ should not sit waiting for private credentials.
 ### Session history
 
 - [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
-  handoff: workspace usability Chunks 1-6 are complete and pushed; card
+  handoff: workspace usability Chunks 1-7 are complete and pushed; card
   template, CRM card-plan example, access/onboarding model, Chunk 5 card plans,
-  and Chunk 6 agentic readiness decisions are in place; next step is Chunk 7,
-  Final Usability Walkthrough.
+  Chunk 6 agentic readiness decisions, and Chunk 7 closeout evidence are in
+  place. Next work should be a named card-specific chunk or controlled
+  governance/read-back task.
 - [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)
   — workspace usability Chunk 2 is complete and pushed; cockpit cards, queues,
   links, and navigation are categorized from local evidence.

@@ -50,7 +50,7 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
-Workspace usability Chunks 1-6 are complete and pushed. Chunk 2 categorized the current
+Workspace usability Chunks 1-7 are complete and pushed. Chunk 2 categorized the current
 Operations Cockpit cards, queues, links, superseded surfaces, and
 admin-only/controlled governance surfaces from local evidence. Chunk 3 hardened
 the card-plan template, created the card-plan index, and applied CRM as the
@@ -60,8 +60,8 @@ admin-only boundary. Chunk 5 created active card deep-dive plans for Workspace
 Home, Delivery / Projects, Decisions / Governance, Tasks / Actions, Knowledge /
 Records, Support / Intake, Finance / Closeout, and Agent Control Plane. Chunk 6
 recorded the agentic readiness verdict, G0-G4 approval pattern, surface lane
-decisions, and Adam decision queue. Next workspace chunk is Chunk 7 - Final
-Usability Walkthrough.
+decisions, and Adam decision queue. Chunk 7 recorded final usability closeout
+evidence, remaining gaps, and the handoff verdict.
 ```
 
 Completed/design-complete:
@@ -78,15 +78,16 @@ Completed/design-complete:
 Stop point for the next session:
 
 ```text
-Workspace usability Chunks 1-6 are complete and pushed.
+Workspace usability Chunks 1-7 are complete and pushed.
 The card-plan standard is created, CRM is the first applied example, and all
 remaining non-CRM placeholder cards now have active Chunk 5 plans.
 The access/onboarding model separates operating access from admin authority.
 The agentic readiness pass records what can stay SharePoint-native, what can
 use read-only/draft Copilot-style help later, what waits for connectors, and
 what remains blocked until custom integration decisions.
-No live tenant read was needed and no tenant write was performed during Chunk 6.
-Next workspace chunk is Chunk 7 - Final Usability Walkthrough.
+Chunk 7 records the final usability closeout evidence and remaining gaps.
+No live tenant read was needed and no tenant write was performed during Chunk 7.
+Next work should be a named card-specific chunk or controlled governance/read-back task.
 
 Start with:
 docs/START_HERE.md
@@ -107,6 +108,7 @@ docs/CARD_PLAN_AGENT_CONTROL_PLANE.md
 docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 docs/AGENTIC_M365_READINESS.md
 docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
+docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
 ```
 
 The most recent handoff is
@@ -140,8 +142,9 @@ It does **not** replace the real homepage, change navigation, permissions,
 sharing, guests, app grants, public Forms, deletion, or automation.
 
 Historical next action from 2026-06-15: browser-review the draft with Adam
-before any homepage promotion operator. The current 2026-06-19 workspace resume
-point is Chunk 7 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
+before any homepage promotion operator. The current 2026-06-19 workspace
+usability pass is complete in `docs/WORKSPACE_EXECUTION_PLAN.md`; resume with a
+named card-specific chunk or controlled governance/read-back task.
 
 Stage 9 supervised agent loops are now live-proven for Adam's requested governed
 M365 coordinator/support agent capability:
@@ -361,8 +364,9 @@ Not done:
   workspace usability pass. The Chunk 4 access model is documented in
   `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`; do not invite
   partners/clients or widen access until exact live permission targets and
-  final usability acceptance are reviewed. Chunk 5 card-specific runbooks now
-  live under `docs/CARD_PLAN_*.md`.
+  Chunk 7 closeout evidence are reviewed. Chunk 5 card-specific runbooks now
+  live under `docs/CARD_PLAN_*.md`, with final usability closeout in
+  `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
 - Stage 8 page refinement should follow the UAOS/Graphify/SharePoint boundary:
   SharePoint is the governed business workspace and human-facing operating
   surface; UAOS owns mission envelope, approvals, validation, relay, and
@@ -740,6 +744,7 @@ Read-only / diagnostic:
 .\scripts\New-M365Stage8DFunctionalWorkflowWalkthroughPacket.ps1
 .\scripts\Test-M365Stage8DLocalPreflight.ps1
 .\scripts\Invoke-M365Stage8DWorkflowProof.ps1
+.\scripts\Test-WorkspaceChunk7Closeout.ps1
 .\scripts\New-M365Stage9BridgeReadinessControlPacket.ps1
 .\scripts\Test-M365Stage9BridgeReadinessControlPreflight.ps1
 .\scripts\Invoke-M365Stage8HomepageRefinementBuild.ps1

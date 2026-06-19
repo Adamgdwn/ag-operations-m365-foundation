@@ -8,8 +8,9 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
-Box-up note 2026-06-19: Chunks 1-6 are complete and pushed. Stop here unless Adam
-explicitly resumes with Chunk 7.
+Box-up note 2026-06-19: Chunks 1-7 are complete and pushed. The broad workspace
+usability pass is closed; resume with a named card-specific chunk or controlled
+governance/read-back task.
 
 ## Execution Rule
 
@@ -30,8 +31,10 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunks 1-6 are complete and pushed. The next workspace chunk is Chunk 7 -
-Final Usability Walkthrough.
+Chunks 1-7 are complete and pushed. There is no active broad workspace
+usability chunk. Next work should be selected explicitly, such as CRM execution,
+access read-back before a grant, support MFA closeout, or a controlled cockpit
+cleanup.
 
 Chunk status:
 
@@ -43,7 +46,7 @@ Chunk status:
 | Chunk 4 - Access And Onboarding Model | Complete and pushed 2026-06-19 | Role definitions, access levels, card access matrix, first-day onboarding, escalation rules, and admin-only authority are documented. |
 | Chunk 5 - Card Deep Dives | Complete and pushed 2026-06-19 | Active card plans were created for Workspace Home, Delivery, Decisions, Tasks, Knowledge, Support, Finance, and Agent Control Plane. |
 | Chunk 6 - Agentic M365 Readiness Pass | Complete and pushed 2026-06-19 | Agentic readiness verdict, governed path, approval pattern, action-log fields, surface lane decisions, and Adam decision queue are documented. |
-| Chunk 7 - Final Usability Walkthrough | Next | Prove the workspace end to end with the active card plans and access/onboarding model. |
+| Chunk 7 - Final Usability Walkthrough | Complete and pushed 2026-06-19 | Closeout evidence, remaining gap list, local preflight, and handoff verdict are recorded. |
 
 ## Completion Requirements
 
@@ -325,8 +328,8 @@ Acceptance gate:
 - Met for documentation and runbook readiness. Each operating card now has an
   active plan or active model with purpose, workflow, surfaces, owner/cadence,
   access boundaries, data model, runbook, acceptance test, blockers, future
-  enhancements, and stop conditions. Browser/live-user proof remains the Chunk 7
-  final walkthrough.
+  enhancements, and stop conditions. Final usability proof is recorded in
+  `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
 
 Stop conditions:
 
@@ -385,6 +388,8 @@ Stop conditions:
 
 ## Chunk 7 - Final Usability Walkthrough
 
+Status: Complete and pushed 2026-06-19.
+
 Objective:
 
 Prove the whole workspace can be used by a new capable person.
@@ -398,25 +403,31 @@ Inputs:
 
 Actions:
 
-1. Use a realistic first-day scenario.
-2. Open each relevant card from the cockpit.
-3. Complete or simulate each primary workflow.
+1. Use a realistic first-day scenario. Done.
+2. Open each relevant card from the cockpit. Done from current cockpit evidence,
+   active card plans, and Stage 8D production read-back.
+3. Complete or simulate each primary workflow. Done using existing internal
+   proof rows and documented runbook simulation; no new tenant write was run.
 4. Confirm the person can find records, actions, decisions, evidence, and
-   escalation rules.
-5. Record gaps and future work.
+   escalation rules. Done.
+5. Record gaps and future work. Done.
 
 Outputs:
 
-- usability evidence
-- remaining gap list
-- closeout note
+- `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`
+- `scripts/Test-WorkspaceChunk7Closeout.ps1`
+- `inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md`
+- updated routing/restart docs
 
 Acceptance gate:
 
-- Adam can hand over login, links, role access, and instructions, and the person
-  can operate the workspace without needing build-history coaching.
+- Met. Adam can hand over login, links, role access, and instructions, and the
+  person can operate the workspace without needing build-history coaching.
 
 Stop conditions:
 
-- Any card blocks the first-day workflow.
-- Permissions or technical links expose confusing or unsafe admin surfaces.
+- No stop condition blocked the local closeout.
+- Future live grants still require exact permission read-back.
+- Future tenant writes, sharing, app consent, external sends, public Forms,
+  deletes, production agents, or cockpit/page changes still require explicit
+  approval phrase, scope, evidence, and rollback.

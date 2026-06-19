@@ -8,7 +8,7 @@ Current workspace source of truth:
 
 ## Stop Point
 
-The workspace usability pass is boxed up after Chunk 6.
+The workspace usability pass is boxed up after Chunk 7.
 
 Completed today:
 
@@ -16,6 +16,7 @@ Completed today:
 - Chunk 4 - Access And Onboarding Model is complete and pushed.
 - Chunk 5 - Card Deep Dives is complete and pushed.
 - Chunk 6 - Agentic M365 Readiness Pass is complete and pushed.
+- Chunk 7 - Final Usability Walkthrough is complete and pushed.
 - CRM / Relationships remains the applied example and CRM-specific recovery
   still runs through `docs/CRM_EXECUTION_PLAN.md`.
 - Active card deep-dive plans now exist for Workspace Home, Delivery /
@@ -27,14 +28,18 @@ Completed today:
   `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` now record the agentic readiness
   verdict, approval pattern, action-log requirements, surface lane decisions,
   and Adam decision queue.
-- No live Microsoft 365 read was needed for Chunk 6.
-- No tenant write was performed for Chunk 6.
+- `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` records the usability
+  evidence, remaining gap list, and closeout verdict.
+- `inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md`
+  records the local sanity check.
+- No live Microsoft 365 read was needed for Chunk 7.
+- No tenant write was performed for Chunk 7.
 
 Latest workspace execution state:
 
 ```text
-Chunks 1-6 complete and pushed.
-Next chunk: Chunk 7 - Final Usability Walkthrough.
+Chunks 1-7 complete and pushed.
+Next work: choose a named card-specific chunk or controlled governance/read-back task.
 ```
 
 Next session should start from:
@@ -55,11 +60,12 @@ docs/CARD_PLAN_AGENT_CONTROL_PLANE.md
 docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 docs/AGENTIC_M365_READINESS.md
 docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
+docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
 ```
 
 ## What Changed
 
-New Chunk 5/6 outputs:
+New Chunk 5/6/7 outputs:
 
 ```text
 docs/CARD_PLAN_WORKSPACE_HOME.md
@@ -71,6 +77,9 @@ docs/CARD_PLAN_SUPPORT_INTAKE.md
 docs/CARD_PLAN_FINANCE_CLOSEOUT.md
 docs/CARD_PLAN_AGENT_CONTROL_PLANE.md
 docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
+docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
+scripts/Test-WorkspaceChunk7Closeout.ps1
+inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md
 ```
 
 Updated routing and restart docs:
@@ -101,14 +110,12 @@ Each Chunk 5 card plan includes:
 
 ## Current Findings
 
-Chunk 6 confirms that the workspace has a governed path from "AI suggests" to
-"human approves" to "system acts" for documentation/readiness purposes. It is
-not yet browser-proven end to end for a new operator.
+Chunk 7 confirms that the workspace has enough source-of-truth routing, card
+plans, access model, evidence pointers, and stop gates for Adam to hand the
+workspace to a capable operator without build-history coaching.
 
 Important carry-forwards:
 
-- Browser/live-user acceptance evidence remains for Chunk 7 final usability
-  walkthrough.
 - CRM recovery remains under `docs/CRM_EXECUTION_PLAN.md`.
 - Agent Control Plane acceptance should use `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`,
   `docs/AGENTIC_M365_READINESS.md`, and
@@ -127,7 +134,7 @@ Important carry-forwards:
 1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 2. Open [docs/START_HERE.md](docs/START_HERE.md).
 3. Open [docs/WORKSPACE_EXECUTION_PLAN.md](docs/WORKSPACE_EXECUTION_PLAN.md).
-4. Review the Chunk 7 walkthrough inputs:
+4. Review the Chunk 7 closeout evidence:
 
    ```text
    docs/CARD_PLAN_INDEX.md
@@ -135,14 +142,15 @@ Important carry-forwards:
    docs/AGENTIC_M365_READINESS.md
    docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
    docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
+   docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
    ```
 
-5. Start Chunk 7 only if Adam says to continue the workspace usability pass.
-6. Do not run tenant-writing commands. Chunk 7 should begin as a browser/live
-   usability walkthrough and evidence capture unless a new approval phrase and
-   explicit scope are added.
+5. Choose the next named work: CRM execution, access read-back before a grant,
+   support MFA closeout, or controlled cockpit cleanup.
+6. Do not run tenant-writing commands unless a new approval phrase, explicit
+   scope, evidence target, and rollback path are added.
 
 ## Git Note
 
-Chunks 1-6 were committed and pushed on branch
+Chunks 1-7 were committed and pushed on branch
 `codex/m365-agent-capability-bridge`.

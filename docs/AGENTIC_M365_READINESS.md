@@ -363,8 +363,9 @@ Given a proposed AI/agent action, Adam can now answer:
 6. What is the rollback, pause, rejection, or superseded note?
 7. Which stop condition prevents execution today?
 
-Chunk 6 is complete for documentation/readiness purposes. Browser/live-user
-proof of the Agent Control Plane still belongs in Chunk 7.
+Chunk 6 is complete for documentation/readiness purposes. Chunk 7 closeout
+evidence for the Agent Control Plane is recorded in
+`docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
 
 ## Current Official References
 

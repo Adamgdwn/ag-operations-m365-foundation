@@ -296,9 +296,8 @@ This card is complete only when:
 - accepted-risk and approval decisions are explicit;
 - acceptance evidence is recorded.
 
-Current blockers before final workspace acceptance:
+Chunk 7 closeout carry-forwards:
 
-- Browser/live-user acceptance evidence remains for Chunk 7.
 - Broad delegated app grants still need a resting-state decision.
 - Support MFA remains open before support mailbox agent work.
 

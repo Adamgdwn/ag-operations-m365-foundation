@@ -2,8 +2,8 @@
 
 Date: 2026-06-19
 
-Status: Active Chunk 5 card plan. Browser/live-user acceptance evidence remains
-for the final usability walkthrough.
+Status: Active card plan. Chunk 7 closeout evidence is recorded in
+`docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
 
 ## Card Plan Header
 
@@ -236,16 +236,15 @@ This card is complete only when:
 - assigned card plans are linked from the workspace routing docs;
 - first-day acceptance evidence is recorded.
 
-Current blockers before final workspace acceptance:
+Chunk 7 closeout carry-forwards:
 
-- Browser/live-user walkthrough evidence remains for Chunk 7.
 - Any desired cockpit text/link changes would be a future tenant-writing chunk.
 
 Future enhancements:
 
 - Add page-level card-plan links if Adam wants the cockpit itself to carry the
   runbook routing.
-- Add a visible Knowledge / Records route if final walkthrough shows records are
+- Add a visible Knowledge / Records route if live onboarding shows records are
   too hidden.
 
 ## Acceptance Test

@@ -294,9 +294,8 @@ This card is complete only when:
 - owner, backup owner, cadence, and escalation rules are clear;
 - acceptance evidence is recorded.
 
-Current blockers before final workspace acceptance:
+Chunk 7 closeout carry-forwards:
 
-- Browser/live-user acceptance evidence remains for Chunk 7.
 - Exact future operator permission groups must be read back before any grant.
 
 Future enhancements:

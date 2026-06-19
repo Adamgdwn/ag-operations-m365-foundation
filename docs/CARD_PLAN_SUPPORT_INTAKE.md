@@ -317,11 +317,10 @@ This card is complete only when:
 - admin-only surfaces remain controlled;
 - acceptance evidence is recorded.
 
-Current blockers before final workspace acceptance:
+Chunk 7 closeout carry-forwards:
 
 - `support@changeleadershiptools.com` still needs MFA before support mailbox
   workflows depend on it.
-- Browser/live-user acceptance evidence remains for Chunk 7.
 - Exact future operator permission groups must be read back before any grant.
 
 Future enhancements:

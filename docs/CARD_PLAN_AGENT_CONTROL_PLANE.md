@@ -326,13 +326,12 @@ This card is complete only when:
 - current Stage 9 blockers are carried forward;
 - acceptance evidence is recorded.
 
-Current blockers before final workspace acceptance:
+Chunk 7 closeout carry-forwards:
 
 - Broad delegated setup grants need a resting-state decision.
 - Support MFA remains open before support mailbox adapter work.
 - Permission-scope design, rollback worksheet, G0/G1 adapter dry run, and a
   separate production bridge decision remain open.
-- Browser/live-user acceptance evidence remains for Chunk 7.
 
 Future enhancements:
 

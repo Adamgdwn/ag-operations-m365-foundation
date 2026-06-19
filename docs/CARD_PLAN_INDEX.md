@@ -2,8 +2,8 @@
 
 Date: 2026-06-19
 
-Status: Chunk 6 agentic readiness pass complete; browser/live-user acceptance
-evidence remains for the final usability walkthrough.
+Status: Chunk 7 final usability walkthrough complete. Closeout evidence is
+recorded in `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
@@ -27,16 +27,16 @@ A card plan is complete only when it defines:
 
 | Operating card | Current live surface | Plan file | Status | Next action |
 |---|---|---|---|---|
-| Workspace Home | Operations Cockpit homepage, Start Here nav, Login Guide | `docs/CARD_PLAN_WORKSPACE_HOME.md` | Active Chunk 5 plan | Run first-day orientation acceptance in final usability walkthrough. |
+| Workspace Home | Operations Cockpit homepage, Start Here nav, Login Guide | `docs/CARD_PLAN_WORKSPACE_HOME.md` | Active plan with Chunk 7 closeout evidence | Use the closeout doc for handoff; future cockpit cleanup only if live onboarding shows friction. |
 | CRM / Relationships | CRM card, CRM Command Center, Open CRM Actions, Qualification Triage | `docs/CARD_PLAN_CRM_RELATIONSHIPS.md` | Active applied example | Continue functional recovery through `docs/CRM_EXECUTION_PLAN.md` when CRM is selected. |
-| Delivery / Projects | Projects In Flight card, Active Delivery, Delivery Control, Lifecycle Checklist, Handoff Packets | `docs/CARD_PLAN_DELIVERY_PROJECTS.md` | Active Chunk 5 plan | Run safe internal delivery/lifecycle acceptance in final walkthrough. |
-| Decisions / Governance | Operations card signals, Decisions page, Decision Register, App Grants, Exception Register | `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md` | Active Chunk 5 plan | Run safe decision/exception acceptance and keep admin authority separated. |
-| Tasks / Actions | Operations card signals, CRM Action Queue, Planner/List task surfaces | `docs/CARD_PLAN_TASKS_ACTIONS.md` | Active Chunk 5 plan | Prove source-of-truth routing for CRM, Planner, intake, support, and agent tasks. |
-| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Active Chunk 5 plan | Prove a role can find approved methods, evidence, restricted material, and archive paths. |
-| Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Active Chunk 5 plan | Prove lane routing between broad intake, support, CRM New Signal, and escalation. |
-| Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Active Chunk 5 plan | Prove handoff, invoice-readiness, payment follow-up, and billing-authority separation. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active plan with Chunk 6 readiness map and decision list | Use with `docs/AGENTIC_M365_READINESS.md` and `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; do not expand AI/agent capability before the listed decisions and stop gates. |
-| Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model | Read back exact live SharePoint groups and permission groups before any grant. |
+| Delivery / Projects | Projects In Flight card, Active Delivery, Delivery Control, Lifecycle Checklist, Handoff Packets | `docs/CARD_PLAN_DELIVERY_PROJECTS.md` | Active plan with Chunk 7 closeout evidence | Continue only as delivery-specific execution or future dashboard cleanup. |
+| Decisions / Governance | Operations card signals, Decisions page, Decision Register, App Grants, Exception Register | `docs/CARD_PLAN_DECISIONS_GOVERNANCE.md` | Active plan with Chunk 7 closeout evidence | Keep admin authority separated; real decisions remain approval-gated. |
+| Tasks / Actions | Operations card signals, CRM Action Queue, Planner/List task surfaces | `docs/CARD_PLAN_TASKS_ACTIONS.md` | Active plan with Chunk 7 closeout evidence | Use source-of-truth routing; read back permission groups before new operator grants. |
+| Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Active plan with Chunk 7 closeout evidence | Add a clearer cockpit route only if live onboarding shows records are too hidden. |
+| Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Active plan with Chunk 7 closeout evidence | Resolve support MFA before support mailbox operations depend on that identity. |
+| Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Active plan with Chunk 7 closeout evidence | Keep billing, payment, legal, and client acceptance authority with Adam. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active plan with Chunk 6 readiness map and Chunk 7 closeout evidence | Use with `docs/AGENTIC_M365_READINESS.md` and `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; do not expand AI/agent capability before the listed decisions and stop gates. |
+| Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model with Chunk 7 closeout evidence | Read back exact live SharePoint groups and permission groups before any grant. |
 
 ## Chunk 5 Card Notes
 
@@ -168,5 +168,21 @@ Chunk 5 is complete when:
   acceptance test, and stop conditions;
 - recovery blockers are separated from future enhancements;
 - no tenant-writing command has run;
-- final browser/live-user proof is deferred to Chunk 7 unless Adam explicitly
-  approves a read-back or write window.
+- final usability proof is recorded in
+  `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
+
+## Chunk 7 Closeout
+
+Chunk 7 is complete when:
+
+- first-day handoff evidence is recorded;
+- all ten operating-card areas are covered by the walkthrough result;
+- remaining gaps are classified as future cleanup, card-specific execution,
+  access read-back, or explicit governance stop gates;
+- no tenant-writing command has run;
+- the local closeout preflight passes.
+
+Current closeout:
+
+- `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`
+- `inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md`
