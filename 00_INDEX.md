@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-3 complete locally; next is Chunk 4 access/onboarding model** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-3 complete/pushed; next is Chunk 4 access/onboarding model** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,

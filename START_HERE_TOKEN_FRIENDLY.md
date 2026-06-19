@@ -71,7 +71,7 @@ Completed/design-complete:
 Stop point for the next session:
 
 ```text
-Workspace usability Chunk 3 is complete locally.
+Workspace usability Chunk 3 is complete and pushed.
 The card-plan standard is created and CRM is the first applied example.
 No live tenant read was needed and no tenant write was performed.
 Next workspace chunk is Chunk 4 - Access And Onboarding Model.

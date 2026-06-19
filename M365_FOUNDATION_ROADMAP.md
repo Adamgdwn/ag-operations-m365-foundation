@@ -467,7 +467,7 @@ live-built and read-back verified. Stage 8B Relationship CRM operational
 hardening is live-applied and read-back verified. Stage 8C Relationship CRM
 operator workflow is live-applied and read-back verified. The Guided AI Labs
 Operations Cockpit is now the live homepage. The broader workspace usability
-pass has completed Chunks 1-3 locally; Chunk 2 categorized the cockpit cards,
+pass has completed Chunks 1-3 and pushed them; Chunk 2 categorized the cockpit cards,
 queues, page links, navigation, superseded surfaces, and admin-only/controlled
 surfaces from local evidence. Chunk 3 created the card-plan standard, the
 card-plan index, and the CRM / Relationships card-plan example. The next

@@ -12,7 +12,7 @@ The workspace usability pass is boxed up after Chunk 3.
 
 Completed today:
 
-- Chunk 3 - Card Template And Acceptance Standard is complete locally.
+- Chunk 3 - Card Template And Acceptance Standard is complete and pushed.
 - The shared card-plan template was hardened for operating-card deep dives.
 - CRM / Relationships was created as the first applied card-plan example.
 - The remaining operating cards were captured in a card-plan placeholder index.
@@ -22,7 +22,7 @@ Completed today:
 Latest workspace execution state:
 
 ```text
-Chunk 3 complete locally.
+Chunk 3 complete and pushed.
 Next chunk: Chunk 4 - Access And Onboarding Model.
 ```
 
@@ -109,5 +109,5 @@ Highest priority next work:
 
 ## Git Note
 
-Chunk 3 should be committed and pushed on branch
-`codex/m365-agent-capability-bridge` before starting Chunk 4.
+Chunk 3 was committed and pushed on branch
+`codex/m365-agent-capability-bridge`.
