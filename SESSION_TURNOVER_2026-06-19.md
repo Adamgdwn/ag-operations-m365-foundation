@@ -8,7 +8,7 @@ Current workspace source of truth:
 
 ## Stop Point
 
-The workspace usability pass is boxed up after Chunk 3.
+The workspace usability pass is boxed up after Chunk 4.
 
 Completed today:
 
@@ -16,14 +16,18 @@ Completed today:
 - The shared card-plan template was hardened for operating-card deep dives.
 - CRM / Relationships was created as the first applied card-plan example.
 - The remaining operating cards were captured in a card-plan placeholder index.
+- Chunk 4 - Access And Onboarding Model is complete and pushed.
+- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` now defines role tiers,
+  access levels, the ten-card access matrix, first-day onboarding, escalation
+  rules, review cadence, and admin-only authority.
 - No live SharePoint read was needed.
 - No tenant write was performed.
 
 Latest workspace execution state:
 
 ```text
-Chunk 3 complete and pushed.
-Next chunk: Chunk 4 - Access And Onboarding Model.
+Chunks 1-4 complete and pushed.
+Next chunk: Chunk 5 - Card Deep Dives.
 ```
 
 Next session should start from:
@@ -34,17 +38,19 @@ docs/WORKSPACE_EXECUTION_PLAN.md
 docs/CARD_PLAN_TEMPLATE.md
 docs/CARD_PLAN_INDEX.md
 docs/CARD_PLAN_CRM_RELATIONSHIPS.md
+docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 docs/COCKPIT_USABILITY_INVENTORY.md
 docs/COCKPIT_CARD_GAP_LIST.md
 ```
 
 ## What Changed
 
-New Chunk 3 outputs:
+New Chunk 3 and Chunk 4 outputs:
 
 ```text
 docs/CARD_PLAN_INDEX.md
 docs/CARD_PLAN_CRM_RELATIONSHIPS.md
+docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 ```
 
 Updated routing and restart docs:
@@ -56,6 +62,7 @@ M365_FOUNDATION_ROADMAP.md
 docs/START_HERE.md
 docs/WORKSPACE_EXECUTION_PLAN.md
 docs/CARD_PLAN_TEMPLATE.md
+docs/CARD_PLAN_INDEX.md
 ```
 
 The card-plan template now requires:
@@ -81,33 +88,47 @@ lists. Each card needs:
 - stop conditions for permissions, sharing, consent, mail, deletes, public
   forms, Dynamics, Dataverse, premium Power Platform, and unattended automation.
 
+The access/onboarding model now confirms:
+
+- "full access" means full operating access for the assigned role and card
+  scope, not tenant/global admin authority;
+- employee/operator, trusted partner/operator, governance reviewer, admin,
+  break-glass, function identity, and service/agent identity are separate roles;
+- exact live SharePoint group and permission targets must be read back before
+  any actual access grant;
+- partner/client guest invites, external sharing, app consent, public Forms,
+  mailbox automation, and unattended automation remain separate approval gates.
+
 Highest priority next work:
 
-- define employee, operator, trusted partner/operator, and admin authority;
-- map roles to each operating card;
-- separate full operating access from tenant/global admin authority;
-- add first-day onboarding instructions and escalation rules.
+- start Chunk 5 - Card Deep Dives;
+- review one operating card at a time;
+- create card-specific plans/runbooks from `docs/CARD_PLAN_TEMPLATE.md`;
+- use `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` for each card's access
+  section;
+- keep CRM-specific recovery under `docs/CRM_EXECUTION_PLAN.md`.
 
 ## Exact Resume Sequence
 
 1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 2. Open [docs/START_HERE.md](docs/START_HERE.md).
 3. Open [docs/WORKSPACE_EXECUTION_PLAN.md](docs/WORKSPACE_EXECUTION_PLAN.md).
-4. Review the Chunk 3 outputs:
+4. Review the Chunk 3 and Chunk 4 outputs:
 
    ```text
    docs/CARD_PLAN_TEMPLATE.md
    docs/CARD_PLAN_INDEX.md
    docs/CARD_PLAN_CRM_RELATIONSHIPS.md
+   docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
    ```
 
-5. Start Chunk 4 only if Adam says to continue the workspace usability pass.
-6. For Chunk 4, build the access/onboarding model across employee, operator,
-   trusted partner/operator, and admin authority.
-7. Do not run tenant-writing commands. Chunk 4 should begin as local
+5. Start Chunk 5 only if Adam says to continue the workspace usability pass.
+6. For Chunk 5, choose the next card to deep dive and create or update its
+   card-specific plan and runbook.
+7. Do not run tenant-writing commands. Card deep dives should begin as local
    documentation unless a new approval phrase and explicit scope are added.
 
 ## Git Note
 
-Chunk 3 was committed and pushed on branch
+Chunks 1-4 were committed and pushed on branch
 `codex/m365-agent-capability-bridge`.

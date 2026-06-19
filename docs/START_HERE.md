@@ -37,6 +37,8 @@ access stay as separate controlled grants.
 - `docs/CARD_PLAN_TEMPLATE.md` - repeatable structure for each card deep dive.
 - `docs/CARD_PLAN_INDEX.md` - card-plan standard, placeholder map, and next plan routing.
 - `docs/CARD_PLAN_CRM_RELATIONSHIPS.md` - first applied card-plan example for CRM.
+- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` - role access matrix, first-day
+  onboarding, admin-only boundaries, and escalation rules.
 - `docs/CRM_EXECUTION_PLAN.md` - executable chunks for the CRM card.
 - `docs/CRM_RECOVERY_PLAN.md` - CRM strategic brief, constraints, and recovery context.
 - `docs/CRM_RUNBOOK.md` - CRM daily employee instructions.
@@ -73,8 +75,9 @@ card-by-card deep dives.
 
 Chunk 2 categorized the current cockpit surface in
 `docs/COCKPIT_USABILITY_INVENTORY.md`. Chunk 3 created the card-plan standard,
-the card-plan index, and the first applied CRM card example. The next workspace
-chunk is Chunk 4 - Access And Onboarding Model.
+the card-plan index, and the first applied CRM card example. Chunk 4 created
+the access/onboarding model that separates operating access from admin
+authority. The next workspace chunk is Chunk 5 - Card Deep Dives.
 
 | Operating card | Current live surface | Primary workflow | Plan status | Completion requirement |
 |---|---|---|---|---|
@@ -87,7 +90,7 @@ chunk is Chunk 4 - Access And Onboarding Model.
 | Support / Intake | Operations card, Intake page, Guided AI Labs - Intake Register, Change Leadership Tools Support Register | Capture and triage support requests, internal asks, and client signals. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Support/intake front doors, triage ownership, and handoff rules are defined. |
 | Finance / Closeout | Projects In Flight card, Handoff Packets, CRM Closeout Invoice Queue | Prepare final evidence, closeout notes, invoice readiness, and payment follow-up. | Placeholder in `docs/CARD_PLAN_INDEX.md` | Closeout ownership, evidence, invoice handoff, and blocked-payment escalation are defined. |
 | Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | Review AI suggestions, approvals, tool scopes, action logs, and rollback notes. | Active readiness map: `docs/AGENTIC_M365_READINESS.md` | Agent actions have a human owner, approval gate, evidence record, and rollback note. |
-| Access / Onboarding | Login Guide, Access Model page, External Sharing Rules, App Grants | Grant role-appropriate access and give first-day operating instructions. | Placeholder in `docs/CARD_PLAN_INDEX.md`; next workspace chunk | Employee, operator, trusted partner, and admin authority are separated and documented. |
+| Access / Onboarding | Login Guide, Access Model page, External Sharing Rules, App Grants | Grant role-appropriate access and give first-day operating instructions. | Active: `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Employee, operator, trusted partner, and admin authority are separated and documented. |
 
 ## Current Live CRM Path
 

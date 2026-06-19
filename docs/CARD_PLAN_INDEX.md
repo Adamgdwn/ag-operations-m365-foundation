@@ -2,7 +2,7 @@
 
 Date: 2026-06-19
 
-Status: Chunk 3 card-plan standard and placeholder map.
+Status: Chunk 4 access model added; card-plan standard and placeholder map.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
@@ -34,7 +34,7 @@ A card plan is complete only when it defines:
 | Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | TBD | Placeholder | Separate support/intake routing from clean CRM New Signal routing. |
 | Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | TBD | Placeholder | Define closeout evidence, invoice handoff, payment follow-up, and blocked-payment escalation. |
 | Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | TBD | Placeholder with active readiness map | Use `docs/AGENTIC_M365_READINESS.md` before any AI/agent expansion. |
-| Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | TBD | Placeholder | Build the role access matrix in Chunk 4. |
+| Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model | Use this model before any employee, trusted partner, guest, admin, or service/agent access grant. |
 
 ## Placeholder Notes
 
@@ -162,10 +162,16 @@ Known surfaces:
 - External Sharing Rules
 - App Grants
 
-First plan question:
+Current plan:
 
-- What does full operating access mean for each role, and what authority stays
-  admin-only?
+- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` defines role tiers, access
+  levels, operating-card access, first-day onboarding, escalation rules, and
+  admin-only authority.
+
+First follow-up question:
+
+- Which exact live SharePoint groups and permission groups should be used for
+  the first employee/operator or trusted partner grant after read-back?
 
 ## Chunk 3 Acceptance
 

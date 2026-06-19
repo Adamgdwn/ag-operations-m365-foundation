@@ -61,7 +61,7 @@ The canonical execution plan is the **10-stage roadmap**:
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
 | **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-3 complete/pushed; next is Chunk 4 access/onboarding model** |
+| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-4 complete/pushed; next is Chunk 5 card deep dives** |
 | **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
@@ -313,9 +313,12 @@ should not sit waiting for private credentials.
 - [docs/CARD_PLAN_TEMPLATE.md](docs/CARD_PLAN_TEMPLATE.md)
   — Chunk 3 reusable card-plan structure for operating-card deep dives.
 - [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md)
-  — Chunk 3 card-plan standard, placeholder map, and next plan routing.
+  — Chunk 4 card-plan index with the access/onboarding model added.
 - [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md)
   — Chunk 3 first applied card-plan example for CRM / Relationships.
+- [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md)
+  — Chunk 4 role tiers, operating-card access matrix, first-day onboarding
+  walkthrough, escalation rules, and admin-only authority boundary.
 - [inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md](inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260615-161438.md)
   — read-back evidence for the Guided AI Labs homepage cockpit; extra CRM nav
   count is 0 and homepage is `Guided-AI-Labs-Operations-Cockpit.aspx`.
@@ -509,9 +512,9 @@ should not sit waiting for private credentials.
 ### Session history
 
 - [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
-  handoff: workspace usability Chunks 1-3 are complete and pushed; card template, card-plan
-  index, and CRM card-plan example are in place; next step is Chunk 4, Access
-  And Onboarding Model.
+  handoff: workspace usability Chunks 1-4 are complete and pushed; card template,
+  CRM card-plan example, and access/onboarding model are in place; next step is
+  Chunk 5, Card Deep Dives.
 - [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)
   — workspace usability Chunk 2 is complete and pushed; cockpit cards, queues,
   links, and navigation are categorized from local evidence.

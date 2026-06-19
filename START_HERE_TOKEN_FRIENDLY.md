@@ -50,11 +50,13 @@ granted/read-back verified across all 10 targeted tenant SharePoint sites;
 Stage 9 supervised coordinator/support List-write loops are live-proven, and
 the bridge readiness control posture is live-recorded/read-back verified.
 Local browser lane hygiene was updated: Chrome Profile 3 is now City of Red Deer.
-Workspace usability Chunks 1-3 are complete and pushed. Chunk 2 categorized the current
+Workspace usability Chunks 1-4 are complete and pushed. Chunk 2 categorized the current
 Operations Cockpit cards, queues, links, superseded surfaces, and
 admin-only/controlled governance surfaces from local evidence. Chunk 3 hardened
 the card-plan template, created the card-plan index, and applied CRM as the
-first example. Next workspace chunk is Chunk 4 - Access And Onboarding Model.
+first example. Chunk 4 created the access/onboarding model, role tiers,
+card-by-card access matrix, first-day walkthrough, escalation rules, and
+admin-only boundary. Next workspace chunk is Chunk 5 - Card Deep Dives.
 ```
 
 Completed/design-complete:
@@ -71,10 +73,11 @@ Completed/design-complete:
 Stop point for the next session:
 
 ```text
-Workspace usability Chunks 1-3 are complete and pushed.
+Workspace usability Chunks 1-4 are complete and pushed.
 The card-plan standard is created and CRM is the first applied example.
+The access/onboarding model now separates operating access from admin authority.
 No live tenant read was needed and no tenant write was performed.
-Next workspace chunk is Chunk 4 - Access And Onboarding Model.
+Next workspace chunk is Chunk 5 - Card Deep Dives.
 
 Start with:
 docs/START_HERE.md
@@ -84,6 +87,7 @@ docs/COCKPIT_CARD_GAP_LIST.md
 docs/CARD_PLAN_TEMPLATE.md
 docs/CARD_PLAN_INDEX.md
 docs/CARD_PLAN_CRM_RELATIONSHIPS.md
+docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 ```
 
 The most recent handoff is
@@ -118,7 +122,7 @@ sharing, guests, app grants, public Forms, deletion, or automation.
 
 Historical next action from 2026-06-15: browser-review the draft with Adam
 before any homepage promotion operator. The current 2026-06-19 workspace resume
-point is Chunk 4 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
+point is Chunk 5 in `docs/WORKSPACE_EXECUTION_PLAN.md`.
 
 Stage 9 supervised agent loops are now live-proven for Adam's requested governed
 M365 coordinator/support agent capability:
@@ -335,8 +339,10 @@ Not done:
 - No real partner/client guest invite, external link, or client-facing public
   Form should be issued until the Stage 8 workspace/access decision is approved.
 - Stage 8 look/feel and CRM walkthrough work is now provenance for the broader
-  workspace usability pass. Do not invite partners/clients or widen access until
-  card plans, role access, and final usability acceptance are reviewed.
+  workspace usability pass. The Chunk 4 access model is documented in
+  `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`; do not invite
+  partners/clients or widen access until exact live permission targets,
+  card-specific runbooks, and final usability acceptance are reviewed.
 - Stage 8 page refinement should follow the UAOS/Graphify/SharePoint boundary:
   SharePoint is the governed business workspace and human-facing operating
   surface; UAOS owns mission envelope, approvals, validation, relay, and

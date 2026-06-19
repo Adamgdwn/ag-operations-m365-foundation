@@ -8,8 +8,8 @@ Use this document when Adam says to continue the broader workspace build. CRM is
 one operating card. This plan makes the whole Guided AI Labs workspace usable
 before each card receives a deeper functional pass.
 
-Box-up note 2026-06-19: Chunks 1-3 are complete and pushed. Stop here unless Adam
-explicitly resumes with Chunk 4.
+Box-up note 2026-06-19: Chunks 1-4 are complete and pushed. Stop here unless Adam
+explicitly resumes with Chunk 5.
 
 ## Execution Rule
 
@@ -30,8 +30,8 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 
 ## Current Chunk
 
-Chunks 1-3 are complete and pushed. The next workspace chunk is Chunk 4 - Access And
-Onboarding Model.
+Chunks 1-4 are complete and pushed. The next workspace chunk is Chunk 5 - Card
+Deep Dives.
 
 Chunk status:
 
@@ -40,7 +40,8 @@ Chunk status:
 | Chunk 1 - Workspace Card Map | Complete and pushed 2026-06-18 | Card map, active-plan/placeholders, completion requirements, and source-of-truth routing are recorded. |
 | Chunk 2 - Cockpit Usability Inventory | Complete and pushed 2026-06-18 | Cockpit cards, queues, page links, and known navigation links are categorized from local evidence. |
 | Chunk 3 - Card Template And Acceptance Standard | Complete and pushed 2026-06-19 | Template hardened, CRM applied example created, and remaining card placeholders recorded in the card-plan index. |
-| Chunk 4 - Access And Onboarding Model | Next | Requires role definitions, operating-access matrix, admin-authority separation, and first-day onboarding instructions. |
+| Chunk 4 - Access And Onboarding Model | Complete and pushed 2026-06-19 | Role definitions, access levels, card access matrix, first-day onboarding, escalation rules, and admin-only authority are documented. |
+| Chunk 5 - Card Deep Dives | Next | Review each card for workflow, runbook, ownership, access, acceptance tests, and remaining cleanup. |
 
 ## Completion Requirements
 
@@ -241,6 +242,8 @@ Stop conditions:
 
 ## Chunk 4 - Access And Onboarding Model
 
+Status: Complete and pushed 2026-06-19.
+
 Objective:
 
 Define role-appropriate operating access across cards.
@@ -253,24 +256,29 @@ Inputs:
 
 Actions:
 
-1. Define employee, operator, trusted partner/operator, and admin roles.
-2. Map each role to card access.
-3. Identify tenant/global admin grants that must remain separate.
-4. Add first-day onboarding instructions and escalation rules.
+1. Define employee, operator, trusted partner/operator, and admin roles. Done.
+2. Map each role to card access. Done.
+3. Identify tenant/global admin grants that must remain separate. Done.
+4. Add first-day onboarding instructions and escalation rules. Done.
 
 Outputs:
 
-- access matrix
-- onboarding instructions
+- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
+- updated `docs/START_HERE.md`
+- updated `docs/CARD_PLAN_INDEX.md`
+- updated restart/routing docs
 
 Acceptance gate:
 
-- Adam can grant a person the right access without guessing whether "full
-  access" means operating access or tenant admin.
+- Met. Adam can classify a person, choose an access level, map the role to each
+  operating card, identify what remains admin-only, and run a first-day
+  walkthrough without guessing whether "full access" means operating access or
+  tenant admin.
 
 Stop conditions:
 
-- Permission groups cannot be read or are ambiguous.
+- None hit for this documentation chunk. Exact live SharePoint group and
+  permission targets remain a required read-back step before any actual grant.
 
 ## Chunk 5 - Card Deep Dives
 

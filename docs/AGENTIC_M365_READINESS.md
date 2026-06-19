@@ -1,6 +1,6 @@
 # Agentic Microsoft 365 Readiness
 
-Date: 2026-06-18
+Date: 2026-06-19
 
 Status: Active recommendation map for becoming agentic and AI-centric.
 
@@ -48,6 +48,12 @@ Needed:
 - clear employee/operator/trusted partner roles;
 - service or app identities only after a decision record;
 - least-privilege access per card.
+
+Current role model:
+
+- `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` defines the workspace role
+  tiers, operating-card access matrix, first-day onboarding path, and
+  admin-only authority boundary.
 
 Why it matters:
 
@@ -194,7 +200,8 @@ AI increases the value of clean governance and the blast radius of messy access.
 1. Finish full workspace usability map.
 2. Finish CRM card recovery as the first complete operating-card example.
 3. Build card template and acceptance tests for all other cards.
-4. Establish access matrix and onboarding instructions.
+4. Establish access matrix and onboarding instructions. Done for workspace
+   usability in `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`.
 5. Harden records, permissions, labels, and audit.
 6. Prove Agent Action Log and Decision Register workflow.
 7. Pilot read-only recommendation agents.
