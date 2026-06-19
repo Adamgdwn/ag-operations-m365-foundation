@@ -449,6 +449,9 @@ should not sit waiting for private credentials.
 - [docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md](docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md)
   — Chunk 7 final usability evidence, remaining gaps, stop gates, and closeout
   verdict for workspace handoff.
+- [docs/WORKSPACE_INSTRUCTION_MANUAL.md](docs/WORKSPACE_INSTRUCTION_MANUAL.md)
+  — operator instruction manual for daily use, first-day onboarding, card
+  routing, evidence capture, and escalation.
 - [inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md](inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md)
   — local sanity-check report for the Chunk 7 closeout.
 - [config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json](config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json)
@@ -541,8 +544,8 @@ should not sit waiting for private credentials.
 - [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
   handoff: workspace usability Chunks 1-7 are complete and pushed; card
   template, CRM card-plan example, access/onboarding model, Chunk 5 card plans,
-  Chunk 6 agentic readiness decisions, and Chunk 7 closeout evidence are in
-  place. Next work should be a named card-specific chunk or controlled
+  Chunk 6 agentic readiness decisions, Chunk 7 closeout evidence, and the
+  workspace instruction manual are in place. Next work should be a named card-specific chunk or controlled
   governance/read-back task.
 - [SESSION_TURNOVER_2026-06-18.md](SESSION_TURNOVER_2026-06-18.md)
   — workspace usability Chunk 2 is complete and pushed; cockpit cards, queues,

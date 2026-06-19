@@ -1,6 +1,6 @@
 # Workspace Chunk 7 Closeout Preflight
 
-Generated: 2026-06-19 17:00:28
+Generated: 2026-06-19 17:04:54
 
 Scope: local-only validation. This preflight does not connect to Microsoft 365 and performs no tenant writes.
 
@@ -9,6 +9,7 @@ Result: PASS
 | Status | Check | Detail |
 |---|---|---|
 | PASS | Required doc exists: docs\START_HERE.md | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\docs\START_HERE.md |
+| PASS | Required doc exists: docs\WORKSPACE_INSTRUCTION_MANUAL.md | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\docs\WORKSPACE_INSTRUCTION_MANUAL.md |
 | PASS | Required doc exists: docs\WORKSPACE_EXECUTION_PLAN.md | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\docs\WORKSPACE_EXECUTION_PLAN.md |
 | PASS | Required doc exists: docs\CARD_PLAN_INDEX.md | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\docs\CARD_PLAN_INDEX.md |
 | PASS | Required doc exists: docs\WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md | C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\docs\WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md |
@@ -64,6 +65,16 @@ Result: PASS
 | PASS | Closeout covers card: Finance / Closeout | Walkthrough Results |
 | PASS | Closeout covers card: Agent Control Plane | Walkthrough Results |
 | PASS | Closeout covers card: Access / Onboarding | Walkthrough Results |
+| PASS | Manual section exists: ## Who This Is For | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Daily Front Door | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## First-Day Setup | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Which Card To Use | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Daily Work Routine | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Evidence Rules | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Escalation Format | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Do Not Touch Without Approval | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Agent And AI Review | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
+| PASS | Manual section exists: ## Quick Reference | docs\WORKSPACE_INSTRUCTION_MANUAL.md |
 | PASS | Stage 8D read-back has seven passing rows | Passing rows: 7 |
 | PASS | No stale routing text in docs\START_HERE.md: stale pattern 1 | stale scan |
 | PASS | No stale routing text in docs\START_HERE.md: stale pattern 2 | stale scan |

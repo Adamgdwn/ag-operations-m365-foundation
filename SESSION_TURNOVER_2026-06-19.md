@@ -30,6 +30,8 @@ Completed today:
   and Adam decision queue.
 - `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` records the usability
   evidence, remaining gap list, and closeout verdict.
+- `docs/WORKSPACE_INSTRUCTION_MANUAL.md` records the operator instruction manual
+  for daily use, first-day onboarding, card routing, evidence, and escalation.
 - `inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md`
   records the local sanity check.
 - No live Microsoft 365 read was needed for Chunk 7.
@@ -61,6 +63,7 @@ docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 docs/AGENTIC_M365_READINESS.md
 docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
 docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
+docs/WORKSPACE_INSTRUCTION_MANUAL.md
 ```
 
 ## What Changed
@@ -78,6 +81,7 @@ docs/CARD_PLAN_FINANCE_CLOSEOUT.md
 docs/CARD_PLAN_AGENT_CONTROL_PLANE.md
 docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
 docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
+docs/WORKSPACE_INSTRUCTION_MANUAL.md
 scripts/Test-WorkspaceChunk7Closeout.ps1
 inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md
 ```

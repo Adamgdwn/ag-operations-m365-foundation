@@ -18,7 +18,8 @@ Workspace usability note: for active workspace direction, use
 `docs/CARD_PLAN_INDEX.md`, `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`, and
 `docs/AGENTIC_M365_READINESS.md` plus
 `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` and
-`docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`. For the CRM card specifically, use
+`docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`. For daily operator
+handoff, use `docs/WORKSPACE_INSTRUCTION_MANUAL.md`. For the CRM card specifically, use
 `docs/CRM_EXECUTION_PLAN.md` and `docs/CRM_RECOVERY_PLAN.md`. The
 Stage 8A/8B/8C/8D/8E CRM documents remain useful as build provenance, but they no
 longer define the employee-ready CRM completion path.
@@ -481,7 +482,9 @@ Workspace Home, Delivery / Projects, Decisions / Governance, Tasks / Actions,
 Knowledge / Records, Support / Intake, Finance / Closeout, and Agent Control
 Plane. Chunk 6 recorded the agentic readiness verdict, approval pattern,
 surface lane decisions, and Adam decision queue. Chunk 7 recorded final
-usability evidence, remaining gaps, stop gates, and the handoff verdict. See
+usability evidence, remaining gaps, stop gates, and the handoff verdict. The
+workspace instruction manual now captures daily use, first-day onboarding, card
+routing, evidence, and escalation. See
 [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md).
 The live SharePoint shape should also follow the local Prime Operations-inspired
 planning baseline in

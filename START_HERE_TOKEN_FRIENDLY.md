@@ -109,6 +109,7 @@ docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md
 docs/AGENTIC_M365_READINESS.md
 docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md
 docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md
+docs/WORKSPACE_INSTRUCTION_MANUAL.md
 ```
 
 The most recent handoff is
@@ -366,7 +367,8 @@ Not done:
   partners/clients or widen access until exact live permission targets and
   Chunk 7 closeout evidence are reviewed. Chunk 5 card-specific runbooks now
   live under `docs/CARD_PLAN_*.md`, with final usability closeout in
-  `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
+  `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` and the daily
+  operator manual in `docs/WORKSPACE_INSTRUCTION_MANUAL.md`.
 - Stage 8 page refinement should follow the UAOS/Graphify/SharePoint boundary:
   SharePoint is the governed business workspace and human-facing operating
   surface; UAOS owns mission envelope, approvals, validation, relay, and

@@ -32,6 +32,7 @@ approval-gated tenant changes.
 This walkthrough uses these current artifacts:
 
 - `docs/START_HERE.md`
+- `docs/WORKSPACE_INSTRUCTION_MANUAL.md`
 - `docs/WORKSPACE_EXECUTION_PLAN.md`
 - `docs/CARD_PLAN_INDEX.md`
 - `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
@@ -152,8 +153,10 @@ Generated local report:
 
 The workspace usability pass is now complete for operating handoff. The current
 front door is the Operations Cockpit, the current routing source is
-`docs/START_HERE.md`, the current card map is `docs/CARD_PLAN_INDEX.md`, and
-the current role/access model is `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`.
+`docs/START_HERE.md`, the operator handoff manual is
+`docs/WORKSPACE_INSTRUCTION_MANUAL.md`, the current card map is
+`docs/CARD_PLAN_INDEX.md`, and the current role/access model is
+`docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`.
 
 Next work should be selected as a card-specific or controlled-governance chunk,
 not another broad usability chunk. Good next candidates are CRM execution,

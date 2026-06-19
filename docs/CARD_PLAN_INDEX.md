@@ -8,7 +8,8 @@ recorded in `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
 the active plan file for each card before granting access, onboarding a person,
-or calling that card operator-ready.
+or calling that card operator-ready. Use
+`docs/WORKSPACE_INSTRUCTION_MANUAL.md` as the practical daily-use manual.
 
 ## Card Plan Standard
 

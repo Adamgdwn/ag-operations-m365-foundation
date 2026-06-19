@@ -28,6 +28,8 @@ access stay as separate controlled grants.
 
 ## Active Workspace Docs
 
+- `docs/WORKSPACE_INSTRUCTION_MANUAL.md` - operator handoff manual for daily
+  use, first-day onboarding, card routing, evidence, and escalation.
 - `docs/WORKSPACE_EXECUTION_PLAN.md` - executable chunks for the full usability pass.
 - `docs/COCKPIT_USABILITY_INVENTORY.md` - current cockpit cards, queues, links,
   navigation, and categories.
@@ -151,7 +153,10 @@ employee operating manual and should not be used as the next execution plan.
 
 ## When Adam Says Go Ahead
 
-For the full workspace usability pass, work from
+For operator handoff and daily workspace use, start with
+`docs/WORKSPACE_INSTRUCTION_MANUAL.md`.
+
+For the full workspace usability pass history, work from
 `docs/WORKSPACE_EXECUTION_PLAN.md`. That pass is now closed; use it for
 history, acceptance evidence, and choosing the next named card-specific or
 governance task.

@@ -56,6 +56,8 @@ true.
 Source-of-truth requirements:
 
 - `docs/START_HERE.md` is broad enough for the whole workspace, not just CRM.
+- `docs/WORKSPACE_INSTRUCTION_MANUAL.md` gives an operator daily-use manual
+  without build-history coaching.
 - Each operating card has one active plan or a clear "to be built" placeholder.
 - Superseded Stage 8 packet docs are marked as provenance.
 
@@ -415,6 +417,7 @@ Actions:
 Outputs:
 
 - `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`
+- `docs/WORKSPACE_INSTRUCTION_MANUAL.md`
 - `scripts/Test-WorkspaceChunk7Closeout.ps1`
 - `inventory/workspace-usability-chunk-7/WORKSPACE_CHUNK_7_CLOSEOUT_PREFLIGHT.md`
 - updated routing/restart docs

@@ -61,6 +61,7 @@ $results = New-Object System.Collections.Generic.List[object]
 
 $requiredDocs = @(
     "docs\START_HERE.md",
+    "docs\WORKSPACE_INSTRUCTION_MANUAL.md",
     "docs\WORKSPACE_EXECUTION_PLAN.md",
     "docs\CARD_PLAN_INDEX.md",
     "docs\WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md",
@@ -138,6 +139,26 @@ if ($null -ne $closeout) {
 
     foreach ($card in $operatingCards) {
         Add-Result -Results $results -Check ("Closeout covers card: {0}" -f $card) -Passed ($closeout -match [regex]::Escape($card)) -Detail "Walkthrough Results"
+    }
+}
+
+$manual = Get-Text -RelativePath "docs\WORKSPACE_INSTRUCTION_MANUAL.md"
+if ($null -ne $manual) {
+    $manualSections = @(
+        "## Who This Is For",
+        "## Daily Front Door",
+        "## First-Day Setup",
+        "## Which Card To Use",
+        "## Daily Work Routine",
+        "## Evidence Rules",
+        "## Escalation Format",
+        "## Do Not Touch Without Approval",
+        "## Agent And AI Review",
+        "## Quick Reference"
+    )
+
+    foreach ($section in $manualSections) {
+        Add-Result -Results $results -Check ("Manual section exists: {0}" -f $section) -Passed ($manual -match [regex]::Escape($section)) -Detail "docs\WORKSPACE_INSTRUCTION_MANUAL.md"
     }
 }
 
