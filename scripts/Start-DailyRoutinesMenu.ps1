@@ -5,8 +5,8 @@ param(
 # AG Operations - daily routines menu.
 # A double-clickable launcher (via the desktop shortcut) for the key daily
 # operating routines. Each routine opens in its own visible window and follows
-# the existing dry-run-first / typed-approval safety model. This menu performs
-# no tenant write itself.
+# the dry-run-first / one-sign-in + single-Y approval safety model. This menu
+# performs no tenant write itself.
 
 $ErrorActionPreference = "Stop"
 

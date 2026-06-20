@@ -8,17 +8,19 @@ param(
     [string]$ExpectedUpn = "adamgoodwin@guidedailabs.com",
     [string]$OwnerUpn = "adamgoodwin@guidedailabs.com",
     [switch]$Apply,
-    [string]$ApprovalPhrase,
+    [switch]$Approve,
     [switch]$ForceFreshLogin,
     [switch]$UseDeviceLogin,
     [switch]$NoPause
 )
 
 # Stage 9 - governed M365 coordinator/support first loops.
-# Dry-run-first and typed-approval for every live write. This script writes only
-# to approved operating Lists. It does not create app registrations, grant
-# consent, send mail, invite guests, change sharing, alter permissions, change
-# tenant policy, publish Forms, delete records, or run unattended automation.
+# Dry-run-first; each live write needs one persisted sign-in per session plus a
+# single Y confirmation (the -Approve switch pre-confirms for scripted/unattended
+# runs whose pathway is already understood). This script writes only to approved
+# operating Lists. It does not create app registrations, grant consent, send
+# mail, invite guests, change sharing, alter permissions, change tenant policy,
+# publish Forms, delete records, or run unattended automation.
 
 $ErrorActionPreference = "Stop"
 
@@ -179,25 +181,21 @@ function Set-Stage9ListItem {
     }
 }
 
-function Assert-ApprovalPhrase {
-    param([string]$ExpectedPhrase)
-
+function Confirm-Stage9Write {
     if (-not $Apply) {
         return
     }
 
     Write-Host ""
-    Write-Host "Live write approval required." -ForegroundColor Yellow
-    Write-Host ("Type exactly: {0}" -f $ExpectedPhrase) -ForegroundColor Yellow
-    if (-not [string]::IsNullOrWhiteSpace($ApprovalPhrase)) {
-        Write-Host "Approval phrase supplied by command parameter." -ForegroundColor Gray
-        $typed = $ApprovalPhrase
+    Write-Host ("Approve this live write? It records the Stage 9 '{0}' List entries for this action." -f $Action) -ForegroundColor Yellow
+    Write-Host "  Scope: approved operating Lists only (no mail, guests, sharing, consent, tenant policy, deletes, or automation)." -ForegroundColor Gray
+    if ($Approve) {
+        Write-Host "  Approval supplied by the -Approve switch (pre-confirmed)." -ForegroundColor Gray
+        return
     }
-    else {
-        $typed = Read-Host "Approval phrase"
-    }
-    if ($typed -ne $ExpectedPhrase) {
-        throw "Approval phrase did not match. No live writes performed."
+    $answer = Read-Host "Type Y to approve (anything else cancels)"
+    if ($answer -notmatch '^(y|yes)$') {
+        throw "Not approved. No live writes performed."
     }
 }
 
@@ -381,20 +379,13 @@ Stage 9 bridge readiness control was recorded as a governed M365 decision and ac
     Set-Stage9ListItem -ListTitle "Agent Action Log" -Values $actionValues
 }
 
-$approvalPhrases = @{
-    RecordDecision = "record-stage-9-agent-capability-decision"
-    CoordinatorSuggestion = "record-stage-9-coordinator-suggestion"
-    SupportTriage = "record-stage-9-support-triage"
-    BridgeReadinessControl = "record-stage-9-bridge-readiness-control"
-}
-
 Write-Host "Microsoft 365 Stage 9 - Agent capability loop" -ForegroundColor Cyan
 Write-Host "Action:     $Action" -ForegroundColor Gray
-Write-Host "Mode:       $(if ($Apply) { 'APPLY with typed approval' } else { 'DRY RUN' })" -ForegroundColor Gray
+Write-Host "Mode:       $(if ($Apply) { if ($Approve) { 'APPLY (pre-confirmed via -Approve)' } else { 'APPLY (single Y approval)' } } else { 'DRY RUN' })" -ForegroundColor Gray
 Write-Host "Transcript: $transcriptPath" -ForegroundColor Gray
 Write-Host "Safety:     List records only; no mail sends, guests, sharing, consent, tenant policy, deletion, or automation." -ForegroundColor Gray
 
-Assert-ApprovalPhrase -ExpectedPhrase $approvalPhrases[$Action]
+Confirm-Stage9Write
 
 switch ($Action) {
     "RecordDecision" {
@@ -428,7 +419,7 @@ if ($Apply) {
     Write-Host "Stage 9 agent capability loop completed with approved List writes only." -ForegroundColor Green
 }
 else {
-    Write-Host "Dry run complete. Re-run with -Apply to perform the approved List write." -ForegroundColor Yellow
+    Write-Host "Dry run complete. Re-run with -Apply to perform the List write (one Y approval, or -Approve to pre-confirm)." -ForegroundColor Yellow
 }
 Write-Host "Transcript: $transcriptPath" -ForegroundColor Gray
 

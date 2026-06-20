@@ -57,7 +57,7 @@ if ($null -eq $powerShellHost) {
 
 Write-Host "Opening visible PowerShell window for the Coordinator daily read..." -ForegroundColor Cyan
 Write-Host "Target: $targetScript" -ForegroundColor Gray
-Write-Host "Mode: $(if ($Apply) { 'APPLY: G0 read + one G1 Suggested row (typed approval)' } else { 'DRY RUN: G0 read + local digest only' })" -ForegroundColor Gray
+Write-Host "Mode: $(if ($Apply) { 'APPLY: G0 read + one G1 Suggested row (single Y approval)' } else { 'DRY RUN: G0 read + local digest only' })" -ForegroundColor Gray
 
 $arguments = @(
     "-NoProfile",

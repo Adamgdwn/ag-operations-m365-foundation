@@ -192,14 +192,15 @@ Dry-run-first live loop operator:
 .\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action BridgeReadinessControl
 ```
 
-Apply mode requires typed approval:
+Apply mode signs in once per session (persisted) and asks for a single `Y`
+confirmation before the live write. Add `-Apply` to record, e.g.:
 
-```text
-record-stage-9-agent-capability-decision
-record-stage-9-coordinator-suggestion
-record-stage-9-support-triage
-record-stage-9-bridge-readiness-control
+```powershell
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion -Apply
 ```
+
+For a scripted/unattended run whose pathway is already understood, add `-Approve`
+to pre-confirm and skip the Y prompt.
 
 The loop operator writes only to approved operating Lists. It does not create app
 registrations, grant consent, send mail, invite guests, change sharing, alter

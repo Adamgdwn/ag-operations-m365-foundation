@@ -689,12 +689,12 @@ inventory/stage-9-agentic-os-bridge/bridge-readiness-control/stage-9-app-posture
 .\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action SupportTriage
 ```
 
-11. Apply any next Stage 9 loop only after Adam approves and types the
-   action-specific phrase:
+11. Apply any next Stage 9 loop by adding `-Apply`: sign in once per session,
+   then press `Y` at the single approval prompt. Add `-Approve` to pre-confirm a
+   scripted run whose pathway is understood.
 
-```text
-record-stage-9-coordinator-suggestion
-record-stage-9-support-triage
+```powershell
+.\scripts\Start-M365Stage9AgentCapabilityLoopInteractive.ps1 -Action CoordinatorSuggestion -Apply
 ```
 
 12. Guided AI Labs homepage is now the live Operations Cockpit:

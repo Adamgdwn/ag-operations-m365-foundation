@@ -2,12 +2,14 @@ param(
     [ValidateSet("RecordDecision", "CoordinatorSuggestion", "SupportTriage", "BridgeReadinessControl")]
     [string]$Action = "RecordDecision",
     [switch]$Apply,
+    [switch]$Approve,
     [switch]$ForceFreshLogin,
     [switch]$UseDeviceLogin
 )
 
 # Opens a visible PowerShell window for the Stage 9 governed coordinator/support
-# first loops. The target script is dry-run-first and typed-approval for writes.
+# first loops. The target script is dry-run-first; live writes need one persisted
+# sign-in plus a single Y confirmation (-Approve pre-confirms scripted runs).
 
 $ErrorActionPreference = "Stop"
 
@@ -37,7 +39,7 @@ function Start-VisiblePowerShellConsole {
         "title $Title",
         "cd /d $(ConvertTo-CmdArgument -Argument $WorkingDirectory)",
         "echo Ready to start $Title.",
-        "echo This writes only to approved operating Lists when -Apply and the typed phrase are used.",
+        "echo This writes only to approved operating Lists when -Apply is used, after a single Y approval.",
         "echo It does not send mail, invite guests, change sharing, grant consent, alter tenant policy, delete records, or run unattended automation.",
         "echo Complete any Microsoft sign-in promptly after the next prompt appears.",
         "pause",
@@ -60,7 +62,7 @@ if ($null -eq $powerShellHost) {
 Write-Host "Opening visible PowerShell window for Stage 9 agent capability loop..." -ForegroundColor Cyan
 Write-Host "Target: $targetScript" -ForegroundColor Gray
 Write-Host "Action: $Action" -ForegroundColor Gray
-Write-Host "Mode: $(if ($Apply) { 'APPLY with typed approval required' } else { 'DRY RUN' })" -ForegroundColor Gray
+Write-Host "Mode: $(if ($Apply) { if ($Approve) { 'APPLY (pre-confirmed via -Approve)' } else { 'APPLY (single Y approval)' } } else { 'DRY RUN' })" -ForegroundColor Gray
 
 $arguments = @(
     "-NoProfile",
@@ -72,6 +74,9 @@ $arguments = @(
 
 if ($Apply) {
     $arguments += "-Apply"
+}
+if ($Approve) {
+    $arguments += "-Approve"
 }
 if ($ForceFreshLogin) {
     $arguments += "-ForceFreshLogin"
