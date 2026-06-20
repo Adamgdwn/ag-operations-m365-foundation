@@ -36,6 +36,8 @@ access stay as separate controlled grants.
 - `docs/COCKPIT_CARD_GAP_LIST.md` - cleanup, card-plan, and access/runbook gaps
   found in Chunk 2.
 - `docs/AGENTIC_M365_READINESS.md` - recommendations for becoming agentic and AI-centric.
+- `docs/AI_FIRST_TOOLING_ACTIVATION.md` - which Microsoft AI/automation tools to
+  turn on, in what order (free first), and the Founders Hub license unlock.
 - `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` - Chunk 6 agentic approval
   pattern, surface lane decisions, blockers, and Adam decision queue.
 - `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` - final usability
@@ -166,3 +168,6 @@ For a CRM-specific chunk, work from `docs/CRM_EXECUTION_PLAN.md`.
 For agentic and AI-centric Microsoft 365 recommendations, work from
 `docs/AGENTIC_M365_READINESS.md` and
 `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`.
+
+For which Microsoft AI/automation tools to actually turn on (free first, then the
+Founders Hub license unlock), work from `docs/AI_FIRST_TOOLING_ACTIVATION.md`.
