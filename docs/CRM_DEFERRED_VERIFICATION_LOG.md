@@ -144,6 +144,29 @@ Evidence: _notes + screenshots path_
 
 ---
 
+## V6 — Exact CRM access-group read-back (DECISION input, before any grant)
+
+Status: BUILT package depends on it; not yet read back.
+
+Purpose: the CRM Onboarding Package records the role->level decision (A2 employee
+/ A3 trusted partner) but deliberately does NOT guess live group names. Before
+granting anyone CRM access, read back the live SharePoint/Microsoft 365 groups.
+
+Run:
+- During the V1 baseline sign-in (or any read-only PnP session), capture the
+  live group/permission names for the GuidedAILabs site.
+
+Confirm:
+- [ ] Exact M365 group for internal members confirmed (e.g. GuidedAILabs@agoperations.ca).
+- [ ] Exact SharePoint permission group name for CRM contributors (A2) recorded.
+- [ ] Exact SharePoint permission group/role for full operating access (A3) recorded.
+- [ ] Filled into `docs/CRM_ONBOARDING_PACKAGE.md` "Exact access-group notes".
+
+Result: _pending_
+Evidence: _path/notes_
+
+---
+
 ## Log
 
 - 2026-06-20: Log created. V1 (Chunk 2 baseline) built, awaiting run.
@@ -152,3 +175,6 @@ Evidence: _notes + screenshots path_
   offline and pass.
 - 2026-06-20: V3 (Chunk 4 dry-run + refusal gate) BUILT and VERIFIED OFFLINE —
   PASS. Only the approved write path (V4) remains deferred.
+- 2026-06-20: Chunk 7 onboarding package built (extended CRM_RUNBOOK.md +
+  new CRM_ONBOARDING_PACKAGE.md, both referencing the existing access model, no
+  duplication). V6 (exact CRM group-name read-back) added as a pre-grant input.

@@ -59,9 +59,22 @@ stopping for each interactive run, and to keep a test log. All built-but-unrun
 tenant tests are batched in `docs/CRM_DEFERRED_VERIFICATION_LOG.md` (V1-V5) for
 one focused sign-in session.
 
-Next buildable without tenant: Chunk 7 - Onboarding Package (docs). Chunks 5
-(apply), 6 (human browser pass), and 8 (close, needs evidence) wait on the
-deferred-log runs.
+Chunk 7 - Onboarding Package: BUILT (2026-06-20). Extended `docs/CRM_RUNBOOK.md`
+with a First-Day Setup And Access section (login, bookmarks/Teams tab, CRM
+access level A2/A3) and added `docs/CRM_ONBOARDING_PACKAGE.md` as the hand-over
+index. Both REFERENCE the existing `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
+(roles, levels, admin-only authority, escalation) rather than duplicating it. The
+only deferred piece is the exact live SharePoint/M365 group names, which the
+access model itself requires be read back, not guessed (deferred-log V6).
+
+Remaining, all gated on the deferred-log sign-in session:
+- Chunk 5 - Tenant Apply (V4): requires approval phrase apply-gail-crm-recovery.
+- Chunk 6 - Human browser/operator acceptance (V5).
+- Chunk 8 - Close Recovery: needs Chunk 5/6 evidence before it can close.
+
+At this point everything buildable without a tenant sign-in is built. The next
+real action is a focused sign-in session to run the deferred-log items V1-V6 in
+order.
 
 ## Completion Requirements
 

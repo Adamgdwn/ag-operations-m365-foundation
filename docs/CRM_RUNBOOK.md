@@ -17,6 +17,39 @@ authority.
 The goal is simple: open the CRM, capture and work real signals, and leave clear
 records behind.
 
+## First-Day Setup And Access
+
+Do this once, before your first Start Of Day.
+
+Access you should already have been granted (Adam decides the exact grant; see
+`docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`, "CRM / Relationships" row):
+
+- Employee / operator doing assigned CRM work: access level **A2** (read and
+  update CRM records, queues, and links for assigned work).
+- Trusted partner / operator with deliberate broad CRM access: access level
+  **A3** (full CRM and related delivery operating access).
+- Either way this is an operating role, not tenant/global admin authority. The
+  admin-only actions in that model stay with Adam.
+
+Set up your access:
+
+1. Sign in to Microsoft 365 with your Guided AI Labs account and complete MFA.
+2. Open the Login Guide if you need account help:
+   `https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Login-And-Account-Guide.aspx`
+3. Open the workspace and confirm you can reach the Operations Cockpit:
+   `https://agoperationsltd.sharepoint.com/sites/GuidedAILabs`
+4. Open the CRM Command Center and bookmark it:
+   `https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Command-Center.aspx`
+5. Optional but recommended: add the CRM Command Center as a tab in your Guided
+   AI Labs Team so it is one click from Teams.
+6. Confirm you can see the daily cards (Triage Queue, Follow Up Today, Proposal /
+   Decision Blockers, Active Delivery, Closeout / Invoice Watch). If a card is
+   missing or you cannot open it, that is an access item to escalate, not
+   something to work around.
+
+If anything above is missing or broader than your assigned role, stop and use
+the Escalate section before doing CRM work.
+
 ## Start Of Day
 
 1. Sign in to Microsoft 365 with your Guided AI Labs account and MFA.
