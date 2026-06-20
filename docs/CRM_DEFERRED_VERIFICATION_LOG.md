@@ -82,13 +82,22 @@ Run (no sign-in needed for the refusal check; sign-in needed for full plan):
 - `pwsh scripts/portal/Apply-CrmPortal.ps1 -Apply`      (expect: REFUSED, no phrase)
 
 Confirm:
-- [ ] With no args, each prints a clear plan of intended tenant changes and makes NO writes.
-- [ ] With `-Apply` but no/wrong approval phrase, each REFUSES and exits without writing.
-- [ ] The printed plan matches the three config files (lists/fields/views, intake
+- [x] With no args, each prints a clear plan of intended tenant changes and makes NO writes.
+- [x] With `-Apply` but no/wrong approval phrase, each REFUSES and exits without writing.
+- [x] The printed plan matches the three config files (lists/fields/views, intake
       form hiding the blocked fields, navigation cards, admin-only legacy fallback).
 
-Result: _pending_
-Evidence: _path here_
+Result: PASS (verified OFFLINE 2026-06-20 — these checks need no sign-in; the
+dry-run and refusal paths exit before any tenant connection). Confirmed:
+SPO dry-run exit 0 with full plan; SPO -Apply (no phrase) exit 2 REFUSED;
+SPO -Apply wrong phrase exit 2 REFUSED; Portal dry-run exit 0 with plan incl.
+"MUST NOT route to legacy"; Portal -Apply (no phrase) exit 2 REFUSED.
+Evidence: re-runnable via `pwsh scripts/spo/Apply-CrmSharePoint.ps1 -NoPause`
+(and `-Apply` variants); plan files land under `inventory/crm-apply/`.
+
+NOTE: the WRITE path itself (lists/fields/views actually created, blocked fields
+actually hidden) is exercised only under approval in V4 — that part is still
+deferred.
 
 ---
 
@@ -138,3 +147,8 @@ Evidence: _notes + screenshots path_
 ## Log
 
 - 2026-06-20: Log created. V1 (Chunk 2 baseline) built, awaiting run.
+- 2026-06-20: V2 (Chunk 3 verifier) built, awaiting sign-in run. Decision helpers
+  (form-flag visibility incl. DefaultTrue, legacy-route detection) unit-tested
+  offline and pass.
+- 2026-06-20: V3 (Chunk 4 dry-run + refusal gate) BUILT and VERIFIED OFFLINE —
+  PASS. Only the approved write path (V4) remains deferred.

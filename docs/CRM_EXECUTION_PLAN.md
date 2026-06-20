@@ -38,9 +38,30 @@ complete the Microsoft sign-in, then read `inventory/crm-baseline/CRM_BASELINE_E
 The acceptance gate ("the script can prove what exists now without writing to the
 tenant") is met once that evidence exists.
 
-Next after the baseline run: Chunk 3 - Verifier Replacement
-(`scripts/spo/Verify-CrmSharePoint.ps1`), which must FAIL on the bad operator path
-and DefaultTrue-visible hidden fields.
+Chunk 3 - Verifier Replacement: SCRIPT BUILT (2026-06-20), awaiting one
+interactive run (deferred-log V2). `scripts/spo/Verify-CrmSharePoint.ps1` +
+launcher FAIL on the bad operator path (blocked technical fields visible incl.
+DefaultTrue, legacy Intake Register routes in nav/page bodies, missing
+lists/fields/lookups/views). Decision helpers unit-tested offline.
+
+Chunk 4 - Apply Stubs + Dry Run: BUILT and DRY-RUN VERIFIED OFFLINE
+(2026-06-20, deferred-log V3 = PASS). `scripts/spo/Apply-CrmSharePoint.ps1`
+(lists/fields/lookups/views + hides the 9 blocked intake fields) and
+`scripts/portal/Apply-CrmPortal.ps1` (cockpit card, command center, daily cards,
+admin-only legacy fallback), each with a launcher. Both default to dry-run
+(prints the full intended-change plan, no sign-in, no writes) and REFUSE write
+mode unless given `-Apply -ApprovalPhrase apply-gail-crm-recovery`. Confirmed:
+dry-runs exit 0 with plan; -Apply without the exact phrase exits 2 with no tenant
+connection. The actual approved WRITE is Chunk 5 (deferred-log V4).
+
+Building-forward decision (2026-06-20): Adam asked to keep building without
+stopping for each interactive run, and to keep a test log. All built-but-unrun
+tenant tests are batched in `docs/CRM_DEFERRED_VERIFICATION_LOG.md` (V1-V5) for
+one focused sign-in session.
+
+Next buildable without tenant: Chunk 7 - Onboarding Package (docs). Chunks 5
+(apply), 6 (human browser pass), and 8 (close, needs evidence) wait on the
+deferred-log runs.
 
 ## Completion Requirements
 
