@@ -21,14 +21,26 @@ apply-gail-crm-recovery
 
 ## Current Chunk
 
-Chunk 1 - Active Config Split is COMPLETE (2026-06-20). The three focused CRM
-config files now exist and parse: `config/crm.sharepoint.json`,
-`config/crm.intake.json`, `config/crm.navigation.json`. Chunk 0 branch hygiene
-was skipped by standing decision (solo operator commits straight to main).
+Chunk 1 - Active Config Split is COMPLETE (2026-06-20).
 
-Next: Chunk 2 - Read-Only Baseline Export. Build `scripts/spo/Export-CrmBaseline.ps1`
-to capture live tenant CRM state with no writes. Chunk 2 is read-only (interactive
-PnP sign-in, no approval phrase needed).
+Chunk 2 - Read-Only Baseline Export: SCRIPT BUILT (2026-06-20), awaiting one
+interactive run. `scripts/spo/Export-CrmBaseline.ps1` (worker) and
+`scripts/spo/Start-CrmBaselineExportInteractive.ps1` (visible-window launcher)
+read the three split configs and snapshot the live tenant CRM state to a
+timestamped path under `inventory/crm-baseline/`. Read-only: no
+create/update/delete/invite/share/consent/mail; no approval phrase needed. It
+records observations only (missing lists, blocked technical fields present/visible
+on the intake list, nav nodes or page bodies routing to the legacy Intake Register
+NewForm) and leaves PASS/FAIL to Chunk 3.
+
+To run: double-click / launch `scripts/spo/Start-CrmBaselineExportInteractive.ps1`,
+complete the Microsoft sign-in, then read `inventory/crm-baseline/CRM_BASELINE_EXPORT.md`.
+The acceptance gate ("the script can prove what exists now without writing to the
+tenant") is met once that evidence exists.
+
+Next after the baseline run: Chunk 3 - Verifier Replacement
+(`scripts/spo/Verify-CrmSharePoint.ps1`), which must FAIL on the bad operator path
+and DefaultTrue-visible hidden fields.
 
 ## Completion Requirements
 
