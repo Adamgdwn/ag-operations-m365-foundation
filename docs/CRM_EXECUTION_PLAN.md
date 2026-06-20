@@ -21,10 +21,14 @@ apply-gail-crm-recovery
 
 ## Current Chunk
 
-Start with Chunk 1 unless Chunk 0 is needed for branch/worktree hygiene.
+Chunk 1 - Active Config Split is COMPLETE (2026-06-20). The three focused CRM
+config files now exist and parse: `config/crm.sharepoint.json`,
+`config/crm.intake.json`, `config/crm.navigation.json`. Chunk 0 branch hygiene
+was skipped by standing decision (solo operator commits straight to main).
 
-Chunk 1 is local-only. It creates the active config shape and does not change the
-Microsoft 365 tenant.
+Next: Chunk 2 - Read-Only Baseline Export. Build `scripts/spo/Export-CrmBaseline.ps1`
+to capture live tenant CRM state with no writes. Chunk 2 is read-only (interactive
+PnP sign-in, no approval phrase needed).
 
 ## Completion Requirements
 

@@ -1,0 +1,65 @@
+{
+  "version": "2026-06-20-crm-recovery-split",
+  "purpose": "The clean intake contract for the daily CRM capture surface. Defines the business fields an operator sees, which are required, the field order/sections, and the technical fields that must never appear in the daily intake path. Split out of config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json (kept as provenance).",
+  "derivedFrom": [
+    "config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json",
+    "docs/CRM_UX_SPEC.md",
+    "docs/CRM_DATA_MODEL.md",
+    "docs/CRM_ACCEPTANCE_TESTS.md"
+  ],
+  "approvalPhrase": "apply-gail-crm-recovery",
+  "intakeList": "CRM - New Signals",
+  "intakeContentTypeName": "Item",
+  "form": {
+    "title": "SharePoint Native CRM Intake",
+    "principle": "Keep the first business-development intake focused on what Adam actually knows at capture time. Who is this, what do they need, is it worth pursuing, what is the next action, what evidence matters. Source-mailbox, message-id, automation, graph, and audit fields are not part of this list.",
+    "nativeFormAllowed": true,
+    "nativeFormAllowedReason": "CRM - New Signals carries only clean business fields, so SharePoint's native new/edit form is acceptable. Lists with technical/automation fields are not allowed to use the raw native form in the daily path.",
+    "sections": [
+      {
+        "displayName": "Capture",
+        "fields": ["Title", "PersonName", "PersonEmail", "OrganizationName", "SignalType", "Priority"]
+      },
+      {
+        "displayName": "Context",
+        "fields": ["NeedSummary", "SourceText", "NextAction", "FollowUpDueDate", "RelatedLink", "SignalStatus", "ItemOwner"]
+      }
+    ]
+  },
+  "businessFields": [
+    { "internalName": "Title", "displayName": "Signal summary", "type": "Text", "required": true },
+    { "internalName": "PersonName", "displayName": "Person", "type": "Text", "required": false },
+    { "internalName": "PersonEmail", "displayName": "Email", "type": "Text", "required": false },
+    { "internalName": "OrganizationName", "displayName": "Organization", "type": "Text", "required": false },
+    { "internalName": "SignalType", "displayName": "Signal type", "type": "Choice", "required": true, "default": "Referral" },
+    { "internalName": "Priority", "displayName": "Priority", "type": "Choice", "required": true, "default": "Normal" },
+    { "internalName": "NeedSummary", "displayName": "Need / opportunity", "type": "Note", "required": true },
+    { "internalName": "SourceText", "displayName": "Email or context paste", "type": "Note", "required": true },
+    { "internalName": "NextAction", "displayName": "Next action", "type": "Note", "required": true },
+    { "internalName": "FollowUpDueDate", "displayName": "Follow-up date", "type": "DateTime", "required": false },
+    { "internalName": "RelatedLink", "displayName": "Related file/link", "type": "URL", "required": false },
+    { "internalName": "SignalStatus", "displayName": "Status", "type": "Choice", "required": true, "default": "New" },
+    { "internalName": "ItemOwner", "displayName": "Owner", "type": "User", "required": false }
+  ],
+  "requiredBusinessFields": ["Title", "SignalType", "Priority", "NeedSummary", "SourceText", "NextAction", "SignalStatus"],
+  "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "RelatedLink", "ItemOwner"],
+  "requiredVsCardPlanNote": "The CRM / Relationships card plan lists PersonName, PersonEmail, OrganizationName, and FollowUpDueDate under 'Required fields'. The Stage 8C technical contract marks those four as NOT required (notRequiredFields). This file follows the Stage 8C technical contract. Whether any of those four should be made mandatory on the form is a small UX decision left for Adam to confirm before the Chunk 5 apply; flagged here so it is resolved deliberately, not silently.",
+  "hiddenFieldRule": "Every field in blockedFieldNames must have ShowInNewForm=false AND ShowInEditForm=false on CRM - New Signals. The Stage 8C verifier wrongly let these pass when ShowInNewForm/ShowInEditForm were DefaultTrue; the Chunk 3 verifier must FAIL on DefaultTrue or True.",
+  "blockedFieldNames": [
+    "SourceMailbox",
+    "SourceMessageId",
+    "ReceivedDate",
+    "IntakeStatus",
+    "DurableHome",
+    "PlannerTaskUrl",
+    "CentralOSLink",
+    "GraphNodeId",
+    "AgentConfidence"
+  ],
+  "blockedFieldNamesNote": "ItemOwner (Owner) is a legitimate business field shown on the form (Context section) and is intentionally NOT a blocked field, even though docs/CRM_UX_SPEC.md and the card plan list ItemOwner among fields hidden from daily operators. Treat ItemOwner as operator-facing here; it is the assignment field. The remaining nine names above are the true technical/automation fields that must stay out of the daily path.",
+  "legacyTechnicalIntake": {
+    "list": "Guided AI Labs - Intake Register",
+    "form": "NewForm.aspx",
+    "rule": "Must never be the daily CRM intake route. No daily card, button, or navigation link may open Guided AI Labs - Intake Register/NewForm.aspx. It is admin-only fallback (see crm.navigation.json)."
+  }
+}

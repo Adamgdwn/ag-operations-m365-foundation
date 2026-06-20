@@ -216,11 +216,14 @@ Created on 2026-06-18:
 - `docs/CRM_RUNBOOK.md`
 - `docs/CRM_ACCEPTANCE_TESTS.md`
 
-Still to create:
+Created on 2026-06-20 (Chunk 1 - Active Config Split):
 
 - `config/crm.sharepoint.json`
 - `config/crm.intake.json`
 - `config/crm.navigation.json`
+
+Still to create:
+
 - `scripts/spo/Export-CrmBaseline.ps1`
 - `scripts/spo/Verify-CrmSharePoint.ps1`
 - `scripts/spo/Apply-CrmSharePoint.ps1`

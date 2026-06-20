@@ -1,0 +1,83 @@
+{
+  "version": "2026-06-20-crm-recovery-split",
+  "purpose": "The operator navigation/routing contract: how a person gets from the Operations Cockpit to the CRM Command Center, the daily cards they see, what list/view each card opens, and the admin-only fallback links. Split out of config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json (kept as provenance). List/field/view structure lives in crm.sharepoint.json; the intake form contract lives in crm.intake.json.",
+  "derivedFrom": [
+    "config/M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.json",
+    "docs/CRM_UX_SPEC.md",
+    "docs/CRM_RECOVERY_PLAN.md",
+    "docs/CRM_ACCEPTANCE_TESTS.md"
+  ],
+  "approvalPhrase": "apply-gail-crm-recovery",
+  "site": {
+    "title": "Guided AI Labs",
+    "url": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs"
+  },
+  "entryPath": "Operations Cockpit -> CRM Command Center -> New Signal -> CRM - New Signals -> Triage Queue",
+  "operationsCockpit": {
+    "page": "SitePages/Guided-AI-Labs-Operations-Cockpit.aspx",
+    "crmEntryLabel": "CRM Command Center",
+    "crmEntryTarget": "Relationship CRM Command Center",
+    "rule": "The Operations Cockpit CRM card must link to the CRM Command Center page, not directly to a raw list or the legacy Intake Register."
+  },
+  "crmCommandCenter": {
+    "title": "Relationship CRM Command Center",
+    "page": "SitePages/Relationship-CRM-Command-Center.aspx",
+    "navGroup": "Client Delivery",
+    "role": "Daily command center for business-development intake, triage, CRM stages, open actions, meeting preparation, evidence, health reviews, closeout, and invoice handoff readiness. Shows recognizable work queues and action cards, not a build packet or raw list catalog.",
+    "dailyCards": [
+      {
+        "label": "New Signal",
+        "intent": "Capture a referral, opportunity, support signal, discovery start, or pasted email/context.",
+        "routesTo": { "list": "CRM - New Signals", "surface": "clean-intake-form" },
+        "mustNotRouteTo": "Guided AI Labs - Intake Register/NewForm.aspx",
+        "rule": "This card must open the clean CRM - New Signals intake path. The Stage 8C failure was that the New/Add-intake card resolved (via Get-ListNewFormUrl) to the legacy Intake Register NewForm.aspx. That route is forbidden for this card."
+      },
+      { "label": "Triage Queue", "intent": "Decide whether a signal needs qualification, nurture, follow-up, closure, or Adam review.", "routesTo": { "list": "CRM - New Signals", "view": "New Signal Queue" } },
+      { "label": "Follow Up Today", "intent": "Work dated follow-ups due today or overdue.", "routesTo": { "list": "CRM - New Signals", "view": "Signals Needing Follow-up" } },
+      { "label": "Proposal / Decision Blockers", "intent": "Clear scope, approval, decision, or go-live blockers.", "routesTo": { "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" } },
+      { "label": "Active Delivery", "intent": "Monitor delivery control and blocked execution.", "routesTo": { "list": "CRM - Engagements", "view": "Delivery Control" } },
+      { "label": "Closeout / Invoice Watch", "intent": "Track final evidence, invoice handoff, payment follow-up, and closure.", "routesTo": { "list": "CRM - Closeout Invoice Queue", "view": "Closeout / Invoice Watch" } }
+    ],
+    "stagePath": [
+      { "label": "1. Capture", "description": "New opportunities, referrals, support signals, discovery starts, and pasted email/context enter here without source-message or mailbox fields.", "list": "CRM - New Signals", "view": "New Signal Queue" },
+      { "label": "2. Qualification", "description": "Decide whether the signal is qualified, disqualified, nurture, proposal recommended, or converted.", "list": "CRM - Qualification", "view": "Qualification Triage" },
+      { "label": "3. Engagement Pipeline", "description": "Track the relationship stage, package path, decision status, value, probability, and next action.", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+      { "label": "4. Decision / Proposal", "description": "Keep decision blockers, proposal work, and go-live blockers visible until resolved.", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
+      { "label": "5. Active Delivery", "description": "Move qualified work into onboarding, active delivery, sustainment, or blocked execution control.", "list": "CRM - Engagements", "view": "Delivery Control" },
+      { "label": "6. Closeout / Invoice", "description": "Track closeout readiness, acceptance, invoice handoff, payment follow-up, and final evidence links.", "list": "CRM - Closeout Invoice Queue", "view": "Closeout / Invoice Watch" }
+    ],
+    "directLinks": [
+      { "label": "New Signal Queue", "list": "CRM - New Signals", "view": "New Signal Queue" },
+      { "label": "Signals Needing Follow-up", "list": "CRM - New Signals", "view": "Signals Needing Follow-up" },
+      { "label": "Open CRM Actions", "list": "CRM - Action Queue", "view": "Open CRM Actions" },
+      { "label": "Due / Overdue Actions", "list": "CRM - Action Queue", "view": "Due / Overdue Actions" },
+      { "label": "Qualification Triage", "list": "CRM - Qualification", "view": "Qualification Triage" },
+      { "label": "Pipeline by Stage", "list": "CRM - Engagements", "view": "Pipeline by Stage" },
+      { "label": "Delivery Control", "list": "CRM - Engagements", "view": "Delivery Control" },
+      { "label": "Decision / Go-Live Blockers", "list": "CRM - Action Queue", "view": "Decision / Go-Live Blockers" },
+      { "label": "Upcoming Meetings", "list": "CRM - Meeting Notes", "view": "Upcoming Meetings" },
+      { "label": "Meeting Debrief Needed", "list": "CRM - Meeting Notes", "view": "Meeting Debrief Needed" },
+      { "label": "Proposal / Scope Artifacts", "list": "CRM - Artifacts", "view": "Proposal / Scope Artifacts" },
+      { "label": "Handoff Evidence", "list": "CRM - Artifacts", "view": "Handoff Evidence" },
+      { "label": "Health Review Queue", "list": "CRM - Health Reviews", "view": "Health Review Queue" },
+      { "label": "At Risk Health Reviews", "list": "CRM - Health Reviews", "view": "At Risk Health Reviews" },
+      { "label": "Closeout / Invoice Watch", "list": "CRM - Closeout Invoice Queue", "view": "Closeout / Invoice Watch" },
+      { "label": "Ready to Invoice", "list": "CRM - Closeout Invoice Queue", "view": "Ready to Invoice" },
+      { "label": "Payment Follow-up", "list": "CRM - Closeout Invoice Queue", "view": "Payment Follow-up" }
+    ]
+  },
+  "adminOnlyFallback": [
+    {
+      "label": "Legacy Intake Register (admin only)",
+      "list": "Guided AI Labs - Intake Register",
+      "form": "NewForm.aspx",
+      "visibility": "admin-only",
+      "rule": "Allowed to exist as a labelled admin-only fallback, but must not appear in any daily operator card or navigation node. The Chunk 3 verifier must FAIL if a daily card or visible page action resolves to this route."
+    }
+  ],
+  "forbiddenInDailyPath": [
+    "Guided AI Labs - Intake Register/NewForm.aspx",
+    "raw list +New routes that expose technical/automation fields",
+    "Stage 8 build packet docs as operator instructions"
+  ]
+}
