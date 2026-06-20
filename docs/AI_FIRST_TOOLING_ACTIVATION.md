@@ -102,6 +102,7 @@ Ordered so value lands early and risk stays inside existing gates.
    (instructions + public web only) — first AI-first artifact, $0, G1.
 2. **Apply to Founders Hub as Guided AI Labs.** This is now a near-term action,
    not a Stage 7 footnote — it gates all of Bucket C. Decision Register entry.
+   Drafted application packet: `docs/FOUNDERS_HUB_APPLICATION_PACKET.md`.
 3. **Pilot one tenant-grounded agent (Bucket B)** over a single SharePoint site
    (e.g. Published Methods or CRM knowledge), on PAYG with a stated credit
    ceiling. Decision Register entry; rollback = unlink Azure billing. Log it in
