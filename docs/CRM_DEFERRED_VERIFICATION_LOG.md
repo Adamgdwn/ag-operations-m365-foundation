@@ -204,6 +204,8 @@ Status: _pending (do only after V7)_
 
 Run:
 - Submit one dummy response on EACH brand form, prefixed `GAIL-INTERNAL-WALKTHROUGH`.
+- Submit at least one of those via the LIVE website CTA (Join B), not only the
+  direct form link, to prove the website→form→flow→CRM chain end to end.
 - Re-run the Chunk 3 verifier (V2).
 
 Confirm:

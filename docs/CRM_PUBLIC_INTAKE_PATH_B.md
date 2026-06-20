@@ -112,6 +112,42 @@ column showing the brand. Triage is identical; the operator simply sees where th
 signal came from. The legacy `Guided AI Labs - Intake Register` remains admin-only
 and is NOT involved.
 
+## How the brand websites connect (Join B — Vercel)
+
+The two brand sites (Guided AI Labs, Guided AI Journey) are custom-coded, edited
+locally by coding agents, and hosted on **Vercel**. They live in entirely separate
+repos from this ops repo and from the M365 tenant.
+
+**Integration contract:** the ONLY thing shared between a brand-site repo and this
+system is **one public Microsoft Forms URL per brand**. No shared code, no API, no
+stored secret. The site only needs the form's URL; the tenant-side flow (Join A)
+watches that form by its form ID and files each submission into `CRM - New Signals`.
+The site never knows the CRM exists.
+
+In-envelope ways to surface the form on a Vercel site (the Microsoft Form stays the
+ingestion point, so the authorized flow is unchanged):
+
+- **CTA button → form URL (recommended).** A branded anchor/button
+  (`target="_blank"`) to the form's public share URL. One line for the coding
+  agent; brand page stays untouched; no CSP change. The form page looks like
+  Microsoft Forms and the visitor leaves the site briefly.
+- **Embedded iframe.** The form's embed `<iframe>` inside a page section so the
+  visitor stays on-site. Requires a Next/Vercel `frame-src https://forms.office.com`
+  CSP allowance and some responsive-sizing work; a Microsoft-styled form sits
+  inside the brand frame.
+
+OUT OF the Path B envelope (separate governance decision, NOT authorized here): a
+fully native on-brand form coded into the Vercel site. To reach the CRM it would
+need a premium Power Automate HTTP trigger or a custom write endpoint (app
+registration with SharePoint write) — a new public write surface and/or premium
+cost. Flag and decide explicitly before ever building this.
+
+**Sequencing:** the form (V7) must exist first to mint its URL. The brand-site
+agent can pre-wire a CTA component now with a placeholder URL constant; when V7
+produces the two real URLs, it is a one-line swap + redeploy per brand. V8's
+end-to-end test should include at least one submission via the live website CTA,
+not only the direct form link.
+
 ## Build order (gated session)
 
 1. Confirm `IntakeSource` exists on `CRM - New Signals` (created by the Chunk 5
