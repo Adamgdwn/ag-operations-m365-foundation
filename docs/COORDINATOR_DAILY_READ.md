@@ -1,0 +1,90 @@
+# Coordinator Daily Read
+
+Date: 2026-06-20
+
+Status: Active. First "intelligent" G1 agent loop — the read→reason→propose
+upgrade of the Stage 9 coordinator loop.
+
+This is the M365 Coordinator's daily operations read. It replaces the canned
+`CoordinatorSuggestion` action (which wrote a fixed test row) with a loop that
+actually reads live operating Lists, applies dated detection rules, and proposes
+content-specific attention items.
+
+Related: [AGENTIC_M365_READINESS.md](AGENTIC_M365_READINESS.md),
+[CARD_PLAN_AGENT_CONTROL_PLANE.md](CARD_PLAN_AGENT_CONTROL_PLANE.md),
+[../config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json](../config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json).
+
+## What it does
+
+- **G0 (always, no tenant write):** signs in as `adamgoodwin@guidedailabs.com`,
+  reads the Intake Register, Decision Register, Agent Action Log, and the CRM
+  Engagements / Touchpoints / Organizations lists, applies the detection rules
+  below, and writes a **local digest** under
+  `inventory/coordinator-daily-read/coordinator-daily-read-<stamp>.md`.
+- **G1 (only with `-Apply` + typed approval phrase):** records **one**
+  `Suggested` row in the Agent Action Log summarising the findings and pointing
+  to the digest. The row is `Suggested` only — a human still approves, rejects,
+  or supersedes it. Nothing is approved or executed by this loop.
+
+It never sends mail, invites guests, changes sharing or permissions, grants
+consent, changes tenant policy, publishes Forms, deletes records, registers
+apps, or runs unattended automation.
+
+## Detection rules (defaults, tunable via parameters)
+
+| List | Rule | Severity |
+|---|---|---|
+| Intake Register | High/Urgent priority still in `New` | High |
+| Intake Register | Open item with no NextAction | Medium |
+| Intake Register | Open item older than `-StaleIntakeDays` (14) | Medium |
+| Decision Register | RevisitDate in the past | High |
+| Decision Register | RevisitDate within `-RevisitSoonDays` (7) | Medium |
+| Agent Action Log | `Suggested` older than `-SuggestionAgeDays` (7) | Medium |
+| Agent Action Log | `Approved` but not `Completed`, older than 7 days | Medium |
+| CRM - Engagements | RiskLevel/Status `At Risk` | High |
+| CRM - Engagements | Status `Waiting on Adam` | High |
+| CRM - Engagements | Active, not reviewed in `-EngagementReviewDays` (30) | Medium/Low |
+| CRM - Touchpoints | FollowUpRequired and FollowUpDueDate passed | High |
+| CRM - Organizations | Active/Client/Partner not touched in `-OrgTouchDays` (60) | Medium/Low |
+
+## How to run
+
+Dry run first (G0 read + digest, no tenant write):
+
+```powershell
+pwsh -File scripts\Invoke-M365CoordinatorDailyRead.ps1
+```
+
+Or open a visible window via the launcher:
+
+```powershell
+pwsh -File scripts\Start-M365CoordinatorDailyReadInteractive.ps1
+```
+
+Sign in as `adamgoodwin@guidedailabs.com` when prompted. Read the console summary
+and the digest file. When you want the G1 Suggested row recorded:
+
+```powershell
+pwsh -File scripts\Invoke-M365CoordinatorDailyRead.ps1 -Apply
+# type the phrase when prompted: record-coordinator-daily-read
+```
+
+If the signed-in account is wrong, the script stops before reading. Add
+`-UseDeviceLogin` to pick the account explicitly, or `-ForceFreshLogin` to
+re-authenticate.
+
+## Governance
+
+- Approval phrase: `record-coordinator-daily-read`.
+- Evidence: local digest + transcript under `inventory/coordinator-daily-read/`;
+  the G1 row lands in the Agent Action Log (`Needs Review` view) with status
+  `Suggested`.
+- Stays inside the approved G0/G1 lane from the Chunk 6 readiness pass. No new
+  permissions, no licensing dependency, independent of the Founders Hub ticket.
+
+## Next steps (not yet built)
+
+- Run on a cadence (manual for now; Power Automate / scheduled task is a later
+  Decision Register item).
+- Optional G2 follow-through: turn an approved suggestion into a Planner task or
+  a NextAction update — separate approval gate, separate build.
