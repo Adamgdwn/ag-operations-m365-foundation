@@ -1,0 +1,133 @@
+{
+  "name": "local-agentic-machine-link",
+  "status": "active",
+  "lastVerifiedDate": "2026-06-20",
+  "mission": "Durable private Ethernet, SSH, shared-drive, VS Code, and cross-agent skill link between the Windows working machine and the Linux build/agent machine.",
+  "documentationFinalizedDate": "2026-06-20",
+  "finalAuditFile": "inventory/stage-9-agentic-os-bridge/local-direct-link/LOCAL_DIRECT_LINK_AUDIT_20260620-172026-SKILL-DOCS-FINAL.json",
+  "network": {
+    "subnet": "10.77.77.0/30",
+    "gateway": null,
+    "dns": null,
+    "internetRoutingAllowed": false
+  },
+  "windows": {
+    "host": "Windows2026",
+    "interfaceAlias": "Ethernet 2",
+    "address": "10.77.77.1/30",
+    "macAddress": "00-50-B6-F3-D1-56",
+    "livePath": "C:\\Users\\adamg\\DirectLink",
+    "statusScript": "C:\\Users\\adamg\\DirectLink\\Get-DirectLinuxLinkStatus.ps1",
+    "auditScript": "C:\\Users\\adamg\\DirectLink\\Test-DirectLinuxLink.ps1",
+    "sshAlias": "linux-direct",
+    "dailyManualCommandRequired": false,
+    "primaryHumanInterface": "VS Code and terminal coding agents",
+    "vscodeWorkspace": "C:\\Users\\adamg\\DirectLink\\Direct Linux Agent Workspace.code-workspace",
+    "agentContextFile": "C:\\Users\\adamg\\DirectLink\\AGENTS.md",
+    "desktopWorkspaceShortcut": "C:\\Users\\adamg\\OneDrive\\Desktop\\Direct Linux Agent Workspace.lnk",
+    "agentSkill": {
+      "name": "direct-link",
+      "repoCanonicalPath": "skills/direct-link",
+      "windowsCodexPath": "C:\\Users\\adamg\\.codex\\skills\\direct-link",
+      "windowsClaudeCodePath": "C:\\Users\\adamg\\.claude\\skills\\direct-link",
+      "linuxCodexPersonalPath": "/home/adamgoodwin/.codex/skills/direct-link",
+      "linuxClaudeCodePersonalPath": "/home/adamgoodwin/.claude/skills/direct-link",
+      "linuxCodexProjectPath": "/home/adamgoodwin/code/.codex/skills/direct-link",
+      "linuxClaudeCodeProjectPath": "/home/adamgoodwin/code/.claude/skills/direct-link",
+      "windowsSyncScript": "C:\\Users\\adamg\\.codex\\skills\\direct-link\\scripts\\sync-direct-link-skill.ps1",
+      "validated": true,
+      "lastSyncedDate": "2026-06-20"
+    },
+    "terminalEnvironment": {
+      "DIRECT_LINK_HOME": "C:\\Users\\adamg\\DirectLink",
+      "DIRECT_LINUX_HOST": "linux-direct",
+      "DIRECT_LINUX_IP": "10.77.77.2",
+      "DIRECT_LINUX_CODE": "L:\\",
+      "DIRECT_LINUX_EXCHANGE": "X:\\",
+      "DIRECT_LINK_RUNBOOK": "C:\\Users\\adamg\\DirectLink\\RUNBOOK.md",
+      "DIRECT_LINK_AGENT_CONTEXT": "C:\\Users\\adamg\\DirectLink\\AGENTS.md"
+    },
+    "automation": [
+      "Persistent static address on Ethernet 2",
+      "Persistent scoped Windows Firewall rules",
+      "DirectLinuxLink-AtStartup",
+      "DirectLinuxLink-AtLogon",
+      "DirectLinuxLink-OnNetworkConnect",
+      "DirectLinuxLink-Periodic",
+      "Direct Linux Shares Watcher.lnk"
+    ]
+  },
+  "linux": {
+    "host": "pop-os",
+    "interface": "enp55s0",
+    "address": "10.77.77.2/30",
+    "observedMacAddress": "60-CF-84-5C-2F-CD",
+    "user": "adamgoodwin",
+    "livePath": "/home/adamgoodwin/direct-windows-link",
+    "networkManagerProfile": "direct-windows-link",
+    "systemdTimer": "direct-windows-link.timer",
+    "systemdService": "direct-windows-link.service"
+  },
+  "ssh": {
+    "serverAddress": "10.77.77.2",
+    "serverPort": 22,
+    "windowsAlias": "linux-direct",
+    "identityFile": "C:\\Users\\adamg\\.ssh\\direct_linux_ed25519",
+    "passwordAuthentication": false,
+    "kbdInteractiveAuthentication": false,
+    "permitRootLogin": false,
+    "allowedUsers": [
+      "adamgoodwin"
+    ],
+    "linuxListenAddress": "10.77.77.2"
+  },
+  "sharedWorkspace": {
+    "status": "active",
+    "windowsCodeDriveLetter": "L:",
+    "windowsCodeUncPath": "\\\\10.77.77.2\\linux-code",
+    "linuxCodePath": "/home/adamgoodwin/code",
+    "linuxCodeShareName": "linux-code",
+    "windowsExchangeDriveLetter": "X:",
+    "windowsExchangeUncPath": "\\\\10.77.77.2\\direct-exchange",
+    "linuxExchangePath": "/home/adamgoodwin/DirectLink/Exchange",
+    "linuxExchangeShareName": "direct-exchange",
+    "protocol": "SMB3",
+    "encryptionRequired": false,
+    "guestAccess": false,
+    "linuxBindAddress": "10.77.77.2",
+    "allowedWindowsAddress": "10.77.77.1",
+    "windowsCredentialTarget": "10.77.77.2",
+    "windowsStartupWatcherShortcut": "C:\\Users\\adamg\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\Direct Linux Shares Watcher.lnk",
+    "windowsWatcherScript": "C:\\Users\\adamg\\DirectLink\\Watch-DirectLinuxShares.ps1",
+    "windowsWatcherIntervalSeconds": 15,
+    "windowsWatcherLog": "C:\\Users\\adamg\\DirectLink\\direct-shares-watch.log",
+    "windowsDesktopShortcuts": [
+      "C:\\Users\\adamg\\OneDrive\\Desktop\\Linux Code.lnk",
+      "C:\\Users\\adamg\\OneDrive\\Desktop\\Linux Direct Exchange.lnk"
+    ],
+    "linuxShareStatusFile": "/home/adamgoodwin/direct-windows-link/linux-drive-share-status.json",
+    "linuxCredentialFileDoNotCommit": "/home/adamgoodwin/direct-windows-link/linux-samba-credential.txt",
+    "linuxRepairScript": "/home/adamgoodwin/direct-windows-link/configure-linux-drive-share.sh",
+    "windowsMapScript": "C:\\Users\\adamg\\DirectLink\\Map-DirectLinuxShares.ps1",
+    "bidirectionalExchangeWriteVerified": true,
+    "watcherRepairVerified": true,
+    "normalUserExperience": "Plug in Ethernet cable, then use the VS Code workspace, terminal environment variables, L:, X:, or Desktop shortcuts without running setup commands."
+  },
+  "securityBoundaries": {
+    "windowsFirewallScopedToInterface": "Ethernet 2",
+    "windowsFirewallRemoteSubnet": "10.77.77.0/30",
+    "temporaryHttpHubNormallyStopped": true,
+    "privateKeysInRepoAllowed": false,
+    "agentMayUseSshAlias": true,
+    "highTrustLocalOperatorEnvironment": true,
+    "agentMustAvoidBroadRouteChanges": true
+  },
+  "canonicalDocs": {
+    "workspaceRunbook": "docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md",
+    "liveWindowsRunbook": "C:\\Users\\adamg\\DirectLink\\RUNBOOK.md",
+    "liveLinuxRunbook": "/home/adamgoodwin/direct-windows-link/RUNBOOK.md",
+    "repoSkill": "skills/direct-link",
+    "windowsAgentContext": "C:\\Users\\adamg\\DirectLink\\AGENTS.md",
+    "linuxAgentContext": "/home/adamgoodwin/direct-windows-link/AGENTS.md"
+  }
+}

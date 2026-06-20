@@ -1,0 +1,44 @@
+{
+  "folders": [
+    {
+      "name": "DirectLink Windows Tools",
+      "path": "C:\\Users\\adamg\\DirectLink"
+    },
+    {
+      "name": "Linux Code",
+      "path": "L:\\"
+    },
+    {
+      "name": "Direct Exchange",
+      "path": "X:\\"
+    },
+    {
+      "name": "AG Operations Workspace Setup",
+      "path": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup"
+    }
+  ],
+  "settings": {
+    "terminal.integrated.env.windows": {
+      "DIRECT_LINK_HOME": "C:\\Users\\adamg\\DirectLink",
+      "DIRECT_LINUX_HOST": "linux-direct",
+      "DIRECT_LINUX_IP": "10.77.77.2",
+      "DIRECT_LINUX_CODE": "L:\\",
+      "DIRECT_LINUX_EXCHANGE": "X:\\",
+      "DIRECT_LINK_RUNBOOK": "C:\\Users\\adamg\\DirectLink\\RUNBOOK.md"
+    },
+    "search.exclude": {
+      "**/.git/objects/**": true,
+      "**/.git/lfs/**": true,
+      "**/node_modules/**": true,
+      "**/.venv/**": true,
+      "**/__pycache__/**": true
+    },
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/lfs/**": true,
+      "**/node_modules/**": true,
+      "**/.venv/**": true,
+      "**/__pycache__/**": true
+    }
+  }
+}

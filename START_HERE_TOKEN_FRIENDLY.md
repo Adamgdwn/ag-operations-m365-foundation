@@ -1,11 +1,39 @@
 # Start Here - Token-Friendly Project State
 
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 This is the short restart/orientation note for Codex or any agent working in this
 workspace. For current workspace usability work, read `docs/START_HERE.md` first.
 For the wider M365 foundation, read this file, then open detailed docs only as
 needed.
+
+## Local agentic machine link
+
+The Windows/Linux direct Ethernet bridge is active, mounted, and skill-enabled.
+For work that mentions the Linux laptop, `linux-direct`, `L:`, `X:`, shared
+artifacts, cross-machine builds, or local terminal/VS Code agents, use the
+portable skill:
+
+```text
+skills/direct-link
+```
+
+Canonical docs:
+
+```text
+docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md
+config/LOCAL_AGENTIC_MACHINE_LINK_CONTRACT.json
+inventory/stage-9-agentic-os-bridge/local-direct-link/
+```
+
+Normal direct-link surfaces:
+
+```text
+ssh linux-direct
+L:\  -> Linux code
+X:\  -> direct exchange
+C:\Users\adamg\DirectLink\Direct Linux Agent Workspace.code-workspace
+```
 
 ## Project purpose
 

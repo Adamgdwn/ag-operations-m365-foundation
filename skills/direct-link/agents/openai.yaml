@@ -1,0 +1,4 @@
+interface:
+  display_name: "Direct Link"
+  short_description: "Use the private Windows/Linux cable link"
+  default_prompt: "Use $direct-link to check the direct Windows/Linux link and choose the right shared path or SSH route."

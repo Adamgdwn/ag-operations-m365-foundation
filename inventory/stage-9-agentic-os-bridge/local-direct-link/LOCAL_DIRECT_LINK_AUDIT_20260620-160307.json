@@ -1,0 +1,40 @@
+{
+    "timestamp":  "2026-06-20T16:03:27.9137841-06:00",
+    "mission":  "direct-windows-linux-cable-link",
+    "windows":  {
+                    "interface":  "Ethernet 2",
+                    "localAddress":  "10.77.77.1/30",
+                    "peerAddress":  "10.77.77.2",
+                    "peerReachable":  true,
+                    "noDefaultGateway":  true,
+                    "noDirectDns":  true,
+                    "peerMacAddress":  "60-CF-84-5C-2F-CD"
+                },
+    "linux":  {
+                  "host":  "pop-os",
+                  "user":  "adamgoodwin",
+                  "interface":  "enp55s0",
+                  "linuxAddress":  "10.77.77.2/30",
+                  "windowsAddress":  "10.77.77.1",
+                  "windowsReachable":  true,
+                  "sshListening":  true,
+                  "observedWindowsMac":  "00:50:b6:f3:d1:56",
+                  "passwordAuthentication":  false,
+                  "permitRootLogin":  false,
+                  "allowedUser":  "adamgoodwin"
+              },
+    "ssh":  {
+                "alias":  "linux-direct",
+                "reachable":  true
+            },
+    "sharedWorkspace":  {
+                            "targetDrive":  "L:",
+                            "uncPath":  "\\\\10.77.77.2\\agent-link",
+                            "smbReachable":  true,
+                            "driveMapped":  false,
+                            "driveRoot":  null,
+                            "linuxBackedPath":  "/home/adamgoodwin/AgentLink",
+                            "status":  "available-not-mounted"
+                        },
+    "healthy":  true
+}

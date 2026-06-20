@@ -1,6 +1,6 @@
 # Workspace Start Here
 
-Date: 2026-06-19
+Date: 2026-06-20
 
 Status: Active workspace usability source of truth.
 
@@ -38,6 +38,10 @@ access stay as separate controlled grants.
 - `docs/AGENTIC_M365_READINESS.md` - recommendations for becoming agentic and AI-centric.
 - `docs/AI_FIRST_TOOLING_ACTIVATION.md` - which Microsoft AI/automation tools to
   turn on, in what order (free first), and the Founders Hub license unlock.
+- `docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md` - local Windows/Linux direct
+  Ethernet + SSH + shared-workspace runbook for agentic builds, shared artifacts,
+  and cross-machine coordination. The installed Codex/Claude Code skill is
+  versioned at `skills/direct-link`.
 - `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` - Chunk 6 agentic approval
   pattern, surface lane decisions, blockers, and Adam decision queue.
 - `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` - final usability

@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-19
+Last updated: 2026-06-20
 
 This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
@@ -20,6 +20,11 @@ workspace, with CRM treated as one operating card inside the broader card map.
 The current cockpit inventory and gap list are in
 [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
 and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).
+For the local Windows/Linux machine bridge used by agentic builds and shared
+artifacts, read
+[docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md](docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md).
+The portable Codex/Claude Code skill for that bridge is versioned at
+[skills/direct-link](skills/direct-link).
 For fast agent/session restart across the wider M365 foundation, read
 [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
 
