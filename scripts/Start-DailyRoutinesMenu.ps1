@@ -40,7 +40,7 @@ function Show-Menu {
     Write-Host "==============================================" -ForegroundColor Cyan
     Write-Host ""
     Write-Host "  1.  Coordinator daily read  - DRY RUN (read + digest, no writes)" -ForegroundColor White
-    Write-Host "  2.  Coordinator daily read  - RECORD suggestion (-Apply, typed phrase)" -ForegroundColor White
+    Write-Host "  2.  Coordinator daily read  - RECORD suggestion (-Apply, single Y approval)" -ForegroundColor White
     Write-Host "  3.  Open the daily-read digest folder" -ForegroundColor White
     Write-Host "  4.  Open the Guided AI Labs workspace in the browser" -ForegroundColor White
     Write-Host ""
@@ -58,7 +58,7 @@ while ($true) {
         }
         "2" {
             Write-Host "Starting Coordinator daily read (apply)..." -ForegroundColor Yellow
-            Write-Host "You will need to type the approval phrase in the new window: record-coordinator-daily-read" -ForegroundColor Yellow
+            Write-Host "In the new window: sign in if prompted, review the findings, then press Y to approve the single record." -ForegroundColor Yellow
             Invoke-Routine -ScriptName "Start-M365CoordinatorDailyReadInteractive.ps1" -Apply
         }
         "3" {

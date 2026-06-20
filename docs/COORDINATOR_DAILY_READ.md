@@ -21,10 +21,12 @@ Related: [AGENTIC_M365_READINESS.md](AGENTIC_M365_READINESS.md),
   Engagements / Touchpoints / Organizations lists, applies the detection rules
   below, and writes a **local digest** under
   `inventory/coordinator-daily-read/coordinator-daily-read-<stamp>.md`.
-- **G1 (only with `-Apply` + typed approval phrase):** records **one**
-  `Suggested` row in the Agent Action Log summarising the findings and pointing
-  to the digest. The row is `Suggested` only — a human still approves, rejects,
-  or supersedes it. Nothing is approved or executed by this loop.
+- **G1 (only with `-Apply`):** records **one** `Suggested` row in the Agent
+  Action Log summarising the findings and pointing to the digest. The live write
+  asks for a **single Y approval** (one click); sign-in is interactive and
+  persisted, so a session signs in once. The row is `Suggested` only — a human
+  still approves, rejects, or supersedes it in SharePoint. Nothing is executed
+  by this loop.
 
 It never sends mail, invites guests, changes sharing or permissions, grants
 consent, changes tenant policy, publishes Forms, deletes records, registers
@@ -61,21 +63,24 @@ Or open a visible window via the launcher:
 pwsh -File scripts\Start-M365CoordinatorDailyReadInteractive.ps1
 ```
 
-Sign in as `adamgoodwin@guidedailabs.com` when prompted. Read the console summary
-and the digest file. When you want the G1 Suggested row recorded:
+Sign in as `adamgoodwin@guidedailabs.com` when prompted (once per session —
+the login is persisted and reused). Read the console summary and the digest
+file. When you want the G1 Suggested row recorded:
 
 ```powershell
 pwsh -File scripts\Invoke-M365CoordinatorDailyRead.ps1 -Apply
-# type the phrase when prompted: record-coordinator-daily-read
+# review the findings, then press Y to approve the single record
 ```
 
 If the signed-in account is wrong, the script stops before reading. Add
 `-UseDeviceLogin` to pick the account explicitly, or `-ForceFreshLogin` to
-re-authenticate.
+re-authenticate. `-Approve` pre-confirms the write (skips the Y prompt) for
+fully scripted runs.
 
 ## Governance
 
-- Approval phrase: `record-coordinator-daily-read`.
+- Approval: one sign-in per session (persisted) + a single Y confirmation per
+  live write. (This loop's only write is the low-risk G1 Suggested row.)
 - Evidence: local digest + transcript under `inventory/coordinator-daily-read/`;
   the G1 row lands in the Agent Action Log (`Needs Review` view) with status
   `Suggested`.

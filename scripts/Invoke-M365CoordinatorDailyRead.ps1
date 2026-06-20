@@ -10,7 +10,7 @@ param(
     [int]$OrgTouchDays = 60,
     [int]$SuggestionAgeDays = 7,
     [switch]$Apply,
-    [string]$ApprovalPhrase,
+    [switch]$Approve,
     [switch]$ForceFreshLogin,
     [switch]$UseDeviceLogin,
     [switch]$NoPause
@@ -24,8 +24,9 @@ param(
 #
 # - G0 (always): read-only inventory of operating Lists + a local digest file.
 #   No tenant write happens in dry-run mode.
-# - G1 (only with -Apply and the typed approval phrase): write ONE Suggested
-#   Agent Action Log row summarising the findings, for human review.
+# - G1 (only with -Apply): write ONE Suggested Agent Action Log row summarising
+#   the findings, for human review. The live write asks for a single Y approval
+#   (one click). Sign-in is interactive and persisted, so a session signs in once.
 #
 # It never creates app registrations, grants consent, sends mail, invites guests,
 # changes sharing, alters permissions, changes tenant policy, publishes Forms,
@@ -54,8 +55,6 @@ try {
 catch {
     Write-Host ("[warn] Could not start transcript: {0}" -f $_.Exception.Message) -ForegroundColor Yellow
 }
-
-$approvalPhraseExpected = "record-coordinator-daily-read"
 
 function Write-Section {
     param([string]$Message)
@@ -194,7 +193,7 @@ $highPriority = @("High", "Urgent")
 
 Write-Host "Microsoft 365 - Coordinator daily read" -ForegroundColor Cyan
 Write-Host ("Date:       {0}" -f $now.ToString("yyyy-MM-dd HH:mm")) -ForegroundColor Gray
-Write-Host ("Mode:       {0}" -f $(if ($Apply) { 'APPLY: G0 read + one G1 Suggested row (typed approval)' } else { 'DRY RUN: G0 read + local digest only' })) -ForegroundColor Gray
+Write-Host ("Mode:       {0}" -f $(if ($Apply) { 'APPLY: G0 read + one G1 Suggested row (single Y approval)' } else { 'DRY RUN: G0 read + local digest only' })) -ForegroundColor Gray
 Write-Host ("Digest:     {0}" -f $digestPath) -ForegroundColor Gray
 Write-Host ("Transcript: {0}" -f $transcriptPath) -ForegroundColor Gray
 Write-Host "Safety:     Read-only analysis. The only possible write is ONE Suggested Agent Action Log row." -ForegroundColor Gray
@@ -401,21 +400,22 @@ $suggestionTitle = ("Coordinator daily read {0} - {1} item(s) need attention" -f
 if (-not $Apply) {
     Write-Host "  DRY RUN: would add ONE Suggested Agent Action Log row:" -ForegroundColor Yellow
     Write-Host ("    Title: {0}" -f $suggestionTitle) -ForegroundColor Yellow
-    Write-Host "  Re-run with -Apply and the typed approval phrase to record it." -ForegroundColor Yellow
+    Write-Host "  Re-run with -Apply to record it (you will get one Y approval prompt)." -ForegroundColor Yellow
 }
 else {
     Write-Host ""
-    Write-Host "Live write approval required (one Suggested Agent Action Log row)." -ForegroundColor Yellow
-    Write-Host ("Type exactly: {0}" -f $approvalPhraseExpected) -ForegroundColor Yellow
-    if (-not [string]::IsNullOrWhiteSpace($ApprovalPhrase)) {
-        Write-Host "Approval phrase supplied by command parameter." -ForegroundColor Gray
-        $typed = $ApprovalPhrase
+    Write-Host "Approve this live write? It records ONE Suggested Agent Action Log row." -ForegroundColor Yellow
+    Write-Host ("  Title: {0}" -f $suggestionTitle) -ForegroundColor Gray
+    if ($Approve) {
+        Write-Host "  Approval supplied by -Approve switch." -ForegroundColor Gray
+        $confirmed = $true
     }
     else {
-        $typed = Read-Host "Approval phrase"
+        $answer = Read-Host "Type Y to approve (anything else cancels)"
+        $confirmed = ($answer -match '^(y|yes)$')
     }
-    if ($typed -ne $approvalPhraseExpected) {
-        throw "Approval phrase did not match. No write performed. Digest is still available at $digestPath."
+    if (-not $confirmed) {
+        throw "Not approved. No write performed. Digest is still available at $digestPath."
     }
 
     Get-PnPList -Identity "Agent Action Log" -ErrorAction Stop | Out-Null

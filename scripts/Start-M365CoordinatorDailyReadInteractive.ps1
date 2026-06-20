@@ -6,8 +6,9 @@ param(
 
 # Opens a visible PowerShell window for the M365 Coordinator daily read loop.
 # The target script is G0 read-first; it produces a local digest with no tenant
-# write. Only with -Apply and the typed approval phrase does it record ONE
-# Suggested Agent Action Log row for human review.
+# write. Only with -Apply does it record ONE Suggested Agent Action Log row, and
+# only after a single Y approval in the window. Sign-in is persisted, so a
+# session signs in once.
 
 $ErrorActionPreference = "Stop"
 
@@ -35,7 +36,7 @@ function Start-VisiblePowerShellConsole {
         "cd /d $(ConvertTo-CmdArgument -Argument $WorkingDirectory)",
         "echo Ready to start $Title.",
         "echo G0 read produces a local digest with no tenant write.",
-        "echo Only -Apply plus the typed phrase records ONE Suggested Agent Action Log row.",
+        "echo Only -Apply records ONE Suggested Agent Action Log row, after a single Y approval.",
         "echo It does not send mail, invite guests, change sharing, grant consent, alter tenant policy, delete records, or run unattended automation.",
         "echo Complete any Microsoft sign-in promptly after the next prompt appears.",
         "pause",
