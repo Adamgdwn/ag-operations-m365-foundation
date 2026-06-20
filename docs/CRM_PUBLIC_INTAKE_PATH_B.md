@@ -148,6 +148,14 @@ produces the two real URLs, it is a one-line swap + redeploy per brand. V8's
 end-to-end test should include at least one submission via the live website CTA,
 not only the direct form link.
 
+**Cross-machine handoff:** the brand-site repos live on the Linux build machine
+(`pop-os`), reachable from the Windows machine over the private direct Ethernet
+link (see the `/direct-link` skill): `L:\` = `/home/adamgoodwin/code`, handoffs via
+`X:\`, commands via `ssh linux-direct`. When V7 mints the two form URLs, hand them
+to the pop-os brand-site agent over the link (drop on `X:\` or edit the CTA under
+`L:\`) rather than round-tripping through cloud storage. The link is a dev
+convenience only — it is NOT in the live intake path, which stays cloud-to-cloud.
+
 ## Build order (gated session)
 
 1. Confirm `IntakeSource` exists on `CRM - New Signals` (created by the Chunk 5
