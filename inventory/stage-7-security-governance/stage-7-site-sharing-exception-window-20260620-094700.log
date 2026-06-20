@@ -1,0 +1,40 @@
+**********************
+PowerShell transcript start
+Start time: 20260620094700
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command & ".\scripts\Invoke-M365Stage7SiteSharingExceptionWindow.ps1" -IncludeVivaEngageSystemSite -NoPause
+; $_ec = if ($null -ne $LASTEXITCODE) { $LASTEXITCODE } elseif ($?) { 0 } else { 1 }
+; (Get-Location).Path | Out-File -FilePath 'C:\Users\adamg\AppData\Local\Temp\claude\claude-pwd-ps-038e' -Encoding utf8 -NoNewline
+; if ($ExecutionContext.SessionState.LanguageMode -eq 'FullLanguage') { $host.SetShouldExit($_ec) } else { exit $_ec }
+Process ID: 14584
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+Microsoft 365 Stage 7 - Site Sharing Exception Window
+Mode:       DRY RUN
+Admin URL:  https://agoperationsltd-admin.sharepoint.com
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\stage-7-security-governance\stage-7-site-sharing-exception-window-20260620-094700.log
+
+Planned site-level changes:
+- https://agoperationsltd.sharepoint.com/: SharingCapability -> Disabled
+- https://agoperationsltd.sharepoint.com/sites/A.G.OperationsLtd: SharingCapability -> Disabled
+- https://agoperationsltd.sharepoint.com/sites/allcompany: SharingCapability -> Disabled
+- https://agoperationsltd.sharepoint.com/sites/groupforanswersinvivaengagedonotdelete1521570944958464273: SharingCapability -> Disabled
+
+This operator does not delete sites, change site memberships, invite guests, create links, revoke app grants, send messages, or change tenant-wide sharing policy.
+
+Dry run only. Re-run with -Apply and type the approval phrase to disable these site-level sharing exceptions.
+**********************
+PowerShell transcript end
+End time: 20260620094700
+**********************

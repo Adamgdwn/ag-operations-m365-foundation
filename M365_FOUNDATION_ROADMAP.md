@@ -370,12 +370,15 @@ Where do official files go after collaboration?
 
 ## Stage 7 - Security, Governance, And External Sharing
 
-Status: active 2026-06-14. Graph and SharePoint sharing read-only inventory
+Status: ✅ closed 2026-06-20. Graph and SharePoint sharing read-only inventory
 captured before and after the core guest/sharing governance write window. Guest
 invites are now restricted to admins/Guest Inviters, SharePoint tenant sharing is
 authenticated external users only, and default sharing links are specific-people
-style. The approved governance batch is recorded in the Guided AI Labs Decision
-Register and Agent Action Log. See
+style. Closeout (2026-06-20): support mailbox MFA registered; Viva Engage
+system-site external sharing disabled; broad app grants left consented as an
+accepted residual risk (review by 2026-12-20); closeout decisions written to the
+Decision Register and Agent Action Log. The approved governance batch is recorded
+in the Guided AI Labs Decision Register and Agent Action Log. See
 [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
 and [config/M365_STAGE_7_GOVERNANCE_BASELINE.json](config/M365_STAGE_7_GOVERNANCE_BASELINE.json).
 Stage 7 tenant changes made so far: guest invitation policy restricted to
@@ -710,9 +713,14 @@ See
 
 ## Stage 9 - Agentic OS Bridge Readiness
 
-Status: in progress; supervised coordinator/support List-write loops live-proven
-2026-06-15, bridge readiness control posture live-recorded/read-back verified
-2026-06-17, and refreshed after the Stage 8D internal workflow proof.
+Status: ✅ declared ready 2026-06-20. Supervised coordinator/support List-write
+loops live-proven 2026-06-15, bridge readiness control posture
+live-recorded/read-back verified 2026-06-17, and refreshed after the Stage 8D
+internal workflow proof. The governed substrate and governance ladder are in
+place; the production app/adapter is **intentionally deferred** to a later
+deliberate decision (no new tenant power granted now). The declare-ready /
+defer-adapter decision is recorded in the Decision Register and Agent Action Log.
+This closes Phase 1 (the infrastructure spine).
 See
 [M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md](M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md).
 

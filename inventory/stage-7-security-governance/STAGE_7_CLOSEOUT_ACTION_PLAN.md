@@ -1,6 +1,9 @@
 # Stage 7 Closeout Action Plan
 
-Status: active closeout plan (2026-06-14).
+Status: ✅ CLOSED 2026-06-20. All gates resolved (support MFA registered, Viva
+Engage system-site sharing disabled, broad app grants accepted as residual risk);
+closeout decisions recorded in the Decision Register + Agent Action Log. This
+completes Phase 1 (the infrastructure spine). Retained for the audit trail.
 
 This plan keeps the remaining Stage 7 work efficient without turning it into
 unattended high-trust automation.
@@ -16,14 +19,31 @@ Core Stage 7 governance is already applied, verified, and logged:
 - Decision Register item #1 and Agent Action Log item #1 record the approved
   governance write window.
 
+## Decisions (2026-06-20)
+
+Adam made the final Stage 7 closeout decisions:
+
+- **Broad app grants (`agent-pnp-provisioning`): LEAVE CONSENTED AS-IS.** Accepted
+  residual risk — consistent with keeping Global Admin on the daily identity. The
+  app retains delegated `AllSites.FullControl` + `Group.ReadWrite.All`. Managed by
+  MFA + consent discipline; revisit if/when JIT/PIM (Entra P1/P2) lands. This is a
+  deliberate accept, not an oversight.
+- **Viva Engage system site sharing: DISABLE.** No external Viva Engage community
+  workflow exists, so close the exception to match the rest of the tenant. Gated
+  tenant write (see runbook).
+- **Stage 9 bridge: DECLARE READY, DEFER THE ADAPTER.** Production app/adapter
+  intentionally deferred to a later deliberate decision; no new tenant power
+  granted now.
+
 ## Remaining Gates
 
-| Gate | Status | Next action |
+| Gate | Status | Outcome |
 |---|---|---|
-| Support mailbox MFA | Manual | Adam registers Authenticator or another strong method for `support@changeleadershiptools.com` |
-| Broad app grants | Local plan ready | Use `stage-7-app-grant-resting-state-plan.md` to record a time-boxed active/resting-state decision |
-| Root/legacy site sharing | Applied and read-back verified | Root, A.G. Operations Ltd, and All Company are now disabled for external sharing |
-| Viva Engage system site sharing | Review only | Do not delete; accept or disable after confirming whether an external community workflow exists |
+| Support mailbox MFA | ✅ Done 2026-06-20 | Adam registered a strong method for `support@changeleadershiptools.com` |
+| Broad app grants | ✅ Closed 2026-06-20 | Left consented as-is (accepted residual risk); review by 2026-12-20; recorded in registers |
+| Root/legacy site sharing | ✅ Applied + verified | Root, A.G. Operations Ltd, All Company disabled for external sharing |
+| Viva Engage system site sharing | ✅ Done 2026-06-20 | Disabled via the site-sharing exception window (`-IncludeVivaEngageSystemSite -Apply`) |
+| Closeout records | ✅ Done 2026-06-20 | Stage 7 + Stage 9 closeout written to Decision Register + Agent Action Log (single-Y apply) |
 
 ## Efficient Sequence
 

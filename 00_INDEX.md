@@ -8,6 +8,12 @@ This is the single entry point for the workspace. Open this first. It tells you
 what the project is, where it currently stands, which document is canonical, and
 what decision is waiting next.
 
+> **Master pathway:** [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md) places
+> every piece of work on one pathway — Phase 1 (the infrastructure spine, Stages
+> 0–9, built once) and Phase 2 (the ten operating functions, each an interactive
+> build-out, any order). Read it to see where any single task fits before starting
+> it.
+
 For current workspace usability work, read [docs/START_HERE.md](docs/START_HERE.md)
 first. It is the active source of truth for the Guided AI Labs operating
 workspace, with CRM treated as one operating card inside the broader card map.
@@ -60,17 +66,20 @@ The canonical execution plan is the **10-stage roadmap**:
 | 4 | OneDrive & Local Machine Dovetail | ✅ Done 2026-06-12 — operator identity `adamgoodwin@guidedailabs.com` connected to OneDrive (`Business2`); 3-lane Chrome model (Personal / Prime Boiler / **AI Labs** = operator) with imported SharePoint+admin bookmarks, verified loading the Stage-3 sites; known folders left on Personal (genuinely personal content), business drafts routed to `OneDrive - A.G. Operations Ltd`; 855 MB dead Chrome profile data deleted. Working doc: [M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md](M365_STAGE_4_ONEDRIVE_LOCAL_DOVETAIL.md) |
 | 5 | Exchange & Communication Routing | ✅ Design complete 2026-06-14 — inventory complete; `contact@` / `support@` stay licensed; no Exchange writes required now; aliases/groups/calendar/intake routing documented |
 | **6** | **Teams, Planner, Lists & Operating State** | **✅ Live gate complete — Lists, Planner, Teams channels, and tabs provisioned/verified; onboarding readiness packet prepared** |
-| **7** | **Security, Governance & External Sharing** | **Core guest/sharing governance applied, verified, and logged; app-grant resting state + support MFA remain closeout items** |
-| **8** | **Client Workspace Reference Pattern** | **Current — workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-7 complete/pushed; broad usability handoff closed** |
-| **9** | **Agentic OS Bridge Readiness** | **In progress — supervised coordinator/support List-write loops live-proven; future app posture still gated** |
+| **7** | **Security, Governance & External Sharing** | **✅ Closed 2026-06-20 — support mailbox MFA registered, Viva Engage system-site external sharing disabled, broad app grants left consented (accepted residual risk, review by 2026-12-20); closeout written to Decision Register + Agent Action Log** |
+| **8** | **Client Workspace Reference Pattern** | **✅ Workspace skeleton/backing live-verified; Operations Cockpit and CRM Command Center live; workspace usability Chunks 1-7 complete/pushed; broad usability handoff closed** |
+| **9** | **Agentic OS Bridge Readiness** | **✅ Declared ready 2026-06-20 — governed substrate + governance ladder in place; production app/adapter intentionally deferred (the later bridge); closeout recorded in the registers** |
 
 **Live tenant changes so far:** Stage 2 identity safety net and role cleanup,
 Stage 3 SharePoint site provisioning, Stage 4 local OneDrive/browser cleanup,
 Stage 6 Lists/Planner/Teams provisioning, and Stage 7 guest/share-link governance
 tightening. Each tenant write was gated, read-back-verified, and the Stage 7
-governance batch is logged in the operating Lists. Stage 5 Exchange design
-completed on 2026-06-14; no mailbox, alias, forwarding, calendar, or license
-changes were needed. This remains a human-supervised setup, not
+governance batch is logged in the operating Lists. The Stage 7 closeout window
+(2026-06-20) then disabled Viva Engage system-site external sharing and recorded
+the Stage 7 + Stage 9 closeout decisions, completing **Phase 1 (the infrastructure
+spine)**. Stage 5 Exchange design completed on 2026-06-14; no mailbox, alias,
+forwarding, calendar, or license changes were needed. This remains a
+human-supervised setup, not
 unattended automation.
 
 **Authorization pattern:** when a tenant action needs Adam's credentials, MFA, or
