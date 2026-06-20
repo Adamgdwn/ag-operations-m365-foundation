@@ -167,6 +167,59 @@ Evidence: _path/notes_
 
 ---
 
+## V7 — Path B build: two brand Forms + create-only intake flow (PORTAL BUILD; scoped unlock)
+
+Status: AUTHORIZED design (commit pending); built in a gated portal session.
+Depends on V4 (the `IntakeSource` field must exist on `CRM - New Signals`).
+Spec: `docs/CRM_PUBLIC_INTAKE_PATH_B.md`.
+
+Scoped unlock in force for this item ONLY: public Forms links + unattended
+automation are permitted for exactly the two named intake forms and the single
+create-only flow. Everything else in the safety list stays in force.
+
+Run (Microsoft 365 portals, not PnP):
+- Create the **Guided AI Labs** and **Guided AI Journey** anonymous Forms with the
+  content in the spec (name, email, org, need, how-heard, consent).
+- Build the create-only Power Automate flow(s): Forms response -> Get details ->
+  Create item in `CRM - New Signals` with the spec's field mapping. Standard
+  connectors only.
+
+Confirm:
+- [ ] Both forms accept an anonymous submission.
+- [ ] The flow creates a `CRM - New Signals` item with `SignalType=Website`,
+      `SignalStatus=New`, `Priority=Normal`, and `Source` = the correct brand.
+- [ ] Capture provenance lands in the hidden fields (`SourceMessageId`,
+      `ReceivedDate`, `IntakeStatus=Auto-captured`, `SourceMailbox`=form name).
+- [ ] The flow has NO mail send / auto-reply / update / delete / external action.
+- [ ] No premium connector, Dynamics, or Dataverse is used.
+
+Result: _pending_
+Evidence: _flow name + run history link_
+
+---
+
+## V8 — Path B end-to-end + verifier still PASS (HUMAN PASS)
+
+Status: _pending (do only after V7)_
+
+Run:
+- Submit one dummy response on EACH brand form, prefixed `GAIL-INTERNAL-WALKTHROUGH`.
+- Re-run the Chunk 3 verifier (V2).
+
+Confirm:
+- [ ] Each dummy submission appears in the New Signal Queue with the correct
+      `Source` brand and is triageable like any manual signal.
+- [ ] No technical/automation field appears on the `CRM - New Signals` form
+      despite the flow having written to the hidden ones.
+- [ ] The Chunk 3 verifier still returns PASS (no blocked field became visible;
+      no daily route points at the legacy Intake Register).
+- [ ] Delete/close the two dummy records after the test.
+
+Result: _pending_
+Evidence: _path/notes_
+
+---
+
 ## Log
 
 - 2026-06-20: Log created. V1 (Chunk 2 baseline) built, awaiting run.
@@ -178,3 +231,9 @@ Evidence: _path/notes_
 - 2026-06-20: Chunk 7 onboarding package built (extended CRM_RUNBOOK.md +
   new CRM_ONBOARDING_PACKAGE.md, both referencing the existing access model, no
   duplication). V6 (exact CRM group-name read-back) added as a pre-grant input.
+- 2026-06-20: Path B authorized (public brand intake). Added operator-visible
+  `Source` (`IntakeSource`) field to `config/crm.intake.json` +
+  `config/crm.sharepoint.json` (created by the Chunk 5 apply). Wrote
+  `docs/CRM_PUBLIC_INTAKE_PATH_B.md` spec, logged the decision + scoped
+  governance unlock in CRM_DECISIONS.md. Added V7 (Forms+flow portal build) and
+  V8 (end-to-end + verifier-still-PASS). Build deferred to the gated session.

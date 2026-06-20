@@ -67,14 +67,27 @@ index. Both REFERENCE the existing `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.m
 only deferred piece is the exact live SharePoint/M365 group names, which the
 access model itself requires be read back, not guessed (deferred-log V6).
 
+Path B - Public brand intake (2026-06-20): Adam chose to have the Guided AI Labs
+and Guided AI Journey brand intake forms auto-populate CRM and identify the
+source. Added an operator-visible `Source` (`IntakeSource`) field to both configs
+(so the Chunk 5 apply creates it), wrote the build spec
+`docs/CRM_PUBLIC_INTAKE_PATH_B.md`, and logged the decision + a SCOPED governance
+unlock (public Forms + unattended automation lifted ONLY for the two named forms
+and one create-only flow) in `docs/CRM_DECISIONS.md`. The Forms+flow are a portal
+build, not a PnP-script build, deferred to the gated session as V7/V8. Path B
+reuses the existing hidden technical fields as capture provenance, so the daily
+operator path and the Chunk 3 verifier are unchanged.
+
 Remaining, all gated on the deferred-log sign-in session:
 - Chunk 5 - Tenant Apply (V4): requires approval phrase apply-gail-crm-recovery.
 - Chunk 6 - Human browser/operator acceptance (V5).
+- Path B - Brand Forms + intake flow (V7) and end-to-end test (V8): portal build,
+  after V4 creates the `IntakeSource` field.
 - Chunk 8 - Close Recovery: needs Chunk 5/6 evidence before it can close.
 
-At this point everything buildable without a tenant sign-in is built. The next
-real action is a focused sign-in session to run the deferred-log items V1-V6 in
-order.
+At this point everything buildable without a tenant sign-in is built (now incl.
+the Path B config + spec). The next real action is a focused sign-in session to
+run the deferred-log items V1-V8 in order.
 
 ## Completion Requirements
 

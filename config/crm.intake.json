@@ -18,7 +18,7 @@
     "sections": [
       {
         "displayName": "Capture",
-        "fields": ["Title", "PersonName", "PersonEmail", "OrganizationName", "SignalType", "Priority"]
+        "fields": ["Title", "PersonName", "PersonEmail", "OrganizationName", "SignalType", "IntakeSource", "Priority"]
       },
       {
         "displayName": "Context",
@@ -32,6 +32,7 @@
     { "internalName": "PersonEmail", "displayName": "Email", "type": "Text", "required": false },
     { "internalName": "OrganizationName", "displayName": "Organization", "type": "Text", "required": false },
     { "internalName": "SignalType", "displayName": "Signal type", "type": "Choice", "required": true, "default": "Referral" },
+    { "internalName": "IntakeSource", "displayName": "Source", "type": "Choice", "required": true, "default": "Direct", "purpose": "Which intake front-door this signal came through. Operator-visible and operator-selectable. The Path B public brand forms stamp this automatically (Guided AI Labs / Guided AI Journey) via the intake flow; manual captures default to Direct. See docs/CRM_PUBLIC_INTAKE_PATH_B.md." },
     { "internalName": "Priority", "displayName": "Priority", "type": "Choice", "required": true, "default": "Normal" },
     { "internalName": "NeedSummary", "displayName": "Need / opportunity", "type": "Note", "required": true },
     { "internalName": "SourceText", "displayName": "Email or context paste", "type": "Note", "required": true },
@@ -41,7 +42,7 @@
     { "internalName": "SignalStatus", "displayName": "Status", "type": "Choice", "required": true, "default": "New" },
     { "internalName": "ItemOwner", "displayName": "Owner", "type": "User", "required": false }
   ],
-  "requiredBusinessFields": ["Title", "SignalType", "Priority", "NeedSummary", "SourceText", "NextAction", "SignalStatus"],
+  "requiredBusinessFields": ["Title", "SignalType", "IntakeSource", "Priority", "NeedSummary", "SourceText", "NextAction", "SignalStatus"],
   "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "RelatedLink", "ItemOwner"],
   "requiredVsCardPlanNote": "The CRM / Relationships card plan lists PersonName, PersonEmail, OrganizationName, and FollowUpDueDate under 'Required fields'. The Stage 8C technical contract marks those four as NOT required (notRequiredFields). This file follows the Stage 8C technical contract. Whether any of those four should be made mandatory on the form is a small UX decision left for Adam to confirm before the Chunk 5 apply; flagged here so it is resolved deliberately, not silently.",
   "hiddenFieldRule": "Every field in blockedFieldNames must have ShowInNewForm=false AND ShowInEditForm=false on CRM - New Signals. The Stage 8C verifier wrongly let these pass when ShowInNewForm/ShowInEditForm were DefaultTrue; the Chunk 3 verifier must FAIL on DefaultTrue or True.",
@@ -61,5 +62,18 @@
     "list": "Guided AI Labs - Intake Register",
     "form": "NewForm.aspx",
     "rule": "Must never be the daily CRM intake route. No daily card, button, or navigation link may open Guided AI Labs - Intake Register/NewForm.aspx. It is admin-only fallback (see crm.navigation.json)."
+  },
+  "publicIntakeAutomation": {
+    "status": "AUTHORIZED 2026-06-20 (Path B) — built in a gated session, NOT by the PnP apply scripts.",
+    "spec": "docs/CRM_PUBLIC_INTAKE_PATH_B.md",
+    "summary": "Two public, anonymous Microsoft Forms (one per brand: Guided AI Labs, Guided AI Journey) feed CRM - New Signals via a create-only Power Automate flow. The flow stamps IntakeSource with the originating brand and writes capture provenance into the existing blocked technical fields, which stay hidden from the daily operator.",
+    "provenanceFieldMapping": {
+      "SourceMessageId": "Microsoft Forms response id",
+      "ReceivedDate": "Form submission timestamp",
+      "IntakeStatus": "Auto-captured",
+      "SourceMailbox": "Originating form name (e.g. 'Guided AI Labs intake form')"
+    },
+    "boundary": "These blocked fields remain ShowInNewForm=false AND ShowInEditForm=false on CRM - New Signals (the Chunk 3 verifier still FAILs on DefaultTrue/True). Path B does not make any of them operator-visible; it only writes to them from the flow.",
+    "safetyEnvelope": "Public submission is limited to exactly these two Forms. The flow is create-only into CRM - New Signals: no item/list deletes, no updates to other records, no mail sends, no auto-reply to submitters, no external sharing, no guest invites, no permission/consent changes, standard (non-premium) connectors only, no Dynamics/Dataverse. All auto-captured items land in SignalStatus=New for human triage; there is no automated outreach."
   }
 }

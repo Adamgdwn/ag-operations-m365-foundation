@@ -1,0 +1,45 @@
+Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+
+OPERATIONS COCKPIT:
+  page: SitePages/Guided-AI-Labs-Operations-Cockpit.aspx
+  ensure CRM card 'CRM Command Center' links to 'Relationship CRM Command Center' (not a raw list, not legacy intake)
+
+CRM COMMAND CENTER:
+  page: SitePages/Relationship-CRM-Command-Center.aspx
+  nav group: Client Delivery
+  daily cards:
+    - New Signal -> CRM - New Signals (clean-intake-form)
+        MUST NOT route to: Guided AI Labs - Intake Register/NewForm.aspx
+    - Triage Queue -> CRM - New Signals / New Signal Queue
+    - Follow Up Today -> CRM - New Signals / Signals Needing Follow-up
+    - Proposal / Decision Blockers -> CRM - Action Queue / Decision / Go-Live Blockers
+    - Active Delivery -> CRM - Engagements / Delivery Control
+    - Closeout / Invoice Watch -> CRM - Closeout Invoice Queue / Closeout / Invoice Watch
+  direct links:
+    - New Signal Queue -> CRM - New Signals / New Signal Queue
+    - Signals Needing Follow-up -> CRM - New Signals / Signals Needing Follow-up
+    - Open CRM Actions -> CRM - Action Queue / Open CRM Actions
+    - Due / Overdue Actions -> CRM - Action Queue / Due / Overdue Actions
+    - Qualification Triage -> CRM - Qualification / Qualification Triage
+    - Pipeline by Stage -> CRM - Engagements / Pipeline by Stage
+    - Delivery Control -> CRM - Engagements / Delivery Control
+    - Decision / Go-Live Blockers -> CRM - Action Queue / Decision / Go-Live Blockers
+    - Upcoming Meetings -> CRM - Meeting Notes / Upcoming Meetings
+    - Meeting Debrief Needed -> CRM - Meeting Notes / Meeting Debrief Needed
+    - Proposal / Scope Artifacts -> CRM - Artifacts / Proposal / Scope Artifacts
+    - Handoff Evidence -> CRM - Artifacts / Handoff Evidence
+    - Health Review Queue -> CRM - Health Reviews / Health Review Queue
+    - At Risk Health Reviews -> CRM - Health Reviews / At Risk Health Reviews
+    - Closeout / Invoice Watch -> CRM - Closeout Invoice Queue / Closeout / Invoice Watch
+    - Ready to Invoice -> CRM - Closeout Invoice Queue / Ready to Invoice
+    - Payment Follow-up -> CRM - Closeout Invoice Queue / Payment Follow-up
+
+ADMIN-ONLY FALLBACK:
+  - Legacy Intake Register (admin only): keep labelled admin-only; remove from every daily card / nav node
+
+FORBIDDEN IN DAILY PATH (must not appear anywhere operators land):
+  - Guided AI Labs - Intake Register/NewForm.aspx
+  - raw list +New routes that expose technical/automation fields
+  - Stage 8 build packet docs as operator instructions
+
+NOT TOUCHED: permissions, sharing, consent, mail, deletes, automation, Dynamics/Dataverse.
