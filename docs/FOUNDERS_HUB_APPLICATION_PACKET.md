@@ -285,3 +285,198 @@ hold the Founders Hub execution plan. That folder is **not present on this
 machine**. If a fuller plan exists there on another laptop, reconcile this packet
 with it before submitting so the two do not diverge. This packet is written to be
 self-sufficient if that plan is unavailable.
+
+---
+
+## 9. Verified correction to the §7 diagnosis (web-verified 2026-06-20)
+
+The §7 "real lever = domain verification" read is **partly wrong**. Cross-checked
+against current Microsoft Q&A threads on this exact error (sources below). What
+changed:
+
+**This is a known backend "eligibility flag" bug, and there is NO self-service
+override.** The error *"This account can't be used for Microsoft for Startups
+credits"* / *"you are not eligible for startup credit offers"* is an account
+identity-binding / eligibility-flag problem in Microsoft's backend. Multiple
+recent threads — including one where a Microsoft moderator (Himanshu Shekhar)
+answered — conclude the only working resolution is to **escalate to Microsoft for
+Startups Program Support / Concierge to manually correct the flag and bind the
+membership to the correct profile.** Completing domain verification is a checklist
+item, not the thing that clears this flag. Do not expect a self-serve fix; do not
+re-enter the card hoping it clears.
+
+**Both of Adam's accounts trip a *different* documented trigger** — which is why
+the flow felt incoherent:
+
+- **GAIL work account `adamgoodwin@guidedailabs.com`** → treated as an *"existing
+  enterprise account"* (it is Global Admin of the A.G. Operations Ltd tenant,
+  which already holds "Azure subscription 1"). That is a named trigger.
+- **Personal `adamgdwn@hotmail.com`** → sits in an auto-created **unmanaged
+  "DEFAULT DIRECTORY"**; the MSA is not cleanly bound to a startup profile. Also a
+  named trigger.
+
+**The most important reframe — decouple the two benefits:**
+
+1. **Business Premium + GitHub Enterprise** (the biggest *recurring* value: Entra
+   ID P1, Intune, Defender, Purview for the org) are claimed *after the company is
+   approved* and do **not** depend on the broken Azure-credit redemption flow.
+2. **Azure credits ($1K → $5K)** are the *only* part snarled in the eligibility-flag
+   bug.
+
+So the real money is not all behind one wall. The path:
+
+**Step A — get the company approved.** Complete/submit the application so GAIL is
+vetted. This unlocks Business Premium + GitHub Enterprise regardless of the Azure
+knot.
+
+**Step B — fix Azure credits via support ticket, not self-serve.** Raise a
+Microsoft for Startups support ticket with screenshots of both errors (capture
+the SessionID / TimeStamp shown on the Azure "not eligible" page) and ask Program
+Support to (a) correct the eligibility flag and (b) bind the membership / do an
+entitlement transfer to the intended account. Reference that this is the
+documented known-issue path, not a first-time eligibility question.
+
+**Support intake (do NOT enter a card to reach these):**
+- Microsoft for Startups portal → sign in at `portal.startups.microsoft.com/login`
+  → **?** icon → **Submit a Support Ticket**.
+- Or, if onboarded via Azure: Azure portal → **Your Microsoft Team** tile →
+  **Get Program Support**.
+- General help entry: `aka.ms/startuphelp-mfs-portal`.
+- Activate within **90 days** of accepting the program agreement, or the offer
+  expires.
+
+**Still open (Adam's decision — §0 of the resume):** which identity anchors the
+membership/ticket. The work account routes Business Premium cleanly to the
+guidedailabs.com tenant but is the "enterprise account" trigger; a clean personal
+MSA suits the credit flow but needs the benefits routed to GAIL afterward. The
+support ticket is the place to let Microsoft resolve the binding rather than
+guessing — but the anchor account should be chosen before the ticket is opened.
+
+**Sources (Microsoft Q&A, retrieved 2026-06-20):**
+- `learn.microsoft.com/en-us/answers/questions/5909218` — "This account can't be
+  used for Microsoft for Startups credits" (root causes + Program Support is the
+  fix).
+- `learn.microsoft.com/en-us/answers/questions/5919805` — "credits not eligible
+  bug, ticket closed but persists" (Microsoft moderator: no self-service override;
+  escalate to Concierge; reference ticket IDs; attach error screenshots).
+- `learn.microsoft.com/en-us/answers/questions/2148504` — unable to access Azure
+  credits (work vs personal account; entitlement migration via billing engineer).
+
+---
+
+## 10. Chosen path + ready-to-send support ticket (decided 2026-06-20)
+
+**Decision (Adam, 2026-06-20):** *Let Microsoft Program Support advise the correct
+account binding before committing an anchor account.* Rationale: the
+account-to-membership binding is the thing that is broken, so do not guess an
+anchor and risk locking the flag onto the wrong identity. Describe both failed
+accounts and ask Support which to bind, then proceed on their answer.
+
+### How to open the ticket (the catch-22 and the way around it)
+
+**The trap (confirmed live 2026-06-20).** Every Founders-Hub-portal support path —
+the in-portal **?** → Submit a Support Ticket, the Support Center "Submit support
+ticket" button, the `/support-form` deep links, and even `aka.ms/startuphelpemail`
+(which now 301-redirects to the signup drawer) — bounces you to a login that loops
+back to the home/signup page. They all need the portal session the eligibility
+flag is denying. **There is NO phone support for Microsoft for Startups** (verified
+across multiple sources). So none of the program's own front doors work while
+locked out.
+
+**The route that works — file an Azure Billing support request** (moderator-verified
+path; it uses the *Azure* portal, a different login surface than Founders Hub — and
+it's the page the eligibility error already redirected Adam to, so it is reachable):
+
+1. Sign in to `portal.azure.com` as **`adamgoodwin@guidedailabs.com`** (this
+   account has Azure portal access and a subscription to file against; asking
+   Support to sort the account binding *is* the request, and filing a ticket is not
+   the same as redeeming credits, so the flag does not block it).
+2. **Help + Support** → **Create a support request**.
+3. Issue type: **Billing**.
+4. Paste the ticket body below; attach the two error screenshots
+   (SessionID/TimeStamp included).
+5. Submit. An automated email arrives within minutes; a support agent follows up.
+
+Demoted (all currently loop to login — try only if the Azure route stalls):
+`foundershubsupportcenter.powerappsportals.com` (scroll to "Submit support
+ticket"); `portal.startups.microsoft.com/support-form`;
+`foundershub.startups.microsoft.com/support-form`.
+
+Before sending, **capture two screenshots**: (a) the *"This account can't be used
+for Microsoft for Startups credits"* message, and (b) the Azure *"you are not
+eligible for an Azure free account / startup credit offers"* page — note the
+**SessionID and TimeStamp** shown on it. Attach both.
+
+### Ticket subject
+
+> Eligibility flag blocks Founders Hub onboarding on both my work and personal
+> accounts — need correct account binding for Guided AI Labs Ltd.
+
+### Ticket body (paste, then fill the two [ ] items)
+
+> I am the founder of **Guided AI Labs Ltd.** (federal Canadian corporation, CBCA,
+> corporation # **1797857-0**, website **https://guidedailabs.com**), applying to
+> Microsoft for Startups Founders Hub on the self-serve tier. I am blocked at
+> onboarding by the known "eligibility flag" issue and need help binding the
+> membership to the right account before I go any further. **No payment card has
+> been entered.**
+>
+> I hit the block on **both** accounts I could use, each apparently for a different
+> documented reason:
+>
+> 1. **Work account `adamgoodwin@guidedailabs.com`** (Global Admin of our existing
+>    Microsoft 365 / Entra tenant for A.G. Operations Ltd, which already has an
+>    Azure subscription). Signing in to Founders Hub → "Get started" failed
+>    eligibility and redirected me to portal.azure.com with *"This account can't be
+>    used for Microsoft for Startups"* / *"you are not eligible for startup credit
+>    offers."* I believe this account is being treated as an existing enterprise
+>    account.
+> 2. **Personal account `adamgdwn@hotmail.com`**, which sits in an auto-created
+>    unmanaged "Default Directory." This account hit the same *"This account can't
+>    be used for Microsoft for Startups credits"* error.
+>
+> **What I need from Program Support:**
+> - Please tell me **which account I should use** to own the Founders Hub
+>   membership for Guided AI Labs Ltd., given that the company domain
+>   (guidedailabs.com) lives in the work tenant but the self-serve flow pushes me
+>   toward a personal Microsoft account.
+> - Please **correct the eligibility flag** on whichever account we choose, and
+>   confirm the account is properly bound to the Guided AI Labs startup profile so
+>   I can complete onboarding and verification.
+> - Please confirm how the **Business Premium** benefit and the **Azure credit**
+>   sponsorship will route to Guided AI Labs Ltd. once the membership is active
+>   (new tenant vs. seats added to the existing tenant; sponsored subscription
+>   placement).
+>
+> Screenshots of both errors are attached, including the SessionID and TimeStamp
+> from the Azure eligibility page. This matches the known backend eligibility-flag
+> issue documented on Microsoft Q&A; please escalate to the Concierge/billing team
+> if a manual flag correction or entitlement binding is required.
+>
+> Company facts for verification:
+> - Legal entity: Guided AI Labs Ltd., federal corporation (CBCA), corp # 1797857-0
+> - Incorporated: 2026-05-29 (well under the 7-year limit)
+> - Website: https://guidedailabs.com
+> - Founder / sole director: Adam Goodwin — https://www.linkedin.com/in/adamgoodwin1/
+> - Funding: bootstrapped, no investor/accelerator (self-serve tier)
+> - Ticket reference / prior contact, if any: [leave blank or add existing ticket ID]
+
+### Submission record
+
+- **2026-06-20 — ticket submitted.** Filed via Azure portal → Help + Support →
+  Create a support request → issue type **Billing**, signed in as
+  `adamgoodwin@guidedailabs.com` (the Founders-Hub-portal support paths all looped
+  to login; the Azure billing channel was the only one that accepted the request).
+  Error screenshots attached. **No payment card entered.** Awaiting Support reply.
+  - Support request / ticket number: **Case 2606200040000715** (Tracking ID
+    #2606200040000715).
+
+### After Support replies
+
+- Record the chosen anchor account and ticket ID back in this section and in the
+  next session turnover.
+- Once the flag is cleared and the company is approved: claim **Business Premium +
+  GitHub Enterprise first** (these do not depend on the Azure-credit flow), then
+  redeem the Azure sponsorship per Support's routing guidance — each as its own
+  Decision Register entry with a stated spend ceiling (Bucket C, activation
+  Steps 5–6). Activate within the **90-day** window.
