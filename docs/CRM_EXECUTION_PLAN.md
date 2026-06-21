@@ -553,6 +553,12 @@ Stop conditions:
 
 These are not completion blockers:
 
+- Intake-assist: narrative → structured signal extractor (email pre-fill, public
+  form, voice/dictation) + shared fuzzy-match / entity-resolution engine.
+- Closeout Helper: pre-close AI review at the Ready-to-Close stage — fuzzy-matches
+  all fields and flags likely issues before closeout/invoice. Advisory, non-
+  destructive, non-blocking. Reuses the intake-assist matcher. Plan:
+  `docs/CRM_CLOSEOUT_HELPER_PLAN.md`.
 - Power Apps front door.
 - mailbox parsing or unattended automation.
 - public intake forms.

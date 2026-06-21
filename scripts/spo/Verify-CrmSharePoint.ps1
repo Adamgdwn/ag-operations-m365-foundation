@@ -34,7 +34,7 @@ function Resolve-WorkspacePath {
 function Get-FieldFormExperience {
     param([string]$ListTitle, [string]$FieldName)
 
-    $field = Get-PnPField -List $ListTitle -Identity $FieldName -Includes Required,SchemaXml -ErrorAction SilentlyContinue
+    $field = Get-PnPField -List $ListTitle -Identity $FieldName -Includes Required,SchemaXml,Hidden -ErrorAction SilentlyContinue
     if ($null -eq $field) { return $null }
 
     $schema = [xml]([string]$field.SchemaXml)
@@ -43,6 +43,7 @@ function Get-FieldFormExperience {
     [pscustomobject]@{
         Required = [bool]$field.Required
         TypeAsString = [string]$field.TypeAsString
+        Hidden = [bool]$field.Hidden
         ShowInNewForm = if ([string]::IsNullOrWhiteSpace($showInNewForm)) { "DefaultTrue" } else { $showInNewForm }
         ShowInEditForm = if ([string]::IsNullOrWhiteSpace($showInEditForm)) { "DefaultTrue" } else { $showInEditForm }
     }
@@ -193,10 +194,14 @@ foreach ($fieldName in $intakeConfig.blockedFieldNames) {
         Add-Check -Area "Blocked field" -Item $name -Expected "Absent or hidden" -Actual "Absent" -Status "Pass"
         continue
     }
-    $visible = (Test-FormFlagVisible -Value ([string]$form.ShowInNewForm)) -or (Test-FormFlagVisible -Value ([string]$form.ShowInEditForm))
+    # A field is hidden from the form if Hidden=TRUE (removed from all forms+views) OR
+    # both form flags are explicitly false. Hidden fields remain writable by the sync
+    # flow via internal name, so Hidden=TRUE is the accepted, stronger posture for the
+    # pure-technical backbone keys.
+    $visible = (-not $form.Hidden) -and ((Test-FormFlagVisible -Value ([string]$form.ShowInNewForm)) -or (Test-FormFlagVisible -Value ([string]$form.ShowInEditForm)))
     Add-Check -Area "Blocked field" -Item $name `
-        -Expected "ShowInNewForm=false AND ShowInEditForm=false" `
-        -Actual ("ShowInNewForm={0}; ShowInEditForm={1}" -f $form.ShowInNewForm, $form.ShowInEditForm) `
+        -Expected "Hidden=true OR (ShowInNewForm=false AND ShowInEditForm=false)" `
+        -Actual ("Hidden={0}; ShowInNewForm={1}; ShowInEditForm={2}" -f $form.Hidden, $form.ShowInNewForm, $form.ShowInEditForm) `
         -Status $(if($visible) { "Fail" } else { "Pass" })
 }
 

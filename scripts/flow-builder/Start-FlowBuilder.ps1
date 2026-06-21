@@ -1,6 +1,8 @@
 param(
-    [ValidateSet("auth", "connections", "build")]
-    [string]$Phase = "auth"
+    [ValidateSet("auth", "connections", "build", "reminder", "engine")]
+    [string]$Phase = "auth",
+    [switch]$Dry,
+    [string]$State = ""
 )
 
 # Surfaces a VISIBLE Edge (via Playwright) to Adam's desktop so he signs into
@@ -15,6 +17,8 @@ $workspaceRoot = Split-Path -Parent (Split-Path -Parent $scriptRoot)
 $engine = switch ($Phase) {
     "auth" { Join-Path $scriptRoot "auth-flow.js" }
     "connections" { Join-Path $scriptRoot "create-connections.js" }
+    "reminder" { Join-Path $scriptRoot "create-reminder-flow.js" }
+    "engine" { Join-Path $scriptRoot "create-followup-engine-flow.js" }
     default { Join-Path $scriptRoot "create-flow.js" }
 }
 if (-not (Test-Path -LiteralPath $engine)) { throw "Engine not found: $engine" }
@@ -30,6 +34,8 @@ function ConvertTo-CmdArgument {
 
 $engineArgs = @($engine)
 if ($Phase -eq "connections") { $engineArgs += "--headed" }
+if ($Dry) { $engineArgs += "--dry" }
+if (-not [string]::IsNullOrWhiteSpace($State)) { $engineArgs += "--state=$State" }
 $nodeCommand = (ConvertTo-CmdArgument -Argument $node.Source) + " " + (($engineArgs | ForEach-Object { ConvertTo-CmdArgument -Argument $_ }) -join " ")
 
 $command = @(

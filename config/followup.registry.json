@@ -1,0 +1,57 @@
+{
+  "version": "2026-06-21-backbone-v1",
+  "purpose": "Registry of SharePoint lists that participate in the Operations Follow-up & Task Backbone, and where each one's reflections live (calendar + Planner). The shared sync engine iterates this list. A new operations function joins the backbone by adopting config/followup.contract.json on its list and adding a row here -- no new flow, no new code. See docs/OPERATIONS_FOLLOWUP_BACKBONE.md.",
+  "engineFlow": {
+    "name": "GAIL — Operations follow-up engine",
+    "flowId": "73af86ea-18d2-4bc4-9cd0-aa03a461b800",
+    "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+    "trigger": "Every_15_min",
+    "state": "Started",
+    "builder": "scripts/flow-builder/create-followup-engine-flow.js",
+    "layerStatus": {
+      "email": "LIVE — 3 offsets, smoke-tested (all landed)",
+      "calendar": "LIVE — two-way, smoke-tested all 4 directions (create/push/pull/teardown), 0 residue",
+      "planner": "NOT BUILT — gated on Adam consent session + plannerPlanId below"
+    },
+    "retiresOldFlow": "8665f8d0-43c7-4067-b2b9-b57e7450ab6d"
+  },
+  "calendarModel": "mailbox-delegation",
+  "calendarModelNote": "Adam chose mailbox delegation (2026-06-21, docs/OPERATIONS_FOLLOWUP_BACKBONE.md s4 UPDATE). Each follow-up event lives on its OWNER'S OWN calendar, written by the standard Office 365 Outlook connector. No central calendar, no attendee trick, no Graph app registration. For operators other than the automation account, the automation account must hold Editor (Add-MailboxFolderPermission) on that operator's calendar and the calendar id is registered in operatorCalendars below.",
+  "centralCalendar": {
+    "retired": true,
+    "note": "RETIRED under the delegation model — events go on each owner's own calendar, not a central one.",
+    "calendarId": null
+  },
+  "automationAccountUpn": "adamgoodwin@guidedailabs.com",
+  "operatorCalendars": {
+    "note": "Map of operator UPN -> Outlook calendar id reachable by the automation account's connection. The automation account's OWN calendar is the connector default and needs no entry/delegation. Add an entry per delegated operator as they onboard.",
+    "adamgoodwin@guidedailabs.com": "default"
+  },
+  "conflictResolution": "most-recent-modified-wins",
+  "recurrenceMinutes": 15,
+  "lists": [
+    {
+      "key": "crm-new-signals",
+      "enabled": true,
+      "site": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+      "listTitle": "CRM - New Signals",
+      "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
+      "fieldMap": {
+        "due": "FollowUpDueDate",
+        "owner": "ItemOwner",
+        "title": "Title",
+        "status": "SignalStatus",
+        "person": "PersonName",
+        "organization": "OrganizationName",
+        "nextAction": "NextAction",
+        "priority": "Priority"
+      },
+      "openWhen": { "field": "SignalStatus", "notIn": ["Closed", "Converted"] },
+      "planner": {
+        "note": "Dedicated 'CRM Follow-ups' plan in the Guided AI Labs M365 group. planId + bucket ids filled in during the engine build phase.",
+        "planId": null,
+        "bucketStrategy": "by-priority"
+      }
+    }
+  ]
+}

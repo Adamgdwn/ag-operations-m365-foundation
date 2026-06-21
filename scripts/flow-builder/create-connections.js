@@ -4,7 +4,9 @@
 // the contract. Tries headless first: if first-party in-tenant consent is silent,
 // no human interaction is needed. Screenshots + non-GET network go to .local.
 //
-// Usage: node create-connections.js [--headed] [--only=sharepoint|forms]
+// Usage: node create-connections.js [--headed] [--only=key1,key2]
+//   keys: sharepoint | forms | planner | office365users
+//   For the Operations follow-up sync layer: --only=planner,office365users --headed
 const fs = require('fs');
 const path = require('path');
 let chromium;
@@ -19,12 +21,15 @@ const log = (m) => console.log(`[${new Date().toISOString()}] ${m}`);
 const ENV = 'Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501';
 const EHOST = 'default1ca92af521ff42e387ae3bde9c2cc5.01.environment.api.powerplatform.com';
 const headed = process.argv.includes('--headed');
-const only = (process.argv.find(a => a.startsWith('--only=')) || '').split('=')[1];
+const onlyArg = (process.argv.find(a => a.startsWith('--only=')) || '').split('=')[1];
+const only = onlyArg ? onlyArg.split(',').map(s => s.trim()).filter(Boolean) : null;
 
 const CONNECTORS = [
   { key: 'sharepoint', api: 'shared_sharepointonline', label: 'SharePoint' },
   { key: 'forms', api: 'shared_microsoftforms', label: 'Microsoft Forms' },
-].filter(c => !only || c.key === only);
+  { key: 'planner', api: 'shared_planner', label: 'Planner' },
+  { key: 'office365users', api: 'shared_office365users', label: 'Office 365 Users' },
+].filter(c => !only || only.includes(c.key));
 
 (async () => {
   const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: !headed, viewport: { width: 1400, height: 950 } });

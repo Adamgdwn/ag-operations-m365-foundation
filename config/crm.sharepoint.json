@@ -49,8 +49,15 @@
         { "displayName": "NextAction", "internalName": "NextAction", "type": "Note" },
         { "displayName": "FollowUpDueDate", "internalName": "FollowUpDueDate", "type": "DateTime", "indexed": true },
         { "displayName": "RelatedLink", "internalName": "RelatedLink", "type": "URL" },
-        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" }
+        { "displayName": "Owner", "internalName": "ItemOwner", "type": "User" },
+        { "displayName": "Reminders", "internalName": "op_Reminders", "type": "MultiChoice", "choices": ["1 day before", "30 minutes before", "Day after"], "backbone": true },
+        { "displayName": "Track on", "internalName": "op_TrackOn", "type": "MultiChoice", "choices": ["Calendar", "Planner"], "backbone": true },
+        { "displayName": "Calendar event id", "internalName": "op_CalendarEventId", "type": "Text", "backbone": true },
+        { "displayName": "Planner task id", "internalName": "op_PlannerTaskId", "type": "Text", "backbone": true },
+        { "displayName": "Last synced due", "internalName": "op_LastSyncedDue", "type": "DateTime", "backbone": true },
+        { "displayName": "Sync note", "internalName": "op_SyncNote", "type": "Text", "backbone": true }
       ],
+      "backboneNote": "The 6 columns marked \"backbone\": true implement the Operations Follow-up & Task Backbone contract (config/followup.contract.json) on this list, the first consumer. op_Reminders + op_TrackOn are operator-facing (see crm.intake.json form). The other four are hidden technical keys (listed in crm.intake.json.blockedFieldNames so the apply hides them and the verifier confirms hidden). Keep in sync with followup.contract.json.",
       "lookupFields": [],
       "views": [
         { "title": "New Signal Queue", "fields": ["LinkTitle", "SignalStatus", "SignalType", "IntakeSource", "Priority", "PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "NextAction"], "query": "<Where><Or><Eq><FieldRef Name='SignalStatus' /><Value Type='Choice'>New</Value></Eq><Eq><FieldRef Name='SignalStatus' /><Value Type='Choice'>Triage</Value></Eq></Or></Where><OrderBy><FieldRef Name='Priority' Ascending='FALSE' /><FieldRef Name='Created' Ascending='FALSE' /></OrderBy>", "rowLimit": 100, "default": true },

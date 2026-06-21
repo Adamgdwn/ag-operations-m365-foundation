@@ -23,6 +23,11 @@
       {
         "displayName": "Context",
         "fields": ["NeedSummary", "SourceText", "NextAction", "FollowUpDueDate", "RelatedLink", "SignalStatus", "ItemOwner"]
+      },
+      {
+        "displayName": "Follow-up handling",
+        "fields": ["op_Reminders", "op_TrackOn"],
+        "purpose": "Operator-facing controls of the Operations Follow-up & Task Backbone (config/followup.contract.json). Optional, opt-in per signal. Reminders = which email alerts (relative to the Follow-up date). Track on = also reflect this on the Calendar / in Planner. The Owner field above determines whose calendar/Planner it lands on. NOT placed on the public Path B website forms (internal concern)."
       }
     ]
   },
@@ -40,10 +45,12 @@
     { "internalName": "FollowUpDueDate", "displayName": "Follow-up date", "type": "DateTime", "required": false },
     { "internalName": "RelatedLink", "displayName": "Related file/link", "type": "URL", "required": false },
     { "internalName": "SignalStatus", "displayName": "Status", "type": "Choice", "required": true, "default": "New" },
-    { "internalName": "ItemOwner", "displayName": "Owner", "type": "User", "required": false }
+    { "internalName": "ItemOwner", "displayName": "Owner", "type": "User", "required": false },
+    { "internalName": "op_Reminders", "displayName": "Reminders", "type": "MultiChoice", "required": false, "backbone": true, "purpose": "Email alert offsets for the owner, relative to Follow-up date: 1 day before / 30 minutes before / Day after. Optional. See config/followup.contract.json." },
+    { "internalName": "op_TrackOn", "displayName": "Track on", "type": "MultiChoice", "required": false, "backbone": true, "purpose": "Also reflect this follow-up on the Calendar and/or in Planner. Optional, opt-in. See config/followup.contract.json." }
   ],
   "requiredBusinessFields": ["Title", "SignalType", "IntakeSource", "Priority", "NeedSummary", "SourceText", "NextAction", "SignalStatus"],
-  "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "RelatedLink", "ItemOwner"],
+  "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "FollowUpDueDate", "RelatedLink", "ItemOwner", "op_Reminders", "op_TrackOn"],
   "requiredVsCardPlanNote": "The CRM / Relationships card plan lists PersonName, PersonEmail, OrganizationName, and FollowUpDueDate under 'Required fields'. The Stage 8C technical contract marks those four as NOT required (notRequiredFields). This file follows the Stage 8C technical contract. Whether any of those four should be made mandatory on the form is a small UX decision left for Adam to confirm before the Chunk 5 apply; flagged here so it is resolved deliberately, not silently.",
   "hiddenFieldRule": "Every field in blockedFieldNames must have ShowInNewForm=false AND ShowInEditForm=false on CRM - New Signals. The Stage 8C verifier wrongly let these pass when ShowInNewForm/ShowInEditForm were DefaultTrue; the Chunk 3 verifier must FAIL on DefaultTrue or True.",
   "blockedFieldNames": [
@@ -55,9 +62,13 @@
     "PlannerTaskUrl",
     "CentralOSLink",
     "GraphNodeId",
-    "AgentConfidence"
+    "AgentConfidence",
+    "op_CalendarEventId",
+    "op_PlannerTaskId",
+    "op_LastSyncedDue",
+    "op_SyncNote"
   ],
-  "blockedFieldNamesNote": "ItemOwner (Owner) is a legitimate business field shown on the form (Context section) and is intentionally NOT a blocked field, even though docs/CRM_UX_SPEC.md and the card plan list ItemOwner among fields hidden from daily operators. Treat ItemOwner as operator-facing here; it is the assignment field. The remaining nine names above are the true technical/automation fields that must stay out of the daily path.",
+  "blockedFieldNamesNote": "ItemOwner (Owner) is a legitimate business field shown on the form (Context section) and is intentionally NOT a blocked field, even though docs/CRM_UX_SPEC.md and the card plan list ItemOwner among fields hidden from daily operators. Treat ItemOwner as operator-facing here; it is the assignment field. The first nine names are the original technical/automation fields. The four op_ names are hidden technical keys of the Operations Follow-up & Task Backbone (config/followup.contract.json) -- foreign keys + sync shadow + sync note that the engine reads/writes but the operator never sees. All thirteen must be ShowInNewForm=false AND ShowInEditForm=false on CRM - New Signals. NOTE: op_Reminders and op_TrackOn are backbone columns too but are intentionally OPERATOR-FACING (not blocked) -- they are the opt-in controls.",
   "legacyTechnicalIntake": {
     "list": "Guided AI Labs - Intake Register",
     "form": "NewForm.aspx",

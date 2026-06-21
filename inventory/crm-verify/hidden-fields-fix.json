@@ -1,0 +1,35 @@
+{
+  "generated": "2026-06-21 11:45:46",
+  "list": "CRM - New Signals",
+  "stillVisible": 0,
+  "results": [
+    {
+      "Field": "op_CalendarEventId",
+      "Hidden": false,
+      "ShowInNewForm": "FALSE",
+      "ShowInEditForm": "FALSE",
+      "Pass": true
+    },
+    {
+      "Field": "op_PlannerTaskId",
+      "Hidden": false,
+      "ShowInNewForm": "FALSE",
+      "ShowInEditForm": "FALSE",
+      "Pass": true
+    },
+    {
+      "Field": "op_LastSyncedDue",
+      "Hidden": false,
+      "ShowInNewForm": "FALSE",
+      "ShowInEditForm": "FALSE",
+      "Pass": true
+    },
+    {
+      "Field": "op_SyncNote",
+      "Hidden": false,
+      "ShowInNewForm": "FALSE",
+      "ShowInEditForm": "FALSE",
+      "Pass": true
+    }
+  ]
+}

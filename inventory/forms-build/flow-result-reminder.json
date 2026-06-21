@@ -1,0 +1,13 @@
+{
+  "purpose": "one-day-ahead CRM follow-up reminder",
+  "flowName": "8665f8d0-43c7-4067-b2b9-b57e7450ab6d",
+  "displayName": "GAIL — CRM follow-up reminder (one day ahead)",
+  "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
+  "recipient": "adamgoodwin@guidedailabs.com",
+  "timeZone": "Mountain Standard Time",
+  "hour": "7",
+  "state": "Started",
+  "createdStatus": 200,
+  "spConnection": "4c53f079bec84a81a87ed7d58c67401e",
+  "outlookConnection": "c0eeec32e191439e979a11c310d424db"
+}

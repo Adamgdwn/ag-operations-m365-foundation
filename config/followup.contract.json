@@ -1,0 +1,66 @@
+{
+  "version": "2026-06-21-backbone-v1",
+  "purpose": "Canonical, reusable column contract for the Operations Follow-up & Task Backbone (docs/OPERATIONS_FOLLOWUP_BACKBONE.md). Any SharePoint list that opts into follow-up reminders + calendar/Planner sync adopts THIS set. Defined once here; the CRM is the first consumer. Column definitions are mirrored into the consuming list's schema config (e.g. crm.sharepoint.json) and applied by the existing gated apply path. When a second consumer is onboarded, generalise the apply to read this file directly (noted as future hardening in the backbone doc).",
+  "approvalPhrase": "apply-gail-crm-recovery",
+  "namingNote": "Backbone columns are namespaced with the 'op_' internal-name prefix so they never collide across the many lists that will adopt them. Display names stay clean and human.",
+  "mappedFields": {
+    "note": "These two roles are NOT new columns. Each consuming list maps them to its own existing date + owner columns via config/followup.registry.json (fieldMap). The CRM maps due -> FollowUpDueDate and owner -> ItemOwner.",
+    "due": { "role": "The follow-up date/time. The ONLY field that syncs two-way (calendar/Planner <-> hub)." },
+    "owner": { "role": "Person who owns the follow-up. Drives Planner assignment + calendar attendee, so it lands on their surfaces." }
+  },
+  "columns": [
+    {
+      "internalName": "op_Reminders",
+      "displayName": "Reminders",
+      "type": "MultiChoice",
+      "choices": ["1 day before", "30 minutes before", "Day after"],
+      "operatorFacing": true,
+      "required": false,
+      "purpose": "Which email alerts the owner wants for this item, relative to the due date/time. Optional, opt-in. Offsets are relative, so the engine is timezone-independent."
+    },
+    {
+      "internalName": "op_TrackOn",
+      "displayName": "Track on",
+      "type": "MultiChoice",
+      "choices": ["Calendar", "Planner"],
+      "operatorFacing": true,
+      "required": false,
+      "purpose": "Where this follow-up should also be reflected. Calendar = an Outlook event (owner as attendee, lands on their calendar). Planner = a task in the function's plan, assigned to the owner. Opt-in per item."
+    },
+    {
+      "internalName": "op_CalendarEventId",
+      "displayName": "Calendar event id",
+      "type": "Text",
+      "operatorFacing": false,
+      "required": false,
+      "purpose": "Foreign key to the Outlook event the engine created for this item. Hidden technical field. Enables two-way date sync without duplicates."
+    },
+    {
+      "internalName": "op_PlannerTaskId",
+      "displayName": "Planner task id",
+      "type": "Text",
+      "operatorFacing": false,
+      "required": false,
+      "purpose": "Foreign key to the Planner task the engine created for this item. Hidden technical field."
+    },
+    {
+      "internalName": "op_LastSyncedDue",
+      "displayName": "Last synced due",
+      "type": "DateTime",
+      "operatorFacing": false,
+      "required": false,
+      "purpose": "The due value the engine last propagated everywhere (the sync 'shadow'). The loop-breaker: the engine only writes when a system's current value differs from this. Hidden technical field."
+    },
+    {
+      "internalName": "op_SyncNote",
+      "displayName": "Sync note",
+      "type": "Text",
+      "operatorFacing": false,
+      "required": false,
+      "purpose": "Last sync result / conflict resolution / error, for observability. Hidden technical field."
+    }
+  ],
+  "hiddenTechnicalColumns": ["op_CalendarEventId", "op_PlannerTaskId", "op_LastSyncedDue", "op_SyncNote"],
+  "operatorFacingColumns": ["op_Reminders", "op_TrackOn"],
+  "safetyEnvelope": "Adopting this contract on a list only ADDS columns (additive, non-destructive). The hidden technical columns must be ShowInNewForm=false AND ShowInEditForm=false (same rule as crm.intake.json.blockedFieldNames). No deletes, no permission/sharing/consent changes."
+}

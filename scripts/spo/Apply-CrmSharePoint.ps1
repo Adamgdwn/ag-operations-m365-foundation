@@ -167,7 +167,7 @@ function Add-CrmField {
     else {
         $params = @{ List = $ListTitle; DisplayName = [string]$Column.displayName; InternalName = $internal; Type = [string]$Column.type; AddToDefaultView = $true }
         if ((Test-JsonProperty -Object $Column -Name "required") -and $Column.required -eq $true) { $params.Required = $true }
-        if ([string]$Column.type -eq "Choice") { $params.Choices = @($Column.choices | ForEach-Object { [string]$_ }) }
+        if ([string]$Column.type -in @("Choice", "MultiChoice")) { $params.Choices = @($Column.choices | ForEach-Object { [string]$_ }) }
         Add-PnPField @params | Out-Null
         Write-Host ("  [OK] field created: {0}" -f $internal) -ForegroundColor Green
     }
@@ -229,11 +229,20 @@ function Set-FieldFormHidden {
     param([string]$ListTitle, [string]$FieldName)
     $field = Get-PnPField -List $ListTitle -Identity $FieldName -ErrorAction SilentlyContinue
     if ($null -eq $field) { Write-Host ("  [skip] blocked field absent (good): {0}" -f $FieldName) -ForegroundColor Gray; return }
-    $field.SetShowInNewForm($false)
-    $field.SetShowInEditForm($false)
-    $field.Update()
-    (Get-PnPContext).ExecuteQuery()
-    Write-Host ("  [OK] blocked field hidden: {0}" -f $FieldName) -ForegroundColor Green
+    # Reliable hide for technical fields: Hidden=$true removes the field from every
+    # form AND view, and persists where the ShowInNewForm/ShowInEditForm setter and a
+    # SchemaXml-string write did NOT on this list (both reported success but no-op'd).
+    # Hidden fields remain writable by the sync flow via their internal name. The
+    # form flags are set too, harmlessly, for belt-and-suspenders.
+    try {
+        $field.Hidden = $true
+        $field.SetShowInNewForm($false)
+        $field.SetShowInEditForm($false)
+        $field.Update()
+        (Get-PnPContext).ExecuteQuery()
+        Write-Host ("  [OK] blocked field hidden: {0}" -f $FieldName) -ForegroundColor Green
+    }
+    catch { Write-Host ("  [warn] hide {0}: {1}" -f $FieldName, $_.Exception.Message) -ForegroundColor Yellow }
 }
 
 function Set-FieldRequired {
