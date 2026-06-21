@@ -342,3 +342,13 @@ Evidence: _path/notes_
   `X:\WINDOWS_TO_LINUX__crm-intake-flow-live.json` (confirmation + CTA test protocol).
   Open: Adam's yes/no on Linux's requested intent/path Choice question (For me / For my team /
   For my organization / Governance or policy) — does not change form URLs or the website embed.
+- 2026-06-21: **Intent/path question APPROVED + ADDED (both brands).** Adam said yes.
+  Added Choice question "Who is this for?" (For me / For my team / For my organization /
+  Governance or policy; optional, placed before consent) to both live forms via
+  `scripts/forms-builder/add-intent-question.js` (idempotent; form URLs unchanged). Both
+  flows UPDATED in place (PATCH, same flow IDs, still Started) via `create-flow.js` — now an
+  update-or-create using the recorded flowName — so the answer is captured into each signal's
+  SourceText ("Who is this for: <value>"). Re-ran V8 e2e for both brands post-change: intent
+  answer lands in the CRM, ALL CHECKS PASS (now incl. `intentCaptured`). Four
+  `GAIL-INTERNAL-WALKTHROUGH` test records (Ids 1–4) accumulated across runs — Adam to delete.
+  Linux notified via `X:\WINDOWS_TO_LINUX__crm-intake-intent-field-live.json` (no website change).

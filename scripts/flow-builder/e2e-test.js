@@ -52,12 +52,15 @@ const ANS = {
     try { await box.waitFor({ timeout: 8000 }); await box.fill(value); log(`  filled "${label}"`); }
     catch { log(`  WARN could not fill "${label}"`); }
   }
-  // Consent choice: select the first option within the "I agree" question block.
-  let consentDone = false;
-  const radios = await vp.$$('[role="radio"], input[type="radio"]');
-  if (radios.length) { await radios[0].click().catch(() => {}); consentDone = true; }
-  if (!consentDone) { const opt = await vp.$('[data-automation-id="choiceItem"]'); if (opt) { await opt.click().catch(() => {}); consentDone = true; } }
-  log(`  consent selected: ${consentDone}`);
+  // Choice questions: pick an intent/path option, then the consent option.
+  // Two choice questions now exist ("Who is this for?" + the "I agree" consent),
+  // so select each by its visible option label to avoid index ambiguity.
+  const INTENT_PICK = 'For my team';
+  let intentDone = false, consentDone = false;
+  try { await vp.getByRole('radio', { name: new RegExp(INTENT_PICK, 'i') }).first().click({ timeout: 6000 }); intentDone = true; } catch {}
+  try { await vp.getByRole('radio', { name: /I agree/i }).first().click({ timeout: 6000 }); consentDone = true; } catch {}
+  if (!consentDone) { const radios = await vp.$$('[role="radio"], input[type="radio"]'); if (radios.length) { await radios[radios.length - 1].click().catch(() => {}); consentDone = true; } }
+  log(`  intent selected: ${intentDone} (${INTENT_PICK}) | consent selected: ${consentDone}`);
   await vp.waitForTimeout(1000);
   await vp.screenshot({ path: path.join(CAP, `e2e-${brandArg}-1-filled.png`), fullPage: true }).catch(() => {});
   // Submit.
@@ -106,6 +109,7 @@ const ANS = {
     typeWebsite: found.SignalType === 'Website',
     provenanceFooter: /Provenance/i.test(found.SourceText || '') && /Auto-captured/i.test(found.SourceText || ''),
     hasResponseId: /Forms response id:/i.test(found.SourceText || ''),
+    intentCaptured: /Who is this for:\s*For my team/i.test(found.SourceText || ''),
   };
   log('\n=== CHECKS ===');
   for (const [k, v] of Object.entries(checks)) log(`  ${v ? 'PASS' : 'FAIL'}  ${k}`);

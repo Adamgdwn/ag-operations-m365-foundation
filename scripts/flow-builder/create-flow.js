@@ -39,9 +39,11 @@ const brand = BRANDS[brandArg] || BRANDS.labs;
 const fq = JSON.parse(fs.readFileSync(path.join(CAP, 'form-questions.json'), 'utf8'))[brandArg];
 const FORM_ID = fq.formId;
 const qid = (titleStartsWith) => { const q = fq.questions.find(x => x.title.toLowerCase().startsWith(titleStartsWith.toLowerCase())); if (!q) throw new Error('question not found: ' + titleStartsWith); return q.id; };
+const qidOpt = (titleStartsWith) => { const q = fq.questions.find(x => x.title.toLowerCase().startsWith(titleStartsWith.toLowerCase())); return q ? q.id : null; };
 const Q = {
   full: qid('Full name'), email: qid('Email'), org: qid('Organization'),
-  need: qid('What are you looking for'), hear: qid('How did you hear'), consent: qid('I agree'),
+  need: qid('What are you looking for'), hear: qid('How did you hear'),
+  intent: qidOpt('Who is this for'), consent: qid('I agree'),
 };
 const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
 
@@ -55,6 +57,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   if (!tokens[EHOST] || !tokens[FLOWHOST]) { log(`ERROR: missing token (EHOST=${!!tokens[EHOST]} FLOW=${!!tokens[FLOWHOST]})`); await ctx.close(); process.exit(1); }
   const get = async (host, url) => { const r = await page.request.get(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json' } }); return { status: r.status(), body: await r.text() }; };
   const post = async (host, url, body) => { const r = await page.request.post(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json', 'content-type': 'application/json' }, data: JSON.stringify(body) }); return { status: r.status(), body: await r.text() }; };
+  const patch = async (host, url, body) => { const r = await page.request.patch(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json', 'content-type': 'application/json' }, data: JSON.stringify(body) }); return { status: r.status(), body: await r.text() }; };
 
   // 1) Resolve the two connections.
   const cl = JSON.parse((await get(EHOST, `https://${EHOST}/connectivity/connections?api-version=1`)).body);
@@ -82,7 +85,8 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   const NL = "decodeUriComponent('%0A')";
   const submitDate = "outputs('Get_response_details')?['body/submitDate']";
   const responseId = "triggerOutputs()?['body/resourceData/responseId']";
-  const sourceTextExpr = `@concat('Full name: ', coalesce(${ans(Q.full)},''), ${NL}, 'Email: ', coalesce(${ans(Q.email)},''), ${NL}, 'Organization: ', coalesce(${ans(Q.org)},''), ${NL}, 'What are you looking for: ', coalesce(${ans(Q.need)},''), ${NL}, 'How did you hear about us: ', coalesce(${ans(Q.hear)},''), ${NL}, 'Consent: ', coalesce(${ans(Q.consent)},''), ${NL}, ${NL}, '— Provenance —', ${NL}, 'Source: ${brand.source}', ${NL}, 'Intake form: ${brand.mailbox}', ${NL}, 'Forms response id: ', coalesce(${responseId},''), ${NL}, 'Submitted: ', coalesce(${submitDate},''), ${NL}, 'Capture: Auto-captured via website intake flow')`;
+  const intentLine = Q.intent ? `'Who is this for: ', coalesce(${ans(Q.intent)},''), ${NL}, ` : '';
+  const sourceTextExpr = `@concat('Full name: ', coalesce(${ans(Q.full)},''), ${NL}, 'Email: ', coalesce(${ans(Q.email)},''), ${NL}, 'Organization: ', coalesce(${ans(Q.org)},''), ${NL}, 'What are you looking for: ', coalesce(${ans(Q.need)},''), ${NL}, 'How did you hear about us: ', coalesce(${ans(Q.hear)},''), ${NL}, ${intentLine}'Consent: ', coalesce(${ans(Q.consent)},''), ${NL}, ${NL}, '— Provenance —', ${NL}, 'Source: ${brand.source}', ${NL}, 'Intake form: ${brand.mailbox}', ${NL}, 'Forms response id: ', coalesce(${responseId},''), ${NL}, 'Submitted: ', coalesce(${submitDate},''), ${NL}, 'Capture: Auto-captured via website intake flow')`;
   const titleExpr = `@concat('${brand.source} — ', coalesce(${ans(Q.full)}, ${ans(Q.org)}, ${ans(Q.email)}, 'New website signal'))`;
 
   const definition = {
@@ -144,16 +148,31 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   const flowBody = { properties: { displayName: brand.display, state: stateArg, definition, connectionReferences } };
   fs.writeFileSync(path.join(CAP, `flow-body-${brandArg}.json`), JSON.stringify(flowBody, null, 2));
 
-  // 4) Create the flow.
-  const createUrl = `https://${FLOWHOST}/providers/Microsoft.ProcessSimple/environments/${ENV}/flows?api-version=2016-11-01`;
-  log(`creating flow: ${brand.display}`);
-  const cr = await post(FLOWHOST, createUrl, flowBody);
-  log(`  create -> ${cr.status}`);
-  fs.writeFileSync(path.join(CAP, `flow-create-${brandArg}.json`), `status: ${cr.status}\n\n${cr.body}`);
-  if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await ctx.close(); process.exit(4); }
-
-  const created = JSON.parse(cr.body);
-  const flowName = created.name;
+  // 4) Update an existing flow (idempotent) or create a new one. If a prior
+  //    flow-result file records this brand's flowName, PATCH it so re-runs edit
+  //    the live flow in place instead of creating duplicates.
+  const base = `https://${FLOWHOST}/providers/Microsoft.ProcessSimple/environments/${ENV}/flows`;
+  const resultPath = path.join(OUT, `flow-result-${brandArg}.json`);
+  let existingName = null;
+  if (fs.existsSync(resultPath)) { try { existingName = JSON.parse(fs.readFileSync(resultPath, 'utf8')).flowName; } catch {} }
+  let cr, created, flowName;
+  if (existingName) {
+    log(`updating existing flow: ${brand.display} (${existingName})`);
+    cr = await patch(FLOWHOST, `${base}/${existingName}?api-version=2016-11-01`, flowBody);
+    log(`  update -> ${cr.status}`);
+    fs.writeFileSync(path.join(CAP, `flow-update-${brandArg}.json`), `status: ${cr.status}\n\n${cr.body}`);
+    if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await ctx.close(); process.exit(4); }
+    created = JSON.parse(cr.body);
+    flowName = created.name || existingName;
+  } else {
+    log(`creating flow: ${brand.display}`);
+    cr = await post(FLOWHOST, `${base}?api-version=2016-11-01`, flowBody);
+    log(`  create -> ${cr.status}`);
+    fs.writeFileSync(path.join(CAP, `flow-create-${brandArg}.json`), `status: ${cr.status}\n\n${cr.body}`);
+    if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await ctx.close(); process.exit(4); }
+    created = JSON.parse(cr.body);
+    flowName = created.name;
+  }
   const result = {
     brand: brand.source, flowName, displayName: brand.display, formId: FORM_ID, listId,
     state: created.properties && created.properties.state, createdStatus: cr.status,
