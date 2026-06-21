@@ -151,6 +151,9 @@ foreach ($list in $requiredLists) {
 
     foreach ($column in @($list.columns)) {
         $internal = [string]$column.internalName
+        # Skip phantom $null element from @() on a missing/empty array (PowerShell
+        # turns a missing property into a one-element array containing $null).
+        if ([string]::IsNullOrWhiteSpace($internal)) { continue }
         $field = Get-PnPField -List $title -Identity $internal -Includes TypeAsString -ErrorAction SilentlyContinue
         $ok = ($null -ne $field)
         Add-Check -Area "Column" -Item ("{0}.{1}" -f $title, $internal) -Expected ([string]$column.type) -Actual $(if($ok) { [string]$field.TypeAsString } else { "Missing" }) -Status $(if($ok) { "Pass" } else { "Fail" })
@@ -158,6 +161,9 @@ foreach ($list in $requiredLists) {
 
     foreach ($lookup in @($list.lookupFields)) {
         $internal = [string]$lookup.internalName
+        # Skip phantom $null element (durable-lookup-target lists define no lookups
+        # of their own; their schema is provenance and not recreated here).
+        if ([string]::IsNullOrWhiteSpace($internal)) { continue }
         $field = Get-PnPField -List $title -Identity $internal -Includes TypeAsString -ErrorAction SilentlyContinue
         $isLookup = ($null -ne $field -and [string]$field.TypeAsString -eq "Lookup")
         Add-Check -Area "Lookup" -Item ("{0}.{1}" -f $title, $internal) -Expected ("Lookup -> {0}" -f [string]$lookup.targetList) -Actual $(if($null -eq $field) { "Missing" } elseif ($isLookup) { "Lookup" } else { [string]$field.TypeAsString }) -Status $(if($isLookup) { "Pass" } else { "Fail" })
@@ -165,6 +171,8 @@ foreach ($list in $requiredLists) {
 
     foreach ($view in @($list.views)) {
         $vTitle = [string]$view.title
+        # Skip phantom $null element from @() on a missing/empty views array.
+        if ([string]::IsNullOrWhiteSpace($vTitle)) { continue }
         $live2 = Get-PnPView -List $title -Identity $vTitle -Includes ViewQuery -ErrorAction SilentlyContinue
         $hasQuery = ($null -ne $live2 -and -not [string]::IsNullOrWhiteSpace([string]$live2.ViewQuery))
         # A view with no query is only a Warn unless the config gave it one.

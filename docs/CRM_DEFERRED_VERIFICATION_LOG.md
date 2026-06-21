@@ -31,21 +31,25 @@ Run:
   Microsoft sign-in.
 
 Confirm:
-- [ ] Script completes without error and writes `inventory/crm-baseline/CRM_BASELINE_EXPORT.md`.
-- [ ] CSVs + JSON snapshot exist alongside it (lists, fields, lookups, views,
+- [x] Script completes without error and writes `inventory/crm-baseline/CRM_BASELINE_EXPORT.md`.
+- [x] CSVs + JSON snapshot exist alongside it (lists, fields, lookups, views,
       blocked-fields, intake-fields, pages, navigation).
-- [ ] The "Observations" table is populated (it is fine for counts to be
+- [x] The "Observations" table is populated (it is fine for counts to be
       non-zero — this is the BEFORE picture, not a verdict).
-- [ ] No write occurred (transcript shows only Get-PnP* reads, no Set/Add/New/Remove).
+- [x] No write occurred (transcript shows only Get-PnP* reads, no Set/Add/New/Remove).
 
-Result: _pending_
-Evidence: _path here_
+Result: PASS (run 2026-06-20 22:26). Exit 0. Headline counts: Lists missing 0 |
+Blocked-visible 0 | Nav-legacy 0. Ran headless via a valid cached M365 token (the
+interactive pop-up stalled on PnP 3.2.0's slow first-load; the cached token made
+the read run cleanly without a browser sign-in).
+Evidence: `inventory/crm-baseline/CRM_BASELINE_EXPORT.md` (+ run log
+`inventory/crm-baseline/_v1_run.log`, transcript `crm-baseline-20260620-222649.log`).
 
 ---
 
 ## V2 — Chunk 3 verifier, RED run on current tenant (READ-ONLY, no approval phrase)
 
-Status: _pending build_
+Status: BUILT + RUN 2026-06-20.
 
 Purpose: prove the new verifier actually FAILS on the known-bad operator path
 (it must not false-pass the way the Stage 8C verifier did).
@@ -54,17 +58,34 @@ Run:
 - Launch `scripts/spo/Start-CrmVerifyInteractive.ps1`, complete the sign-in.
 
 Confirm:
-- [ ] Script completes and writes `inventory/crm-verify/CRM_VERIFY.md`.
-- [ ] Overall Result is FAIL **if** the tenant still has any: blocked technical
+- [x] Script completes and writes `inventory/crm-verify/CRM_VERIFY.md`.
+- [x] Overall Result is FAIL **if** the tenant still has any: blocked technical
       field visible (DefaultTrue/True) on `CRM - New Signals`, nav node or page
       body routing to `Guided AI Labs - Intake Register/NewForm.aspx`, or a
-      missing required list/field/view.
-- [ ] The summary lists each specific failure with the field/list/url that caused it.
-- [ ] A "Manual browser checks still required" section is present (the New button
+      missing required list/field/view. (FAILs on the missing `IntakeSource`
+      field, which V4/Chunk 5 creates — correct.)
+- [x] The summary lists each specific failure with the field/list/url that caused it.
+- [x] A "Manual browser checks still required" section is present (the New button
       experience can only be fully proven by a human in Chunk 6).
 
-Result: _pending_
-Evidence: _path here_
+Result: PASS (the verifier correctly returns FAIL on the not-yet-applied tenant —
+that is V2's success criterion). Run 2026-06-20 22:39, exit 1 (= FAIL signal).
+
+VERIFIER BUG FOUND + FIXED during this run: the first run reported 9 failures, but
+6 were phantom — `@($list.lookupFields)` / `@($list.views)` on the three
+`durable-lookup-target` lists (Organizations, Contacts, Engagements, which define
+no lookups/views of their own) produced a one-element array containing `$null`,
+so the loop ran once with a blank identity, `Get-PnPField` returned every field,
+and it logged a bogus Fail. Guarded all three loops in
+`scripts/spo/Verify-CrmSharePoint.ps1` to skip null/empty elements (skip-only-when-
+empty, so it can never mask a real check). Re-run is clean: **3 failures, all the
+expected missing `IntakeSource`** (Column / Intake field / Required field), plus 6
+required-field WARNINGS (SignalType, Priority, NeedSummary, SourceText, NextAction,
+SignalStatus currently Required=False) that the V4 apply will set. After V4 the
+verifier must return PASS.
+Evidence: `inventory/crm-verify/CRM_VERIFY.md` (post-fix 3-fail run), run logs
+`inventory/crm-verify/_v2_run.log` (initial 9-fail) + `_v2_rerun.log` (3-fail),
+checks CSV `crm-verify-checks-20260620-223702.csv`.
 
 ---
 
@@ -157,13 +178,24 @@ Run:
   live group/permission names for the GuidedAILabs site.
 
 Confirm:
-- [ ] Exact M365 group for internal members confirmed (e.g. GuidedAILabs@agoperations.ca).
-- [ ] Exact SharePoint permission group name for CRM contributors (A2) recorded.
-- [ ] Exact SharePoint permission group/role for full operating access (A3) recorded.
-- [ ] Filled into `docs/CRM_ONBOARDING_PACKAGE.md` "Exact access-group notes".
+- [x] Exact M365 group for internal members confirmed: site group **`Guided AI Labs
+      Members`** (Id 5), backed by M365 group
+      `GuidedAILabs@AGOperationsLtd.onmicrosoft.com`.
+- [x] Exact SharePoint permission group name for CRM contributors (A2) recorded:
+      **`Guided AI Labs Members`** (grant a contributor level — `Contribute` or
+      `Edit`; both exist as role definitions).
+- [x] Exact SharePoint permission group/role for full operating access (A3)
+      recorded: **`Guided AI Labs Owners`** (Id 3) / `Full Control`. (`Guided AI
+      Labs Visitors`, Id 4, is empty.)
+- [ ] Filled into `docs/CRM_ONBOARDING_PACKAGE.md` "Exact access-group notes"
+      (pending — names captured here; copy in next time that doc is opened).
 
-Result: _pending_
-Evidence: _path/notes_
+Result: PASS (read-only, run 2026-06-20 22:39, exit 0). Available permission levels:
+Contribute, Design, Edit, Full Control, Limited Access, Read. Site collection
+admins: Adam Goodwin (admin@agoperations.ca and adamgoodwin@guidedailabs.com) +
+the Owners group. Note: the M365 group's exact friendly address should still be
+confirmed in the Entra/M365 admin portal before any external grant.
+Evidence: `inventory/crm-access/CRM_ACCESS_GROUPS.md` (+ `_v6_run.log`).
 
 ---
 
@@ -239,3 +271,13 @@ Evidence: _path/notes_
   `docs/CRM_PUBLIC_INTAKE_PATH_B.md` spec, logged the decision + scoped
   governance unlock in CRM_DECISIONS.md. Added V7 (Forms+flow portal build) and
   V8 (end-to-end + verifier-still-PASS). Build deferred to the gated session.
+- 2026-06-20: READ-ONLY session run (V1 + V2 + V6) — all PASS. Interactive
+  pop-ups stalled on PnP 3.2.0 first-load; a valid cached M365 token let the three
+  read-only scripts run headless (no browser sign-in, no writes). V1 baseline clean
+  (0/0/0). V2 verifier correctly FAILs; FOUND + FIXED a phantom-failure bug in
+  `Verify-CrmSharePoint.ps1` (null-element iteration on durable-lookup-target
+  lists) — failures 9→3, the 3 remaining are the expected missing `IntakeSource`.
+  Added `scripts/spo/Read-CrmAccessGroups.ps1` (new read-only V6 tool) and captured
+  live access groups: members = `Guided AI Labs Members`, owners = `Guided AI Labs
+  Owners`. Next gated step is V4 (Chunk 5 apply, needs phrase
+  `apply-gail-crm-recovery`), after which V2 must re-run to PASS.

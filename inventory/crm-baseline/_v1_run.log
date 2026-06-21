@@ -1,0 +1,11 @@
+CRM Recovery Chunk 2 - Read-Only Baseline Export
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Config dir: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\config
+Output:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-baseline
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-baseline\crm-baseline-20260620-222649.log
+
+Scope: READ ONLY. No create/update/delete/invite/share/consent/mail.
+
+
+Baseline export complete: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-baseline\CRM_BASELINE_EXPORT.md
+Lists missing: 0 | Blocked-visible: 0 | Nav-legacy: 0
