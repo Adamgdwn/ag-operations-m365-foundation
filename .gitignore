@@ -17,3 +17,12 @@ desktop.ini
 # Auth token caches that some Graph/MSAL flows may write locally
 .msal_token_cache*
 *.token.json
+
+# Local agentic browser profile (holds authenticated tenant session cookies) — never commit
+.local/
+
+# Forms-builder intermediate debug captures (auth/explore screenshots + control dumps).
+# Keep the result JSONs and the public-render proofs; drop the throwaway debug noise.
+inventory/forms-build/forms-*/
+inventory/forms-build/explore/
+

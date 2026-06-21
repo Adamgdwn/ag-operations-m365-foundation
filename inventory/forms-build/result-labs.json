@@ -1,0 +1,43 @@
+{
+  "brand": "Guided AI Labs",
+  "title": "Guided AI Labs — Get started",
+  "formId": "9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNDRVNkdOWkhTN05aRjQwSU9WVzU0R1A1Ri4u",
+  "publicUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNDRVNkdOWkhTN05aRjQwSU9WVzU0R1A1Ri4u",
+  "isAnonymous": true,
+  "questionCount": 6,
+  "expectedCount": 6,
+  "questions": [
+    {
+      "title": "Full name",
+      "type": "Question.TextField",
+      "required": true
+    },
+    {
+      "title": "Email",
+      "type": "Question.TextField",
+      "required": true
+    },
+    {
+      "title": "Organization",
+      "type": "Question.TextField",
+      "required": false
+    },
+    {
+      "title": "What are you looking for?",
+      "type": "Question.TextField",
+      "required": true
+    },
+    {
+      "title": "How did you hear about us?",
+      "type": "Question.TextField",
+      "required": false
+    },
+    {
+      "title": "I agree to be contacted about my enquiry.",
+      "type": "Question.Choice",
+      "required": true
+    }
+  ],
+  "requiredOk": true,
+  "PASS": true
+}
