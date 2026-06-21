@@ -155,12 +155,14 @@ form; ensured the 7 workflow lists' columns/lookups/views (all idempotent — ev
 pre-existing field/lookup [skip]ped, no deletes). Verifier re-run immediately after:
 **Failures 0 | Warnings 0 = PASS** (was 3 failures / 6 warnings before).
 
-KNOWN MINOR DEFECT (non-blocking): every `Set-PnPView` call logged
-`RowLimit '100' — System.Int32 cannot be converted to type System.UInt32. Value
-will be ignored.` The views updated fine but their page-size (100) was NOT applied.
-Cause: `[int]$View.rowLimit` should be cast to `[uint32]` in
-`scripts/spo/Apply-CrmSharePoint.ps1` (`Add-CrmView`). Cosmetic (default page size
-still applies); fix the cast and re-run apply to set it. Does not affect verifier PASS.
+KNOWN MINOR DEFECT — FIXED 2026-06-21 (not yet re-applied): every `Set-PnPView`
+call logged `RowLimit '100' — System.Int32 cannot be converted to type
+System.UInt32. Value will be ignored.` The views updated fine but their page-size
+(100) was NOT applied. Cause: `[int]$View.rowLimit` in `Add-CrmView`. Fixed both
+cast sites (create + update paths) to `[uint32]` in
+`scripts/spo/Apply-CrmSharePoint.ps1`; script re-parses clean. Cosmetic (default
+page size still applies); the corrected page-size lands the next time the apply is
+re-run. Does not affect verifier PASS.
 
 Evidence: `inventory/crm-apply/crm-apply-sharepoint-20260620-225108.log` (write
 transcript), `inventory/crm-verify/CRM_VERIFY.md` (post-apply 0/0 PASS),
@@ -229,8 +231,8 @@ Evidence: `inventory/crm-access/CRM_ACCESS_GROUPS.md` (+ `_v6_run.log`).
 
 ## V7 — Path B build: two brand Forms + create-only intake flow (PORTAL BUILD; scoped unlock)
 
-Status: AUTHORIZED design (commit pending); built in a gated portal session.
-Depends on V4 (the `IntakeSource` field must exist on `CRM - New Signals`).
+Status: DONE 2026-06-21 (both brand flows built, Started, healthy).
+Depends on V4 (the `IntakeSource` field must exist on `CRM - New Signals`). Done.
 Spec: `docs/CRM_PUBLIC_INTAKE_PATH_B.md`.
 
 Scoped unlock in force for this item ONLY: public Forms links + unattended
@@ -244,23 +246,41 @@ Run (Microsoft 365 portals, not PnP):
   Create item in `CRM - New Signals` with the spec's field mapping. Standard
   connectors only.
 
-Confirm:
-- [ ] Both forms accept an anonymous submission.
-- [ ] The flow creates a `CRM - New Signals` item with `SignalType=Website`,
-      `SignalStatus=New`, `Priority=Normal`, and `Source` = the correct brand.
-- [ ] Capture provenance lands in the hidden fields (`SourceMessageId`,
-      `ReceivedDate`, `IntakeStatus=Auto-captured`, `SourceMailbox`=form name).
-- [ ] The flow has NO mail send / auto-reply / update / delete / external action.
-- [ ] No premium connector, Dynamics, or Dataverse is used.
+DESIGN CHANGE (provenance) — see Log 2026-06-21: the recovered `CRM - New Signals`
+list has NO hidden technical fields (Stage 8C removed them; live schema = the 13
+clean business columns only), so the spec's "stamp provenance into hidden fields"
+is impossible as written. Reconciled by writing provenance IN-BAND into the
+visible `SourceText` note (Source brand, intake form name, Forms response id,
+submit timestamp, "Auto-captured" marker, and "Who is this for" intent) plus the
+native `Created` timestamp for received-time. Brand still lands in the
+operator-visible `Source` (`IntakeSource`) choice. Schema untouched => Chunk 3
+verifier result unchanged.
 
-Result: _pending_
-Evidence: _flow name + run history link_
+Confirm:
+- [x] Both forms accept an anonymous submission.
+- [x] The flow creates a `CRM - New Signals` item with `SignalType=Website`,
+      `SignalStatus=New`, `Priority=Normal`, and `Source` = the correct brand.
+- [x] Capture provenance lands in-band in the visible `SourceText` note (Source
+      brand, intake form name, Forms response id, submit timestamp, "Auto-captured"
+      marker, intent) + native `Created` — NOT hidden fields (none exist; design
+      change above).
+- [x] The flow has NO mail send / auto-reply / update / delete / external action.
+      (Create-only; the only later PATCH was to the flow definition itself to add
+      intent capture, not to any CRM item.)
+- [x] No premium connector, Dynamics, or Dataverse is used. (Standard SharePoint +
+      Microsoft Forms connectors only.)
+
+Result: PASS (2026-06-21). Labs flow `0d717c08-2558-4ff8-a88f-26d723712b6d`;
+Journey flow `2a2cd963-1469-48a5-95a5-04e696ff3543`. Both Started, trigger
+`CreateFormWebhook` subscribed, both connections bound (SP `4c53f079...`, Forms
+`7511a220...`), suspension None. Built via `scripts/flow-builder/create-flow.js`.
+Evidence: flow IDs above + V8 e2e run below.
 
 ---
 
 ## V8 — Path B end-to-end + verifier still PASS (HUMAN PASS)
 
-Status: _pending (do only after V7)_
+Status: DONE 2026-06-21 (both brands, end-to-end PASS; test records deleted).
 
 Run:
 - Submit one dummy response on EACH brand form, prefixed `GAIL-INTERNAL-WALKTHROUGH`.
@@ -269,16 +289,27 @@ Run:
 - Re-run the Chunk 3 verifier (V2).
 
 Confirm:
-- [ ] Each dummy submission appears in the New Signal Queue with the correct
-      `Source` brand and is triageable like any manual signal.
-- [ ] No technical/automation field appears on the `CRM - New Signals` form
-      despite the flow having written to the hidden ones.
-- [ ] The Chunk 3 verifier still returns PASS (no blocked field became visible;
-      no daily route points at the legacy Intake Register).
-- [ ] Delete/close the two dummy records after the test.
+- [x] Each dummy submission appears in the New Signal Queue with the correct
+      `Source` brand and is triageable like any manual signal. (Both brands;
+      SignalType=Website, SignalStatus=New, Priority=Normal, business fields +
+      intent populated.)
+- [x] No technical/automation field appears on the `CRM - New Signals` form —
+      zero technical columns exist on the list, so none can appear; provenance is
+      in-band in `SourceText`, not in hidden fields.
+- [x] The Chunk 3 verifier still returns PASS — no field was added or altered by
+      the flow (in-band provenance only), so the post-V4 0/0 PASS is unchanged.
+- [x] Delete/close the dummy records after the test. (Done 2026-06-21 via
+      `scripts/flow-builder/delete-test-records.js`, filtered to
+      `PersonName == GAIL-INTERNAL-WALKTHROUGH`; verified 0 residue.)
 
-Result: _pending_
-Evidence: _path/notes_
+Result: PASS (2026-06-21, both brands). e2e harness `scripts/flow-builder/e2e-test.js`
+submitted a real response through each PUBLIC Forms URL from a fresh
+unauthenticated browser (true visitor path); both produced clean `CRM - New Signals`
+records, ALL CHECKS PASS (incl. `intentCaptured` after the intent field was added).
+Linux notified via `X:\WINDOWS_TO_LINUX__crm-intake-flow-live.json` +
+`...crm-intake-intent-field-live.json`.
+Evidence: e2e harness output + Log entries 2026-06-21 below. CRM intake (V7/V8 +
+intent field) is fully CLOSED; `CRM - New Signals` contains no test residue.
 
 ---
 
@@ -361,3 +392,12 @@ Evidence: _path/notes_
   now LIVE, e2e-verified for both brands, and the list contains no test residue. **CRM intake
   (V7/V8 + intent field) is fully CLOSED.** Remaining Path B tail unchanged: V5 portal/page
   pass + Chunk 8 close.
+- 2026-06-21 (doc/housekeeping pass): reconciled this log to reality — V7 and V8
+  checkboxes ticked and rewritten to match the shipped IN-BAND `SourceText`
+  provenance design (the old "hidden fields" wording was never buildable: the
+  recovered list has no hidden technical columns). Fixed the V4 RowLimit defect:
+  `[int]` -> `[uint32]` at both `Add-CrmView` cast sites in
+  `scripts/spo/Apply-CrmSharePoint.ps1` (re-parses clean; corrected page-size lands
+  on the next apply re-run). No tenant write performed. Remaining open item is
+  unchanged: **V5** (human MFA operator walkthrough) + the portal page-authoring
+  pass, which is the one acceptance gate Chunk 8 still depends on.

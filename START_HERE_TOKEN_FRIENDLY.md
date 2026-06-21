@@ -1,11 +1,32 @@
 # Start Here - Token-Friendly Project State
 
-Last updated: 2026-06-20
+Last updated: 2026-06-21
 
 This is the short restart/orientation note for Codex or any agent working in this
 workspace. For current workspace usability work, read `docs/START_HERE.md` first.
 For the wider M365 foundation, read this file, then open detailed docs only as
 needed.
+
+## Newest state (2026-06-21) — read this first
+
+Phase 2 / first operating function = **CRM/Relationships**. The CRM recovery is
+APPLIED and the intake loop is LIVE:
+
+- Chunk 5 / V4 SharePoint apply ran in write mode; verifier = **0 failures / 0
+  warnings PASS**. `IntakeSource` (operator-visible `Source`) is live on
+  `CRM - New Signals`.
+- Path B public brand intake (V7/V8) is LIVE and end-to-end verified for both
+  brands: Guided AI Labs + Guided AI Journey anonymous Forms -> create-only Power
+  Automate flows -> `CRM - New Signals`. Optional "Who is this for?" intent
+  question added and captured. Test records cleaned (0 residue).
+- The one open CRM gate is **V5** — the human MFA operator walkthrough + portal
+  page-authoring pass. Chunk 8 (formal close) and the Stage 8 packet archive move
+  wait on that and on Adam's explicit OK.
+
+Working docs for this: `docs/CRM_EXECUTION_PLAN.md`,
+`docs/CRM_DEFERRED_VERIFICATION_LOG.md`, `docs/CRM_RECOVERY_PLAN.md`
+("Recovery Closeout Status"). The Stage-8/9 history below remains accurate as
+foundation provenance.
 
 ## Local agentic machine link
 

@@ -78,16 +78,24 @@ build, not a PnP-script build, deferred to the gated session as V7/V8. Path B
 reuses the existing hidden technical fields as capture provenance, so the daily
 operator path and the Chunk 3 verifier are unchanged.
 
-Remaining, all gated on the deferred-log sign-in session:
-- Chunk 5 - Tenant Apply (V4): requires approval phrase apply-gail-crm-recovery.
-- Chunk 6 - Human browser/operator acceptance (V5).
-- Path B - Brand Forms + intake flow (V7) and end-to-end test (V8): portal build,
-  after V4 creates the `IntakeSource` field.
-- Chunk 8 - Close Recovery: needs Chunk 5/6 evidence before it can close.
+Progress update (2026-06-21):
+- Chunk 5 - Tenant Apply (V4): DONE. SharePoint apply ran in write mode; verifier
+  re-run = 0 failures / 0 warnings PASS. `IntakeSource` is live.
+- Path B - Brand Forms + intake flow (V7) and end-to-end test (V8): DONE, both
+  brands, live + e2e-verified. Optional intent question added; test records cleaned.
+- V1 / V2 / V3 / V6: DONE (read-only baseline, verifier RED-then-PASS, dry-run/refusal
+  gate, access-group read-back).
 
-At this point everything buildable without a tenant sign-in is built (now incl.
-the Path B config + spec). The next real action is a focused sign-in session to
-run the deferred-log items V1-V8 in order.
+Remaining:
+- Chunk 6 - Human browser/operator acceptance (V5): the one open gate. Needs Adam
+  signed in with MFA; also covers portal page-authoring (`Apply-CrmPortal.ps1` is
+  flag-only by design).
+- Chunk 8 - Close Recovery: doc closeout is staged (see `docs/CRM_RECOVERY_PLAN.md`
+  "Recovery Closeout Status"); formal CLOSE waits on V5 evidence, and the Stage 8
+  packet archive move waits on Adam's explicit OK.
+
+Everything buildable without the V5 human pass is now done. The next real action is
+the V5 walkthrough; after it is recorded, Chunk 8 can be marked complete.
 
 ## Completion Requirements
 

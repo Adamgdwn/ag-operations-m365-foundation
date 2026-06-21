@@ -1,20 +1,39 @@
 # Guided AI Labs CRM Recovery Plan
 
-Date: 2026-06-17
+Date: 2026-06-17 (last updated 2026-06-21)
 
-Status: SharePoint-native CRM recovery applied and verified on 2026-06-17.
-Current completion target: employee-ready CRM operating path.
+Status: Recovery APPLIED and intake LIVE. The SharePoint-native CRM front door
+(Chunk 5 / V4) is applied with the verifier at **0 failures / 0 warnings PASS**,
+and the Path B public brand intake (V7/V8) is live and end-to-end verified for
+both brands. **One acceptance gate remains open: V5** — the human MFA operator
+walkthrough + portal page-authoring pass (Chunk 6). The recovery is not formally
+CLOSED (Chunk 8) until that human pass is recorded.
 
-Latest tenant result:
+Latest tenant result (2026-06-20 / 2026-06-21):
 
-- Apply transcript: `inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-174308.log`
-- Verification summary: `inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md`
-- Verification result: `PASS`
+- SharePoint apply (V4) transcript: `inventory/crm-apply/crm-apply-sharepoint-20260620-225108.log`
+- Verification summary: `inventory/crm-verify/CRM_VERIFY.md`
+- Verification result: `PASS` (0 failures / 0 warnings, post-apply)
 - CRM Command Center: `https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/SitePages/Relationship-CRM-Command-Center.aspx`
-- Clean intake list: `CRM - New Signals`
+- Clean intake list: `CRM - New Signals` (now includes the operator-visible `Source`/`IntakeSource` field)
 - Closeout/invoice list: `CRM - Closeout Invoice Queue`
+- Public brand intake (Path B, V7/V8): Guided AI Labs + Guided AI Journey anonymous
+  Forms -> create-only Power Automate flows -> `CRM - New Signals`, live and e2e-verified
+  both brands. Labs flow `0d717c08-2558-4ff8-a88f-26d723712b6d`; Journey flow
+  `2a2cd963-1469-48a5-95a5-04e696ff3543`. Optional intent question ("Who is this for?")
+  added and captured. Test records cleaned; list has 0 residue.
+- Live deferred-test record of every applied/verified item: `docs/CRM_DEFERRED_VERIFICATION_LOG.md`.
 
-No permissions, guest access, external sharing, app consent, mail sends, public forms, deletes, Dynamics, Dataverse, premium Power Platform dependencies, or unattended automation were added.
+Earlier Stage 8C provenance (2026-06-17): apply
+`inventory/stage-8c-relationship-crm-operator-workflow/stage-8c-crm-operator-workflow-20260617-174308.log`;
+verify `inventory/stage-8c-relationship-crm-operator-workflow/STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW_VERIFY.md`.
+
+The Path B public-intake unlock is the only deliberate, SCOPED exception to the
+no-public-forms / no-unattended-automation rule, and it is scoped to exactly the
+two named forms + their create-only flows (see `docs/CRM_DECISIONS.md`). Otherwise
+no permissions, guest access, external sharing, app consent, mail sends, deletes,
+Dynamics, Dataverse, premium Power Platform dependencies, or unattended automation
+were added.
 
 ## Side Quest Boundary
 
@@ -345,6 +364,43 @@ Chunk summary:
 
 Completion requirements are defined in `docs/CRM_EXECUTION_PLAN.md` and checked
 again through `docs/CRM_ACCEPTANCE_TESTS.md`.
+
+## Recovery Closeout Status (Chunk 8)
+
+As of 2026-06-21 the recovery is APPLIED and the intake loop is LIVE. Chunk 8
+(formal close + archive) is intentionally held open on one human gate.
+
+Done and verified:
+
+- Chunk 1 — config split (`config/crm.sharepoint.json` / `crm.intake.json` / `crm.navigation.json`).
+- Chunk 2 — read-only baseline export (V1 PASS).
+- Chunk 3 — verifier replacement (V2: correctly FAILs the bad path; phantom-failure bug fixed).
+- Chunk 4 — apply stubs + dry-run/refusal gate (V3 PASS).
+- Chunk 5 — tenant apply (V4 PASS: `IntakeSource` created, blocked fields confirmed
+  absent, verifier re-run 0/0 PASS).
+- Chunk 7 — onboarding package + V6 access-group read-back.
+- Path B — public brand intake (V7 build + V8 end-to-end), both brands, live and
+  e2e-verified; intent question added; test records cleaned (0 residue).
+- Housekeeping (2026-06-21) — `Set-PnPView` RowLimit `[int]`->`[uint32]` cast fixed
+  in `scripts/spo/Apply-CrmSharePoint.ps1`; deferred-verification log reconciled to
+  the shipped in-band `SourceText` provenance design.
+
+Open (the only thing blocking a formal close):
+
+- Chunk 6 / V5 — human MFA operator walkthrough (create one
+  `GAIL-INTERNAL-WALKTHROUGH` signal in the live CRM Command Center, move it through
+  triage -> qualification -> next action -> handoff/evidence -> closeout/invoice) plus
+  the portal page-authoring pass (`scripts/portal/Apply-CrmPortal.ps1` is flag-only
+  by design; page sections/web-parts are authored by hand). Needs Adam signed in.
+
+Held pending Adam's explicit OK (do NOT do automatically — Chunk 8 stop condition):
+
+- Archive of generated Stage 8 packet material into
+  `inventory/archive/2026-06-17-stage-8-packet/` (and the handoff export folder).
+  The "Archive or demote" list above is the move plan; execute only on confirmation.
+
+When V5 is recorded and the archive move is approved, set this document's Status to
+CLOSED and update `docs/CRM_EXECUTION_PLAN.md` Chunk 8 to complete.
 
 ## Acceptance Tests
 

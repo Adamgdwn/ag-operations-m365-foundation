@@ -208,7 +208,7 @@ function Add-CrmView {
     $existing = Get-PnPView -List $ListTitle -Identity $title -ErrorAction SilentlyContinue
     if ($null -eq $existing) {
         $params = @{ List = $ListTitle; Title = $title; Fields = $fields }
-        if (Test-JsonProperty -Object $View -Name "rowLimit") { $params.RowLimit = [int]$View.rowLimit }
+        if (Test-JsonProperty -Object $View -Name "rowLimit") { $params.RowLimit = [uint32]$View.rowLimit }
         if ((Test-JsonProperty -Object $View -Name "query") -and -not [string]::IsNullOrWhiteSpace([string]$View.query)) { $params.Query = [string]$View.query }
         Add-PnPView @params | Out-Null
         Write-Host ("  [OK] view created: {0}" -f $title) -ForegroundColor Green
@@ -216,7 +216,7 @@ function Add-CrmView {
     else {
         $values = @{}
         if ((Test-JsonProperty -Object $View -Name "query") -and -not [string]::IsNullOrWhiteSpace([string]$View.query)) { $values.ViewQuery = [string]$View.query }
-        if (Test-JsonProperty -Object $View -Name "rowLimit") { $values.RowLimit = [int]$View.rowLimit }
+        if (Test-JsonProperty -Object $View -Name "rowLimit") { $values.RowLimit = [uint32]$View.rowLimit }
         Set-PnPView -List $ListTitle -Identity $title -Fields $fields -Values $values | Out-Null
         Write-Host ("  [OK] view updated: {0}" -f $title) -ForegroundColor Green
     }
