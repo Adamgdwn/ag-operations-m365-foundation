@@ -100,8 +100,10 @@ Leave blank: `DurableHome`, `PlannerTaskUrl`, `CentralOSLink`, `GraphNodeId`,
 1. Submit one dummy response on the live form, **Full name prefixed
    `GAIL-INTERNAL-WALKTHROUGH`**.
 2. Confirm a new **CRM - New Signals** item appears: `Source = Guided AI Labs`,
-   `SignalStatus = New`, clean fields populated, provenance in the hidden fields,
-   and **nothing technical visible** on the item's display/edit form.
+   `SignalStatus = New`, clean fields populated, provenance written IN-BAND into the
+   visible `SourceText` note (brand, intake form, Forms response id, submit time,
+   "Auto-captured") — the recovered list has NO hidden technical fields, so there is
+   nothing technical to hide; **nothing technical visible** on the item's display/edit form.
 3. Re-run the Chunk 3 verifier (V2): must still PASS 0/0 (no blocked field became
    visible).
 4. Later: repeat the live test via the **website CTA** (not just the raw form

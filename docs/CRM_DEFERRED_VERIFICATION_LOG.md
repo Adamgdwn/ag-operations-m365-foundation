@@ -352,3 +352,12 @@ Evidence: _path/notes_
   answer lands in the CRM, ALL CHECKS PASS (now incl. `intentCaptured`). Four
   `GAIL-INTERNAL-WALKTHROUGH` test records (Ids 1–4) accumulated across runs — Adam to delete.
   Linux notified via `X:\WINDOWS_TO_LINUX__crm-intake-intent-field-live.json` (no website change).
+- 2026-06-21: **Test records cleaned up — `CRM - New Signals` is clean.** Adam explicitly
+  authorized a scoped delete of the e2e test data (one-time exception; automation deletes
+  otherwise remain out of scope). `scripts/flow-builder/delete-test-records.js` filtered to
+  items whose `PersonName` is exactly `GAIL-INTERNAL-WALKTHROUGH` (cannot match a real
+  signal), listed the 4 (Ids 1–4, both brands), then deleted via SharePoint REST with a form
+  digest. Verified: 0 `GAIL-INTERNAL-WALKTHROUGH` records remain. Path B website→CRM loop is
+  now LIVE, e2e-verified for both brands, and the list contains no test residue. **CRM intake
+  (V7/V8 + intent field) is fully CLOSED.** Remaining Path B tail unchanged: V5 portal/page
+  pass + Chunk 8 close.
