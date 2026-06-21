@@ -317,3 +317,28 @@ Evidence: _path/notes_
   RowLimit needs a `[uint32]` cast (page-size 100 silently ignored; views otherwise fine).
   Portal page-authoring (Apply-CrmPortal.ps1) deferred to V5 by design. Next: V5 (human
   operator walkthrough) and the Path B build (V7/V8), which depends on `IntakeSource` (now live).
+- 2026-06-21: **V7 FLOW + V8 END-TO-END = DONE / PASS (both brands).** Built the
+  create-only Power Automate flows via the reverse-engineered Power Platform mgmt API
+  (`scripts/flow-builder/create-flow.js`): Forms "new response" -> Get response details ->
+  SharePoint Create item in `CRM - New Signals`. Both flows Started, healthy (trigger
+  `CreateFormWebhook` subscribed, both connections bound, suspension None). Labs flow
+  `0d717c08-2558-4ff8-a88f-26d723712b6d`; Journey flow `2a2cd963-1469-48a5-95a5-04e696ff3543`.
+  Interactive steps were only Adam's two connection consents (SharePoint + Microsoft Forms)
+  in his own browser; everything else fully agentic.
+  **Design change (provenance):** the recovered `CRM - New Signals` list has NO hidden
+  technical fields (Stage 8C removed them; live schema = the 13 clean business columns only),
+  so the Path B spec's "stamp provenance into hidden technical fields" is not possible as
+  written. Reconciled by writing provenance IN-BAND into the visible `SourceText` note
+  (Source brand, intake form name, Forms response id, submit timestamp, "Auto-captured"
+  marker) plus relying on the native `Created` timestamp for received-time. Brand still lands
+  in the operator-visible `Source` (`IntakeSource`) choice. This keeps the list schema
+  untouched, so the Chunk 3 verifier result is unchanged (no fields added/altered).
+  **V8:** `scripts/flow-builder/e2e-test.js` submitted a real response through each PUBLIC
+  Forms URL from a fresh unauthenticated browser (true visitor path); both produced clean
+  `CRM - New Signals` records — Source correct, SignalType=Website, SignalStatus=New,
+  Priority=Normal, business fields populated, provenance footer present, zero technical
+  columns exposed. ALL CHECKS PASS. Two test records `GAIL-INTERNAL-WALKTHROUGH` (Ids 1, 2)
+  left for Adam to triage/delete (automation deletes remain out of scope). Sent Linux
+  `X:\WINDOWS_TO_LINUX__crm-intake-flow-live.json` (confirmation + CTA test protocol).
+  Open: Adam's yes/no on Linux's requested intent/path Choice question (For me / For my team /
+  For my organization / Governance or policy) — does not change form URLs or the website embed.
