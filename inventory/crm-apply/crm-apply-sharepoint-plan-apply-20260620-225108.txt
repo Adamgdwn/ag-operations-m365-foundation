@@ -1,0 +1,175 @@
+Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+
+LIST: CRM - New Signals (primary-intake)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: SignalStatus [Choice, Indexed]
+  ensure column: SignalType [Choice, Indexed]
+  ensure column: IntakeSource [Choice, Indexed]
+  ensure column: Priority [Choice, Indexed]
+  ensure column: PersonName [Text]
+  ensure column: PersonEmail [Text]
+  ensure column: OrganizationName [Text, Indexed]
+  ensure column: NeedSummary [Note]
+  ensure column: SourceText [Note]
+  ensure column: NextAction [Note]
+  ensure column: FollowUpDueDate [DateTime, Indexed]
+  ensure column: RelatedLink [URL]
+  ensure column: ItemOwner [User]
+  ensure view: New Signal Queue (10 fields, default)
+  ensure view: Signals Needing Follow-up (8 fields)
+  ensure view: Converted / Closed Signals (6 fields)
+
+LIST: CRM - Action Queue (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: RecordKey [Text]
+  ensure column: ItemOwner [User]
+  ensure column: ActionType [Choice, Indexed]
+  ensure column: ActionStatus [Choice, Indexed]
+  ensure column: Priority [Choice, Indexed]
+  ensure column: DueDate [DateTime, Indexed]
+  ensure column: CompletedDate [DateTime]
+  ensure column: NextAction [Note]
+  ensure column: Outcome [Note]
+  ensure column: BlocksDecision [Boolean, Indexed]
+  ensure column: BlocksGoLive [Boolean, Indexed]
+  ensure column: SourceSystem [Choice]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure lookup: ContactLookup -> CRM - Contacts.Title
+  ensure lookup: TouchpointLookup -> CRM - Touchpoints.Title
+  ensure view: Open CRM Actions (10 fields, default)
+  ensure view: Due / Overdue Actions (10 fields)
+  ensure view: Decision / Go-Live Blockers (10 fields)
+  ensure view: Completed Actions (6 fields)
+
+LIST: CRM - Qualification (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: SignalSource [Choice, Indexed]
+  ensure column: QualificationStatus [Choice, Indexed]
+  ensure column: FitScore [Number, Indexed]
+  ensure column: Urgency [Choice, Indexed]
+  ensure column: BudgetSignal [Choice]
+  ensure column: AuthoritySignal [Choice]
+  ensure column: NeedSummary [Note]
+  ensure column: RecommendedPackage [Choice]
+  ensure column: DisqualificationReason [Choice]
+  ensure column: NextAction [Note]
+  ensure column: NextActionDueDate [DateTime, Indexed]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: ContactLookup -> CRM - Contacts.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Qualification Triage (10 fields, default)
+  ensure view: Qualified / Proposal Recommended (8 fields)
+  ensure view: Nurture / Disqualified (6 fields)
+
+LIST: CRM - Meeting Notes (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: MeetingDate [DateTime, Indexed]
+  ensure column: MeetingType [Choice, Indexed]
+  ensure column: MeetingStatus [Choice, Indexed]
+  ensure column: Agenda [Note]
+  ensure column: Notes [Note]
+  ensure column: Commitments [Note]
+  ensure column: Decisions [Note]
+  ensure column: FollowUpRequired [Boolean, Indexed]
+  ensure column: FollowUpDueDate [DateTime, Indexed]
+  ensure column: Sentiment [Choice]
+  ensure column: RelatedLink [URL]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure lookup: PrimaryContactLookup -> CRM - Contacts.Title
+  ensure view: Upcoming Meetings (9 fields, default)
+  ensure view: Meeting Prep Needed (7 fields)
+  ensure view: Meeting Debrief Needed (8 fields)
+  ensure view: Meeting History (7 fields)
+
+LIST: CRM - Artifacts (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: ArtifactType [Choice, Indexed]
+  ensure column: ArtifactStatus [Choice, Indexed]
+  ensure column: ArtifactLink [URL]
+  ensure column: VersionLabel [Text]
+  ensure column: EvidenceDate [DateTime, Indexed]
+  ensure column: ReviewDueDate [DateTime, Indexed]
+  ensure column: ApprovedForClientUse [Boolean, Indexed]
+  ensure column: Notes [Note]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Active Artifacts (8 fields, default)
+  ensure view: Proposal / Scope Artifacts (7 fields)
+  ensure view: Handoff Evidence (7 fields)
+  ensure view: Review Due (7 fields)
+
+LIST: CRM - Health Reviews (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: ReviewDate [DateTime, Indexed]
+  ensure column: NextReviewDate [DateTime, Indexed]
+  ensure column: RelationshipHealth [Choice, Indexed]
+  ensure column: DeliveryHealth [Choice, Indexed]
+  ensure column: CommercialHealth [Choice, Indexed]
+  ensure column: HealthScore [Number, Indexed]
+  ensure column: RenewalSignal [Choice]
+  ensure column: ExpansionSignal [Choice, Indexed]
+  ensure column: RiskSummary [Note]
+  ensure column: WinSummary [Note]
+  ensure column: NextAction [Note]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Health Review Queue (10 fields, default)
+  ensure view: At Risk Health Reviews (9 fields)
+  ensure view: Expansion Signals (7 fields)
+  ensure view: Health Review History (8 fields)
+
+LIST: CRM - Closeout Invoice Queue (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: CloseoutStatus [Choice, Indexed]
+  ensure column: InvoiceStatus [Choice, Indexed]
+  ensure column: PaymentStatus [Choice, Indexed]
+  ensure column: DeliveryCompleteDate [DateTime, Indexed]
+  ensure column: ClientAcceptanceDate [DateTime, Indexed]
+  ensure column: InvoiceDate [DateTime, Indexed]
+  ensure column: InvoiceDueDate [DateTime, Indexed]
+  ensure column: InvoiceAmount [Currency]
+  ensure column: InvoiceNumber [Text]
+  ensure column: InvoiceLink [URL]
+  ensure column: FinalEvidenceLink [URL]
+  ensure column: CloseoutNotes [Note]
+  ensure column: NextAction [Note]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Closeout / Invoice Watch (10 fields, default)
+  ensure view: Ready to Invoice (9 fields)
+  ensure view: Payment Follow-up (10 fields)
+  ensure view: Closed Out (8 fields)
+
+INTAKE FORM (CRM - New Signals):
+  HIDE blocked field if present: SourceMailbox (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: SourceMessageId (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: ReceivedDate (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: IntakeStatus (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: DurableHome (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: PlannerTaskUrl (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: CentralOSLink (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: GraphNodeId (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: AgentConfidence (ShowInNewForm=false, ShowInEditForm=false)
+  set Required=True: Title
+  set Required=True: SignalType
+  set Required=True: IntakeSource
+  set Required=True: Priority
+  set Required=True: NeedSummary
+  set Required=True: SourceText
+  set Required=True: NextAction
+  set Required=True: SignalStatus
+  set Required=False: PersonName
+  set Required=False: PersonEmail
+  set Required=False: OrganizationName
+  set Required=False: FollowUpDueDate
+  set Required=False: RelatedLink
+  set Required=False: ItemOwner
+
+NOT TOUCHED: durable lookup targets (Organizations/Contacts/Engagements), permissions, sharing, consent, mail, deletes.

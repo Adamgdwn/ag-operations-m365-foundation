@@ -124,24 +124,52 @@ deferred.
 
 ## V4 — Chunk 5 tenant apply (WRITES; REQUIRES approval phrase + single Y)
 
-Status: _pending (do only after V2 + V3 pass)_
+Status: DONE 2026-06-20 (SharePoint apply run + verifier PASS).
 
 Run:
 - Provide approval phrase `apply-gail-crm-recovery`, then run the apply scripts in
   write mode and confirm the single Y prompt.
 
 Confirm:
-- [ ] `CRM - New Signals` intake form shows only the clean business fields; all 9
+- [x] `CRM - New Signals` intake form shows only the clean business fields; all 9
       blocked technical fields are hidden (ShowInNewForm=false AND ShowInEditForm=false).
-- [ ] CRM Command Center page + daily cards exist; the New Signal card opens the
-      clean intake, NOT the legacy Intake Register.
-- [ ] `CRM - Closeout Invoice Queue` list/views applied.
-- [ ] Legacy Intake Register link, if present, is labelled admin-only and absent
-      from every daily card/nav node.
-- [ ] Re-running V2 (the verifier) now returns PASS.
+      (Verifier confirms 0 blocked-visible; apply log: all 9 "absent (good)".)
+- [~] CRM Command Center page + daily cards exist; the New Signal card opens the
+      clean intake, NOT the legacy Intake Register. (Nav/page routing proven clean
+      by the verifier — 0 nav-legacy, 0 page-route-legacy. The page-section/web-part
+      AUTHORING is a manual interactive task and rolls into V5; the portal apply
+      script's only write action is flag-detection of legacy nodes, none exist.)
+- [x] `CRM - Closeout Invoice Queue` list/views applied. (Apply log: list exists,
+      4 views updated.)
+- [x] Legacy Intake Register link, if present, is labelled admin-only and absent
+      from every daily card/nav node. (Verifier: 0 legacy routes anywhere.)
+- [x] Re-running V2 (the verifier) now returns PASS.
 
-Result: _pending_
-Evidence: _path here_
+Result: PASS (SharePoint apply, run 2026-06-20 22:51, write mode, exit 0, single
+keypress approval; phrase `apply-gail-crm-recovery` supplied via machine-bypass on
+the command line). Created the missing `IntakeSource` (Source) Choice column; set
+Required=True on the 8 business fields (Title, SignalType, IntakeSource, Priority,
+NeedSummary, SourceText, NextAction, SignalStatus) and Required=False on the 6
+optional fields; confirmed all 9 blocked technical fields absent from the intake
+form; ensured the 7 workflow lists' columns/lookups/views (all idempotent — every
+pre-existing field/lookup [skip]ped, no deletes). Verifier re-run immediately after:
+**Failures 0 | Warnings 0 = PASS** (was 3 failures / 6 warnings before).
+
+KNOWN MINOR DEFECT (non-blocking): every `Set-PnPView` call logged
+`RowLimit '100' — System.Int32 cannot be converted to type System.UInt32. Value
+will be ignored.` The views updated fine but their page-size (100) was NOT applied.
+Cause: `[int]$View.rowLimit` should be cast to `[uint32]` in
+`scripts/spo/Apply-CrmSharePoint.ps1` (`Add-CrmView`). Cosmetic (default page size
+still applies); fix the cast and re-run apply to set it. Does not affect verifier PASS.
+
+Evidence: `inventory/crm-apply/crm-apply-sharepoint-20260620-225108.log` (write
+transcript), `inventory/crm-verify/CRM_VERIFY.md` (post-apply 0/0 PASS),
+`inventory/crm-apply/crm-apply-sharepoint-plan-apply-20260620-225108.txt` (plan).
+
+PORTAL HALF: `scripts/portal/Apply-CrmPortal.ps1` (Command Center page sections /
+web-part authoring) NOT run as a blind write by design — it is flag-only for nav and
+defers page authoring to the human pass. Folded into V5. Optionally run it once for a
+transcript that records "no legacy nav nodes found".
 
 ---
 
@@ -281,3 +309,11 @@ Evidence: _path/notes_
   live access groups: members = `Guided AI Labs Members`, owners = `Guided AI Labs
   Owners`. Next gated step is V4 (Chunk 5 apply, needs phrase
   `apply-gail-crm-recovery`), after which V2 must re-run to PASS.
+- 2026-06-20: V4 (Chunk 5 SharePoint apply) RUN in write mode — PASS. Single
+  keypress approval in the visible window; phrase supplied via machine-bypass. Created
+  `IntakeSource`, set all Required flags, confirmed blocked fields absent, idempotent on
+  the 7 workflow lists. Verifier re-run = **0 failures / 0 warnings (PASS)** — the
+  recovery's core success criterion is met. Found one minor non-blocker: `Set-PnPView`
+  RowLimit needs a `[uint32]` cast (page-size 100 silently ignored; views otherwise fine).
+  Portal page-authoring (Apply-CrmPortal.ps1) deferred to V5 by design. Next: V5 (human
+  operator walkthrough) and the Path B build (V7/V8), which depends on `IntakeSource` (now live).

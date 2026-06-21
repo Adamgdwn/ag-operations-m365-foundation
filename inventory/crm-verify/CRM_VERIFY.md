@@ -1,33 +1,14 @@
 # CRM Verifier (Chunk 3)
 
-Generated: 2026-06-20 22:39:54
+Generated: 2026-06-20 22:59:06
 
-Result: FAIL
-Failures: 3 | Warnings: 6 | Total checks: 172
+Result: PASS
+Failures: 0 | Warnings: 0 | Total checks: 172
 
 Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
 Intake list: CRM - New Signals
-Checks CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-checks-20260620-223702.csv
-Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-20260620-223702.log
-
-## Failures (must fix before / during Chunk 5 apply)
-
-| Area | Item | Expected | Actual |
-|---|---|---|---|
-| Column | CRM - New Signals.IntakeSource | Choice | Missing |
-| Intake field | IntakeSource | Present and visible | Missing |
-| Required field | IntakeSource | Required=True | Missing |
-
-## Warnings (review; not hard blockers)
-
-| Area | Item | Expected | Actual |
-|---|---|---|---|
-| Required field | SignalType | Required=True | Required=False |
-| Required field | Priority | Required=True | Required=False |
-| Required field | NeedSummary | Required=True | Required=False |
-| Required field | SourceText | Required=True | Required=False |
-| Required field | NextAction | Required=True | Required=False |
-| Required field | SignalStatus | Required=True | Required=False |
+Checks CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-checks-20260620-225605.csv
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-20260620-225605.log
 
 ## Manual browser checks still required (Chunk 6 - a script cannot prove these)
 
