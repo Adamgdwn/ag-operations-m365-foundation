@@ -190,12 +190,15 @@ Partial result so far:
 - [ ] Hidden-field test confirmed in-browser — not formally ticked.
 - [ ] Formal PASS/FAIL verdict — not recorded.
 
-**Open finding (operator usability):** the daily intake felt **cumbersome** (Adam,
-tired at the time — caveat noted, but recorded as a real observation; the Chunk 6
-gate is explicitly about human usability, not just script PASS). Next session:
-decide (a) accept and finish to PASS, or (b) streamline the front door first
-(required-fields UX call already flagged in `config/crm.intake.json`
-"requiredVsCardPlanNote"; quick-add / Power Apps front door is CRM "Future Work").
+**Open finding (operator usability) — RESOLVED 2026-06-22 (option b taken):** the
+daily intake felt **cumbersome**. Adam chose to streamline the front door before
+finishing the walk. The required set was cut from **8 fields to 2** (Title +
+NeedSummary); the four defaulted Choice fields and the two remaining Note fields
+(SourceText, NextAction) are now OPTIONAL (defaults still auto-apply; SourceText /
+NextAction fill at triage). Pushed live via the Chunk-5 apply (write mode, 2026-06-22)
+and the Chunk-3 verifier re-ran **0 failures / 0 warnings = PASS**. The remaining V5
+work is now the pure human walk on the lighter form (kit Step 2 updated). Quick-add /
+Power Apps front door remains CRM "Future Work".
 
 **Cleanup owed on resume:** a dummy signal may remain in `CRM - New Signals`. If
 saved with Person = `GAIL-INTERNAL-WALKTHROUGH`, clear via
@@ -429,6 +432,22 @@ intent field) is fully CLOSED; `CRM - New Signals` contains no test residue.
   pages CSV; verifier 0/0/184 PASS). V5 reduces to the pure human MFA walk. Built
   `docs/CRM_V5_WALKTHROUGH_KIT.md` (click path + concrete dummy-record values +
   hidden-field/lifecycle checks + inline verdict template + scoped-delete cleanup).
+- 2026-06-22 (V5 FRONT-DOOR STREAMLINED — usability finding resolved, option b):
+  Adam chose to streamline before finishing the walk. Required intake fields cut
+  8 -> 2 (Title + NeedSummary only) in `config/crm.intake.json` (requiredBusinessFields
+  + per-field flags + notRequiredFields; version bumped, decision recorded in the new
+  `streamlineDecisionNote`; `requiredVsCardPlanNote` resolved). The 4 defaulted Choice
+  fields (SignalType/IntakeSource/Priority/SignalStatus) + SourceText + NextAction are
+  now OPTIONAL — column defaults still auto-apply, so type/source/priority/status data
+  quality is preserved; SourceText/NextAction move to triage. Re-ran the Chunk-5 apply
+  in WRITE mode (`Apply-CrmSharePoint.ps1 -Apply` via persisted login, no fresh sign-in
+  needed): `[OK] Required=True: Title, NeedSummary` + 14x `Required=False`; blocked
+  fields still hidden; all views updated cleanly (the pending `[uint32]` RowLimit fix
+  landed — no more Int32 cast error). Chunk-3 verifier re-run = **0 failures / 0
+  warnings = PASS** (shrinking the required set removes the only checks that could
+  fire). Evidence: `inventory/crm-apply/_v5_streamline_apply.log`,
+  `inventory/crm-verify/_v5_streamline_verify.log`, `inventory/crm-verify/CRM_VERIFY.md`.
+  V5 kit Step 2 updated to the 2-required form. Remaining: the human MFA walk + verdict.
 - 2026-06-22 (V5 STARTED, then PAUSED): Adam opened the path, reached the clean
   `CRM - New Signals` form, and created a new item — then paused (intake felt
   **cumbersome**; tired). Boxed up for a later session per Adam's call. Recorded the

@@ -1,0 +1,202 @@
+**********************
+PowerShell transcript start
+Start time: 20260622103059
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -File scripts/spo/Apply-CrmSharePoint.ps1 -Apply -ApprovalPhrase apply-gail-crm-recovery -NoPause
+Process ID: 24180
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+APPROVED. Connecting for write...
+LIST: CRM - New Signals
+  [skip] list exists: CRM - New Signals
+  [skip] field exists: SignalStatus
+  [skip] field exists: SignalType
+  [skip] field exists: IntakeSource
+  [skip] field exists: Priority
+  [skip] field exists: PersonName
+  [skip] field exists: PersonEmail
+  [skip] field exists: OrganizationName
+  [skip] field exists: NeedSummary
+  [skip] field exists: SourceText
+  [skip] field exists: NextAction
+  [skip] field exists: FollowUpDueDate
+  [skip] field exists: RelatedLink
+  [skip] field exists: ItemOwner
+  [skip] field exists: op_Reminders
+  [skip] field exists: op_TrackOn
+  [skip] field exists: op_CalendarEventId
+  [skip] field exists: op_PlannerTaskId
+  [skip] field exists: op_LastSyncedDue
+  [skip] field exists: op_SyncNote
+  [OK] view updated: New Signal Queue
+  [OK] view updated: Signals Needing Follow-up
+  [OK] view updated: Converted / Closed Signals
+LIST: CRM - Action Queue
+  [skip] list exists: CRM - Action Queue
+  [skip] field exists: RecordKey
+  [skip] field exists: ItemOwner
+  [skip] field exists: ActionType
+  [skip] field exists: ActionStatus
+  [skip] field exists: Priority
+  [skip] field exists: DueDate
+  [skip] field exists: CompletedDate
+  [skip] field exists: NextAction
+  [skip] field exists: Outcome
+  [skip] field exists: BlocksDecision
+  [skip] field exists: BlocksGoLive
+  [skip] field exists: SourceSystem
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [skip] lookup exists: ContactLookup
+  [skip] lookup exists: TouchpointLookup
+  [OK] view updated: Open CRM Actions
+  [OK] view updated: Due / Overdue Actions
+  [OK] view updated: Decision / Go-Live Blockers
+  [OK] view updated: Completed Actions
+LIST: CRM - Qualification
+  [skip] list exists: CRM - Qualification
+  [skip] field exists: SignalSource
+  [skip] field exists: QualificationStatus
+  [skip] field exists: FitScore
+  [skip] field exists: Urgency
+  [skip] field exists: BudgetSignal
+  [skip] field exists: AuthoritySignal
+  [skip] field exists: NeedSummary
+  [skip] field exists: RecommendedPackage
+  [skip] field exists: DisqualificationReason
+  [skip] field exists: NextAction
+  [skip] field exists: NextActionDueDate
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: ContactLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Qualification Triage
+  [OK] view updated: Qualified / Proposal Recommended
+  [OK] view updated: Nurture / Disqualified
+LIST: CRM - Meeting Notes
+  [skip] list exists: CRM - Meeting Notes
+  [skip] field exists: MeetingDate
+  [skip] field exists: MeetingType
+  [skip] field exists: MeetingStatus
+  [skip] field exists: Agenda
+  [skip] field exists: Notes
+  [skip] field exists: Commitments
+  [skip] field exists: Decisions
+  [skip] field exists: FollowUpRequired
+  [skip] field exists: FollowUpDueDate
+  [skip] field exists: Sentiment
+  [skip] field exists: RelatedLink
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [skip] lookup exists: PrimaryContactLookup
+  [OK] view updated: Upcoming Meetings
+  [OK] view updated: Meeting Prep Needed
+  [OK] view updated: Meeting Debrief Needed
+  [OK] view updated: Meeting History
+LIST: CRM - Artifacts
+  [skip] list exists: CRM - Artifacts
+  [skip] field exists: ArtifactType
+  [skip] field exists: ArtifactStatus
+  [skip] field exists: ArtifactLink
+  [skip] field exists: VersionLabel
+  [skip] field exists: EvidenceDate
+  [skip] field exists: ReviewDueDate
+  [skip] field exists: ApprovedForClientUse
+  [skip] field exists: Notes
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Active Artifacts
+  [OK] view updated: Proposal / Scope Artifacts
+  [OK] view updated: Handoff Evidence
+  [OK] view updated: Review Due
+LIST: CRM - Health Reviews
+  [skip] list exists: CRM - Health Reviews
+  [skip] field exists: ReviewDate
+  [skip] field exists: NextReviewDate
+  [skip] field exists: RelationshipHealth
+  [skip] field exists: DeliveryHealth
+  [skip] field exists: CommercialHealth
+  [skip] field exists: HealthScore
+  [skip] field exists: RenewalSignal
+  [skip] field exists: ExpansionSignal
+  [skip] field exists: RiskSummary
+  [skip] field exists: WinSummary
+  [skip] field exists: NextAction
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Health Review Queue
+  [OK] view updated: At Risk Health Reviews
+  [OK] view updated: Expansion Signals
+  [OK] view updated: Health Review History
+LIST: CRM - Closeout Invoice Queue
+  [skip] list exists: CRM - Closeout Invoice Queue
+  [skip] field exists: CloseoutStatus
+  [skip] field exists: InvoiceStatus
+  [skip] field exists: PaymentStatus
+  [skip] field exists: DeliveryCompleteDate
+  [skip] field exists: ClientAcceptanceDate
+  [skip] field exists: InvoiceDate
+  [skip] field exists: InvoiceDueDate
+  [skip] field exists: InvoiceAmount
+  [skip] field exists: InvoiceNumber
+  [skip] field exists: InvoiceLink
+  [skip] field exists: FinalEvidenceLink
+  [skip] field exists: CloseoutNotes
+  [skip] field exists: NextAction
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Closeout / Invoice Watch
+  [OK] view updated: Ready to Invoice
+  [OK] view updated: Payment Follow-up
+  [OK] view updated: Closed Out
+INTAKE FORM: CRM - New Signals
+  [skip] blocked field absent (good): SourceMailbox
+  [skip] blocked field absent (good): SourceMessageId
+  [skip] blocked field absent (good): ReceivedDate
+  [skip] blocked field absent (good): IntakeStatus
+  [skip] blocked field absent (good): DurableHome
+  [skip] blocked field absent (good): PlannerTaskUrl
+  [skip] blocked field absent (good): CentralOSLink
+  [skip] blocked field absent (good): GraphNodeId
+  [skip] blocked field absent (good): AgentConfidence
+  [OK] blocked field hidden: op_CalendarEventId
+  [OK] blocked field hidden: op_PlannerTaskId
+  [OK] blocked field hidden: op_LastSyncedDue
+  [OK] blocked field hidden: op_SyncNote
+  [OK] Required=True: Title
+  [OK] Required=True: NeedSummary
+  [OK] Required=False: PersonName
+  [OK] Required=False: PersonEmail
+  [OK] Required=False: OrganizationName
+  [OK] Required=False: SignalType
+  [OK] Required=False: IntakeSource
+  [OK] Required=False: Priority
+  [OK] Required=False: SourceText
+  [OK] Required=False: NextAction
+  [OK] Required=False: FollowUpDueDate
+  [OK] Required=False: RelatedLink
+  [OK] Required=False: SignalStatus
+  [OK] Required=False: ItemOwner
+  [OK] Required=False: op_Reminders
+  [OK] Required=False: op_TrackOn
+
+SharePoint apply complete. Re-run scripts/spo/Verify-CrmSharePoint.ps1 to confirm PASS.
+**********************
+PowerShell transcript end
+End time: 20260622103540
+**********************

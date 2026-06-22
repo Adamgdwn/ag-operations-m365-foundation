@@ -69,28 +69,42 @@ Tick as each holds true:
 
 ## Step 2 — Create the dummy record
 
-On the clean `CRM - New Signals` form, enter exactly these values. The
+> **STREAMLINED 2026-06-22:** the front door now requires **only 2 fields**
+> (Signal summary + Need / opportunity) instead of 8 — this is the fix for the
+> "cumbersome" finding that paused V5. Everything else is optional; the Choice
+> fields still default sensibly (Referral / Direct / Normal / New). Part of the
+> walk is confirming this lighter capture actually feels right.
+
+On the clean `CRM - New Signals` form, enter these values. The
 `GAIL-INTERNAL-WALKTHROUGH` text in **Person** is the cleanup key — keep it exact.
 
 | Form field (display) | Internal name | Value to enter |
 |---|---|---|
 | Signal summary *(required)* | Title | `GAIL-INTERNAL-WALKTHROUGH — V5 acceptance` |
-| Person | PersonName | `GAIL-INTERNAL-WALKTHROUGH` |
-| Email | PersonEmail | `walkthrough@example.com` |
-| Organization | OrganizationName | `Internal Test` |
-| Signal type *(required)* | SignalType | `Referral` |
-| Source *(required)* | IntakeSource | `Direct` |
-| Priority *(required)* | Priority | `Normal` |
 | Need / opportunity *(required)* | NeedSummary | `Internal V5 walkthrough — confirms the operator path end to end.` |
-| Email or context paste *(required)* | SourceText | `Manual capture during the V5 human acceptance pass.` |
-| Next action *(required)* | NextAction | `Triage, then walk through to closeout.` |
-| Status *(required)* | SignalStatus | `New` |
+| Person *(optional)* | PersonName | `GAIL-INTERNAL-WALKTHROUGH` |
+| Email *(optional)* | PersonEmail | `walkthrough@example.com` |
+| Organization *(optional)* | OrganizationName | `Internal Test` |
+| Signal type *(optional, default Referral)* | SignalType | `Referral` |
+| Source *(optional, default Direct)* | IntakeSource | `Direct` |
+| Priority *(optional, default Normal)* | Priority | `Normal` |
+| Email or context paste *(optional)* | SourceText | `Manual capture during the V5 human acceptance pass.` |
+| Next action *(optional)* | NextAction | `Triage, then walk through to closeout.` |
+| Status *(optional, default New)* | SignalStatus | `New` |
 
 Leave Follow-up date / Related link / Owner / Reminders / Track on blank (optional).
 
+**First, test the streamlined capture:** fill ONLY the two required fields
+(Signal summary + Need / opportunity) and save. Confirm it saves with just those
+two — that is the new lighter front door. Then re-open the item and fill the rest
+to continue the walk.
+
 Tick:
 
-- [ ] All **8 required** fields were clearly marked and accepted the values.
+- [ ] Only **2 fields** (Signal summary + Need / opportunity) were marked required.
+- [ ] The form **saved with just those two filled** (the defaults supplied type /
+      source / priority / status).
+- [ ] The lighter capture feels acceptable (this is the V5 usability re-check).
 - [ ] The form saved without error.
 
 ---

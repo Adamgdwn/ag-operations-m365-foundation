@@ -1,0 +1,374 @@
+CRM Recovery - SharePoint Apply
+Mode:   APPLY
+Site:   https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Plan:   C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-apply\crm-apply-sharepoint-plan-apply-20260622-103059.txt
+
+----- INTENDED TENANT CHANGES -----
+Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+
+LIST: CRM - New Signals (primary-intake)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: SignalStatus [Choice, Indexed]
+  ensure column: SignalType [Choice, Indexed]
+  ensure column: IntakeSource [Choice, Indexed]
+  ensure column: Priority [Choice, Indexed]
+  ensure column: PersonName [Text]
+  ensure column: PersonEmail [Text]
+  ensure column: OrganizationName [Text, Indexed]
+  ensure column: NeedSummary [Note]
+  ensure column: SourceText [Note]
+  ensure column: NextAction [Note]
+  ensure column: FollowUpDueDate [DateTime, Indexed]
+  ensure column: RelatedLink [URL]
+  ensure column: ItemOwner [User]
+  ensure column: op_Reminders [MultiChoice]
+  ensure column: op_TrackOn [MultiChoice]
+  ensure column: op_CalendarEventId [Text]
+  ensure column: op_PlannerTaskId [Text]
+  ensure column: op_LastSyncedDue [DateTime]
+  ensure column: op_SyncNote [Text]
+  ensure view: New Signal Queue (10 fields, default)
+  ensure view: Signals Needing Follow-up (8 fields)
+  ensure view: Converted / Closed Signals (6 fields)
+
+LIST: CRM - Action Queue (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: RecordKey [Text]
+  ensure column: ItemOwner [User]
+  ensure column: ActionType [Choice, Indexed]
+  ensure column: ActionStatus [Choice, Indexed]
+  ensure column: Priority [Choice, Indexed]
+  ensure column: DueDate [DateTime, Indexed]
+  ensure column: CompletedDate [DateTime]
+  ensure column: NextAction [Note]
+  ensure column: Outcome [Note]
+  ensure column: BlocksDecision [Boolean, Indexed]
+  ensure column: BlocksGoLive [Boolean, Indexed]
+  ensure column: SourceSystem [Choice]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure lookup: ContactLookup -> CRM - Contacts.Title
+  ensure lookup: TouchpointLookup -> CRM - Touchpoints.Title
+  ensure view: Open CRM Actions (10 fields, default)
+  ensure view: Due / Overdue Actions (10 fields)
+  ensure view: Decision / Go-Live Blockers (10 fields)
+  ensure view: Completed Actions (6 fields)
+
+LIST: CRM - Qualification (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: SignalSource [Choice, Indexed]
+  ensure column: QualificationStatus [Choice, Indexed]
+  ensure column: FitScore [Number, Indexed]
+  ensure column: Urgency [Choice, Indexed]
+  ensure column: BudgetSignal [Choice]
+  ensure column: AuthoritySignal [Choice]
+  ensure column: NeedSummary [Note]
+  ensure column: RecommendedPackage [Choice]
+  ensure column: DisqualificationReason [Choice]
+  ensure column: NextAction [Note]
+  ensure column: NextActionDueDate [DateTime, Indexed]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: ContactLookup -> CRM - Contacts.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Qualification Triage (10 fields, default)
+  ensure view: Qualified / Proposal Recommended (8 fields)
+  ensure view: Nurture / Disqualified (6 fields)
+
+LIST: CRM - Meeting Notes (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: MeetingDate [DateTime, Indexed]
+  ensure column: MeetingType [Choice, Indexed]
+  ensure column: MeetingStatus [Choice, Indexed]
+  ensure column: Agenda [Note]
+  ensure column: Notes [Note]
+  ensure column: Commitments [Note]
+  ensure column: Decisions [Note]
+  ensure column: FollowUpRequired [Boolean, Indexed]
+  ensure column: FollowUpDueDate [DateTime, Indexed]
+  ensure column: Sentiment [Choice]
+  ensure column: RelatedLink [URL]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure lookup: PrimaryContactLookup -> CRM - Contacts.Title
+  ensure view: Upcoming Meetings (9 fields, default)
+  ensure view: Meeting Prep Needed (7 fields)
+  ensure view: Meeting Debrief Needed (8 fields)
+  ensure view: Meeting History (7 fields)
+
+LIST: CRM - Artifacts (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: ArtifactType [Choice, Indexed]
+  ensure column: ArtifactStatus [Choice, Indexed]
+  ensure column: ArtifactLink [URL]
+  ensure column: VersionLabel [Text]
+  ensure column: EvidenceDate [DateTime, Indexed]
+  ensure column: ReviewDueDate [DateTime, Indexed]
+  ensure column: ApprovedForClientUse [Boolean, Indexed]
+  ensure column: Notes [Note]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Active Artifacts (8 fields, default)
+  ensure view: Proposal / Scope Artifacts (7 fields)
+  ensure view: Handoff Evidence (7 fields)
+  ensure view: Review Due (7 fields)
+
+LIST: CRM - Health Reviews (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: ReviewDate [DateTime, Indexed]
+  ensure column: NextReviewDate [DateTime, Indexed]
+  ensure column: RelationshipHealth [Choice, Indexed]
+  ensure column: DeliveryHealth [Choice, Indexed]
+  ensure column: CommercialHealth [Choice, Indexed]
+  ensure column: HealthScore [Number, Indexed]
+  ensure column: RenewalSignal [Choice]
+  ensure column: ExpansionSignal [Choice, Indexed]
+  ensure column: RiskSummary [Note]
+  ensure column: WinSummary [Note]
+  ensure column: NextAction [Note]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Health Review Queue (10 fields, default)
+  ensure view: At Risk Health Reviews (9 fields)
+  ensure view: Expansion Signals (7 fields)
+  ensure view: Health Review History (8 fields)
+
+LIST: CRM - Closeout Invoice Queue (workflow)
+  ensure list exists (GenericList, OnQuickLaunch=False)
+  ensure column: CloseoutStatus [Choice, Indexed]
+  ensure column: InvoiceStatus [Choice, Indexed]
+  ensure column: PaymentStatus [Choice, Indexed]
+  ensure column: DeliveryCompleteDate [DateTime, Indexed]
+  ensure column: ClientAcceptanceDate [DateTime, Indexed]
+  ensure column: InvoiceDate [DateTime, Indexed]
+  ensure column: InvoiceDueDate [DateTime, Indexed]
+  ensure column: InvoiceAmount [Currency]
+  ensure column: InvoiceNumber [Text]
+  ensure column: InvoiceLink [URL]
+  ensure column: FinalEvidenceLink [URL]
+  ensure column: CloseoutNotes [Note]
+  ensure column: NextAction [Note]
+  ensure column: ItemOwner [User]
+  ensure lookup: OrganizationLookup -> CRM - Organizations.Title
+  ensure lookup: EngagementLookup -> CRM - Engagements.Title
+  ensure view: Closeout / Invoice Watch (10 fields, default)
+  ensure view: Ready to Invoice (9 fields)
+  ensure view: Payment Follow-up (10 fields)
+  ensure view: Closed Out (8 fields)
+
+INTAKE FORM (CRM - New Signals):
+  HIDE blocked field if present: SourceMailbox (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: SourceMessageId (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: ReceivedDate (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: IntakeStatus (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: DurableHome (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: PlannerTaskUrl (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: CentralOSLink (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: GraphNodeId (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: AgentConfidence (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: op_CalendarEventId (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: op_PlannerTaskId (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: op_LastSyncedDue (ShowInNewForm=false, ShowInEditForm=false)
+  HIDE blocked field if present: op_SyncNote (ShowInNewForm=false, ShowInEditForm=false)
+  set Required=True: Title
+  set Required=True: NeedSummary
+  set Required=False: PersonName
+  set Required=False: PersonEmail
+  set Required=False: OrganizationName
+  set Required=False: SignalType
+  set Required=False: IntakeSource
+  set Required=False: Priority
+  set Required=False: SourceText
+  set Required=False: NextAction
+  set Required=False: FollowUpDueDate
+  set Required=False: RelatedLink
+  set Required=False: SignalStatus
+  set Required=False: ItemOwner
+  set Required=False: op_Reminders
+  set Required=False: op_TrackOn
+
+NOT TOUCHED: durable lookup targets (Organizations/Contacts/Engagements), permissions, sharing, consent, mail, deletes.
+-----------------------------------
+
+APPROVED. Connecting for write...
+LIST: CRM - New Signals
+  [skip] list exists: CRM - New Signals
+  [skip] field exists: SignalStatus
+  [skip] field exists: SignalType
+  [skip] field exists: IntakeSource
+  [skip] field exists: Priority
+  [skip] field exists: PersonName
+  [skip] field exists: PersonEmail
+  [skip] field exists: OrganizationName
+  [skip] field exists: NeedSummary
+  [skip] field exists: SourceText
+  [skip] field exists: NextAction
+  [skip] field exists: FollowUpDueDate
+  [skip] field exists: RelatedLink
+  [skip] field exists: ItemOwner
+  [skip] field exists: op_Reminders
+  [skip] field exists: op_TrackOn
+  [skip] field exists: op_CalendarEventId
+  [skip] field exists: op_PlannerTaskId
+  [skip] field exists: op_LastSyncedDue
+  [skip] field exists: op_SyncNote
+  [OK] view updated: New Signal Queue
+  [OK] view updated: Signals Needing Follow-up
+  [OK] view updated: Converted / Closed Signals
+LIST: CRM - Action Queue
+  [skip] list exists: CRM - Action Queue
+  [skip] field exists: RecordKey
+  [skip] field exists: ItemOwner
+  [skip] field exists: ActionType
+  [skip] field exists: ActionStatus
+  [skip] field exists: Priority
+  [skip] field exists: DueDate
+  [skip] field exists: CompletedDate
+  [skip] field exists: NextAction
+  [skip] field exists: Outcome
+  [skip] field exists: BlocksDecision
+  [skip] field exists: BlocksGoLive
+  [skip] field exists: SourceSystem
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [skip] lookup exists: ContactLookup
+  [skip] lookup exists: TouchpointLookup
+  [OK] view updated: Open CRM Actions
+  [OK] view updated: Due / Overdue Actions
+  [OK] view updated: Decision / Go-Live Blockers
+  [OK] view updated: Completed Actions
+LIST: CRM - Qualification
+  [skip] list exists: CRM - Qualification
+  [skip] field exists: SignalSource
+  [skip] field exists: QualificationStatus
+  [skip] field exists: FitScore
+  [skip] field exists: Urgency
+  [skip] field exists: BudgetSignal
+  [skip] field exists: AuthoritySignal
+  [skip] field exists: NeedSummary
+  [skip] field exists: RecommendedPackage
+  [skip] field exists: DisqualificationReason
+  [skip] field exists: NextAction
+  [skip] field exists: NextActionDueDate
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: ContactLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Qualification Triage
+  [OK] view updated: Qualified / Proposal Recommended
+  [OK] view updated: Nurture / Disqualified
+LIST: CRM - Meeting Notes
+  [skip] list exists: CRM - Meeting Notes
+  [skip] field exists: MeetingDate
+  [skip] field exists: MeetingType
+  [skip] field exists: MeetingStatus
+  [skip] field exists: Agenda
+  [skip] field exists: Notes
+  [skip] field exists: Commitments
+  [skip] field exists: Decisions
+  [skip] field exists: FollowUpRequired
+  [skip] field exists: FollowUpDueDate
+  [skip] field exists: Sentiment
+  [skip] field exists: RelatedLink
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [skip] lookup exists: PrimaryContactLookup
+  [OK] view updated: Upcoming Meetings
+  [OK] view updated: Meeting Prep Needed
+  [OK] view updated: Meeting Debrief Needed
+  [OK] view updated: Meeting History
+LIST: CRM - Artifacts
+  [skip] list exists: CRM - Artifacts
+  [skip] field exists: ArtifactType
+  [skip] field exists: ArtifactStatus
+  [skip] field exists: ArtifactLink
+  [skip] field exists: VersionLabel
+  [skip] field exists: EvidenceDate
+  [skip] field exists: ReviewDueDate
+  [skip] field exists: ApprovedForClientUse
+  [skip] field exists: Notes
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Active Artifacts
+  [OK] view updated: Proposal / Scope Artifacts
+  [OK] view updated: Handoff Evidence
+  [OK] view updated: Review Due
+LIST: CRM - Health Reviews
+  [skip] list exists: CRM - Health Reviews
+  [skip] field exists: ReviewDate
+  [skip] field exists: NextReviewDate
+  [skip] field exists: RelationshipHealth
+  [skip] field exists: DeliveryHealth
+  [skip] field exists: CommercialHealth
+  [skip] field exists: HealthScore
+  [skip] field exists: RenewalSignal
+  [skip] field exists: ExpansionSignal
+  [skip] field exists: RiskSummary
+  [skip] field exists: WinSummary
+  [skip] field exists: NextAction
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Health Review Queue
+  [OK] view updated: At Risk Health Reviews
+  [OK] view updated: Expansion Signals
+  [OK] view updated: Health Review History
+LIST: CRM - Closeout Invoice Queue
+  [skip] list exists: CRM - Closeout Invoice Queue
+  [skip] field exists: CloseoutStatus
+  [skip] field exists: InvoiceStatus
+  [skip] field exists: PaymentStatus
+  [skip] field exists: DeliveryCompleteDate
+  [skip] field exists: ClientAcceptanceDate
+  [skip] field exists: InvoiceDate
+  [skip] field exists: InvoiceDueDate
+  [skip] field exists: InvoiceAmount
+  [skip] field exists: InvoiceNumber
+  [skip] field exists: InvoiceLink
+  [skip] field exists: FinalEvidenceLink
+  [skip] field exists: CloseoutNotes
+  [skip] field exists: NextAction
+  [skip] field exists: ItemOwner
+  [skip] lookup exists: OrganizationLookup
+  [skip] lookup exists: EngagementLookup
+  [OK] view updated: Closeout / Invoice Watch
+  [OK] view updated: Ready to Invoice
+  [OK] view updated: Payment Follow-up
+  [OK] view updated: Closed Out
+INTAKE FORM: CRM - New Signals
+  [skip] blocked field absent (good): SourceMailbox
+  [skip] blocked field absent (good): SourceMessageId
+  [skip] blocked field absent (good): ReceivedDate
+  [skip] blocked field absent (good): IntakeStatus
+  [skip] blocked field absent (good): DurableHome
+  [skip] blocked field absent (good): PlannerTaskUrl
+  [skip] blocked field absent (good): CentralOSLink
+  [skip] blocked field absent (good): GraphNodeId
+  [skip] blocked field absent (good): AgentConfidence
+  [OK] blocked field hidden: op_CalendarEventId
+  [OK] blocked field hidden: op_PlannerTaskId
+  [OK] blocked field hidden: op_LastSyncedDue
+  [OK] blocked field hidden: op_SyncNote
+  [OK] Required=True: Title
+  [OK] Required=True: NeedSummary
+  [OK] Required=False: PersonName
+  [OK] Required=False: PersonEmail
+  [OK] Required=False: OrganizationName
+  [OK] Required=False: SignalType
+  [OK] Required=False: IntakeSource
+  [OK] Required=False: Priority
+  [OK] Required=False: SourceText
+  [OK] Required=False: NextAction
+  [OK] Required=False: FollowUpDueDate
+  [OK] Required=False: RelatedLink
+  [OK] Required=False: SignalStatus
+  [OK] Required=False: ItemOwner
+  [OK] Required=False: op_Reminders
+  [OK] Required=False: op_TrackOn
+
+SharePoint apply complete. Re-run scripts/spo/Verify-CrmSharePoint.ps1 to confirm PASS.
