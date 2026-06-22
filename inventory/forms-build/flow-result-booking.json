@@ -1,0 +1,11 @@
+{
+  "source": "Guided AI Labs (Bookings)",
+  "flowName": "1c0ba5b5-8162-4841-bad9-17b27cbc1825",
+  "displayName": "GAIL — Bookings to CRM (create-only)",
+  "bookingSmtp": "GuidedAILabs1@agoperations.ca",
+  "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
+  "state": "Started",
+  "createdStatus": 201,
+  "spConnection": "4c53f079bec84a81a87ed7d58c67401e",
+  "bookingsConnection": "3a88fb3c335d4c6eaa294d5173c9ce00"
+}

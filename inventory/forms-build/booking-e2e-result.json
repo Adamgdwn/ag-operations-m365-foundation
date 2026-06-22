@@ -1,0 +1,70 @@
+{
+  "pass": true,
+  "appointmentId": "AAMkADlmNzc3ZjU1LTI3NDYtNDUwMi05MDdkLWViYjJmNDY2NzUwYQBGAAAAAACvTMbT4EgoSrxgtLAswjZNBwAI1cRGnjnbT7EJ9wIcJtNnAAAAAAENAAAI1cRGnjnbT7EJ9wIcJtNnAAAAAAVSAAA=",
+  "joinUrl": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGY2YzNkNDMtOGVmYS00Y2Q0LTg2OTctOWZjMDdiZTgwZTYw%40thread.v2/0?context=%7b%22Tid%22%3a%221ca92af5-21ff-42e3-87ae-3bde9c2cc501%22%2c%22Oid%22%3a%228344f12a-4ee9-4bb5-954a-056ec0a09008%22%7d",
+  "crmItemId": 10,
+  "crmTitle": "Guided AI Labs — booking — GAIL-INTERNAL-WALKTHROUGH",
+  "start": "2026-06-24T16:30:00",
+  "checks": [
+    {
+      "name": "PersonName == GAIL-INTERNAL-WALKTHROUGH",
+      "ok": true,
+      "got": "GAIL-INTERNAL-WALKTHROUGH"
+    },
+    {
+      "name": "PersonEmail captured",
+      "ok": true,
+      "got": "adamgoodwin@guidedailabs.com"
+    },
+    {
+      "name": "IntakeSource == Guided AI Labs",
+      "ok": true,
+      "got": "Guided AI Labs"
+    },
+    {
+      "name": "SignalType == Website",
+      "ok": true,
+      "got": "Website"
+    },
+    {
+      "name": "SignalStatus == Follow-up scheduled",
+      "ok": true,
+      "got": "Follow-up scheduled"
+    },
+    {
+      "name": "Priority == Normal",
+      "ok": true,
+      "got": "Normal"
+    },
+    {
+      "name": "NextAction == Prepare for booked call",
+      "ok": true,
+      "got": "Prepare for booked call"
+    },
+    {
+      "name": "FollowUpDueDate == StartTime",
+      "ok": true,
+      "got": "2026-06-24T16:30:00Z"
+    },
+    {
+      "name": "SourceText has service name",
+      "ok": true,
+      "got": "1032 chars"
+    },
+    {
+      "name": "SourceText has Teams link",
+      "ok": true,
+      "got": "present"
+    },
+    {
+      "name": "SourceText has provenance",
+      "ok": true
+    },
+    {
+      "name": "ItemOwner set",
+      "ok": true,
+      "got": "Adam Goodwin"
+    }
+  ],
+  "sourceTextPreview": "Service: Intro call (30 min)\nStart: 06/24/2026 16:30:00\nEnd: 06/24/2026 17:10:00\nDuration (min): 2400\nTeams link: https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGY2YzNkNDMtOGVmYS00Y2Q0LTg2OTctOWZjMDdiZTgwZTYw%40thread.v2/0?context=%7b%22Tid%22%3a%221ca92af5-21ff-42e3-87ae-3bde9c2cc501%22%2c%22Oid%22%3a%228344f12a-4ee9-4bb5-954a-056ec0a09008%22%7d&webjoin=true&unified=true\nCustomer phone: \nCustomer notes: Internal end-to-end verification booking. Safe to cancel/delete.\nAdditional info: \nCustom answers (raw): [{\"Answer\":\"GAIL Internal Test\",\"Question\":\"Organization (optional)\",\"Question"
+}

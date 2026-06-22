@@ -1,0 +1,30 @@
+{
+  "businessId": "GuidedAILabs1@agoperations.ca",
+  "businessSmtp": "GuidedAILabs1@agoperations.ca",
+  "displayName": "Guided AI Labs",
+  "publicUrl": "https://outlook.office365.com/book/GuidedAILabs1@agoperations.ca/",
+  "isPublished": true,
+  "accessControl": "unrestricted",
+  "defaultCurrencyIso": "CAD",
+  "webSiteUrl": "https://guidedailabs.com/",
+  "staffId": "48d5de9a-4d90-4acc-abcf-eb2854241fd3",
+  "services": [
+    {
+      "displayName": "Intro call (30 min)",
+      "id": "1a1b5504-9b2a-45d2-bfdc-d27f5fc95ee1",
+      "status": 201
+    },
+    {
+      "displayName": "Working session (60 min)",
+      "id": "6fbc8453-c34a-48ef-900a-b2f1715282a9",
+      "status": 201
+    }
+  ],
+  "questionIds": [
+    "3329ead7-f492-4f85-bb47-0e81d4e93c90",
+    "d5594675-0f3c-4ae8-bfea-57c88c18f3c5"
+  ],
+  "errors": [
+    "delete dup: 403 {\"error\":{\"code\":\"UnknownError\",\"message\":\"\",\"innerError\":{\"date\":\"2026-06-21T22:08:49\",\"request-id\":\"99fa624f-d7f6-4cdc-94c3-88225921d8a7\",\"client-re"
+  ]
+}
