@@ -78,7 +78,7 @@ Three things are now LIVE and verified; the rest remain plan-only.
 | Function (card) | Plan file | Build-out state |
 |---|---|---|
 | Workspace Home | [docs/CARD_PLAN_WORKSPACE_HOME.md](docs/CARD_PLAN_WORKSPACE_HOME.md) | Plan + live cockpit |
-| **CRM / Relationships** | [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md) | ✅ **LIVE** — full website→CRM intake loop verified both brands (Path B); intent field done; test records cleaned. One gate open: **V5** (portal human-browser pass + page authoring) + Chunk 8 doc closeout. Build via [docs/CRM_EXECUTION_PLAN.md](docs/CRM_EXECUTION_PLAN.md) |
+| **CRM / Relationships** | [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md) | ✅ **LIVE** — full website→CRM intake loop verified both brands (Path B); intent field done; test records cleaned. One gate open: **V5** human operator walkthrough — ⏸ **IN PROGRESS / paused 2026-06-22** (clean form reached; intake felt cumbersome — usability finding to weigh). No page-authoring outstanding (pages exist, verifier 0/0/184). Resume: [docs/CRM_V5_WALKTHROUGH_KIT.md](docs/CRM_V5_WALKTHROUGH_KIT.md). Then Chunk 8 closeout. Plan: [docs/CRM_EXECUTION_PLAN.md](docs/CRM_EXECUTION_PLAN.md) |
 | **Bookings / Scheduling** | [docs/BOOKINGS_SCHEDULING_PLAN.md](docs/BOOKINGS_SCHEDULING_PLAN.md) | ✅ **LIVE** — native MS Bookings page (anon-verified), website→Bookings→CRM loop verified, 0 residue. CRM intake consumer #2 |
 | **Operations Follow-up Backbone** | (see memory: operations-followup-backbone) | ✅ **LIVE** — all 3 layers (Email + two-way Calendar + one-way Planner) verified; one 15-min sync engine drives reminders/calendar/Planner off CRM |
 | Delivery / Projects | [docs/CARD_PLAN_DELIVERY_PROJECTS.md](docs/CARD_PLAN_DELIVERY_PROJECTS.md) | Plan only |
@@ -128,7 +128,8 @@ PHASE 1 — INFRASTRUCTURE (finished once)  ✅ COMPLETE 2026-06-20
 
 PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← CURRENT FOCUS
   ✅ CRM / Relationships built end-to-end + LIVE (Path B intake loop, intent field, cleanup)
-       └─ one gate open: V5 (portal browser pass + page authoring) + Chunk 8 doc closeout
+       └─ one gate open: V5 human operator walkthrough (⏸ IN PROGRESS / paused 2026-06-22;
+          no page-authoring outstanding) + Chunk 8 doc closeout
   ✅ Bookings / Scheduling LIVE  (native MS Bookings → CRM, intake consumer #2)
   ✅ Operations Follow-up Backbone LIVE  (Email + two-way Calendar + one-way Planner; 15-min sync engine)
      ▸ NEXT: close CRM V5, then pick the next function to build out

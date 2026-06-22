@@ -177,7 +177,29 @@ transcript that records "no legacy nav nodes found".
 
 ## V5 — Chunk 6 human browser/operator acceptance (HUMAN PASS)
 
-Status: _pending (do only after V4 passes)_
+Status: IN PROGRESS — started 2026-06-22, **paused mid-pass** (see Log). Kit:
+`docs/CRM_V5_WALKTHROUGH_KIT.md` (resume block at top). Everything scriptable is
+already PASS (verifier 0/0/184; both pages present; zero legacy routes); only the
+human walk remains.
+
+Partial result so far:
+- [x] Click path reaches the clean `CRM - New Signals` form (Operations Cockpit →
+      CRM Command Center → New Signal), NOT the legacy Intake Register. A new item
+      could be created.
+- [ ] Lifecycle walk (triage → qualify → next action → handoff → closeout) — not done.
+- [ ] Hidden-field test confirmed in-browser — not formally ticked.
+- [ ] Formal PASS/FAIL verdict — not recorded.
+
+**Open finding (operator usability):** the daily intake felt **cumbersome** (Adam,
+tired at the time — caveat noted, but recorded as a real observation; the Chunk 6
+gate is explicitly about human usability, not just script PASS). Next session:
+decide (a) accept and finish to PASS, or (b) streamline the front door first
+(required-fields UX call already flagged in `config/crm.intake.json`
+"requiredVsCardPlanNote"; quick-add / Power Apps front door is CRM "Future Work").
+
+**Cleanup owed on resume:** a dummy signal may remain in `CRM - New Signals`. If
+saved with Person = `GAIL-INTERNAL-WALKTHROUGH`, clear via
+`scripts/flow-builder/delete-test-records.js` (scoped, cannot hit a real signal).
 
 Run:
 - Sign in with MFA as a normal operator. Open Operations Cockpit → CRM Command
@@ -401,3 +423,16 @@ intent field) is fully CLOSED; `CRM - New Signals` contains no test residue.
   on the next apply re-run). No tenant write performed. Remaining open item is
   unchanged: **V5** (human MFA operator walkthrough) + the portal page-authoring
   pass, which is the one acceptance gate Chunk 8 still depends on.
+- 2026-06-22 (V5 prep + scope): confirmed no page-authoring is actually outstanding
+  — both pages (`Guided-AI-Labs-Operations-Cockpit.aspx`,
+  `Relationship-CRM-Command-Center.aspx`) already exist and route cleanly (baseline
+  pages CSV; verifier 0/0/184 PASS). V5 reduces to the pure human MFA walk. Built
+  `docs/CRM_V5_WALKTHROUGH_KIT.md` (click path + concrete dummy-record values +
+  hidden-field/lifecycle checks + inline verdict template + scoped-delete cleanup).
+- 2026-06-22 (V5 STARTED, then PAUSED): Adam opened the path, reached the clean
+  `CRM - New Signals` form, and created a new item — then paused (intake felt
+  **cumbersome**; tired). Boxed up for a later session per Adam's call. Recorded the
+  usability finding as a real Chunk-6 observation (not dismissed as fatigue). Resume
+  state lives in the kit's top "PAUSED — RESUME HERE" block: (1) clean any dummy
+  record, (2) decide accept-and-finish vs streamline-front-door-first, (3) complete
+  the lifecycle walk + verdict. No tenant write performed by the agent this session.

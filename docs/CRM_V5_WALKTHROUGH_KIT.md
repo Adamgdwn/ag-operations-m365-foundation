@@ -7,6 +7,38 @@
 > produces exactly the evidence Chunk 8 needs to close.
 > **Owner:** Adam. **Created:** 2026-06-22.
 
+---
+
+## ⏸ PAUSED — RESUME HERE (2026-06-22)
+
+**Status: V5 IN PROGRESS, paused mid-pass.** Adam opened the path and created a new
+signal item, then stopped — the intake felt **cumbersome** (fatigue noted as a
+caveat, but logged as a genuine usability observation, not dismissed). Boxed up to
+continue another session.
+
+**What was confirmed before pausing:** the click path works — Operations Cockpit →
+CRM Command Center → New Signal reached the **clean `CRM - New Signals` form** (not
+the legacy Intake Register), and a new item could be created. The remaining
+lifecycle walk (triage → qualify → next action → handoff → closeout) and the formal
+verdict were **not** completed.
+
+**Open finding to weigh next session:** the daily intake felt cumbersome. Decide
+deliberately — (a) accept it (works, just verbose) and finish the walk to PASS, or
+(b) treat the friction as real and streamline the front door *before* declaring
+PASS (e.g. fewer required fields — the `crm.intake.json` "requiredVsCardPlanNote"
+already flags a required-fields UX call; a quick-add/Power Apps front door is
+listed under CRM "Future Work"). This is Adam's call.
+
+**First step on resume — cleanup:** a dummy signal may be sitting in the live
+`CRM - New Signals` list. If it was saved with **Person = `GAIL-INTERNAL-WALKTHROUGH`**,
+run `node scripts/flow-builder/delete-test-records.js` (scoped to that exact prefix
+— cannot touch a real signal). If it was saved with different values, delete it by
+hand or tell Claude the title. Leaving it overnight is harmless (clearly internal).
+
+**Then:** either finish Steps 4–6 below, or take the front-door-UX decision first.
+
+---
+
 ## Before you start
 
 - Sign in as a **normal operator** (MFA), *not* as admin — the whole point is to
