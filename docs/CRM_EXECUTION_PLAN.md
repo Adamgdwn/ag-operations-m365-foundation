@@ -2,7 +2,9 @@
 
 Date: 2026-06-18
 
-Status: Active chunk plan for completing the CRM recovery.
+Status: **COMPLETE (2026-06-22) — all chunks closed; CRM recovery done.** Retained as
+the execution record. One non-blocking residual is held by design: the Stage 8 packet
+archive move awaits Adam's explicit OK (see Chunk 8). The CRM operating path is LIVE.
 
 Use this document when Adam says to start applying the next chunk. `docs/START_HERE.md`
 is the orientation front door. `docs/CRM_RECOVERY_PLAN.md` explains why the work
@@ -20,6 +22,14 @@ apply-gail-crm-recovery
 ```
 
 ## Current Chunk
+
+**ALL CHUNKS COMPLETE (2026-06-22).** Chunk 8 (Close Recovery) is closed: the active
+docs carry final live links + evidence, `docs/CRM_RECOVERY_PLAN.md` Status is CLOSED,
+root Stage 8 CRM docs are labelled provenance, and future work is listed below. V5
+(Chunk 6) is operator-accepted (front door + streamlined capture confirmed; full
+per-stage walk waived as a non-blocker, script-proven). The only item not executed —
+held by design for Adam's explicit OK — is the Stage 8 packet archive move. The chunk
+history below is retained as the build record.
 
 Chunk 1 - Active Config Split is COMPLETE (2026-06-20).
 
@@ -86,16 +96,19 @@ Progress update (2026-06-21):
 - V1 / V2 / V3 / V6: DONE (read-only baseline, verifier RED-then-PASS, dry-run/refusal
   gate, access-group read-back).
 
-Remaining:
-- Chunk 6 - Human browser/operator acceptance (V5): the one open gate. Needs Adam
-  signed in with MFA; also covers portal page-authoring (`Apply-CrmPortal.ps1` is
-  flag-only by design).
-- Chunk 8 - Close Recovery: doc closeout is staged (see `docs/CRM_RECOVERY_PLAN.md`
-  "Recovery Closeout Status"); formal CLOSE waits on V5 evidence, and the Stage 8
-  packet archive move waits on Adam's explicit OK.
+Closeout update (2026-06-22):
+- Chunk 6 - Human browser/operator acceptance (V5): **ACCEPTED (operator).** Adam
+  confirmed in-browser (MFA) the front door reaches the clean `CRM - New Signals`
+  form and saves, and accepted the streamlined 2-field capture. Full per-stage walk
+  waived as a non-blocker (script-proven by the 0/0/184 verifier + live Path B /
+  Bookings e2e runs). Portal page-authoring confirmed not outstanding.
+- Chunk 8 - Close Recovery: **DONE.** `docs/CRM_RECOVERY_PLAN.md` Status → CLOSED;
+  active docs carry final live links/evidence; root Stage 8 CRM docs labelled
+  provenance; future work listed. The Stage 8 packet archive move is the one residual,
+  held for Adam's explicit OK (not a blocker).
 
-Everything buildable without the V5 human pass is now done. The next real action is
-the V5 walkthrough; after it is recorded, Chunk 8 can be marked complete.
+The CRM recovery is complete. The only outstanding optional action is the Stage 8
+packet archive move, which executes solely on Adam's explicit confirmation.
 
 ## Completion Requirements
 

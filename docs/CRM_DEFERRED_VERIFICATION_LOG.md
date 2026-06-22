@@ -177,18 +177,30 @@ transcript that records "no legacy nav nodes found".
 
 ## V5 — Chunk 6 human browser/operator acceptance (HUMAN PASS)
 
-Status: IN PROGRESS — started 2026-06-22, **paused mid-pass** (see Log). Kit:
-`docs/CRM_V5_WALKTHROUGH_KIT.md` (resume block at top). Everything scriptable is
-already PASS (verifier 0/0/184; both pages present; zero legacy routes); only the
-human walk remains.
+Status: **ACCEPTED BY OPERATOR (2026-06-22)** — Adam, the acceptance authority,
+confirmed the operating front door and directed closeout ("this is fine for now,
+carry on with Chunk 8"). This is a deliberate operator acceptance of the live
+operating path, **not** a claim that the full scripted lifecycle walk was
+exhaustively performed. What was actually observed + what was waived is recorded
+below, verbatim and honestly. Kit: `docs/CRM_V5_WALKTHROUGH_KIT.md`.
 
-Partial result so far:
+What the operator actually confirmed in-browser (MFA, normal operator):
 - [x] Click path reaches the clean `CRM - New Signals` form (Operations Cockpit →
-      CRM Command Center → New Signal), NOT the legacy Intake Register. A new item
-      could be created.
-- [ ] Lifecycle walk (triage → qualify → next action → handoff → closeout) — not done.
-- [ ] Hidden-field test confirmed in-browser — not formally ticked.
-- [ ] Formal PASS/FAIL verdict — not recorded.
+      CRM Command Center → New Signal), NOT the legacy Intake Register.
+- [x] A new signal item can be created and saved.
+- [x] The **streamlined 2-field capture** (Title + NeedSummary only) is the live
+      front door — directly fixing the "cumbersome" finding that paused the pass.
+
+Waived as a non-blocker (operator's call, recorded so the record is honest):
+- [ ] Full lifecycle walk of one dummy through triage → qualify → next action →
+      handoff → closeout was **not** exhaustively performed in this session. Each of
+      those stages is a SharePoint view/status change already proven by the Chunk-3
+      verifier (0 failures / 0 warnings / 184 checks) and by the live Path B / Bookings
+      end-to-end runs that write real items into the same list and queues. Adam
+      accepts this script-proven coverage in lieu of a manual per-stage walk for now.
+- [ ] A separate formal per-stage PASS/FAIL block was not filled. Superseded by the
+      operator acceptance above. If Adam later wants the exhaustive walk on record,
+      the kit is still valid — re-open it, walk Steps 4–6, and append the verdict here.
 
 **Open finding (operator usability) — RESOLVED 2026-06-22 (option b taken):** the
 daily intake felt **cumbersome**. Adam chose to streamline the front door before
@@ -215,8 +227,11 @@ Confirm:
 - [ ] The dummy record is visible in the Triage Queue and the next action is obvious.
 - [ ] You can tell what to escalate to Adam (access, billing, commitments, automation, etc.).
 
-Result: _pending_
-Evidence: _notes + screenshots path_
+Result: **ACCEPTED (operator) 2026-06-22 / Adam Goodwin (MFA).** Front door + streamlined
+capture confirmed live; full per-stage lifecycle walk waived as a non-blocker (script-proven).
+Evidence: `inventory/crm-verify/CRM_VERIFY.md` (0/0/184 PASS),
+`inventory/crm-apply/_v5_streamline_apply.log`, `inventory/crm-verify/_v5_streamline_verify.log`,
+`config/crm.intake.json` (`streamlineDecisionNote`), `docs/CRM_V5_WALKTHROUGH_KIT.md`.
 
 ---
 
@@ -455,3 +470,15 @@ intent field) is fully CLOSED; `CRM - New Signals` contains no test residue.
   state lives in the kit's top "PAUSED — RESUME HERE" block: (1) clean any dummy
   record, (2) decide accept-and-finish vs streamline-front-door-first, (3) complete
   the lifecycle walk + verdict. No tenant write performed by the agent this session.
+- 2026-06-22 (V5 ACCEPTED + CHUNK 8 CLOSED): pre-walk cleanup check via
+  `delete-test-records.js --dry` found **0** `GAIL-INTERNAL-WALKTHROUGH` records — the
+  list is clean (the paused dummy was never saved / saved under other values). Adam then
+  directed closeout: "This is fine for now. Carry on with Chunk 8." Recorded V5 as
+  **operator-accepted** (front door + streamlined capture confirmed; full per-stage walk
+  waived as a non-blocker — script-proven by the 0/0/184 verifier and the live Path B /
+  Bookings end-to-end runs that write into the same list+queues). Chunk 8 doc closeout
+  done: `CRM_RECOVERY_PLAN.md` Status → CLOSED, `CRM_EXECUTION_PLAN.md` Chunk 8 → complete,
+  decision row added to `CRM_DECISIONS.md`. Root Stage 8 CRM docs were already marked
+  provenance; future work already listed. **Still HELD (NOT done — needs Adam's own
+  explicit OK):** the Stage 8 packet archive move into
+  `inventory/archive/2026-06-17-stage-8-packet/`. No tenant write this session.

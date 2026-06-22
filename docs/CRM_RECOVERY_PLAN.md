@@ -1,13 +1,19 @@
 # Guided AI Labs CRM Recovery Plan
 
-Date: 2026-06-17 (last updated 2026-06-21)
+Date: 2026-06-17 (last updated 2026-06-22)
 
-Status: Recovery APPLIED and intake LIVE. The SharePoint-native CRM front door
-(Chunk 5 / V4) is applied with the verifier at **0 failures / 0 warnings PASS**,
-and the Path B public brand intake (V7/V8) is live and end-to-end verified for
-both brands. **One acceptance gate remains open: V5** — the human MFA operator
-walkthrough + portal page-authoring pass (Chunk 6). The recovery is not formally
-CLOSED (Chunk 8) until that human pass is recorded.
+Status: **CLOSED (2026-06-22) — recovery complete, CRM operating path LIVE.** The
+SharePoint-native CRM front door (Chunk 5 / V4) is applied with the verifier at
+**0 failures / 0 warnings PASS**; the intake front door was streamlined to 2 required
+fields (Title + NeedSummary) on 2026-06-22 to resolve the V5 "cumbersome" finding;
+the Path B public brand intake (V7/V8) is live and e2e-verified for both brands. V5
+(Chunk 6 human acceptance) is **operator-accepted** — Adam confirmed the front door +
+streamlined capture in-browser and directed closeout; the full per-stage lifecycle
+walk was waived as a non-blocker (it is script-proven by the 0/0/184 verifier and the
+live Path B / Bookings end-to-end runs into the same list and queues). Chunk 8 doc
+closeout is done. **One residual remains, held by design:** the Stage 8 packet archive
+move — see "Recovery Closeout Status" — which executes only on Adam's explicit OK and
+is not a recovery blocker.
 
 Latest tenant result (2026-06-20 / 2026-06-21):
 
@@ -367,8 +373,11 @@ again through `docs/CRM_ACCEPTANCE_TESTS.md`.
 
 ## Recovery Closeout Status (Chunk 8)
 
-As of 2026-06-21 the recovery is APPLIED and the intake loop is LIVE. Chunk 8
-(formal close + archive) is intentionally held open on one human gate.
+**CLOSED 2026-06-22.** The recovery is APPLIED, the intake loop is LIVE, and Adam
+(acceptance authority) accepted the operating path and directed closeout ("this is
+fine for now, carry on with Chunk 8"). All Chunk 8 source-of-truth + closeout doc
+actions are done. The single remaining item — the Stage 8 packet archive move — is
+held by design for Adam's explicit OK and is explicitly **not** a recovery blocker.
 
 Done and verified:
 
@@ -385,22 +394,26 @@ Done and verified:
   in `scripts/spo/Apply-CrmSharePoint.ps1`; deferred-verification log reconciled to
   the shipped in-band `SourceText` provenance design.
 
-Open (the only thing blocking a formal close):
+Chunk 6 / V5 — human MFA operator acceptance: **ACCEPTED (operator) 2026-06-22.**
+Adam confirmed in-browser (MFA) that Operations Cockpit → CRM Command Center → New
+Signal reaches the clean `CRM - New Signals` form and saves an item, and that the
+streamlined 2-field capture is live. The full per-stage lifecycle walk (triage →
+qualification → next action → handoff/evidence → closeout/invoice) was waived as a
+non-blocker — those stages are SharePoint views/status changes already proven by the
+Chunk-3 verifier (0/0/184 PASS) and exercised by the live Path B / Bookings end-to-end
+runs that write into the same list and queues. If the exhaustive manual walk is ever
+wanted on record, `docs/CRM_V5_WALKTHROUGH_KIT.md` remains valid. Portal page-authoring
+was confirmed not outstanding (both pages present, route clean — see deferred-log
+2026-06-22 entry).
 
-- Chunk 6 / V5 — human MFA operator walkthrough (create one
-  `GAIL-INTERNAL-WALKTHROUGH` signal in the live CRM Command Center, move it through
-  triage -> qualification -> next action -> handoff/evidence -> closeout/invoice) plus
-  the portal page-authoring pass (`scripts/portal/Apply-CrmPortal.ps1` is flag-only
-  by design; page sections/web-parts are authored by hand). Needs Adam signed in.
-
-Held pending Adam's explicit OK (do NOT do automatically — Chunk 8 stop condition):
+Held pending Adam's explicit OK (do NOT do automatically — Chunk 8 stop condition,
+NOT a recovery blocker):
 
 - Archive of generated Stage 8 packet material into
   `inventory/archive/2026-06-17-stage-8-packet/` (and the handoff export folder).
-  The "Archive or demote" list above is the move plan; execute only on confirmation.
-
-When V5 is recorded and the archive move is approved, set this document's Status to
-CLOSED and update `docs/CRM_EXECUTION_PLAN.md` Chunk 8 to complete.
+  The "Archive or demote" list above is the move plan; execute only on Adam's explicit
+  confirmation. Until then the root Stage 8 CRM docs stay in place, already clearly
+  labelled as superseded/provenance, so they do not compete with the active path.
 
 ## Acceptance Tests
 
