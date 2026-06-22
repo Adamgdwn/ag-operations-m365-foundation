@@ -40,6 +40,18 @@ const FALLBACK_OWNER = 'adamgoodwin@guidedailabs.com'; // if a signal has no Own
 const DISPLAY = 'GAIL — Operations follow-up engine';
 const apiId = (n) => `/providers/Microsoft.PowerApps/apis/${n}`;
 
+// Planner layer is GATED on the registry: it is added to the flow only when BOTH
+// groupId and planId are present for the CRM row. Until Adam's consent session fills
+// them in, this stays null and the deployed flow is byte-identical to the email+calendar
+// flow that is already live. (groupId + planId are both required by CreateTask_V4 and
+// ListBuckets_V3.)
+const REGISTRY = JSON.parse(fs.readFileSync(path.join(REPO, 'config', 'followup.registry.json'), 'utf8'));
+const CRM_ROW = (REGISTRY.lists || []).find(l => l.key === 'crm-new-signals') || {};
+const PLANNER = CRM_ROW.planner || {};
+const PLAN_ID = PLANNER.planId || null;
+const GROUP_ID = PLANNER.groupId || null;
+const PLANNER_ACTIVE = !!(PLAN_ID && GROUP_ID);
+
 const dry = process.argv.includes('--dry');
 const headless = process.argv.includes('--headless');
 const stateArg = (process.argv.find(a => a.startsWith('--state=')) || '=Started').split('=')[1];
@@ -230,6 +242,145 @@ function buildCalendarActions(listId) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// Planner layer (5b, hub-driven ONE-WAY: CRM -> Planner). Unlike the calendar layer
+// (two-way on the date), Planner is driven entirely from the CRM hub: the engine
+// creates a task assigned to the owner, pushes the CRM due onto it when the CRM date
+// moves, and deletes it on untrack/close. Standard connectors only: shared_planner +
+// shared_office365users (email -> AAD id for assignment). Multi-operator personalisation
+// is free via assignment: an assigned task surfaces in that owner's Planner "Assigned to
+// me" and rolls up into their Microsoft To Do — no per-mailbox write, no Graph app.
+//
+// Loop-safety: Planner reuses the same op_LastSyncedDue shadow as the calendar layer.
+// The Plan_* blocks run AFTER the Cal_* blocks (runAfter), so the two layers' SharePoint
+// MERGE writes are serialised within an iteration (never a concurrent write to the same
+// item), and both write the identical DUE_UTC value, so order does not matter.
+const PLAN_TRACK = "@contains(string(coalesce(item()?['op_TrackOn'],'')), 'Planner')";
+const PLAN_HASID = "@not(empty(coalesce(item()?['op_PlannerTaskId'], '')))";
+const PLAN_TASKID = "item()?['op_PlannerTaskId']";
+
+function buildPlannerActions(listId) {
+  const createTask = {
+    Create_task: {
+      runAfter: {}, type: 'OpenApiConnection',
+      inputs: {
+        host: { connectionName: 'shared_planner', operationId: 'CreateTask_V4', apiId: apiId('shared_planner') },
+        parameters: {
+          'body/groupId': GROUP_ID,
+          'body/planId': PLAN_ID,
+          'body/title': `@concat('Follow-up: ', ${TITLE_EXPR})`,
+          'body/bucketId': "@outputs('Compose_bucket_id')",
+          'body/dueDateTime': `@${DUE_UTC}`,
+          // Assigned User Ids (AAD object id). Empty string => unassigned (owner unresolved).
+          'body/assignments': "@coalesce(body('Get_owner_aad')?['id'], '')",
+        },
+        authentication: "@parameters('$authentication')",
+      },
+    },
+  };
+  const updateTask = {
+    Update_task: {
+      runAfter: {}, type: 'OpenApiConnection',
+      inputs: {
+        host: { connectionName: 'shared_planner', operationId: 'UpdateTask_V3', apiId: apiId('shared_planner') },
+        parameters: {
+          id: `@${PLAN_TASKID}`,
+          'body/title': `@concat('Follow-up: ', ${TITLE_EXPR})`,
+          'body/dueDateTime': `@${DUE_UTC}`,
+          'body/bucketId': "@outputs('Compose_bucket_id')",
+        },
+        authentication: "@parameters('$authentication')",
+      },
+    },
+  };
+  const deleteTask = {
+    Delete_task: {
+      runAfter: {}, type: 'OpenApiConnection',
+      inputs: {
+        host: { connectionName: 'shared_planner', operationId: 'DeleteTask', apiId: apiId('shared_planner') },
+        parameters: { id: `@${PLAN_TASKID}` },
+        authentication: "@parameters('$authentication')",
+      },
+    },
+  };
+  // All three plan branches wait for the per-item prep (owner AAD + bucket) and for the
+  // calendar branches, so SharePoint MERGE writes never race.
+  const planRunAfter = {
+    Compose_bucket_id: ['Succeeded'],
+    Get_owner_aad: ['Succeeded', 'Failed'],
+    Cal_create: ['Succeeded'], Cal_reconcile: ['Succeeded'], Cal_teardown: ['Succeeded'],
+  };
+
+  return {
+    // CREATE: tracked + open + no task yet.
+    Plan_create: {
+      runAfter: planRunAfter, type: 'If',
+      expression: { and: [{ equals: [PLAN_TRACK, true] }, { equals: [OPEN, true] }, { equals: [PLAN_HASID, false] }] },
+      actions: Object.assign({}, createTask, spMerge(listId, 'Hub_after_task_create', { Create_task: ['Succeeded'] }, [
+        ['op_PlannerTaskId', "body('Create_task')?['id']"],
+        ['op_LastSyncedDue', DUE_UTC],
+        ['op_SyncNote', "concat('planner task created ',utcNow())"],
+      ])),
+      else: { actions: {} },
+    },
+    // UPDATE: tracked + open + task exists + CRM due moved vs the shadow -> push due (one-way).
+    Plan_update: {
+      runAfter: planRunAfter, type: 'If',
+      expression: {
+        and: [
+          { equals: [PLAN_TRACK, true] }, { equals: [OPEN, true] }, { equals: [PLAN_HASID, true] },
+          changedExpr("item()?['FollowUpDueDate']", SHADOW_REF),
+        ],
+      },
+      actions: Object.assign({}, updateTask, spMerge(listId, 'Hub_after_task_update', { Update_task: ['Succeeded'] }, [
+        ['op_LastSyncedDue', DUE_UTC],
+        ['op_SyncNote', "concat('pushed CRM date to planner ',utcNow())"],
+      ])),
+      else: { actions: {} },
+    },
+    // TEARDOWN: task exists but no longer tracked or no longer open -> delete + clear id.
+    Plan_teardown: {
+      runAfter: planRunAfter, type: 'If',
+      expression: { and: [{ equals: [PLAN_HASID, true] }, { or: [{ equals: [PLAN_TRACK, false] }, { equals: [OPEN, false] }] }] },
+      actions: Object.assign({}, deleteTask, spMerge(listId, 'Hub_after_task_delete', { Delete_task: ['Succeeded', 'Failed'] }, [
+        ['op_PlannerTaskId', "''"],
+        ['op_SyncNote', "concat('planner task removed ',utcNow())"],
+      ])),
+      else: { actions: {} },
+    },
+  };
+}
+
+// Per-item prep actions the Planner branches depend on (owner email -> AAD id, and the
+// per-priority bucket pick from the once-fetched bucket list).
+function buildPlannerPrep() {
+  return {
+    Compose_priority: {
+      runAfter: {}, type: 'Compose',
+      inputs: "@coalesce(item()?['Priority']?['Value'], '')",
+    },
+    Get_owner_aad: {
+      runAfter: {}, type: 'OpenApiConnection',
+      inputs: {
+        host: { connectionName: 'shared_office365users', operationId: 'UserProfile_V2', apiId: apiId('shared_office365users') },
+        parameters: { id: OWNER_TO, '$select': 'id,displayName,mail' },
+        authentication: "@parameters('$authentication')",
+      },
+    },
+    Filter_bucket: {
+      runAfter: { Compose_priority: ['Succeeded'] }, type: 'Query',
+      inputs: {
+        from: "@outputs('List_buckets')?['body/value']",
+        where: "@equals(toLower(coalesce(item()?['name'],'')), toLower(coalesce(outputs('Compose_priority'),'')))",
+      },
+    },
+    Compose_bucket_id: {
+      runAfter: { Filter_bucket: ['Succeeded'] }, type: 'Compose',
+      inputs: "@coalesce(first(body('Filter_bucket'))?['id'], first(outputs('List_buckets')?['body/value'])?['id'])",
+    },
+  };
+}
+
 function buildOffsetIf(offset, idx) {
   const send = {
     [`Send_${idx}`]: {
@@ -302,6 +453,21 @@ function buildOffsetIf(offset, idx) {
   log(`Outlook conn:    ${outlookConn ? `${outlookConn.name} (${connStatus(outlookConn)})` : 'MISSING'}`);
   if (!spConn || !outlookConn) { log('ERROR: email layer needs the existing SharePoint + Office 365 Outlook connections.'); await ctx.close(); process.exit(2); }
 
+  // Planner layer is added only when the registry has BOTH groupId and planId.
+  log(`Planner layer: ${PLANNER_ACTIVE ? `ACTIVE (group=${GROUP_ID}, plan=${PLAN_ID})` : 'INACTIVE (registry planner.groupId/planId not set) — building email+calendar only'}`);
+  let plannerConn = null, usersConn = null;
+  if (PLANNER_ACTIVE) {
+    plannerConn = findConn(conns, 'shared_planner');
+    usersConn = findConn(conns, 'shared_office365users');
+    log(`Planner conn:    ${plannerConn ? `${plannerConn.name} (${connStatus(plannerConn)})` : 'MISSING'}`);
+    log(`Users conn:      ${usersConn ? `${usersConn.name} (${connStatus(usersConn)})` : 'MISSING'}`);
+    if (!plannerConn || !usersConn) {
+      log('ERROR: Planner layer is registry-active but its connections are missing. Run the consent session first:');
+      log('       node scripts/flow-builder/create-connections.js --only=planner,office365users --headed');
+      await ctx.close(); process.exit(3);
+    }
+  }
+
   // Resolve list GUID via SharePoint REST (persisted M365 session).
   await page.goto(SITE, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await page.waitForTimeout(5000);
@@ -310,10 +476,13 @@ function buildOffsetIf(offset, idx) {
   log(`list GUID: ${listId}`);
   if (!listId) { log('ERROR: could not resolve list GUID'); await ctx.close(); process.exit(4); }
 
-  // Build the per-signal action set: email offsets (5a) + calendar two-way (5b).
+  // Build the per-signal action set: email offsets (5a) + calendar two-way (5b)
+  // + planner one-way (5b, when registry-active).
   const offsetActions = {};
   OFFSETS.forEach((o, i) => Object.assign(offsetActions, buildOffsetIf(o, i)));
   const calendarActions = buildCalendarActions(listId);
+  const plannerPrep = PLANNER_ACTIVE ? buildPlannerPrep() : {};
+  const plannerActions = PLANNER_ACTIVE ? buildPlannerActions(listId) : {};
 
   const definition = {
     $schema: 'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#',
@@ -356,8 +525,23 @@ function buildOffsetIf(offset, idx) {
         type: 'Compose',
         inputs: "@coalesce(first(body('Filter_default_calendar'))?['id'], first(outputs('Get_calendars')?['body/value'])?['id'])",
       },
+      // Planner buckets are fetched ONCE per run (when the Planner layer is active);
+      // each item picks its bucket from this list by Priority name.
+      ...(PLANNER_ACTIVE ? {
+        List_buckets: {
+          runAfter: {}, type: 'OpenApiConnection',
+          inputs: {
+            host: { connectionName: 'shared_planner', operationId: 'ListBuckets_V3', apiId: apiId('shared_planner') },
+            parameters: { groupId: GROUP_ID, id: PLAN_ID },
+            authentication: "@parameters('$authentication')",
+          },
+        },
+      } : {}),
       For_each_signal: {
-        runAfter: { Get_dated_signals: ['Succeeded'], Compose_calendar_id: ['Succeeded'] },
+        runAfter: Object.assign(
+          { Get_dated_signals: ['Succeeded'], Compose_calendar_id: ['Succeeded'] },
+          PLANNER_ACTIVE ? { List_buckets: ['Succeeded'] } : {},
+        ),
         type: 'Foreach',
         foreach: "@outputs('Get_dated_signals')?['body/value']",
         actions: Object.assign(
@@ -366,16 +550,24 @@ function buildOffsetIf(offset, idx) {
           },
           offsetActions,
           calendarActions,
+          plannerPrep,
+          plannerActions,
         ),
         runtimeConfiguration: { concurrency: { repetitions: 1 } },
       },
     },
   };
 
-  const connectionReferences = {
-    shared_sharepointonline: { connectionName: spConn.name, source: 'Embedded', id: apiId('shared_sharepointonline'), tier: 'NotSpecified' },
-    shared_office365: { connectionName: outlookConn.name, source: 'Embedded', id: apiId('shared_office365'), tier: 'NotSpecified' },
-  };
+  const connectionReferences = Object.assign(
+    {
+      shared_sharepointonline: { connectionName: spConn.name, source: 'Embedded', id: apiId('shared_sharepointonline'), tier: 'NotSpecified' },
+      shared_office365: { connectionName: outlookConn.name, source: 'Embedded', id: apiId('shared_office365'), tier: 'NotSpecified' },
+    },
+    PLANNER_ACTIVE ? {
+      shared_planner: { connectionName: plannerConn.name, source: 'Embedded', id: apiId('shared_planner'), tier: 'NotSpecified' },
+      shared_office365users: { connectionName: usersConn.name, source: 'Embedded', id: apiId('shared_office365users'), tier: 'NotSpecified' },
+    } : {},
+  );
 
   const flowBody = { properties: { displayName: DISPLAY, state: stateArg, definition, connectionReferences } };
   fs.writeFileSync(path.join(CAP, 'flow-body-engine.json'), JSON.stringify(flowBody, null, 2));
@@ -396,9 +588,12 @@ function buildOffsetIf(offset, idx) {
   const created = JSON.parse(cr.body);
   const flowName = created.name || existingName;
   const result = {
-    purpose: 'Operations follow-up engine (email layer)', flowName, displayName: DISPLAY, listId,
+    purpose: 'Operations follow-up engine (email + calendar' + (PLANNER_ACTIVE ? ' + planner' : '') + ' layers)',
+    flowName, displayName: DISPLAY, listId,
     state: created.properties && created.properties.state, createdStatus: cr.status,
-    spConnection: spConn.name, outlookConnection: outlookConn.name, offsets: OFFSETS.map(o => o.choice),
+    spConnection: spConn.name, outlookConnection: outlookConn.name,
+    plannerLayer: PLANNER_ACTIVE ? { plannerConnection: plannerConn.name, usersConnection: usersConn.name, groupId: GROUP_ID, planId: PLAN_ID } : 'inactive (registry planner.groupId/planId not set)',
+    offsets: OFFSETS.map(o => o.choice),
   };
   fs.writeFileSync(resultPath, JSON.stringify(result, null, 2));
   log(`RESULT: flow=${flowName} state=${result.state}`);

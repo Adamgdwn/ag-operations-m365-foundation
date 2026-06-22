@@ -26,3 +26,6 @@ desktop.ini
 inventory/forms-build/forms-*/
 inventory/forms-build/explore/
 
+# Generated graph/index output (graphify) — large derived artifact, not source.
+graphify-out/
+

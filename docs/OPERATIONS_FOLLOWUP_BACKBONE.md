@@ -20,11 +20,25 @@ the remaining operating functions plug into later **without rebuilding anything*
 >   CRM date follows), **teardown** (untick `op_TrackOn` / close → event deleted, key
 >   cleared). Full cycle ran end-to-end then deleted the throwaway record — 0 residue.
 >   Loop-safe via the `op_LastSyncedDue` shadow + >1-min tolerance.
-> - **Planner layer — NOT YET BUILT.** Next step; gated on Adam's interactive consent
->   session for the Planner + Office 365 Users connections and creation of the
->   "CRM Follow-ups" group plan (`plannerPlanId` then filled into the registry).
-> - The old daily flow `8665f8d0-43c7-4067-b2b9-b57e7450ab6d` is **still Started** and
->   should be retired once the Planner layer lands and the backbone is declared complete.
+> - **Planner layer — LIVE + END-TO-END VERIFIED (2026-06-22).** The hub-driven one-way
+>   layer (CRM → Planner: create assigned task / push due / teardown on untrack or close) is
+>   now active in the deployed engine. Consent session done: the **Planner** + **Office 365
+>   Users** standard connections are Connected (added by hand — the create-connections.js
+>   auto-clicker proved flaky over CDP; verified with `verify-connections.js`). The
+>   **"CRM Follow-ups"** plan was **created via Graph** (silent delegated token, no app
+>   registration) in the GuidedAILabs M365 group — `planner.groupId` =
+>   `db49e096-5a34-48c5-9037-0f32c22bbda8`, `planner.planId` = `ukV82eUE7kqJ3aSZeL9B6n0AAyng`,
+>   both written into the registry by `resolve-planner-ids.js --write`. The engine was rebuilt
+>   (PATCH 200, Started, "Planner layer: ACTIVE"), and `planner-smoke-test.js` proved all three
+>   behaviors against the live flow — **create** (task created + assigned, `op_PlannerTaskId`
+>   stored, shadow stamped), **movecrm** (CRM due +90 min → task updated in place, shadow
+>   follows), **untrack** (task deleted, id cleared) — last run Succeeded, throwaway record
+>   deleted → 0 residue.
+> - The old daily flow `8665f8d0-43c7-4067-b2b9-b57e7450ab6d` is **RETIRED** — turned OFF
+>   (Started → Stopped, reversible, not deleted) via the new reusable
+>   `scripts/flow-builder/set-flow-state.js <flowId> start|stop`. **All three engine layers
+>   (email + calendar two-way + Planner one-way) are now live and coexisting cleanly; the
+>   backbone is complete for consumer #1 (CRM).**
 
 > Adam, 2026-06-21: *"Putting this narrowly into the CRM would be detrimental…
 > this needs to be a higher level work scope because it is going to touch almost
@@ -32,8 +46,8 @@ the remaining operating functions plug into later **without rebuilding anything*
 
 This supersedes the CRM-narrow design in `docs/CRM_FOLLOWUP_REMINDERS_AND_PLANNER.md`
 (kept as the first-consumer reference). The old one-day-ahead daily flow
-(`8665f8d0-43c7-4067-b2b9-b57e7450ab6d`, currently Started) is **retired/replaced**
-by this backbone when it goes live.
+(`8665f8d0-43c7-4067-b2b9-b57e7450ab6d`) has been **retired** (turned OFF 2026-06-22) —
+this backbone now fully replaces it.
 
 ---
 
@@ -301,3 +315,78 @@ tenant credential.)
 
 Verification is **two-staged on purpose** (email layer, then sync layer) so a
 calendar/Planner-write bug can't hide behind an alert bug.
+
+---
+
+## 9a. Planner layer — consent-session runbook (EXECUTED 2026-06-22 ✅)
+
+> **DONE — all steps below were run on 2026-06-22; the Planner layer is LIVE and verified.**
+> Kept as the reproducible record + the template for onboarding future operators/connectors.
+> Result: group `db49e096-5a34-48c5-9037-0f32c22bbda8`, plan `ukV82eUE7kqJ3aSZeL9B6n0AAyng`
+> ("CRM Follow-ups"); connections Planner `7fccd9fb…` + Office 365 Users `bc5f2e1f…` Connected;
+> engine Started with Planner active; smoke test create/movecrm/untrack PASS, 0 residue; old
+> daily flow `8665f8d0…` turned OFF.
+
+The Planner layer is one interactive session because two new **standard** connections need
+Adam's in-browser consent and a plan must exist. Everything else is scripted. Steps, in order:
+
+1. **Consent the two connections** (Adam's only interactive step):
+   ```
+   node scripts/flow-builder/create-connections.js --only=planner,office365users --headed
+   ```
+   Pick the account / click Allow for **Planner** and **Office 365 Users**. Both are
+   standard first-party connectors — same class as the SharePoint/Outlook/Forms consents.
+   **NOTE (2026-06-22):** this auto-clicker did NOT reliably open the OAuth popup over CDP on
+   a warm Edge (fell to an aria fallback that no-opped). Fastest reliable path = add the two
+   connections **by hand** (Power Automate → Connections → **+ New connection** → search the
+   connector → **Create**; first-party connectors often need no popup), then confirm with
+   `node scripts/flow-builder/verify-connections.js shared_planner shared_office365users`.
+
+2. **Create the plan + resolve + write the ids** (fully scripted — no Planner UI, no GUID
+   copying; Adam chose Graph automation 2026-06-21):
+   ```
+   node scripts/flow-builder/resolve-planner-ids.js --write
+   ```
+   This reads the group id from SharePoint, looks for a **"CRM Follow-ups"** plan in the
+   Guided AI Labs group and **creates it via Graph if it doesn't exist** (idempotent —
+   `POST /planner/plans`, owner = the group; needs the Tasks.ReadWrite + Group.ReadWrite.All
+   delegated scope, which surfaces in the same window), then writes `planner.groupId` +
+   `planner.planId` into `config/followup.registry.json`. Buckets are optional — the engine
+   falls back to the plan's default bucket; named buckets matching the CRM Priority values
+   give by-priority bucketing for free. (Run once without `--write` first to see what it
+   would do.)
+
+3. **Rebuild the engine** (idempotent PATCH — now picks up the active Planner layer):
+   ```
+   node scripts/flow-builder/create-followup-engine-flow.js
+   ```
+   It logs `Planner layer: ACTIVE` and binds the two new connections. (Run with `--dry`
+   first to write the planned body to `.local/flow-builder/capture/flow-body-engine.json`
+   for a final eyeball before the POST.)
+
+4. **Smoke-test** (throwaway `GAIL-INTERNAL-WALKTHROUGH` signal, then clean to 0 residue):
+   ```
+   node scripts/flow-builder/planner-smoke-test.js create     # task appears, assigned to owner
+   node scripts/flow-builder/planner-smoke-test.js movecrm    # CRM date +90m -> task due moves
+   node scripts/flow-builder/planner-smoke-test.js untrack    # untick Planner -> task deleted
+   node scripts/flow-builder/planner-smoke-test.js close       # (optional) close -> teardown path
+   node scripts/flow-builder/planner-smoke-test.js cleanup    # delete the test record
+   ```
+
+5. **Retire the old daily flow** `8665f8d0-43c7-4067-b2b9-b57e7450ab6d` and declare the
+   backbone complete (§9 step 5–6):
+   ```
+   node scripts/flow-builder/set-flow-state.js 8665f8d0-43c7-4067-b2b9-b57e7450ab6d stop
+   ```
+   Turns it OFF (Started → Stopped) — reversible (`… start`), not deleted.
+
+**Engine layer behaviour (Planner, one-way):** for each open signal ticked `Planner` on
+`op_TrackOn`, the engine resolves the owner's AAD id (`UserProfile_V2`), picks a bucket by
+Priority (`ListBuckets_V3`, fallback first bucket), creates a task (`CreateTask_V4`) assigned
+to the owner with `dueDateTime = FollowUpDueDate`, and stores `op_PlannerTaskId`. When the
+CRM date moves it pushes the new due (`UpdateTask_V3`); on untrack or close it deletes the
+task (`DeleteTask`) and clears the key. The Planner branches run **after** the calendar
+branches so the two layers never write the same SharePoint item concurrently, and both
+write the identical `op_LastSyncedDue` shadow value (loop-safe). Assignment is the free
+multi-operator mechanism — an assigned task surfaces in that owner's Planner and rolls up
+into their Microsoft To Do, with **no per-mailbox write and no Graph app**.

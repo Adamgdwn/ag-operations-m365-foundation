@@ -11,7 +11,7 @@
     "layerStatus": {
       "email": "LIVE — 3 offsets, smoke-tested (all landed)",
       "calendar": "LIVE — two-way, smoke-tested all 4 directions (create/push/pull/teardown), 0 residue",
-      "planner": "NOT BUILT — gated on Adam consent session + plannerPlanId below"
+      "planner": "CODE-COMPLETE + INERT — built into the engine builder (hub-driven one-way), gated on planner.groupId+planId below; verified offline (swagger + structural check). Activate via the consent-session runbook in docs/OPERATIONS_FOLLOWUP_BACKBONE.md s9a"
     },
     "retiresOldFlow": "8665f8d0-43c7-4067-b2b9-b57e7450ab6d"
   },
@@ -46,11 +46,19 @@
         "nextAction": "NextAction",
         "priority": "Priority"
       },
-      "openWhen": { "field": "SignalStatus", "notIn": ["Closed", "Converted"] },
+      "openWhen": {
+        "field": "SignalStatus",
+        "notIn": [
+          "Closed",
+          "Converted"
+        ]
+      },
       "planner": {
-        "note": "Dedicated 'CRM Follow-ups' plan in the Guided AI Labs M365 group. planId + bucket ids filled in during the engine build phase.",
-        "planId": null,
-        "bucketStrategy": "by-priority"
+        "note": "Dedicated 'CRM Follow-ups' plan in the Guided AI Labs M365 group. Both groupId (the owning M365 group's id) AND planId are required by the Planner connector (CreateTask_V4 + ListBuckets_V3 both take groupId). They are filled in during Adam's consent session (create-connections.js --only=planner,office365users --headed, then create the plan and resolve its id via ListGroupPlans). The engine's Planner layer stays INERT until BOTH are non-null.",
+        "groupId": "db49e096-5a34-48c5-9037-0f32c22bbda8",
+        "planId": "ukV82eUE7kqJ3aSZeL9B6n0AAyng",
+        "bucketStrategy": "by-priority",
+        "bucketNote": "by-priority = the engine matches each signal's Priority value to a Planner bucket of the same name (case-insensitive), falling back to the plan's first bucket. Creating named priority buckets is optional polish; the default bucket always works."
       }
     }
   ]

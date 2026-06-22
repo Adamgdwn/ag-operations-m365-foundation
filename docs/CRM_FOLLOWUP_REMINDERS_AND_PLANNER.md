@@ -4,15 +4,17 @@
 > but the work was lifted to a workspace-wide capability — see
 > **`docs/OPERATIONS_FOLLOWUP_BACKBONE.md`** (canonical). The CRM is now consumer #1
 > of a shared engine (`73af86ea-…`), not the owner of a private reminder flow. The
-> original one-day-ahead daily flow `8665f8d0-43c7-4067-b2b9-b57e7450ab6d` is retired
-> by the backbone. This doc is kept as the first-consumer reference / rationale.
+> original one-day-ahead daily flow `8665f8d0-43c7-4067-b2b9-b57e7450ab6d` is **retired
+> by the backbone (turned OFF 2026-06-22)**. This doc is kept as the first-consumer
+> reference / rationale.
 
-Status: **SUPERSEDED — email reminders + two-way calendar now LIVE via the backbone
-engine (built & smoke-tested 2026-06-21); Planner layer is next.** Raised 2026-06-21
-(Adam, during V5). Adam approved building the reminder agentically ("Go", 2026-06-21)
-— same reverse-engineered Power Platform toolchain as the Path B intake flows, NOT a
-hand-clicked template. That reminder grew into the backbone's email layer (3 offsets)
-plus a two-way calendar layer; Planner is the remaining layer.
+Status: **SUPERSEDED — all three backbone layers now LIVE: email reminders (3 offsets) +
+two-way calendar + Planner one-way task tracking, each built & smoke-tested (Planner
+end-to-end verified 2026-06-22, 0 residue). The backbone is complete for CRM (consumer #1).**
+Raised 2026-06-21 (Adam, during V5). Adam approved building the reminder agentically
+("Go", 2026-06-21) — same reverse-engineered Power Platform toolchain as the Path B intake
+flows, NOT a hand-clicked template. That reminder grew into the backbone's email layer
+(3 offsets), two-way calendar layer, and the now-live Planner layer.
 
 ## The shape (agreed)
 

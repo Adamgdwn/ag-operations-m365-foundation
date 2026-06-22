@@ -1,5 +1,5 @@
 {
-  "purpose": "Operations follow-up engine (email layer)",
+  "purpose": "Operations follow-up engine (email + calendar + planner layers)",
   "flowName": "73af86ea-18d2-4bc4-9cd0-aa03a461b800",
   "displayName": "GAIL — Operations follow-up engine",
   "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
@@ -7,6 +7,12 @@
   "createdStatus": 200,
   "spConnection": "4c53f079bec84a81a87ed7d58c67401e",
   "outlookConnection": "c0eeec32e191439e979a11c310d424db",
+  "plannerLayer": {
+    "plannerConnection": "7fccd9fb0f984dbcb61b8df6b39e5156",
+    "usersConnection": "bc5f2e1fd70b4e3fba7ecaebaed4a2e3",
+    "groupId": "db49e096-5a34-48c5-9037-0f32c22bbda8",
+    "planId": "ukV82eUE7kqJ3aSZeL9B6n0AAyng"
+  },
   "offsets": [
     "1 day before",
     "30 minutes before",

@@ -32,7 +32,19 @@ const CONNECTORS = [
 ].filter(c => !only || only.includes(c.key));
 
 (async () => {
-  const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: !headed, viewport: { width: 1400, height: 950 } });
+  // Prefer the already-signed-in WARM Edge over CDP (it locks the profile, so a cold
+  // launchPersistentContext would fail while it is up); fall back to a cold headed launch.
+  const CDP_PORT = process.env.CDP_PORT || '9222';
+  let ctx, browser, ownCtx = false;
+  try {
+    browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`, { timeout: 8000 });
+    ctx = browser.contexts()[0] || await browser.newContext();
+    log(`connected to WARM Edge over CDP :${CDP_PORT} (contexts=${browser.contexts().length})`);
+  } catch (e) {
+    log(`CDP connect failed (${e.message.split('\n')[0]}); cold headed launch`);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: !headed, viewport: { width: 1400, height: 950 } });
+    ownCtx = true;
+  }
   const page = ctx.pages()[0] || await ctx.newPage();
   const tokens = {};
   const netlog = [];
@@ -111,6 +123,6 @@ const CONNECTORS = [
   const finalList = await listConns();
   fs.writeFileSync(path.join(CAP, 'connections-final.json'), JSON.stringify(finalList.map(c => ({ name: c.name, apiId: c.properties && c.properties.apiId, displayName: c.properties && c.properties.displayName, status: c.properties && c.properties.statuses && c.properties.statuses.map(s => s.status).join(',') })), null, 2));
   log(`final connections: ${finalList.length}`);
-  await ctx.close();
+  if (ownCtx) await ctx.close(); // never kill the warm Edge; detach only
   log('done');
 })();
