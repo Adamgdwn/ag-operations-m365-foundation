@@ -1,9 +1,14 @@
 # Custom Intake Form Plan (replace Microsoft Forms with a branded site form)
 
-**Status:** APPROVED — Power Automate HTTP-trigger path. **BLOCKED ON LICENSE:** the HTTP
-request trigger needs **Power Automate Premium** (activation returns 403
-`MissingAdequateQuotaPolicy`). Flow is built + deployed but **Suspended** until a premium
-license is assigned to the maker. Decisions (2026-06-22): Adam chose to **pay for Power
+**Status:** ✅ **ENDPOINT LIVE + VERIFIED (2026-06-23).** Premium license assigned → flow
+**Started** → e2e PASS both brands (full field + provenance parity) → guard negatives
+(bad secret / honeypot / bad source) all correctly **blocked** → 0 residue. Remaining:
+hand the endpoint + secret + form spec to the Linux website repos, they build the branded
+form, joint browser e2e, then switch CTAs + retire the Forms flows (§6).
+
+**Status (history):** APPROVED — Power Automate HTTP-trigger path. Was BLOCKED ON LICENSE: the
+HTTP request trigger needs **Power Automate Premium** (activation returned 403
+`MissingAdequateQuotaPolicy`); resolved once a premium license was assigned to the maker. Decisions (2026-06-22): Adam chose to **pay for Power
 Automate Premium** (over the non-premium app-reg/Graph or Forms-proxy paths) and confirmed
 the brand sites **have a backend** (so the backend POSTs server-side to the flow URL with the
 secret). Anti-spam = **secret header + honeypot** only (no CAPTCHA). Next: assign the license

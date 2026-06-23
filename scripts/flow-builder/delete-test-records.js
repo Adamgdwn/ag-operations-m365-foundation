@@ -19,11 +19,23 @@ const LIST_TITLE = 'CRM - New Signals';
 const TENANT_ACCT = 'adamgoodwin@guidedailabs.com';
 const MARK = 'GAIL-INTERNAL-WALKTHROUGH';
 const DRY = process.argv.includes('--dry');
+const CDP_PORT = process.env.CDP_PORT || '9222';
 const log = (m) => console.log(`[${new Date().toISOString()}] ${m}`);
 
 (async () => {
-  const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: true, viewport: { width: 1200, height: 900 } });
-  const p = ctx.pages()[0] || await ctx.newPage();
+  // CDP-first (attach to warm signed-in Edge), cold-launch fallback. See warm-edge.js.
+  let ctx, browser, ownCtx = false;
+  try {
+    browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`, { timeout: 8000 });
+    ctx = browser.contexts()[0] || await browser.newContext();
+    log(`connected to WARM Edge over CDP :${CDP_PORT}`);
+  } catch (e) {
+    log(`CDP connect failed (${e.message.split('\n')[0]}); cold launch`);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: true, viewport: { width: 1200, height: 900 } });
+    ownCtx = true;
+  }
+  const cleanup = async () => { try { if (ownCtx) await ctx.close(); else if (browser) await browser.close(); } catch {} };
+  const p = await ctx.newPage();
   await p.goto(SITE, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await p.waitForTimeout(4000);
   const body = await p.evaluate(() => document.body ? document.body.innerText : '').catch(() => '');
@@ -36,8 +48,8 @@ const log = (m) => console.log(`[${new Date().toISOString()}] ${m}`);
   const items = lj.value || [];
   log(`found ${items.length} test record(s) named "${MARK}":`);
   for (const it of items) log(`  Id ${it.Id}  Source=${it.IntakeSource}  Created=${it.Created}`);
-  if (!items.length) { log('nothing to delete.'); await ctx.close(); process.exit(0); }
-  if (DRY) { log('dry run — not deleting.'); await ctx.close(); process.exit(0); }
+  if (!items.length) { log('nothing to delete.'); await cleanup(); process.exit(0); }
+  if (DRY) { log('dry run — not deleting.'); await cleanup(); process.exit(0); }
 
   // 2) Get a form digest for write operations.
   const dr = await p.request.post(`${SITE}/_api/contextinfo`, { headers: { accept: 'application/json;odata=nometadata' } });
@@ -56,6 +68,6 @@ const log = (m) => console.log(`[${new Date().toISOString()}] ${m}`);
   const vr = await p.request.get(listUrl, { headers: { accept: 'application/json;odata=nometadata' } });
   const remaining = (JSON.parse(await vr.text()).value || []).length;
   log(`\nDeleted ${ok}/${items.length}. Remaining "${MARK}" records: ${remaining}`);
-  await ctx.close();
+  await cleanup();
   process.exit(remaining === 0 ? 0 : 5);
 })();
