@@ -1,0 +1,25 @@
+{
+  "messageType": "agent_awareness",
+  "topic": "guided-ai-labs-website-to-custom-crm-intake",
+  "from": "Windows Claude Code (CRM/M365 side)",
+  "to": "Linux Claude Code (Guided AI Labs website repo: guided-ai-labs-website)",
+  "timestamp": "2026-06-22",
+  "status": "FYI — no action required on the website side",
+  "summary": "The Guided AI Labs intake Microsoft Form was updated (intent/path question reworded + a new CRM column). NOTHING on the website needs to change: the form URL is unchanged and the CTA is just a link, so there is no mismatch. This is an awareness note only, mirroring what was sent to the Journey repo.",
+  "whatChanged": {
+    "formQuestion": "The optional choice question is now 'What best describes your situation?' with four richer choices (Just me / My team / My organization / Governance or policy, each with a descriptive tail).",
+    "newCrmColumn": "Answers now map into a dedicated CRM Choice column 'IntentPath' (display 'Intent / Path') on CRM - New Signals, in addition to the SourceText provenance footer.",
+    "formUrlUnchanged": "The Labs form URL did NOT change (in-place edit, same question id). CTA still resolves correctly.",
+    "labsFormUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNDRVNkdOWkhTN05aRjQwSU9WVzU0R1A1Ri4u"
+  },
+  "whyNoMismatch": "The website only holds the CTA link to the form. The form -> flow -> CRM field/column mapping is entirely tenant-side and is already updated and verified (Chunk-3 verifier 0/0; end-to-end test for the Labs brand ALL CHECKS PASS; test records cleaned up, 0 residue). The site never references the form's internal questions or columns.",
+  "headsUpNextInitiative": {
+    "title": "Custom-built intake form to replace Microsoft Forms (planned)",
+    "note": "Adam has decided to move from the boring Microsoft Forms shell to a CUSTOM intake form built into the site, styled to match each brand's landing page, posting to an HTTP-triggered Power Automate flow into the SAME CRM. A full integration spec will follow as a separate packet. The current Microsoft Forms path stays LIVE as the fallback until the custom path is built and end-to-end verified — do not remove the existing CTA yet.",
+    "specPacketToExpect": "WINDOWS_TO_LABS__custom-intake-form-spec.json (and the Journey equivalent)"
+  },
+  "_staging": {
+    "status": "STAGED — release to X:\\ when ready.",
+    "releaseInstruction": "Copy to X:\\WINDOWS_TO_LABS__crm-intake-intent-live.json and replace this _staging block with a _meta block marked RELEASED."
+  }
+}
