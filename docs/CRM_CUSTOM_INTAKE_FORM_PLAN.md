@@ -12,11 +12,22 @@ CTA / retiring the Forms flow is now unblocked at the owner's discretion. Verifi
 (scratchpad): submit-engage-test.js (drives the live form via warm-Edge/CDP) + verify-engage-record.js.
 Closeout packet: `X:\WINDOWS_TO_LABS__custom-intake-joint-verified-20260623.md`.
 
-**STILL OPEN — Guided AI Journey custom form NOT YET BUILT.** Same endpoint serves both brands
-(payload `source` = `Guided AI Journey`); spec already released
-(`X:\WINDOWS_TO_JOURNEY__custom-intake-form-spec.json`, live endpoint+secret injected). Standing
-build request re-sent: `X:\WINDOWS_TO_JOURNEY__custom-intake-build-request-20260623.md`. When the
-Journey repo deploys, Windows side runs the same joint e2e (labelled test → parity check → delete).
+**✅ JOURNEY CUSTOM FORM LIVE + JOINT-VERIFIED END-TO-END (2026-06-23).** The Linux Journey repo
+built + deployed the custom `/intake` form (commit `48b48df`, Vercel `dpl_2FZuT7AfQzJcNYpnY6EmbKLdUxgU`,
+prod `https://www.guidedaijourney.com`; backend route `/api/journey-intake`; homepage CTA now points
+to `/intake`). Windows side ran the same joint browser e2e against the LIVE form via warm-Edge/CDP:
+`/api/journey-intake` → **202 `{"ok":true}`** → flow → CRM, **ALL CHECKS PASS** (created CRM Id 17;
+IntakeSource=Guided AI Journey, IntentPath byte-exact `My team — I want to build team capability`,
+SignalType=Website, SignalStatus=New, full provenance footer `Intake: custom site form` + intake id
+`256ac23a…` + submitted + capture), then **scope-deleted → 0 residue.** Same shared HTTP endpoint
+serves both brands (payload `source` = `Guided AI Journey`). The Microsoft Forms fallback stays LIVE
+on the Journey site (not removed); switching the primary CTA / retiring Forms is unblocked at the
+owner's discretion. Verification scripts (scratchpad): submit-journey-test.js + verify-journey-record.js.
+Closeout packet: `X:\WINDOWS_TO_JOURNEY__custom-intake-joint-verified-20260623.md`.
+
+**Non-blocker flagged to Linux (both brands):** the `company` honeypot input renders visible in the
+DOM (`hidden:false`); should be visually hidden so real visitors never see it. Functionally fine —
+leaving it empty still passes; bots that fill it are still dropped by the guard.
 
 **Status (history — endpoint stand-up):** ✅ ENDPOINT LIVE + VERIFIED (2026-06-23). Premium license
 assigned → flow **Started** → server-side e2e PASS both brands (full field + provenance parity) →
