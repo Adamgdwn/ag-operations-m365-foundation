@@ -14,8 +14,26 @@ Current workspace source of truth:
 
 ## Stop Point
 
-**Guided AI Labs custom intake form is LIVE and JOINT-VERIFIED end-to-end.** Boxed up
-for the night. Journey custom form is the one open follow-on (not built yet).
+**BOTH brand custom intake forms are LIVE and JOINT-VERIFIED end-to-end.** Labs verified
+late 2026-06-22→23; **Guided AI Journey verified the morning of 2026-06-23** (this session).
+Nothing structurally open — remaining items are discretionary/owner-only (see Carry-Forwards).
+
+> **2026-06-23 morning update (Journey closeout).** A background watcher caught Linux's
+> Journey deploy handoff at 7:09 AM (form live at `https://www.guidedaijourney.com/intake`,
+> commit `48b48df`, Vercel `dpl_2FZuT7AfQzJcNYpnY6EmbKLdUxgU`, backend route
+> `/api/journey-intake`, homepage CTA → `/intake`). Windows inspected the live form DOM
+> (byte-exact contract match), drove the marker test (`GAIL-INTERNAL-WALKTHROUGH`) via
+> warm-Edge/CDP → `/api/journey-intake` **202 `{ok:true}`** → **CRM - New Signals Id 17,
+> ALL PARITY CHECKS PASS** (IntakeSource=Guided AI Journey, IntentPath byte-exact,
+> Website/New, full provenance footer + intake id `256ac23a…`) → **scope-deleted, 0 residue.**
+> Closeout packet `X:\WINDOWS_TO_JOURNEY__custom-intake-joint-verified-20260623.md` sent;
+> plan doc + memory + ledger updated. Reusable scratchpad scripts:
+> `submit-journey-test.js`, `verify-journey-record.js`, `inspect-journey-form.js`,
+> `watch-journey-deploy.ps1`. **Shared non-blocker flagged to BOTH Linux repos:** the
+> `company` honeypot input renders visible in the DOM on both forms; should be visually
+> hidden (NOT a gate — verified state stands; selectors drive by `name`).
+
+### (history) Labs stop point
 
 Completed this session:
 
@@ -78,10 +96,13 @@ edb21ff custom HTTP intake LIVE + verified; 3898d0f server-side e2e + premium de
 
 ## Carry-Forwards
 
-- **Guided AI Journey custom form — NOT BUILT.** Spec + live endpoint already on `X:\`;
-  standing request `X:\WINDOWS_TO_JOURNEY__custom-intake-build-request-20260623.md`.
-  When the Journey repo deploys, Windows runs the same joint e2e (marker test → parity →
-  delete). Adam shut that repo down tonight; resume at his discretion.
+- **Guided AI Journey custom form — ✅ DONE (verified 2026-06-23 morning).** Built, deployed,
+  joint-verified live (CRM Id 17, 0 residue). No longer an open item — see the morning-update
+  block under Stop Point.
+- **Honeypot visual-hide (both brands) — Linux cosmetic cleanup, NOT a gate.** The `company`
+  honeypot renders visible in the DOM on both forms; flagged to both Linux repos in their
+  closeout packets. Optional belt-and-suspenders: a ~2-min re-confirm after Linux ships the
+  fix (selectors drive by `name`, so it would pass trivially). Not required to box up.
 - **Adam's own `test one` submission (planned ~2026-06-23/24):** dummy values, name
   `test one`. It will NOT carry the auto-delete marker, so it won't be auto-cleaned —
   Adam deletes it, or tells me the exact name and I scope-delete it.
