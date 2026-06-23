@@ -50,9 +50,24 @@ const questionInfo = () => JSON.stringify({
 const HEADED = process.argv.includes('--headed') || process.env.HEADED === '1';
 const TOKEN_WAIT_MS = HEADED ? 180000 : 20000; // headed: give time to sign in once
 
+const CDP_PORT = process.env.CDP_PORT || '9222';
 (async () => {
-  const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: !HEADED, viewport: { width: 1400, height: 900 } });
-  const page = ctx.pages()[0] || await ctx.newPage();
+  // Prefer the already-signed-in WARM Edge over CDP (avoids a fresh sign-in and the
+  // profile lock); fall back to a cold launch (headed for one-time sign-in) when no
+  // warm instance is running. See scripts/forms-builder/warm-edge.js.
+  let ctx, browser, ownCtx = false;
+  try {
+    browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`, { timeout: 8000 });
+    ctx = browser.contexts()[0] || await browser.newContext();
+    log(`connected to WARM Edge over CDP :${CDP_PORT} (contexts=${browser.contexts().length})`);
+  } catch (e) {
+    log(`CDP connect failed (${e.message.split('\n')[0]}); cold launch (headless=${!HEADED})`);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: !HEADED, viewport: { width: 1400, height: 900 } });
+    ownCtx = true;
+  }
+  // cleanup: close our own cold context, OR just detach CDP (never kill the warm Edge).
+  const cleanup = async () => { try { if (ownCtx) await cleanup(); else if (browser) await browser.close(); } catch {} };
+  const page = await ctx.newPage();
   let hdr = null;
   page.on('request', req => { if (!hdr && req.headers()['__requestverificationtoken']) hdr = req.headers(); });
   const TENANT_ACCT = 'adamgoodwin@guidedailabs.com';
@@ -72,7 +87,7 @@ const TOKEN_WAIT_MS = HEADED ? 180000 : 20000; // headed: give time to sign in o
     firstPass = false;
     if (!haveToken()) await page.waitForTimeout(3000);
   }
-  if (!haveToken()) { log('ERROR: no verification token (sign-in not completed in time)'); await ctx.close(); process.exit(1); }
+  if (!haveToken()) { log('ERROR: no verification token (sign-in not completed in time)'); await cleanup(); process.exit(1); }
   const H = { 'content-type': 'application/json; charset=UTF-8', 'accept': 'application/json' };
   for (const h of ['__requestverificationtoken', 'odata-maxverion', 'odata-version', 'x-ms-form-request-ring', 'x-ms-form-request-source', 'x-ms-form-muid', 'x-usersessionid', 'x-correlationid']) if (hdr[h]) H[h] = hdr[h];
   const api = {
@@ -116,7 +131,7 @@ const TOKEN_WAIT_MS = HEADED ? 180000 : 20000; // headed: give time to sign in o
     log(`  readback: present=${!!now} choicesOk=${choicesOk} totalQuestions=${qs2.length}`);
     if (!now || !choicesOk) allOk = false;
   }
-  await ctx.close();
+  await cleanup();
   log(`done allOk=${allOk}`);
   process.exit(allOk ? 0 : 1);
 })();

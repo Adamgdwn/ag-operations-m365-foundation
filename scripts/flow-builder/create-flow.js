@@ -47,14 +47,29 @@ const Q = {
 };
 const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
 
+const CDP_PORT = process.env.CDP_PORT || '9222';
 (async () => {
-  const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: true, viewport: { width: 1400, height: 950 } });
-  const page = ctx.pages()[0] || await ctx.newPage();
+  // Prefer the already-signed-in WARM Edge over CDP (it locks the profile, so a
+  // cold launchPersistentContext would fail while it is up); fall back to a cold
+  // headless launch when no warm instance is running. See scripts/forms-builder/warm-edge.js.
+  let ctx, browser, ownCtx = false;
+  try {
+    browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`, { timeout: 8000 });
+    ctx = browser.contexts()[0] || await browser.newContext();
+    log(`connected to WARM Edge over CDP :${CDP_PORT} (contexts=${browser.contexts().length})`);
+  } catch (e) {
+    log(`CDP connect failed (${e.message.split('\n')[0]}); cold headless launch`);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: true, viewport: { width: 1400, height: 950 } });
+    ownCtx = true;
+  }
+  // cleanup: close our own cold context, OR just detach CDP (never kill the warm Edge).
+  const cleanup = async () => { try { if (ownCtx) await cleanup(); else if (browser) await browser.close(); } catch {} };
+  const page = await ctx.newPage();
   const tokens = {};
   page.on('request', req => { const a = req.headers()['authorization']; if (a && /^bearer /i.test(a)) { const h = new URL(req.url()).host; if (!tokens[h]) tokens[h] = a.replace(/^bearer\s+/i, ''); } });
   await page.goto(`https://make.powerautomate.com/environments/${ENV}/flows`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await page.waitForTimeout(9000);
-  if (!tokens[EHOST] || !tokens[FLOWHOST]) { log(`ERROR: missing token (EHOST=${!!tokens[EHOST]} FLOW=${!!tokens[FLOWHOST]})`); await ctx.close(); process.exit(1); }
+  if (!tokens[EHOST] || !tokens[FLOWHOST]) { log(`ERROR: missing token (EHOST=${!!tokens[EHOST]} FLOW=${!!tokens[FLOWHOST]})`); await cleanup(); process.exit(1); }
   const get = async (host, url) => { const r = await page.request.get(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json' } }); return { status: r.status(), body: await r.text() }; };
   const post = async (host, url, body) => { const r = await page.request.post(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json', 'content-type': 'application/json' }, data: JSON.stringify(body) }); return { status: r.status(), body: await r.text() }; };
   const patch = async (host, url, body) => { const r = await page.request.patch(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json', 'content-type': 'application/json' }, data: JSON.stringify(body) }); return { status: r.status(), body: await r.text() }; };
@@ -65,7 +80,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   const spConn = findConn('shared_sharepointonline');
   const formsConn = findConn('shared_microsoftforms');
   log(`SharePoint conn: ${spConn ? spConn.name : 'MISSING'} | Forms conn: ${formsConn ? formsConn.name : 'MISSING'}`);
-  if (!spConn || !formsConn) { log('ERROR: both connections must exist (Connected) before building the flow.'); await ctx.close(); process.exit(2); }
+  if (!spConn || !formsConn) { log('ERROR: both connections must exist (Connected) before building the flow.'); await cleanup(); process.exit(2); }
 
   // 2) Resolve the list GUID via SharePoint REST (uses the persisted M365 session).
   await page.goto(SITE, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
@@ -75,7 +90,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   const lr = await page.request.get(`${SITE}/_api/web/lists/getbytitle('${LIST_TITLE}')?$select=Id`, { headers: { accept: 'application/json;odata=nometadata' } });
   const listId = JSON.parse(await lr.text()).Id;
   log(`list GUID: ${listId}`);
-  if (!listId) { log('ERROR: could not resolve list GUID'); await ctx.close(); process.exit(3); }
+  if (!listId) { log('ERROR: could not resolve list GUID'); await cleanup(); process.exit(3); }
 
   // 3) Build the flow definition.
   // SourceText carries the full labelled answer dump PLUS an in-band provenance
@@ -162,7 +177,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
     cr = await patch(FLOWHOST, `${base}/${existingName}?api-version=2016-11-01`, flowBody);
     log(`  update -> ${cr.status}`);
     fs.writeFileSync(path.join(CAP, `flow-update-${brandArg}.json`), `status: ${cr.status}\n\n${cr.body}`);
-    if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await ctx.close(); process.exit(4); }
+    if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await cleanup(); process.exit(4); }
     created = JSON.parse(cr.body);
     flowName = created.name || existingName;
   } else {
@@ -170,7 +185,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
     cr = await post(FLOWHOST, `${base}?api-version=2016-11-01`, flowBody);
     log(`  create -> ${cr.status}`);
     fs.writeFileSync(path.join(CAP, `flow-create-${brandArg}.json`), `status: ${cr.status}\n\n${cr.body}`);
-    if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await ctx.close(); process.exit(4); }
+    if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.slice(0, 1500)); await cleanup(); process.exit(4); }
     created = JSON.parse(cr.body);
     flowName = created.name;
   }
@@ -182,5 +197,5 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   fs.writeFileSync(path.join(OUT, `flow-result-${brandArg}.json`), JSON.stringify(result, null, 2));
   log(`RESULT: flow=${flowName} state=${result.state}`);
   log(`wrote inventory/forms-build/flow-result-${brandArg}.json`);
-  await ctx.close();
+  await cleanup();
 })();
