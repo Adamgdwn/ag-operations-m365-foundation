@@ -1,6 +1,19 @@
 # Custom Intake Form Plan (replace Microsoft Forms with a branded site form)
 
-**Status:** DRAFT / awaiting go-ahead on the public HTTP write endpoint (see §7).
+**Status:** APPROVED — Power Automate HTTP-trigger path. **BLOCKED ON LICENSE:** the HTTP
+request trigger needs **Power Automate Premium** (activation returns 403
+`MissingAdequateQuotaPolicy`). Flow is built + deployed but **Suspended** until a premium
+license is assigned to the maker. Decisions (2026-06-22): Adam chose to **pay for Power
+Automate Premium** (over the non-premium app-reg/Graph or Forms-proxy paths) and confirmed
+the brand sites **have a backend** (so the backend POSTs server-side to the flow URL with the
+secret). Anti-spam = **secret header + honeypot** only (no CAPTCHA). Next: assign the license
+→ `set-flow-state.js start` → `http-intake-e2e.js` → release form spec to the Linux repos.
+
+Flow: `GAIL — Custom site intake to CRM (create-only, HTTP)` id
+`9582c422-158d-4975-ba7f-81b4d77e497b`. Endpoint URL + shared secret live in
+`.local/flow-builder/` (gitignored); handed to the website repos only after activation + e2e.
+
+**Status (original):** DRAFT / awaiting go-ahead on the public HTTP write endpoint (see §7).
 **Decided 2026-06-22:** Adam chose "go straight to custom form" over theming the
 Microsoft Forms shell. The Forms look can't truly match a landing page (Forms only
 allows a background colour/image, an accent colour, and a header image — no custom
