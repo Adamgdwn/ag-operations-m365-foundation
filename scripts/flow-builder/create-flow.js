@@ -43,7 +43,7 @@ const qidOpt = (titleStartsWith) => { const q = fq.questions.find(x => x.title.t
 const Q = {
   full: qid('Full name'), email: qid('Email'), org: qid('Organization'),
   need: qid('What are you looking for'), hear: qid('How did you hear'),
-  intent: qidOpt('Who is this for'), consent: qid('I agree'),
+  intent: qidOpt('What best describes your situation'), consent: qid('I agree'),
 };
 const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
 
@@ -85,7 +85,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
   const NL = "decodeUriComponent('%0A')";
   const submitDate = "outputs('Get_response_details')?['body/submitDate']";
   const responseId = "triggerOutputs()?['body/resourceData/responseId']";
-  const intentLine = Q.intent ? `'Who is this for: ', coalesce(${ans(Q.intent)},''), ${NL}, ` : '';
+  const intentLine = Q.intent ? `'Situation: ', coalesce(${ans(Q.intent)},''), ${NL}, ` : '';
   const sourceTextExpr = `@concat('Full name: ', coalesce(${ans(Q.full)},''), ${NL}, 'Email: ', coalesce(${ans(Q.email)},''), ${NL}, 'Organization: ', coalesce(${ans(Q.org)},''), ${NL}, 'What are you looking for: ', coalesce(${ans(Q.need)},''), ${NL}, 'How did you hear about us: ', coalesce(${ans(Q.hear)},''), ${NL}, ${intentLine}'Consent: ', coalesce(${ans(Q.consent)},''), ${NL}, ${NL}, '— Provenance —', ${NL}, 'Source: ${brand.source}', ${NL}, 'Intake form: ${brand.mailbox}', ${NL}, 'Forms response id: ', coalesce(${responseId},''), ${NL}, 'Submitted: ', coalesce(${submitDate},''), ${NL}, 'Capture: Auto-captured via website intake flow')`;
   const titleExpr = `@concat('${brand.source} — ', coalesce(${ans(Q.full)}, ${ans(Q.org)}, ${ans(Q.email)}, 'New website signal'))`;
 
@@ -131,6 +131,7 @@ const ans = (id) => `outputs('Get_response_details')?['body/${id}']`;
             'item/NextAction': 'Triage new website signal',
             'item/SignalType/Value': 'Website',
             'item/IntakeSource/Value': brand.source,
+            ...(Q.intent ? { 'item/IntentPath/Value': `@${ans(Q.intent)}` } : {}),
             'item/SignalStatus/Value': 'New',
             'item/Priority/Value': 'Normal',
           },

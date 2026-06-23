@@ -1,0 +1,104 @@
+{
+  "_staging": {
+    "status": "STAGED — NOT YET SENT",
+    "note": "This packet is intentionally NOT on the DirectLink Exchange (X:\\) yet. Adam is doing major surgery on the Guided AI Journey site and does not want to distract that agent. When ready, copy this file to the Exchange folder as 'WINDOWS_TO_LINUX__journey-intake-form-url.json' (strip the STAGED__ prefix) so the Journey-site agent picks it up.",
+    "stagedAt": "repo: inventory/forms-build/STAGED__WINDOWS_TO_LINUX__journey-intake-form-url.json",
+    "targetRepo": "Guided AI Journey Website and Tools (pop-os)"
+  },
+  "messageType": "agent_build_request",
+  "topic": "guided-ai-journey-website-to-custom-crm-intake",
+  "from": "Windows Claude Code (CRM/M365 side)",
+  "to": "Linux Codex (Guided AI Journey Website and Tools repo)",
+  "timestamp": "2026-06-22",
+  "status": "TENANT_SIDE_LIVE_AND_VERIFIED — website wiring is the only open item",
+  "summary": "The Guided AI Journey public intake form and its create-only Power Automate flow are already built, Started, and proven end-to-end into the CRM. Your job is website-side only: surface the Journey Microsoft Forms URL (CTA + embed). Do NOT build any CRM POST route, lead storage, or hold any tenant secret. This mirrors exactly what the Guided AI Labs website already did — same pattern, different form URL.",
+
+  "formToWireIn": {
+    "brand": "Guided AI Journey",
+    "formTitle": "Guided AI Journey — Get started",
+    "publicUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u",
+    "embedUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u&embed=true",
+    "isAnonymous": true,
+    "urlStableAcrossFormEdits": true,
+    "urlStableNote": "The form ID does not change when questions are added/edited. The 'Who is this for?' intent question was already added without changing this URL. Your embed needs no change if the form content evolves."
+  },
+
+  "integrationContract": {
+    "mirrorOf": "guided-ai-labs-website (already validated and in production at www.guidedailabs.com/#engage)",
+    "mode": "iframe embed + new-tab fallback",
+    "iframeSrcMode": "public_url_plus_embed_true (use embedUrl above)",
+    "newTabFallbackMode": "plain_public_response_url (use publicUrl above)",
+    "suggestedHashRoute": "#engage",
+    "csp": "Add 'frame-src https://forms.office.com' to the site Content-Security-Policy (next.config or equivalent).",
+    "envVarPattern": [
+      "NEXT_PUBLIC_GUIDED_AI_JOURNEY_INTAKE_FORM_URL = publicUrl",
+      "NEXT_PUBLIC_GUIDED_AI_JOURNEY_INTAKE_FORM_EMBED_URL = embedUrl"
+    ],
+    "envVarNote": "Drive the embed from env vars (do not hardcode the URL in a component), matching the Labs site convention. Adopt whichever naming your repo standard prefers; the Labs site accepted both GAIL_ and GUIDED_AI_LABS_ prefixed names.",
+    "visitorEntryPointsExample": [
+      "top nav 'Start intake' CTA",
+      "final CTA 'Start the intake' button",
+      "any reception/handoff card 'Start the intake' link"
+    ]
+  },
+
+  "websiteMustNotDo": [
+    "No Next.js/server CRM POST route",
+    "No site-side lead storage or database",
+    "No CRM credentials, tenant secrets, or app registration in the website repo",
+    "No native on-site form that posts directly to the CRM (that is OUT of the authorized Path B envelope and would require premium/HTTP write — a separate governance decision)"
+  ],
+
+  "whyNoBackendNeeded": "The Microsoft Form is the single ingestion point. M365 owns collection and CRM filing. A create-only flow (id 2a2cd963-1469-48a5-95a5-04e696ff3543, state Started) fires on each Journey form submission and files a clean record into the 'CRM - New Signals' SharePoint list. The website never touches the CRM.",
+
+  "fieldsCollectedByTheForm": [
+    "Full name (required)",
+    "Email (required, validated)",
+    "Organization (optional)",
+    "What are you looking for? (required, free text)",
+    "How did you hear about us? (optional, free text)",
+    "Who is this for? (Choice: For me / For my team / For my organization / Governance or policy)",
+    "I agree to be contacted about my enquiry. (required consent checkbox)"
+  ],
+
+  "crmHandling": {
+    "writesTo": "CRM - New Signals",
+    "stamps": { "Source": "Guided AI Journey", "SignalType": "Website", "SignalStatus": "New", "Priority": "Normal" },
+    "fieldMapping": {
+      "Full name": "PersonName (+ Title prefix 'Guided AI Journey — <name/org>')",
+      "Email": "PersonEmail",
+      "Organization": "OrganizationName",
+      "What are you looking for?": "NeedSummary",
+      "How did you hear about us? + Who is this for? + Consent": "captured labelled in the SourceText note",
+      "provenance": "Form name, Microsoft Forms response id, submit timestamp, and 'Auto-captured' marker are written in-band into SourceText; received-time is also the SharePoint native Created stamp."
+    },
+    "identicalToLabs": "Same record shape and mapping as Guided AI Labs; the only brand-specific value is Source = 'Guided AI Journey'. Nothing brand-specific to handle on the website beyond using the Journey URL.",
+    "noAutoReply": "Submissions land as SignalStatus = New for human triage. There is no automated reply or outreach to the submitter."
+  },
+
+  "e2eAlreadyProven": {
+    "method": "A real response was submitted through the public Journey Forms URL from a fresh, unauthenticated browser, then the CRM list was read back.",
+    "result": "Clean record created (Source = Guided AI Journey, SignalType = Website, SignalStatus = New, business fields populated, provenance footer present). PASS.",
+    "evidence": "inventory/forms-build/flow-result-journey.json, .local/flow-builder/capture/e2e-journey-crm-item.json"
+  },
+
+  "testProtocolForYourCTA": [
+    "1. From the live Guided AI Journey site, open the intake form via your CTA (embedded iframe or the external open-form link).",
+    "2. Submit a response with Full name = 'WEBSITE-CTA-TEST', a recognizable Email, and any 'What are you looking for?' text.",
+    "3. Within ~1 minute the response posts to Microsoft Forms and the flow fires automatically.",
+    "4. The M365 side confirms a new 'CRM - New Signals' record with Source = 'Guided AI Journey', Status = New, and your typed text present.",
+    "5. If nothing appears within ~5 minutes, capture the Forms 'response received' screen and flag it; the tenant-side flow run history shows the cause. A miss implies no website change — the failure would be tenant-side."
+  ],
+
+  "expectationNote": "Path B files ONE record in 'CRM - New Signals' for human triage. It does NOT auto-create a full multi-list prospect (Organization + Contact + Engagement). Promotion to a durable prospect is a manual triage step on the CRM side today.",
+
+  "responseRequested": {
+    "expectedAckFile": "X:\\LINUX_TO_WINDOWS__journey-intake-website-ready.json",
+    "pleaseInclude": [
+      "iframe mode confirmed (embed=true) + new-tab fallback to public URL",
+      "CSP frame-src https://forms.office.com added",
+      "env var names used",
+      "whether a live-site CTA smoke submission was run (optional, not blocking)"
+    ]
+  }
+}

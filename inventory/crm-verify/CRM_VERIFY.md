@@ -1,14 +1,14 @@
 # CRM Verifier (Chunk 3)
 
-Generated: 2026-06-22 10:39:08
+Generated: 2026-06-22 22:11:43
 
 Result: PASS
-Failures: 0 | Warnings: 0 | Total checks: 178
+Failures: 0 | Warnings: 0 | Total checks: 180
 
 Site: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
 Intake list: CRM - New Signals
-Checks CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-checks-20260622-103608.csv
-Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-20260622-103608.log
+Checks CSV: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-checks-20260622-220827.csv
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\.\inventory\crm-verify\crm-verify-20260622-220827.log
 
 ## Manual browser checks still required (Chunk 6 - a script cannot prove these)
 

@@ -53,9 +53,11 @@ const ANS = {
     catch { log(`  WARN could not fill "${label}"`); }
   }
   // Choice questions: pick an intent/path option, then the consent option.
-  // Two choice questions now exist ("Who is this for?" + the "I agree" consent),
-  // so select each by its visible option label to avoid index ambiguity.
-  const INTENT_PICK = 'For my team';
+  // Two choice questions now exist ("What best describes your situation?" + the
+  // "I agree" consent), so select each by its visible option label to avoid index
+  // ambiguity. INTENT_PICK matches the start of the "My team..." rich choice.
+  const INTENT_PICK = 'My team';
+  const INTENT_EXPECT = 'My team — I want to build team capability';
   let intentDone = false, consentDone = false;
   try { await vp.getByRole('radio', { name: new RegExp(INTENT_PICK, 'i') }).first().click({ timeout: 6000 }); intentDone = true; } catch {}
   try { await vp.getByRole('radio', { name: /I agree/i }).first().click({ timeout: 6000 }); consentDone = true; } catch {}
@@ -81,7 +83,7 @@ const ANS = {
   await tp.waitForTimeout(4000);
   const b = await tp.evaluate(() => document.body ? document.body.innerText : '').catch(() => '');
   if (/Pick an account/i.test(b)) { const t = await tp.$(`[data-test-id="${TENANT_ACCT}"]`).catch(() => null); if (t) { await t.click().catch(() => {}); await tp.waitForTimeout(7000); } }
-  const sel = '$select=Id,Title,PersonName,PersonEmail,OrganizationName,NeedSummary,SourceText,NextAction,SignalType,IntakeSource,SignalStatus,Priority,Created';
+  const sel = '$select=Id,Title,PersonName,PersonEmail,OrganizationName,NeedSummary,SourceText,NextAction,SignalType,IntakeSource,IntentPath,SignalStatus,Priority,Created';
   const url = `${SITE}/_api/web/lists/getbytitle('${LIST_TITLE}')/items?${sel}&$filter=PersonName eq '${MARK}'&$orderby=Id desc&$top=5`;
   let found = null;
   for (let i = 0; i < 24; i++) { // up to ~4 min
@@ -96,6 +98,7 @@ const ANS = {
   log('\n=== CRM ITEM CREATED ===');
   log(`  Id: ${found.Id}  Title: ${found.Title}`);
   log(`  Source (IntakeSource): ${found.IntakeSource}  [expected: ${expectedSource}]`);
+  log(`  IntentPath (column): ${found.IntentPath}  [expected: ${INTENT_EXPECT}]`);
   log(`  SignalType: ${found.SignalType}  SignalStatus: ${found.SignalStatus}  Priority: ${found.Priority}`);
   log(`  PersonName: ${found.PersonName}  Email: ${found.PersonEmail}  Org: ${found.OrganizationName}`);
   log(`  NeedSummary: ${(found.NeedSummary || '').slice(0, 80)}`);
@@ -109,7 +112,8 @@ const ANS = {
     typeWebsite: found.SignalType === 'Website',
     provenanceFooter: /Provenance/i.test(found.SourceText || '') && /Auto-captured/i.test(found.SourceText || ''),
     hasResponseId: /Forms response id:/i.test(found.SourceText || ''),
-    intentCaptured: /Who is this for:\s*For my team/i.test(found.SourceText || ''),
+    intentColumn: (found.IntentPath || '') === INTENT_EXPECT,
+    intentInSourceText: new RegExp(`Situation:\\s*${INTENT_PICK}`, 'i').test(found.SourceText || ''),
   };
   log('\n=== CHECKS ===');
   for (const [k, v] of Object.entries(checks)) log(`  ${v ? 'PASS' : 'FAIL'}  ${k}`);

@@ -18,7 +18,7 @@
     "sections": [
       {
         "displayName": "Capture",
-        "fields": ["Title", "PersonName", "PersonEmail", "OrganizationName", "SignalType", "IntakeSource", "Priority"]
+        "fields": ["Title", "PersonName", "PersonEmail", "OrganizationName", "SignalType", "IntakeSource", "IntentPath", "Priority"]
       },
       {
         "displayName": "Context",
@@ -38,6 +38,7 @@
     { "internalName": "OrganizationName", "displayName": "Organization", "type": "Text", "required": false },
     { "internalName": "SignalType", "displayName": "Signal type", "type": "Choice", "required": false, "default": "Referral" },
     { "internalName": "IntakeSource", "displayName": "Source", "type": "Choice", "required": false, "default": "Direct", "purpose": "Which intake front-door this signal came through. Operator-visible and operator-selectable. The Path B public brand forms stamp this automatically (Guided AI Labs / Guided AI Journey) via the intake flow; manual captures default to Direct. See docs/CRM_PUBLIC_INTAKE_PATH_B.md." },
+    { "internalName": "IntentPath", "displayName": "Intent / Path", "type": "Choice", "required": false, "purpose": "Audience/path the submitter self-selects on the public brand forms. Form question: 'What best describes your situation?' with four choices (Just me / My team / My organization / Governance or policy, each with a descriptive tail). Both brand forms carry it identically, so the CRM record shape is consistent regardless of which form was used. The Path B flow passes the chosen string straight into the IntentPath Choice column (values authored identical to the form). Optional — blank means the visitor skipped it. Added 2026-06-22 per Adam's 'keep consistency, richer' decision relayed via the Journey site agent (X:\\LINUX_TO_WINDOWS__crm-intake-intent-decision.json). Supersedes the earlier SourceText-only 'Who is this for?' capture." },
     { "internalName": "Priority", "displayName": "Priority", "type": "Choice", "required": false, "default": "Normal" },
     { "internalName": "NeedSummary", "displayName": "Need / opportunity", "type": "Note", "required": true },
     { "internalName": "SourceText", "displayName": "Email or context paste", "type": "Note", "required": false },
@@ -50,7 +51,7 @@
     { "internalName": "op_TrackOn", "displayName": "Track on", "type": "MultiChoice", "required": false, "backbone": true, "purpose": "Also reflect this follow-up on the Calendar and/or in Planner. Optional, opt-in. See config/followup.contract.json." }
   ],
   "requiredBusinessFields": ["Title", "NeedSummary"],
-  "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "SignalType", "IntakeSource", "Priority", "SourceText", "NextAction", "FollowUpDueDate", "RelatedLink", "SignalStatus", "ItemOwner", "op_Reminders", "op_TrackOn"],
+  "notRequiredFields": ["PersonName", "PersonEmail", "OrganizationName", "SignalType", "IntakeSource", "IntentPath", "Priority", "SourceText", "NextAction", "FollowUpDueDate", "RelatedLink", "SignalStatus", "ItemOwner", "op_Reminders", "op_TrackOn"],
   "requiredVsCardPlanNote": "The CRM / Relationships card plan lists PersonName, PersonEmail, OrganizationName, and FollowUpDueDate under 'Required fields'. The Stage 8C technical contract marks those four as NOT required. RESOLVED 2026-06-22: they stay NOT required (making them mandatory adds capture friction with no payoff).",
   "streamlineDecisionNote": "STREAMLINED 2026-06-22 (V5 / Chunk-6 usability finding — the daily intake felt cumbersome). Required set cut from 8 to 2 (Title + NeedSummary) — the only two free-text fields an operator always knows at capture time. The four defaulted Choice fields (SignalType=Referral, IntakeSource=Direct, Priority=Normal, SignalStatus=New) and the two remaining Note fields (SourceText, NextAction) are now OPTIONAL: their column defaults still auto-apply on create, so type/source/priority/status data quality is preserved, while SourceText and NextAction are filled at triage (the next lifecycle stage) instead of being forced at capture. The Chunk-3 verifier (Verify-CrmSharePoint.ps1) only enforces required=True on requiredBusinessFields, so shrinking that set keeps it at 0/0 PASS. Re-apply via scripts/spo/Apply-CrmSharePoint.ps1 (phrase apply-gail-crm-recovery) to push Required=False to the live list.",
   "hiddenFieldRule": "Every field in blockedFieldNames must have ShowInNewForm=false AND ShowInEditForm=false on CRM - New Signals. The Stage 8C verifier wrongly let these pass when ShowInNewForm/ShowInEditForm were DefaultTrue; the Chunk 3 verifier must FAIL on DefaultTrue or True.",
