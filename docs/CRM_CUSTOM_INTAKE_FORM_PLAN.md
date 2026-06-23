@@ -1,10 +1,26 @@
 # Custom Intake Form Plan (replace Microsoft Forms with a branded site form)
 
-**Status:** ✅ **ENDPOINT LIVE + VERIFIED (2026-06-23).** Premium license assigned → flow
-**Started** → e2e PASS both brands (full field + provenance parity) → guard negatives
-(bad secret / honeypot / bad source) all correctly **blocked** → 0 residue. Remaining:
-hand the endpoint + secret + form spec to the Linux website repos, they build the branded
-form, joint browser e2e, then switch CTAs + retire the Forms flows (§6).
+**Status:** ✅ **LABS CUSTOM FORM LIVE + JOINT-VERIFIED END-TO-END (2026-06-23).**
+The Linux Labs repo built + deployed the custom `#engage` form (commits `446e9f5`/`d47ae1b`,
+Vercel `dpl_AoiKcDRDAcZkJTFpHZDm1Rd2tfXP`, prod `https://www.guidedailabs.com`). Windows side
+ran the owner-approved joint browser e2e against the LIVE form: `/api/intake` → flow → CRM,
+**ALL CHECKS PASS** (created CRM Id 16 — proves the real secret is wired; IntakeSource=Guided
+AI Labs, IntentPath byte-exact, SignalType=Website, SignalStatus=New, full provenance footer
+`Intake: custom site form` + intake id + submitted + capture), then **scope-deleted → 0 residue.**
+The Microsoft Forms fallback stays LIVE on the Labs site (not removed); switching the primary
+CTA / retiring the Forms flow is now unblocked at the owner's discretion. Verification scripts
+(scratchpad): submit-engage-test.js (drives the live form via warm-Edge/CDP) + verify-engage-record.js.
+Closeout packet: `X:\WINDOWS_TO_LABS__custom-intake-joint-verified-20260623.md`.
+
+**STILL OPEN — Guided AI Journey custom form NOT YET BUILT.** Same endpoint serves both brands
+(payload `source` = `Guided AI Journey`); spec already released
+(`X:\WINDOWS_TO_JOURNEY__custom-intake-form-spec.json`, live endpoint+secret injected). Standing
+build request re-sent: `X:\WINDOWS_TO_JOURNEY__custom-intake-build-request-20260623.md`. When the
+Journey repo deploys, Windows side runs the same joint e2e (labelled test → parity check → delete).
+
+**Status (history — endpoint stand-up):** ✅ ENDPOINT LIVE + VERIFIED (2026-06-23). Premium license
+assigned → flow **Started** → server-side e2e PASS both brands (full field + provenance parity) →
+guard negatives (bad secret / honeypot / bad source) all correctly **blocked** → 0 residue.
 
 **Status (history):** APPROVED — Power Automate HTTP-trigger path. Was BLOCKED ON LICENSE: the
 HTTP request trigger needs **Power Automate Premium** (activation returned 403
