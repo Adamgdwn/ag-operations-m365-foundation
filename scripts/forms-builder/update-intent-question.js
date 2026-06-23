@@ -66,7 +66,7 @@ const CDP_PORT = process.env.CDP_PORT || '9222';
     ownCtx = true;
   }
   // cleanup: close our own cold context, OR just detach CDP (never kill the warm Edge).
-  const cleanup = async () => { try { if (ownCtx) await cleanup(); else if (browser) await browser.close(); } catch {} };
+  const cleanup = async () => { try { if (ownCtx) await ctx.close(); else if (browser) await browser.close(); } catch {} };
   const page = await ctx.newPage();
   let hdr = null;
   page.on('request', req => { if (!hdr && req.headers()['__requestverificationtoken']) hdr = req.headers(); });

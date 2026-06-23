@@ -63,7 +63,7 @@ const CDP_PORT = process.env.CDP_PORT || '9222';
     ownCtx = true;
   }
   // cleanup: close our own cold context, OR just detach CDP (never kill the warm Edge).
-  const cleanup = async () => { try { if (ownCtx) await cleanup(); else if (browser) await browser.close(); } catch {} };
+  const cleanup = async () => { try { if (ownCtx) await ctx.close(); else if (browser) await browser.close(); } catch {} };
   const page = await ctx.newPage();
   const tokens = {};
   page.on('request', req => { const a = req.headers()['authorization']; if (a && /^bearer /i.test(a)) { const h = new URL(req.url()).host; if (!tokens[h]) tokens[h] = a.replace(/^bearer\s+/i, ''); } });
