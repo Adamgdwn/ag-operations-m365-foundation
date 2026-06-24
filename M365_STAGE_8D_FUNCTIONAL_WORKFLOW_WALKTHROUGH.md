@@ -3,7 +3,7 @@
 > Superseded for active CRM operating guidance.
 >
 > This document is now historical/provenance for the Stage 8D proof. Use
-> `docs/START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
+> `START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
 > `docs/CRM_ACCEPTANCE_TESTS.md`, and `docs/CRM_RUNBOOK.md` for the current
 > employee-ready CRM completion path.
 
@@ -19,7 +19,7 @@ designing more automation.
 
 Related:
 
-- [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md)
+- [START_HERE.md](START_HERE.md)
 - [M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md](M365_STAGE_8A_RELATIONSHIP_CRM_SPINE.md)
 - [M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md](M365_STAGE_8B_RELATIONSHIP_CRM_OPERATIONS.md)
 - [M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md](M365_STAGE_8C_RELATIONSHIP_CRM_OPERATOR_WORKFLOW.md)

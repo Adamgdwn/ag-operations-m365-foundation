@@ -115,7 +115,7 @@ The old `Guided AI Labs - Intake Register/NewForm.aspx` is not the daily CRM rou
 
 Active root docs:
 
-- `START_HERE_TOKEN_FRIENDLY.md`
+- `START_HERE.md`
 - `M365_FOUNDATION_ROADMAP.md`
 - `M365_STAGE_8D_FUNCTIONAL_WORKFLOW_WALKTHROUGH.md`
 - `M365_STAGE_8E_FRICTIONLESS_CRM_BUSINESS_FLOW.md`
@@ -162,7 +162,10 @@ Known failure evidence:
 
 1. The current verifier is misleading. It must fail hidden system fields when `ShowInNewForm` or `ShowInEditForm` is `DefaultTrue` or `True`.
 2. The CRM Command Center currently routes the first intake action to the raw SharePoint form. That guarantees the operator can still land in the wrong UX.
-3. The repo has many overlapping Stage 8 configs, scripts, generated packets, CSVs, and logs. The active source of truth is not obvious.
+3. Historical concern: the repo had many overlapping Stage 8 configs, scripts,
+   generated packets, CSVs, and logs. Active startup routing is now resolved by
+   root `START_HERE.md`; Stage 8 materials remain provenance unless explicitly
+   called back into scope.
 4. Power Apps availability and deployment path are deliberately out of scope for the first no-purchase recovery pass.
 5. Embedded SharePoint list views can still expose a `+ New` route into raw list forms. Verification must check daily links and visible page actions, not only navigation nodes.
 6. The existing proof record shows that workflow data can be written, but it does not prove a non-technical browser operator path.
@@ -170,11 +173,11 @@ Known failure evidence:
 
 ## Source Of Truth Target
 
-Create this lean active structure:
+Historical CRM recovery target, now adjusted for the single root startup file:
 
 ```text
+START_HERE.md
 docs/
-  START_HERE.md
   CRM_RECOVERY_PLAN.md
   CRM_UX_SPEC.md
   CRM_DATA_MODEL.md
@@ -214,7 +217,7 @@ legacy/
 
 Active as of 2026-06-18:
 
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - `docs/CRM_RECOVERY_PLAN.md`
 - `docs/CRM_UX_SPEC.md`
 - `docs/CRM_DATA_MODEL.md`
@@ -234,7 +237,7 @@ Keep as active implementation/provenance for now:
 
 Created on 2026-06-18:
 
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - `docs/CRM_UX_SPEC.md`
 - `docs/CRM_DATA_MODEL.md`
 - `docs/CRM_DECISIONS.md`

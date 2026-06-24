@@ -1,7 +1,7 @@
 # Session Turnover - 2026-06-17
 
 Canonical restart file:
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+[START_HERE.md](START_HERE.md).
 
 This handoff captures the Stage 8D continuation work and the Stage 9 bridge
 readiness control packet. Later follow-on work on 2026-06-17 made approved live
@@ -156,7 +156,7 @@ Result:
 
 ## Exact Resume Sequence
 
-1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+1. Open [START_HERE.md](START_HERE.md).
 2. Open the Guided AI Labs Operations Cockpit.
 3. Open the CRM Command Center from the cockpit.
 4. Browser-recheck the refreshed CRM Command Center and simplified intake form.

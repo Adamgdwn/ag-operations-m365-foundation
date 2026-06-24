@@ -1,4 +1,4 @@
-# Microsoft 365 API Access - Start Here
+# Microsoft 365 API Access Reference
 
 Captured on 2026-06-10.
 
@@ -251,4 +251,3 @@ What is the smallest permission that lets this specific tool do this specific jo
 ```
 
 That is the access model the future Agentic OS should inherit.
-

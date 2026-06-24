@@ -2,10 +2,11 @@
 
 > **What this is:** the single page that places *every* piece of work in this
 > project on one pathway, so no session ever sprints on a tile without seeing the
-> whole board. Open this first, then drill into the canonical roadmap or a
-> specific function plan.
+> whole board. Start with [START_HERE.md](START_HERE.md), then use this map when
+> you need the full pathway before drilling into the roadmap or a specific
+> function plan.
 > **Status:** master map. Points to the canonical sources; does not replace them.
-> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-22 (Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE).
+> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-24 (Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE; next plan is agentic assistance + approvals).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),
@@ -71,24 +72,24 @@ real workflows**. These are already mapped as the ten operating cards in
 build-out with Adam — **pick the one that matters most next; there is no forced
 order among them.**
 
-**Status as of 2026-06-22:** the first function (**CRM / Relationships**) was
+**Status as of 2026-06-24:** the first function (**CRM / Relationships**) was
 chosen and built end-to-end, and two adjacent functions came online on top of it.
 Three things are now LIVE and verified; the rest remain plan-only.
 
 | Function (card) | Plan file | Build-out state |
 |---|---|---|
 | Workspace Home | [docs/CARD_PLAN_WORKSPACE_HOME.md](docs/CARD_PLAN_WORKSPACE_HOME.md) | Plan + live cockpit |
-| **CRM / Relationships** | [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md) | ✅ **LIVE** — full website→CRM intake loop verified both brands (Path B); intent field done; test records cleaned. One gate open: **V5** human operator walkthrough — ⏸ **IN PROGRESS / paused 2026-06-22** (clean form reached; intake felt cumbersome — usability finding to weigh). No page-authoring outstanding (pages exist, verifier 0/0/184). Resume: [docs/CRM_V5_WALKTHROUGH_KIT.md](docs/CRM_V5_WALKTHROUGH_KIT.md). Then Chunk 8 closeout. Plan: [docs/CRM_EXECUTION_PLAN.md](docs/CRM_EXECUTION_PLAN.md) |
+| **CRM / Relationships** | [docs/CARD_PLAN_CRM_RELATIONSHIPS.md](docs/CARD_PLAN_CRM_RELATIONSHIPS.md) | ✅ **LIVE / CLOSED** — custom website→CRM intake loop verified both brands; intent field done; website fallback / CTA cleanup handled on both sites; test records cleaned. V5 accepted as operator-accepted, exhaustive lifecycle walk waived as a non-blocker, and Chunk 8 recovery closeout complete. Only held item: Stage 8 packet archive move waits for Adam's explicit OK. Plan/history: [docs/CRM_EXECUTION_PLAN.md](docs/CRM_EXECUTION_PLAN.md) |
 | **Bookings / Scheduling** | [docs/BOOKINGS_SCHEDULING_PLAN.md](docs/BOOKINGS_SCHEDULING_PLAN.md) | ✅ **LIVE** — native MS Bookings page (anon-verified), website→Bookings→CRM loop verified, 0 residue. CRM intake consumer #2 |
 | **Operations Follow-up Backbone** | (see memory: operations-followup-backbone) | ✅ **LIVE** — all 3 layers (Email + two-way Calendar + one-way Planner) verified; one 15-min sync engine drives reminders/calendar/Planner off CRM |
 | Delivery / Projects | [docs/CARD_PLAN_DELIVERY_PROJECTS.md](docs/CARD_PLAN_DELIVERY_PROJECTS.md) | Plan only |
-| Decisions / Governance | [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md) | Plan only |
+| Decisions / Governance | [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md) | Plan only — approval/decision half of the next agentic loop |
 | Tasks / Actions | [docs/CARD_PLAN_TASKS_ACTIONS.md](docs/CARD_PLAN_TASKS_ACTIONS.md) | Plan only |
 | Knowledge / Records | [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md) | Plan only |
 | Support / Intake | [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md) | Plan only |
 | Finance / Closeout | [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md) | Plan only |
-| Agent Control Plane | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | Plan + Stage 9 readiness |
-| **Access / Onboarding** | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model (net-new pieces need §3 reconcile first) |
+| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **NEXT** — build the Agentic Assistance & Approval Loop MVP over Agent Action Log, Decision Register, Automation Backlog, and one real operating workflow. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md) |
+| Access / Onboarding | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model; net-new hiring/role-profile work deferred until growth makes it useful |
 
 ---
 
@@ -127,28 +128,31 @@ PHASE 1 — INFRASTRUCTURE (finished once)  ✅ COMPLETE 2026-06-20
         └─ the spine is DONE
 
 PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← CURRENT FOCUS
-  ✅ CRM / Relationships built end-to-end + LIVE (Path B intake loop, intent field, cleanup)
-       └─ one gate open: V5 human operator walkthrough (⏸ IN PROGRESS / paused 2026-06-22;
-          no page-authoring outstanding) + Chunk 8 doc closeout
+  ✅ CRM / Relationships built end-to-end + LIVE/CLOSED
+       └─ custom website intake verified both brands; V5 accepted; Chunk 8 closed;
+          Stage 8 packet archive move held for Adam's explicit OK
   ✅ Bookings / Scheduling LIVE  (native MS Bookings → CRM, intake consumer #2)
   ✅ Operations Follow-up Backbone LIVE  (Email + two-way Calendar + one-way Planner; 15-min sync engine)
-     ▸ NEXT: close CRM V5, then pick the next function to build out
-     ③ Reconcile onboarding into existing artifacts   (do before any onboarding build)
-     ④ Build the next chosen function end-to-end       (onboarding, delivery, finance, support, …)
-     ⑤ Operate it live                                (e.g. first real hire — needs a license seat)
+     ▸ NEXT: Agentic Assistance & Approval Loop
+     ③ Make agent suggestions reviewable in Agent Action Log
+     ④ Route approvals through Decision Register / G0-G4 gates
+     ⑤ Prove one supervised G1→G2 operating workflow before any broader automation
 ```
 
 **Plain reading:** the spine is complete and the first function (CRM) plus two
-adjacent functions (Bookings, Follow-up backbone) are LIVE → close the one open CRM
-gate (V5), then pick the next function and build it out with Adam. Repeat per
-function. The open decision is §6: which function next.
+adjacent functions (Bookings, Follow-up backbone) are LIVE. CRM is closed except
+for the explicitly held Stage 8 packet archive move. Adam's next priority is
+functionality plus agentic assistance and approvals, not hiring/onboarding. Build
+the Agentic Assistance & Approval Loop next, then repeat the same pattern for
+later functions.
 
 ---
 
 ## 5. How to use this map each session
 
-1. Open this map. Confirm where the spine stands (§1) and which function is active (§2).
-2. The spine (§1) is complete — no infrastructure items remain. If a function has an open gate (e.g. CRM V5, §4), work that.
+1. Start with [START_HERE.md](START_HERE.md), then use this map if the task needs
+   full-path context. Confirm where the spine stands (§1) and which function is active (§2).
+2. The spine (§1) is complete — no infrastructure items remain. If a selected function has an open gate, work that before expanding scope.
 3. If building a function, open its plan file from §2 first — **never start a function build without its plan**, and for onboarding do the reconcile (§3) first.
 4. Keep the governance model: G0/G1 free, G2 single-`Y`, G3 gated/Adam-only, G4 blocked.
 5. Update §1 status and the active-function note in §2 when a stage or function changes state.
@@ -157,12 +161,11 @@ function. The open decision is §6: which function next.
 
 ## 6. Open decision for Adam
 
-- **Resolved:** the first function was **CRM / Relationships** — built end-to-end
-  and LIVE, with **Bookings** and the **Operations Follow-up Backbone** coming
-  online on top of it.
-- **Open now — two parts:**
-  1. **Close CRM V5** (portal human-browser pass + page authoring) + Chunk 8 doc
-     closeout — the one remaining gate before CRM is fully sealed.
-  2. **Which function gets built out next?** Onboarding is drafted (needs the §3
-     reconcile first), but Delivery, Finance, or Support could each be higher
-     value. No forced order — Adam's call.
+- **Resolved:** the first function was **CRM / Relationships** — built end-to-end,
+  LIVE, and recovery-closed, with **Bookings** and the **Operations Follow-up
+  Backbone** coming online on top of it.
+- **Selected next direction:** **Agentic Assistance & Approval Loop** — make the
+  existing agent/governance surfaces operational around one real workflow:
+  suggestion -> review -> approval/rejection -> evidence -> supervised action.
+  Onboarding, role profiles, and hiring packet work are deferred until growth
+  makes them useful.

@@ -10,7 +10,7 @@ Stage 6 provisioning/consent attempts.
 
 Fast restart brief:
 
-- [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md)
+- [START_HERE.md](START_HERE.md)
 
 Do **not** resume by opening raw Microsoft admin-consent links. Do **not** approve
 any page that shows phishing, risky app, unknown publisher, suspicious consent,

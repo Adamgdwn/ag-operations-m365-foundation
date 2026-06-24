@@ -1,10 +1,10 @@
 # Session Turnover - 2026-06-23
 
 Canonical restart file:
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+[START_HERE.md](START_HERE.md).
 
 Current workspace source of truth:
-[docs/START_HERE.md](docs/START_HERE.md).
+[START_HERE.md](START_HERE.md).
 
 > Context: this session continued the Phase-2 CRM work past the recovery closeout
 > into the **custom-branded website intake** feature. The brand sites are replacing
@@ -17,6 +17,8 @@ Current workspace source of truth:
 **BOTH brand custom intake forms are LIVE and JOINT-VERIFIED end-to-end.** Labs verified
 late 2026-06-22→23; **Guided AI Journey verified the morning of 2026-06-23** (this session).
 Nothing structurally open — remaining items are discretionary/owner-only (see Carry-Forwards).
+Website-side Forms fallback / CTA cleanup has also been handled on both brand sites;
+the old Forms paths are no longer an open website task.
 
 > **2026-06-23 morning update (Journey closeout).** A background watcher caught Linux's
 > Journey deploy handoff at 7:09 AM (form live at `https://www.guidedaijourney.com/intake`,
@@ -64,21 +66,25 @@ Completed this session:
 Latest state:
 
 ```text
-Labs custom website -> CRM intake: LIVE + JOINT-VERIFIED. MS Forms fallback still up.
-Journey custom form: spec released + endpoint live, NOT built yet (Adam shut that repo
-down for the night). Same endpoint serves both brands (source = "Guided AI Journey").
+Labs custom website -> CRM intake: LIVE + JOINT-VERIFIED. Website fallback handled.
+Journey custom website -> CRM intake: LIVE + JOINT-VERIFIED. Website fallback handled.
+Same shared HTTP endpoint serves both brands; each payload carries the correct source.
 ```
 
 ## What Changed
 
 ```text
-docs/CRM_CUSTOM_INTAKE_FORM_PLAN.md   (Status -> Labs joint-verified live; Journey open)
-SESSION_TURNOVER_2026-06-23.md        (this file)
+docs/CRM_CUSTOM_INTAKE_FORM_PLAN.md   (both custom forms joint-verified; fallback handled)
+SESSION_TURNOVER_2026-06-23.md        (this file; reconciled 2026-06-24)
 X:\WINDOWS_TO_LABS__custom-intake-joint-verified-20260623.md      (closeout packet)
-X:\WINDOWS_TO_JOURNEY__custom-intake-build-request-20260623.md    (standing build request)
+X:\WINDOWS_TO_JOURNEY__custom-intake-joint-verified-20260623.md   (closeout packet)
 01 Work Tracking/AG Operations Workspace Setup/{latest.md,log/2026-06-23.md}  (ledger)
-memory/m365-foundation-state.md       (Labs verified; Journey pending)
+memory/m365-foundation-state.md       (both brands verified; website fallback handled)
 ```
+
+2026-06-24 reconciliation: Journey is verified, and website-side fallback / CTA cleanup
+is handled on both brand sites. Older build-request/fallback notes are superseded by
+the Stop Point and Carry-Forwards above.
 
 Verification scripts (scratchpad, reusable): `submit-engage-test.js` (drives the live
 form via warm-Edge/CDP) + `verify-engage-record.js` (full-parity CRM check).
@@ -106,9 +112,9 @@ edb21ff custom HTTP intake LIVE + verified; 3898d0f server-side e2e + premium de
 - **Adam's own `test one` submission (planned ~2026-06-23/24):** dummy values, name
   `test one`. It will NOT carry the auto-delete marker, so it won't be auto-cleaned —
   Adam deletes it, or tells me the exact name and I scope-delete it.
-- **Switching the Labs primary CTA / retiring the MS Forms flow** is now unblocked but
-  NOT done — Forms stays live as fallback until Adam decides. Retire via
-  `scripts/flow-builder/set-flow-state.js <forms-flow-id> stop` (reversible).
+- **Website fallback / CTA cleanup — DONE on both brand sites.** Any tenant-side
+  shutdown of old Forms flows is reversible owner/admin maintenance; do not delete
+  forms or disable flows without explicit scope and approval.
 - **Minor (flagged to Linux, non-blocker):** the Labs honeypot `Company` input rendered
   visible in DOM inspection; should be visually hidden so real visitors never see it.
 - **STILL HELD for Adam's explicit OK (NOT a blocker, unchanged):** the Stage 8 packet
@@ -119,14 +125,14 @@ edb21ff custom HTTP intake LIVE + verified; 3898d0f server-side e2e + premium de
 
 ## Exact Resume Sequence
 
-1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md) and
-   [docs/START_HERE.md](docs/START_HERE.md).
-2. Read [docs/CRM_CUSTOM_INTAKE_FORM_PLAN.md](docs/CRM_CUSTOM_INTAKE_FORM_PLAN.md) — Labs
-   section is joint-verified; Journey section is the open item.
-3. Check `X:\` for any new `LINUX_TO_WINDOWS__*` reply (e.g. a Journey deploy handoff).
-4. If a Journey deploy lands: warm Edge (`node scripts/forms-builder/warm-edge.js`), then
-   run the joint e2e (adapt scratchpad `submit-engage-test.js`/`verify-engage-record.js`
-   to the Journey URL + `source="Guided AI Journey"`), then `delete-test-records.js`.
-5. If Adam asks to retire the Labs MS Forms flow, use `set-flow-state.js <id> stop`.
-6. Do not run tenant-writing commands without a fresh approval, explicit scope, evidence
+1. Open [START_HERE.md](START_HERE.md).
+2. Read [docs/CRM_CUSTOM_INTAKE_FORM_PLAN.md](docs/CRM_CUSTOM_INTAKE_FORM_PLAN.md) —
+   both brand custom forms are live, verified, and website-fallback cleanup is handled.
+3. Current selected direction: functionality plus agentic assistance and approvals.
+   Start with [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md),
+   not onboarding roles/profiles.
+4. Optional CRM tail only by explicit request: handle Adam's `test one` record,
+   re-check honeypot visual-hide after Linux ships it, stop old Forms flows, or move
+   the Stage 8 packet archive.
+5. Do not run tenant-writing commands without a fresh approval, explicit scope, evidence
    target, and rollback path.

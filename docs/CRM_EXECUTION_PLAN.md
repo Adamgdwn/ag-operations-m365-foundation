@@ -6,7 +6,7 @@ Status: **COMPLETE (2026-06-22) — all chunks closed; CRM recovery done.** Reta
 the execution record. One non-blocking residual is held by design: the Stage 8 packet
 archive move awaits Adam's explicit OK (see Chunk 8). The CRM operating path is LIVE.
 
-Use this document when Adam says to start applying the next chunk. `docs/START_HERE.md`
+Use this document when Adam says to start applying the next chunk. `START_HERE.md`
 is the orientation front door. `docs/CRM_RECOVERY_PLAN.md` explains why the work
 exists. This file defines what to execute.
 
@@ -116,7 +116,7 @@ The CRM recovery is complete only when all requirements below are true.
 
 Source-of-truth requirements:
 
-- `docs/START_HERE.md` points to this execution plan as the working document.
+- `START_HERE.md` points to this execution plan as the working document.
 - Root Stage 8 CRM docs are clearly marked superseded/provenance.
 - Active CRM docs do not compete with each other about the next step.
 
@@ -189,7 +189,7 @@ assets.
 
 Inputs:
 
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - `docs/CRM_RECOVERY_PLAN.md`
 - current `git status`
 - existing Stage 8 CRM configs and scripts
@@ -548,7 +548,7 @@ Outputs:
 
 Acceptance gate:
 
-- The next person entering the repo starts from `docs/START_HERE.md`, follows
+- The next person entering the repo starts from `START_HERE.md`, follows
   this execution record, and does not treat old Stage 8 packet docs as active
   instructions.
 

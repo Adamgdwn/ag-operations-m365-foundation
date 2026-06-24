@@ -39,7 +39,7 @@ docs, admin pages, or old Stage 8 packet material.
 
 Related docs:
 
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - `docs/COCKPIT_USABILITY_INVENTORY.md`
 - `docs/COCKPIT_CARD_GAP_LIST.md`
 - `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`

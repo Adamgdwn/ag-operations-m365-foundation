@@ -3,7 +3,7 @@
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 Created 2026-06-11. A project-wide "are we using the optimum tools, and are there
 free licenses that save time/tokens" reference. Findings are dated because
-licensing programs change. Start at [00_INDEX.md](00_INDEX.md).
+licensing programs change. Start at [START_HERE.md](START_HERE.md).
 
 ---
 

@@ -3,7 +3,7 @@
 > Superseded for active CRM recovery direction.
 >
 > This handoff captured the problem state that led to recovery. The active path
-> is now `docs/START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
+> is now `START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
 > `docs/CRM_UX_SPEC.md`, `docs/CRM_RUNBOOK.md`, and
 > `docs/CRM_ACCEPTANCE_TESTS.md`.
 

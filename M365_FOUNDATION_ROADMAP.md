@@ -13,7 +13,7 @@ for Guided AI Labs and any future companies underneath AG Operations.
 This roadmap is for the human-supervised setup phase. It does not create unattended automation or the future Agentic OS. It prepares Microsoft 365 so a future Agentic OS can safely connect through governed access.
 
 Workspace usability note: for active workspace direction, use
-`docs/START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`,
+`START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`,
 `docs/COCKPIT_USABILITY_INVENTORY.md`, `docs/COCKPIT_CARD_GAP_LIST.md`,
 `docs/CARD_PLAN_INDEX.md`, `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`, and
 `docs/AGENTIC_M365_READINESS.md` plus

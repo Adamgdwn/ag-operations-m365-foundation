@@ -1,10 +1,10 @@
 # Session Turnover - 2026-06-22
 
 Canonical restart file:
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+[START_HERE.md](START_HERE.md).
 
 Current workspace source of truth:
-[docs/START_HERE.md](docs/START_HERE.md).
+[START_HERE.md](START_HERE.md).
 
 > Note: the SESSION_TURNOVER series lapsed during the 2026-06-20..21 build sprint
 > (CRM Path B, Bookings, follow-up backbone) while the new Windows work-tracking
@@ -78,8 +78,8 @@ Committed straight to `main` and pushed:
 
 ## Exact Resume Sequence
 
-1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
-2. Open [docs/START_HERE.md](docs/START_HERE.md).
+1. Open [START_HERE.md](START_HERE.md).
+2. Open [START_HERE.md](START_HERE.md).
 3. Confirm CRM is closed: [docs/CRM_RECOVERY_PLAN.md](docs/CRM_RECOVERY_PLAN.md)
    (Status: CLOSED) and [docs/CRM_EXECUTION_PLAN.md](docs/CRM_EXECUTION_PLAN.md).
 4. Pick the next Phase-2 function from [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md),

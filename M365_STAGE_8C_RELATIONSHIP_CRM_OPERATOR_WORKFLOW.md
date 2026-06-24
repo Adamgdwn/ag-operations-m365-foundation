@@ -3,7 +3,7 @@
 > Superseded for active CRM operating guidance.
 >
 > This document is now historical/provenance for the Stage 8C packet path. Use
-> `docs/START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
+> `START_HERE.md`, `docs/CRM_RECOVERY_PLAN.md`,
 > `docs/CRM_ACCEPTANCE_TESTS.md`, and `docs/CRM_RUNBOOK.md` for the current
 > employee-ready CRM path.
 

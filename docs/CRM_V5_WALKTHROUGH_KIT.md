@@ -1,41 +1,37 @@
-# CRM V5 — Human Operator Walkthrough Kit (Chunk 6 acceptance)
+# CRM V5 — Human Operator Walkthrough Kit (optional post-closeout evidence)
 
-> **What this is:** the self-contained kit for the one CRM gate a script cannot
-> close — the human MFA browser pass. Everything a script *can* prove is already
-> PASS (verifier 2026-06-21 11:53: **0 failures / 0 warnings / 184 checks**; both
-> pages present, zero legacy routes). This kit makes your pass ~10 minutes and
-> produces exactly the evidence Chunk 8 needs to close.
+> **What this is:** the self-contained kit for the human MFA browser pass. V5 was
+> accepted as operator-accepted on 2026-06-22, the exhaustive lifecycle walk was
+> waived as a non-blocker, and Chunk 8 is closed. Everything a script *can* prove is
+> already PASS (verifier 2026-06-21 11:53: **0 failures / 0 warnings / 184 checks**;
+> both pages present, zero legacy routes). Keep this kit for an optional deeper
+> manual lifecycle pass if Adam ever wants that evidence on record.
 > **Owner:** Adam. **Created:** 2026-06-22.
 
 ---
 
-## ⏸ PAUSED — RESUME HERE (2026-06-22)
+## Current Status — ACCEPTED / OPTIONAL (2026-06-24)
 
-**Status: V5 IN PROGRESS, paused mid-pass.** Adam opened the path and created a new
-signal item, then stopped — the intake felt **cumbersome** (fatigue noted as a
-caveat, but logged as a genuine usability observation, not dismissed). Boxed up to
-continue another session.
+**Status: V5 accepted; CRM recovery closed.** Adam reached the path and created a
+new signal item on 2026-06-22. The intake felt **cumbersome**, so the front door was
+streamlined to require only Title + NeedSummary; the verifier re-ran cleanly. Adam
+then accepted the operator path and directed the Chunk 8 closeout. The full
+lifecycle walk remains useful optional evidence, not a blocking gate.
 
 **What was confirmed before pausing:** the click path works — Operations Cockpit →
 CRM Command Center → New Signal reached the **clean `CRM - New Signals` form** (not
 the legacy Intake Register), and a new item could be created. The remaining
 lifecycle walk (triage → qualify → next action → handoff → closeout) and the formal
-verdict were **not** completed.
+verdict were **not** completed, and were later waived as non-blocking.
 
-**Open finding to weigh next session:** the daily intake felt cumbersome. Decide
-deliberately — (a) accept it (works, just verbose) and finish the walk to PASS, or
-(b) treat the friction as real and streamline the front door *before* declaring
-PASS (e.g. fewer required fields — the `crm.intake.json` "requiredVsCardPlanNote"
-already flags a required-fields UX call; a quick-add/Power Apps front door is
-listed under CRM "Future Work"). This is Adam's call.
-
-**First step on resume — cleanup:** a dummy signal may be sitting in the live
+**Optional first step before a fresh walk:** a dummy signal may be sitting in the live
 `CRM - New Signals` list. If it was saved with **Person = `GAIL-INTERNAL-WALKTHROUGH`**,
 run `node scripts/flow-builder/delete-test-records.js` (scoped to that exact prefix
 — cannot touch a real signal). If it was saved with different values, delete it by
 hand or tell Claude the title. Leaving it overnight is harmless (clearly internal).
 
-**Then:** either finish Steps 4–6 below, or take the front-door-UX decision first.
+**Then:** finish Steps 4–6 below only if Adam wants the optional manual lifecycle
+walk captured after closeout.
 
 ---
 
@@ -179,9 +175,8 @@ or by you.)
 
 ---
 
-## What happens after PASS
+## What happens after optional PASS
 
-Claude records the evidence into `docs/CRM_DEFERRED_VERIFICATION_LOG.md` (V5) and
-`docs/CRM_RECOVERY_PLAN.md`, then closes **Chunk 8** (final supersession/closeout;
-the Stage 8 packet archive move still waits on your explicit OK). CRM is then fully
-sealed.
+Claude records the added evidence into `docs/CRM_DEFERRED_VERIFICATION_LOG.md` (V5)
+and `docs/CRM_RECOVERY_PLAN.md`. Chunk 8 is already closed; the Stage 8 packet
+archive move still waits on Adam's explicit OK.

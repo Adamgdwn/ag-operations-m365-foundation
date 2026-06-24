@@ -3,7 +3,7 @@
 Date: 2026-06-19
 
 Status: Active activation plan for the Microsoft AI/automation surface. Companion
-to `docs/AGENTIC_M365_READINESS.md` (governance) and `docs/START_HERE.md`
+to `docs/AGENTIC_M365_READINESS.md` (governance) and `START_HERE.md`
 (operator handoff). Readiness says *how to govern* AI work. This doc says *which
 Microsoft tools to turn on, in what order, free first*.
 

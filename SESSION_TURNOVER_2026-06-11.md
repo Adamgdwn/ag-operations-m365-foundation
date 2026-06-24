@@ -8,10 +8,11 @@ file is the dated record of what changed today and exactly where to resume.
 1. **Audited** what was built vs. planned vs. the original brief. Finding: the
    content was strong but the structure had drift — two overlapping plan docs
    (Phase 0–6 vs Stage 0–9), two unreconciled tracks (May local-machine work vs
-   June tenant-foundation work), no single entry point, and no version control.
+   June tenant-foundation work), no consolidated entry point at the time, and no
+   version control.
 
 2. **Consolidated** (docs/structure only — no live tenant changes):
-   - Added [00_INDEX.md](00_INDEX.md) as the single entry point with a live
+   - Added [00_INDEX.md](00_INDEX.md) as the then-current entry point with a live
      stage-status table, document map, and carried-forward open decisions.
    - Declared [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) **canonical**
      for sequencing; added a Phase↔Stage map to the build brief.

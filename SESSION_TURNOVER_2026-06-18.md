@@ -1,10 +1,10 @@
 # Session Turnover - 2026-06-18
 
 Canonical restart file:
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+[START_HERE.md](START_HERE.md).
 
 Current workspace source of truth:
-[docs/START_HERE.md](docs/START_HERE.md).
+[START_HERE.md](START_HERE.md).
 
 ## Stop Point
 
@@ -47,9 +47,9 @@ Updated restart and routing docs:
 
 ```text
 00_INDEX.md
-START_HERE_TOKEN_FRIENDLY.md
+START_HERE.md
 M365_FOUNDATION_ROADMAP.md
-docs/START_HERE.md
+START_HERE.md
 docs/WORKSPACE_EXECUTION_PLAN.md
 ```
 
@@ -78,8 +78,8 @@ Highest priority cockpit gaps:
 
 ## Exact Resume Sequence
 
-1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
-2. Open [docs/START_HERE.md](docs/START_HERE.md).
+1. Open [START_HERE.md](START_HERE.md).
+2. Open [START_HERE.md](START_HERE.md).
 3. Open [docs/WORKSPACE_EXECUTION_PLAN.md](docs/WORKSPACE_EXECUTION_PLAN.md).
 4. Review the Chunk 2 outputs:
 

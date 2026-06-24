@@ -105,4 +105,4 @@ Pass conditions:
 
 - active CRM docs live under `docs/`;
 - old root Stage 8 CRM docs are marked superseded or provenance;
-- a new operator can identify `docs/START_HERE.md` as the active CRM start file.
+- a new operator can identify `START_HERE.md` as the active CRM start file.

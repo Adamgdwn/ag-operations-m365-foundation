@@ -1,10 +1,10 @@
 # Session Turnover - 2026-06-19
 
 Canonical restart file:
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+[START_HERE.md](START_HERE.md).
 
 Current workspace source of truth:
-[docs/START_HERE.md](docs/START_HERE.md).
+[START_HERE.md](START_HERE.md).
 
 ## Stop Point
 
@@ -47,7 +47,7 @@ Next work: choose a named card-specific chunk or controlled governance/read-back
 Next session should start from:
 
 ```text
-docs/START_HERE.md
+START_HERE.md
 docs/WORKSPACE_EXECUTION_PLAN.md
 docs/CARD_PLAN_INDEX.md
 docs/CARD_PLAN_WORKSPACE_HOME.md
@@ -90,9 +90,9 @@ Updated routing and restart docs:
 
 ```text
 00_INDEX.md
-START_HERE_TOKEN_FRIENDLY.md
+START_HERE.md
 M365_FOUNDATION_ROADMAP.md
-docs/START_HERE.md
+START_HERE.md
 docs/WORKSPACE_EXECUTION_PLAN.md
 docs/CARD_PLAN_INDEX.md
 docs/COCKPIT_CARD_GAP_LIST.md
@@ -135,8 +135,8 @@ Important carry-forwards:
 
 ## Exact Resume Sequence
 
-1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
-2. Open [docs/START_HERE.md](docs/START_HERE.md).
+1. Open [START_HERE.md](START_HERE.md).
+2. Open [START_HERE.md](START_HERE.md).
 3. Open [docs/WORKSPACE_EXECUTION_PLAN.md](docs/WORKSPACE_EXECUTION_PLAN.md).
 4. Review the Chunk 7 closeout evidence:
 

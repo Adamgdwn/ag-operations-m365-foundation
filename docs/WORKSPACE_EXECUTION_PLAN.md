@@ -1,12 +1,12 @@
 # Workspace Execution Plan
 
-Date: 2026-06-19
+Date: 2026-06-24
 
-Status: Active chunk plan for full workspace usability.
+Status: Closed historical chunk plan for the broad workspace usability pass.
+Current active plan: `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
 
-Use this document when Adam says to continue the broader workspace build. CRM is
-one operating card. This plan makes the whole Guided AI Labs workspace usable
-before each card receives a deeper functional pass.
+Use this document for workspace usability history and acceptance evidence. For
+current work, start at root `START_HERE.md` and follow the current active plan.
 
 Box-up note 2026-06-19: Chunks 1-7 are complete and pushed. The broad workspace
 usability pass is closed; resume with a named card-specific chunk or controlled
@@ -32,9 +32,11 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 ## Current Chunk
 
 Chunks 1-7 are complete and pushed. There is no active broad workspace
-usability chunk. Next work should be selected explicitly, such as CRM execution,
-access read-back before a grant, support MFA closeout, or a controlled cockpit
-cleanup.
+usability chunk. Adam's current selected direction is functionality plus
+agentic assistance and approvals: start with
+`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`. Other work, such as access
+read-back before a grant, support MFA closeout, or controlled cockpit cleanup,
+should be explicit.
 
 Chunk status:
 
@@ -55,7 +57,7 @@ true.
 
 Source-of-truth requirements:
 
-- `docs/START_HERE.md` is broad enough for the whole workspace, not just CRM.
+- `START_HERE.md` is broad enough for the whole workspace, not just CRM.
 - `docs/WORKSPACE_INSTRUCTION_MANUAL.md` gives an operator daily-use manual
   without build-history coaching.
 - Each operating card has one active plan or a clear "to be built" placeholder.
@@ -104,8 +106,7 @@ map.
 
 Inputs:
 
-- `docs/START_HERE.md`
-- `START_HERE_TOKEN_FRIENDLY.md`
+- `START_HERE.md`
 - `M365_FOUNDATION_ROADMAP.md`
 - existing Stage 8 and Stage 9 evidence
 
@@ -119,7 +120,7 @@ Actions:
 
 Outputs:
 
-- updated `docs/START_HERE.md`
+- updated `START_HERE.md`
 - updated `docs/WORKSPACE_EXECUTION_PLAN.md`
 - updated `docs/AGENTIC_M365_READINESS.md`
 - updated `docs/CARD_PLAN_TEMPLATE.md`
@@ -131,7 +132,7 @@ Local evidence used:
 - `config/M365_STAGE_8_HOMEPAGE_REFINEMENT.json`
 - `inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md`
 - `inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md`
-- `START_HERE_TOKEN_FRIENDLY.md`
+- `START_HERE.md`
 - `M365_FOUNDATION_ROADMAP.md`
 
 Confirmed current cockpit surface:
@@ -185,7 +186,7 @@ Inputs:
 
 - current SharePoint cockpit page evidence
 - Stage 8 homepage and portal evidence
-- `docs/START_HERE.md`
+- `START_HERE.md`
 
 Actions:
 
@@ -259,7 +260,7 @@ Define role-appropriate operating access across cards.
 Inputs:
 
 - current Microsoft 365 groups and SharePoint permissions
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - Stage 2 identity/admin foundation notes
 
 Actions:
@@ -272,7 +273,7 @@ Actions:
 Outputs:
 
 - `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
-- updated `docs/START_HERE.md`
+- updated `START_HERE.md`
 - updated `docs/CARD_PLAN_INDEX.md`
 - updated restart/routing docs
 
@@ -322,7 +323,7 @@ Outputs:
 - `docs/CARD_PLAN_FINANCE_CLOSEOUT.md`
 - `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
 - updated `docs/CARD_PLAN_INDEX.md`
-- updated `docs/START_HERE.md`
+- updated `START_HERE.md`
 - updated restart/routing docs
 
 Acceptance gate:

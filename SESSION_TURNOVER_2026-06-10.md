@@ -114,7 +114,7 @@ Recommended sequence:
 
 ### API Access Start Guide
 
-[M365_API_ACCESS_START_HERE.md](</c:/Users/adamg/01. Code Projects/AG Operations Workspace Setup/M365_API_ACCESS_START_HERE.md>)
+[2026-06-10_M365_API_ACCESS_REFERENCE.md](</c:/Users/adamg/01. Code Projects/AG Operations Workspace Setup/2026-06-10_M365_API_ACCESS_REFERENCE.md>)
 
 Purpose:
 

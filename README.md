@@ -1,9 +1,9 @@
 # AG Operations Workspace Setup
 
-> **Start at [00_INDEX.md](00_INDEX.md).** This README is the original
+> **Start at [START_HERE.md](START_HERE.md).** This README is the original
 > local-machine folder/lane plan (2026-05-25) and is now a **Stage 4 input** in
 > the broader M365 foundation roadmap. For current status and what to do next,
-> use the index; canonical sequencing is in
+> use the startup file; canonical sequencing is in
 > [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
 
 Captured on 2026-05-25.
@@ -58,4 +58,3 @@ Ownership decides where the durable record lives.
 - Prime Boiler-specific local work belongs in `AG Operations\Prime Boiler`.
 - Permanent Prime Boiler company assets belong in the Prime Boiler Microsoft 365 tenant.
 - Future client-owned assets should live in that client's Microsoft 365 tenant when they are durable company records.
-

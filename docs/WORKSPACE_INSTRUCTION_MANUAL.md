@@ -275,7 +275,7 @@ These do not block daily handoff, but they remain important:
 
 | Need | Open |
 |---|---|
-| Current workspace source of truth | `docs/START_HERE.md` |
+| Current workspace source of truth | `START_HERE.md` |
 | Full card plan map | `docs/CARD_PLAN_INDEX.md` |
 | Access and onboarding model | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` |
 | Final usability closeout | `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` |

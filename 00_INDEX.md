@@ -1,12 +1,13 @@
-# 00 — Start Here
+# 00 - Detailed Document Index
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-20
+Last updated: 2026-06-24
 
-This is the single entry point for the workspace. Open this first. It tells you
-what the project is, where it currently stands, which document is canonical, and
-what decision is waiting next.
+This is the detailed document map. It is not the startup document.
+
+Start at [START_HERE.md](START_HERE.md), then use this index only when you need
+the wider project map or older stage/history references.
 
 > **Master pathway:** [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md) places
 > every piece of work on one pathway — Phase 1 (the infrastructure spine, Stages
@@ -14,9 +15,8 @@ what decision is waiting next.
 > build-out, any order). Read it to see where any single task fits before starting
 > it.
 
-For current workspace usability work, read [docs/START_HERE.md](docs/START_HERE.md)
-first. It is the active source of truth for the Guided AI Labs operating
-workspace, with CRM treated as one operating card inside the broader card map.
+For current work, use [START_HERE.md](START_HERE.md). The active plan is
+[docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md).
 The current cockpit inventory and gap list are in
 [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
 and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).
@@ -25,8 +25,7 @@ artifacts, read
 [docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md](docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md).
 The portable Codex/Claude Code skill for that bridge is versioned at
 [skills/direct-link](skills/direct-link).
-For fast agent/session restart across the wider M365 foundation, read
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+The repo intentionally has one active startup document: [START_HERE.md](START_HERE.md).
 
 ---
 
@@ -96,10 +95,11 @@ should not sit waiting for private credentials.
 
 ## Document map
 
-### Canonical plan (read these to know what to do)
+### Canonical And Reference Plans
 
 - [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) — **canonical** staged
-  execution order (Stages 0–9). This is the source of truth for *what happens next*.
+  execution order (Stages 0–9). This is the source of truth for foundation-stage
+  history and sequencing; the current next action is in [START_HERE.md](START_HERE.md).
 - [M365_LOGIN_AND_ACCOUNT_GUIDE.md](M365_LOGIN_AND_ACCOUNT_GUIDE.md) — quick
   chart for which account to use, MFA/auth-code handling, Chrome profile lanes,
   and the recovery path when Microsoft account routing gets messy.
@@ -176,7 +176,7 @@ should not sit waiting for private credentials.
   — local post-processor that turns a completed Stage 5 inventory JSON folder into
   a Markdown current-state summary for decisions.
 
-### Current work — Stage 7 Security, Governance & External Sharing
+### Completed work — Stage 7 Security, Governance & External Sharing
 
 - [M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md](M365_STAGE_7_SECURITY_GOVERNANCE_EXTERNAL_SHARING.md)
   — Stage 7 working design for MFA/sign-in posture, admin-role review, app
@@ -242,7 +242,7 @@ should not sit waiting for private credentials.
   — remaining Stage 7 closeout sequence for support MFA, app grants, and
   root/legacy site sharing.
 
-### Current work — Workspace Usability, Stage 8/9 Reference Pattern & Bridge Readiness
+### Completed work — Workspace Usability, Stage 8/9 Reference Pattern & Bridge Readiness
 
 - [M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md](M365_SHAREPOINT_WORKSPACE_SHAPE_PATTERN.md)
   — planning baseline adapted from the local Prime Operations SharePoint
@@ -529,7 +529,7 @@ should not sit waiting for private credentials.
 
 ### Reference & access
 
-- [M365_API_ACCESS_START_HERE.md](M365_API_ACCESS_START_HERE.md) — Microsoft
+- [2026-06-10_M365_API_ACCESS_REFERENCE.md](2026-06-10_M365_API_ACCESS_REFERENCE.md) — Microsoft
   Graph / Entra access model; delegated read-only first.
 - [M365_ENVIRONMENT.template.env](M365_ENVIRONMENT.template.env) — tenant/app
   constants (no secrets). Copy to `M365_ENVIRONMENT.local.env` for any private
@@ -555,8 +555,14 @@ should not sit waiting for private credentials.
 
 ### Session history
 
-- [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md) — **most recent**
-  handoff: workspace usability Chunks 1-7 are complete and pushed; card
+- [SESSION_TURNOVER_2026-06-23.md](SESSION_TURNOVER_2026-06-23.md) — latest dated
+  handoff before the startup-doc consolidation; CRM custom intake is verified,
+  website fallback cleanup is handled, and the selected next direction is
+  agentic assistance plus approvals.
+- [SESSION_TURNOVER_2026-06-22.md](SESSION_TURNOVER_2026-06-22.md)
+  — CRM custom intake / follow-up backbone transition history.
+- [SESSION_TURNOVER_2026-06-19.md](SESSION_TURNOVER_2026-06-19.md)
+  — workspace usability Chunks 1-7 are complete and pushed; card
   template, CRM card-plan example, access/onboarding model, Chunk 5 card plans,
   Chunk 6 agentic readiness decisions, Chunk 7 closeout evidence, and the
   workspace instruction manual are in place. Next work should be a named card-specific chunk or controlled
@@ -677,27 +683,9 @@ Secrets stay out of git automatically: `*.local.env` and token caches are listed
 in `.gitignore`. Keep real secrets only in `M365_ENVIRONMENT.local.env` (ignored),
 never in the committed `M365_ENVIRONMENT.template.env`.
 
-## How to resume next session
+## Current Resume Path
 
-1. Read this index.
-2. Open [M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md](M365_STAGE_6_TEAMS_PLANNER_LISTS_OPERATING_STATE.md).
-3. Open [GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md](GUIDED_AI_LABS_AGENTIC_INTAKE_MODEL.md)
-   as the design context for why these operating surfaces exist.
-4. Review [config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json](config/M365_STAGE_6_OPERATING_STATE_SCHEMA.json)
-   as the exact List/Planner/Teams schema behind the Stage 6 design.
-5. Lists are already provisioned and verified. Use read-back with:
-   `.\scripts\Start-M365Stage6ListOperatorInteractive.ps1 -Action Verify`.
-6. Planner/Teams is provisioned and verified. Use read-back after any manual
-   change with:
-   `.\scripts\Start-M365Stage6PlannerTeamsOperatorInteractive.ps1 -Action Verify`.
-7. Use the onboarding readiness packet before adding a partner or shaping first
-   client onboarding:
-   `inventory\stage-6-operating-state\onboarding-readiness\STAGE_6_ONBOARDING_READINESS_RUNBOOK.md`.
-8. Stage 7 local preflight is ready:
-   `.\scripts\Test-M365Stage7LocalPreflight.ps1`.
-9. Stage 7 read-only live inventory is ready when Adam can sign in:
-   `.\scripts\Start-M365Stage7SecurityInventoryInteractive.ps1`.
-10. Use [M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md](M365_STAGE_5_EXCHANGE_COMMUNICATION_ROUTING.md)
-   and the generated inventory summary only as Stage 5 reference.
-11. Then run the first supervised agent loop from
-   `inventory\stage-6-operating-state\first-run-packet\`.
+1. Start with [START_HERE.md](START_HERE.md).
+2. Open [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md).
+3. Use this index only for detailed stage history, evidence references, or
+   older implementation context.

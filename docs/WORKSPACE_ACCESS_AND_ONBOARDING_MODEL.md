@@ -38,7 +38,7 @@ Current evidence used:
 - `inventory/access-repair/M365_GROUP_OWNER_REPAIR_20260615-152034.md`
 - `M365_LOGIN_AND_ACCOUNT_GUIDE.md`
 - `inventory/stage-6-operating-state/onboarding-readiness/STAGE_6_ONBOARDING_READINESS_RUNBOOK.md`
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - `docs/COCKPIT_USABILITY_INVENTORY.md`
 - `docs/CARD_PLAN_INDEX.md`
 - `docs/CARD_PLAN_CRM_RELATIONSHIPS.md`

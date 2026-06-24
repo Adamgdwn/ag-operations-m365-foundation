@@ -1,7 +1,7 @@
 # Session Turnover - 2026-06-15
 
 Canonical restart file:
-[START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+[START_HERE.md](START_HERE.md).
 
 This handoff captures the stop point after Stage 8 workspace-shape, backing
 structure, and command-center homepage planning/build prep.
@@ -141,7 +141,7 @@ inventory/stage-8-client-workspace-reference/homepage-refinement/STAGE_8_HOMEPAG
    Latest result: PASS.
 
 7. Updated orientation docs:
-   - [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md)
+   - [START_HERE.md](START_HERE.md)
    - [00_INDEX.md](00_INDEX.md)
    - [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md)
    - [M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md](M365_STAGE_8_CLIENT_WORKSPACE_REFERENCE_PATTERN.md)
@@ -436,7 +436,7 @@ Evidence:
 
 ## Exact Resume Sequence
 
-1. Open [START_HERE_TOKEN_FRIENDLY.md](START_HERE_TOKEN_FRIENDLY.md).
+1. Open [START_HERE.md](START_HERE.md).
 2. If resuming tomorrow, open the live Guided AI Labs Operations Cockpit first.
 3. Review the CRM Command Center from the cockpit. The older Relationship
    CRM and CRM Operations pages are reference pages, not daily entry points.

@@ -9,7 +9,7 @@
 > [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (Stages 0–9). When this
 > brief's Phase numbers and the roadmap's Stage numbers disagree, **the roadmap
 > wins** for *what happens next*; this brief wins for *target architecture detail*.
-> Start at [00_INDEX.md](00_INDEX.md).
+> Start at [START_HERE.md](START_HERE.md).
 >
 > Phase ↔ Stage map:
 >

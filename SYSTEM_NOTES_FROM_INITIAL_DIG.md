@@ -1,7 +1,7 @@
 # System Notes From Initial Dig
 
 > **Local-machine track — Stage 4 input.** Device findings from the first pass.
-> Start at [00_INDEX.md](00_INDEX.md).
+> Start at [START_HERE.md](START_HERE.md).
 
 These were found during the first pass on 2026-05-25.
 
@@ -21,16 +21,9 @@ Both roots exist. This suggests a split-brain setup rather than a missing-folder
 
 ## Startup / Reload Finding
 
-Prime Portfolio Canvas had a startup shortcut that launches:
-
-- `C:\Users\adamg\01. Code Projects\Prime Portfolio Canvas 2.0\Start_Workspace_Server_Only.ps1`
-
-That script previously hardcoded a Codex-managed bundled Python path. It was changed to fall back to `python.exe` if the bundled runtime is unavailable.
-
-The app reload logic also had a fallback issue: it would trust an empty primary localStorage workspace over a valid last-known-good backup. That was patched in:
-
-- `C:\Users\adamg\01. Code Projects\Prime Portfolio Canvas 2.0\app.js`
-- `C:\Users\adamg\01. Code Projects\Prime Portfolio Canvas 2.0\dist\sharepoint-package\app.js`
+An unrelated local-app finding was captured during the first machine dig. It is not
+part of the AG Operations Microsoft 365 environment scope and should not be used as
+restart guidance for this workspace.
 
 ## Event Log Signals
 
@@ -42,4 +35,3 @@ Recent logs showed:
 - Secure Boot SBAT update error at boot
 
 These are notes for future cleanup, not immediate evidence of data loss.
-

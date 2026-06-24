@@ -13,7 +13,7 @@ read from or write to the live tenant during Chunk 2.
 - `inventory/gail-sharepoint-portal/GAIL_OPERATIONS_PORTAL_20260617-144536.md`
 - `inventory/gail-sharepoint-portal/gail-operations-portal-20260617-144536.log`
 - `scripts/Set-GuidedAILabsOperationsPortal.ps1`
-- `docs/START_HERE.md`
+- `START_HERE.md`
 - `inventory/stage-8-client-workspace-reference/workspace-shape/STAGE_8_WORKSPACE_SHAPE_VERIFY.md`
 - `inventory/stage-8-client-workspace-reference/workspace-backing-structure/STAGE_8_WORKSPACE_BACKING_VERIFY.md`
 - `inventory/stage-8-client-workspace-reference/workspace-backing-structure/stage-8-backing-navigation-20260614-221014.csv`

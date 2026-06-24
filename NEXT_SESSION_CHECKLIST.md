@@ -4,7 +4,7 @@
 > not the current step.** This
 > checklist belongs to the local-machine / device-side work in **Stage 4 —
 > OneDrive & Local Machine Dovetail**. The current resume point is **Stage 5 —
-> Exchange & Communication Routing**. Start at [00_INDEX.md](00_INDEX.md); canonical
+> Exchange & Communication Routing**. Start at [START_HERE.md](START_HERE.md); canonical
 > order is in [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md).
 
 Use this only if the Stage 4 local-machine cleanup is reopened.
