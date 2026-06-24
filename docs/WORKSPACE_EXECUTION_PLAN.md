@@ -12,6 +12,10 @@ Box-up note 2026-06-19: Chunks 1-7 are complete and pushed. The broad workspace
 usability pass is closed; resume with a named card-specific chunk or controlled
 governance/read-back task.
 
+Box-up note 2026-06-24: startup routing has been consolidated to root
+`START_HERE.md`. The current active plan is
+`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
+
 ## Execution Rule
 
 Work one chunk at a time. A chunk is complete only when the listed outputs exist

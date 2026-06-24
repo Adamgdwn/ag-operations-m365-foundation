@@ -1,9 +1,10 @@
 # Operating Card Plan Index
 
-Date: 2026-06-19
+Date: 2026-06-24
 
-Status: Chunk 7 final usability walkthrough complete. Closeout evidence is
-recorded in `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md`.
+Status: Chunk 7 final usability walkthrough complete. Current selected build
+direction is Agent Control Plane / approval loop via
+`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use

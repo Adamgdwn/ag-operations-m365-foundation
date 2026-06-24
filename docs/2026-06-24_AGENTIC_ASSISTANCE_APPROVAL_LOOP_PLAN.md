@@ -2,8 +2,9 @@
 
 Date generated: 2026-06-24
 
-Status: **NEXT selected chunk** (2026-06-24). Local planning first; no tenant
-write is approved by this document.
+Status: **NEXT selected chunk** (2026-06-24). Boxed for next session after
+documentation cleanup. Local planning first; no tenant write is approved by this
+document.
 
 Owner: Adam.
 
@@ -27,6 +28,15 @@ evidence + rollback note -> supervised internal action
 This is about practical functionality and agentic assistance now. Hiring,
 role-library, and new-hire packet work are deferred until growth makes them
 useful.
+
+## Box-Up Note - 2026-06-24
+
+The repo documentation has been consolidated so `START_HERE.md` is the only
+active startup document. This plan is the current working file.
+
+No Chunk A1 execution has started yet. The next session should begin at Action 1:
+confirm the live Agent Action Log and Decision Register fields/views from
+read-only evidence before defining or writing any live proposal packet.
 
 ## MVP Scope
 

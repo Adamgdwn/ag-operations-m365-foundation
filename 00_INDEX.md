@@ -555,6 +555,9 @@ should not sit waiting for private credentials.
 
 ### Session history
 
+- [SESSION_TURNOVER_2026-06-24.md](SESSION_TURNOVER_2026-06-24.md) — current
+  box-up handoff after the startup-document consolidation and agentic approval
+  plan selection. No tenant write or approval-loop execution started.
 - [SESSION_TURNOVER_2026-06-23.md](SESSION_TURNOVER_2026-06-23.md) — latest dated
   handoff before the startup-doc consolidation; CRM custom intake is verified,
   website fallback cleanup is handled, and the selected next direction is

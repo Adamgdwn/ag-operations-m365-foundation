@@ -6,7 +6,9 @@
 > you need the full pathway before drilling into the roadmap or a specific
 > function plan.
 > **Status:** master map. Points to the canonical sources; does not replace them.
-> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-24 (Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE; next plan is agentic assistance + approvals).
+> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-24 (docs boxed;
+> Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE; next
+> plan is agentic assistance + approvals).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),
@@ -143,8 +145,9 @@ PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← 
 adjacent functions (Bookings, Follow-up backbone) are LIVE. CRM is closed except
 for the explicitly held Stage 8 packet archive move. Adam's next priority is
 functionality plus agentic assistance and approvals, not hiring/onboarding. Build
-the Agentic Assistance & Approval Loop next, then repeat the same pattern for
-later functions.
+the Agentic Assistance & Approval Loop next, starting with read-only evidence for
+the live action/decision surfaces, then repeat the same pattern for later
+functions.
 
 ---
 

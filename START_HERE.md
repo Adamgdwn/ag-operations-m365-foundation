@@ -6,6 +6,10 @@ Status: the only active startup document for this repo.
 Read this file first, then open only the current working plan or the specific
 reference needed for the task.
 
+Box-up note 2026-06-24: documentation was consolidated to this single startup
+file, the current plan was date-prefixed, and the repo is boxed for the night.
+No agentic approval-loop execution or tenant write has started yet.
+
 ## Current Focus
 
 The Microsoft 365 infrastructure spine is complete. CRM / Relationships,
@@ -49,6 +53,7 @@ snapshots unless the task specifically asks for history or evidence.
 - Follow-up backbone: live email, calendar, and Planner reminder backbone.
 - Held item: Stage 8 packet archive move still waits for Adam's explicit OK.
 - Next proof: one safe, supervised CRM/Bookings/follow-up assistance loop.
+- Latest handoff: [SESSION_TURNOVER_2026-06-24.md](SESSION_TURNOVER_2026-06-24.md).
 
 ## Approval Boundaries
 
