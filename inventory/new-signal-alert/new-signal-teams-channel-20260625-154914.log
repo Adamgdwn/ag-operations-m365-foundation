@@ -1,0 +1,39 @@
+**********************
+PowerShell transcript start
+Start time: 20260625154914
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name:
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoExit -ExecutionPolicy Bypass -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Ensure-M365NewSignalTeamsChannel.ps1 -Apply
+Process ID: 37640
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+M365 New Signal Teams channel setup
+Group:   Guided AI Labs
+Channel: New Signal
+Mode:    Apply
+Safety: creates only one standard internal channel when -Apply is used.
+No guests, external sharing, permission broadening, tenant policy changes, posts, flows, mail, or CRM data changes.
+
+WARNING: Note: Sign in by Web Account Manager (WAM) is enabled by default on Windows. If using an embedded terminal, the interactive browser window may be hidden behind other windows.
+Connected Graph account: adamgoodwin@guidedailabs.com
+Graph scopes: AllSites.FullControl, Channel.Create, email, Group.ReadWrite.All, openid, profile, Tasks.ReadWrite, TeamsTab.Create, User.Read
+PASS: group found: Guided AI Labs (db49e096-5a34-48c5-9037-0f32c22bbda8)
+PASS: Team found: Guided AI Labs
+
+This will create the standard internal Teams channel 'New Signal' in 'Guided AI Labs'.
+CREATED: channel New Signal (19:d39b0c4951af40888c8f7eb2ca0ed255@thread.tacv2)
+Wrote channel target: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\forms-build\new-signal-teams-channel.json
+**********************
+PowerShell transcript end
+End time: 20260625154952
+**********************

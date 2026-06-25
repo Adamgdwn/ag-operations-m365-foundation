@@ -1,0 +1,93 @@
+AG
+Teams has a new URL: teams.cloud.microsoft. Same app, better security.Learn more
+Has context menu
+Chat
+Unread
+Channels
+Chats
+Meeting chats
+Copilot
+Quick views
+Discover
+Drafts
+Favorites
+Chats
+Teams and channels
+Guided AI Labs
+General
+Active Delivery
+Agent Setup
+Client Discovery
+Intake
+Methods and IP
+New Signal
+A.G. Operations Ltd
+General
+See all your teams
+Unread message
+Last message
+Group chat
+Meeting chat
+Chat
+Personal at mention
+Everyone at mention
+Important
+Urgent
+Draft
+Draft
+Muted
+Meeting in progress
+Meet now in progress
+You can't send messages because you are not a member of the chat.
+You cannot send messages to this bot
+Private
+Shared
+Has context menu
+Channel at mention
+Team at mention
+Personal at mention
+Unread
+Unread
+Meeting in progress
+Unread
+Channel
+Team
+Has pinned messages
+See more
+Community
+Temporarily shown
+Has context menu
+Badged chat
+Badged chats
+Has context menu
+New Signal
+Posts
+Shared
+Page
+Notes
+Has context menu
+Meet now
+Posts
+Workflows
+4:19 PM
+
+New CRM signal - High
+
+B1 New Signal Teams alert proof 20260625-161858
+
+Type: Website
+Source: Direct
+Person: B1 Internal Proof
+Organization: Guided AI Labs internal proof
+Need: Internal proof that a CRM - New Signals create produces exactly one internal Teams alert.
+Created: 2026-06-25T22:19:04Z
+Suggested first move: Confirm exactly one Teams post in Guided AI Labs / New Signal with a CRM item link; then run B2 triage against this item if useful.
+
+Open CRM signal
+
+No external message has been sent. CRM remains the source of truth.
+
+see more
+Reply in thread
+has context menu
+Post in channel

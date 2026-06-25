@@ -96,7 +96,17 @@ function buildMessageExpr() {
   try { channelTarget = readChannelTarget(); }
   catch (e) { log(`ERROR: ${e.message}`); process.exit(1); }
 
-  const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: dry || headless, viewport: { width: 1400, height: 950 } });
+  const CDP_PORT = process.env.CDP_PORT || '9222';
+  let ctx, browser, ownCtx = false;
+  try {
+    browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`, { timeout: 8000 });
+    ctx = browser.contexts()[0] || await browser.newContext();
+    log(`connected to WARM Edge over CDP :${CDP_PORT} (contexts=${browser.contexts().length})`);
+  } catch (e) {
+    log(`CDP connect failed (${e.message.split('\n')[0]}); falling back to cold ${dry || headless ? 'headless' : 'headed'} launch`);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless: dry || headless, viewport: { width: 1400, height: 950 } });
+    ownCtx = true;
+  }
   const page = ctx.pages()[0] || await ctx.newPage();
   const tokens = {};
   const grab = (req) => {
@@ -109,11 +119,21 @@ function buildMessageExpr() {
   page.on('request', grab);
   ctx.on('page', p => p.on('request', grab));
 
-  const cleanup = async () => { try { await ctx.close(); } catch {} };
-  await page.goto(`https://make.powerautomate.com/environments/${ENV}/connections`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+  const cleanup = async () => {
+    try {
+      if (ownCtx) await ctx.close();
+      else if (browser) await browser.close();
+    } catch {}
+  };
+  await page.goto(`https://make.powerautomate.com/environments/${ENV}/flows`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await page.waitForTimeout(9000);
+  for (let i = 0; i < 5 && (!tokens[EHOST] || !tokens[FLOWHOST]); i++) {
+    await page.goto(`https://make.powerautomate.com/environments/${ENV}/connections`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+    await page.waitForTimeout(7000);
+  }
   if (!tokens[EHOST] || !tokens[FLOWHOST]) {
-    log(`ERROR: missing token (EHOST=${!!tokens[EHOST]} FLOW=${!!tokens[FLOWHOST]}). Sign-in may have lapsed; run Start-FlowBuilder.ps1 -Phase auth.`);
+    log(`ERROR: missing token (EHOST=${!!tokens[EHOST]} FLOW=${!!tokens[FLOWHOST]}); hosts=${Object.keys(tokens).join(',')}`);
+    log('Run scripts/forms-builder/warm-edge.js and complete sign-in in the visible Edge window if prompted.');
     await cleanup();
     process.exit(2);
   }
@@ -130,14 +150,22 @@ function buildMessageExpr() {
     const r = await page.request.patch(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json', 'content-type': 'application/json' }, data: JSON.stringify(body) });
     return { status: r.status(), body: await r.text() };
   };
-  const listConnsOnce = async () => {
-    try { return (JSON.parse((await get(EHOST, `https://${EHOST}/connectivity/connections?api-version=1`)).body).value) || []; }
-    catch { return []; }
+  const listConnsOnce = async (attempt) => {
+    const raw = await get(EHOST, `https://${EHOST}/connectivity/connections?api-version=1`);
+    let parsed = {};
+    try { parsed = JSON.parse(raw.body); }
+    catch {
+      log(`connections GET #${attempt}: status=${raw.status} parse failed body=${raw.body.slice(0, 200)}`);
+      return [];
+    }
+    const value = parsed.value || [];
+    log(`connections GET #${attempt}: status=${raw.status} count=${value.length}`);
+    return value;
   };
   const listConns = async (tries = 6) => {
     let c = [];
     for (let i = 0; i < tries; i++) {
-      c = await listConnsOnce();
+      c = await listConnsOnce(i);
       if (c.length) return c;
       await page.waitForTimeout(3000);
     }

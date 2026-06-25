@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-24
+Last updated: 2026-06-25
 
 This is the detailed document map. It is not the startup document.
 
@@ -19,6 +19,11 @@ For current work, use [START_HERE.md](START_HERE.md). The active plan is
 [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md),
 and the selected setup runbook is
 [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md).
+Latest handoff:
+[SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md). The active
+agent build is paused because two agents are writing to M365 accounts and
+competing; do not run live write commands until Adam resumes the lane and the
+write-owner boundary is clear.
 The current cockpit inventory and gap list are in
 [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
 and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).

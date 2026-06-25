@@ -1,6 +1,11 @@
-// Read-only: fetch the engine flow's most recent run(s) and print each action's status,
+// Read-only: fetch a flow's most recent run(s) and print each action's status,
 // drilling into failures (incl. inside For_each_signal) so a flow bug is visible without
-// guessing. Usage: node get-last-run.js [--headless] [--n=1]
+// guessing.
+//
+// Usage:
+//   node get-last-run.js [--headless] [--n=1]
+//   node get-last-run.js --result=flow-result-new-signal-teams.json --n=3
+//   node get-last-run.js --flowName=<flow-guid> --n=3
 const fs = require('fs');
 const path = require('path');
 let chromium;
@@ -15,16 +20,29 @@ const ENV = 'Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501';
 const FLOWHOST = 'api.flow.microsoft.com';
 const headless = process.argv.includes('--headless');
 const N = parseInt((process.argv.find(a => a.startsWith('--n=')) || '=1').split('=')[1], 10) || 1;
-const flowName = JSON.parse(fs.readFileSync(path.join(OUT, 'flow-result-engine.json'), 'utf8')).flowName;
+const flowNameArg = (process.argv.find(a => a.startsWith('--flowName=')) || '').split('=')[1];
+const resultArg = (process.argv.find(a => a.startsWith('--result=')) || '=flow-result-engine.json').split('=')[1];
+const flowName = flowNameArg || JSON.parse(fs.readFileSync(path.join(OUT, resultArg), 'utf8')).flowName;
 
 (async () => {
-  const ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless, viewport: { width: 1400, height: 950 } });
+  const CDP_PORT = process.env.CDP_PORT || '9222';
+  let ctx, browser, ownCtx = false;
+  try {
+    browser = await chromium.connectOverCDP(`http://127.0.0.1:${CDP_PORT}`, { timeout: 8000 });
+    ctx = browser.contexts()[0] || await browser.newContext();
+    log(`connected to WARM Edge over CDP :${CDP_PORT}`);
+  } catch (e) {
+    log(`CDP connect failed (${e.message.split('\n')[0]}); cold launch`);
+    ctx = await chromium.launchPersistentContext(PROFILE_DIR, { channel: 'msedge', headless, viewport: { width: 1400, height: 950 } });
+    ownCtx = true;
+  }
   const page = ctx.pages()[0] || await ctx.newPage();
+  const cleanup = async () => { try { if (ownCtx) await ctx.close(); else if (browser) await browser.close(); } catch {} };
   const tokens = {};
   page.on('request', (req) => { const a = req.headers()['authorization']; if (a && /^bearer /i.test(a)) { const h = new URL(req.url()).host; if (!tokens[h]) tokens[h] = a.replace(/^bearer\s+/i, ''); } });
   await page.goto(`https://make.powerautomate.com/environments/${ENV}/flows`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   await page.waitForTimeout(9000);
-  if (!tokens[FLOWHOST]) { log('no FLOWHOST token'); await ctx.close(); process.exit(1); }
+  if (!tokens[FLOWHOST]) { log('no FLOWHOST token'); await cleanup(); process.exit(1); }
   const T = { authorization: 'Bearer ' + tokens[FLOWHOST], accept: 'application/json' };
   const base = `https://${FLOWHOST}/providers/Microsoft.ProcessSimple/environments/${ENV}/flows/${flowName}`;
   const gj = async (url) => { const r = await page.request.get(url, { headers: T }); try { return { s: r.status(), j: JSON.parse(await r.text()) }; } catch { return { s: r.status(), j: null }; } };
@@ -57,5 +75,5 @@ const flowName = JSON.parse(fs.readFileSync(path.join(OUT, 'flow-result-engine.j
       }
     }
   }
-  await ctx.close();
+  await cleanup();
 })();

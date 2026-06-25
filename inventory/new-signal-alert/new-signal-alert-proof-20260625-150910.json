@@ -1,0 +1,37 @@
+{
+  "purpose": "B1 New Signal Teams alert proof",
+  "generatedAt": "2026-06-25T15:48:46.8475773-06:00",
+  "status": "fail",
+  "mode": "apply",
+  "safety": "Internal CRM/Teams proof only; no external messages or permission changes.",
+  "channelEvidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\forms-build\\new-signal-teams-channel.json",
+  "channelEvidence": null,
+  "flowEvidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\forms-build\\flow-result-new-signal-teams.json",
+  "flowEvidence": null,
+  "listEvidence": {
+    "title": "CRM - New Signals",
+    "id": "a64ef810-ad45-407b-b1ea-516533a8611d",
+    "rootFolder": "/sites/GuidedAILabs/Lists/CRM  New Signals"
+  },
+  "signalEvidence": {
+    "itemId": 18,
+    "title": "B1 New Signal Teams alert proof 20260625-150910",
+    "created": "2026-06-25T21:09:33.0000000Z",
+    "modified": "2026-06-25T21:09:33.0000000Z",
+    "priority": "High",
+    "signalType": "Website",
+    "intakeSource": "Direct",
+    "itemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=18"
+  },
+  "operatorEvidence": {
+    "captured": true,
+    "status": "fail",
+    "postCount": 0,
+    "crmLinkPresent": false,
+    "teamsPostTime": "",
+    "teamsPostLink": "",
+    "flowRunStatus": "not checked",
+    "notes": "New Signal Channel is missing visible channels are General, Active Delivery, Agent Setup, Client Discovery, Intake, Methods and IP"
+  },
+  "transcript": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-alert\\new-signal-alert-proof-20260625-150910.log"
+}

@@ -1,0 +1,86 @@
+{
+  "included": true,
+  "generatedAt": "2026-06-25T16:24:48.8175618-06:00",
+  "searchedSurfaces": [
+    "CRM - New Signals",
+    "CRM - Organizations",
+    "CRM - Contacts",
+    "CRM - Engagements",
+    "CRM - Touchpoints"
+  ],
+  "candidateCount": 5,
+  "matchCount": 4,
+  "summary": "Found 4 possible related record(s).",
+  "matches": [
+    {
+      "listTitle": "CRM - New Signals",
+      "id": 18,
+      "title": "B1 New Signal Teams alert proof 20260625-150910",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=18",
+      "confidence": "High",
+      "score": 258,
+      "reasons": [
+        "exact email match",
+        "exact normalized organization match",
+        "close person name plus same organization",
+        "similar need/opportunity keywords: teams, alert, signals, create, produces",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "New",
+      "organizationName": "Guided AI Labs internal proof",
+      "personName": "B1 Internal Proof",
+      "email": "new-signal-proof@example.invalid"
+    },
+    {
+      "listTitle": "CRM - Organizations",
+      "id": 1,
+      "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Organizations/DispForm.aspx?ID=1",
+      "confidence": "Medium",
+      "score": 54,
+      "reasons": [
+        "close organization name match",
+        "similar need/opportunity keywords: external, confirm",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "Active",
+      "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+      "personName": "",
+      "email": ""
+    },
+    {
+      "listTitle": "CRM - Engagements",
+      "id": 1,
+      "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - CRM workflow proof",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Engagements/DispForm.aspx?ID=1",
+      "confidence": "Low",
+      "score": 24,
+      "reasons": [
+        "similar need/opportunity keywords: external, action",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "Active",
+      "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-ORG",
+      "personName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-CONTACT",
+      "email": ""
+    },
+    {
+      "listTitle": "CRM - Touchpoints",
+      "id": 1,
+      "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Internal touchpoint",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Touchpoints/DispForm.aspx?ID=1",
+      "confidence": "Low",
+      "score": 24,
+      "reasons": [
+        "similar need/opportunity keywords: created, action",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "Active",
+      "organizationName": "",
+      "personName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-CONTACT",
+      "email": ""
+    }
+  ],
+  "evidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260625-162436.json",
+  "boundary": "Advisory only. No merge, lookup conversion, suppression, dedupe, update, delete, or hidden decision occurred."
+}

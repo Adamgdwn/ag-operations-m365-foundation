@@ -1,0 +1,154 @@
+{
+  "purpose": "B2/B3/B4 Signal triage lane",
+  "generatedAt": "2026-06-25T16:24:53.5371719-06:00",
+  "sourceMode": "sharepoint",
+  "sourceInputJson": "",
+  "relatedRecordsInputJson": "",
+  "signal": {
+    "Id": 19,
+    "Title": "B1 New Signal Teams alert proof 20260625-161858",
+    "PersonName": "B1 Internal Proof",
+    "PersonEmail": "new-signal-proof@example.invalid",
+    "OrganizationName": "Guided AI Labs internal proof",
+    "SignalType": "Website",
+    "IntakeSource": "Direct",
+    "IntentPath": "",
+    "Priority": "High",
+    "SignalStatus": "New",
+    "NeedSummary": "Internal proof that a CRM - New Signals create produces exactly one internal Teams alert.",
+    "SourceText": "Created by scripts/Invoke-M365NewSignalAlertProof.ps1. No external response, phone action, or prospect commitment is authorized.",
+    "NextAction": "Confirm exactly one Teams post in Guided AI Labs / New Signal with a CRM item link; then run B2 triage against this item if useful.",
+    "FollowUpDueDate": "",
+    "Created": "2026-06-25T22:19:04.0000000Z",
+    "Modified": "2026-06-25T22:19:04.0000000Z",
+    "Owner": "",
+    "ItemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=19"
+  },
+  "decision": {
+    "apparentUrgency": "Time-sensitive",
+    "classification": "qualification",
+    "suggestedFirstMove": "Review the existing NextAction and decide whether to accept it: Confirm exactly one Teams post in Guided AI Labs / New Signal with a CRM item link; then run B2 triage against this item if useful.",
+    "missingInformation": [
+      "follow-up due date",
+      "owner"
+    ],
+    "suggestedOwner": "Adam",
+    "suggestedFollowUpDueWindow": "Today",
+    "nextGovernanceLevel": "G0",
+    "governanceNote": "G0 review only. No write or external action is needed until Adam chooses the next move.",
+    "blockedActions": [
+      "Do not update CRM fields in B2.",
+      "Do not create Planner tasks or calendar reminders in B2.",
+      "Do not send email, Teams chat, SMS, calls, or prospect replies.",
+      "Do not merge, suppress, convert, close, or dedupe records automatically.",
+      "Do not grant app permissions, consent, guest access, or sharing changes."
+    ],
+    "requiredApprovals": [
+      "G1 approval before writing an Agent Action Log Suggested row.",
+      "G2 approval before internal CRM/list updates or task/reminder creation.",
+      "G3 approval before any external/prospect communication or access-affecting write.",
+      "G4 remains blocked for destructive, broad-permission, guest/share, billing, or client-commitment actions."
+    ]
+  },
+  "similarRecordAdvisory": {
+    "included": true,
+    "generatedAt": "2026-06-25T16:24:48.8175618-06:00",
+    "searchedSurfaces": [
+      "CRM - New Signals",
+      "CRM - Organizations",
+      "CRM - Contacts",
+      "CRM - Engagements",
+      "CRM - Touchpoints"
+    ],
+    "candidateCount": 5,
+    "matchCount": 4,
+    "summary": "Found 4 possible related record(s).",
+    "matches": [
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 18,
+        "title": "B1 New Signal Teams alert proof 20260625-150910",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=18",
+        "confidence": "High",
+        "score": 258,
+        "reasons": [
+          "exact email match",
+          "exact normalized organization match",
+          "close person name plus same organization",
+          "similar need/opportunity keywords: teams, alert, signals, create, produces",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs internal proof",
+        "personName": "B1 Internal Proof",
+        "email": "new-signal-proof@example.invalid"
+      },
+      {
+        "listTitle": "CRM - Organizations",
+        "id": 1,
+        "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Organizations/DispForm.aspx?ID=1",
+        "confidence": "Medium",
+        "score": 54,
+        "reasons": [
+          "close organization name match",
+          "similar need/opportunity keywords: external, confirm",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "Active",
+        "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+        "personName": "",
+        "email": ""
+      },
+      {
+        "listTitle": "CRM - Engagements",
+        "id": 1,
+        "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - CRM workflow proof",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Engagements/DispForm.aspx?ID=1",
+        "confidence": "Low",
+        "score": 24,
+        "reasons": [
+          "similar need/opportunity keywords: external, action",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "Active",
+        "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-ORG",
+        "personName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-CONTACT",
+        "email": ""
+      },
+      {
+        "listTitle": "CRM - Touchpoints",
+        "id": 1,
+        "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Internal touchpoint",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Touchpoints/DispForm.aspx?ID=1",
+        "confidence": "Low",
+        "score": 24,
+        "reasons": [
+          "similar need/opportunity keywords: created, action",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "Active",
+        "organizationName": "",
+        "personName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-CONTACT",
+        "email": ""
+      }
+    ],
+    "evidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260625-162436.json",
+    "boundary": "Advisory only. No merge, lookup conversion, suppression, dedupe, update, delete, or hidden decision occurred."
+  },
+  "actionLogSuggestion": {
+    "status": "created",
+    "title": "Triage new CRM signal - B1 Internal Proof / Guided AI Labs internal proof",
+    "actionStatus": "Suggested",
+    "actionType": "recommend",
+    "itemId": 9,
+    "itemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/Agent%20Action%20Log/DispForm.aspx?ID=9",
+    "duplicateSuggestions": [],
+    "boundary": "G1 Suggested row only. Not approved, not completed, not executed."
+  },
+  "safety": "G1 Agent Action Log Suggested row only. No CRM update, task, reminder, message, merge, permission, or external action occurred.",
+  "markdownPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260625-162436.md",
+  "jsonPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260625-162436.json",
+  "matchEvidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260625-162436.json",
+  "transcript": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260625-162436.log"
+}

@@ -71,8 +71,19 @@ const CONNECTORS = [
     // Dismiss cookie banner if present.
     for (const t of ['Accept', 'Reject']) { const b = await page.$(`button:has-text("${t}")`).catch(() => null); if (b) { await b.click().catch(() => {}); break; } }
     // Type the connector name into the search box to filter the long list.
-    const search = await page.$('input[type=search], input[placeholder*="Search" i], [role=searchbox]').catch(() => null);
-    if (search) { await search.click().catch(() => {}); await search.fill(c.label).catch(() => {}); await page.waitForTimeout(3500); }
+    await page.keyboard.press('Escape').catch(() => {});
+    const searchInputs = await page.$$('input[placeholder="Search"]');
+    let search = null;
+    for (const candidate of searchInputs) {
+      const box = await candidate.boundingBox().catch(() => null);
+      if (box && box.width > 0 && box.height > 0 && box.x > 900) { search = candidate; break; }
+    }
+    if (!search) { search = searchInputs[0] || null; }
+    if (search) {
+      await search.click().catch(() => {});
+      await search.fill(c.label).catch(() => {});
+      await page.waitForTimeout(3500);
+    }
     await page.screenshot({ path: path.join(CAP, `conn-${c.key}-1-available.png`), fullPage: true }).catch(() => {});
 
     // Click the "+" / add action on the row whose name matches the connector exactly.
@@ -82,8 +93,10 @@ const CONNECTORS = [
     for (const row of rows) {
       const txt = ((await row.innerText().catch(() => '')) || '').trim();
       // Match the name cell starting with the exact label (avoid OneDrive/SharePoint-adjacent rows).
-      if (new RegExp('^' + c.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(txt)) {
-        const act = await row.$('button, [role=button], a[aria-label], i[role=button]');
+      if (new RegExp('^' + c.label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(\\s|$)', 'i').test(txt)) {
+        const actionButtons = await row.$$('button, [role=button], a[aria-label], i[role=button]').catch(() => []);
+        let act = await row.$('button[aria-label="New connection"], [aria-label*="New connection" i]').catch(() => null);
+        if (!act && actionButtons.length) { act = actionButtons[actionButtons.length - 1]; }
         if (act) { await act.click({ timeout: 4000 }).catch(() => {}); clicked = txt.split('\n')[0]; break; }
       }
     }
@@ -101,6 +114,30 @@ const CONNECTORS = [
         for (const rx of [/^(Accept|Allow|Yes|Continue)$/i]) { const bs = await popup.$$('button, input[type=submit], [role=button]').catch(() => []); for (const b of bs) { const t = ((await b.innerText().catch(() => '')) || (await b.getAttribute('value').catch(() => '')) || '').trim(); if (rx.test(t)) { await b.click().catch(() => {}); log('  popup approved: ' + t); break; } } }
         await popup.waitForTimeout(4000).catch(() => {});
         await popup.screenshot({ path: path.join(CAP, `conn-${c.key}-2-popup.png`) }).catch(() => {});
+      }
+    } else {
+      const createButton = page.locator('button:has-text("Create")').last();
+      if (await createButton.count().catch(() => 0)) {
+        const panelPopupP = ctx.waitForEvent('page', { timeout: 9000 }).catch(() => null);
+        await createButton.click({ timeout: 4000 }).catch(() => {});
+        log('  clicked connector detail Create button');
+        const panelPopup = await panelPopupP;
+        if (panelPopup) {
+          if (headed) {
+            log('  >>> OAuth popup opened. Please pick your account / click Allow to grant the connection. <<<');
+            await panelPopup.waitForTimeout(3000).catch(() => {});
+          } else {
+            log('  OAuth popup opened; letting it settle/redirect...');
+            await panelPopup.waitForTimeout(6000).catch(() => {});
+            const bs = await panelPopup.$$('button, input[type=submit], [role=button]').catch(() => []);
+            for (const b of bs) {
+              const t = ((await b.innerText().catch(() => '')) || (await b.getAttribute('value').catch(() => '')) || '').trim();
+              if (/^(Accept|Allow|Yes|Continue)$/i.test(t)) { await b.click().catch(() => {}); log('  popup approved: ' + t); break; }
+            }
+            await panelPopup.waitForTimeout(4000).catch(() => {});
+            await panelPopup.screenshot({ path: path.join(CAP, `conn-${c.key}-2-popup.png`) }).catch(() => {});
+          }
+        }
       }
     }
     await page.waitForTimeout(6000);

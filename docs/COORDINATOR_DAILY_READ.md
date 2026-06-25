@@ -6,6 +6,11 @@ Status: Active capability under the future `M365 Interaction Agent`. First
 "intelligent" G1 loop — the read→reason→propose upgrade of the Stage 9
 coordinator loop.
 
+Pause note 2026-06-25: Adam paused live M365 write work because two agents are
+writing to M365 accounts and competing. While that pause is active, run this
+capability only in G0/read-only mode unless Adam explicitly resumes this agent
+lane and confirms the competing writer boundary.
+
 This is the Coordinator capability's daily operations read. It replaces the
 canned `CoordinatorSuggestion` action (which wrote a fixed test row) with a
 loop that actually reads live operating Lists, applies dated detection rules,
@@ -33,6 +38,10 @@ Related: [AGENTIC_M365_READINESS.md](AGENTIC_M365_READINESS.md),
 It never sends mail, invites guests, changes sharing or permissions, grants
 consent, changes tenant policy, publishes Forms, deletes records, registers
 apps, or runs unattended automation.
+
+During the 2026-06-25 pause, also do not use `-Apply` or `-Approve` from this
+capability. A `Suggested` row is still an M365 write, even though it is low
+risk.
 
 ## Identity note
 
@@ -101,8 +110,8 @@ fully scripted runs.
 
 ## Next steps (not yet built)
 
-- Finish the `New Signal` Teams alert proof first; that is the selected
-  first-minute notification capability for the same M365 agent.
+- `New Signal` Teams alert proof is complete through B1-B4. Resume only after
+  the competing M365-writing agent boundary is clear.
 - Run on a cadence (manual for now; Power Automate / scheduled task is a later
   Decision Register item).
 - Optional G2 follow-through: turn an approved suggestion into a Planner task or

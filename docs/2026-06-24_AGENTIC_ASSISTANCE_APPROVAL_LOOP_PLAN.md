@@ -2,11 +2,12 @@
 
 Date generated: 2026-06-24
 
-Status: **BOXED FOR NIGHT - active next chunk** (2026-06-24). This revision
-follows the plan review that separated real agent capability from the old
-supervised setup-helper path, and Adam's decision that this should be one M365
-interaction agent with governed capabilities rather than separate supervised
-helper layers.
+Status: **B1-B4 live proof complete; paused before B5** (updated 2026-06-25).
+Adam paused because two agents are writing to M365 accounts and competing. This
+revision follows the plan review that separated real agent capability from the
+old supervised setup-helper path, and Adam's decision that this should be one
+M365 interaction agent with governed capabilities rather than separate
+supervised helper layers.
 
 Owner: Adam.
 
@@ -17,32 +18,61 @@ Related docs:
 - `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
 - `docs/COORDINATOR_DAILY_READ.md`
 - `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`
+- `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`
 - `config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json`
 - `inventory/stage-9-agentic-os-bridge/bridge-readiness-control/STAGE_9_BRIDGE_READINESS_CONTROL_GUIDE.md`
 
 ## Night Box-Up Snapshot
 
-Boxed on 2026-06-24:
+Boxed on 2026-06-24, updated after the 2026-06-25 proof:
 
 - Active product direction is one `M365 Interaction Agent`, not separate helper
   bots.
 - First live notification capability is `CRM - New Signals` created -> internal
-  Teams channel `New Signal`.
-- QUO is parked until the Teams alert is proven.
+  Teams channel `New Signal`; this lane is now proven with synthetic CRM item
+  `#19`.
+- QUO remains parked until a later source-expansion decision.
 - Local scripts and runbook exist for channel setup, Teams connector setup,
-  dry-run flow body, and live flow creation.
-- Live proof is not complete until evidence shows the channel target, Teams
-  connector, flow creation/update, and exactly one Teams post from one test CRM
-  item.
+  dry-run flow body, live flow creation, B1 proof capture, B2/B3 local triage
+  and similar-record advisory, and B4 Suggested Agent Action Log rows.
+- Live proof evidence now shows the channel target, Teams connector, started
+  flow, one Teams post from one test CRM item, B2/B3 triage, and one B4
+  `Suggested` Agent Action Log row.
+- Work is now paused before B5 because another M365-writing agent may compete
+  with this repo's live write actions.
 
 Resume at:
 
-1. `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`
-2. `inventory/forms-build/new-signal-teams-channel.json` if it exists
-3. Teams connector setup
-4. flow dry run
-5. live flow creation
-6. one CRM test signal proof
+1. `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`
+2. `SESSION_TURNOVER_2026-06-25.md`
+3. Competing-writer audit
+4. B5 durable permission decision
+5. B6 source expansion after B5
+
+## Pause Protocol - 2026-06-25
+
+Do not run additional M365 writes from this repo while the pause is active.
+That includes `-Apply`, `-Approve`, connector creation, flow creation/update,
+synthetic proof item creation, Agent Action Log writes, permission grants, QUO
+setup, and external sends.
+
+Safe while paused:
+
+- documentation review;
+- local evidence review;
+- parser/lint checks;
+- read-only triage only if Adam explicitly asks for it.
+
+First resume decision:
+
+- Which live agent owns each M365 write surface?
+- Does the already-started `GAIL - New Signal Teams alert` flow stay active?
+- Does this repo retain the G1 `Suggested` Agent Action Log lane, or does
+  another agent become the only writer?
+- What is the revoke/disable path for each writer?
+
+Record those answers in B5 before expanding source inputs, permissions, or
+unattended behavior.
 
 ## Plan Review Findings
 
@@ -346,8 +376,10 @@ Default next proof:
 
 - Teams hot-alert proof selected on 2026-06-24: one internal test CRM signal
   creates exactly one `New Signal` Teams post and links back to the CRM item.
-  Local-only G0 and G1 suggested-row proofs remain available after the alert is
-  proven, but they are not tomorrow's first move.
+  Local B2/B3 triage plus similar-record advisory now runs through
+  `scripts/Invoke-M365NewSignalTriage.ps1`. The same script can perform the B4
+  G1 suggested-row proof with `-Apply` after Adam approves the one Agent Action
+  Log write.
 
 Acceptance:
 
@@ -389,16 +421,27 @@ Stop until this is approved:
 
 ## Immediate Next Actions
 
-1. Ensure the internal Teams channel `Guided AI Labs / New Signal`.
-2. Create the standard Power Automate Microsoft Teams connection for
+Expanded build chunks are documented in
+`docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`.
+
+Paused. Completed items:
+
+1. Internal Teams channel `Guided AI Labs / New Signal` exists.
+2. Standard Power Automate Microsoft Teams connection exists for
    `adamgoodwin@guidedailabs.com`.
-3. Build the create-only notification flow:
+3. Create-only notification flow exists and is `Started`:
    `CRM - New Signals` created -> `New Signal` Teams post.
-4. Test with one CRM signal and prove exactly one Teams alert appears with a CRM
-   item link.
-5. Record the proof and keep QUO parked.
-6. Fold the result into the `M365 Interaction Agent` contract and permission
-   design.
+4. Synthetic proof item `#19` produced exactly one observed Teams alert with a
+   CRM item link.
+5. Local B2/B3 triage and similar-record packet exists.
+6. B4 `Suggested` Agent Action Log row `#9` exists.
+
+Next when resumed:
+
+1. Resolve the competing M365-writing agent issue.
+2. Record the B5 durable permission/adapter posture.
+3. Keep QUO parked.
+4. Then decide B6 source expansion.
 
 ## Stop Conditions
 
@@ -417,3 +460,6 @@ admin consent, external messaging, guest access, broad automation, or QUO.
 
 Stop immediately if a setup-helper grant is being treated as production agent
 capability.
+
+Stop immediately if another M365-writing agent is active and the write-owner
+boundary has not been intentionally decided.
