@@ -2,12 +2,26 @@
 
 Date: 2026-06-19
 
-Status: Chunk 6 output. Local documentation only; no Microsoft 365 tenant read
-or write was performed for this pass.
+Status: Chunk 6 baseline output. Local documentation only; no Microsoft 365
+tenant read or write was performed for this pass. Active revision on
+2026-06-24: use this as the safety ladder under the one-agent plan, not as a
+reason to split work into helper bots.
 
 Use this list with `docs/AGENTIC_M365_READINESS.md` and
 `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` before approving Copilot, connector,
 Power Platform, custom adapter, or unattended agent work.
+
+## 2026-06-24 Active Revision
+
+- Target posture is one `M365 Interaction Agent` with governed capabilities.
+- Coordinator, CRM, Teams, Planner, Lists, SharePoint, Forms, mailbox, and later
+  phone lanes should become capabilities of that agent unless a security
+  boundary forces a separate adapter.
+- First selected proof is `CRM - New Signals` created -> internal Teams channel
+  `New Signal`.
+- QUO is parked.
+- The setup/provisioning helper remains setup-only and must not become durable
+  production agent authority.
 
 ## Readiness Verdict
 
@@ -31,7 +45,7 @@ Guided AI Labs is not yet ready for:
 
 | Area | Chunk 6 default | Why | Blocks |
 |---|---|---|---|
-| Agent posture | Stay supervised delegated. | Lowest new permission risk while card runbooks are active and production bridge gates remain unresolved. | Production bridge, unattended writes, app-based adapters. |
+| Agent posture | One governed M365 Interaction Agent; use delegated/local setup paths only for proofs until durable permission posture is approved. | Adam wants agents, not separate supervised helper layers; least-privilege posture still needs a decision. | Production app/adapter, unattended writes, broad setup-helper reuse. |
 | Action logging | Every meaningful suggestion or assisted action needs an Agent Action Log row. | Creates durable evidence before agent work becomes normal. | Any agent action without source, owner, approval state, evidence, and rollback note. |
 | Approval source | Decision Register owns approval for policy, app, permission, connector, external/client, mailbox, or automation posture. | Keeps approval separate from execution. | App consent, connectors, external sends, public Forms, sharing, permissions. |
 | App posture | Do not reuse broad setup-helper grants as production bridge power. | Setup power and operating power must remain separate. | Production UAOS/M365 adapter until resting-state decision exists. |
@@ -96,7 +110,7 @@ Transition rules:
 | SharePoint pages, Lists, and libraries | Native M365 source of truth. | Selected permission adapter only after design approval. | Permission, sharing, retention, or deletion change. |
 | Planner / Tasks | Supervised delegated first. | App-based task writes only after narrower posture is approved. | Calendar/deadline commitment or broad task-writing automation. |
 | Exchange support mailbox | Manual/supervised only. | Exchange Application RBAC after support MFA and design approval. | Any external send, delegate/forwarding change, or mailbox adapter grant. |
-| Teams | Manual coordination and read-only context. | Supervised internal posts after channel rules are approved. | Broad announcement, guest impact, or external-sensitive post. |
+| Teams | Manual coordination plus the narrow `New Signal` internal alert proof. | Broader internal posts only after channel rules and agent contract are approved. | Broad announcement, guest impact, external-sensitive post, or treating Teams as a separate bot. |
 | Forms and intake routing | Internal/test or documented existing lanes. | Public/client Forms only after Decision Register approval. | Unauthenticated collection, sensitive data, or public link. |
 | Entra apps and enterprise apps | Read/review only. | Purpose-built adapter app after production bridge decision. | App registration, app consent, broad delegated grant, or tenant policy change. |
 | Copilot agents | Read-only/draft pilot after records/access review. | Custom actions only after action log and approval gates are proven. | Write action, connector, external data, or sensitive grounding question. |
@@ -108,7 +122,7 @@ Transition rules:
 
 | ID | Decision | Recommended default | Required before changing default |
 |---|---|---|---|
-| A6-01 | Stay supervised delegated or approve a production adapter path? | Stay supervised delegated. | Decision Register item with scope, owner, review date, blocked actions, and rollback path. |
+| A6-01 | What is the durable posture for the M365 Interaction Agent? | One named agent with governed capabilities; use delegated setup/proof paths only until the permission model is approved. | Decision Register item with scope, owner, review date, blocked actions, and rollback path. |
 | A6-02 | What is the resting state for broad setup-helper grants? | Time-box while build is active; reject as production bridge power. | App grant resting-state decision plus Tool Permission Review update. |
 | A6-03 | Is Business Premium / Entra P1 worth adding now? | Keep Security Defaults until licensing path is chosen. | License decision, Conditional Access plan, script auth impact review. |
 | A6-04 | When does support mailbox automation start? | Not before support MFA. | Verified MFA note and support mailbox adapter design. |

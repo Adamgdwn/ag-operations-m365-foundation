@@ -5,7 +5,7 @@
 // no human interaction is needed. Screenshots + non-GET network go to .local.
 //
 // Usage: node create-connections.js [--headed] [--only=key1,key2]
-//   keys: sharepoint | forms | planner | office365users
+//   keys: sharepoint | forms | planner | office365users | teams
 //   For the Operations follow-up sync layer: --only=planner,office365users --headed
 const fs = require('fs');
 const path = require('path');
@@ -29,6 +29,7 @@ const CONNECTORS = [
   { key: 'forms', api: 'shared_microsoftforms', label: 'Microsoft Forms' },
   { key: 'planner', api: 'shared_planner', label: 'Planner' },
   { key: 'office365users', api: 'shared_office365users', label: 'Office 365 Users' },
+  { key: 'teams', api: 'shared_teams', label: 'Microsoft Teams' },
 ].filter(c => !only || only.includes(c.key));
 
 (async () => {

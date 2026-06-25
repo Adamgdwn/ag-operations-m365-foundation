@@ -3,8 +3,9 @@
 Date: 2026-06-24
 
 Status: Chunk 7 final usability walkthrough complete. Current selected build
-direction is Agent Control Plane / approval loop via
-`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
+direction is the Agent Control Plane / `M365 Interaction Agent` via
+`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`, with the `New Signal`
+Teams alert proof as the next live step.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
@@ -37,7 +38,7 @@ A card plan is complete only when it defines:
 | Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Active plan with Chunk 7 closeout evidence | Add a clearer cockpit route only if live onboarding shows records are too hidden. |
 | Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Active plan with Chunk 7 closeout evidence | Resolve support MFA before support mailbox operations depend on that identity. |
 | Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Active plan with Chunk 7 closeout evidence | Keep billing, payment, legal, and client acceptance authority with Adam. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Next selected build direction | Use `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md` with the readiness and decision docs; prove a supervised suggestion -> approval -> evidence loop before broader automation. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Next selected build direction | Use `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md` and `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`; prove one CRM New Signal -> Teams alert -> agent triage path before broader automation. |
 | Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model with Chunk 7 closeout evidence | Read back exact live SharePoint groups and permission groups before any grant. |
 
 ## Chunk 5 Card Notes
@@ -138,11 +139,14 @@ Current plan:
 - `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md`
 - `docs/AGENTIC_M365_READINESS.md`
 - `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
+- `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`
+- `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`
 
 First acceptance question:
 
-- Can a reviewer classify an AI/agent action as G0-G4 and identify required
-  approval, evidence, and rollback before any write-capable action?
+- Can one new CRM signal produce exactly one internal Teams alert, stay linked
+  to the CRM source of truth, and then flow into a G0-G4 agent triage/approval
+  path?
 
 Chunk 6 readiness result:
 

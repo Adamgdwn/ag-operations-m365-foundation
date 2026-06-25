@@ -6,6 +6,11 @@ Status: **COMPLETE (2026-06-22) — all chunks closed; CRM recovery done.** Reta
 the execution record. One non-blocking residual is held by design: the Stage 8 packet
 archive move awaits Adam's explicit OK (see Chunk 8). The CRM operating path is LIVE.
 
+Post-recovery note 2026-06-24: the current add-on is not a CRM recovery chunk.
+It is the first notification capability of the `M365 Interaction Agent`:
+`CRM - New Signals` created -> internal Teams channel `New Signal`. Use
+`docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md` for that proof.
+
 Use this document when Adam says to start applying the next chunk. `START_HERE.md`
 is the orientation front door. `docs/CRM_RECOVERY_PLAN.md` explains why the work
 exists. This file defines what to execute.
@@ -574,7 +579,8 @@ These are not completion blockers:
   `docs/CRM_CLOSEOUT_HELPER_PLAN.md`.
 - Power Apps front door.
 - mailbox parsing or unattended automation.
-- public intake forms.
+- additional public intake forms beyond the two proven brand intake paths.
+- first-minute Teams alert proof for new CRM signals.
 - Dynamics/Dataverse.
 - full accounting or invoicing automation.
 - premium Power Platform dependencies.

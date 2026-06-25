@@ -16,7 +16,9 @@ the wider project map or older stage/history references.
 > it.
 
 For current work, use [START_HERE.md](START_HERE.md). The active plan is
-[docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md).
+[docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md),
+and the selected setup runbook is
+[docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md).
 The current cockpit inventory and gap list are in
 [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
 and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).
@@ -32,11 +34,12 @@ The repo intentionally has one active startup document: [START_HERE.md](START_HE
 ## What this project is
 
 We are building **Microsoft 365 into a clean, governed operating substrate** for
-AG Operations and Guided AI Labs — so that a future Agentic OS (built elsewhere)
-can safely connect through scoped, audited access.
+AG Operations and Guided AI Labs — and now, as of 2026-06-24, the first governed
+`M365 Interaction Agent` capability on top of that substrate.
 
-We are **not** building the Agentic OS here. We are building the foundation it
-plugs into.
+We are **not** building the full Freedom-style central OS here. We are building
+the Microsoft 365 agent lane it can invoke: one governed agent identity/contract,
+M365 tools, evidence, approvals, and clear stop controls.
 
 ```text
 Agentic OS  ->  governed bridge  ->  M365 touchpoint router  ->  correct M365 surface
@@ -556,8 +559,9 @@ should not sit waiting for private credentials.
 ### Session history
 
 - [SESSION_TURNOVER_2026-06-24.md](SESSION_TURNOVER_2026-06-24.md) — current
-  box-up handoff after the startup-document consolidation and agentic approval
-  plan selection. No tenant write or approval-loop execution started.
+  box-up handoff after the one-agent plan revision and New Signal Teams alert
+  local build preparation. Live channel/connector/flow/test proof remains
+  pending unless the evidence files named in the runbook exist.
 - [SESSION_TURNOVER_2026-06-23.md](SESSION_TURNOVER_2026-06-23.md) — latest dated
   handoff before the startup-doc consolidation; CRM custom intake is verified,
   website fallback cleanup is handled, and the selected next direction is
@@ -690,5 +694,7 @@ never in the committed `M365_ENVIRONMENT.template.env`.
 
 1. Start with [START_HERE.md](START_HERE.md).
 2. Open [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md).
-3. Use this index only for detailed stage history, evidence references, or
+3. Open [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
+   if continuing the selected live proof.
+4. Use this index only for detailed stage history, evidence references, or
    older implementation context.

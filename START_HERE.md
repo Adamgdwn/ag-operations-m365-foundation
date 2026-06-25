@@ -6,9 +6,10 @@ Status: the only active startup document for this repo.
 Read this file first, then open only the current working plan or the specific
 reference needed for the task.
 
-Box-up note 2026-06-24: documentation was consolidated to this single startup
-file, the current plan was date-prefixed, and the repo is boxed for the night.
-No agentic approval-loop execution or tenant write has started yet.
+Box-up note 2026-06-24 night: docs are aligned around one governed
+`M365 Interaction Agent`, with `New Signal` Teams alerting selected as the first
+live notification capability. Local build/runbook files are prepared. No live
+New Signal channel, Teams connector, flow, or test proof is confirmed yet.
 
 ## Current Focus
 
@@ -20,25 +21,31 @@ Current working plan:
 
 - [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
 
+Current setup runbook:
+
+- [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
+
 Current chunk:
 
 ```text
-agent suggestion -> Agent Action Log -> G0-G4 classification ->
-Adam approve/reject -> Decision Register when needed ->
-evidence + rollback note -> supervised internal action
+new CRM signal -> CRM - New Signals -> New Signal Teams alert ->
+Adam/operator triage -> M365 Interaction Agent proposal ->
+approval/evidence if action is needed
 ```
 
-Priority: functionality, agentic assistance, and approvals. Hiring roles,
-profile libraries, and onboarding packet work are deferred until growth makes
-them useful.
+Priority: one agent with governed M365 capabilities, starting with first-minute
+CRM signal notification. Hiring roles, profile libraries, and onboarding packet
+work are deferred until growth makes them useful. QUO phone integration is
+parked until the Teams alert is proven.
 
 ## Fast Startup
 
 1. Run `git status --short`.
 2. Read the current working plan linked above.
-3. If you need the full pathway, read [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md).
-4. If you need the card backlog, read [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md).
-5. If the task mentions the Windows/Linux direct link, use the `direct-link`
+3. Read the New Signal setup runbook if continuing the notification proof.
+4. If you need the full pathway, read [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md).
+5. If you need the card backlog, read [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md).
+6. If the task mentions the Windows/Linux direct link, use the `direct-link`
    skill and [docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md](docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md).
 
 Do not load old stage packets, session turnover files, exports, or inventory
@@ -52,7 +59,10 @@ snapshots unless the task specifically asks for history or evidence.
 - Bookings: live native Microsoft Bookings path feeding CRM.
 - Follow-up backbone: live email, calendar, and Planner reminder backbone.
 - Held item: Stage 8 packet archive move still waits for Adam's explicit OK.
-- Next proof: one safe, supervised CRM/Bookings/follow-up assistance loop.
+- Next proof: one CRM `New Signal` creates exactly one internal Teams alert in
+  `Guided AI Labs / New Signal`, with a CRM item link.
+- Live New Signal status: channel target evidence, Teams connector, live flow,
+  and test proof are pending unless the files named in the setup runbook exist.
 - Latest handoff: [SESSION_TURNOVER_2026-06-24.md](SESSION_TURNOVER_2026-06-24.md).
 
 ## Approval Boundaries
@@ -65,10 +75,17 @@ Dynamics, Dataverse, premium Power Platform, Copilot connector setup, custom
 actions, or unattended automation unless Adam gives a fresh explicit approval
 for that exact scope, evidence target, and rollback path.
 
+Narrow approved exception for the current proof: one internal standard Teams
+channel named `New Signal`, one standard Teams Power Automate connection as
+Adam, and one create-only SharePoint-to-Teams alert flow. This does not approve
+external messaging, QUO, app registration, admin consent, guest/sharing changes,
+or broad automation.
+
 ## Active References
 
 - Master path: [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md)
 - Current plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
+- New Signal setup: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
 - Agent card: [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md)
 - Decisions card: [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md)
 - Agent readiness: [docs/AGENTIC_M365_READINESS.md](docs/AGENTIC_M365_READINESS.md)

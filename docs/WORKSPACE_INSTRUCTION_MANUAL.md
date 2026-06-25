@@ -235,6 +235,13 @@ Stop before any of these:
 
 ## Agent And AI Review
 
+Current active agent direction:
+
+- One `M365 Interaction Agent` with governed capabilities.
+- First proof: `CRM - New Signals` created -> internal Teams channel
+  `New Signal`.
+- QUO is parked until that internal Teams alert is proven.
+
 Default posture:
 
 - G0: read only.
@@ -267,6 +274,7 @@ These do not block daily handoff, but they remain important:
   depend on that identity;
 - continue CRM-specific recovery from `docs/CRM_EXECUTION_PLAN.md` when CRM is
   selected;
+- finish and prove the `New Signal` Teams alert before broader agent actions;
 - keep broad delegated setup grants, app posture, permission scopes, rollback
   worksheet, and production bridge decisions under governance review;
 - define a non-CRM tenant-writing approval phrase before any future write chunk.
@@ -281,6 +289,8 @@ These do not block daily handoff, but they remain important:
 | Final usability closeout | `docs/WORKSPACE_CHUNK_7_FINAL_USABILITY_WALKTHROUGH.md` |
 | CRM execution chunks | `docs/CRM_EXECUTION_PLAN.md` |
 | CRM daily runbook | `docs/CRM_RUNBOOK.md` |
+| Current agent plan | `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md` |
+| New Signal alert setup | `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md` |
 | Agentic readiness | `docs/AGENTIC_M365_READINESS.md` |
 | Agentic decision list | `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md` |
 

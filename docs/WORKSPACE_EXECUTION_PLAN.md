@@ -4,6 +4,8 @@ Date: 2026-06-24
 
 Status: Closed historical chunk plan for the broad workspace usability pass.
 Current active plan: `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
+Current setup runbook:
+`docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`.
 
 Use this document for workspace usability history and acceptance evidence. For
 current work, start at root `START_HERE.md` and follow the current active plan.
@@ -12,9 +14,10 @@ Box-up note 2026-06-19: Chunks 1-7 are complete and pushed. The broad workspace
 usability pass is closed; resume with a named card-specific chunk or controlled
 governance/read-back task.
 
-Box-up note 2026-06-24: startup routing has been consolidated to root
-`START_HERE.md`. The current active plan is
-`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
+Box-up note 2026-06-24 night: startup routing has been consolidated to root
+`START_HERE.md`. The current active plan is one `M365 Interaction Agent`, with
+the `New Signal` Teams alert proof selected as the next live step. QUO is
+parked.
 
 ## Execution Rule
 
@@ -36,10 +39,11 @@ New approval phrases must be added before any non-CRM tenant-writing chunk.
 ## Current Chunk
 
 Chunks 1-7 are complete and pushed. There is no active broad workspace
-usability chunk. Adam's current selected direction is functionality plus
-agentic assistance and approvals: start with
-`docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`. Other work, such as access
-read-back before a grant, support MFA closeout, or controlled cockpit cleanup,
+usability chunk. Adam's current selected direction is one governed M365
+Interaction Agent, starting with the first-minute CRM `New Signal` Teams alert:
+start with `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`, then
+`docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`. Other work, such as access
+read-back before a grant, support closeout, or controlled cockpit cleanup,
 should be explicit.
 
 Chunk status:

@@ -128,6 +128,7 @@
     "teamTitle": "Guided AI Labs - Operating Team",
     "channels": [
       { "name": "General", "tabs": ["Operating Plan", "Decisions"] },
+      { "name": "New Signal", "tabs": [] },
       { "name": "Intake", "tabs": ["Intake Register", "Operating Plan", "Agent Log"] },
       { "name": "Client Discovery", "tabs": ["Intake Register", "Operating Plan"] },
       { "name": "Active Delivery", "tabs": ["Operating Plan", "Client_Delivery"] },

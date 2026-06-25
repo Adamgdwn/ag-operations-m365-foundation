@@ -6,9 +6,10 @@
 > you need the full pathway before drilling into the roadmap or a specific
 > function plan.
 > **Status:** master map. Points to the canonical sources; does not replace them.
-> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-24 (docs boxed;
-> Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE; next
-> plan is agentic assistance + approvals).
+> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-24 night
+> (docs boxed; Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone
+> all LIVE; next plan is the M365 Interaction Agent with New Signal Teams
+> alerting as the first proof).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),
@@ -90,7 +91,7 @@ Three things are now LIVE and verified; the rest remain plan-only.
 | Knowledge / Records | [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md) | Plan only |
 | Support / Intake | [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md) | Plan only |
 | Finance / Closeout | [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md) | Plan only |
-| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **NEXT** — build the Agentic Assistance & Approval Loop MVP over Agent Action Log, Decision Register, Automation Backlog, and one real operating workflow. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md) |
+| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **NEXT** — build the M365 Interaction Agent capability path over Agent Action Log, Decision Register, Automation Backlog, and one real operating workflow. First proof: `CRM - New Signals` -> `New Signal` Teams alert. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); setup: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md) |
 | Access / Onboarding | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model; net-new hiring/role-profile work deferred until growth makes it useful |
 
 ---
@@ -135,19 +136,18 @@ PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← 
           Stage 8 packet archive move held for Adam's explicit OK
   ✅ Bookings / Scheduling LIVE  (native MS Bookings → CRM, intake consumer #2)
   ✅ Operations Follow-up Backbone LIVE  (Email + two-way Calendar + one-way Planner; 15-min sync engine)
-     ▸ NEXT: Agentic Assistance & Approval Loop
-     ③ Make agent suggestions reviewable in Agent Action Log
-     ④ Route approvals through Decision Register / G0-G4 gates
-     ⑤ Prove one supervised G1→G2 operating workflow before any broader automation
+     ▸ NEXT: M365 Interaction Agent
+     ③ Prove New Signal Teams alerting for first-minute CRM signals
+     ④ Route the follow-on agent proposal through G0-G4 / Agent Action Log
+     ⑤ Keep QUO parked until the Teams alert proof is clean
 ```
 
 **Plain reading:** the spine is complete and the first function (CRM) plus two
 adjacent functions (Bookings, Follow-up backbone) are LIVE. CRM is closed except
-for the explicitly held Stage 8 packet archive move. Adam's next priority is
-functionality plus agentic assistance and approvals, not hiring/onboarding. Build
-the Agentic Assistance & Approval Loop next, starting with read-only evidence for
-the live action/decision surfaces, then repeat the same pattern for later
-functions.
+for the explicitly held Stage 8 packet archive move. Adam's next priority is one
+governed M365 Interaction Agent, not hiring/onboarding and not a stack of helper
+bots. Build the New Signal Teams alert proof next, then route the follow-on
+agent proposal through the live G0-G4 / Agent Action Log model.
 
 ---
 
@@ -167,8 +167,8 @@ functions.
 - **Resolved:** the first function was **CRM / Relationships** — built end-to-end,
   LIVE, and recovery-closed, with **Bookings** and the **Operations Follow-up
   Backbone** coming online on top of it.
-- **Selected next direction:** **Agentic Assistance & Approval Loop** — make the
-  existing agent/governance surfaces operational around one real workflow:
-  suggestion -> review -> approval/rejection -> evidence -> supervised action.
-  Onboarding, role profiles, and hiring packet work are deferred until growth
-  makes them useful.
+- **Selected next direction:** **M365 Interaction Agent** — one governed agent
+  with capabilities, not a helper stack. The first proof is immediate internal
+  notification: `CRM - New Signals` created -> Teams channel `New Signal`, then
+  agent triage through the existing G0-G4 / Agent Action Log model. QUO,
+  onboarding, role profiles, and hiring packet work are deferred.

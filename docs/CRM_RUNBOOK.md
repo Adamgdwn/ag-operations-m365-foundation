@@ -69,9 +69,15 @@ the Escalate section before doing CRM work.
    context, next action, follow-up date, and any related file/link.
 3. Save the item.
 4. Confirm it appears in the Triage Queue.
+5. Once the `New Signal` Teams alert proof is live, confirm urgent new signals
+   also appear in the internal `Guided AI Labs / New Signal` channel. CRM
+   remains the source of truth; Teams is only the attention surface.
 
 Do not use the old `Guided AI Labs - Intake Register/NewForm.aspx` route for
 daily CRM work.
+
+Current build note on 2026-06-24: the Teams alert lane is prepared but not yet
+proven live. Until proof exists, use the Triage Queue as the reliable check.
 
 ## Triage
 
@@ -116,6 +122,8 @@ Escalate to Adam when:
 - the next step would require external sharing, guest access, app consent,
   public forms, deletes, production mail automation, Dynamics, Dataverse, or
   premium Power Platform features.
+- a Teams alert is missing, duplicated, or appears to notify anyone outside the
+  internal `New Signal` channel.
 
 ## End Of Day
 

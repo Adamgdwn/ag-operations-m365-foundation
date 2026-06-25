@@ -2,8 +2,9 @@
 
 Date: 2026-06-19
 
-Status: Active applied card-plan example. CRM recovery remains governed by
-`docs/CRM_EXECUTION_PLAN.md`.
+Status: Active applied card-plan example. CRM recovery is closed in
+`docs/CRM_EXECUTION_PLAN.md`. The current post-recovery add-on is the
+`New Signal` Teams alert proof for the M365 Interaction Agent.
 
 This is the first applied example of `docs/CARD_PLAN_TEMPLATE.md`. It validates
 the template against the strongest current operating card and shows how future
@@ -13,7 +14,7 @@ card deep dives should separate operating usability from build history.
 
 Name: CRM / Relationships
 
-Status: Active, not yet complete.
+Status: Active; CRM recovery closed, with alert proof pending.
 
 Owner: Adam until a role-specific CRM owner is assigned.
 
@@ -38,7 +39,9 @@ Current live surface:
 Plan status:
 
 - Card plan: active applied example.
-- Functional CRM recovery: active in `docs/CRM_EXECUTION_PLAN.md`.
+- Functional CRM recovery: closed in `docs/CRM_EXECUTION_PLAN.md`.
+- New Signal Teams alert proof: pending in
+  `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`.
 - Acceptance tests: active in `docs/CRM_ACCEPTANCE_TESTS.md`.
 
 Completion gate:
@@ -83,11 +86,13 @@ automation, or governance decisions to Adam.
 3. Review Triage Queue, Follow Up Today, Proposal / Decision Blockers, Active
    Delivery, and Closeout / Invoice Watch.
 4. Capture new relationship signals in `CRM - New Signals`.
-5. Update qualification, action, engagement, artifact, health, and closeout
+5. When the `New Signal` Teams alert proof is live, use the internal channel as
+   the first-minute attention surface, then return to CRM for triage.
+6. Update qualification, action, engagement, artifact, health, and closeout
    records as work moves.
-6. Link evidence, proposal, decision, handoff, or closeout files in SharePoint
+7. Link evidence, proposal, decision, handoff, or closeout files in SharePoint
    or OneDrive.
-7. Escalate anything outside role authority.
+8. Escalate anything outside role authority.
 
 Do not use `Guided AI Labs - Intake Register/NewForm.aspx` for daily CRM work.
 
@@ -135,6 +140,7 @@ Libraries:
 Teams or channels:
 
 - Guided AI Labs Team
+- `New Signal`, pending alert proof
 - Intake
 - Client Discovery
 - Active Delivery
@@ -344,9 +350,11 @@ Draft generation:
 
 Write-capable actions:
 
-- Future only. Possible actions include creating next-action records, updating
-  statuses, routing items to queues, or attaching evidence links after explicit
-  approval gates are proven.
+- First notification proof: create-only CRM signal -> internal Teams alert,
+  with no CRM update and no external notification.
+- Future write actions include creating next-action records, updating statuses,
+  routing items to queues, or attaching evidence links after explicit approval
+  gates are proven.
 
 Required approval gate:
 
@@ -381,9 +389,9 @@ This card is complete only when:
 
 Current known blockers before completion:
 
-- CRM recovery chunks in `docs/CRM_EXECUTION_PLAN.md` are not complete.
-- Exact future employee/operator/trusted-partner access groups are still open.
-- Human browser acceptance evidence must still prove the clean path end to end.
+- The `New Signal` Teams alert proof is not yet complete.
+- Exact future employee/operator/trusted-partner access groups remain a
+  read-back item before new grants.
 
 ## Acceptance Test
 

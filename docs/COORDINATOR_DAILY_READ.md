@@ -2,13 +2,15 @@
 
 Date: 2026-06-20
 
-Status: Active. First "intelligent" G1 agent loop — the read→reason→propose
-upgrade of the Stage 9 coordinator loop.
+Status: Active capability under the future `M365 Interaction Agent`. First
+"intelligent" G1 loop — the read→reason→propose upgrade of the Stage 9
+coordinator loop.
 
-This is the M365 Coordinator's daily operations read. It replaces the canned
-`CoordinatorSuggestion` action (which wrote a fixed test row) with a loop that
-actually reads live operating Lists, applies dated detection rules, and proposes
-content-specific attention items.
+This is the Coordinator capability's daily operations read. It replaces the
+canned `CoordinatorSuggestion` action (which wrote a fixed test row) with a
+loop that actually reads live operating Lists, applies dated detection rules,
+and proposes content-specific attention items. It is a capability of the single
+M365 agent, not a separate supervised helper product.
 
 Related: [AGENTIC_M365_READINESS.md](AGENTIC_M365_READINESS.md),
 [CARD_PLAN_AGENT_CONTROL_PLANE.md](CARD_PLAN_AGENT_CONTROL_PLANE.md),
@@ -31,6 +33,16 @@ Related: [AGENTIC_M365_READINESS.md](AGENTIC_M365_READINESS.md),
 It never sends mail, invites guests, changes sharing or permissions, grants
 consent, changes tenant policy, publishes Forms, deletes records, registers
 apps, or runs unattended automation.
+
+## Identity note
+
+The current script uses the existing PnP interactive sign-in path for today,
+but `agent-pnp-provisioning` is not the production M365 Interaction Agent
+identity.
+It is a setup/provisioning helper and must not be treated as durable agent
+power. The target agent posture is a separate, purpose-built
+`m365-interaction-agent` identity or adapter after permission design, rollback,
+and Decision Register approval.
 
 ## Detection rules (defaults, tunable via parameters)
 
@@ -89,6 +101,8 @@ fully scripted runs.
 
 ## Next steps (not yet built)
 
+- Finish the `New Signal` Teams alert proof first; that is the selected
+  first-minute notification capability for the same M365 agent.
 - Run on a cadence (manual for now; Power Automate / scheduled task is a later
   Decision Register item).
 - Optional G2 follow-through: turn an approved suggestion into a Planner task or

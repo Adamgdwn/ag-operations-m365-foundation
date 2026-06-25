@@ -3,7 +3,9 @@
 Date: 2026-06-19
 
 Status: Active recommendation map for becoming agentic and AI-centric. Chunk 6
-readiness pass complete and ready for final workspace walkthrough use.
+readiness pass complete. Active revision on 2026-06-24: build one governed
+`M365 Interaction Agent` with capability contracts, not a stack of separate
+supervised helpers.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -43,6 +45,16 @@ work.
 
 ## Guiding Model
 
+Current active implementation note:
+
+- The active plan is
+  `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
+- The first live notification capability is documented in
+  `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`.
+- `agent-pnp-provisioning` and delegated setup scripts remain setup/proof
+  tooling only; they are not the production agent identity.
+- QUO phone integration is parked until the internal Teams alert is proven.
+
 Microsoft 365 should become the governed operating substrate:
 
 ```text
@@ -75,6 +87,15 @@ Current blocked posture:
 - no external sends, guest invites, sharing changes, permission changes, tenant
   policy changes, deletes, or unattended automation;
 - no reuse of broad setup-helper grants as production bridge capability.
+
+Narrow 2026-06-24 exception for the selected proof:
+
+- one internal standard Teams channel named `New Signal`;
+- one standard Teams Power Automate connection as Adam;
+- one create-only alert flow from `CRM - New Signals` to the Teams channel.
+
+This exception does not approve app registration, admin consent, external
+messaging, guest/sharing changes, QUO, or broad unattended automation.
 
 No live tenant read or write was performed during Chunk 6. This pass used local
 Stage 7 governance evidence, Stage 9 bridge-readiness evidence, the Chunk 5 card

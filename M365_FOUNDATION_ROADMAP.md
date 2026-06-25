@@ -10,7 +10,11 @@ Current operating-site rule: **Guided AI Labs is the daily workplace and source
 of truth. AG Operations root SharePoint is the portfolio/router landing site**
 for Guided AI Labs and any future companies underneath AG Operations.
 
-This roadmap is for the human-supervised setup phase. It does not create unattended automation or the future Agentic OS. It prepares Microsoft 365 so a future Agentic OS can safely connect through governed access.
+This roadmap is for the human-supervised setup phase and foundation history.
+It prepared Microsoft 365 so governed agents can safely connect through scoped,
+audited access. The active 2026-06-24 next step is now one `M365 Interaction
+Agent` capability path, starting with internal `New Signal` Teams alerting; use
+`START_HERE.md` for that current work.
 
 Workspace usability note: for active workspace direction, use
 `START_HERE.md`, `docs/WORKSPACE_EXECUTION_PLAN.md`,
@@ -23,6 +27,11 @@ handoff, use `docs/WORKSPACE_INSTRUCTION_MANUAL.md`. For the CRM card specifical
 `docs/CRM_EXECUTION_PLAN.md` and `docs/CRM_RECOVERY_PLAN.md`. The
 Stage 8A/8B/8C/8D/8E CRM documents remain useful as build provenance, but they no
 longer define the employee-ready CRM completion path.
+
+Agentic note 2026-06-24: the production bridge app is still not approved, but
+the active build direction is no longer merely "future bridge readiness." The
+current proof is one governed M365 agent capability: `CRM - New Signals` ->
+internal Teams channel `New Signal`, then G0-G4 triage/evidence.
 
 ## North Star
 
@@ -740,8 +749,9 @@ The Agentic OS will be built elsewhere, but Microsoft 365 needs to be ready for 
 - separate setup helper app from future production bridge app
 - define read/write/approval categories
 - define audit and rollback expectations
-- define first governed M365 Coordinator and M365 Support Agent capability lanes
-  before creating app registrations or consenting new permissions
+- define first governed M365 Interaction Agent capability lanes, including
+  Coordinator and support modes, before creating app registrations or consenting
+  new permissions
 - record the first supervised G1/G2 List-write loops before granting standing
   app permissions
 - generate the bridge readiness control packet before moving from delegated

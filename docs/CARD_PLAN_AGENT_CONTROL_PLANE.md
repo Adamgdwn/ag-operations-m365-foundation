@@ -2,10 +2,13 @@
 
 Date: 2026-06-19
 
-Status: Active card plan with Chunk 6 readiness pass complete. This plan
-complements `docs/AGENTIC_M365_READINESS.md` and
+Status: Active card plan with Chunk 6 readiness pass complete. Current selected
+build direction on 2026-06-24 is the `M365 Interaction Agent`, starting with
+the `New Signal` Teams alert proof. This plan complements
+`docs/AGENTIC_M365_READINESS.md` and
 `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; it does not approve app
-registrations, consent, unattended automation, or production bridge work.
+registrations, consent, broad unattended automation, external messaging, QUO,
+or production bridge work.
 
 ## Card Plan Header
 
@@ -53,8 +56,9 @@ Related docs:
 
 ## Purpose
 
-The Agent Control Plane keeps AI useful without letting suggestions quietly turn
-into unreviewed action.
+The Agent Control Plane keeps the M365 Interaction Agent useful without letting
+suggestions quietly turn into unreviewed action. It is the governance surface
+for one agent with capabilities, not a place to multiply helper bots.
 
 ## Operator Promise
 
@@ -269,6 +273,9 @@ End of day:
 - No suggested action sits without owner or next step.
 - Approved actions have evidence or are still waiting.
 - Completed actions have result and rollback/superseded note when needed.
+- Current `New Signal` proof has a clear state: channel evidence, Teams
+  connector, flow result, and test alert proof are either present or explicitly
+  still pending.
 
 Escalation:
 
@@ -339,6 +346,8 @@ Future enhancements:
 - Build a rollback worksheet for each candidate adapter lane.
 - Add dashboard views for open action-log approvals and automation backlog
   readiness.
+- Fold Teams alerting, CRM triage, Planner/List actions, mailbox drafts, and
+  later QUO signals into one `M365 Interaction Agent` contract.
 
 ## Acceptance Test
 

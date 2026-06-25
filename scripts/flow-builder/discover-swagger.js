@@ -20,9 +20,10 @@ const headless = process.argv.includes('--headless');
 
 const WANT = {
   shared_office365: ['V4CalendarPostItem', 'V3CalendarGetItem', 'V4CalendarPatchItem', 'CalendarDeleteItem_V2', 'CalendarGetTables_V2'],
-  shared_sharepointonline: ['HttpRequest', 'PatchItem'],
+  shared_sharepointonline: ['HttpRequest', 'PatchItem', 'GetOnNewItems'],
   shared_planner: ['CreateTask_V4', 'UpdateTask_V3', 'DeleteTask', 'GetTask_V2', 'ListBuckets_V3', 'ListGroupPlans', 'AssignUsers'],
   shared_office365users: ['UserProfile_V2'],
+  shared_teams: ['PostMessageToConversation', 'GetAllAssociatedTeams', 'GetChannelsForGroup'],
 };
 
 // Flatten a swagger parameter (incl. body schema with x-ms-* keys) into leaf descriptors.
