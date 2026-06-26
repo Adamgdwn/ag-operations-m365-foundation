@@ -33,13 +33,31 @@ const INTENT_EXPECT = 'My team — I want to build team capability';
 
 const brandArg = (process.argv.find(a => a.startsWith('--brand=')) || '=labs').split('=')[1];
 const testCase = (process.argv.find(a => a.startsWith('--case=')) || '=happy').split('=')[1];
+const ackArg = (process.argv.find(a => a.startsWith('--ack=')) || '').split('=')[1];
 const BRANDS = { labs: 'Guided AI Labs', journey: 'Guided AI Journey' };
 const source = BRANDS[brandArg] || BRANDS.labs;
+const ackRequested = ackArg ? /^true$/i.test(ackArg) : brandArg === 'journey';
+const stamp = Date.now();
+const portalEventId = `${brandArg}-portal-event-${stamp}`;
 
 const endpoint = fs.readFileSync(path.join(SECRET_DIR, 'http-intake-endpoint.txt'), 'utf8').trim();
 const secret = fs.readFileSync(path.join(SECRET_DIR, 'http-intake-secret.txt'), 'utf8').trim();
 
 const payload = {
+  schemaVersion: 'journey.crm-signal.v1',
+  signalMode: brandArg === 'journey' ? 'portal-lifecycle-event' : 'website-intake',
+  eventType: brandArg === 'journey' ? 'organization_setup_saved' : 'website.intake.submitted',
+  portalEventId: brandArg === 'journey' ? portalEventId : '',
+  correlationId: brandArg === 'journey' ? portalEventId : `${brandArg}-http-intake-e2e-${stamp}`,
+  companyId: brandArg === 'journey' ? 'journey-company-internal-qa' : '',
+  engagementId: brandArg === 'journey' ? 'journey-engagement-internal-qa' : '',
+  inviteId: brandArg === 'journey' ? `journey-invite-e2e-${stamp}` : '',
+  journeyInviteId: brandArg === 'journey' ? `journey-invite-e2e-${stamp}` : '',
+  journeyOrganizationId: brandArg === 'journey' ? 'journey-org-internal-qa' : '',
+  sourceAction: brandArg === 'journey' ? 'admin_invited_person' : '',
+  portalDeepLink: brandArg === 'journey' ? 'https://www.guidedaijourney.com/dashboard/internal-qa' : '',
+  eventTimestamp: new Date().toISOString(),
+  ackRequested,
   source, fullName: MARK, email: 'intake-test@guidedailabs.com', organization: 'GAIL Internal QA',
   needSummary: `Custom-form e2e for ${source} — please triage or delete.`,
   situation: INTENT_EXPECT, heardFrom: 'Internal walkthrough', consent: true, company: '',
@@ -101,6 +119,11 @@ const expectItem = testCase === 'happy';
     typeWebsite: found.SignalType === 'Website',
     customProvenance: /custom site form/i.test(found.SourceText || ''),
     intakeId: /Intake id:/i.test(found.SourceText || ''),
+    leadSourceDetail: /Lead source detail:/i.test(found.SourceText || ''),
+    journeyAdminInviteSource: brandArg === 'journey' ? /Lead source detail:\s*Journey admin invite/i.test(found.SourceText || '') : true,
+    portalEventProvenance: brandArg === 'journey' ? /Portal event id:/i.test(found.SourceText || '') : true,
+    correlationProvenance: brandArg === 'journey' ? /Correlation id:/i.test(found.SourceText || '') : true,
+    journeyInviteProvenance: brandArg === 'journey' ? /Journey invite id:/i.test(found.SourceText || '') : true,
   };
   log('\n=== CHECKS ===');
   for (const [k, v] of Object.entries(checks)) log(`  ${v ? 'PASS' : 'FAIL'}  ${k}`);

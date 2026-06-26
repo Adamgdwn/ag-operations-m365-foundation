@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "provedAtUtc": "2026-06-26T04:27:19Z",
+  "purpose": "Identify the Guided AI Journey lead source detail in CRM and the Teams New Signal notification.",
+  "testMode": "Direct M365 source proof with ackRequested=false; this did not require or update a Journey ledger row.",
+  "portalEventId": "journey-portal-event-1782447883236",
+  "crm": {
+    "list": "CRM - New Signals",
+    "itemId": 27,
+    "title": "Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH",
+    "intakeSource": "Guided AI Journey",
+    "leadSourceDetail": "Journey admin invite",
+    "sourceAction": "admin_invited_person",
+    "signalStatus": "New"
+  },
+  "m365IntakeFlow": {
+    "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+    "runName": "08584191590010332113223187806CU18",
+    "runStatus": "Succeeded",
+    "sourceTextCoreAction": "Build_CRM_source_text_core",
+    "sourceTextMetadataAction": "Build_CRM_source_text_metadata",
+    "createItemActionStatus": "Succeeded",
+    "ackPostActionStatus": "Skipped",
+    "ackPostSkipReason": "ackRequested=false for this direct source-display proof"
+  },
+  "teamsAlert": {
+    "flowName": "c54964d6-0042-430d-b542-90214e49224b",
+    "runName": "08584191589676821842406276734CU16",
+    "runStatus": "Succeeded",
+    "postAction": "Post_to_New_Signal_channel",
+    "postActionStatus": "Succeeded",
+    "messageContract": "Includes Source and Lead source rows; Lead source resolves from CRM SourceText line 'Lead source detail: Journey admin invite'."
+  },
+  "evidence": {
+    "crmReadBack": "inventory/m365-interaction-agent-b7/b7-crm-readback-journey-portal-event-1782447883236-20260626-042719.json",
+    "m365IntakeFlowRun": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-042516.json",
+    "teamsFlowRun": "inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-042625.json"
+  },
+  "secretBoundary": "No secret value was written to git, evidence files, or DirectLink."
+}

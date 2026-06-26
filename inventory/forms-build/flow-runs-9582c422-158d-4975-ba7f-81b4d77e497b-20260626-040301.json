@@ -1,0 +1,107 @@
+{
+  "capturedAt": "2026-06-26T04:03:01.258Z",
+  "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+  "selectedRunName": "08584191603925250048671146126CU18",
+  "runs": [
+    {
+      "name": "08584191603925250048671146126CU18",
+      "status": "Failed",
+      "startTime": "2026-06-26T04:01:32.9576522Z",
+      "endTime": "2026-06-26T04:01:35.636309Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584191607785262763829220071CU07",
+      "status": "Failed",
+      "startTime": "2026-06-26T03:55:06.9552928Z",
+      "endTime": "2026-06-26T03:55:08.681213Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584191609908574001823850545CU06",
+      "status": "Failed",
+      "startTime": "2026-06-26T03:51:34.6254422Z",
+      "endTime": "2026-06-26T03:51:36.0257788Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584191744383197393385506167CU03",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T00:07:27.1590195Z",
+      "endTime": "2026-06-26T00:07:28.1810373Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584193864988364519772491319CU27",
+      "status": "Succeeded",
+      "startTime": "2026-06-23T13:13:06.6424012Z",
+      "endTime": "2026-06-23T13:13:07.4856649Z",
+      "triggerName": "manual"
+    }
+  ],
+  "actions": [
+    {
+      "name": "Create_item",
+      "type": null,
+      "status": "Succeeded",
+      "code": "Created",
+      "startTime": "2026-06-26T04:01:33.2573088Z",
+      "endTime": "2026-06-26T04:01:34.017827Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Guard",
+      "type": null,
+      "status": "Failed",
+      "code": "ActionFailed",
+      "startTime": "2026-06-26T04:01:33.2554463Z",
+      "endTime": "2026-06-26T04:01:35.6355205Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionFailed",
+        "message": "An action failed. No dependent actions succeeded.",
+        "messageTemplate": "An action failed. No dependent actions succeeded."
+      }
+    },
+    {
+      "name": "Maybe_send_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Failed",
+      "code": "ActionFailed",
+      "startTime": "2026-06-26T04:01:34.048304Z",
+      "endTime": "2026-06-26T04:01:35.6330684Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionFailed",
+        "message": "An action failed. No dependent actions succeeded.",
+        "messageTemplate": "An action failed. No dependent actions succeeded."
+      }
+    },
+    {
+      "name": "Post_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Failed",
+      "code": "BadRequest",
+      "startTime": "2026-06-26T04:01:34.0507144Z",
+      "endTime": "2026-06-26T04:01:35.1454724Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Terminate",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-26T04:01:35.6340196Z",
+      "endTime": "2026-06-26T04:01:35.6344567Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Terminate' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    }
+  ]
+}

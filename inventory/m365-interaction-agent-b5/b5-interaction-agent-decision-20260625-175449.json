@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-06-25T17:54:49.3641757-06:00",
+  "mode": "apply",
+  "siteUrl": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+  "expectedUpn": "adamgoodwin@guidedailabs.com",
+  "payloadPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\m365-interaction-agent-b5\\decision-register-draft-b5-one-writer-20260625.json",
+  "evidenceMarkdownPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\m365-interaction-agent-b5\\B5_DURABLE_PERMISSION_DECISION_2026-06-25.md",
+  "requiredApprovalPhrase": "approve-b5-record-one-writer-m365-interaction-agent-20260625",
+  "decisionTitle": "B5 M365 Interaction Agent one-writer posture selected",
+  "safety": "No Microsoft 365 write occurs unless -Apply and the exact approval phrase are both supplied.",
+  "records": [
+    {
+      "list": "Decision Register",
+      "intent": "created",
+      "itemId": 6,
+      "title": "B5 M365 Interaction Agent one-writer posture selected"
+    },
+    {
+      "list": "Agent Action Log",
+      "intent": "created",
+      "itemId": 10,
+      "title": "B5 one-writer posture recorded"
+    }
+  ]
+}

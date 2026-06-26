@@ -1,0 +1,56 @@
+**********************
+PowerShell transcript start
+Start time: 20260625180736
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+.\scripts\Invoke-M365B6JourneyIntakeProof.ps1 -NoPause
+Process ID: 10124
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+B6 - Guided AI Journey intake proof helper
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Entry:      Direct Journey Microsoft Form link
+Marker:     GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY
+Packet:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b6\b6-journey-intake-proof-20260625-180736.md
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b6\b6-journey-intake-proof-20260625-180736.log
+Mode:       LOCAL PREP: no Microsoft 365 connection
+Writes:     None by this script. Manual form submission is the only B6 source-ingress write.
+
+== Read local B6 evidence ==
+PASS: Journey flow evidence loaded (GAIL — Guided AI Journey intake to CRM (create-only), state Started)
+PASS: Journey form URL loaded
+PASS: IntentPath packet loaded
+PASS: custom website form contract is present locally
+
+== Prepare manual proof ==
+Use these dummy values in the selected Journey intake entry point:
+  Full name: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY
+  Email: adam+gail-b6-journey-20260625-180736@guidedailabs.com
+  Organization: Guided AI Labs Internal Walkthrough
+  Need: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.
+  Situation: My team - I want to build team capability
+  Heard from: Internal B6 source proof after B5 Decision Register #6.
+  Microsoft Form URL: https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u
+
+== Write local summary ==
+Packet markdown: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b6\b6-journey-intake-proof-20260625-180736.md
+Summary JSON:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b6\b6-journey-intake-proof-20260625-180736.json
+
+== Done ==
+B6 proof packet prepared. Manual form submission is still the approval boundary.
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b6\b6-journey-intake-proof-20260625-180736.log
+**********************
+PowerShell transcript end
+End time: 20260625180737
+**********************

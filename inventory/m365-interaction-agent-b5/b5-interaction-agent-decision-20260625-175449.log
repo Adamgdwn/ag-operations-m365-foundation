@@ -1,0 +1,53 @@
+**********************
+PowerShell transcript start
+Start time: 20260625175449
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -ExecutionPolicy Bypass -NoExit -File C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\scripts\Invoke-M365B5InteractionAgentDecision.ps1 -Apply -ApprovalPhrase approve-b5-record-one-writer-m365-interaction-agent-20260625 -ForceFreshLogin
+Process ID: 23260
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+B5 - M365 Interaction Agent decision recorder
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Payload:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\decision-register-draft-b5-one-writer-20260625.json
+Evidence:   C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\B5_DURABLE_PERMISSION_DECISION_2026-06-25.md
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\b5-interaction-agent-decision-20260625-175449.log
+Mode:       APPLY: Decision Register + Agent Action Log
+Writes:     Decision Register and Agent Action Log only when -Apply is used with the exact approval phrase.
+
+== Read local payload ==
+PASS: payload loaded for 'B5 M365 Interaction Agent one-writer posture selected'
+
+== Connect ==
+Connected to https://agoperationsltd.sharepoint.com/sites/GuidedAILabs using O365
+Connected user: adamgoodwin@guidedailabs.com
+Preflight OK: readable site 'Guided AI Labs'
+
+== Verify target Lists ==
+  Found Decision Register: Decision Register
+  Found Agent Action Log: Agent Action Log
+
+== Record operating evidence ==
+  [OK] Created Decision Register item #6: B5 M365 Interaction Agent one-writer posture selected
+  [OK] Created Agent Action Log item #10: B5 one-writer posture recorded
+
+== Write local summary ==
+Summary JSON: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\b5-interaction-agent-decision-20260625-175449.json
+
+== Done ==
+B5 decision evidence is now recorded in Decision Register and Agent Action Log.
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\b5-interaction-agent-decision-20260625-175449.log
+**********************
+PowerShell transcript end
+End time: 20260625175509
+**********************

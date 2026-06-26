@@ -1,0 +1,27 @@
+{
+  "submittedAt": "2026-06-26T00:18:49.609Z",
+  "mode": "live-microsoft-form-submission",
+  "approval": "approve-b6-journey-client-intake-form-proof-20260625",
+  "formTitle": "Guided AI Journey — Get started",
+  "formUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u",
+  "marker": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+  "expectedCrmIntakeSource": "Guided AI Journey",
+  "expectedCrmList": "CRM - New Signals",
+  "testSubmission": {
+    "fullName": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+    "email": "adam+gail-b6-journey-20260625-180736@guidedailabs.com",
+    "organization": "Guided AI Labs Internal Walkthrough",
+    "needSummary": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.",
+    "situation": "My team - I want to build team capability",
+    "heardFrom": "Internal B6 source proof after B5 Decision Register #6.",
+    "consent": "I agree"
+  },
+  "pageUrlAfterSubmit": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u",
+  "submitted": true,
+  "confirmationExcerpt": "Your response was submitted. Submit another response Microsoft Forms Get set for your own event invitation! Start now Event registration Invite guests, collect RSVPs, and customize to match your party theme. Start now Microsoft Forms | AI-Powered surveys, quizzes and pollsCreate my own form The owner of this form has not provided a privacy statement as to how they will use your response data. Do not provide personal or sensitive information. | Consumer Health Privacy | Terms of use",
+  "screenshots": {
+    "beforeSubmit": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\.local\\playwright-runner\\out\\b6-form-before-submit-20260626-001841.png",
+    "afterSubmit": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\.local\\playwright-runner\\out\\b6-form-after-submit-20260626-001841.png"
+  },
+  "nextVerificationCommand": ".\\scripts\\Start-M365B6JourneyIntakeProofInteractive.ps1 -Verify -ForceFreshLogin"
+}

@@ -1,5 +1,5 @@
 param(
-    [ValidateSet("auth", "connections", "build", "reminder", "engine", "new-signal")]
+    [ValidateSet("auth", "connections", "build", "reminder", "engine", "new-signal", "http-intake")]
     [string]$Phase = "auth",
     [switch]$Dry,
     [string]$State = "",
@@ -21,6 +21,7 @@ $engine = switch ($Phase) {
     "reminder" { Join-Path $scriptRoot "create-reminder-flow.js" }
     "engine" { Join-Path $scriptRoot "create-followup-engine-flow.js" }
     "new-signal" { Join-Path $scriptRoot "create-new-signal-teams-flow.js" }
+    "http-intake" { Join-Path $scriptRoot "create-http-intake-flow.js" }
     default { Join-Path $scriptRoot "create-flow.js" }
 }
 if (-not (Test-Path -LiteralPath $engine)) { throw "Engine not found: $engine" }

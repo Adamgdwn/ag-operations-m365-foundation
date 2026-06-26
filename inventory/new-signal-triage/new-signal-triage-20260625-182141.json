@@ -1,0 +1,169 @@
+{
+  "purpose": "B2/B3/B4 Signal triage lane",
+  "generatedAt": "2026-06-25T18:22:00.2322414-06:00",
+  "sourceMode": "sharepoint",
+  "sourceInputJson": "",
+  "relatedRecordsInputJson": "",
+  "signal": {
+    "Id": 21,
+    "Title": "Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+    "PersonName": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+    "PersonEmail": "adam+gail-b6-journey-20260625-180736@guidedailabs.com",
+    "OrganizationName": "Guided AI Labs Internal Walkthrough",
+    "SignalType": "Website",
+    "IntakeSource": "Guided AI Journey",
+    "IntentPath": "My team — I want to build team capability",
+    "Priority": "Normal",
+    "SignalStatus": "New",
+    "NeedSummary": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.",
+    "SourceText": "Full name: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY Email: adam+gail-b6-journey-20260625-180736@guidedailabs.com Organization: Guided AI Labs Internal Walkthrough What are you looking for: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage. How did you hear about us: Internal B6 source proof after B5 Decision Register #6. Situation: My team — I want to build team capability Consent: I agree — Provenance — Source: Guided AI Journey Intake form: Guided AI Journey intake form Forms response id: 4 Submitted: 6/26/2026 12:18:45 AM Capture: Auto-captured via website intake flow",
+    "NextAction": "Triage new website signal",
+    "FollowUpDueDate": "",
+    "Created": "2026-06-26T00:18:48.0000000Z",
+    "Modified": "2026-06-26T00:18:48.0000000Z",
+    "Owner": "",
+    "ItemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=21"
+  },
+  "decision": {
+    "apparentUrgency": "Normal",
+    "classification": "qualification",
+    "suggestedFirstMove": "Review the existing NextAction and decide whether to accept it: Triage new website signal",
+    "missingInformation": [
+      "follow-up due date",
+      "owner"
+    ],
+    "suggestedOwner": "Adam",
+    "suggestedFollowUpDueWindow": "Today or next business morning",
+    "nextGovernanceLevel": "G0",
+    "governanceNote": "G0 review only. No write or external action is needed until Adam chooses the next move.",
+    "blockedActions": [
+      "Do not update CRM fields in B2.",
+      "Do not create Planner tasks or calendar reminders in B2.",
+      "Do not send email, Teams chat, SMS, calls, or prospect replies.",
+      "Do not merge, suppress, convert, close, or dedupe records automatically.",
+      "Do not grant app permissions, consent, guest access, or sharing changes."
+    ],
+    "requiredApprovals": [
+      "G1 approval before writing an Agent Action Log Suggested row.",
+      "G2 approval before internal CRM/list updates or task/reminder creation.",
+      "G3 approval before any external/prospect communication or access-affecting write.",
+      "G4 remains blocked for destructive, broad-permission, guest/share, billing, or client-commitment actions."
+    ]
+  },
+  "similarRecordAdvisory": {
+    "included": true,
+    "generatedAt": "2026-06-25T18:21:55.4823785-06:00",
+    "searchedSurfaces": [
+      "CRM - New Signals",
+      "CRM - Organizations",
+      "CRM - Contacts",
+      "CRM - Engagements",
+      "CRM - Touchpoints"
+    ],
+    "candidateCount": 7,
+    "matchCount": 5,
+    "summary": "Found 5 possible related record(s).",
+    "matches": [
+      {
+        "listTitle": "CRM - Organizations",
+        "id": 1,
+        "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Organizations/DispForm.aspx?ID=1",
+        "confidence": "High",
+        "score": 102,
+        "reasons": [
+          "close organization name match",
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: client, organization, walkthrough",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "Active",
+        "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+        "personName": "",
+        "email": ""
+      },
+      {
+        "listTitle": "CRM - Contacts",
+        "id": 1,
+        "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Adam Internal Operator",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Contacts/DispForm.aspx?ID=1",
+        "confidence": "Medium",
+        "score": 69,
+        "reasons": [
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: adam, walkthrough",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "Active",
+        "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-ORG",
+        "personName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Adam Internal Operator",
+        "email": "adamgoodwin@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 18,
+        "title": "B1 New Signal Teams alert proof 20260625-150910",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=18",
+        "confidence": "Low",
+        "score": 38,
+        "reasons": [
+          "close organization name match",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs internal proof",
+        "personName": "B1 Internal Proof",
+        "email": "new-signal-proof@example.invalid"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 19,
+        "title": "B1 New Signal Teams alert proof 20260625-161858",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=19",
+        "confidence": "Low",
+        "score": 38,
+        "reasons": [
+          "close organization name match",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs internal proof",
+        "personName": "B1 Internal Proof",
+        "email": "new-signal-proof@example.invalid"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 20,
+        "title": "Guided AI Journey — Erin Forbes",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=20",
+        "confidence": "Low",
+        "score": 27,
+        "reasons": [
+          "similar need/opportunity keywords: invite, website, triage",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Dress For Success Central Alberta",
+        "personName": "Erin Forbes",
+        "email": "erin@dfsca.ca"
+      }
+    ],
+    "evidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260625-182141.json",
+    "boundary": "Advisory only. No merge, lookup conversion, suppression, dedupe, update, delete, or hidden decision occurred."
+  },
+  "actionLogSuggestion": {
+    "status": "created",
+    "title": "Triage new CRM signal - GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY / Guided AI Labs Internal Walkthrough",
+    "actionStatus": "Suggested",
+    "actionType": "recommend",
+    "itemId": 11,
+    "itemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/Agent%20Action%20Log/DispForm.aspx?ID=11",
+    "duplicateSuggestions": [],
+    "boundary": "G1 Suggested row only. Not approved, not completed, not executed."
+  },
+  "safety": "G1 Agent Action Log Suggested row only. No CRM update, task, reminder, message, merge, permission, or external action occurred.",
+  "markdownPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260625-182141.md",
+  "jsonPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260625-182141.json",
+  "matchEvidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260625-182141.json",
+  "transcript": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260625-182141.log"
+}

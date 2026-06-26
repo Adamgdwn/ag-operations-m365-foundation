@@ -1,0 +1,67 @@
+**********************
+PowerShell transcript start
+Start time: 20260625182142
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -File .\scripts\Invoke-M365NewSignalTriage.ps1 -ItemId 21 -Apply -Approve -NoPause
+Process ID: 10752
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+B2/B3/B4 - New Signal triage lane
+Mode:       APPLY: G0 triage + one G1 Suggested Agent Action Log row
+Output:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-triage\new-signal-triage-20260625-182141.md
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-triage\new-signal-triage-20260625-182141.log
+Safety:     G0 read/reason by default. -Apply writes at most one G1 Suggested Agent Action Log row; no CRM updates, tasks, reminders, messages, merges, or permissions.
+
+== Connect to CRM ==
+Connected to https://agoperationsltd.sharepoint.com/sites/GuidedAILabs using O365
+Connected user: adamgoodwin@guidedailabs.com
+PASS: list found: CRM - New Signals (a64ef810-ad45-407b-b1ea-516533a8611d)
+
+== Read signal ==
+PASS: signal read: #21 Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY
+
+== Triage ==
+Urgency: Normal
+Classification: qualification
+Next governance: G0
+
+== B3 similar-record advisory ==
+  Read 4 row(s) from CRM - New Signals
+  Read 1 row(s) from CRM - Organizations
+  Read 1 row(s) from CRM - Contacts
+  Read 1 row(s) from CRM - Engagements
+  Read 1 row(s) from CRM - Touchpoints
+B3 result: Found 5 possible related record(s).
+  [High] CRM - Organizations #1: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof - close organization name match; business email/domain match: guidedailabs.com; similar need/opportunity keywords: client, organization, walkthrough; related record is active/open or waiting on Adam
+  [Medium] CRM - Contacts #1: GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Adam Internal Operator - business email/domain match: guidedailabs.com; similar need/opportunity keywords: adam, walkthrough; related record is active/open or waiting on Adam
+  [Low] CRM - New Signals #18: B1 New Signal Teams alert proof 20260625-150910 - close organization name match; related record is active/open or waiting on Adam
+  [Low] CRM - New Signals #19: B1 New Signal Teams alert proof 20260625-161858 - close organization name match; related record is active/open or waiting on Adam
+  [Low] CRM - New Signals #20: Guided AI Journey — Erin Forbes - similar need/opportunity keywords: invite, website, triage; related record is active/open or waiting on Adam
+
+== B4 Agent Action Log suggestion ==
+
+Approve this live write? It records ONE Suggested Agent Action Log row.
+  Title: Triage new CRM signal - GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY / Guided AI Labs Internal Walkthrough
+  Scope: Agent Action Log only. Suggested is not approved or executed.
+  Approval supplied by -Approve switch.
+  [OK] Added Suggested Agent Action Log row #11
+  Link: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/Agent%20Action%20Log/DispForm.aspx?ID=11
+
+== Done ==
+Packet markdown: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-triage\new-signal-triage-20260625-182141.md
+Packet JSON:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-triage\new-signal-triage-20260625-182141.json
+**********************
+PowerShell transcript end
+End time: 20260625182200
+**********************

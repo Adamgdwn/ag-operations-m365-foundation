@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "provedAtUtc": "2026-06-26T04:06:12Z",
+  "portalEventId": "db8d3f91-002b-4729-b6ac-556ee5813d3d",
+  "journeySend": {
+    "command": "npm run crm:lifecycle-test",
+    "accepted": true,
+    "status": 202
+  },
+  "m365Crm": {
+    "list": "CRM - New Signals",
+    "itemId": 25,
+    "title": "Guided AI Journey - GAIL Internal CRM Ack Test",
+    "intakeSource": "Guided AI Journey",
+    "signalStatus": "New"
+  },
+  "m365Callback": {
+    "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+    "runName": "08584191601836375009766959431CU07",
+    "runStatus": "Succeeded",
+    "callbackAction": "Post_CRM_receipt_ack_to_Journey",
+    "callbackActionStatus": "Succeeded",
+    "callbackActionCode": "OK"
+  },
+  "journeyLedger": {
+    "status": "crm_received",
+    "statusCode": 200,
+    "crmRecordId": "25",
+    "ackReceivedAt": "2026-06-26T04:05:03.883+00:00"
+  },
+  "teamsAlert": {
+    "flowName": "c54964d6-0042-430d-b542-90214e49224b",
+    "runName": "08584191601489641879076917249CU08",
+    "runStatus": "Succeeded",
+    "postAction": "Post_to_New_Signal_channel",
+    "postActionStatus": "Succeeded"
+  },
+  "leadSourceDisplayProof": {
+    "status": "PASS",
+    "provedAtUtc": "2026-06-26T04:27:19Z",
+    "portalEventId": "journey-portal-event-1782447883236",
+    "crmItemId": 27,
+    "intakeSource": "Guided AI Journey",
+    "leadSourceDetail": "Journey admin invite",
+    "sourceAction": "admin_invited_person",
+    "intakeFlowRun": "08584191590010332113223187806CU18",
+    "teamsFlowRun": "08584191589676821842406276734CU16",
+    "teamsPostActionStatus": "Succeeded",
+    "proofPacket": "inventory/m365-interaction-agent-b7/b7-lead-source-proof-20260625.json"
+  },
+  "evidence": {
+    "crmReadBack": "inventory/m365-interaction-agent-b7/b7-crm-readback-db8d3f91-002b-4729-b6ac-556ee5813d3d-20260626-040542.json",
+    "m365FlowRun": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040557.json",
+    "journeyLedger": "inventory/m365-interaction-agent-b7/b7-journey-ledger-db8d3f91-002b-4729-b6ac-556ee5813d3d-20260626-040612.json",
+    "teamsFlowRun": "inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-040647.json",
+    "leadSourceCrmReadBack": "inventory/m365-interaction-agent-b7/b7-crm-readback-journey-portal-event-1782447883236-20260626-042719.json",
+    "leadSourceTeamsFlowRun": "inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-042625.json",
+    "flowState": "inventory/forms-build/flow-state-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040717.json"
+  },
+  "secretBoundary": "No secret value was written to git, DirectLink, or evidence files."
+}

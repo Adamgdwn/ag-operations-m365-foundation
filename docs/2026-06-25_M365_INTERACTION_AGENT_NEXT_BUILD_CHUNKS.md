@@ -2,12 +2,31 @@
 
 Date: 2026-06-25
 
-Status: B1-B4 live proof completed on 2026-06-25, then paused by Adam because
-two agents are writing to M365 accounts and competing. The first lane now has a
-live Teams channel, standard Teams Power Automate connector, started
-SharePoint-to-Teams flow, synthetic CRM proof item, Teams post evidence,
-B2/B3 triage packet, similar-record advisory, and one B4 `Suggested` Agent
-Action Log row. B5 is the next build gate after a competing-writer audit.
+Status: B1-B4 live proof completed on 2026-06-25, then paused by Adam while
+separate Prime Boiler 365 setup work was happening under another account. Adam
+clarified that the Guided AI Labs `New Signal` path remains canonical for this
+repo. The first lane now has a live Teams channel, standard Teams Power
+Automate connector, started SharePoint-to-Teams flow, synthetic CRM proof item,
+Teams post evidence, B2/B3 triage packet, similar-record advisory, and one B4
+`Suggested` Agent Action Log row. The B5 local audit and durable permission
+decision were recorded live on 2026-06-25 as Decision Register item `#6` and
+Agent Action Log item `#10`. B6 Guided AI Journey direct Form proof is now live:
+the Microsoft Form was submitted on 2026-06-25 at 18:18 MDT, the create-only
+Journey flow created `CRM - New Signals` item `#21`, verification passed, Teams
+web proof found exactly one `Guided AI Labs / New Signal` post for item `#21`,
+and Adam's G1 approval recorded Agent Action Log `#11` as `Suggested`. B7 is
+now live and proved as the Guided AI Journey minimal invite/admin signal plus
+CRM receipt acknowledgement loop. Journey production is deployed with
+`POST /api/crm/lifecycle/ack`, Vercel production has the server-side ack
+secret, and the M365 custom HTTP intake flow now sends a signed post-create
+receipt callback. Synthetic portal event
+`db8d3f91-002b-4729-b6ac-556ee5813d3d` created `CRM - New Signals` item `#25`,
+the M365 callback action succeeded, Journey read back `crm_received`, and the
+New Signal Teams alert flow posted successfully. Follow-on source display proof
+on 2026-06-25/26 added `Lead source detail` to CRM provenance and Teams alerts:
+direct synthetic Journey source event `journey-portal-event-1782447883236`
+created CRM item `#27` with `Lead source detail: Journey admin invite`, and the
+patched Teams alert flow posted successfully.
 
 Owner: Adam.
 
@@ -42,9 +61,10 @@ own approval boundary.
 
 Pause reason:
 
-- Adam has two agents writing to M365 accounts, and they are competing.
-- The next session should resume only when Adam can focus on this lane and
-  confirm which agent owns which M365 write surface.
+- Adam was switching between the Guided AI Labs lane and Prime Boiler 365 setup
+  under separate accounts/sessions.
+- The next session should keep those account lanes separated and record that
+  this repo owns the Guided AI Labs `CRM - New Signals` path.
 
 What is already live:
 
@@ -55,11 +75,20 @@ What is already live:
   (`c54964d6-0042-430d-b542-90214e49224b`) is `Started`.
 - The flow may continue posting internal Teams alerts for new
   `CRM - New Signals` items unless Adam disables it in Power Automate.
+- The create-only intake flows are also `Started`:
+  - `GAIL - Guided AI Labs intake to CRM (create-only)`
+  - `GAIL - Guided AI Journey intake to CRM (create-only)`
+- Those two intake flows create `CRM - New Signals` rows. They are source
+  ingress automations, not agent decision writers.
+- B5 one-writer posture is recorded in Decision Register `#6`; evidence row is
+  Agent Action Log `#10`.
 
-What not to run during the pause:
+What not to rerun without a fresh approval boundary:
 
 - `scripts/Invoke-M365NewSignalAlertProof.ps1 -Apply`.
 - `scripts/Invoke-M365NewSignalTriage.ps1 ... -Apply`.
+- `scripts/Invoke-M365B5InteractionAgentDecision.ps1 -Apply` unless Adam uses
+  the exact B5 approval phrase.
 - Any command using `-Approve` for an M365 write.
 - `scripts/flow-builder/Start-FlowBuilder.ps1 -Phase connections`.
 - `scripts/flow-builder/Start-FlowBuilder.ps1 -Phase new-signal -State Started`.
@@ -73,16 +102,31 @@ Safe work while paused:
 - Run `git status --short`.
 - Review local inventory files.
 - Run parser/lint checks that do not touch M365.
+- Run `scripts/Invoke-M365B5InteractionAgentDecision.ps1 -LocalOnly -NoPause`
+  to preview the B5 recorder without connecting to Microsoft 365.
+- Run `scripts/Invoke-M365B6JourneyIntakeProof.ps1 -NoPause` to prepare the B6
+  Journey intake proof packet without connecting to Microsoft 365.
+- After Adam manually submits the selected Journey proof intake, run
+  `scripts/Start-M365B6JourneyIntakeProofInteractive.ps1 -Verify -ForceFreshLogin`
+  to verify the CRM signal read-only.
 - Run `scripts/Invoke-M365NewSignalTriage.ps1` only without `-Apply` if Adam
   explicitly wants a read-only packet; otherwise leave M365 untouched.
 
 First resume action:
 
-1. Identify the other M365-writing agent and its live write surfaces.
-2. Decide whether this repo's M365 agent lane is the only writer, or whether
-   surfaces are intentionally split.
-3. Record that decision in B5 before expanding permissions or source inputs.
-4. Only then continue B5/B6.
+1. B5 local audit recording is done: Prime Boiler 365 setup is a separate
+   account/session lane, and this repo owns the Guided AI Labs `New Signal`
+   path.
+2. B5 durable permission packet is recorded in Decision Register `#6` and Agent
+   Action Log `#10`.
+3. B5 recorder script is retained for evidence, local preview, tenant dry run,
+   or a later explicitly approved superseding record.
+4. Guided AI Journey client intake is staged as the first B6 source proof,
+   through the existing create-only Form/CRM path.
+5. B6 helper local prep is complete; only the manual/client-style intake
+   submission can create the CRM proof item.
+6. Only run a follow-on G1 Suggested-row write after Adam explicitly approves
+   that specific step.
 
 ## Current Starting Point
 
@@ -92,6 +136,10 @@ Already live or verified:
 - `Guided AI Journey - Get started` Microsoft Form.
 - Both Forms create items in the same `CRM - New Signals` list.
 - `CRM - New Signals` is the source of truth for new opportunities and signals.
+- Guided AI Journey client invites should point first to the Journey Form or a
+  website CTA/embed that reaches the same intake. A later custom website form
+  contract exists locally, but any proof still has to preserve server-side
+  secrets and the same `CRM - New Signals` shape.
 - SharePoint and Microsoft Forms Power Automate connections are connected.
 - Agent governance model exists: G0 read, G1 propose/log, G2 approved internal
   write, G3 restricted external/access write, G4 blocked.
@@ -107,12 +155,26 @@ Completed live proof:
   `Created`.
 - B2/B3 triage packet and similar-record advisory were generated.
 - B4 wrote Agent Action Log row `#9` with status `Suggested`.
+- B5 recorded the one-writer posture in Decision Register `#6` and Agent Action
+  Log `#10`.
+- B6 Guided AI Journey Form submission created CRM signal `#21`; verification
+  passed, the source-specific Teams alert proof passed, and Agent Action Log
+  `#11` was recorded as `Suggested`.
+- B7 live proof completed the Journey -> M365 -> Journey CRM receipt loop for
+  invite/admin/lifecycle signals. Final synthetic `portalEventId`:
+  `db8d3f91-002b-4729-b6ac-556ee5813d3d`; final CRM record:
+  `CRM - New Signals` item `#25`; final Journey status: `crm_received`.
 
-Still pending:
+B7 evidence:
 
-- Durable B5 permission decision for the real `m365-interaction-agent` posture,
-  including the competing-writer boundary.
-- B6 source expansion after B5 decides the agent identity/adapter boundary.
+- Live proof packet:
+  `inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md`.
+- M365 callback run:
+  `inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040557.json`.
+- Journey ledger read-back:
+  `inventory/m365-interaction-agent-b7/b7-journey-ledger-db8d3f91-002b-4729-b6ac-556ee5813d3d-20260626-040612.json`.
+- Teams alert run:
+  `inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-040647.json`.
 
 ## Build Sequence
 
@@ -124,6 +186,7 @@ Still pending:
 | B4 | Agent Action Log suggested row | G1 propose/log | Agent writes one `Suggested` row for human review. |
 | B5 | Durable permission decision | Decision Register | Adam chooses the real `m365-interaction-agent` posture. |
 | B6 | Source expansion | Later G2/G3 per source | More inbound sources feed the same CRM -> agent lane. |
+| B7 | Journey minimal signal + CRM receipt ack | Source ingress plus restricted external callback | Journey invite/admin signal creates CRM item, then M365 confirms receipt back to Journey dashboard. |
 
 ## Live Proof Record
 
@@ -417,6 +480,30 @@ Choose the production posture for the real `m365-interaction-agent` after the
 useful loop is proven, instead of letting delegated setup power become the
 agent's permanent authority.
 
+Local resume packet:
+
+- `inventory/m365-interaction-agent-b5/B5_COMPETING_WRITER_AUDIT_2026-06-25.md`
+  records the repo-visible competing writer audit, Adam's Prime Boiler
+  clarification, recommended one-writer posture, source-ingress exceptions, and
+  pause/revoke map. It is local-only and does not record a tenant Decision
+  Register item.
+- `inventory/m365-interaction-agent-b5/B5_DURABLE_PERMISSION_DECISION_2026-06-25.md`
+  converts the B5 audit into a Decision Register-ready durable permission
+  packet.
+- `inventory/m365-interaction-agent-b5/decision-register-draft-b5-one-writer-20260625.csv`
+  and `.json` hold import-ready draft values for the B5 Decision Register row.
+- `scripts/Invoke-M365B5InteractionAgentDecision.ps1` records the B5 decision
+  in dry-run-first mode and requires the exact B5 approval phrase before any
+  live write.
+- `scripts/Start-M365B5InteractionAgentDecisionInteractive.ps1` opens the same
+  recorder in a visible interactive PowerShell window for account selection.
+- `inventory/m365-interaction-agent-b5/b5-interaction-agent-decision-20260625-174036.json`
+  and `.log` prove the recorder local-previewed the two intended rows without
+  connecting to Microsoft 365.
+- `inventory/m365-interaction-agent-b5/b5-interaction-agent-decision-20260625-175449.json`
+  and `.log` prove the approved live recording created Decision Register `#6`
+  and Agent Action Log `#10` as `adamgoodwin@guidedailabs.com`.
+
 Decision packet must include:
 
 - agent name;
@@ -430,6 +517,7 @@ Decision packet must include:
 - identity/adapter approach;
 - why narrower options are insufficient, if applicable;
 - approval phrase;
+- recorder command;
 - revoke/disable path;
 - review date;
 - evidence location.
@@ -469,6 +557,8 @@ Feed more inbound signals into the same agent lane only after the CRM -> Teams
 
 Candidate sources:
 
+- Guided AI Journey client-invite intake through the existing Journey
+  Microsoft Form or website CTA/embed.
 - Microsoft Bookings appointment events already feeding CRM.
 - Support mailbox signals, after support MFA and mailbox adapter design.
 - Manual CRM entries from Adam/operator.
@@ -500,6 +590,42 @@ Source-expansion packet for each source:
 - rollback or disable path;
 - test proof.
 
+Local B6 packet:
+
+- `inventory/m365-interaction-agent-b6/B6_GUIDED_AI_JOURNEY_CLIENT_INTAKE_2026-06-25.md`
+  records Guided AI Journey client-invite intake as the first source expansion
+  through the existing create-only Form -> CRM -> triage lane.
+- `scripts/Invoke-M365B6JourneyIntakeProof.ps1` prepares dummy Journey proof
+  values locally and verifies the resulting CRM signal read-only after Form
+  submission.
+- `scripts/Start-M365B6JourneyIntakeProofInteractive.ps1` opens the B6 helper
+  in a visible PowerShell window for account selection.
+- `inventory/m365-interaction-agent-b6/b6-journey-intake-proof-20260625-180736.md`
+  and `.json` prove the B6 helper local-prepared the selected direct Journey
+  Form proof without connecting to Microsoft 365.
+- `inventory/m365-interaction-agent-b6/b6-journey-form-submission-20260626-001841.json`
+  records the live Microsoft Form submission confirmation.
+- `inventory/m365-interaction-agent-b6/b6-journey-intake-proof-20260625-182051.md`
+  and `.json` prove the resulting `CRM - New Signals` item `#21` passed the
+  B6 shape checks.
+- `inventory/new-signal-triage/new-signal-triage-20260625-182141.md` and
+  `.json` prove the B2/B3 triage packet and G1 `Suggested` Agent Action Log
+  row `#11`.
+- `inventory/new-signal-alert/new-signal-alert-proof-20260625-184447.md` and
+  `.json` prove CRM item `#21` produced exactly one observed internal Teams
+  alert with CRM link text.
+
+Selected first proof completed:
+
+- Entry point: direct Journey Microsoft Form link.
+- Marker: `GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY`.
+- CRM item: `#21`
+  (`Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY`).
+- Teams alert: one observed `Guided AI Labs / New Signal` post at
+  `2026-06-25 18:19 America/Edmonton` with CRM link text.
+- Agent Action Log: `#11`, status `Suggested`, boundary only; no CRM update,
+  task, reminder, message, merge, permission, or external action.
+
 QUO remains parked until:
 
 - B1 through B4 are proven;
@@ -519,9 +645,130 @@ Stop conditions:
 
 - Phone/SMS auto-reply.
 - Prospect email send.
+- Direct website-to-CRM POST route or tenant secret in a public website repo.
 - Webhook secrets without a storage and revoke plan.
 - Third-party automation without source owner and rollback.
 - Any source that bypasses `CRM - New Signals`.
+
+## B7 - Journey Minimal Signal And CRM Receipt Ack
+
+Objective:
+
+Let Guided AI Journey send a system signal when Adam invites a person, acts as
+an admin for an organization, or saves a portal lifecycle event, then let M365
+confirm back to the Journey dashboard after the CRM item exists.
+
+Intended loop:
+
+```text
+Guided AI Journey invite/admin/lifecycle action
+-> Journey saves Supabase transaction first
+-> Journey writes crm_lifecycle_events row with stable portalEventId
+-> Journey backend sends minimal system signal to M365
+-> M365 creates CRM - New Signals item
+-> New Signal Teams alert fires internally
+-> M365 sends CRM receipt ack back to a fixed Journey dashboard endpoint
+-> Journey dashboard marks the invite/lead as CRM received
+```
+
+Local B7 packet:
+
+- `inventory/m365-interaction-agent-b7/B7_JOURNEY_MINIMAL_SIGNAL_ACK_CONTRACT_2026-06-25.md`
+  records the contract, data-minimization rule, acknowledgement shape, and
+  proof plan.
+- `inventory/m365-interaction-agent-b7/journey-minimal-signal-ack-contract-20260625.json`
+  provides the machine-readable contract.
+- `inventory/m365-interaction-agent-b7/WINDOWS_TO_LINUX__journey-minimal-signal-ack-contract-20260625.md`
+  is the original DirectLink handoff copy for the Journey/Linux side; it is now
+  marked superseded by the Linux-proposed `portalEventId` handshake.
+- `inventory/m365-interaction-agent-b7/WINDOWS_TO_LINUX__2026-06-25-m365-two-way-handshake-response.md`
+  and `windows-to-linux-m365-two-way-handshake-response-20260625.json` answer
+  the Linux/Journey questions and define the current v1 payload/ack shape.
+- `scripts/New-M365B7JourneySignalAckPacket.ps1` generates a synthetic
+  no-real-client test payload and expected acknowledgement packet locally.
+- `scripts/flow-builder/create-http-intake-flow.js` now preserves optional
+  Journey signal metadata in `SourceText`: schema version, signal mode, event
+  type, `portalEventId`, correlation id, company/engagement/invite ids, Journey
+  invite/org/lead ids, invite role, source action, portal deep link, event
+  timestamp, and ack requested. If local ack endpoint/secret files exist, the
+  builder can add a signed M365 -> Journey receipt action after `Create_item`.
+- `scripts/flow-builder/http-intake-e2e.js` now includes Journey correlation
+  and portal lifecycle metadata in the Journey happy-path test payload.
+
+Slim signal principle:
+
+- The invite/admin trigger is a system event, so it should ask the client
+  nothing.
+- Journey should send what it already knows: invite id, correlation id, email,
+  name if known, organization if known, role/context, and a short lead context.
+- Any later client-facing form should be separate and slim: prefilled
+  name/email/org, one useful free-text prompt, one optional intent choice, and
+  one consent checkbox when a human is submitting.
+
+Open live work:
+
+- Journey confirmed `POST https://www.guidedaijourney.com/api/crm/lifecycle/ack`
+  as the fixed server-side acknowledgement endpoint, `x-m365-ack-secret` as the
+  header name, HTTP `200` as the success status, and a 15-minute dashboard
+  pending timeout. M365 must not call a callback URL supplied inside the inbound
+  payload.
+- M365 read-only verified the custom HTTP intake flow state as `Started` on
+  2026-06-25, with evidence in
+  `inventory/forms-build/flow-state-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-032732.json`.
+- M365 must build/enable the outbound CRM receipt callback flow only after the
+  Journey production deploy readiness checks pass and the real ack secret is
+  stored locally. Adam has approved the live callback build; do not use a
+  placeholder secret.
+
+No-real-subject proof:
+
+```text
+portalEventId: GAIL-B7-PORTAL-EVENT-20260625
+correlationId: GAIL-B7-PORTAL-EVENT-20260625
+companyId: journey-company-internal-walkthrough
+engagementId: journey-engagement-internal-walkthrough
+journeyInviteId: journey-invite-test-20260625
+name: GAIL INTERNAL CRM ACK TEST
+email: adam+journey-crm-ack-20260625@guidedailabs.com
+organization: Guided AI Labs Internal Walkthrough
+```
+
+Acceptance:
+
+- Journey dashboard records the test invite/admin signal.
+- M365 creates exactly one `CRM - New Signals` item with
+  `IntakeSource = Guided AI Journey`.
+- CRM `SourceText` contains the portal event id, correlation id, and Journey
+  invite id.
+- The New Signal Teams alert appears once.
+- M365 ack callback updates Journey dashboard to `crm_received`.
+
+M365-side answer to Linux/Journey questions:
+
+- Current flow builder can store `portalEventId` in CRM `SourceText` now; a
+  first-class SharePoint column is a later schema chunk if strict dedupe becomes
+  necessary.
+- The builder can call the signed ack endpoint after item creation, but only
+  when `.local/flow-builder/journey-crm-ack-endpoint.txt` and
+  `.local/flow-builder/journey-crm-ack-secret.txt` exist. Adam has approved the
+  live callback build; the remaining gate is real secret plus deployed endpoint,
+  not human approval.
+- Safe return fields are the CRM item id, display-form URL, title, status,
+  priority, and optional Power Automate run id.
+- Keep v1 lifecycle events in `CRM - New Signals` to reuse the proven alert and
+  triage lane. Consider a dedicated lifecycle ledger later if these become
+  operational-history events rather than new-work signals.
+- Include now: `portalEventId`, `eventType`, `companyId`, `engagementId`,
+  `inviteId`, `sourceAction`, `eventTimestamp`, `portalDeepLink`, and
+  `leadContext`.
+
+Stop conditions:
+
+- Browser-side intake secret or ack secret.
+- Callback URL accepted from an inbound payload.
+- Real client invite used for the first proof.
+- CRM update, merge, task, external reply, guest invite, or permission change.
+- Any signal path that bypasses `CRM - New Signals`.
 
 ## Recommended Execution Order
 
@@ -531,27 +778,56 @@ Completed before pause:
 2. B2/B3 generated local G0 triage and similar-record advisory.
 3. B4 created one G1 `Suggested` Agent Action Log row.
 
-Resume order:
+Current resume state:
 
-1. Confirm the competing M365-writing agent is paused, separated, or explicitly
-   coordinated.
-2. Record B5 permission decision after the agent has proved it is worth
-   granting durable power.
-3. Start B6 with one source at a time, using the same CRM signal lane.
+1. Prime Boiler 365 setup is separated from the Guided AI Labs M365
+   lane.
+2. B5 permission decision evidence is recorded: Decision Register `#6` and Agent
+   Action Log `#10`.
+3. B6 direct Journey Form proof is recorded: `CRM - New Signals` `#21` and
+   Agent Action Log `#11` as a G1 `Suggested` row.
+4. Source-specific Teams alert observation for CRM item `#21` is recorded:
+   exactly one `Guided AI Labs / New Signal` post with CRM link text.
+5. B7 local Journey minimal signal and CRM receipt acknowledgement contract is
+   staged and ready for DirectLink handoff.
 
 ## Immediate Next Work
 
-Pause here.
+Local B5 packet/recorder work, live B5 recording, B6 source-ingress proof, B6
+CRM verification, source-specific Teams alert proof, read-only triage, and the
+approved G1 Suggested row are now done. Do not rerun any follow-on
+Suggested-row write without a fresh approval; the existing B6 Suggested row is
+Agent Action Log `#11`.
 
-Do not continue B1-B4 setup or proof commands during the pause. The immediate
-next work is a B5 resume review:
+The immediate next work is B7: wait for Linux/Journey to report production
+readiness for the ack endpoint and generate one real synthetic `portalEventId`,
+then store the real ack secret locally, update the M365 custom HTTP receiver
+with the ack action, and run one internal no-real-subject proof.
 
 ```text
-competing M365 write agents
+Prime Boiler separated from Guided AI Labs
 -> exact writer/surface inventory
 -> one-writer or split-surface decision
 -> revoke/disable path
 -> durable m365-interaction-agent permission posture
+-> B5 recorded in Decision Register #6 and Agent Action Log #10
+-> B6 direct Journey Form proof packet prepared
+-> B6 Journey Form submitted live
+-> CRM - New Signals #21 verified
+-> B6 Teams alert observed once
+-> B6 B2/B3 triage packet
+-> Agent Action Log #11 recorded as Suggested
+-> B7 minimal Journey invite/admin signal contract staged
+-> Linux/Journey side proposed portalEventId handshake
+-> M365 local builder updated for portalEventId + optional signed ack
+-> Journey/Linux side exact ack endpoint origin/secret-header confirmation
+-> Adam approved live callback build
+-> M365 local endpoint/header prepared; ack secret pending
+-> Journey implementation built and locally validated; production deploy pending
+-> M365 receiver state verified Started
+-> Journey/Linux side production deploy readiness
+-> M365 receiver updated with ack action
+-> internal B7 proof
 ```
 
 Read-only evidence to review first:
@@ -591,4 +867,4 @@ then add more sources
 ```
 
 While paused, "earn durable permission" includes proving that this repo is not
-competing with another live M365-writing agent.
+competing with the separate Prime Boiler account/session lane.

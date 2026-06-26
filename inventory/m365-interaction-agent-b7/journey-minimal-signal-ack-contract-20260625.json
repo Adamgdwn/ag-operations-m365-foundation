@@ -1,0 +1,314 @@
+{
+  "messageType": "integration_contract",
+  "topic": "guided-ai-journey-minimal-signal-to-m365-with-crm-receipt-ack",
+  "from": "Windows Codex (M365/CRM side)",
+  "to": "Linux Codex / Guided AI Journey Website and Tools",
+  "timestamp": "2026-06-25",
+  "status": "B7_LIVE_PROOF_COMPLETE",
+  "summary": "Guided AI Journey sends a minimal system signal, M365 creates a CRM - New Signals item, and M365 sends a signed receipt acknowledgement back to the fixed Journey endpoint. The live loop was proved with synthetic portalEventId db8d3f91-002b-4729-b6ac-556ee5813d3d, CRM item #25, successful M365 callback, successful Teams alert flow, and Journey ledger status crm_received. Follow-on source-display proof added Lead source detail to CRM provenance and the Teams alert.",
+  "adamApproval": {
+    "status": "APPROVED_TO_BUILD_AND_ENABLE_WHEN_TECHNICALLY_READY",
+    "date": "2026-06-25",
+    "scope": "M365-to-Guided-AI-Journey CRM receipt callback for the B7 portalEventId handshake"
+  },
+  "journeyImplementationStatus": {
+    "status": "DEPLOYED_TO_PRODUCTION_AND_PROVED",
+    "reportedByLinuxHandoff": "LINUX_TO_WINDOWS__2026-06-26-journey-ack-implementation-complete.md",
+    "reportedArtifacts": [
+      "sql/031_crm_lifecycle_events.sql",
+      "src/lib/crm-lifecycle.ts",
+      "src/app/api/crm/lifecycle/ack/route.ts",
+      "src/app/onboarding/actions.ts",
+      "src/lib/operations.ts",
+      "src/app/operations/page.tsx",
+      "scripts/send-crm-lifecycle-test.ts"
+    ],
+    "productionRolloutPending": false
+  },
+  "boundaries": {
+    "m365CurrentState": [
+      "CRM - New Signals is the source of truth.",
+      "Existing Journey Microsoft Forms proof created CRM item #21 and a Teams alert.",
+      "The custom HTTP intake receiver preserves Journey portalEventId/correlation metadata in SourceText.",
+      "The live custom HTTP intake receiver includes a signed M365-to-Journey acknowledgement action after Create_item.",
+      "B7 live proof created CRM item #25, sent a successful callback to Journey, and Journey read back crm_received.",
+      "Lead-source display proof created CRM item #27 with Lead source detail = Journey admin invite, and the Teams alert flow posted successfully."
+    ],
+    "notApprovedByThisPacket": [
+      "No external email or client message from M365.",
+      "No guest invite, permission change, CRM merge, or Planner/calendar task.",
+      "No callback to a Journey-provided arbitrary URL.",
+      "No tenant secret, acknowledgement secret, .env value, bearer token, or private key committed to git or DirectLink."
+    ]
+  },
+  "receiveContract": {
+    "receiver": "Existing custom HTTP intake endpoint from WINDOWS_TO_JOURNEY__custom-intake-form-spec.json. Endpoint URL and x-intake-secret remain server-side only.",
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json",
+      "x-intake-secret": "server-side secret already supplied out of band"
+    },
+    "minimumPayloadForInviteSignal": {
+      "schemaVersion": "journey.crm-signal.v1",
+      "source": "Guided AI Journey",
+      "signalMode": "portal-lifecycle-event",
+      "eventType": "organization_setup_saved",
+      "portalEventId": "stable Journey crm_lifecycle_events id",
+      "correlationId": "same as portalEventId unless Journey needs a separate send-attempt id",
+      "companyId": "Journey company id, if available",
+      "engagementId": "Journey engagement id, if available",
+      "inviteId": "Journey invitation id, if available",
+      "journeyInviteId": "Journey invitation id, if available",
+      "journeyOrganizationId": "Journey organization id, if available",
+      "journeyLeadId": "Journey dashboard lead/signal id, if available",
+      "inviteRole": "person | organization_admin | organization_member | unknown",
+      "sourceAction": "admin_invited_person",
+      "leadSourceDetail": "optional friendly label; M365 derives one from sourceAction if absent",
+      "portalDeepLink": "Journey operator/admin deep link, if safe",
+      "eventTimestamp": "ISO-8601 event timestamp",
+      "fullName": "optional invitee/admin name",
+      "email": "invitee/admin email if known",
+      "organization": "optional organization display name",
+      "leadContext": "short system-generated context; do not ask the client for this",
+      "needSummary": "optional; if absent M365 derives a basic invite-signal summary",
+      "situation": "optional IntentPath choice if Journey already knows it",
+      "heardFrom": "Guided AI Journey invite/admin trigger",
+      "consent": false,
+      "company": "",
+      "ackRequested": true,
+      "testMode": false
+    },
+    "fieldAliasesAcceptedByM365LocalBuilder": {
+      "name": [
+        "fullName",
+        "inviteeName",
+        "invitedName"
+      ],
+      "email": [
+        "email",
+        "inviteeEmail",
+        "invitedEmail"
+      ],
+      "organization": [
+        "organization",
+        "organizationName",
+        "journeyOrganizationName",
+        "portalCompanyName",
+        "companyDisplayName"
+      ],
+      "eventType": [
+        "eventType",
+        "journeyEventType"
+      ],
+      "leadId": [
+        "journeyLeadId",
+        "dashboardLeadId"
+      ],
+      "correlationKey": [
+        "portalEventId",
+        "correlationId",
+        "journeyInviteId",
+        "inviteId",
+        "journeyLeadId",
+        "dashboardLeadId"
+      ],
+      "leadSourceDetail": [
+        "leadSourceDetail",
+        "leadSource",
+        "attributionSource",
+        "referralSource",
+        "sourceAction"
+      ]
+    },
+    "crmMapping": {
+      "Title": "Guided AI Journey - best available name/org/email",
+      "PersonName": "fullName/inviteeName/invitedName/email fallback",
+      "PersonEmail": "email/inviteeEmail/invitedEmail",
+      "OrganizationName": "organization/organizationName/journeyOrganizationName",
+      "NeedSummary": "needSummary, else leadContext, else generated invite-signal summary",
+      "SourceText": "human-readable fields plus Lead source detail, Journey signal metadata, portal event id, correlation id, company/engagement/invite ids, organization id, lead id, role, source action, portal deep link, and provenance",
+      "SignalType": "Website",
+      "IntakeSource": "Guided AI Journey",
+      "IntentPath": "situation if supplied",
+      "SignalStatus": "New",
+      "Priority": "Normal",
+      "NextAction": "Triage new website signal"
+    }
+  },
+  "ackContractConfirmedByJourney": {
+    "productionOrigin": "https://www.guidedaijourney.com",
+    "fixedAckEndpoint": "https://www.guidedaijourney.com/api/crm/lifecycle/ack",
+    "secretHeaderName": "x-m365-ack-secret",
+    "expectedSuccessStatus": 200,
+    "expectedSuccessBody": {
+      "ok": true,
+      "status": "crm_received",
+      "portalEventId": "same portalEventId from M365 ack",
+      "correlationId": "same correlationId from M365 ack",
+      "matchedBy": "portalEventId"
+    },
+    "dashboardPendingTimeoutMinutes": 15,
+    "deploymentGateBeforeM365LiveCallback": [
+      "crm_lifecycle_events migration exists in production Supabase.",
+      "POST /api/crm/lifecycle/ack is deployed to production.",
+      "CRM_LIFECYCLE_ACK_SECRET or equivalent server-side env is configured in Vercel production.",
+      "Linux-side synthetic send has created a real portalEventId.",
+      "The real ack secret is stored locally under .local/flow-builder.",
+      "The live M365 HTTP intake receiver is verified or updated."
+    ],
+    "localWindowsConfig": {
+      "helperScript": "scripts/Set-M365B7JourneyAckConfig.ps1",
+      "endpointFile": ".local/flow-builder/journey-crm-ack-endpoint.txt",
+      "secretFile": ".local/flow-builder/journey-crm-ack-secret.txt",
+      "headerFile": ".local/flow-builder/journey-crm-ack-secret-header.txt",
+      "currentState": "READY_AND_PROVED"
+    },
+    "m365ReceiverState": {
+      "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+      "displayName": "GAIL - Custom site intake to CRM (create-only, HTTP)",
+      "readBackState": "Started",
+      "readBackAt": "2026-06-26T04:07:17.972Z",
+      "evidence": "inventory/forms-build/flow-state-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040717.json",
+      "ackActionLive": true,
+      "lastSuccessfulRunEvidence": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040557.json"
+    },
+    "m365WillNotUse": [
+      "A callback URL supplied inside the incoming lead payload",
+      "Browser-side secrets",
+      "A public unauthenticated acknowledgement endpoint"
+    ],
+    "plannedM365AckPayload": {
+      "schemaVersion": "journey.crm-receipt.v1",
+      "eventType": "m365.crm_signal.received",
+      "receivedEventType": "same eventType received from Journey",
+      "source": "Guided AI Journey",
+      "portalEventId": "same portalEventId received from Journey",
+      "correlationId": "same correlationId received from Journey",
+      "companyId": "same companyId received from Journey, if any",
+      "engagementId": "same engagementId received from Journey, if any",
+      "inviteId": "same inviteId received from Journey, if any",
+      "journeyInviteId": "same journeyInviteId received from Journey, if any",
+      "journeyOrganizationId": "same journeyOrganizationId received from Journey, if any",
+      "journeyLeadId": "same journeyLeadId/dashboardLeadId received from Journey, if any",
+      "crmStatus": "created",
+      "received": true,
+      "crmRecordId": "sharepoint-list-item-id",
+      "crmRecordUrl": "https://...",
+      "crmItemId": 0,
+      "crmItemUrl": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=0",
+      "crmTitle": "Guided AI Journey - ...",
+      "signalStatus": "New",
+      "priority": "Normal",
+      "flowRunId": "optional-flow-run-id",
+      "receivedAt": "ISO-8601 timestamp from CRM Created",
+      "processedAt": "ISO-8601 timestamp from M365 acknowledgement flow",
+      "ackGeneratedAt": "ISO-8601 timestamp from M365 acknowledgement flow",
+      "message": "optional safe operator note"
+    }
+  },
+  "journeyDashboardStatusModel": [
+    "invite_sent",
+    "crm_send_attempted",
+    "crm_send_accepted",
+    "crm_receipt_pending",
+    "crm_received",
+    "crm_failed_or_timed_out"
+  ],
+  "noRealSubjectTest": {
+    "recommended": "Use an internal synthetic admin/invite event from Journey, not a real client.",
+    "payloadOverrides": {
+      "testMode": true,
+      "eventType": "organization_setup_saved",
+      "portalEventId": "GAIL-B7-PORTAL-EVENT-20260625",
+      "correlationId": "GAIL-B7-PORTAL-EVENT-20260625",
+      "companyId": "journey-company-internal-walkthrough",
+      "engagementId": "journey-engagement-internal-walkthrough",
+      "inviteId": "journey-invite-test-20260625",
+      "journeyInviteId": "journey-invite-test-20260625",
+      "fullName": "GAIL INTERNAL CRM ACK TEST",
+      "email": "adam+journey-crm-ack-20260625@guidedailabs.com",
+      "organization": "Guided AI Labs Internal Walkthrough",
+      "leadContext": "Internal B7 proof that Journey invite signal reaches CRM and receives an acknowledgement."
+    },
+    "expectedM365Result": [
+      "One CRM - New Signals item with IntakeSource = Guided AI Journey.",
+      "SourceText contains Portal event id, Correlation id, and Journey invite id.",
+      "One internal Teams New Signal post.",
+      "M365 acknowledgement callback is sent only after CRM item exists, once the Journey ack endpoint is available."
+    ]
+  },
+  "m365AnswersToJourneyQuestions": {
+    "portalEventIdStorage": "Current builder preserves portalEventId in SourceText. A first-class SharePoint column is recommended later for strict idempotency/dedupe.",
+    "signedAckAfterCreate": "Supported locally by create-http-intake-flow.js when fixed endpoint and real secret files exist under .local/flow-builder. Adam approved the live callback build on 2026-06-25; remaining gates are real secret, Journey production readiness, receiver update, and proof.",
+    "safeReturnFields": [
+      "crmRecordId",
+      "crmRecordUrl",
+      "crmItemId",
+      "crmItemUrl",
+      "crmTitle",
+      "flowRunId"
+    ],
+    "targetListForV1": "Continue landing portal lifecycle events in CRM - New Signals for v1 so the proven alert/triage lane remains intact.",
+    "recommendedFieldsNow": [
+      "portalEventId",
+      "eventType",
+      "companyId",
+      "engagementId",
+      "inviteId",
+      "sourceAction",
+      "leadSourceDetail",
+      "eventTimestamp",
+      "portalDeepLink",
+      "leadContext"
+    ]
+  },
+  "clientFrictionGuidance": {
+    "systemInviteSignal": "Zero client-facing questions. Send what Journey already knows from the invite/admin action.",
+    "clientCompletionForm": [
+      "Prefer prefilled name, email, and organization.",
+      "Ask only one free-text prompt: What would make this useful?",
+      "Ask one intent/path choice only if it materially helps routing.",
+      "Include one consent checkbox when a human is submitting.",
+      "Do not ask the client for IDs or metadata Journey already has."
+    ]
+  },
+  "repoArtifacts": {
+    "contractDoc": "inventory/m365-interaction-agent-b7/B7_JOURNEY_MINIMAL_SIGNAL_ACK_CONTRACT_2026-06-25.md",
+    "contractJson": "inventory/m365-interaction-agent-b7/journey-minimal-signal-ack-contract-20260625.json",
+    "localBuilderUpdated": "scripts/flow-builder/create-http-intake-flow.js",
+    "testHarnessUpdated": "scripts/flow-builder/http-intake-e2e.js"
+  },
+  "nextProof": [
+    "B7 live proof complete; next work is refinement only: optional first-class portalEventId column, Journey retry/replay operator action, and continued secret hygiene."
+  ],
+  "liveProof": {
+    "status": "PASS",
+    "provedAtUtc": "2026-06-26T04:06:12Z",
+    "portalEventId": "db8d3f91-002b-4729-b6ac-556ee5813d3d",
+    "crmItemId": 25,
+    "journeyLedgerStatus": "crm_received",
+    "m365CallbackRunStatus": "Succeeded",
+    "teamsAlertRunStatus": "Succeeded",
+    "evidence": {
+      "proofPacket": "inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md",
+      "proofJson": "inventory/m365-interaction-agent-b7/b7-live-proof-20260625.json",
+      "crmReadBack": "inventory/m365-interaction-agent-b7/b7-crm-readback-db8d3f91-002b-4729-b6ac-556ee5813d3d-20260626-040542.json",
+      "m365FlowRun": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040557.json",
+      "journeyLedger": "inventory/m365-interaction-agent-b7/b7-journey-ledger-db8d3f91-002b-4729-b6ac-556ee5813d3d-20260626-040612.json",
+      "teamsFlowRun": "inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-040647.json"
+    }
+  },
+  "leadSourceDisplayProof": {
+    "status": "PASS",
+    "provedAtUtc": "2026-06-26T04:27:19Z",
+    "portalEventId": "journey-portal-event-1782447883236",
+    "crmItemId": 27,
+    "leadSourceDetail": "Journey admin invite",
+    "sourceAction": "admin_invited_person",
+    "intakeFlowRun": "08584191590010332113223187806CU18",
+    "teamsFlowRun": "08584191589676821842406276734CU16",
+    "proofPacket": "inventory/m365-interaction-agent-b7/b7-lead-source-proof-20260625.json",
+    "crmReadBack": "inventory/m365-interaction-agent-b7/b7-crm-readback-journey-portal-event-1782447883236-20260626-042719.json",
+    "teamsFlowRunEvidence": "inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-042625.json"
+  }
+}

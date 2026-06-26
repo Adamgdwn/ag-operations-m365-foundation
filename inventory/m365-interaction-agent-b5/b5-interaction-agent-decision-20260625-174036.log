@@ -1,0 +1,45 @@
+**********************
+PowerShell transcript start
+Start time: 20260625174036
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+.\scripts\Invoke-M365B5InteractionAgentDecision.ps1 -LocalOnly -NoPause
+Process ID: 26892
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+B5 - M365 Interaction Agent decision recorder
+Site:       https://agoperationsltd.sharepoint.com/sites/GuidedAILabs
+Payload:    C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\decision-register-draft-b5-one-writer-20260625.json
+Evidence:   C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\B5_DURABLE_PERMISSION_DECISION_2026-06-25.md
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\b5-interaction-agent-decision-20260625-174036.log
+Mode:       LOCAL ONLY: no Microsoft 365 connection
+Writes:     Decision Register and Agent Action Log only when -Apply is used with the exact approval phrase.
+
+== Read local payload ==
+PASS: payload loaded for 'B5 M365 Interaction Agent one-writer posture selected'
+
+== Local preview ==
+Would record Decision Register item: B5 M365 Interaction Agent one-writer posture selected
+Would record Agent Action Log item: B5 one-writer posture recorded
+
+== Write local summary ==
+Summary JSON: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\b5-interaction-agent-decision-20260625-174036.json
+
+== Done ==
+Local preview complete. No Microsoft 365 connection or write occurred.
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b5\b5-interaction-agent-decision-20260625-174036.log
+**********************
+PowerShell transcript end
+End time: 20260625174036
+**********************

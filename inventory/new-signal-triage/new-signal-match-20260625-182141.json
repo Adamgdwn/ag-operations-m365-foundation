@@ -1,0 +1,101 @@
+{
+  "included": true,
+  "generatedAt": "2026-06-25T18:21:55.4823785-06:00",
+  "searchedSurfaces": [
+    "CRM - New Signals",
+    "CRM - Organizations",
+    "CRM - Contacts",
+    "CRM - Engagements",
+    "CRM - Touchpoints"
+  ],
+  "candidateCount": 7,
+  "matchCount": 5,
+  "summary": "Found 5 possible related record(s).",
+  "matches": [
+    {
+      "listTitle": "CRM - Organizations",
+      "id": 1,
+      "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Organizations/DispForm.aspx?ID=1",
+      "confidence": "High",
+      "score": 102,
+      "reasons": [
+        "close organization name match",
+        "business email/domain match: guidedailabs.com",
+        "similar need/opportunity keywords: client, organization, walkthrough",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "Active",
+      "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Guided AI Labs Internal Proof",
+      "personName": "",
+      "email": ""
+    },
+    {
+      "listTitle": "CRM - Contacts",
+      "id": 1,
+      "title": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Adam Internal Operator",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20Contacts/DispForm.aspx?ID=1",
+      "confidence": "Medium",
+      "score": 69,
+      "reasons": [
+        "business email/domain match: guidedailabs.com",
+        "similar need/opportunity keywords: adam, walkthrough",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "Active",
+      "organizationName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617-ORG",
+      "personName": "GAIL-INTERNAL-WALKTHROUGH-PROD-20260617 - Adam Internal Operator",
+      "email": "adamgoodwin@guidedailabs.com"
+    },
+    {
+      "listTitle": "CRM - New Signals",
+      "id": 18,
+      "title": "B1 New Signal Teams alert proof 20260625-150910",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=18",
+      "confidence": "Low",
+      "score": 38,
+      "reasons": [
+        "close organization name match",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "New",
+      "organizationName": "Guided AI Labs internal proof",
+      "personName": "B1 Internal Proof",
+      "email": "new-signal-proof@example.invalid"
+    },
+    {
+      "listTitle": "CRM - New Signals",
+      "id": 19,
+      "title": "B1 New Signal Teams alert proof 20260625-161858",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=19",
+      "confidence": "Low",
+      "score": 38,
+      "reasons": [
+        "close organization name match",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "New",
+      "organizationName": "Guided AI Labs internal proof",
+      "personName": "B1 Internal Proof",
+      "email": "new-signal-proof@example.invalid"
+    },
+    {
+      "listTitle": "CRM - New Signals",
+      "id": 20,
+      "title": "Guided AI Journey — Erin Forbes",
+      "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=20",
+      "confidence": "Low",
+      "score": 27,
+      "reasons": [
+        "similar need/opportunity keywords: invite, website, triage",
+        "related record is active/open or waiting on Adam"
+      ],
+      "status": "New",
+      "organizationName": "Dress For Success Central Alberta",
+      "personName": "Erin Forbes",
+      "email": "erin@dfsca.ca"
+    }
+  ],
+  "evidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260625-182141.json",
+  "boundary": "Advisory only. No merge, lookup conversion, suppression, dedupe, update, delete, or hidden decision occurred."
+}

@@ -1,0 +1,107 @@
+{
+  "generatedAt": "2026-06-25T18:20:51.2876313-06:00",
+  "mode": "verify-read-only",
+  "siteUrl": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+  "expectedUpn": "adamgoodwin@guidedailabs.com",
+  "entryPoint": "DirectMicrosoftForm",
+  "entryPointLabel": "Direct Journey Microsoft Form link",
+  "marker": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+  "safety": "No tenant write is performed by this script. B6 live source proof requires a manual/client-style form submission through an existing create-only intake path.",
+  "b5Evidence": {
+    "path": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\m365-interaction-agent-b5\\b5-interaction-agent-decision-20260625-175449.json",
+    "status": "recorded: Decision Register #6; Agent Action Log #10"
+  },
+  "flow": {
+    "evidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\forms-build\\flow-result-journey.json",
+    "brand": "Guided AI Journey",
+    "displayName": "GAIL — Guided AI Journey intake to CRM (create-only)",
+    "flowName": "2a2cd963-1469-48a5-95a5-04e696ff3543",
+    "formId": "9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u",
+    "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
+    "state": "Started"
+  },
+  "form": {
+    "packetPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\forms-build\\STAGED__WINDOWS_TO_LINUX__journey-intake-form-url.json",
+    "publicUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u",
+    "embedUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=9SqpHP8h40KHrjvenCzFASrxRIPpTrVLlUoFbsCgkAhUNjVFTjAyQzFYTUFQTUxCV0ZLRzdVTU5JNC4u&embed=true"
+  },
+  "customForm": {
+    "specPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\forms-build\\RELEASED__WINDOWS_TO_JOURNEY__custom-intake-form-spec.json",
+    "status": "RELEASED — endpoint LIVE + verified; build the branded form against this contract",
+    "note": "Endpoint URL and secret are intentionally not committed. Use only server-side website secrets if this entry point is selected."
+  },
+  "testSubmission": {
+    "fullName": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+    "email": "adam+gail-b6-journey-20260625-180736@guidedailabs.com",
+    "organization": "Guided AI Labs Internal Walkthrough",
+    "needSummary": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.",
+    "situation": "My team — I want to build team capability",
+    "heardFrom": "Internal B6 source proof after B5 Decision Register #6.",
+    "consent": "I agree"
+  },
+  "verification": {
+    "found": true,
+    "item": {
+      "Id": 21,
+      "Title": "Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+      "PersonName": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+      "PersonEmail": "adam+gail-b6-journey-20260625-180736@guidedailabs.com",
+      "OrganizationName": "Guided AI Labs Internal Walkthrough",
+      "SignalType": "Website",
+      "IntakeSource": "Guided AI Journey",
+      "IntentPath": "My team — I want to build team capability",
+      "Priority": "Normal",
+      "SignalStatus": "New",
+      "NeedSummary": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.",
+      "SourceText": "Full name: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY\nEmail: adam+gail-b6-journey-20260625-180736@guidedailabs.com\nOrganization: Guided AI Labs Internal Walkthrough\nWhat are you looking for: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.\nHow did you hear about us: Internal B6 source proof after B5 Decision Register #6.\nSituation: My team — I want to build team capability\nConsent: I agree\n\n— Provenance —\nSource: Guided AI Journey\nIntake form: Guided AI Journey intake form\nForms response id: 4\nSubmitted: 6/26/2026 12:18:45 AM\nCapture: Auto-captured via website intake flow",
+      "NextAction": "Triage new website signal",
+      "Created": "2026-06-26T00:18:48.0000000Z",
+      "Modified": "2026-06-26T00:18:48.0000000Z",
+      "ItemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=21"
+    },
+    "checks": [
+      {
+        "name": "IntakeSource",
+        "expected": "Guided AI Journey",
+        "actual": "Guided AI Journey",
+        "pass": true
+      },
+      {
+        "name": "SignalType",
+        "expected": "Website",
+        "actual": "Website",
+        "pass": true
+      },
+      {
+        "name": "SignalStatus",
+        "expected": "New",
+        "actual": "New",
+        "pass": true
+      },
+      {
+        "name": "Priority",
+        "expected": "Normal",
+        "actual": "Normal",
+        "pass": true
+      },
+      {
+        "name": "Marker",
+        "expected": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+        "actual": "found",
+        "pass": true
+      },
+      {
+        "name": "NeedSummary",
+        "expected": "not blank",
+        "actual": "present",
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "output": {
+    "packetPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\m365-interaction-agent-b6\\b6-journey-intake-proof-20260625-182051.md",
+    "summaryPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\m365-interaction-agent-b6\\b6-journey-intake-proof-20260625-182051.json",
+    "transcriptPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\m365-interaction-agent-b6\\b6-journey-intake-proof-20260625-182051.log"
+  }
+}

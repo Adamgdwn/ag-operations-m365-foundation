@@ -1176,7 +1176,7 @@ $lines = New-Object System.Collections.Generic.List[string]
 $lines.Add("# New Signal Triage Packet")
 $lines.Add("")
 $lines.Add(("Generated: {0}" -f (Get-Date).ToString("yyyy-MM-dd HH:mm")))
-$lines.Add(("Governance: G0 read/reason only. No tenant write occurred."))
+$lines.Add(("Governance: {0}" -f $packet.safety))
 $lines.Add("")
 $lines.Add("## Source")
 $lines.Add("")

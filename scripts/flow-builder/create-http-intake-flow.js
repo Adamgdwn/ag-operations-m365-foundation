@@ -1,19 +1,34 @@
 // Build the CUSTOM-FORM intake flow: an HTTP-triggered Power Automate flow that
-// accepts a JSON POST from a brand website's hand-built form and creates an item
-// in "CRM - New Signals" with full parity to the Microsoft Forms intake flow
-// (same columns + provenance footer). ONE flow serves both brands; the payload's
-// `source` field selects the IntakeSource. Create-only; no updates/deletes/mail.
+// accepts a JSON POST from a brand website's hand-built form or a minimal
+// Journey invite/admin signal and creates an item in "CRM - New Signals" with
+// full parity to the Microsoft Forms intake flow (same columns + provenance
+// footer). ONE flow serves both brands; the payload's `source` field selects the
+// IntakeSource. Create-only; no updates/deletes/mail.
 //
 // Guard (validated inside the flow before any write):
 //   - header  x-intake-secret  must equal the shared secret
 //   - body    company          (honeypot) must be empty
 //   - body    source           must be exactly one of the two brand strings
-//   - body    needSummary      must be non-empty
+//   - body    must include either need/lead context or at least one lead identity
+//             field (email/name/organization)
 // Anything else -> Terminate (Cancelled), no item created. No CAPTCHA by decision
 // (secret + honeypot only, 2026-06-22); Turnstile remains optional future hardening.
 //
+// Optional Journey invite/admin/lifecycle metadata is recorded into SourceText
+// so a later CRM receipt callback can update the Journey dashboard by
+// portalEventId, correlationId, or journeyInviteId without adding friction to
+// the client-facing form. The same metadata now carries a readable lead-source
+// detail for operators and Teams alerts. The legacy body.company field remains
+// a honeypot; use companyId/portalCompanyName for Journey company data.
+//
 // Secret: read from .local/flow-builder/http-intake-secret.txt if present, else
 // generated and saved there (gitignored). NEVER printed in full or committed.
+// Optional CRM receipt ack config is read from .local/flow-builder:
+//   journey-crm-ack-endpoint.txt
+//   journey-crm-ack-secret.txt
+//   journey-crm-ack-secret-header.txt  (optional, defaults x-m365-ack-secret)
+// If either endpoint or secret is missing, the builder emits receive-only flow
+// actions and does not include the external callback.
 //
 // Token capture reuses the warm-Edge/CDP recipe (see scripts/forms-builder/warm-edge.js).
 //
@@ -29,6 +44,9 @@ const REPO = path.resolve(__dirname, '..', '..');
 const PROFILE_DIR = path.join(REPO, '.local', 'forms-builder', 'profile');
 const SECRET_DIR = path.join(REPO, '.local', 'flow-builder');
 const SECRET_FILE = path.join(SECRET_DIR, 'http-intake-secret.txt');
+const ACK_ENDPOINT_FILE = path.join(SECRET_DIR, 'journey-crm-ack-endpoint.txt');
+const ACK_SECRET_FILE = path.join(SECRET_DIR, 'journey-crm-ack-secret.txt');
+const ACK_SECRET_HEADER_FILE = path.join(SECRET_DIR, 'journey-crm-ack-secret-header.txt');
 const CAP = path.join(REPO, '.local', 'flow-builder', 'capture');
 const OUT = path.join(REPO, 'inventory', 'forms-build');
 fs.mkdirSync(CAP, { recursive: true });
@@ -58,23 +76,114 @@ function loadSecret() {
 const SECRET = loadSecret();
 const VALID_SOURCES = ['Guided AI Labs', 'Guided AI Journey'];
 
+function loadAckConfig() {
+  const hasEndpoint = fs.existsSync(ACK_ENDPOINT_FILE);
+  const hasSecret = fs.existsSync(ACK_SECRET_FILE);
+  if (!hasEndpoint && !hasSecret) return null;
+  if (!hasEndpoint || !hasSecret) {
+    throw new Error(`Ack config incomplete. Need both ${ACK_ENDPOINT_FILE} and ${ACK_SECRET_FILE}, or neither.`);
+  }
+  const endpoint = fs.readFileSync(ACK_ENDPOINT_FILE, 'utf8').trim();
+  const secret = fs.readFileSync(ACK_SECRET_FILE, 'utf8').trim();
+  const headerName = fs.existsSync(ACK_SECRET_HEADER_FILE)
+    ? fs.readFileSync(ACK_SECRET_HEADER_FILE, 'utf8').trim()
+    : 'x-m365-ack-secret';
+  if (!/^https:\/\//i.test(endpoint)) throw new Error('Ack endpoint must be an https URL.');
+  if (!secret) throw new Error('Ack secret file is empty.');
+  if (!/^[A-Za-z0-9-]+$/.test(headerName)) throw new Error('Ack secret header name must be a simple HTTP header token.');
+  return { endpoint, secret, headerName };
+}
+const ACK = loadAckConfig();
+function redactSecrets(text) {
+  let redacted = text.replaceAll(SECRET, '<<INTAKE_SECRET>>');
+  if (ACK) {
+    redacted = redacted
+      .replaceAll(ACK.secret, '<<ACK_SECRET>>')
+      .replaceAll(ACK.endpoint, '<<ACK_ENDPOINT>>');
+  }
+  return redacted;
+}
+
+async function selectTenantAccountIfPrompted(page) {
+  await page.waitForTimeout(1500);
+  const body = await page.evaluate(() => document.body ? document.body.innerText : '').catch(() => '');
+  if (!/Pick an account/i.test(body)) return false;
+  const byId = await page.$(`[data-test-id="${TENANT_ACCT}"]`).catch(() => null);
+  if (byId) {
+    await byId.click().catch(() => {});
+    await page.waitForTimeout(8000);
+    return true;
+  }
+  const byText = page.locator(`text=${TENANT_ACCT}`).first();
+  if (await byText.count().catch(() => 0)) {
+    await byText.click().catch(() => {});
+    await page.waitForTimeout(8000);
+    return true;
+  }
+  return false;
+}
+
 // Field accessors from the HTTP trigger body.
 const B = (k) => `triggerBody()?['${k}']`;
 const NL = "decodeUriComponent('%0A')";
-const titleExpr = `@concat(coalesce(${B('source')},'Website'), ' — ', coalesce(${B('fullName')}, ${B('organization')}, ${B('email')}, 'New website signal'))`;
-const sourceTextExpr = `@concat('Full name: ', coalesce(${B('fullName')},''), ${NL}, 'Email: ', coalesce(${B('email')},''), ${NL}, 'Organization: ', coalesce(${B('organization')},''), ${NL}, 'What are you looking for: ', coalesce(${B('needSummary')},''), ${NL}, 'How did you hear about us: ', coalesce(${B('heardFrom')},''), ${NL}, 'Situation: ', coalesce(${B('situation')},''), ${NL}, 'Consent: ', if(equals(coalesce(${B('consent')},false), true), 'I agree', ''), ${NL}, ${NL}, '— Provenance —', ${NL}, 'Source: ', coalesce(${B('source')},''), ${NL}, 'Intake: custom site form', ${NL}, 'Intake id: ', guid(), ${NL}, 'Submitted: ', utcNow(), ${NL}, 'Capture: Auto-captured via custom site form')`;
+const nonEmpty = (k) => `greater(length(trim(coalesce(${B(k)},''))), 0)`;
+const firstNonEmpty = (keys, fallback) => keys.reduceRight((acc, k) => `if(${nonEmpty(k)}, ${B(k)}, ${acc})`, fallback);
+const eventTypeExpr = firstNonEmpty(['eventType', 'journeyEventType'], "'website.intake.submitted'");
+const portalEventIdExpr = firstNonEmpty(['portalEventId'], "''");
+const correlationIdExpr = firstNonEmpty(['correlationId', 'portalEventId'], "''");
+const companyIdExpr = firstNonEmpty(['companyId', 'portalCompanyId', 'journeyCompanyId'], "''");
+const engagementIdExpr = firstNonEmpty(['engagementId', 'portalEngagementId', 'journeyEngagementId'], "''");
+const inviteIdExpr = firstNonEmpty(['inviteId', 'journeyInviteId'], "''");
+const journeyLeadIdExpr = firstNonEmpty(['journeyLeadId', 'dashboardLeadId'], "''");
+const personNameValueExpr = firstNonEmpty(['fullName', 'inviteeName', 'invitedName', 'email', 'inviteeEmail', 'invitedEmail'], "''");
+const personEmailValueExpr = firstNonEmpty(['email', 'inviteeEmail', 'invitedEmail'], "''");
+const organizationValueExpr = firstNonEmpty(['organization', 'organizationName', 'journeyOrganizationName', 'portalCompanyName', 'companyDisplayName'], "''");
+const leadIdentityValueExpr = firstNonEmpty(['fullName', 'inviteeName', 'invitedName', 'email', 'inviteeEmail', 'invitedEmail', 'organization', 'organizationName', 'journeyOrganizationName', 'portalCompanyName', 'companyDisplayName', 'portalEventId'], "'unknown lead'");
+const needValueExpr = firstNonEmpty(['needSummary', 'leadContext'], `concat('Guided AI Journey signal: ', ${eventTypeExpr}, ' for ', ${leadIdentityValueExpr})`);
+const sourceActionLabelExpr = `if(equals(${B('sourceAction')}, 'admin_invited_person'), 'Journey admin invite', if(equals(${B('sourceAction')}, 'organization_admin_invited_person'), 'Journey organization admin invite', if(equals(${B('sourceAction')}, 'client_invited_person'), 'Journey client invite', if(${nonEmpty('sourceAction')}, concat('Journey action: ', ${B('sourceAction')}), if(${nonEmpty('eventType')}, concat('Journey event: ', ${eventTypeExpr}), 'Guided AI Journey')))))`;
+const leadSourceFallbackExpr = `if(equals(${B('source')}, '${VALID_SOURCES[1]}'), ${sourceActionLabelExpr}, if(${nonEmpty('heardFrom')}, concat('Heard from: ', ${B('heardFrom')}), 'Guided AI Labs website'))`;
+const leadSourceDetailExpr = firstNonEmpty(['leadSourceDetail', 'leadSource', 'attributionSource', 'referralSource'], leadSourceFallbackExpr);
+const titleExpr = `@concat(coalesce(${B('source')},'Website'), ' — ', ${firstNonEmpty(['fullName', 'inviteeName', 'invitedName', 'organization', 'organizationName', 'portalCompanyName', 'companyDisplayName', 'email', 'inviteeEmail', 'invitedEmail', 'portalEventId'], "'New website signal'")})`;
+const sourceTextCoreExpr = `@concat('Full name: ', ${personNameValueExpr}, ${NL}, 'Email: ', ${personEmailValueExpr}, ${NL}, 'Organization: ', ${organizationValueExpr}, ${NL}, 'Lead source detail: ', ${leadSourceDetailExpr}, ${NL}, 'What are you looking for: ', ${needValueExpr}, ${NL}, 'How did you hear about us: ', coalesce(${B('heardFrom')},''), ${NL}, 'Situation: ', coalesce(${B('situation')},''), ${NL}, 'Consent: ', if(equals(coalesce(${B('consent')},false), true), 'I agree', ''))`;
+const sourceTextMetadataExpr = `@concat(${NL}, ${NL}, '— Journey signal metadata —', ${NL}, 'Schema version: ', coalesce(${B('schemaVersion')},''), ${NL}, 'Signal mode: ', coalesce(${B('signalMode')},''), ${NL}, 'Event type: ', ${eventTypeExpr}, ${NL}, 'Portal event id: ', ${portalEventIdExpr}, ${NL}, 'Correlation id: ', ${correlationIdExpr}, ${NL}, 'Company id: ', ${companyIdExpr}, ${NL}, 'Engagement id: ', ${engagementIdExpr}, ${NL}, 'Invite id: ', ${inviteIdExpr}, ${NL}, 'Journey invite id: ', coalesce(${B('journeyInviteId')},''), ${NL}, 'Journey organization id: ', coalesce(${B('journeyOrganizationId')},''), ${NL}, 'Journey lead id: ', ${journeyLeadIdExpr}, ${NL}, 'Invite role: ', coalesce(${B('inviteRole')},''), ${NL}, 'Source action: ', coalesce(${B('sourceAction')},''), ${NL}, 'Portal deep link: ', coalesce(${B('portalDeepLink')},''), ${NL}, 'Event timestamp: ', ${firstNonEmpty(['eventTimestamp', 'occurredAt'], "''")}, ${NL}, 'Ack requested: ', string(coalesce(${B('ackRequested')},false)), ${NL}, ${NL}, '— Provenance —', ${NL}, 'Source: ', coalesce(${B('source')},''), ${NL}, 'Intake: custom site form', ${NL}, 'Intake id: ', guid(), ${NL}, 'Submitted: ', utcNow(), ${NL}, 'Capture: Auto-captured via custom site form')`;
 
+const stringOrNull = { type: ['string', 'null'] };
+const booleanOrNull = { type: ['boolean', 'null'] };
 const requestSchema = {
   type: 'object',
   properties: {
-    source: { type: 'string' }, fullName: { type: 'string' }, email: { type: 'string' },
-    organization: { type: 'string' }, needSummary: { type: 'string' }, situation: { type: 'string' },
-    heardFrom: { type: 'string' }, consent: { type: 'boolean' }, company: { type: 'string' },
+    source: stringOrNull, fullName: stringOrNull, email: stringOrNull,
+    organization: stringOrNull, needSummary: stringOrNull, situation: stringOrNull,
+    heardFrom: stringOrNull, consent: booleanOrNull, company: stringOrNull,
+    schemaVersion: stringOrNull, signalMode: stringOrNull, eventType: stringOrNull,
+    journeyEventType: stringOrNull, portalEventId: stringOrNull,
+    correlationId: stringOrNull, companyId: stringOrNull,
+    portalCompanyId: stringOrNull, journeyCompanyId: stringOrNull,
+    engagementId: stringOrNull, portalEngagementId: stringOrNull,
+    journeyEngagementId: stringOrNull, inviteId: stringOrNull,
+    journeyInviteId: stringOrNull, journeyOrganizationId: stringOrNull,
+    journeyOrganizationName: stringOrNull, journeyLeadId: stringOrNull,
+    dashboardLeadId: stringOrNull, inviteRole: stringOrNull,
+    inviteeName: stringOrNull, invitedName: stringOrNull,
+    inviteeEmail: stringOrNull, invitedEmail: stringOrNull,
+    organizationName: stringOrNull, portalCompanyName: stringOrNull,
+    companyDisplayName: stringOrNull, leadContext: stringOrNull,
+    leadSource: stringOrNull, leadSourceDetail: stringOrNull,
+    attributionSource: stringOrNull, referralSource: stringOrNull,
+    sourceAction: stringOrNull, portalDeepLink: stringOrNull,
+    eventTimestamp: stringOrNull, occurredAt: stringOrNull,
+    ackRequested: booleanOrNull,
   },
 };
 
-// Guard expression: secret + honeypot empty + valid source + need present.
-const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secret'], triggerOutputs()?['headers']?['X-Intake-Secret'], ''), '${SECRET}'), equals(trim(coalesce(${B('company')},'')), ''), or(equals(${B('source')}, '${VALID_SOURCES[0]}'), equals(${B('source')}, '${VALID_SOURCES[1]}')), greater(length(trim(coalesce(${B('needSummary')},''))), 0))`;
+// Guard expression: secret + honeypot empty + valid source + useful lead signal.
+const usefulLeadOrLifecycleSignal = `or(${nonEmpty('needSummary')}, ${nonEmpty('leadContext')}, ${nonEmpty('email')}, ${nonEmpty('inviteeEmail')}, ${nonEmpty('invitedEmail')}, ${nonEmpty('fullName')}, ${nonEmpty('inviteeName')}, ${nonEmpty('invitedName')}, ${nonEmpty('organization')}, ${nonEmpty('organizationName')}, ${nonEmpty('journeyOrganizationName')}, ${nonEmpty('portalCompanyName')}, ${nonEmpty('companyDisplayName')}, and(${nonEmpty('portalEventId')}, ${nonEmpty('eventType')}))`;
+const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secret'], triggerOutputs()?['headers']?['X-Intake-Secret'], ''), '${SECRET}'), equals(trim(coalesce(${B('company')},'')), ''), or(equals(${B('source')}, '${VALID_SOURCES[0]}'), equals(${B('source')}, '${VALID_SOURCES[1]}')), ${usefulLeadOrLifecycleSignal})`;
+const itemIdExpr = `coalesce(outputs('Create_item')?['body/ID'], outputs('Create_item')?['body/Id'])`;
+const crmItemUrlExpr = `coalesce(outputs('Create_item')?['body/{Link}'], concat('${SITE}/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=', ${itemIdExpr}))`;
+const ackKeyExpr = firstNonEmpty(['portalEventId', 'correlationId', 'journeyInviteId', 'inviteId', 'journeyLeadId', 'dashboardLeadId'], "''");
+const shouldSendAckExpr = `@and(equals(${B('source')}, '${VALID_SOURCES[1]}'), equals(coalesce(${B('ackRequested')}, false), true), greater(length(trim(${ackKeyExpr})), 0))`;
+const nullIfBlank = (expr) => `if(greater(length(trim(coalesce(${expr},''))), 0), ${expr}, null)`;
 
 (async () => {
   let ctx, browser, ownCtx = false;
@@ -92,6 +201,7 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
   const tokens = {};
   page.on('request', req => { const a = req.headers()['authorization']; if (a && /^bearer /i.test(a)) { const h = new URL(req.url()).host; if (!tokens[h]) tokens[h] = a.replace(/^bearer\s+/i, ''); } });
   await page.goto(`https://make.powerautomate.com/environments/${ENV}/flows`, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+  await selectTenantAccountIfPrompted(page);
   await page.waitForTimeout(9000);
   if (!tokens[EHOST] || !tokens[FLOWHOST]) { log(`ERROR: missing token (EHOST=${!!tokens[EHOST]} FLOW=${!!tokens[FLOWHOST]})`); await cleanup(); process.exit(1); }
   const get = async (host, url) => { const r = await page.request.get(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json' } }); return { status: r.status(), body: await r.text() }; };
@@ -99,9 +209,31 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
   const patch = async (host, url, body) => { const r = await page.request.patch(url, { headers: { authorization: 'Bearer ' + tokens[host], accept: 'application/json', 'content-type': 'application/json' }, data: JSON.stringify(body) }); return { status: r.status(), body: await r.text() }; };
 
   // 1) SharePoint connection.
-  const cl = JSON.parse((await get(EHOST, `https://${EHOST}/connectivity/connections?api-version=1`)).body);
-  const spConn = (cl.value || []).find(c => (c.properties && c.properties.apiId || '').endsWith('shared_sharepointonline'));
-  log(`SharePoint conn: ${spConn ? spConn.name : 'MISSING'}`);
+  const listConnsOnce = async (attempt) => {
+    const raw = await get(EHOST, `https://${EHOST}/connectivity/connections?api-version=1`);
+    let parsed = {};
+    try { parsed = JSON.parse(raw.body); }
+    catch {
+      log(`connections GET #${attempt}: status=${raw.status} parse failed body=${raw.body.slice(0, 200)}`);
+      return [];
+    }
+    const value = parsed.value || [];
+    log(`connections GET #${attempt}: status=${raw.status} count=${value.length}`);
+    return value;
+  };
+  const listConns = async (tries = 6) => {
+    let c = [];
+    for (let i = 0; i < tries; i++) {
+      c = await listConnsOnce(i);
+      if (c.length) return c;
+      await page.waitForTimeout(3000);
+    }
+    return c;
+  };
+  const connStatus = (c) => c && c.properties && c.properties.statuses ? c.properties.statuses.map(s => s.status).join(',') : null;
+  const conns = await listConns();
+  const spConn = conns.find(c => (c.properties && c.properties.apiId || '').endsWith('shared_sharepointonline'));
+  log(`SharePoint conn: ${spConn ? `${spConn.name} (${connStatus(spConn)})` : 'MISSING'}`);
   if (!spConn) { log('ERROR: SharePoint connection (Connected) required.'); await cleanup(); process.exit(2); }
 
   // 2) List GUID.
@@ -116,17 +248,17 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
 
   // 3) Flow definition: Request trigger -> If(guard){ Create item } else { Terminate }.
   const createItem = {
-    runAfter: {}, type: 'OpenApiConnection',
+    runAfter: { Build_CRM_source_text_metadata: ['Succeeded'] }, type: 'OpenApiConnection',
     inputs: {
       host: { connectionName: 'shared_sharepointonline', operationId: 'PostItem', apiId: apiId('shared_sharepointonline') },
       parameters: {
         dataset: SITE, table: listId,
         'item/Title': titleExpr,
-        'item/PersonName': `@${B('fullName')}`,
-        'item/PersonEmail': `@${B('email')}`,
-        'item/OrganizationName': `@${B('organization')}`,
-        'item/NeedSummary': `@${B('needSummary')}`,
-        'item/SourceText': sourceTextExpr,
+        'item/PersonName': `@${personNameValueExpr}`,
+        'item/PersonEmail': `@${personEmailValueExpr}`,
+        'item/OrganizationName': `@${organizationValueExpr}`,
+        'item/NeedSummary': `@${needValueExpr}`,
+        'item/SourceText': "@concat(outputs('Build_CRM_source_text_core'), outputs('Build_CRM_source_text_metadata'))",
         'item/NextAction': 'Triage new website signal',
         'item/SignalType/Value': 'Website',
         'item/IntakeSource/Value': `@${B('source')}`,
@@ -137,6 +269,61 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
       authentication: "@parameters('$authentication')",
     },
   };
+  const guardActions = {
+    Build_CRM_source_text_core: { runAfter: {}, type: 'Compose', inputs: sourceTextCoreExpr },
+    Build_CRM_source_text_metadata: { runAfter: { Build_CRM_source_text_core: ['Succeeded'] }, type: 'Compose', inputs: sourceTextMetadataExpr },
+    Create_item: createItem,
+  };
+  if (ACK) {
+    guardActions.Maybe_send_CRM_receipt_ack_to_Journey = {
+      runAfter: { Create_item: ['Succeeded'] },
+      type: 'If',
+      expression: shouldSendAckExpr,
+      actions: {
+        Post_CRM_receipt_ack_to_Journey: {
+          runAfter: {},
+          type: 'Http',
+          inputs: {
+            method: 'POST',
+            uri: ACK.endpoint,
+            headers: {
+              'content-type': 'application/json',
+              [ACK.headerName]: ACK.secret,
+            },
+            body: {
+              schemaVersion: 'journey.crm-receipt.v1',
+              eventType: 'm365.crm_signal.received',
+              receivedEventType: `@${eventTypeExpr}`,
+              source: 'Guided AI Journey',
+              portalEventId: `@${portalEventIdExpr}`,
+              correlationId: `@${correlationIdExpr}`,
+              companyId: `@${nullIfBlank(companyIdExpr)}`,
+              engagementId: `@${nullIfBlank(engagementIdExpr)}`,
+              inviteId: `@${nullIfBlank(inviteIdExpr)}`,
+              journeyInviteId: `@${nullIfBlank(B('journeyInviteId'))}`,
+              journeyOrganizationId: `@${nullIfBlank(B('journeyOrganizationId'))}`,
+              journeyLeadId: `@${nullIfBlank(journeyLeadIdExpr)}`,
+              crmStatus: 'created',
+              received: true,
+              crmRecordId: `@string(${itemIdExpr})`,
+              crmRecordUrl: `@${crmItemUrlExpr}`,
+              crmItemId: `@${itemIdExpr}`,
+              crmItemUrl: `@${crmItemUrlExpr}`,
+              crmTitle: `@outputs('Create_item')?['body/Title']`,
+              signalStatus: 'New',
+              priority: 'Normal',
+              flowRunId: "@workflow()?['run']?['name']",
+              receivedAt: `@coalesce(outputs('Create_item')?['body/Created'], utcNow())`,
+              processedAt: '@utcNow()',
+              ackGeneratedAt: '@utcNow()',
+              message: 'CRM - New Signals item created in Microsoft 365.',
+            },
+          },
+        },
+      },
+      else: { actions: {} },
+    };
+  }
   const definition = {
     $schema: 'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#',
     contentVersion: '1.0.0.0',
@@ -145,7 +332,7 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
     actions: {
       Guard: {
         runAfter: {}, type: 'If', expression: guard,
-        actions: { Create_item: createItem },
+        actions: guardActions,
         else: { actions: { Terminate: { runAfter: {}, type: 'Terminate', inputs: { runStatus: 'Cancelled' } } } },
       },
     },
@@ -155,7 +342,7 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
   };
   const flowBody = { properties: { displayName: DISPLAY, state: stateArg, definition, connectionReferences } };
   // redact the secret in the saved copy
-  fs.writeFileSync(path.join(CAP, 'flow-body-http-intake.json'), JSON.stringify(flowBody, null, 2).replaceAll(SECRET, '<<SECRET>>'));
+  fs.writeFileSync(path.join(CAP, 'flow-body-http-intake.json'), redactSecrets(JSON.stringify(flowBody, null, 2)));
 
   // 4) Create or update (idempotent via flow-result-http-intake.json).
   const base = `https://${FLOWHOST}/providers/Microsoft.ProcessSimple/environments/${ENV}/flows`;
@@ -171,8 +358,8 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
     cr = await post(FLOWHOST, `${base}?api-version=2016-11-01`, flowBody);
   }
   log(`  ${existingName ? 'update' : 'create'} -> ${cr.status}`);
-  fs.writeFileSync(path.join(CAP, 'flow-http-intake-result.txt'), `status: ${cr.status}\n\n${cr.body.replaceAll(SECRET, '<<SECRET>>')}`);
-  if (cr.status < 200 || cr.status >= 300) { log('  body: ' + cr.body.replaceAll(SECRET, '<<SECRET>>').slice(0, 1500)); await cleanup(); process.exit(4); }
+  fs.writeFileSync(path.join(CAP, 'flow-http-intake-result.txt'), `status: ${cr.status}\n\n${redactSecrets(cr.body)}`);
+  if (cr.status < 200 || cr.status >= 300) { log('  body: ' + redactSecrets(cr.body).slice(0, 1500)); await cleanup(); process.exit(4); }
   const created = JSON.parse(cr.body);
   const flowName = created.name || existingName;
   log(`  flowName: ${flowName}  state: ${(created.properties || {}).state}`);
@@ -185,13 +372,14 @@ const guard = `@and(equals(coalesce(triggerOutputs()?['headers']?['x-intake-secr
   if (!callbackUrl) { log('  WARN: could not auto-fetch callback URL; body: ' + cb.body.slice(0, 300)); }
 
   // 6) Persist result (URL is a capability-secret -> .local only, never git).
-  fs.writeFileSync(resultPath, JSON.stringify({ flowName, displayName: DISPLAY, state: (created.properties || {}).state || stateArg, createdAtNote: 'set externally', listId }, null, 2));
+  fs.writeFileSync(resultPath, JSON.stringify({ flowName, displayName: DISPLAY, state: (created.properties || {}).state || stateArg, createdAtNote: 'set externally', listId, ackConfigured: !!ACK, ackSecretHeader: ACK ? ACK.headerName : null }, null, 2));
   if (callbackUrl) fs.writeFileSync(path.join(SECRET_DIR, 'http-intake-endpoint.txt'), callbackUrl + '\n', { mode: 0o600 });
   log('\n=== DONE ===');
   log(`  flow: ${DISPLAY}`);
   log(`  flowName: ${flowName}`);
   log(`  endpoint saved: ${callbackUrl ? path.join(SECRET_DIR, 'http-intake-endpoint.txt') : 'NOT captured'}`);
   log(`  secret file: ${SECRET_FILE}`);
+  log(`  Journey CRM receipt ack: ${ACK ? `configured (${ACK.headerName})` : 'not configured; receive-only flow body'}`);
   await cleanup();
   process.exit(0);
 })();

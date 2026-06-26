@@ -1,0 +1,55 @@
+{
+  "capturedAt": "2026-06-26T04:26:25.169Z",
+  "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "flowName": "c54964d6-0042-430d-b542-90214e49224b",
+  "selectedRunName": "08584191589676821842406276734CU16",
+  "runs": [
+    {
+      "name": "08584191589676821842406276734CU16",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T04:25:18.1128011Z",
+      "endTime": "2026-06-26T04:25:22.1660799Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191590315688060266776960CU03",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T04:24:14.434627Z",
+      "endTime": "2026-06-26T04:24:17.3382858Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191601489641879076917249CU08",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T04:05:36.8442862Z",
+      "endTime": "2026-06-26T04:05:40.0468116Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191603597667657982089413CU18",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T04:02:06.0750468Z",
+      "endTime": "2026-06-26T04:02:09.852673Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191607457182014596521565CU06",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T03:55:40.1389149Z",
+      "endTime": "2026-06-26T03:55:43.0691726Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    }
+  ],
+  "actions": [
+    {
+      "name": "Post_to_New_Signal_channel",
+      "type": null,
+      "status": "Succeeded",
+      "code": "Created",
+      "startTime": "2026-06-26T04:25:18.2990866Z",
+      "endTime": "2026-06-26T04:25:22.1011526Z",
+      "outputs": null,
+      "error": null
+    }
+  ]
+}

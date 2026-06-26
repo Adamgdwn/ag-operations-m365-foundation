@@ -1,0 +1,69 @@
+{
+  "capturedAt": "2026-06-26T04:06:47.205Z",
+  "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "flowName": "c54964d6-0042-430d-b542-90214e49224b",
+  "selectedRunName": "08584191601489641879076917249CU08",
+  "runs": [
+    {
+      "name": "08584191601489641879076917249CU08",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T04:05:36.8442862Z",
+      "endTime": "2026-06-26T04:05:40.0468116Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191603597667657982089413CU18",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T04:02:06.0750468Z",
+      "endTime": "2026-06-26T04:02:09.852673Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191607457182014596521565CU06",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T03:55:40.1389149Z",
+      "endTime": "2026-06-26T03:55:43.0691726Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191609590774012042955853CU10",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T03:52:06.8272493Z",
+      "endTime": "2026-06-26T03:52:15.6515691Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191737241113063141151630CU18",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T00:19:21.7554773Z",
+      "endTime": "2026-06-26T00:19:25.6991088Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191744056582303470214038CU12",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T00:08:00.9028139Z",
+      "endTime": "2026-06-26T00:08:05.1478951Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    },
+    {
+      "name": "08584191809111960636919295004CU15",
+      "status": "Succeeded",
+      "startTime": "2026-06-25T22:19:34.6441611Z",
+      "endTime": "2026-06-25T22:19:41.6198185Z",
+      "triggerName": "When_new_CRM_signal_is_created"
+    }
+  ],
+  "actions": [
+    {
+      "name": "Post_to_New_Signal_channel",
+      "type": null,
+      "status": "Succeeded",
+      "code": "Created",
+      "startTime": "2026-06-26T04:05:36.9592176Z",
+      "endTime": "2026-06-26T04:05:39.9581708Z",
+      "outputs": null,
+      "error": null
+    }
+  ]
+}

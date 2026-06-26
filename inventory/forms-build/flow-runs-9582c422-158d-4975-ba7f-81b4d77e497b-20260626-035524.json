@@ -1,0 +1,123 @@
+{
+  "capturedAt": "2026-06-26T03:55:24.142Z",
+  "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+  "selectedRunName": "08584191607785262763829220071CU07",
+  "runs": [
+    {
+      "name": "08584191607785262763829220071CU07",
+      "status": "Failed",
+      "startTime": "2026-06-26T03:55:06.9552928Z",
+      "endTime": "2026-06-26T03:55:08.681213Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584191609908574001823850545CU06",
+      "status": "Failed",
+      "startTime": "2026-06-26T03:51:34.6254422Z",
+      "endTime": "2026-06-26T03:51:36.0257788Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584191744383197393385506167CU03",
+      "status": "Succeeded",
+      "startTime": "2026-06-26T00:07:27.1590195Z",
+      "endTime": "2026-06-26T00:07:28.1810373Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584193864988364519772491319CU27",
+      "status": "Succeeded",
+      "startTime": "2026-06-23T13:13:06.6424012Z",
+      "endTime": "2026-06-23T13:13:07.4856649Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584194121980451407526068959CU11",
+      "status": "Succeeded",
+      "startTime": "2026-06-23T06:04:47.4337909Z",
+      "endTime": "2026-06-23T06:04:48.0439046Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584194163501384205751702654CU11",
+      "status": "Cancelled",
+      "startTime": "2026-06-23T04:55:35.3404243Z",
+      "endTime": "2026-06-23T04:55:35.8005249Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584194164174029299608827858CU21",
+      "status": "Cancelled",
+      "startTime": "2026-06-23T04:54:28.0760346Z",
+      "endTime": "2026-06-23T04:54:28.95624Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584194164842370094039675408CU19",
+      "status": "Cancelled",
+      "startTime": "2026-06-23T04:53:21.2418476Z",
+      "endTime": "2026-06-23T04:53:21.4657163Z",
+      "triggerName": "manual"
+    }
+  ],
+  "actions": [
+    {
+      "name": "Create_item",
+      "type": null,
+      "status": "Succeeded",
+      "code": "Created",
+      "startTime": "2026-06-26T03:55:07.1962054Z",
+      "endTime": "2026-06-26T03:55:07.4932712Z",
+      "error": null
+    },
+    {
+      "name": "Guard",
+      "type": null,
+      "status": "Failed",
+      "code": "ActionFailed",
+      "startTime": "2026-06-26T03:55:07.1946842Z",
+      "endTime": "2026-06-26T03:55:08.6805404Z",
+      "error": {
+        "code": "ActionFailed",
+        "message": "An action failed. No dependent actions succeeded.",
+        "messageTemplate": "An action failed. No dependent actions succeeded."
+      }
+    },
+    {
+      "name": "Maybe_send_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Failed",
+      "code": "ActionFailed",
+      "startTime": "2026-06-26T03:55:07.5588884Z",
+      "endTime": "2026-06-26T03:55:08.6779263Z",
+      "error": {
+        "code": "ActionFailed",
+        "message": "An action failed. No dependent actions succeeded.",
+        "messageTemplate": "An action failed. No dependent actions succeeded."
+      }
+    },
+    {
+      "name": "Post_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Failed",
+      "code": "Unauthorized",
+      "startTime": "2026-06-26T03:55:07.5601991Z",
+      "endTime": "2026-06-26T03:55:08.5753034Z",
+      "error": null
+    },
+    {
+      "name": "Terminate",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-26T03:55:08.6789604Z",
+      "endTime": "2026-06-26T03:55:08.6793803Z",
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Terminate' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    }
+  ]
+}

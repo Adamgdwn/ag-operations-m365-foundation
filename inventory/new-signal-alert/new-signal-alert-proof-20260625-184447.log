@@ -1,0 +1,47 @@
+**********************
+PowerShell transcript start
+Start time: 20260625184448
+Username: WINDOWS2026\adamg
+RunAs User: WINDOWS2026\adamg
+Configuration Name: 
+Machine: WINDOWS2026 (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\PowerShell\7\pwsh.dll -NoProfile -File .\scripts\Invoke-M365NewSignalAlertProof.ps1 -ItemId 21 -OperatorEvidenceJson C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-alert\new-signal-teams-operator-evidence-b6-21-20260626-004415.json -NoPause
+Process ID: 15048
+PSVersion: 7.6.2
+PSEdition: Core
+GitCommitId: 7.6.2
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+B1 - New Signal Teams alert proof
+Mode:       READ: capture proof for existing CRM signal #21
+Output:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-alert\new-signal-alert-proof-20260625-184447.md
+Transcript: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-alert\new-signal-alert-proof-20260625-184447.log
+Safety:     Internal CRM/Teams proof only. No external send, permission change, guest/share change, delete, or QUO action.
+
+== Local B1 artifacts ==
+PASS: channel evidence found: Guided AI Labs / New Signal
+PASS: flow evidence found: GAIL - New Signal Teams alert (Started)
+
+== Connect to CRM ==
+Connected to https://agoperationsltd.sharepoint.com/sites/GuidedAILabs using O365
+Connected user: adamgoodwin@guidedailabs.com
+PASS: list found: CRM - New Signals (a64ef810-ad45-407b-b1ea-516533a8611d)
+PASS: flow evidence list id matches live CRM list id.
+
+== CRM proof item ==
+PASS: proof signal available: #21 Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY
+CRM item: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=21
+
+== Done ==
+Proof markdown: C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-alert\new-signal-alert-proof-20260625-184447.md
+Proof JSON:     C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\new-signal-alert\new-signal-alert-proof-20260625-184447.json
+Status:         pass
+**********************
+PowerShell transcript end
+End time: 20260625184455
+**********************

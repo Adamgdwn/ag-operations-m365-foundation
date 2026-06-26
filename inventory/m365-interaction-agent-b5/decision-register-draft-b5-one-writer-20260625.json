@@ -1,0 +1,32 @@
+{
+  "status": "local-only draft; no Microsoft 365 tenant write occurred",
+  "targetList": "Decision Register",
+  "approvalPhraseProposal": "approve-b5-record-one-writer-m365-interaction-agent-20260625",
+  "values": {
+    "Title": "B5 M365 Interaction Agent one-writer posture selected",
+    "DecisionDate": "2026-06-25",
+    "DecisionOwner": "adamgoodwin@guidedailabs.com",
+    "DecisionArea": "Agent",
+    "Decision": "Select one canonical Guided AI Labs agent lane named M365 Interaction Agent. Prime Boiler 365 setup remains a separate account/profile/session lane. The current posture remains supervised delegated and local-first. No new app registration, admin consent, SharePoint Selected grant, Exchange Application RBAC grant, broad Graph/Teams/Planner grant, or unattended production bridge adapter is approved. Immediate agent write surface after approval is limited to one Agent Action Log row with ActionStatus=Suggested per selected CRM signal through scripts/Invoke-M365NewSignalTriage.ps1 -Apply. Guided AI Labs and Guided AI Journey intake flows, plus the New Signal Teams alert flow, remain accepted create-only/source-ingress automations and are not agent decision writers.",
+    "Rationale": "B1-B4 proved a useful CRM New Signal -> Teams alert -> triage -> Suggested-row loop without updating CRM, sending external messages, creating tasks, changing permissions, or granting new app power. G0-only is too narrow because the Suggested review queue is useful; app or G2/G3 authority is too broad before more source proofs. This posture preserves Adam approval while allowing B6 Guided AI Journey intake to use the same CRM signal lane.",
+    "RevisitDate": "2026-07-09",
+    "SourceLink": "",
+    "CentralOSLink": "",
+    "GraphNodeId": ""
+  },
+  "blockedActions": [
+    "CRM updates, merges, suppressions, lookup conversions, dedupe actions, or status changes",
+    "Planner task creation or update",
+    "calendar/reminder creation or update",
+    "external email, Teams chat, SMS, call, voicemail, QUO action, or client commitment",
+    "public website-to-CRM POST route or tenant secret in a website repo",
+    "app registration, consent grant, SharePoint Selected permission, Exchange Application RBAC, Graph/Teams/Planner scope grant, guest invite, sharing change, tenant policy change, or delete",
+    "unattended tenant-writing automation"
+  ],
+  "sourceIngressExceptions": [
+    "GAIL - Guided AI Labs intake to CRM (create-only)",
+    "GAIL - Guided AI Journey intake to CRM (create-only)",
+    "GAIL - New Signal Teams alert"
+  ],
+  "nextSourceProof": "B6 Guided AI Journey client intake through the existing Form or website CTA/embed into CRM - New Signals"
+}

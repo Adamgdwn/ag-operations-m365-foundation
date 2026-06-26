@@ -1,0 +1,35 @@
+{
+  "capturedAt": "2026-06-26T04:27:19.856Z",
+  "site": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+  "listTitle": "CRM - New Signals",
+  "portalEventId": "journey-portal-event-1782447883236",
+  "scannedCount": 10,
+  "count": 1,
+  "items": [
+    {
+      "Id": 27,
+      "Title": "Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH",
+      "SignalStatus": "New",
+      "SignalType": "Website",
+      "Priority": "Normal",
+      "PersonName": "GAIL-INTERNAL-WALKTHROUGH",
+      "PersonEmail": "intake-test@guidedailabs.com",
+      "OrganizationName": "GAIL Internal QA",
+      "NeedSummary": "Custom-form e2e for Guided AI Journey — please triage or delete.",
+      "SourceText": "Full name: GAIL-INTERNAL-WALKTHROUGH\nEmail: intake-test@guidedailabs.com\nOrganization: GAIL Internal QA\nLead source detail: Journey admin invite\nWhat are you looking for: Custom-form e2e for Guided AI Journey — please triage or delete.\nHow did you hear about us: Internal walkthrough\nSituation: My team — I want to build team capability\nConsent: I agree\n\n— Journey signal metadata —\nSchema version: journey.crm-signal.v1\nSignal mode: portal-lifecycle-event\nEvent type: organization_setup_saved\nPortal event id: journey-portal-event-1782447883236\nCorrelation id: journey-portal-event-1782447883236\nCompany id: journey-company-internal-qa\nEngagement id: journey-engagement-internal-qa\nInvite id: journey-invite-e2e-1782447883236\nJourney invite id: journey-invite-e2e-1782447883236\nJourney organization id: journey-org-internal-qa\nJourney lead id: \nInvite role: \nSource action: admin_invited_person\nPortal deep link: https://www.guidedaijourney.com/dashboard/internal-qa\nEvent timestamp: 2026-06-26T04:24:43.236Z\nAck requested: False\n\n— Provenance —\nSource: Guided AI Journey\nIntake: custom site form\nIntake id: 56c3677e-de39-44b8-bf58-efd1c5b7fc35\nSubmitted: 2026-06-26T04:24:44.8254736Z\nCapture: Auto-captured via custom site form",
+      "NextAction": "Triage new website signal",
+      "IntakeSource": "Guided AI Journey",
+      "IntentPath": "My team — I want to build team capability",
+      "ID": 27,
+      "Created": "2026-06-26T04:24:45Z"
+    }
+  ],
+  "checks": {
+    "foundExactlyOne": true,
+    "intakeSourceJourney": true,
+    "signalStatusNew": true,
+    "sourceTextHasPortalEventId": true,
+    "sourceTextHasLeadSourceDetail": true,
+    "sourceTextHasJourneyAdminInviteSource": true
+  }
+}

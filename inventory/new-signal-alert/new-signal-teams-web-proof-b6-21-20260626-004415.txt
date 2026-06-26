@@ -1,0 +1,22 @@
+Workflows
+6:19 PM
+New
+
+New CRM signal - Normal
+
+Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY
+
+Type: Website
+Source: Guided AI Journey
+Person: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY
+Organization: Guided AI Labs Internal Walkthrough
+Need: GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY 20260625-180736 - verifying Guided AI Journey client invite intake creates one CRM New Signal for M365 Interaction Agent triage.
+Created: 2026-06-26T00:18:48Z
+Suggested first move: Triage new website signal
+
+Open CRM signal
+
+No external message has been sent. CRM remains the source of truth.
+
+see more
+Reply in thread

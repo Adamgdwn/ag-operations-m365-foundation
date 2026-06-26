@@ -1,0 +1,33 @@
+{
+  "capturedAt": "2026-06-26T04:02:12.697Z",
+  "site": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+  "listTitle": "CRM - New Signals",
+  "portalEventId": "602e4206-3d3e-4eb5-81d4-98973c222a01",
+  "scannedCount": 7,
+  "count": 1,
+  "items": [
+    {
+      "Id": 24,
+      "Title": "Guided AI Journey — GAIL Internal CRM Ack Test",
+      "SignalStatus": "New",
+      "SignalType": "Website",
+      "Priority": "Normal",
+      "PersonName": "GAIL Internal CRM Ack Test",
+      "PersonEmail": "adam+journey-crm-ack-20260626@guidedailabs.com",
+      "OrganizationName": "Guided AI Labs Internal Walkthrough",
+      "NeedSummary": "Portal lifecycle event: organization_setup_saved\nPortal event ID: 602e4206-3d3e-4eb5-81d4-98973c222a01\nSource action: scripts.send_crm_lifecycle_test\nOccurred at: 2026-06-26T04:01:32.063Z\nSchema version: 2026-06-26\nDelivery status: not_sent\nInvited role: admin\nPortal URL: https://www.guidedaijourney.com\\n\nDetails:\ntestMode: true\nsafety: Synthetic internal CRM lifecycle proof. No real client invite or external customer message.",
+      "SourceText": "Full name: GAIL Internal CRM Ack Test\nEmail: adam+journey-crm-ack-20260626@guidedailabs.com\nOrganization: Guided AI Labs Internal Walkthrough\nWhat are you looking for: Portal lifecycle event: organization_setup_saved\nPortal event ID: 602e4206-3d3e-4eb5-81d4-98973c222a01\nSource action: scripts.send_crm_lifecycle_test\nOccurred at: 2026-06-26T04:01:32.063Z\nSchema version: 2026-06-26\nDelivery status: not_sent\nInvited role: admin\nPortal URL: https://www.guidedaijourney.com\\n\nDetails:\ntestMode: true\nsafety: Synthetic internal CRM lifecycle proof. No real client invite or external customer message.\nHow did you hear about us: Guided AI Journey invite/admin trigger\nSituation: My organization — we need a broader AI strategy\nConsent: I agree\n\n— Journey signal metadata —\nSchema version: journey.crm-signal.v1\nSignal mode: portal-lifecycle-event\nEvent type: organization_setup_saved\nPortal event id: 602e4206-3d3e-4eb5-81d4-98973c222a01\nCorrelation id: 602e4206-3d3e-4eb5-81d4-98973c222a01\nCompany id: \nEngagement id: \nInvite id: \nJourney invite id: \nJourney organization id: \nJourney lead id: \nInvite role: organization_admin\nSource action: scripts.send_crm_lifecycle_test\nPortal deep link: https://www.guidedaijourney.com\\n\nEvent timestamp: 2026-06-26T04:01:32.063Z\nAck requested: True\n\n— Provenance —\nSource: Guided AI Journey\nIntake: custom site form\nIntake id: f68ed53e-21ff-4875-bc6a-86fa8786d7a5\nSubmitted: 2026-06-26T04:01:33.2591587Z\nCapture: Auto-captured via custom site form",
+      "NextAction": "Triage new website signal",
+      "IntakeSource": "Guided AI Journey",
+      "IntentPath": "My organization — we need a broader AI strategy",
+      "ID": 24,
+      "Created": "2026-06-26T04:01:33Z"
+    }
+  ],
+  "checks": {
+    "foundExactlyOne": true,
+    "intakeSourceJourney": true,
+    "signalStatusNew": true,
+    "sourceTextHasPortalEventId": true
+  }
+}

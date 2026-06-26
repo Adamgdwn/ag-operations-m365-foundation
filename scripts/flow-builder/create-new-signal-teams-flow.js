@@ -58,6 +58,12 @@ function choice(name) {
   return `coalesce(triggerOutputs()?['body/${name}']?['Value'],triggerOutputs()?['body/${name}'],'')`;
 }
 
+function sourceTextLine(label) {
+  const sourceText = field('SourceText');
+  const marker = `${label}: `;
+  return `trim(if(contains(${sourceText}, '${marker}'), first(split(last(split(${sourceText}, '${marker}')), decodeUriComponent('%0A'))), ''))`;
+}
+
 function itemLinkExpr() {
   return `coalesce(triggerOutputs()?['body/{Link}'],concat('${SITE}/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=',triggerOutputs()?['body/ID']))`;
 }
@@ -66,6 +72,8 @@ function buildMessageExpr() {
   const priority = html(choice('Priority'));
   const signalType = html(choice('SignalType'));
   const intakeSource = html(choice('IntakeSource'));
+  const leadSourceDetailRaw = sourceTextLine('Lead source detail');
+  const leadSource = html(`if(greater(length(${leadSourceDetailRaw}), 0), ${leadSourceDetailRaw}, ${choice('IntakeSource')})`);
   const title = html(field('Title'));
   const person = html(field('PersonName'));
   const org = html(field('OrganizationName'));
@@ -80,6 +88,7 @@ function buildMessageExpr() {
     `'<ul>',` +
     `'<li><b>Type:</b> ',${signalType},'</li>',` +
     `'<li><b>Source:</b> ',${intakeSource},'</li>',` +
+    `'<li><b>Lead source:</b> ',${leadSource},'</li>',` +
     `'<li><b>Person:</b> ',${person},'</li>',` +
     `'<li><b>Organization:</b> ',${org},'</li>',` +
     `'<li><b>Need:</b> ',${need},'</li>',` +

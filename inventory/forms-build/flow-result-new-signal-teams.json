@@ -4,11 +4,18 @@
   "displayName": "GAIL - New Signal Teams alert",
   "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
   "state": "Started",
-  "createdStatus": 201,
+  "createdStatus": 200,
   "spConnection": "4c53f079bec84a81a87ed7d58c67401e",
   "teamsConnection": "c24061a73f5840bba6394f59915d6df7",
   "team": "Guided AI Labs",
   "groupId": "db49e096-5a34-48c5-9037-0f32c22bbda8",
   "channel": "New Signal",
-  "channelId": "19:d39b0c4951af40888c8f7eb2ca0ed255@thread.tacv2"
+  "channelId": "19:d39b0c4951af40888c8f7eb2ca0ed255@thread.tacv2",
+  "lastLeadSourceProof": {
+    "status": "PASS",
+    "crmItemId": 27,
+    "leadSourceDetail": "Journey admin invite",
+    "flowRunEvidence": "inventory/forms-build/flow-runs-c54964d6-0042-430d-b542-90214e49224b-20260626-042625.json",
+    "messageContract": "Teams post includes Source and Lead source rows."
+  }
 }

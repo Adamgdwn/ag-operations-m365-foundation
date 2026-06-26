@@ -6,6 +6,7 @@ param(
     [string]$ListTitle = "CRM - New Signals",
     [int]$ItemId = 0,
     [switch]$Apply,
+    [string]$OperatorEvidenceJson = "",
     [switch]$UseDeviceLogin,
     [switch]$ForceFreshLogin,
     [switch]$SkipOperatorEvidence,
@@ -173,6 +174,47 @@ function Add-SyntheticSignal {
 
 function Read-OperatorEvidence {
     param([string]$Title)
+
+    if (-not [string]::IsNullOrWhiteSpace($OperatorEvidenceJson)) {
+        if (-not (Test-Path -LiteralPath $OperatorEvidenceJson)) {
+            throw "Operator evidence JSON was not found: $OperatorEvidenceJson"
+        }
+        $loaded = Get-Content -LiteralPath $OperatorEvidenceJson -Raw | ConvertFrom-Json
+        $postCount = $null
+        if ($null -ne $loaded.postCount) {
+            [int]$parsedPostCount = 0
+            if ([int]::TryParse([string]$loaded.postCount, [ref]$parsedPostCount)) {
+                $postCount = $parsedPostCount
+            }
+        }
+        $hasCrmLink = ($loaded.crmLinkPresent -eq $true -or ([string]$loaded.crmLinkPresent) -match '^(y|yes|true)$')
+        $status = [string]$loaded.status
+        if ([string]::IsNullOrWhiteSpace($status)) {
+            if ($null -eq $postCount) {
+                $status = "incomplete"
+            }
+            elseif ($postCount -eq 1 -and $hasCrmLink) {
+                $status = "pass"
+            }
+            else {
+                $status = "fail"
+            }
+        }
+        return [ordered]@{
+            captured = $true
+            status = $status
+            postCount = $postCount
+            crmLinkPresent = $hasCrmLink
+            teamsPostTime = [string]$loaded.teamsPostTime
+            teamsPostLink = [string]$loaded.teamsPostLink
+            flowRunStatus = [string]$loaded.flowRunStatus
+            notes = [string]$loaded.notes
+            evidenceSource = "operator-evidence-json"
+            evidenceJsonPath = $OperatorEvidenceJson
+            webEvidenceTextPath = [string]$loaded.webEvidenceTextPath
+            webEvidenceScreenshotPath = [string]$loaded.webEvidenceScreenshotPath
+        }
+    }
 
     if ($SkipOperatorEvidence) {
         return [ordered]@{
@@ -370,6 +412,15 @@ if ($null -ne $operatorEvidence) {
         $lines.Add(("- Teams post link: {0}" -f $operatorEvidence.teamsPostLink))
         $lines.Add(("- Flow run status: {0}" -f $operatorEvidence.flowRunStatus))
         $lines.Add(("- Notes: {0}" -f $operatorEvidence.notes))
+        if (-not [string]::IsNullOrWhiteSpace([string]$operatorEvidence.evidenceJsonPath)) {
+            $lines.Add(("- Evidence JSON: {0}" -f $operatorEvidence.evidenceJsonPath))
+        }
+        if (-not [string]::IsNullOrWhiteSpace([string]$operatorEvidence.webEvidenceTextPath)) {
+            $lines.Add(("- Web evidence text: {0}" -f $operatorEvidence.webEvidenceTextPath))
+        }
+        if (-not [string]::IsNullOrWhiteSpace([string]$operatorEvidence.webEvidenceScreenshotPath)) {
+            $lines.Add(("- Web evidence screenshot: {0}" -f $operatorEvidence.webEvidenceScreenshotPath))
+        }
     }
     $lines.Add("")
 }
