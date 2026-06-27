@@ -5,7 +5,12 @@ Date: 2026-06-19
 Status: Chunk 6 baseline output. Local documentation only; no Microsoft 365
 tenant read or write was performed for this pass. Active revision on
 2026-06-24: use this as the safety ladder under the one-agent plan, not as a
-reason to split work into helper bots.
+reason to split work into helper bots. 2026-06-27 update: B1-B7 are
+live-proven; use this ladder for B8a local Journey hardening, B8b live Journey
+hardening if approved, B9 selected-signal triage, and B10 QUO inbound proof.
+B8a local Journey hardening, B9a local selected-signal operating readiness, and
+B10a local QUO inbound source proof readiness are complete; B8b/B9b/B10b live
+work remains approval-gated.
 
 Use this list with `docs/AGENTIC_M365_READINESS.md` and
 `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` before approving Copilot, connector,
@@ -18,10 +23,33 @@ Power Platform, custom adapter, or unattended agent work.
   phone lanes should become capabilities of that agent unless a security
   boundary forces a separate adapter.
 - First selected proof is `CRM - New Signals` created -> internal Teams channel
-  `New Signal`.
-- QUO is parked.
+  `New Signal`; this is now live-proven as part of B1-B7.
+- B8a local Journey hardening packet is complete; it does not approve B8b live
+  SharePoint schema changes, flow updates, replay tests, cleanup/backfill, or
+  Agent Action Log writes.
+- B9a local selected-signal operating packet is complete; it does not approve
+  B9b live tenant reads, G1 Suggested rows, broad scanning, or any CRM/task/
+  message write.
+- B10a local QUO inbound source proof packet is complete; it does not approve
+  QUO connector/webhook/API setup, CRM writes, Teams posts, outbound
+  phone/SMS actions, or real customer proof.
 - The setup/provisioning helper remains setup-only and must not become durable
   production agent authority.
+
+## Guided AI Labs Authority Map
+
+The organization-level vision uses `R0-R5`; this M365 build has been using
+`G0-G4`. Treat the `G` labels as the local implementation gates and the `R`
+labels as the broader Guided AI Labs authority model.
+
+| Org level | Local gate | Meaning for this repo |
+|---|---|---|
+| R0 Observe | G0 | Read-only review, classification, summarization, gap detection, and local evidence. |
+| R1 Propose | G1 | Supervised suggestions and Agent Action Log rows. |
+| R2 Internal Act | G2 | Approved internal M365 writes with owner, evidence, and rollback note. |
+| R3 Restricted | G3 | External, access, connector, callback, or higher-risk work with Decision Register approval and typed phrase. |
+| R4 Delegated Autonomous | Not enabled | No autonomous delegated authority is created by Chunk 6 or B8/B9/B10. |
+| R5 Human Only | G4 blocked/escalate | Adam-only decisions: client commitments, legal/billing, admin/access, deletes/merges, external sends, and any future R4 delegation. |
 
 ## Readiness Verdict
 
@@ -57,13 +85,13 @@ Guided AI Labs is not yet ready for:
 
 ## Approval Pattern
 
-| Level | Allowed by default | Required before action | Evidence |
-|---|---|---|---|
-| G0 Read Only | Yes. | Role-appropriate read access. | Optional action-log note when the review changes a decision or blocker. |
-| G1 Propose And Log | Yes for safe internal suggestions. | Source record, owner, affected card, and no restricted action. | Agent Action Log row with status `Suggested`. |
-| G2 Approved Internal Write | No. | Named human approval, action log entry, affected record link, and rollback note. | Agent Action Log plus target List/task/draft/evidence link. |
-| G3 Restricted External Or Access Write | No. | Decision Register approval, typed approval phrase, evidence target, and rollback owner. | Decision Register, Agent Action Log, and read-back or transcript. |
-| G4 Blocked Autonomous Action | Never autonomous. | Adam decision for a separate controlled project, if ever. | Decision Register only; do not execute from this chunk. |
+| Level | Org map | Allowed by default | Required before action | Evidence |
+|---|---|---|---|---|
+| G0 Read Only | R0 Observe | Yes. | Role-appropriate read access. | Optional action-log note when the review changes a decision or blocker. |
+| G1 Propose And Log | R1 Propose | Yes for safe internal suggestions. | Source record, owner, affected card, and no restricted action. | Agent Action Log row with status `Suggested`. |
+| G2 Approved Internal Write | R2 Internal Act | No. | Named human approval, action log entry, affected record link, and rollback note. | Agent Action Log plus target List/task/draft/evidence link. |
+| G3 Restricted External Or Access Write | R3 Restricted | No. | Decision Register approval, typed approval phrase, evidence target, and rollback owner. | Decision Register, Agent Action Log, and read-back or transcript. |
+| G4 Blocked Autonomous Action | R5 Human Only / no R4 delegation | Never autonomous. | Adam decision for a separate controlled project, if ever. | Decision Register only; do not execute from this chunk. |
 
 ## Required Agent Action Log Fields
 
@@ -134,12 +162,16 @@ Transition rules:
 | A6-10 | What rollback worksheet format should be used? | One worksheet per adapter lane. | Owner, revoke/pause path, evidence target, test plan. |
 | A6-11 | Are public/client Forms allowed? | No. | Form purpose, audience, data collected, routing, owner, and Decision Register approval. |
 | A6-12 | Are write-capable Copilot/custom actions allowed? | No. | Action log workflow proven, G2/G3 approval gates proven, rollback tested. |
+| A6-13 | When does QUO enter the agent lane? | B10a local readiness is complete; B10b live proof comes after exact approval while volume is low. | Approved number(s), event class, ingress option, signature/secret plan, retention, duplicate rule, disable path, and outbound block. |
+| A6-14 | When does B8b live Journey hardening happen? | Only after the exact approval phrase and live scope are approved. | `PortalEventId` and `SourceCorrelationId` field approval, HTTP intake flow idempotency update approval, no-real-client replay target, evidence path, rollback/pause note, and phrase `approve-b8-journey-loop-hardening-live-update-20260627`. |
+| A6-15 | When does B9b selected-signal triage touch the tenant? | Only after Adam names exact CRM item id(s), source, or narrow time window. | Selected item/window, read-only evidence target, whether G0 only or one G1 Suggested row is approved, duplicate-suggestion decision, and stop conditions for no CRM/task/message/external writes. |
+| A6-16 | When does B10b QUO live proof touch QUO or M365? | Only after Adam approves the exact B10b source proof scope and phrase. | QUO number(s), first event class, ingress option, secret/signature storage and revoke path, raw payload retention/redaction, duplicate window, owner/disable path, no-real-client proof target, evidence path, outbound block, and phrase `approve-b10-quo-inbound-source-proof-20260627`. |
 
 ## Acceptance Test
 
 Chunk 6 is accepted when Adam can take a proposed AI/agent action and answer:
 
-1. Is it G0, G1, G2, G3, or G4?
+1. Is it G0, G1, G2, G3, or G4, and what is the matching R0-R5 authority?
 2. Which card owns the source record?
 3. Which human owns the action?
 4. What approval is required before anything writes, sends, grants, shares, or

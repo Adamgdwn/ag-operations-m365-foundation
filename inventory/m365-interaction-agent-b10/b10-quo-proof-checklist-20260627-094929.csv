@@ -1,0 +1,8 @@
+﻿"Order","Check","EvidenceTarget","RequiredBeforeLive","Status"
+"1","Approval phrase and exact B10b scope recorded","Decision Register or B10 proof packet","Yes","Pending"
+"2","QUO event payload redacted or synthetic","inventory/m365-interaction-agent-b10/b10-quo-sanitized-payload-*.json","Yes","Pending"
+"3","Ingress bridge owner and disable path captured","C:\Users\adamg\01. Code Projects\AG Operations Workspace Setup\inventory\m365-interaction-agent-b10\b10-quo-live-decision-worksheet-20260627-094929.csv","Yes","Pending"
+"4","Exactly one CRM - New Signals item created or mapped","inventory/m365-interaction-agent-b10/b10-quo-live-proof-*.md","Yes","Pending"
+"5","Existing New Signal Teams alert posts once","inventory/m365-interaction-agent-b10/b10-quo-live-proof-*.md","Yes","Pending"
+"6","G0 triage packet handles QUO source","inventory/new-signal-triage/new-signal-triage-*.md","Yes","Pending"
+"7","No outbound SMS, callback, client commitment, merge, delete, or task write","inventory/m365-interaction-agent-b10/b10-quo-live-proof-*.md","Yes","Pending"

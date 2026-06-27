@@ -38,11 +38,23 @@ Adam/operator triage -> M365 Interaction Agent proposal/evidence ->
 Journey CRM receipt ack where requested
 ```
 
-Priority when resumed: one agent with governed M365 capabilities, starting
-with refinement and operational hardening of the proven Journey/CRM signal lane.
-Hiring roles, profile libraries, and onboarding packet work are deferred until
-growth makes them useful. QUO phone integration remains parked until a later
-source-expansion decision.
+Vision alignment: treat M365 as the Guided AI Labs enterprise body and governed
+execution substrate. Freedom remains the executive/coordinator layer, Guided AI
+Labs Operating System remains the governance/autonomic layer, and Graphify
+remains the relationship/context-graph layer. The local `G0-G4` gates map to
+the organization-level `R0-R5` authority ladder; no current B8/B9/B10 work
+enables R4 delegated autonomy.
+
+Priority when resumed: one agent with governed M365 capabilities. The next
+chunks are B8 Journey receipt/replay hardening, B9 selected-signal operating
+triage, and B10 QUO inbound source proof. B8a local hardening design is
+executed; B8b live schema/flow/replay work remains a gated live step. B9a local
+selected-signal operating readiness is also executed; the next B9 tenant touch
+is selected read-only triage after Adam chooses exact item ids, source, or
+window. B10a local QUO inbound source readiness is now executed; B10b live
+source proof waits for exact number, event, ingress, secret, retention, disable,
+and outbound-block approvals. Hiring roles, profile libraries, and onboarding
+packet work are deferred until growth makes them useful.
 
 ## Fast Startup
 
@@ -84,6 +96,21 @@ snapshots unless the task specifically asks for history or evidence.
 - Lead-source display proof: source event `journey-portal-event-1782447883236`
   created CRM item `#27` with `Lead source detail: Journey admin invite`; Teams
   alert flow posted successfully.
+- B8a local Journey loop hardening packet:
+  `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md`.
+  It proposes `PortalEventId` and `SourceCorrelationId`, defers
+  `ReceiptStatus`, defines duplicate/replay handling, and prepares the future
+  B8 live approval boundary without touching M365.
+- B9a local selected-signal operating triage packet:
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
+  It indexes prior B1/B6 packet evidence, creates queue and review CSV
+  templates, defines operating labels, and keeps future tenant activity behind
+  selected G0 read-only runs or per-item G1 approval.
+- B10a local QUO inbound source proof packet:
+  `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
+  It defines QUO event mappings, ingress options, normalized CRM shape, duplicate
+  policy, raw payload policy, live decision worksheet, proof checklist, and the
+  future B10b approval boundary without touching QUO or Microsoft 365.
 - B1 proof harness: `scripts/Invoke-M365NewSignalAlertProof.ps1` records local
   proof evidence and gates the one synthetic CRM create behind a typed approval.
 - B2/B3 triage packet: `scripts/Invoke-M365NewSignalTriage.ps1` reads one
@@ -98,8 +125,11 @@ snapshots unless the task specifically asks for history or evidence.
   (create-only, HTTP)` is `Started` and can create CRM rows from approved
   server-side website/Journey posts.
 - Next build gate: refinement only unless Adam approves another live write
-  scope. Good candidates are first-class `portalEventId` storage, Journey retry
-  / replay, and selected CRM triage hardening.
+  scope. Current sequence is B8b live first-class `PortalEventId` /
+  `SourceCorrelationId` storage and Journey retry/replay hardening if approved,
+  B9b selected read-only CRM triage after item selection, then B10b live QUO
+  inbound proof only after exact number/event/ingress/secret/retention/disable
+  and outbound-block approval.
 - Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 
 ## Approval Boundaries

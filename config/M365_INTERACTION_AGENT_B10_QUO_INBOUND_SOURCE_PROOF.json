@@ -1,0 +1,191 @@
+{
+  "chunk": "B10",
+  "name": "QUO Inbound Source Proof",
+  "status": "local-source-proof-ready",
+  "date": "2026-06-27",
+  "owner": "Adam",
+  "purpose": "Bring QUO forward as the first Phone / Voice / Text sensory portal into the existing CRM -> Teams -> triage lane, while keeping all outbound phone/SMS behavior blocked.",
+  "dependsOn": {
+    "b8aJourneyHardeningPacket": "inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md",
+    "b8bLiveHardening": "Optional and still gated; B10a local work does not require B8b tenant changes.",
+    "b9aSelectedSignalOperatingPacket": "inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md",
+    "b9bSelectedTriage": "Optional selected read-only operating runs; B10a local work does not require B9b tenant reads.",
+    "newSignalTeamsAlertFlow": "GAIL - New Signal Teams alert",
+    "triageScript": "scripts/Invoke-M365NewSignalTriage.ps1"
+  },
+  "currentState": {
+    "quoLiveHookup": "none approved",
+    "crmSourceList": "CRM - New Signals",
+    "teamsAlertFlow": "GAIL - New Signal Teams alert",
+    "teamsAlertFlowState": "Started",
+    "triageLane": "B2/B3/B4 New Signal triage and Suggested row workflow",
+    "outboundStatus": "Blocked for B10 MVP"
+  },
+  "authority": {
+    "localPacket": "G0/R0",
+    "localSyntheticPayloadDesign": "G0/R0 when using redacted local-only examples",
+    "selectedNoRealClientProof": "G2/R2 or G3/R3 depending on ingress surface and whether the proof creates a CRM row from an external webhook",
+    "webhookOrConnectorSetup": "G3/R3 because it introduces an external source, secret/signature handling, and active CRM ingress",
+    "outboundSmsOrCallback": "G3/R3 later decision, blocked in B10",
+    "autonomy": "No R4 delegated autonomy enabled"
+  },
+  "sourcePrinciples": [
+    "QUO is a sensory portal, not a separate CRM and not a separate phone bot.",
+    "CRM - New Signals remains the source of truth for new work.",
+    "Teams remains the internal attention surface.",
+    "The M365 Interaction Agent produces evidence and supervised suggestions only.",
+    "Freedom, Guided AI Labs Operating System, and Graphify can consume stable source ids later, but B10 does not couple directly to them."
+  ],
+  "ingressOptions": [
+    {
+      "name": "manualBridge",
+      "governance": "G0/G1 for local evidence, G2 if a CRM row is created manually",
+      "summary": "Adam keeps QUO notifications on the phone and manually records selected events into CRM.",
+      "fit": "Lowest risk and useful as a fallback, but it does not prove automated source ingress."
+    },
+    {
+      "name": "noCodeWebhookBridge",
+      "governance": "G3/R3",
+      "summary": "QUO webhook sends to Make, Zapier, or Power Automate, then creates a CRM - New Signals row.",
+      "fit": "Fast proof if Adam accepts a temporary third-party automation/secrets surface."
+    },
+    {
+      "name": "purposeBuiltIngressAdapter",
+      "governance": "G3/R3",
+      "summary": "A small quo-signal-ingress endpoint verifies signatures, normalizes payloads, and writes one CRM signal.",
+      "fit": "Best production shape when the webhook contract and secret/revoke path are known."
+    }
+  ],
+  "recommendedDefault": {
+    "proofPath": "Use B10a local readiness first. For B10b live proof, prefer one selected no-real-client QUO event through a signed ingress path. Use manual bridge only as a fallback evidence step if webhook details are not ready.",
+    "businessNumbers": "Only Adam-approved QUO number(s) count as business intake.",
+    "eventClasses": [
+      {
+        "eventClass": "missed_call",
+        "createsCrmSignalByDefault": true,
+        "signalType": "Phone",
+        "priority": "High",
+        "requiredFields": [
+          "sourceEventId",
+          "quoNumber",
+          "fromPhone",
+          "eventTimestamp"
+        ],
+        "notes": "Default to High until Adam defines a more nuanced response rule."
+      },
+      {
+        "eventClass": "voicemail",
+        "createsCrmSignalByDefault": true,
+        "signalType": "Voicemail",
+        "priority": "High",
+        "requiredFields": [
+          "sourceEventId",
+          "quoNumber",
+          "fromPhone",
+          "eventTimestamp",
+          "voicemailLink"
+        ],
+        "notes": "Do not store transcript text unless retention and privacy are approved."
+      },
+      {
+        "eventClass": "inbound_sms",
+        "createsCrmSignalByDefault": true,
+        "signalType": "SMS",
+        "priority": "High",
+        "requiredFields": [
+          "sourceEventId",
+          "quoNumber",
+          "fromPhone",
+          "eventTimestamp",
+          "messagePreview"
+        ],
+        "notes": "Store a short preview in SourceText; raw message retention stays behind approval."
+      },
+      {
+        "eventClass": "completed_call_summary",
+        "createsCrmSignalByDefault": "selected-only",
+        "signalType": "Call Summary",
+        "priority": "Normal",
+        "requiredFields": [
+          "sourceEventId",
+          "quoNumber",
+          "fromPhone",
+          "eventTimestamp",
+          "callLink"
+        ],
+        "notes": "Create a new signal only when it represents new work; otherwise append/advisory is a later design."
+      },
+      {
+        "eventClass": "contact_created_or_updated",
+        "createsCrmSignalByDefault": false,
+        "signalType": "Contact Update",
+        "priority": "Normal",
+        "requiredFields": [
+          "sourceEventId",
+          "quoContactId",
+          "eventTimestamp"
+        ],
+        "notes": "Do not create CRM work by default; use as enrichment only after relationship rules exist."
+      }
+    ],
+    "normalizedCrmShape": {
+      "IntakeSource": "QUO",
+      "SignalStatus": "New",
+      "TitlePattern": "QUO <SignalType> - <caller or phone> - <timestamp>",
+      "SourceTextMetadata": [
+        "QUO source event id",
+        "QUO event class",
+        "QUO business number",
+        "Caller phone and known contact name when available",
+        "Conversation/call/voicemail link when available",
+        "Event timestamp",
+        "Payload digest and redaction note",
+        "Outbound blocked note"
+      ]
+    },
+    "duplicatePolicy": "Primary key is QUO sourceEventId. Fallback key is conversationId or callId plus normalized fromPhone and eventTimestamp bucket. One existing match returns/maps to the existing CRM item; zero matches creates one CRM item; more than one match stops for Adam review.",
+    "rawPayloadPolicy": "Raw QUO payloads stay out of git and inventory by default. Store raw payload evidence only under .local/quo-ingress when approved. Commit only sanitized summaries, digests, mappings, and proof packets.",
+    "retentionDefault": "Keep sanitized proof summaries in inventory. Keep raw local payloads only long enough to validate the proof, then redact or remove according to the B10 live approval.",
+    "disablePath": "Every live bridge must have a named owner, exact webhook/flow/adapter location, and one-command or UI pause path before proof."
+  },
+  "liveApprovalRequired": {
+    "approvalPhrase": "approve-b10-quo-inbound-source-proof-20260627",
+    "scope": [
+      "Name the QUO business intake number(s) allowed for the proof.",
+      "Name the event class allowed for the first no-real-client proof.",
+      "Choose ingress option: manual bridge, no-code webhook bridge, or purpose-built ingress adapter.",
+      "Approve secret/signature verification storage and revoke path.",
+      "Approve raw payload evidence location and retention/redaction rule.",
+      "Approve duplicate/idempotency rule for the selected event class.",
+      "Approve disable/pause path and named owner.",
+      "Run one no-real-client or internal QUO event through CRM - New Signals, Teams alert, and G0 triage evidence."
+    ],
+    "stopConditions": [
+      "No automatic SMS reply.",
+      "No automatic callback.",
+      "No outbound QUO API send.",
+      "No real customer call/SMS proof before synthetic or internal proof passes.",
+      "No webhook/API secret in git, docs, inventory, browser code, or DirectLink handoff.",
+      "No third-party automation without named owner and disable path.",
+      "No CRM merge, delete, suppression, task, reminder, or external message.",
+      "No QUO path that bypasses CRM - New Signals.",
+      "No R4 delegated autonomy."
+    ]
+  },
+  "evidenceTargets": {
+    "localPacketDirectory": "inventory/m365-interaction-agent-b10",
+    "eventMappingCsvPattern": "b10-quo-event-mapping-*.csv",
+    "decisionWorksheetCsvPattern": "b10-quo-live-decision-worksheet-*.csv",
+    "proofChecklistCsvPattern": "b10-quo-proof-checklist-*.csv",
+    "futureSanitizedPayloadSummary": "inventory/m365-interaction-agent-b10/b10-quo-sanitized-payload-*.json",
+    "futureProofPacket": "inventory/m365-interaction-agent-b10/b10-quo-live-proof-*.md",
+    "futureRawPayloadLocalOnly": ".local/quo-ingress/"
+  },
+  "acceptance": [
+    "B10a local packet exists and names event classes, ingress options, normalized CRM shape, duplicate rule, raw payload policy, disable path, evidence targets, stop conditions, and the future approval phrase.",
+    "Event mapping, live decision worksheet, and proof checklist CSVs exist.",
+    "Future B10b proof can be scoped to one no-real-client or internal event before any real customer traffic is used.",
+    "No QUO connector, webhook, API call, CRM write, Teams post, external send, or secret read occurs during B10a.",
+    "Outbound SMS/callback remains blocked until a later explicit G3/R3 decision."
+  ]
+}

@@ -240,7 +240,9 @@ Current active agent direction:
 - One `M365 Interaction Agent` with governed capabilities.
 - First proof: `CRM - New Signals` created -> internal Teams channel
   `New Signal`.
-- QUO is parked until that internal Teams alert is proven.
+- New Signal, Journey, and B10a QUO local readiness are proven/readied in that
+  order. B10b live QUO proof still needs exact source-proof approval and no
+  outbound SMS/callback is enabled.
 
 Default posture:
 

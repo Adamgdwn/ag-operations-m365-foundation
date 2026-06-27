@@ -2,10 +2,11 @@
 
 Date: 2026-06-24
 
-Status: live B1-B4 proof completed on 2026-06-25, then paused by Adam because
-two agents are writing to M365 accounts and competing. The New Signal Teams
+Status: live B1-B7 baseline established on 2026-06-25/26. The New Signal Teams
 alert lane is active for `CRM - New Signals` creates, with proof evidence
-captured for synthetic CRM item `#19`.
+captured for synthetic CRM item `#19`; later chunks proved B5 one-writer
+posture, B6 Journey source ingress, B7 Journey CRM receipt acknowledgement, and
+lead-source display.
 
 Purpose:
 
@@ -20,17 +21,18 @@ Boundary:
 - Internal Teams post only.
 - No email sends.
 - No external/prospect notification.
-- No QUO hook.
+- No QUO hook from this alert runbook. B10a local QUO readiness exists, but any
+  B10b live QUO source proof needs its own approval.
 - No guest access, sharing, permissions, tenant policy, app registration, admin
   consent, deletes, billing, or client commitment changes.
-- During the 2026-06-25 pause, do not rerun setup, proof, connector, flow, or
-  `-Apply` commands from this runbook unless Adam explicitly resumes this lane
-  and confirms the competing M365 writer is paused, separated, or coordinated.
+- Do not rerun setup, proof, connector, flow, or `-Apply` commands from this
+  runbook unless Adam explicitly approves the exact live write scope, target,
+  evidence path, and rollback path.
 
-## Pause Handover - 2026-06-25
+## Historical Pause Handover - 2026-06-25
 
-The setup is no longer waiting on B1-B4. It is waiting on focus and write-owner
-clarity.
+The setup is no longer waiting on B1-B4. The old write-owner pause was resolved
+by B5, and the lane is now part of the B1-B7 proven baseline.
 
 Already proven:
 
@@ -51,7 +53,7 @@ Leave alone during pause:
 - Do not disable the live alert flow from this repo unless Adam explicitly asks
   for a quiet/disable action. This closeout did not turn it off.
 
-Resume gate:
+Resolved gate:
 
 1. Identify the competing M365-writing agent.
 2. Decide whether the New Signal flow remains the only writer for CRM-created
@@ -59,6 +61,14 @@ Resume gate:
 3. Decide whether this repo's agent may continue writing only G1 `Suggested`
    rows, or whether all writes should move to one other agent.
 4. Record that in B5 before B6 source expansion.
+
+Current forward gate:
+
+1. B8: harden Journey receipt/replay and `portalEventId` handling.
+2. B9: run selected-signal operating triage under G0/G1.
+3. B10a: local QUO inbound source proof readiness is complete.
+4. B10b: bring QUO in as inbound-only live source proof only after exact
+   number/event/ingress/secret/retention/disable and outbound-block approval.
 
 ## Setup Sequence
 
@@ -231,12 +241,11 @@ pwsh -File scripts\Invoke-M365NewSignalTriage.ps1 -ItemId <proof item id> -Apply
 
 Next required build handoff:
 
-1. Treat B1-B4 as proven for the synthetic lane.
-2. Resolve the competing M365-writing agent boundary.
-3. Run B5: decide the durable `m365-interaction-agent` permission/adapter
-   posture before expanding writes or unattended behavior.
-4. Then run B6 source expansion, one source at a time, through the same
-   CRM -> Teams -> triage -> Suggested-row lane.
+1. Treat B1-B7 as proven for the first M365 Interaction Agent lane.
+2. Use `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md` for B8,
+   B9, and B10.
+3. Keep this runbook as historical setup/proof reference for the New Signal
+   Teams alert flow.
 
 ## Notes
 

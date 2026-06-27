@@ -3,8 +3,8 @@
 Date: 2026-06-19
 
 Status: Active applied card-plan example. CRM recovery is closed in
-`docs/CRM_EXECUTION_PLAN.md`. The current post-recovery add-on is the
-`New Signal` Teams alert proof for the M365 Interaction Agent.
+`docs/CRM_EXECUTION_PLAN.md`. The post-recovery New Signal alert lane is
+live-proven as part of the M365 Interaction Agent B1-B7 baseline.
 
 This is the first applied example of `docs/CARD_PLAN_TEMPLATE.md`. It validates
 the template against the strongest current operating card and shows how future
@@ -14,7 +14,8 @@ card deep dives should separate operating usability from build history.
 
 Name: CRM / Relationships
 
-Status: Active; CRM recovery closed, with alert proof pending.
+Status: Active; CRM recovery closed, with New Signal alert/Journey source proof
+live.
 
 Owner: Adam until a role-specific CRM owner is assigned.
 
@@ -40,8 +41,10 @@ Plan status:
 
 - Card plan: active applied example.
 - Functional CRM recovery: closed in `docs/CRM_EXECUTION_PLAN.md`.
-- New Signal Teams alert proof: pending in
-  `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`.
+- New Signal Teams alert proof: live-proven in
+  `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`; current agent hardening
+  continues in
+  `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`.
 - Acceptance tests: active in `docs/CRM_ACCEPTANCE_TESTS.md`.
 
 Completion gate:
@@ -86,8 +89,8 @@ automation, or governance decisions to Adam.
 3. Review Triage Queue, Follow Up Today, Proposal / Decision Blockers, Active
    Delivery, and Closeout / Invoice Watch.
 4. Capture new relationship signals in `CRM - New Signals`.
-5. When the `New Signal` Teams alert proof is live, use the internal channel as
-   the first-minute attention surface, then return to CRM for triage.
+5. Use the `New Signal` Teams channel as the first-minute attention surface,
+   then return to CRM for triage.
 6. Update qualification, action, engagement, artifact, health, and closeout
    records as work moves.
 7. Link evidence, proposal, decision, handoff, or closeout files in SharePoint
@@ -140,7 +143,7 @@ Libraries:
 Teams or channels:
 
 - Guided AI Labs Team
-- `New Signal`, pending alert proof
+- `New Signal`, live-proven alert lane
 - Intake
 - Client Discovery
 - Active Delivery
@@ -351,7 +354,8 @@ Draft generation:
 Write-capable actions:
 
 - First notification proof: create-only CRM signal -> internal Teams alert,
-  with no CRM update and no external notification.
+  with no CRM update and no external notification. This is live-proven through
+  the M365 Interaction Agent B1-B7 baseline.
 - Future write actions include creating next-action records, updating statuses,
   routing items to queues, or attaching evidence links after explicit approval
   gates are proven.
@@ -387,9 +391,8 @@ This card is complete only when:
 - acceptance evidence is recorded;
 - future enhancements are separated from recovery blockers.
 
-Current known blockers before completion:
+Current known future enhancements:
 
-- The `New Signal` Teams alert proof is not yet complete.
 - Exact future employee/operator/trusted-partner access groups remain a
   read-back item before new grants.
 
