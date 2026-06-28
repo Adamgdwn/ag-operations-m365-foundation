@@ -6,10 +6,13 @@
 > you need the full pathway before drilling into the roadmap or a specific
 > function plan.
 > **Status:** master map. Points to the canonical sources; does not replace them.
-> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-24 night
-> (docs boxed; Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone
-> all LIVE; next plan is the M365 Interaction Agent with New Signal Teams
-> alerting as the first proof).
+> **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-27
+> (Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE;
+> M365 Interaction Agent B1-B9 G0 live-proven; B9a local selected-signal
+> operating packet complete; B9b selected internal read-only triage proof
+> complete; B10a local QUO inbound source proof packet complete; Chunk 20G GAIL
+> OS bridge/one-writer framing merged; next chunk is B10b QUO
+> implementation-ready placeholder/design pack).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),
@@ -33,6 +36,21 @@ the same way:
 
 **The pathway in one line:** finish the shared infrastructure once → then walk
 down each function deliberately, with Adam, one at a time.
+
+Guided AI Labs operating-system interpretation:
+
+- M365 is the enterprise body: records, collaboration, communications, tasks,
+  files, and governed execution channels.
+- Sensory portals feed that body through CRM and adjacent intake lanes: Web /
+  Forms / Journey first, QUO Phone / Voice / Text next, and documents,
+  dashboards, and client inputs later.
+- Freedom, Guided AI Labs Operating System, and Graphify remain distinct higher
+  layers: executive coordination, governance/autonomic management, and
+  relationship/context intelligence.
+- The local `G0-G4` governance ladder maps to the organization-level `R0-R5`
+  authority model. Current work enables R0/R1 and narrowly approved R2/R3 only;
+  R4 delegated autonomy is not enabled, and R5 human-only decisions remain with
+  Adam.
 
 ---
 
@@ -91,7 +109,7 @@ Three things are now LIVE and verified; the rest remain plan-only.
 | Knowledge / Records | [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md) | Plan only |
 | Support / Intake | [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md) | Plan only |
 | Finance / Closeout | [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md) | Plan only |
-| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **NEXT** — build the M365 Interaction Agent capability path over Agent Action Log, Decision Register, Automation Backlog, and one real operating workflow. First proof: `CRM - New Signals` -> `New Signal` Teams alert. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); setup: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md) |
+| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B9 G0 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, lead-source display, Journey replay/idempotency hardening, and one selected internal read-only operating triage pass. B10a local QUO inbound source proof packet complete; next: B10b QUO implementation-ready placeholder/design pack. Live QUO proof moves to B10c or a later source-expansion stage after exact approval. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); chunks: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
 | Access / Onboarding | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model; net-new hiring/role-profile work deferred until growth makes it useful |
 
 ---
@@ -136,18 +154,27 @@ PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← 
           Stage 8 packet archive move held for Adam's explicit OK
   ✅ Bookings / Scheduling LIVE  (native MS Bookings → CRM, intake consumer #2)
   ✅ Operations Follow-up Backbone LIVE  (Email + two-way Calendar + one-way Planner; 15-min sync engine)
-     ▸ NEXT: M365 Interaction Agent
-     ③ Prove New Signal Teams alerting for first-minute CRM signals
-     ④ Route the follow-on agent proposal through G0-G4 / Agent Action Log
-     ⑤ Keep QUO parked until the Teams alert proof is clean
+     ▸ CURRENT: M365 Interaction Agent
+     ✅ B1-B9 G0 live-proven: New Signal alerting, triage/advisory, Suggested rows,
+        one-writer posture, Journey source proof, Journey CRM receipt ack,
+        lead-source display, Journey replay/idempotency hardening, and selected
+        internal read-only operating triage
+     ✅ B8a: local Journey portalEventId, receipt, retry/replay, and cleanup packet
+     ✅ B8b: live Journey hardening proof
+     ✅ B9a: local selected-signal operating packet, queue, and review template
+     ✅ B9b: selected internal G0 operating triage proof complete
+     ✅ B10a: local QUO inbound source proof packet, event mapping, and proof checklist
+     ③ B10b: close QUO implementation-ready placeholder/design pack, no QUO API work
+     ④ B10c/later: add QUO as inbound-only live source proof while volume is low, if approved
 ```
 
 **Plain reading:** the spine is complete and the first function (CRM) plus two
 adjacent functions (Bookings, Follow-up backbone) are LIVE. CRM is closed except
-for the explicitly held Stage 8 packet archive move. Adam's next priority is one
-governed M365 Interaction Agent, not hiring/onboarding and not a stack of helper
-bots. Build the New Signal Teams alert proof next, then route the follow-on
-agent proposal through the live G0-G4 / Agent Action Log model.
+for the explicitly held Stage 8 packet archive move. Adam's current priority is
+one governed M365 Interaction Agent, not hiring/onboarding and not a stack of
+helper bots. The B1-B9 G0 proof lane is done; now box QUO as the next source
+contract without forcing API work, while future B9 normal-client reads and G1
+Suggested rows remain selected/approved per item.
 
 ---
 
@@ -157,7 +184,7 @@ agent proposal through the live G0-G4 / Agent Action Log model.
    full-path context. Confirm where the spine stands (§1) and which function is active (§2).
 2. The spine (§1) is complete — no infrastructure items remain. If a selected function has an open gate, work that before expanding scope.
 3. If building a function, open its plan file from §2 first — **never start a function build without its plan**, and for onboarding do the reconcile (§3) first.
-4. Keep the governance model: G0/G1 free, G2 single-`Y`, G3 gated/Adam-only, G4 blocked.
+4. Keep the governance model: G0/G1 free, G2 single-`Y`, G3 gated/Adam-only, G4 blocked, mapped to R0/R1/R2/R3/R5 with no R4 delegation.
 5. Update §1 status and the active-function note in §2 when a stage or function changes state.
 
 ---
@@ -167,8 +194,9 @@ agent proposal through the live G0-G4 / Agent Action Log model.
 - **Resolved:** the first function was **CRM / Relationships** — built end-to-end,
   LIVE, and recovery-closed, with **Bookings** and the **Operations Follow-up
   Backbone** coming online on top of it.
-- **Selected next direction:** **M365 Interaction Agent** — one governed agent
-  with capabilities, not a helper stack. The first proof is immediate internal
-  notification: `CRM - New Signals` created -> Teams channel `New Signal`, then
-  agent triage through the existing G0-G4 / Agent Action Log model. QUO,
-  onboarding, role profiles, and hiring packet work are deferred.
+- **Selected current direction:** **M365 Interaction Agent** — one governed
+  agent with capabilities, not a helper stack. The first proof lane is live
+through B9 G0, and the B10a local QUO readiness packet is complete. Next comes
+B10b QUO placeholder/design closeout; live QUO proof is B10c/later after exact
+approval. Onboarding, role profiles, and hiring packet work are deferred until
+growth makes them useful.

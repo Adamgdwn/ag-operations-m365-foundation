@@ -5,7 +5,14 @@ Date: 2026-06-19
 Status: Active recommendation map for becoming agentic and AI-centric. Chunk 6
 readiness pass complete. Active revision on 2026-06-24: build one governed
 `M365 Interaction Agent` with capability contracts, not a stack of separate
-supervised helpers.
+supervised helpers. 2026-06-27 update: B1-B9 G0 are live-proven; B8a local
+Journey hardening, B8b live Journey replay/idempotency proof, B9a local
+selected-signal operating readiness, B9b selected internal read-only triage, and
+B10a local QUO inbound source readiness are complete. 2026-06-28 update: Chunk
+20G GAIL OS bridge/one-writer framing is merged, and the remaining structured
+chunk is B10b QUO implementation-ready placeholder/design pack. Live QUO proof
+moves to B10c or a later source-expansion stage after exact approval. Future B9
+normal-client reads and G1 Suggested rows remain selected/approved per item.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -50,16 +57,58 @@ Current active implementation note:
 - The active plan is
   `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
 - The first live notification capability is documented in
-  `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`.
+  `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md` and is now proven.
+- Current build chunks live in
+  `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`.
+- B8a local Journey hardening packet lives at
+  `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md`.
+- B8b live Journey loop hardening proof lives at
+  `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
+- B9a local selected-signal operating packet lives at
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
+- B9b selected G0 triage proof lives at
+  `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
+- B10a local QUO inbound source proof packet lives at
+  `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
 - `agent-pnp-provisioning` and delegated setup scripts remain setup/proof
   tooling only; they are not the production agent identity.
-- QUO phone integration is parked until the internal Teams alert is proven.
+- QUO phone integration has a local B10a readiness packet, but no live QUO
+  connector, webhook, CRM write, Teams post, or outbound action is approved.
 
 Microsoft 365 should become the governed operating substrate:
 
 ```text
 identity -> records -> permissions -> signals -> recommendations -> approvals -> actions -> evidence
 ```
+
+Visible interaction principle:
+
+If a governed action needs Adam to type an approval phrase, choose an account,
+complete MFA, select a source item, confirm a source proof, or operate a live
+admin/source surface, the agent is responsible for opening or naming the exact
+visible interaction surface first. Approval gates should not be hidden in a
+background terminal or implied from chat context. For the M365 Interaction Agent
+B8/B9/B10 lane, use `scripts/Start-M365InteractionAgentApprovalWindow.ps1` to
+show scope and stop conditions in a visible PowerShell window and record local
+approval evidence before any live tenant/source work begins.
+
+In the broader Guided AI Labs operating-system vision, M365 is the enterprise
+body and execution substrate. Freedom coordinates executive cognition, Guided
+AI Labs Operating System holds governance/autonomic management, and Graphify
+holds relationship/context intelligence. This readiness plan keeps the M365
+lane structured enough for those layers to consume later without granting them
+production authority from this repo.
+
+Authority vocabulary maps as follows:
+
+| Org level | Local gate | Current readiness meaning |
+|---|---|---|
+| R0 Observe | G0 | Read-only review, classification, summarization, and gap detection. |
+| R1 Propose | G1 | Supervised suggestions and Agent Action Log rows. |
+| R2 Internal Act | G2 | Approved internal M365 writes with rollback evidence. |
+| R3 Restricted | G3 | External, access, connector, callback, or sensitive work with Decision Register approval and typed phrase. |
+| R4 Delegated Autonomous | Not enabled | Future separate project only; not approved by current agentic readiness work. |
+| R5 Human Only | G4 blocked/escalate | Adam-only authority for commitments, legal/billing, admin/access, deletes/merges, external sends, and any R4 delegation. |
 
 AI should first produce recommendations and drafts. Write-capable agents should
 come later, after approval gates, logs, rollback notes, and permission boundaries
@@ -96,6 +145,11 @@ Narrow 2026-06-24 exception for the selected proof:
 
 This exception does not approve app registration, admin consent, external
 messaging, guest/sharing changes, QUO, or broad unattended automation.
+
+Later B1-B9 G0 work proved the Journey source, receipt, replay/idempotency lane,
+and selected internal read-only operating triage, but it does not approve future
+B9 normal-client reads, B9 Suggested rows, B10b QUO setup/proof, outbound
+phone/SMS behavior, or any new live write.
 
 No live tenant read or write was performed during Chunk 6. This pass used local
 Stage 7 governance evidence, Stage 9 bridge-readiness evidence, the Chunk 5 card
@@ -233,13 +287,13 @@ Agentic work should be auditable and reversible, not vibes plus scripts.
 
 Chunk 6 approval pattern:
 
-| Level | Action posture | Required gate | Evidence |
-|---|---|---|---|
-| G0 | Read only. | Role-appropriate read access. | Optional action-log note when the review changes a decision or blocker. |
-| G1 | Propose and log. | Source, owner, affected card, and no restricted action. | Agent Action Log row with status `Suggested`. |
-| G2 | Approved internal write. | Named human approval and rollback note. | Agent Action Log plus target List/task/draft/evidence link. |
-| G3 | Restricted external or access write. | Decision Register approval and typed approval phrase. | Decision Register, Agent Action Log, and read-back/transcript evidence. |
-| G4 | Blocked autonomous action. | Separate Adam decision for a controlled project, if ever. | Decision Register only; do not execute from this readiness pass. |
+| Level | Org map | Action posture | Required gate | Evidence |
+|---|---|---|---|---|
+| G0 | R0 Observe | Read only. | Role-appropriate read access. | Optional action-log note when the review changes a decision or blocker. |
+| G1 | R1 Propose | Propose and log. | Source, owner, affected card, and no restricted action. | Agent Action Log row with status `Suggested`. |
+| G2 | R2 Internal Act | Approved internal write. | Named human approval and rollback note. | Agent Action Log plus target List/task/draft/evidence link. |
+| G3 | R3 Restricted | Restricted external or access write. | Decision Register approval and typed approval phrase. | Decision Register, Agent Action Log, and read-back/transcript evidence. |
+| G4 | R5 Human Only / no R4 delegation | Blocked autonomous action. | Separate Adam decision for a controlled project, if ever. | Decision Register only; do not execute from this readiness pass. |
 
 ### 6. Copilot Agents
 
@@ -331,9 +385,21 @@ AI increases the value of clean governance and the blast radius of messy access.
 6. Harden records, permissions, labels, and audit before broader Copilot use.
 7. Prove Agent Action Log and Decision Register workflow during the final
    workspace walkthrough and any future supervised loops.
-8. Pilot read-only recommendation agents.
-9. Add connector-grounded knowledge where SharePoint is not enough.
-10. Add write-capable agents only behind explicit approval gates.
+8. Complete B8a local Journey receipt/replay hardening packet. Done.
+9. Complete B8b live Journey hardening after exact schema/flow/replay approval.
+   Done.
+10. Complete B9a local selected-signal operating packet. Done.
+11. Run B9b selected-signal operating triage under G0 after item selection.
+    Done for internal CRM item `#32`; no G1 row was written.
+12. Complete B10a local QUO inbound source proof readiness packet. Done.
+13. Close B10b QUO implementation-ready placeholder/design pack without QUO API
+    work. Pending Adam go-ahead.
+14. Run B10c/later QUO inbound-only live proof only after exact
+    number/event/ingress, secret, retention, duplicate, disable, and
+    outbound-block approval.
+15. Pilot read-only recommendation agents.
+16. Add connector-grounded knowledge where SharePoint is not enough.
+17. Add write-capable agents only behind explicit approval gates.
 
 ## Microsoft 365 Surfaces To Evaluate
 
@@ -370,6 +436,10 @@ Highest-priority open decisions:
   write-capable custom actions.
 - Which content is too sensitive for broad Copilot grounding.
 - Whether any external source deserves a Copilot connector after ACL mapping.
+- Whether any future selected B9 item may receive a separate G1 Suggested row,
+  or whether another normal-client B9 read should run against exact item id(s).
+- Which QUO number(s), event classes, ingress pattern, payload retention,
+  duplicate rule, disable path, and outbound block are approved for B10b.
 
 ## Chunk 6 Acceptance Test
 

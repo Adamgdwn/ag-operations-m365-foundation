@@ -43,14 +43,18 @@ Graphify is not in this flow — it is the connectome consulted by Freedom and G
 
 | Surface | Type | Write Owner | Current State |
 |---|---|---|---|
-| SharePoint Lists | Structured data (CRM, decisions, tasks) | GAIL OS Connector (Phase 4) | Manual / human-only at A1 |
+| SharePoint Lists | Structured data (CRM, decisions, tasks) | Adam-owned manual actions and approved Power Automate proof flows today; GAIL OS Connector in Phase 4 | Transitional proof flows may create approved CRM rows; no autonomous GAIL OS connector writer yet |
 | Planner Tasks | Task tracking | GAIL OS Connector (Phase 4) | Manual / human-only at A1 |
-| Teams Messages | Communication | GAIL OS Connector (Phase 4) | Manual / human-only at A1 |
+| Teams Messages | Communication | Adam-owned `GAIL - New Signal Teams alert` proof flow today; GAIL OS Connector in Phase 4 | Transitional internal alert flow is `Started`; no autonomous GAIL OS connector writer yet |
 | SharePoint Pages | Documentation | Human only — not an agent write surface | Human only |
 | Exchange / Outlook | Email and calendar | Human only at this phase | Human only |
 
-**Current production boundary: A1 — local, no-network.**  
-No M365 write is permitted from any agent at A1. All M365 writes listed above are either manual or blocked pending Phase 4.
+**Current production boundary: GAIL OS A1 — local, no-network.**
+No autonomous GAIL OS Connector execution is permitted at A1. The existing
+Power Automate proof flows are Adam-approved transitional M365 infrastructure,
+not Phase 4 connector execution. Any future production connector write must
+either register those flows under the GAIL OS Connector model or explicitly
+retire/replace them before the one-writer handoff.
 
 ---
 

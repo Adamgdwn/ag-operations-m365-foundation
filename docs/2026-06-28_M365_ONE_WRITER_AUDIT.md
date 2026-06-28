@@ -17,15 +17,19 @@ The one-writer rule requires that every write surface has exactly one designated
 
 | Write Surface | Current Writer | CNS Phase 4 Designated Writer | Status | Notes |
 |---|---|---|---|---|
-| SharePoint Lists (CRM) | Adam Goodwin (human) | GAIL OS M365 Connector | CLEAN — one writer today; transition gate = BLK-005 + Phase 4 auth | No agent write active at A1 |
-| SharePoint Lists (Tasks/Planner) | Adam Goodwin (human) | GAIL OS M365 Connector | CLEAN — one writer today | No agent write active at A1 |
+| SharePoint Lists (CRM) | Adam Goodwin plus approved create-only Power Automate proof flows | GAIL OS M365 Connector | CLEAN WITH TRANSITION NOTE — no autonomous GAIL OS connector writer today; transition gate = BLK-005 + Phase 4 auth | Existing Journey/custom-site intake flows may create approved CRM rows and must be registered, retired, or replaced before Phase 4 |
+| SharePoint Lists (Tasks/Planner) | Adam Goodwin (human) | GAIL OS M365 Connector | CLEAN — one writer today | No autonomous GAIL OS connector write active at A1 |
 | SharePoint Pages (docs) | Adam Goodwin (human) | Human only — not an agent surface | CLEAN — human-only, no agent handoff planned | Documentation surface, not execution surface |
-| Planner Tasks | Adam Goodwin (human) | GAIL OS M365 Connector | CLEAN — one writer today | No agent write active at A1 |
-| Teams Messages | Adam Goodwin (human) | GAIL OS M365 Connector | CLEAN — one writer today | Alert/notification surface; agent write deferred to Phase 4 |
+| Planner Tasks | Adam Goodwin (human) | GAIL OS M365 Connector | CLEAN — one writer today | No autonomous GAIL OS connector write active at A1 |
+| Teams Messages | Adam-owned `GAIL - New Signal Teams alert` proof flow | GAIL OS M365 Connector | CLEAN WITH TRANSITION NOTE — one approved internal alert flow today; Phase 4 connector writer deferred | Existing flow may post internal New Signal alerts and must be registered, retired, or replaced before Phase 4 |
 | Exchange / Outlook | Adam Goodwin (human) | Human only at this phase | CLEAN — human-only | External send boundary; requires explicit future governance decision |
 | Entra / Identity | Adam Goodwin (human, admin) | Human only — admin surface | CLEAN — never an agent write surface | BLK-005 resolution requires human admin action |
 
-**Audit result: CLEAN.** No unregistered write paths identified. No dual-writer conflicts. All agent write surfaces are blocked at A1 and deferred to Phase 4 with BLK-005 as the gate.
+**Audit result: CLEAN WITH TRANSITION NOTE.** No dual autonomous writers were
+identified. Existing Adam-approved Power Automate proof flows are transitional
+M365 infrastructure, not autonomous GAIL OS Connector execution. All future
+production connector write surfaces remain blocked at A1 and deferred to Phase 4
+with BLK-005 as the gate.
 
 ---
 
@@ -33,7 +37,7 @@ The one-writer rule requires that every write surface has exactly one designated
 
 The one-writer rule for M365 is enforced by three layers:
 
-1. **A1 boundary (current):** GAIL OS current autonomy level is A1 — local, no-network. No live connector execution is permitted. All M365 writes are blocked at the policy gate.
+1. **A1 boundary (current):** GAIL OS current autonomy level is A1 — local, no-network. No live GAIL OS Connector execution is permitted. Existing Adam-approved Power Automate proof flows may remain started, but they are not Phase 4 connector execution and do not authorize new agent writes.
 
 2. **Connector registry (Phase 4):** Every write surface will have exactly one `ConnectorProfile` in the GAIL OS Connector Registry. The `prohibited_capabilities` list on each profile explicitly blocks capabilities not granted. The `stop_triggers` list halts execution on any out-of-scope access.
 
@@ -74,7 +78,10 @@ The `source-ref.schema.json` (GAIL OS `contracts/json-schema/`) provides the sou
 | Evidence packet return path verified | NOT STARTED | Depends on Phase 4 integration test |
 | One-writer rule confirmed by integration test | NOT STARTED | Depends on all above |
 
-**Current posture: no Phase 4 gate is open.** Documentation-only work proceeds; implementation blocked until BLK-005 resolves and GAIL OS HTTP API (Chunk 21) is live.
+**Current posture: no Phase 4 gate is open.** Documentation-only work proceeds;
+new connector implementation is blocked until BLK-005 resolves and GAIL OS HTTP
+API (Chunk 21) is live. Existing proof flows remain transitional and must be
+explicitly registered, retired, or replaced during the Phase 4 handoff.
 
 ---
 

@@ -2,31 +2,25 @@
 
 Date: 2026-06-25
 
-Status: B1-B4 live proof completed on 2026-06-25, then paused by Adam while
-separate Prime Boiler 365 setup work was happening under another account. Adam
-clarified that the Guided AI Labs `New Signal` path remains canonical for this
-repo. The first lane now has a live Teams channel, standard Teams Power
-Automate connector, started SharePoint-to-Teams flow, synthetic CRM proof item,
-Teams post evidence, B2/B3 triage packet, similar-record advisory, and one B4
-`Suggested` Agent Action Log row. The B5 local audit and durable permission
-decision were recorded live on 2026-06-25 as Decision Register item `#6` and
-Agent Action Log item `#10`. B6 Guided AI Journey direct Form proof is now live:
-the Microsoft Form was submitted on 2026-06-25 at 18:18 MDT, the create-only
-Journey flow created `CRM - New Signals` item `#21`, verification passed, Teams
-web proof found exactly one `Guided AI Labs / New Signal` post for item `#21`,
-and Adam's G1 approval recorded Agent Action Log `#11` as `Suggested`. B7 is
-now live and proved as the Guided AI Journey minimal invite/admin signal plus
-CRM receipt acknowledgement loop. Journey production is deployed with
-`POST /api/crm/lifecycle/ack`, Vercel production has the server-side ack
-secret, and the M365 custom HTTP intake flow now sends a signed post-create
-receipt callback. Synthetic portal event
-`db8d3f91-002b-4729-b6ac-556ee5813d3d` created `CRM - New Signals` item `#25`,
-the M365 callback action succeeded, Journey read back `crm_received`, and the
-New Signal Teams alert flow posted successfully. Follow-on source display proof
-on 2026-06-25/26 added `Lead source detail` to CRM provenance and Teams alerts:
-direct synthetic Journey source event `journey-portal-event-1782447883236`
-created CRM item `#27` with `Lead source detail: Journey admin invite`, and the
-patched Teams alert flow posted successfully.
+Status: B1-B7 live-proof baseline established on 2026-06-25/26. The proven
+lane now includes New Signal Teams alerting, B2/B3 triage evidence,
+similar-record advisory, one G1 `Suggested` Agent Action Log row, B5 one-writer
+posture, B6 Guided AI Journey source proof, B7 Journey CRM receipt
+acknowledgement, and lead-source display in CRM provenance and Teams alerts.
+The current planning update on 2026-06-28 folds in the bigger Guided AI Labs
+operating-system frame: M365 is the enterprise body, GAIL OS is the governed
+authority layer, and this repo owns the Microsoft 365 execution/evidence lane.
+B8 hardens the Journey receipt/replay loop, B9 exercises selected-signal triage
+in normal use, and B10 keeps QUO close as the first Phone / Voice / Text sensory
+portal without forcing QUO API details too early. B8a local hardening design and
+B8b live schema/flow/replay proof are executed. B9a local selected-signal
+operating packet is executed, and B9b has now proved one selected internal G0
+read-only triage pass against CRM item `#32` with no Agent Action Log write. A
+future B9 G1 `Suggested` row still requires per-item approval. B10a local QUO
+inbound source readiness is executed as a no-live-touch packet; B10b is now a
+detailed implementation-ready placeholder/design pack. The actual low-volume
+QUO live proof moves to B10c or the next source-expansion stage after exact
+number, event, ingress, secret, retention, disable, and outbound-block approvals.
 
 Owner: Adam.
 
@@ -51,11 +45,90 @@ CRM signal created
 -> Agent Action Log Suggested row
 -> durable agent permission decision
 -> more inbound sources
+-> source receipt acknowledgement where needed
+-> operational hardening and QUO placeholder/readiness
+-> later low-volume QUO live proof after exact approval
 ```
 
 This is a build plan, not standing approval for tenant writes. Each live write,
 connector, app, permission, external send, or source expansion still needs its
 own approval boundary.
+
+Operator interaction rule: Adam should never have to guess where an approval,
+sign-in, MFA prompt, source selection, or source proof interaction is supposed
+to happen. Before waiting on Adam, the agent must open or name the exact visible
+window/browser/admin surface, give it a clear title, and record where the local
+evidence will land. For B8/B9/B10 approval captures, use
+`scripts/Start-M365InteractionAgentApprovalWindow.ps1`; it opens a visible
+PowerShell window, shows the approved scope and stop conditions, and writes a
+local `.local/interaction-agent-approvals/*.json` capture without performing
+tenant/source work. For B9b, the selected CRM item scope is stored locally in
+that untracked capture file so the later read-only run can be tied to the
+visible operator selection.
+
+## Guided AI Labs OS Alignment
+
+The Guided AI Labs central-nervous-system vision does not change the B8/B9/B10
+order. It clarifies what this M365 lane is responsible for.
+
+- M365 is the enterprise body: records, collaboration, communications, tasks,
+  files, and governed internal execution.
+- `CRM - New Signals`, Forms/Journey, and QUO are sensory portals into that
+  body. B10 is the first Phone / Voice / Text sensory design lane, with live
+  source proof deferred until the QUO API/webhook details are worth the attention.
+- Teams, Power Automate, scripts, M365 agents, APIs, product apps, and later
+  actions are execution channels, not independent brains.
+- Freedom is the executive-cognition/coordinator layer, Guided AI Labs
+  Operating System is the governance/autonomic-management layer, and Graphify
+  is the relationship/context-graph layer.
+- B8/B9/B10 should leave stable event ids, source ids, relationship hints,
+  governance labels, and evidence packets that those layers can consume later.
+  They should not couple this repo directly to Freedom or Graphify yet.
+
+Authority vocabulary:
+
+| Org authority level | Local M365 build gate | Current interpretation |
+|---|---|---|
+| R0 Observe | G0 | Read, classify, summarize, detect gaps, and produce local evidence. |
+| R1 Propose | G1 | Write or prepare supervised `Suggested` rows only. |
+| R2 Internal Act | G2 | Approved internal List/task/draft writes with rollback evidence. |
+| R3 Restricted | G3 | External, access, connector, or callback-impacting work with Decision Register approval and typed phrase. |
+| R4 Delegated Autonomous | Not enabled | No B8/B9/B10 work creates autonomous delegated authority. |
+| R5 Human Only | G4 blocked/escalate | Adam keeps final authority for client commitments, legal/billing, access/admin, deletes/merges, external sends, and any R4 delegation decision. |
+
+Keep using `G0-G4` in current M365 scripts and docs until there is a deliberate
+rename. Use `R0-R5` as the organization-level interpretation of the same
+authority boundary.
+
+## Reconciliation Chunk - 2026-06-28
+
+This branch has merged `origin/main` through Chunk 20G, which added:
+
+- `AGENTS.md`, naming this repository as the M365 Foundation layer of the Guided
+  AI Labs Agentic OS central nervous system.
+- `2026-06-27 - azure-cloud-hosting-decision.md`, locking Azure as the primary
+  runtime for GAIL OS / M365 bridge work.
+- `docs/2026-06-28_M365_GAIL_OS_BRIDGE_PLACEMENT_REGISTER.md`, placing M365 as
+  the enterprise body beneath the GAIL OS authority layer.
+- `docs/2026-06-28_M365_ONE_WRITER_AUDIT.md`, recording the one-writer posture
+  and Phase 4 connector gates.
+
+Reconciliation rule:
+
+- Existing Power Automate proof flows may remain `Started` as Adam-approved
+  transitional proof infrastructure.
+- They are not autonomous GAIL OS connector execution and do not open Phase 4.
+- Any future production connector, app registration, consent grant, or live QUO
+  source hookup remains blocked until BLK-005, GAIL OS Connector registry, and
+  explicit Adam approval are satisfied.
+
+Grouped chunk plan from here:
+
+| Chunk | Scope | Status | Execution trigger |
+|---|---|---|---|
+| B10b | QUO implementation-ready placeholder/design pack | Planned next | Adam go-ahead; no QUO API discovery required |
+| B10c | Low-volume QUO live source proof | Later | Exact QUO number/event/ingress/secret/retention/disable approvals |
+| Phase 4 bridge | GAIL OS Connector registry + M365 production write path | Blocked | BLK-005 resolved, GAIL OS HTTP API live, explicit Phase 4 auth |
 
 ## Pause Handover - 2026-06-25
 
@@ -106,6 +179,15 @@ Safe work while paused:
   to preview the B5 recorder without connecting to Microsoft 365.
 - Run `scripts/Invoke-M365B6JourneyIntakeProof.ps1 -NoPause` to prepare the B6
   Journey intake proof packet without connecting to Microsoft 365.
+- Run `scripts/New-M365B8JourneyLoopHardeningPacket.ps1 -NoPause` to regenerate
+  the B8a local hardening packet without connecting to Microsoft 365.
+- Run `scripts/New-M365B9SelectedSignalOperatingTriagePacket.ps1 -NoPause` to
+  regenerate the B9a local selected-signal operating packet, queue template, and
+  review template without connecting to Microsoft 365.
+- Run `scripts/New-M365B10QuoInboundSourceProofPacket.ps1 -NoPause` to
+  regenerate the B10a local QUO inbound source proof packet, event mapping,
+  decision worksheet, and proof checklist without connecting to QUO or
+  Microsoft 365.
 - After Adam manually submits the selected Journey proof intake, run
   `scripts/Start-M365B6JourneyIntakeProofInteractive.ps1 -Verify -ForceFreshLogin`
   to verify the CRM signal read-only.
@@ -187,6 +269,9 @@ B7 evidence:
 | B5 | Durable permission decision | Decision Register | Adam chooses the real `m365-interaction-agent` posture. |
 | B6 | Source expansion | Later G2/G3 per source | More inbound sources feed the same CRM -> agent lane. |
 | B7 | Journey minimal signal + CRM receipt ack | Source ingress plus restricted external callback | Journey invite/admin signal creates CRM item, then M365 confirms receipt back to Journey dashboard. |
+| B8 | Journey loop hardening | B8a G0/R0 complete; B8b G2/G3 live proof complete | First-class `portalEventId`/receipt state, idempotent replay, and pending cleanup plan. |
+| B9 | Selected signal operating triage | B9a G0/R0 complete; B9b selected G0/R0 complete; future G1 selected only | Run the proven triage/advisory path on selected CRM items and optionally record one Suggested row per approved item. |
+| B10 | QUO inbound source proof | B10a G0/R0 complete; B10b G3 by exact source proof approval | Low-volume QUO call/SMS/voicemail events create or map CRM signals through the existing alert and triage lane as the first Phone / Voice / Text sensory portal. |
 
 ## Live Proof Record
 
@@ -220,6 +305,8 @@ permissions, or call QUO.
 - Keep Teams as an internal attention surface, not the system of record.
 - Keep the agent as one named capability set, not separate CRM, Teams, Planner,
   phone, and support bots.
+- Keep M365 as the governed enterprise body and execution substrate, not the
+  full executive brain or graph intelligence layer.
 - Do not reuse `agent-pnp-provisioning` as production agent authority.
 - Treat `Suggested` as not approved.
 - Treat `Approved` as not executed.
@@ -562,7 +649,7 @@ Candidate sources:
 - Microsoft Bookings appointment events already feeding CRM.
 - Support mailbox signals, after support MFA and mailbox adapter design.
 - Manual CRM entries from Adam/operator.
-- QUO calls, SMS, voicemail, and call summaries, still parked until selected.
+- QUO calls, SMS, voicemail, and call summaries, queued for B10 after B8/B9.
 - Future website or event/referral sources.
 
 Build pattern:
@@ -626,12 +713,15 @@ Selected first proof completed:
 - Agent Action Log: `#11`, status `Suggested`, boundary only; no CRM update,
   task, reminder, message, merge, permission, or external action.
 
-QUO remains parked until:
+QUO now has B10a local readiness complete. B10b placeholder/design closeout does
+not touch QUO or Microsoft 365. B10c/later live proof waits until:
 
-- B1 through B4 are proven;
 - Adam chooses which QUO numbers and events count as business intake;
-- inbound-only behavior is approved;
-- outbound SMS/callback is explicitly blocked or separately approved.
+- Adam chooses the ingress option, secret/signature storage, payload retention,
+  duplicate rule, and disable path;
+- inbound-only behavior is approved for one no-real-client or internal event;
+- outbound SMS/callback is explicitly blocked or separately approved in a later
+  G3 decision.
 
 Acceptance:
 
@@ -705,35 +795,47 @@ Slim signal principle:
   name/email/org, one useful free-text prompt, one optional intent choice, and
   one consent checkbox when a human is submitting.
 
-Open live work:
+Completed live work:
 
-- Journey confirmed `POST https://www.guidedaijourney.com/api/crm/lifecycle/ack`
+- Journey confirmed `POST <<JOURNEY_ACK_ENDPOINT_SERVER_SIDE_ONLY>>`
   as the fixed server-side acknowledgement endpoint, `x-m365-ack-secret` as the
   header name, HTTP `200` as the success status, and a 15-minute dashboard
-  pending timeout. M365 must not call a callback URL supplied inside the inbound
+  pending timeout. M365 does not call a callback URL supplied inside the inbound
   payload.
 - M365 read-only verified the custom HTTP intake flow state as `Started` on
   2026-06-25, with evidence in
   `inventory/forms-build/flow-state-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-032732.json`.
-- M365 must build/enable the outbound CRM receipt callback flow only after the
-  Journey production deploy readiness checks pass and the real ack secret is
-  stored locally. Adam has approved the live callback build; do not use a
-  placeholder secret.
+- Journey production was deployed with the server-side ack secret outside git.
+- The M365 custom HTTP intake flow was updated to send a signed post-create CRM
+  receipt callback.
+- The no-real-subject proof created one CRM item, sent the acknowledgement, and
+  Journey read back `crm_received`.
+- The follow-on lead-source display proof added `Lead source detail` to CRM
+  provenance and Teams alerts.
 
-No-real-subject proof:
+Final no-real-subject proof:
 
 ```text
-portalEventId: GAIL-B7-PORTAL-EVENT-20260625
-correlationId: GAIL-B7-PORTAL-EVENT-20260625
-companyId: journey-company-internal-walkthrough
-engagementId: journey-engagement-internal-walkthrough
-journeyInviteId: journey-invite-test-20260625
-name: GAIL INTERNAL CRM ACK TEST
-email: adam+journey-crm-ack-20260625@guidedailabs.com
-organization: Guided AI Labs Internal Walkthrough
+portalEventId: db8d3f91-002b-4729-b6ac-556ee5813d3d
+crmItemId: 25
+journeyStatus: crm_received
+teamsAlert: posted successfully
+proof: inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md
+realClientSubject: no
 ```
 
-Acceptance:
+Lead-source display proof:
+
+```text
+portalEventId: journey-portal-event-1782447883236
+crmItemId: 27
+leadSourceDetail: Journey admin invite
+teamsAlert: posted successfully with lead-source row
+proof: inventory/m365-interaction-agent-b7/B7_LEAD_SOURCE_PROOF_2026-06-25.md
+realClientSubject: no
+```
+
+Acceptance result:
 
 - Journey dashboard records the test invite/admin signal.
 - M365 creates exactly one `CRM - New Signals` item with
@@ -742,17 +844,15 @@ Acceptance:
   invite id.
 - The New Signal Teams alert appears once.
 - M365 ack callback updates Journey dashboard to `crm_received`.
+- Result: pass for the internal no-real-subject proof.
 
 M365-side answer to Linux/Journey questions:
 
-- Current flow builder can store `portalEventId` in CRM `SourceText` now; a
-  first-class SharePoint column is a later schema chunk if strict dedupe becomes
-  necessary.
-- The builder can call the signed ack endpoint after item creation, but only
-  when `.local/flow-builder/journey-crm-ack-endpoint.txt` and
-  `.local/flow-builder/journey-crm-ack-secret.txt` exist. Adam has approved the
-  live callback build; the remaining gate is real secret plus deployed endpoint,
-  not human approval.
+- Current flow builder stores `portalEventId` in CRM `SourceText`; B8 evaluates
+  first-class SharePoint storage for dedupe/read-back.
+- The builder calls the signed ack endpoint after item creation only when the
+  local endpoint/secret files exist. Secret values stay in `.local` or
+  production server-side stores, not git or DirectLink.
 - Safe return fields are the CRM item id, display-form URL, title, status,
   priority, and optional Power Automate run id.
 - Keep v1 lifecycle events in `CRM - New Signals` to reuse the proven alert and
@@ -766,50 +866,369 @@ Stop conditions:
 
 - Browser-side intake secret or ack secret.
 - Callback URL accepted from an inbound payload.
-- Real client invite used for the first proof.
+- Real client invite used for a proof without explicit selection.
 - CRM update, merge, task, external reply, guest invite, or permission change.
 - Any signal path that bypasses `CRM - New Signals`.
 
+## B8 - Journey Loop Hardening
+
+Objective:
+
+Turn the live Journey receipt loop into a small operating system: easy to
+dedupe, easy to read back, and recoverable when a Journey event is stuck at
+`crm_failed_or_timed_out`.
+
+Execution status - 2026-06-27:
+
+- B8a local-only hardening packet generated. No Microsoft 365 connection, HTTP
+  send, CRM write, flow update, secret read, or Journey callback was performed.
+- B8b live schema/flow/replay proof completed after Adam approved the exact
+  scope in a visible approval window. Proof packet:
+  `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
+- Indexed `PortalEventId` and `SourceCorrelationId` fields now exist on
+  `CRM - New Signals`.
+- The live HTTP intake flow now performs a pre-create lookup by `PortalEventId`.
+  A replay of the same event returns the existing CRM item path and does not
+  create a duplicate signal.
+- B8b synthetic/internal Journey replay proof used portal event
+  `0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca`; the first post created CRM item
+  `#32`, and the replay left the CRM count at one.
+- Config:
+  `config/M365_INTERACTION_AGENT_B8_JOURNEY_LOOP_HARDENING.json`.
+- Packet:
+  `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md`.
+- Summary JSON:
+  `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.json`.
+- Packet generator:
+  `scripts/New-M365B8JourneyLoopHardeningPacket.ps1`.
+- Read-only lookup helper
+  `scripts/flow-builder/find-crm-signal.js` is now B8-aware: it can use
+  first-class `PortalEventId` / `SourceCorrelationId` fields when present, and
+  falls back to current `SourceText` metadata scanning while those fields are
+  absent.
+- Recommended default: add `PortalEventId` and `SourceCorrelationId`; defer
+  `ReceiptStatus` until operators need CRM-local receipt state.
+- Duplicate/replay rule: one existing match returns the existing CRM item id/url
+  to Journey without creating a new CRM item; zero matches creates one item and
+  acks receipt; more than one match stops for Adam review. Compatibility note:
+  the Journey receiver currently accepts the B7 receipt shape, so the
+  existing-item branch keeps the receiver-compatible `crmStatus` value while
+  returning the existing CRM item id/url and message.
+- Live approval phrase consumed for B8b:
+  `approve-b8-journey-loop-hardening-live-update-20260627`.
+
+Scope:
+
+- Keep `CRM - New Signals` as the source of truth for new-work signals.
+- Keep the Journey ledger as the source of truth for portal event state.
+- Add first-class storage only where it improves dedupe, read-back, or operator
+  recovery.
+- Treat any further schema, flow-update, cleanup, backfill, or replay write as a
+  fresh approval gate.
+
+Build:
+
+- SharePoint schema change for first-class `portalEventId` storage is complete.
+  Candidate fields:
+  - `PortalEventId` as a single-line text column;
+  - `SourceCorrelationId` as a single-line text column;
+  - `ReceiptStatus` or equivalent only if CRM needs local receipt state rather
+    than deriving it from Journey.
+- HTTP intake flow update is complete: Journey metadata still lands in
+  `SourceText`, and approved first-class fields are populated directly.
+- Pre-create idempotency rule is complete: replaying the same `portalEventId`
+  must not silently create duplicate work.
+- Decide whether duplicate handling should:
+  - return the existing CRM item id to Journey;
+  - create a new Agent Action Log advisory;
+  - or stop and require Adam review.
+- Define a Journey operator retry/replay action for
+  `crm_failed_or_timed_out` that reuses the same `portalEventId`.
+- Define a no-delete cleanup policy for older synthetic pending rows: mark,
+  backfill, or leave with an evidence note.
+- Record expected evidence paths before any live flow update or replay test.
+
+Acceptance:
+
+- B8a local packet names exact fields, duplicate policy, replay policy, cleanup
+  policy, evidence paths, stop conditions, and the live approval phrase.
+- B8b proof shows a Journey event can be found from `portalEventId` without
+  scraping long notes.
+- B8b proof shows replaying the same `portalEventId` does not create an
+  unreviewed duplicate CRM signal.
+- A failed or timed-out Journey CRM receipt can now be retried by an operator
+  with an evidence trail.
+- Existing B7 proof behavior still works: CRM item created, Teams alert posted,
+  and Journey receives `crm_received`.
+- No secret value is committed to git, DirectLink, docs, or inventory.
+
+Stop conditions:
+
+- SharePoint schema changes without Adam's explicit approval.
+- Live flow update without approval, rollback note, and evidence target.
+- Browser-side secret exposure.
+- Callback URL accepted from inbound payload.
+- Automatic CRM merge, delete, or suppression.
+- Real client replay test before the synthetic replay path passes.
+- Any additional B8 write, replay, cleanup, or backfill without a fresh
+  approval boundary.
+
+## B9 - Selected Signal Operating Triage
+
+Objective:
+
+Use the proven triage/advisory/Suggested-row lane on selected CRM items so the
+agent starts helping with real operating judgment, without becoming unattended
+automation.
+
+Execution status - 2026-06-27:
+
+- B9a local-only operating packet generated. No Microsoft 365 connection, live
+  tenant read, CRM write, Agent Action Log write, flow update, HTTP send, or
+  secret read was performed.
+- B9b selected read-only proof completed against internal no-real-client CRM
+  item `#32`, the B8 replay proof item. The run produced a G0 triage/advisory
+  packet and stopped before any Agent Action Log write.
+- B9b proof:
+  `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
+- B9b triage packet:
+  `inventory/new-signal-triage/new-signal-triage-20260627-182259.md`.
+- B9b review CSV:
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-review-20260627-182259.csv`.
+- Config:
+  `config/M365_INTERACTION_AGENT_B9_SELECTED_SIGNAL_OPERATING_TRIAGE.json`.
+- Packet:
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
+- Summary JSON:
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.json`.
+- Queue template:
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-queue-20260627-093338.csv`.
+- Review template:
+  `inventory/m365-interaction-agent-b9/b9-operating-review-20260627-093338.csv`.
+- Packet generator:
+  `scripts/New-M365B9SelectedSignalOperatingTriagePacket.ps1`.
+- Seed evidence indexes prior B1 CRM item `#19` and B6 Journey CRM item `#21`
+  as packet-shape examples only; both already have prior Suggested rows and
+  should not be duplicated unless Adam explicitly approves a superseding row.
+- B9b used internal item `#32` because the visible B9b selection windows did not
+  produce a local selection capture before the carry-on instruction was executed
+  conservatively. Future normal/real selected runs should capture exact item
+  id(s) in the visible B9b selection window before reading tenant data.
+
+Build:
+
+- Adam selects one or more CRM item ids, source types, or a narrow time window.
+- Run G0 triage first: local packet, similar-record advisory, missing-info
+  summary, recommended first move, and governance level.
+- Compare the packet against what Adam would actually do and tune only the
+  decision rules that are visibly useful.
+- If Adam approves, write one G1 `Suggested` Agent Action Log row for the
+  selected item.
+- Preserve the duplicate guard: no second Suggested row for the same source
+  item unless Adam explicitly chooses that behavior.
+- Keep a small operating note that distinguishes:
+  - useful triage;
+  - noisy or premature recommendation;
+  - missing field/data issue;
+  - source-ingress problem;
+  - future automation candidate.
+
+Acceptance:
+
+- B9a local packet names the operating routine, selection policy, review labels,
+  duplicate policy, evidence paths, and stop conditions.
+- Queue and review CSV templates exist for selected-signal operation.
+- Selected real or internal CRM items produce useful local packets.
+- The packet identifies the source, the likely first move, related-record
+  advisory, missing info, and blocked actions.
+- Any Agent Action Log write remains `Suggested`, linked to evidence, and not
+  approved or executed.
+- The routine can be stopped after G0 with no tenant write.
+
+Stop conditions:
+
+- Unattended or broad scanning.
+- Writing CRM fields, tasks, reminders, or messages.
+- External replies, calls, SMS, or client commitments.
+- Treating the advisory match as automatic dedupe.
+- Using old proof approvals as permission for new live writes.
+
+## B10 - QUO Inbound Source Readiness
+
+Objective:
+
+Keep QUO close enough to the CRM -> Teams -> triage lane that phone/SMS/voicemail
+signals can be governed while volume is still low, without spending this phase
+on QUO API mechanics before the bigger operating-system architecture is ready.
+
+Local execution status - 2026-06-27:
+
+- B10a local-only source proof readiness packet generated. No QUO connection,
+  Microsoft 365 connection, CRM write, Teams post, flow update, HTTP send,
+  `.local` secret read, or outbound phone/SMS action was performed.
+- Config:
+  `config/M365_INTERACTION_AGENT_B10_QUO_INBOUND_SOURCE_PROOF.json`.
+- Packet:
+  `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
+- Summary JSON:
+  `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.json`.
+- Event mapping:
+  `inventory/m365-interaction-agent-b10/b10-quo-event-mapping-20260627-094929.csv`.
+- Live decision worksheet:
+  `inventory/m365-interaction-agent-b10/b10-quo-live-decision-worksheet-20260627-094929.csv`.
+- Proof checklist:
+  `inventory/m365-interaction-agent-b10/b10-quo-proof-checklist-20260627-094929.csv`.
+- Packet generator:
+  `scripts/New-M365B10QuoInboundSourceProofPacket.ps1`.
+- Future live approval phrase prepared, not consumed:
+  `approve-b10-quo-inbound-source-proof-20260627`.
+
+B10b placeholder target - 2026-06-28:
+
+- Treat B10b as a detailed implementation-ready placeholder/design pack.
+- Do not connect to QUO, inspect QUO secrets, create webhooks, call QUO APIs,
+  create CRM rows, update flows, post Teams messages, or run real phone traffic.
+- Capture the event taxonomy, normalized CRM shape, duplicate/idempotency model,
+  raw payload handling, visible approval surface, disable/revoke path, and
+  synthetic/no-real-client fixture shape.
+- Move the actual live source proof to B10c or the next source-expansion stage.
+
+Position:
+
+- QUO is later than B8/B9 because the Journey loop should be recoverable and
+  the selected-signal triage routine should be familiar first.
+- QUO is not much later than that. It should be the next source proof before
+  broad G2 internal writes, support mailbox adapters, Copilot custom actions,
+  or other source expansions.
+
+Inbound-only design target:
+
+- Approved QUO number(s) only.
+- Approved event classes only:
+  - inbound SMS or conversation message;
+  - missed call;
+  - voicemail;
+  - completed call summary or transcript, if available and approved.
+- Create or map to a `CRM - New Signals` item with `IntakeSource = QUO`.
+- Use `SignalType` values such as `Phone`, `SMS`, `Voicemail`, or
+  `Call Summary`.
+- Preserve caller/contact details, QUO conversation/call link, event timestamp,
+  and source event id when available.
+- Default missed calls and voicemails to at least `High` until Adam chooses a
+  more nuanced rule.
+- Let the existing New Signal Teams alert and B2/B3 triage lane do the rest.
+
+Design decisions before any live QUO hookup:
+
+- Which QUO number(s) count as business intake.
+- Which event classes create new CRM signals versus append/advisory only.
+- Whether the first proof uses manual bridge, no-code webhook bridge, or a
+  purpose-built signed ingress adapter.
+- Signature verification and secret storage/revoke plan.
+- Raw payload evidence location and retention.
+- Duplicate window and idempotency rule.
+- Disable/pause path if the source gets noisy.
+
+Acceptance:
+
+- B10a local packet names event classes, ingress options, normalized CRM shape,
+  duplicate rule, raw payload policy, disable path, evidence targets, stop
+  conditions, and the future approval phrase.
+- Event mapping, live decision worksheet, and proof checklist CSVs exist.
+- B10b placeholder explicitly names what a future QUO source event would contain
+  and how it would map to `CRM - New Signals`.
+- B10b placeholder includes synthetic/no-real-client fixture expectations without
+  requiring an actual QUO payload.
+- B10b placeholder states that no QUO API call, webhook, connector, secret read,
+  CRM write, Teams post, or real phone traffic occurred.
+- B10c or a later source-expansion stage keeps the live acceptance criteria: one
+  no-real-client QUO test event creates or maps exactly one CRM signal, the
+  existing New Signal Teams alert posts once, and the triage packet handles QUO
+  without a separate helper bot.
+
+Stop conditions:
+
+- Automatic SMS reply or callback.
+- Outbound QUO API send.
+- Real customer call/SMS proof before the synthetic or internal proof passes.
+- Webhook/API secret without storage and revoke plan.
+- Third-party automation without named owner and disable path.
+- Any QUO path that bypasses `CRM - New Signals`.
+
 ## Recommended Execution Order
 
-Completed before pause:
+Completed baseline:
 
 1. B1 created and proved the New Signal Teams alert lane.
 2. B2/B3 generated local G0 triage and similar-record advisory.
 3. B4 created one G1 `Suggested` Agent Action Log row.
+4. B5 recorded the durable one-writer posture in Decision Register `#6` and
+   Agent Action Log `#10`.
+5. B6 recorded the direct Journey source proof with CRM item `#21`, Teams alert
+   proof, and Agent Action Log `#11` as `Suggested`.
+6. B7 proved the Journey -> M365 -> Journey CRM receipt loop with CRM item `#25`
+   and Journey status `crm_received`.
+7. Lead-source display proof recorded CRM item `#27` with
+   `Lead source detail: Journey admin invite`.
+8. B8a local Journey hardening packet is complete.
+9. B8b live Journey loop hardening proof is complete.
+10. B9a local selected-signal operating packet, queue template, and review
+    template are complete.
+11. B9b selected internal G0 read-only operating triage proof is complete for
+    CRM item `#32`; no Agent Action Log row was written.
+12. B10a local QUO inbound source proof packet, event mapping, live decision
+    worksheet, and proof checklist are complete.
 
-Current resume state:
+Next sequence:
 
-1. Prime Boiler 365 setup is separated from the Guided AI Labs M365
-   lane.
-2. B5 permission decision evidence is recorded: Decision Register `#6` and Agent
-   Action Log `#10`.
-3. B6 direct Journey Form proof is recorded: `CRM - New Signals` `#21` and
-   Agent Action Log `#11` as a G1 `Suggested` row.
-4. Source-specific Teams alert observation for CRM item `#21` is recorded:
-   exactly one `Guided AI Labs / New Signal` post with CRM link text.
-5. B7 local Journey minimal signal and CRM receipt acknowledgement contract is
-   staged and ready for DirectLink handoff.
+1. B9 G0 selected triage is proven. Any future B9 normal-client read still needs
+   selected item id(s), and any B9 G1 Suggested row remains a separate per-item
+   approval.
+2. B10a local QUO readiness packet is complete; B10b now closes the
+   implementation-ready placeholder/design pack without QUO API work.
+3. B10c or the next source-expansion stage brings QUO in live only after exact
+   proof approvals.
 
 ## Immediate Next Work
 
 Local B5 packet/recorder work, live B5 recording, B6 source-ingress proof, B6
-CRM verification, source-specific Teams alert proof, read-only triage, and the
-approved G1 Suggested row are now done. Do not rerun any follow-on
-Suggested-row write without a fresh approval; the existing B6 Suggested row is
-Agent Action Log `#11`.
+CRM verification, source-specific Teams alert proof, read-only triage, the
+approved G1 Suggested row, B7 callback proof, and B7 lead-source display proof
+are now done. Do not rerun any follow-on Suggested-row write or live flow update
+without a fresh approval; the existing B6 Suggested row is Agent Action Log
+`#11`.
 
-The immediate next work is B7: wait for Linux/Journey to report production
-readiness for the ack endpoint and generate one real synthetic `portalEventId`,
-then store the real ack secret locally, update the M365 custom HTTP receiver
-with the ack action, and run one internal no-real-subject proof.
+B8b live Journey loop hardening is executed. It added first-class
+`PortalEventId` / `SourceCorrelationId` storage, updated the HTTP intake flow
+for idempotency, and proved one synthetic/internal replay without creating a
+duplicate CRM item. Any further SharePoint schema change, flow update, replay
+test, cleanup/backfill, Agent Action Log write, or other tenant write requires
+fresh approval for scope, target, evidence, rollback, and the matching approval
+phrase. That approval should be captured in a visible window launched with
+`scripts/Start-M365InteractionAgentApprovalWindow.ps1` so Adam can see the exact
+interaction surface before the live chunk begins.
+
+B9a local operating readiness and B9b selected G0 read-only proof are executed.
+The B9b proof used internal CRM item `#32`, produced local triage/advisory
+evidence, and stopped before any Suggested row. Any future B9 normal-client read
+still needs exact selected item id(s), and any G1 Suggested row remains a
+separate per-item approval that does not approve or execute the recommendation.
+
+B10a local QUO readiness is executed. The next chunk is B10b placeholder
+closeout: make the QUO source contract detailed enough to execute later without
+requiring Adam to figure out the QUO API now. B10b should capture the future
+approval surface and test fixture, then stop. The next B10 tenant/source touch is
+B10c or a later source-expansion stage: one selected no-real-client or internal
+QUO event through an approved ingress path, only after Adam names the QUO
+number(s), event class, ingress option, secret/signature storage and revoke path,
+raw payload retention/redaction rule, duplicate rule, owner/disable path,
+evidence target, and outbound block. The live proof still allows no automatic
+SMS reply, callback, outbound QUO API send, real customer proof, CRM
+merge/delete/suppression, or external commitment. Broader write-capable
+automation, support mailbox adapters, and custom Copilot actions remain later.
 
 ```text
 Prime Boiler separated from Guided AI Labs
--> exact writer/surface inventory
--> one-writer or split-surface decision
--> revoke/disable path
--> durable m365-interaction-agent permission posture
 -> B5 recorded in Decision Register #6 and Agent Action Log #10
 -> B6 direct Journey Form proof packet prepared
 -> B6 Journey Form submitted live
@@ -822,12 +1241,17 @@ Prime Boiler separated from Guided AI Labs
 -> M365 local builder updated for portalEventId + optional signed ack
 -> Journey/Linux side exact ack endpoint origin/secret-header confirmation
 -> Adam approved live callback build
--> M365 local endpoint/header prepared; ack secret pending
--> Journey implementation built and locally validated; production deploy pending
 -> M365 receiver state verified Started
--> Journey/Linux side production deploy readiness
 -> M365 receiver updated with ack action
 -> internal B7 proof
+-> B7 lead-source display proof
+-> B8a local Journey loop hardening packet
+-> B8b live Journey loop hardening proof
+-> B9a local selected-signal operating packet
+-> B9b selected internal G0 operating triage proof
+-> B10a local QUO inbound source proof packet
+-> B10b QUO implementation-ready placeholder/design pack
+-> B10c live QUO inbound source proof after exact approval
 ```
 
 Read-only evidence to review first:
@@ -837,6 +1261,9 @@ git status --short
 Get-Content inventory\forms-build\flow-result-new-signal-teams.json
 Get-Content inventory\new-signal-alert\new-signal-alert-proof-20260625-162306.md
 Get-Content inventory\new-signal-triage\new-signal-triage-20260625-162436.md
+Get-Content inventory\m365-interaction-agent-b7\B7_LIVE_PROOF_2026-06-25.md
+Get-Content inventory\m365-interaction-agent-b7\B7_LEAD_SOURCE_PROOF_2026-06-25.md
+Get-Content inventory\m365-interaction-agent-b9\B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md
 ```
 
 For a read-only smoke test against the newest CRM signal:
@@ -863,8 +1290,12 @@ reason clearly
 flag related records
 log suggestions
 earn durable permission
-then add more sources
+harden receipt/replay
+exercise selected operating triage
+box QUO as the next source contract
+then add QUO live later after exact approval
 ```
 
-While paused, "earn durable permission" includes proving that this repo is not
-competing with the separate Prime Boiler account/session lane.
+QUO stays behind the B8/B9 guardrails. The contract should be ready now, while
+the live hookup waits until call volume, attention, and the QUO API details make
+that proof worth doing calmly.

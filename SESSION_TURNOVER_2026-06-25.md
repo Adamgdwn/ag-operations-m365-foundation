@@ -12,7 +12,8 @@ Current working docs:
 
 ## Stop Point
 
-Boxed late on 2026-06-25 after B1-B7 live proof.
+Boxed late on 2026-06-25 after B1-B7 live proof; updated 2026-06-27 after B8b
+Journey loop hardening proof and B9b selected internal G0 triage proof.
 
 Adam resumed the lane and approved building the live Journey callback and
 related source-display usability. The repo now has a complete first M365
@@ -34,7 +35,27 @@ receipt acknowledgement.
 - B7: Journey -> M365 -> Journey CRM receipt loop is live and proved.
 - Lead-source display: CRM provenance now records `Lead source detail`, and the
   Teams alert includes a `Lead source` row.
-- QUO remains parked.
+- B8a: Journey loop hardening local design is executed. The packet proposes
+  first-class `PortalEventId` and `SourceCorrelationId`, defers CRM-local
+  `ReceiptStatus`, defines duplicate/replay handling, and prepared the B8b live
+  approval boundary that was later consumed for the 2026-06-27 proof.
+- B8b: Journey loop hardening is live and proved. Indexed `PortalEventId` and
+  `SourceCorrelationId` fields now exist on `CRM - New Signals`; the live HTTP
+  intake flow performs pre-create idempotency; a synthetic/internal Journey
+  replay kept one CRM item for one `portalEventId`.
+- B9a: selected-signal operating triage local readiness is executed. The packet
+  indexes prior B1/B6 triage evidence, creates queue/review templates, and keeps
+  future tenant activity behind selected G0 read-only runs or per-item G1
+  approval.
+- B9b: selected read-only operating triage is proved for internal no-real-client
+  CRM item `#32`. The run produced local G0 triage/advisory evidence and stopped
+  before any Agent Action Log write.
+- B10a: QUO inbound source proof local readiness is executed. The packet
+  defines event mapping, ingress options, normalized CRM shape, duplicate and
+  raw payload policies, disable path, live decision worksheet, proof checklist,
+  and the future live approval boundary without touching QUO or Microsoft 365.
+  B10b is now scoped as an implementation-ready placeholder/design closeout; live
+  QUO proof moves to B10c or a later source-expansion stage.
 
 ## Live M365 Elements
 
@@ -73,6 +94,65 @@ did not disable them.
   - `Lead source detail: Journey admin invite`.
   - Proof packet
     `inventory/m365-interaction-agent-b7/B7_LEAD_SOURCE_PROOF_2026-06-25.md`.
+- B8a local hardening packet:
+  - Packet
+    `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md`.
+  - Summary JSON
+    `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.json`.
+  - Config
+    `config/M365_INTERACTION_AGENT_B8_JOURNEY_LOOP_HARDENING.json`.
+  - Packet generator
+    `scripts/New-M365B8JourneyLoopHardeningPacket.ps1`.
+- B8b live hardening proof:
+  - Proof packet
+    `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
+  - Schema proof
+    `inventory/m365-interaction-agent-b8/b8-schema-proof-20260627-174034.md`.
+  - Replay proof
+    `inventory/m365-interaction-agent-b8/b8-replay-proof-0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca-20260627-235409.md`.
+  - Portal event
+    `0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca`.
+  - CRM item `#32`.
+- B9a local operating triage packet:
+  - Packet
+    `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
+  - Summary JSON
+    `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.json`.
+  - Queue template
+    `inventory/m365-interaction-agent-b9/b9-selected-signal-queue-20260627-093338.csv`.
+  - Review template
+    `inventory/m365-interaction-agent-b9/b9-operating-review-20260627-093338.csv`.
+  - Config
+    `config/M365_INTERACTION_AGENT_B9_SELECTED_SIGNAL_OPERATING_TRIAGE.json`.
+  - Packet generator
+    `scripts/New-M365B9SelectedSignalOperatingTriagePacket.ps1`.
+- B9b selected G0 triage proof:
+  - Proof packet
+    `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
+  - Selected CRM item `#32`.
+  - Triage packet
+    `inventory/new-signal-triage/new-signal-triage-20260627-182259.md`.
+  - Triage JSON
+    `inventory/new-signal-triage/new-signal-triage-20260627-182259.json`.
+  - Similar-record evidence
+    `inventory/new-signal-triage/new-signal-match-20260627-182259.json`.
+  - Review CSV
+    `inventory/m365-interaction-agent-b9/b9-selected-signal-review-20260627-182259.csv`.
+- B10a local QUO inbound source proof packet:
+  - Packet
+    `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
+  - Summary JSON
+    `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.json`.
+  - Event mapping
+    `inventory/m365-interaction-agent-b10/b10-quo-event-mapping-20260627-094929.csv`.
+  - Live decision worksheet
+    `inventory/m365-interaction-agent-b10/b10-quo-live-decision-worksheet-20260627-094929.csv`.
+  - Proof checklist
+    `inventory/m365-interaction-agent-b10/b10-quo-proof-checklist-20260627-094929.csv`.
+  - Config
+    `config/M365_INTERACTION_AGENT_B10_QUO_INBOUND_SOURCE_PROOF.json`.
+  - Packet generator
+    `scripts/New-M365B10QuoInboundSourceProofPacket.ps1`.
 
 ## DirectLink
 
@@ -105,9 +185,18 @@ Old DirectLink form-spec files were scrubbed to
 ## Next Work
 
 1. Treat B7 as live and complete.
-2. Optional refinements:
-   - add a first-class SharePoint `portalEventId` column for dedupe/read-back;
-   - add Journey operator retry/replay for `crm_failed_or_timed_out`;
-   - decide whether to clean or backfill older synthetic pending rows;
-   - run the next supervised triage lane on selected CRM item(s).
-3. Keep secrets only in `.local` or production server-side environment stores.
+2. B8a local hardening packet and B8b live replay/idempotency proof are
+   complete. Any further B8 cleanup, backfill, replay, schema change, or flow
+   update needs a fresh approval boundary and visible interaction surface.
+3. B9a local readiness and B9b selected internal G0 proof are complete. Future
+   B9 normal-client reads still require exact selected item id(s), and any G1
+   Suggested row remains a separate per-item approval.
+4. B10a local readiness is complete. B10b placeholder/design closeout is next;
+   B10c/later live QUO proof remains gated:
+   - name approved QUO business intake number(s);
+   - name the first no-real-client or internal event class;
+   - choose ingress option and approve secret/signature storage plus revoke path;
+   - approve raw payload evidence location and retention/redaction rule;
+   - approve duplicate/idempotency rule and owner/disable path;
+   - confirm outbound SMS, callback, and QUO API send remain blocked.
+5. Keep secrets only in `.local` or production server-side environment stores.

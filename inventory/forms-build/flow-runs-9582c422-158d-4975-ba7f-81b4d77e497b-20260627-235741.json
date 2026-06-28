@@ -1,0 +1,170 @@
+{
+  "capturedAt": "2026-06-27T23:57:41.190Z",
+  "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+  "selectedRunName": "08584190024610452818001389378CU07",
+  "runs": [
+    {
+      "name": "08584190024534051591687360223CU29",
+      "status": "Succeeded",
+      "startTime": "2026-06-27T23:53:52.0782155Z",
+      "endTime": "2026-06-27T23:53:53.4008187Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584190024610452818001389378CU07",
+      "status": "Succeeded",
+      "startTime": "2026-06-27T23:53:44.4381743Z",
+      "endTime": "2026-06-27T23:53:47.2664321Z",
+      "triggerName": "manual"
+    }
+  ],
+  "actions": [
+    {
+      "name": "Build_CRM_source_text_core",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:44.7204391Z",
+      "endTime": "2026-06-27T23:53:44.7223272Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Build_CRM_source_text_metadata",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:44.7230218Z",
+      "endTime": "2026-06-27T23:53:44.7243691Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Create_item",
+      "type": null,
+      "status": "Succeeded",
+      "code": "Created",
+      "startTime": "2026-06-27T23:53:45.751724Z",
+      "endTime": "2026-06-27T23:53:46.2146964Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Existing_CRM_item_found",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:45.7450087Z",
+      "endTime": "2026-06-27T23:53:47.2631149Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Find_existing_CRM_items",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:44.7446081Z",
+      "endTime": "2026-06-27T23:53:45.7315294Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Guard",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:44.7187615Z",
+      "endTime": "2026-06-27T23:53:47.2657718Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Maybe_send_created_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:46.230339Z",
+      "endTime": "2026-06-27T23:53:47.2603577Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Maybe_send_existing_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:45.7486832Z",
+      "endTime": "2026-06-27T23:53:45.7488862Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Maybe_send_existing_CRM_receipt_ack_to_Journey' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    },
+    {
+      "name": "Multiple_CRM_items_found",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:45.7496901Z",
+      "endTime": "2026-06-27T23:53:47.2616925Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Post_created_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:46.2318751Z",
+      "endTime": "2026-06-27T23:53:47.2471368Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Post_existing_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:45.7477242Z",
+      "endTime": "2026-06-27T23:53:45.7480353Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionDependencyFailed",
+        "message": "The execution of template action 'Post_existing_CRM_receipt_ack_to_Journey' is skipped: dependant action 'Maybe_send_existing_CRM_receipt_ack_to_Journey' completed with status 'Skipped' and code 'ActionSkipped'.",
+        "messageTemplate": "The execution of template action '{0}' is skipped: dependant action '{1}' completed with status '{2}' and code '{3}'."
+      }
+    },
+    {
+      "name": "Stop_for_duplicate_review",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:45.75078Z",
+      "endTime": "2026-06-27T23:53:45.7510835Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Stop_for_duplicate_review' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    },
+    {
+      "name": "Terminate",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:47.263993Z",
+      "endTime": "2026-06-27T23:53:47.2644384Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Terminate' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    }
+  ]
+}

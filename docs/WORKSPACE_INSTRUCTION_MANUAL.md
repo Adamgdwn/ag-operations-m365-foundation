@@ -217,6 +217,13 @@ Escalate before proceeding when:
 - an AI/agent suggestion would write, send, grant, share, delete, affect a
   client, or change billing/delivery state.
 
+When escalation needs Adam to interact with a system, the helper must show the
+exact place to act. Open a clearly titled visible PowerShell window, browser
+page, Teams surface, or admin page before waiting for approval, account
+selection, MFA, source selection, or source proof. For M365 Interaction Agent
+approval phrases, use
+`scripts/Start-M365InteractionAgentApprovalWindow.ps1`.
+
 ## Do Not Touch Without Approval
 
 Stop before any of these:
@@ -240,7 +247,11 @@ Current active agent direction:
 - One `M365 Interaction Agent` with governed capabilities.
 - First proof: `CRM - New Signals` created -> internal Teams channel
   `New Signal`.
-- QUO is parked until that internal Teams alert is proven.
+- New Signal, Journey receipt, Journey replay/idempotency, B9b selected
+  internal read-only triage, and B10a QUO local readiness are proven/readied in
+  that order. The remaining structured agent chunk is B10b QUO
+  implementation-ready placeholder/design pack; live QUO proof is B10c/later and
+  still needs exact source-proof approval. No outbound SMS/callback is enabled.
 
 Default posture:
 
@@ -274,7 +285,8 @@ These do not block daily handoff, but they remain important:
   depend on that identity;
 - continue CRM-specific recovery from `docs/CRM_EXECUTION_PLAN.md` when CRM is
   selected;
-- finish and prove the `New Signal` Teams alert before broader agent actions;
+- keep the proven `New Signal` Teams alert and Journey receipt/replay lanes
+  inside their approval boundaries before broader agent actions;
 - keep broad delegated setup grants, app posture, permission scopes, rollback
   worksheet, and production bridge decisions under governance review;
 - define a non-CRM tenant-writing approval phrase before any future write chunk.

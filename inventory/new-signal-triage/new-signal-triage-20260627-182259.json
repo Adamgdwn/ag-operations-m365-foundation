@@ -1,0 +1,235 @@
+{
+  "purpose": "B2/B3/B4 Signal triage lane",
+  "generatedAt": "2026-06-27T18:23:17.2274276-06:00",
+  "sourceMode": "sharepoint",
+  "sourceInputJson": "",
+  "relatedRecordsInputJson": "",
+  "signal": {
+    "Id": 32,
+    "Title": "Guided AI Journey — GAIL Internal B8 Replay Proof",
+    "PersonName": "GAIL Internal B8 Replay Proof",
+    "PersonEmail": "adam+b8-replay-20260627235345@guidedailabs.com",
+    "OrganizationName": "Guided AI Labs Internal Walkthrough",
+    "SignalType": "Website",
+    "IntakeSource": "Guided AI Journey",
+    "IntentPath": "My organization - we need a broader AI strategy",
+    "Priority": "Normal",
+    "SignalStatus": "New",
+    "NeedSummary": "B8 replay proof for 0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca. Synthetic internal event; safe to triage or delete later.",
+    "SourceText": "Full name: GAIL Internal B8 Replay Proof Email: adam+b8-replay-20260627235345@guidedailabs.com Organization: Guided AI Labs Internal Walkthrough Lead source detail: Journey action: scripts.b8_replay_proof What are you looking for: B8 replay proof for 0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca. Synthetic internal event; safe to triage or delete later. How did you hear about us: Internal B8 replay proof Situation: My organization - we need a broader AI strategy Consent: I agree — Journey signal metadata — Schema version: journey.crm-signal.v1 Signal mode: portal-lifecycle-event Event type: organization_setup_saved Portal event id: 0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca Correlation id: 0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca Company id: journey-company-internal-b8 Engagement id: journey-engagement-internal-b8 Invite id: journey-invite-b8-20260627235345 Journey invite id: journey-invite-b8-20260627235345 Journey organization id: journey-org-internal-b8 Journey lead id: Invite role: Source action: scripts.b8_replay_proof Portal deep link: https://www.guidedaijourney.com/dashboard/internal-b8-replay-proof Event timestamp: 2026-06-27T23:53:45.767Z Ack requested: True — Provenance — Source: Guided AI Journey Intake: custom site form Intake id: e93bbe6a-76f1-46c3-82cf-95010f04c53e Submitted: 2026-06-27T23:53:44.7239431Z Capture: Auto-captured via custom site form",
+    "NextAction": "Triage new website signal",
+    "FollowUpDueDate": "",
+    "Created": "2026-06-27T23:53:46.0000000Z",
+    "Modified": "2026-06-27T23:53:46.0000000Z",
+    "Owner": "",
+    "ItemLink": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=32"
+  },
+  "decision": {
+    "apparentUrgency": "Normal",
+    "classification": "qualification",
+    "suggestedFirstMove": "Review the existing NextAction and decide whether to accept it: Triage new website signal",
+    "missingInformation": [
+      "follow-up due date",
+      "owner"
+    ],
+    "suggestedOwner": "Adam",
+    "suggestedFollowUpDueWindow": "Today or next business morning",
+    "nextGovernanceLevel": "G0",
+    "governanceNote": "G0 review only. No write or external action is needed until Adam chooses the next move.",
+    "blockedActions": [
+      "Do not update CRM fields in B2.",
+      "Do not create Planner tasks or calendar reminders in B2.",
+      "Do not send email, Teams chat, SMS, calls, or prospect replies.",
+      "Do not merge, suppress, convert, close, or dedupe records automatically.",
+      "Do not grant app permissions, consent, guest access, or sharing changes."
+    ],
+    "requiredApprovals": [
+      "G1 approval before writing an Agent Action Log Suggested row.",
+      "G2 approval before internal CRM/list updates or task/reminder creation.",
+      "G3 approval before any external/prospect communication or access-affecting write.",
+      "G4 remains blocked for destructive, broad-permission, guest/share, billing, or client-commitment actions."
+    ]
+  },
+  "similarRecordAdvisory": {
+    "included": true,
+    "generatedAt": "2026-06-27T18:23:17.1787240-06:00",
+    "searchedSurfaces": [
+      "CRM - New Signals",
+      "CRM - Organizations",
+      "CRM - Contacts",
+      "CRM - Engagements",
+      "CRM - Touchpoints"
+    ],
+    "candidateCount": 18,
+    "matchCount": 8,
+    "summary": "Found 8 possible related record(s).",
+    "matches": [
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 30,
+        "title": "Guided AI Journey — GAIL Internal B8 Replay Proof",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=30",
+        "confidence": "High",
+        "score": 303,
+        "reasons": [
+          "exact phone match",
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "close person name plus same organization",
+          "similar need/opportunity keywords: gail, replay, synthetic, event, safe",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL Internal B8 Replay Proof",
+        "email": "adam+b8-replay-20260627234723@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 31,
+        "title": "Guided AI Journey — GAIL Internal B8 Replay Proof",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=31",
+        "confidence": "High",
+        "score": 303,
+        "reasons": [
+          "exact phone match",
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "close person name plus same organization",
+          "similar need/opportunity keywords: gail, replay, synthetic, event, safe",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL Internal B8 Replay Proof",
+        "email": "adam+b8-replay-20260627235004@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 22,
+        "title": "Guided AI Journey — GAIL Internal CRM Ack Test",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=22",
+        "confidence": "High",
+        "score": 133,
+        "reasons": [
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: gail, synthetic, event, triage, adam",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL Internal CRM Ack Test",
+        "email": "adam+journey-crm-ack-20260626@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 23,
+        "title": "Guided AI Journey — GAIL Internal CRM Ack Test",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=23",
+        "confidence": "High",
+        "score": 133,
+        "reasons": [
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: gail, synthetic, event, triage, adam",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL Internal CRM Ack Test",
+        "email": "adam+journey-crm-ack-20260626@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 24,
+        "title": "Guided AI Journey — GAIL Internal CRM Ack Test",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=24",
+        "confidence": "High",
+        "score": 133,
+        "reasons": [
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: gail, synthetic, event, triage, adam",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL Internal CRM Ack Test",
+        "email": "adam+journey-crm-ack-20260626@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 25,
+        "title": "Guided AI Journey — GAIL Internal CRM Ack Test",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=25",
+        "confidence": "High",
+        "score": 133,
+        "reasons": [
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: gail, synthetic, event, triage, adam",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL Internal CRM Ack Test",
+        "email": "adam+journey-crm-ack-20260626@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 21,
+        "title": "Guided AI Journey — GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=21",
+        "confidence": "High",
+        "score": 133,
+        "reasons": [
+          "exact normalized organization match",
+          "business email/domain match: guidedailabs.com",
+          "similar need/opportunity keywords: triage, adam, walkthrough, invite, intake",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs Internal Walkthrough",
+        "personName": "GAIL-INTERNAL-WALKTHROUGH-B6-JOURNEY",
+        "email": "adam+gail-b6-journey-20260625-180736@guidedailabs.com"
+      },
+      {
+        "listTitle": "CRM - New Signals",
+        "id": 18,
+        "title": "B1 New Signal Teams alert proof 20260625-150910",
+        "link": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=18",
+        "confidence": "High",
+        "score": 124,
+        "reasons": [
+          "close organization name match",
+          "close person name plus same organization",
+          "similar need/opportunity keywords: triage, link",
+          "related record is active/open or waiting on Adam"
+        ],
+        "status": "New",
+        "organizationName": "Guided AI Labs internal proof",
+        "personName": "B1 Internal Proof",
+        "email": "new-signal-proof@example.invalid"
+      }
+    ],
+    "evidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260627-182259.json",
+    "boundary": "Advisory only. No merge, lookup conversion, suppression, dedupe, update, delete, or hidden decision occurred."
+  },
+  "actionLogSuggestion": {
+    "status": "dry-run",
+    "title": "Triage new CRM signal - GAIL Internal B8 Replay Proof / Guided AI Labs Internal Walkthrough",
+    "actionStatus": "Suggested",
+    "actionType": "recommend",
+    "resultPreview": "CRM signal triage recommendation generated 2026-06-27 18:23.\nCRM item: #32\nCRM link: https://agoperationsltd.sharepoint.com/sites/GuidedAILabs/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=32\n\nSummary: B8 replay proof for 0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca. Synthetic internal event; safe to triage or delete later.\nUrgency: Normal\nRecommended lane: qualification\nRecommended first move: Review the existing NextAction and decide whether to accept it: Triage new website signal\nNext governance level: G0\n\nSimilar-record advisory: Found 8 possible related record(s).\n- [High] CRM - New Signals #30: Guided AI Journey — GAIL Internal B8 Replay Proof - exact phone match; exact normalized organization match; business email/domain match: guidedailabs.com; close person name plus same organization; similar need/opportunity keywords: gail, replay, synthetic, event, safe; related record is active/open or waiting on Adam\n- [High] CRM - New Signals #31: Guided AI Journey — GAIL Internal B8 Replay Proof - exact phone match; exact normalized organization match; business email/domain match: guidedailabs.com; close person name plus same organization; similar need/opportunity keywords: gail, replay, synthetic, event, safe; related record is active/open or waiting on Adam\n- [High] CRM - New Signals #22: Guided AI Journey — GAIL Internal CRM Ack Test - exact normalized organization match; business email/domain match: guidedailabs.com; similar need/opportunity keywords: gail, synthetic, event, triage, adam; related record is active/open or waiting on Adam\n- [High] CRM - New Signals #23: Guided AI Journey — GAIL Internal CRM Ack Test - exact normalized organization match; business email/domain match: guidedailabs.com; similar need/opportunity keywords: gail, synthetic, event, triage, adam; related record is active/open or waiting on Adam\n- [High] CRM - New Signals #24: Guided AI Journey — GAIL Internal CRM Ack Test - exact normalized organization match; business email/domain match: guidedailabs.com; similar need/opportunity keywords: gail, synthetic, event, triage, adam; related record is active/open or waiting on Adam\n- (+3 more in the local evidence)\n\nLocal evidence markdown: C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260627-182259.md\nLocal evidence JSON: C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260627-182259.json\nMatch evidence JSON: C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260627-182259.json\n\nStatus boundary: Suggested only. Not approved, not executed, and not verified.\nPause/rollback: reject or supersede this Agent Action Log row. No CRM record, task, reminder, message, merge, permission, guest/share, or external action was created by this suggestion.",
+    "itemId": null,
+    "itemLink": "",
+    "duplicateSuggestions": [],
+    "boundary": "No tenant write occurred."
+  },
+  "safety": "G0 read/reason only. No tenant write occurred.",
+  "markdownPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260627-182259.md",
+  "jsonPath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260627-182259.json",
+  "matchEvidencePath": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-match-20260627-182259.json",
+  "transcript": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\inventory\\new-signal-triage\\new-signal-triage-20260627-182259.log"
+}

@@ -1,0 +1,125 @@
+﻿{
+    "generatedAt":  "2026-06-27T09:12:39.0200799-06:00",
+    "mode":  "local-only",
+    "safety":  "No Microsoft 365 connection, no HTTP send, no CRM write, no flow update, no secret read.",
+    "configPath":  "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\config\\M365_INTERACTION_AGENT_B8_JOURNEY_LOOP_HARDENING.json",
+    "chunk":  "B8",
+    "name":  "Journey Loop Hardening",
+    "purpose":  "Make the Guided AI Journey -\u003e M365 -\u003e Journey receipt loop dedupe-friendly, readable by portalEventId, and recoverable when Journey shows crm_failed_or_timed_out.",
+    "authority":  {
+                      "localPacket":  "G0/R0",
+                      "schemaChange":  "G2/R2 or G3/R3 depending on exact tenant surface",
+                      "flowUpdate":  "G3/R3 because it changes an active HTTP ingress and Journey callback path",
+                      "replayTest":  "G3/R3 if it creates CRM items or calls Journey",
+                      "autonomy":  "No R4 delegated autonomy enabled"
+                  },
+    "currentState":  {
+                         "sourceList":  "CRM - New Signals",
+                         "journeyLedger":  "Journey crm_lifecycle_events",
+                         "httpIntakeFlowDisplayName":  "GAIL - Custom site intake to CRM (create-only, HTTP)",
+                         "httpIntakeFlowId":  "9582c422-158d-4975-ba7f-81b4d77e497b",
+                         "currentPortalEventStorage":  "SourceText metadata block",
+                         "currentReceiptCallback":  "M365 sends signed ack after CRM item creation when server-side ack endpoint and secret are configured."
+                     },
+    "fieldPlan":  [
+                      {
+                          "displayName":  "Portal Event ID",
+                          "internalName":  "PortalEventId",
+                          "type":  "Text",
+                          "required":  false,
+                          "indexed":  true,
+                          "purpose":  "Primary Journey event dedupe and read-back key.",
+                          "liveWriteRequired":  true
+                      },
+                      {
+                          "displayName":  "Source Correlation ID",
+                          "internalName":  "SourceCorrelationId",
+                          "type":  "Text",
+                          "required":  false,
+                          "indexed":  true,
+                          "purpose":  "Secondary correlation key for Journey/M365 replay and operator support.",
+                          "liveWriteRequired":  true
+                      }
+                  ],
+    "deferredFields":  [
+                           {
+                               "displayName":  "Receipt Status",
+                               "internalName":  "ReceiptStatus",
+                               "reason":  "Derive receipt state from the Journey ledger for now. Add CRM-local status only if operators need to work receipts from CRM directly."
+                           }
+                       ],
+    "duplicatePolicy":  "If one existing CRM item matches the same PortalEventId, do not create a new CRM item. Return the existing CRM item id/url to Journey with crmStatus=existing. If more than one item matches, stop and require Adam review.",
+    "replayPolicy":  "Journey operator retry/replay must reuse the same portalEventId. A replay should either create the missing CRM item or acknowledge the existing one; it must not silently create duplicate work.",
+    "cleanupPolicy":  "No delete by default. Leave historical B7 proof rows as evidence. Backfill first-class fields only after exact item ids and live write scope are approved.",
+    "flowUpdatePlan":  [
+                           {
+                               "order":  1,
+                               "action":  "Compose Journey keys",
+                               "detail":  "Normalize portalEventId and correlationId before any SharePoint write."
+                           },
+                           {
+                               "order":  2,
+                               "action":  "Lookup existing CRM signal",
+                               "detail":  "When PortalEventId is present, query CRM - New Signals by PortalEventId before Create item."
+                           },
+                           {
+                               "order":  3,
+                               "action":  "Zero matches",
+                               "detail":  "Create one CRM item, populate SourceText plus first-class fields, then send Journey ack with crmStatus=created."
+                           },
+                           {
+                               "order":  4,
+                               "action":  "One match",
+                               "detail":  "Skip Create item and send Journey ack with existing CRM item id/url and crmStatus=existing."
+                           },
+                           {
+                               "order":  5,
+                               "action":  "More than one match",
+                               "detail":  "Do not create or ack as success. Stop for Adam review; optional G1 advisory requires separate approval."
+                           }
+                       ],
+    "liveApprovalRequired":  {
+                                 "approvalPhrase":  "approve-b8-journey-loop-hardening-live-update-20260627",
+                                 "scope":  [
+                                               "Add PortalEventId and SourceCorrelationId fields to CRM - New Signals.",
+                                               "Update the existing HTTP intake flow to populate the approved first-class fields.",
+                                               "Add pre-create idempotency lookup by PortalEventId.",
+                                               "Send Journey receipt ack for both created and existing CRM item outcomes.",
+                                               "Run one no-real-client replay proof using a synthetic/internal Journey event."
+                                           ],
+                                 "stopConditions":  [
+                                                        "No real client replay.",
+                                                        "No delete or merge.",
+                                                        "No external message send.",
+                                                        "No callback URL accepted from payload.",
+                                                        "No browser-side intake or ack secret.",
+                                                        "No QUO setup.",
+                                                        "No R4 delegated autonomy."
+                                                    ]
+                             },
+    "evidenceChecks":  [
+                           {
+                               "name":  "b7LiveProof",
+                               "relativePath":  "inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md",
+                               "exists":  true
+                           },
+                           {
+                               "name":  "b7LeadSourceProof",
+                               "relativePath":  "inventory/m365-interaction-agent-b7/B7_LEAD_SOURCE_PROOF_2026-06-25.md",
+                               "exists":  true
+                           },
+                           {
+                               "name":  "flowBodyCaptureLocalOnly",
+                               "relativePath":  ".local/flow-builder/capture/flow-body-http-intake.json",
+                               "exists":  true,
+                               "note":  "This may be absent on a fresh machine because .local is intentionally untracked."
+                           }
+                       ],
+    "acceptance":  [
+                       "B8 local packet names exact fields, duplicate policy, replay policy, cleanup policy, evidence paths, stop conditions, and approval phrase.",
+                       "After live approval and implementation, a Journey event can be found from PortalEventId without scraping SourceText.",
+                       "Replaying the same PortalEventId does not create an unreviewed duplicate CRM item.",
+                       "Journey receives a receipt ack for both new-create and existing-item replay outcomes.",
+                       "Older synthetic evidence rows are left alone or backfilled only under an exact approval scope."
+                   ]
+}
