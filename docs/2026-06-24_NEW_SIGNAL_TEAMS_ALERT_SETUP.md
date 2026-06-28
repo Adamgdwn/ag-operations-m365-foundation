@@ -21,9 +21,9 @@ Boundary:
 - Internal Teams post only.
 - No email sends.
 - No external/prospect notification.
-- No QUO hook from this alert runbook. B10a local QUO readiness exists, but any
-  B10b QUO placeholder/design closeout is documentation-only; B10c/later live
-  QUO source proof needs its own approval.
+- No QUO hook from this alert runbook. B10a local QUO readiness and B10b source
+  contract/design exist, but B10c/later live QUO source proof needs its own
+  approval.
 - No guest access, sharing, permissions, tenant policy, app registration, admin
   consent, deletes, billing, or client commitment changes.
 - Do not rerun setup, proof, connector, flow, or `-Apply` commands from this
@@ -68,7 +68,8 @@ Current forward gate:
 1. B8: harden Journey receipt/replay and `portalEventId` handling.
 2. B9: run selected-signal operating triage under G0/G1.
 3. B10a: local QUO inbound source proof readiness is complete.
-4. B10b: bring QUO in as inbound-only live source proof only after exact
+4. B10b: QUO design-only implementation-ready source contract is complete.
+5. B10c/later: bring QUO in as inbound-only live source proof only after exact
    number/event/ingress/secret/retention/disable and outbound-block approval.
 
 ## Setup Sequence
@@ -243,8 +244,11 @@ pwsh -File scripts\Invoke-M365NewSignalTriage.ps1 -ItemId <proof item id> -Apply
 Next required build handoff:
 
 1. Treat B1-B7 as proven for the first M365 Interaction Agent lane.
-2. Use `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md` for B8,
-   B9, and B10.
+2. Use `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md` and
+   `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md` for the current B10b/B10c
+   path. The older
+   `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md` file remains
+   the B8/B9/B10 historical chunk ledger.
 3. Keep this runbook as historical setup/proof reference for the New Signal
    Teams alert flow.
 

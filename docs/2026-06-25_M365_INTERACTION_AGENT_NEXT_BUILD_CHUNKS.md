@@ -1,8 +1,15 @@
 # M365 Interaction Agent Next Build Chunks
 
+> Superseded for active planning on 2026-06-28 by
+> `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`.
+> Keep this file as the historical B1-B10b chunk ledger and detailed proof
+> reference. Do not load it by default during startup; use it only when auditing
+> prior acceptance criteria, proof history, or exact historical boundaries.
+
 Date: 2026-06-25
 
-Status: B1-B7 live-proof baseline established on 2026-06-25/26. The proven
+Status: Superseded archive for active planning. B1-B7 live-proof baseline
+established on 2026-06-25/26. The proven
 lane now includes New Signal Teams alerting, B2/B3 triage evidence,
 similar-record advisory, one G1 `Suggested` Agent Action Log row, B5 one-writer
 posture, B6 Guided AI Journey source proof, B7 Journey CRM receipt
@@ -17,10 +24,11 @@ B8b live schema/flow/replay proof are executed. B9a local selected-signal
 operating packet is executed, and B9b has now proved one selected internal G0
 read-only triage pass against CRM item `#32` with no Agent Action Log write. A
 future B9 G1 `Suggested` row still requires per-item approval. B10a local QUO
-inbound source readiness is executed as a no-live-touch packet; B10b is now a
-detailed implementation-ready placeholder/design pack. The actual low-volume
-QUO live proof moves to B10c or the next source-expansion stage after exact
-number, event, ingress, secret, retention, disable, and outbound-block approvals.
+inbound source readiness is executed as a no-live-touch packet; B10b source
+contract/design is complete as a no-live-touch placeholder. The actual
+low-volume QUO live proof moves to B10c or the next source-expansion stage after
+exact number, event, ingress, secret, retention, disable, and outbound-block
+approvals.
 
 Owner: Adam.
 
@@ -126,7 +134,7 @@ Grouped chunk plan from here:
 
 | Chunk | Scope | Status | Execution trigger |
 |---|---|---|---|
-| B10b | QUO implementation-ready placeholder/design pack | Planned next | Adam go-ahead; no QUO API discovery required |
+| B10b | QUO implementation-ready placeholder/design pack | Complete | Source contract: `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`; no QUO API discovery performed |
 | B10c | Low-volume QUO live source proof | Later | Exact QUO number/event/ingress/secret/retention/disable approvals |
 | Phase 4 bridge | GAIL OS Connector registry + M365 production write path | Blocked | BLK-005 resolved, GAIL OS HTTP API live, explicit Phase 4 auth |
 
@@ -271,7 +279,7 @@ B7 evidence:
 | B7 | Journey minimal signal + CRM receipt ack | Source ingress plus restricted external callback | Journey invite/admin signal creates CRM item, then M365 confirms receipt back to Journey dashboard. |
 | B8 | Journey loop hardening | B8a G0/R0 complete; B8b G2/G3 live proof complete | First-class `portalEventId`/receipt state, idempotent replay, and pending cleanup plan. |
 | B9 | Selected signal operating triage | B9a G0/R0 complete; B9b selected G0/R0 complete; future G1 selected only | Run the proven triage/advisory path on selected CRM items and optionally record one Suggested row per approved item. |
-| B10 | QUO inbound source proof | B10a G0/R0 complete; B10b G3 by exact source proof approval | Low-volume QUO call/SMS/voicemail events create or map CRM signals through the existing alert and triage lane as the first Phone / Voice / Text sensory portal. |
+| B10 | QUO inbound source readiness | B10a G0/R0 complete; B10b design-only placeholder; B10c/later G3 by exact source proof approval | Low-volume QUO call/SMS/voicemail events eventually create or map CRM signals through the existing alert and triage lane as the first Phone / Voice / Text sensory portal. |
 
 ## Live Proof Record
 
@@ -1214,14 +1222,14 @@ evidence, and stopped before any Suggested row. Any future B9 normal-client read
 still needs exact selected item id(s), and any G1 Suggested row remains a
 separate per-item approval that does not approve or execute the recommendation.
 
-B10a local QUO readiness is executed. The next chunk is B10b placeholder
-closeout: make the QUO source contract detailed enough to execute later without
-requiring Adam to figure out the QUO API now. B10b should capture the future
-approval surface and test fixture, then stop. The next B10 tenant/source touch is
-B10c or a later source-expansion stage: one selected no-real-client or internal
-QUO event through an approved ingress path, only after Adam names the QUO
-number(s), event class, ingress option, secret/signature storage and revoke path,
-raw payload retention/redaction rule, duplicate rule, owner/disable path,
+B10a local QUO readiness is executed. B10b placeholder closeout is also
+executed: the QUO source contract is detailed enough to execute later without
+requiring Adam to figure out the QUO API now. B10b captured the future approval
+surface and fake test fixture shape, then stopped. The next B10 tenant/source
+touch is B10c or a later source-expansion stage: one selected no-real-client or
+internal QUO event through an approved ingress path, only after Adam names the
+QUO number(s), event class, ingress option, secret/signature storage and revoke
+path, raw payload retention/redaction rule, duplicate rule, owner/disable path,
 evidence target, and outbound block. The live proof still allows no automatic
 SMS reply, callback, outbound QUO API send, real customer proof, CRM
 merge/delete/suppression, or external commitment. Broader write-capable
@@ -1250,7 +1258,7 @@ Prime Boiler separated from Guided AI Labs
 -> B9a local selected-signal operating packet
 -> B9b selected internal G0 operating triage proof
 -> B10a local QUO inbound source proof packet
--> B10b QUO implementation-ready placeholder/design pack
+-> B10b QUO implementation-ready source contract/design pack
 -> B10c live QUO inbound source proof after exact approval
 ```
 

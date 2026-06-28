@@ -1,7 +1,7 @@
 {
   "chunk": "B10",
   "name": "QUO Inbound Source Proof",
-  "status": "local-source-proof-ready-b10b-placeholder-next",
+  "status": "local-source-proof-ready-b10b-complete-b10c0-key-readiness-complete-b10c1-gated",
   "date": "2026-06-27",
   "owner": "Adam",
   "purpose": "Bring QUO forward as the first Phone / Voice / Text sensory portal into the existing CRM -> Teams -> triage lane, while keeping all outbound phone/SMS behavior blocked.",
@@ -15,8 +15,9 @@
   },
   "currentState": {
     "quoLiveHookup": "none approved",
-    "b10bMode": "implementation-ready placeholder/design pack; no QUO API, webhook, connector, secret read, CRM write, Teams post, or real phone traffic",
-    "futureLiveProof": "B10c or later source-expansion stage after exact approval",
+    "b10bMode": "complete implementation-ready source contract/design pack; no QUO API, webhook, connector, secret read, CRM write, Teams post, or real phone traffic",
+    "b10c0Mode": "complete local QUO API key readiness; key stored under ignored .local path and dry-run probe passed with no live API read",
+    "futureLiveProof": "B10c.1 or later source-expansion stage after exact approval",
     "crmSourceList": "CRM - New Signals",
     "teamsAlertFlow": "GAIL - New Signal Teams alert",
     "teamsAlertFlowState": "Started",
@@ -59,7 +60,7 @@
     }
   ],
   "recommendedDefault": {
-    "proofPath": "Use B10a local readiness first. Close B10b as an implementation-ready placeholder/design pack without requiring QUO API details. For B10c or later live proof, prefer one selected no-real-client QUO event through a signed ingress path. Use manual bridge only as a fallback evidence step if webhook details are not ready.",
+    "proofPath": "Use B10a local readiness plus the B10b source contract first. For B10c or later live proof, prefer one selected no-real-client QUO event through a signed ingress path. Use manual bridge only as a fallback evidence step if webhook details are not ready.",
     "businessNumbers": "Only Adam-approved QUO number(s) count as business intake.",
     "eventClasses": [
       {
@@ -195,7 +196,7 @@
   "acceptance": [
     "B10a local packet exists and names event classes, ingress options, normalized CRM shape, duplicate rule, raw payload policy, disable path, evidence targets, stop conditions, and the future approval phrase.",
     "Event mapping, live decision worksheet, and proof checklist CSVs exist.",
-    "B10b can close as an implementation-ready placeholder/design pack without live QUO API work.",
+    "B10b is closed as an implementation-ready source contract/design pack without live QUO API work.",
     "Future B10c/later proof can be scoped to one no-real-client or internal event before any real customer traffic is used.",
     "No QUO connector, webhook, API call, CRM write, Teams post, external send, or secret read occurs during B10a.",
     "Outbound SMS/callback remains blocked until a later explicit G3/R3 decision."

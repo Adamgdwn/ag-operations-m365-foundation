@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-25
+Last updated: 2026-06-28
 
 This is the detailed document map. It is not the startup document.
 
@@ -17,13 +17,17 @@ the wider project map or older stage/history references.
 
 For current work, use [START_HERE.md](START_HERE.md). The active plan is
 [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md),
+the compact active build plan is
+[docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md),
 and the selected setup runbook is
 [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md).
 Latest handoff:
 [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md). The active
-agent build is paused because two agents are writing to M365 accounts and
-competing; do not run live write commands until Adam resumes the lane and the
-write-owner boundary is clear.
+M365 Interaction Agent lane is through B10c.0 locally: B10a QUO local readiness,
+B10b design-only source contract, and B10c.0 local API key readiness are
+complete, while B10c.1/later live QUO proof remains gated by exact approval. The
+next default chunk is B11 selected operating cadence unless Adam pulls B10c.1
+forward.
 The current cockpit inventory and gap list are in
 [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
 and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).
@@ -33,6 +37,12 @@ artifacts, read
 The portable Codex/Claude Code skill for that bridge is versioned at
 [skills/direct-link](skills/direct-link).
 The repo intentionally has one active startup document: [START_HERE.md](START_HERE.md).
+
+Current QUO source contract:
+[docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md).
+
+Current QUO API key readiness:
+[docs/2026-06-28_QUO_API_KEY_READINESS.md](docs/2026-06-28_QUO_API_KEY_READINESS.md).
 
 ---
 

@@ -1,0 +1,111 @@
+{
+  "chunk": "B10c.0",
+  "name": "QUO API Key Readiness",
+  "status": "local-key-imported-dry-run-readiness-passed",
+  "date": "2026-06-28",
+  "owner": "Adam",
+  "authority": {
+    "localSecretCapture": "G3/R3 restricted source secret handling, local only",
+    "dryRunProbe": "G0/R0 local readiness, no API call",
+    "liveReadProbe": "G3/R3 restricted read-only source readiness after explicit approval",
+    "crmWrite": "blocked",
+    "teamsPost": "blocked",
+    "webhookSetup": "blocked",
+    "outboundQuoAction": "blocked"
+  },
+  "purpose": "Capture a QUO API key locally and prepare a read-only key validation path without opening webhook ingestion, CRM writes, Teams posts, or outbound phone/SMS behavior.",
+  "currentResult": {
+    "keyImported": true,
+    "keyStoredUnderIgnoredLocalDirectory": true,
+    "keyValueInRepo": false,
+    "dryRunReadinessPassed": true,
+    "liveApiReadPerformed": false,
+    "crmTouched": false,
+    "teamsTouched": false,
+    "webhookTouched": false,
+    "outboundQuoAction": false,
+    "sanitizedEvidencePattern": "inventory/m365-interaction-agent-b10/b10c-quo-api-key-readiness-*.json"
+  },
+  "relatedDocs": {
+    "activeBuildPlan": "docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md",
+    "sourceContract": "docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md",
+    "apiKeyReadiness": "docs/2026-06-28_QUO_API_KEY_READINESS.md",
+    "b10bContractConfig": "config/M365_INTERACTION_AGENT_B10B_QUO_SOURCE_CONTRACT.json"
+  },
+  "scripts": {
+    "captureLocalApiKey": "scripts/quo/Set-QuoLocalApiKey.ps1",
+    "readinessProbe": "scripts/quo/Test-QuoApiKeyReadiness.ps1"
+  },
+  "quoApiFactsVerified": {
+    "checkedAt": "2026-06-28",
+    "baseUrl": "https://api.quo.com",
+    "v1BasePath": "/v1",
+    "authentication": "Authorization header contains the QUO API key value.",
+    "readOnlyProbe": "GET /v1/phone-numbers",
+    "webhookNote": "Webhook APIs are not enabled by this chunk; webhook signature/secret handling remains a later B10c gate.",
+    "sourceUrls": [
+      "https://www.quo.com/docs/mdx/api-reference/introduction",
+      "https://www.quo.com/docs/mdx/api-reference/authentication",
+      "https://www.quo.com/docs/mdx/api-reference/phone-numbers/list-phone-numbers",
+      "https://www.quo.com/docs/mdx/api-reference/webhooks/create-a-new-webhook"
+    ]
+  },
+  "allowed": [
+    "Open a visible local window for Adam to paste the QUO API key.",
+    "Store the QUO API key only in .local/quo-ingress/quo-api-key.secret using Windows DPAPI CurrentUser encryption.",
+    "Write local metadata under .local/quo-ingress without the key value.",
+    "Run a dry-run readiness check that confirms local setup without contacting QUO.",
+    "Run a live read-only phone-number inventory probe only when explicitly invoked with -LiveReadApproved.",
+    "Write sanitized readiness evidence to inventory/m365-interaction-agent-b10."
+  ],
+  "blocked": [
+    "Commit, print, chat, or document the QUO API key value.",
+    "Create, update, or delete QUO webhooks.",
+    "Send SMS, initiate calls, callbacks, replies, or any outbound QUO action.",
+    "Read call logs, SMS contents, voicemail transcripts, recordings, or real client interaction payloads.",
+    "Write CRM - New Signals rows.",
+    "Post Teams alerts.",
+    "Configure unattended source ingestion."
+  ],
+  "secretStorage": {
+    "primaryPath": ".local/quo-ingress/quo-api-key.secret",
+    "metadataPath": ".local/quo-ingress/quo-api-key.metadata.json",
+    "format": "Windows DPAPI CurrentUser encrypted SecureString",
+    "gitStatus": "ignored by .gitignore because .local/ is ignored",
+    "fallbackEnvironmentVariable": "QUO_API_KEY",
+    "revokePath": "Delete .local/quo-ingress/quo-api-key.secret and revoke/regenerate the key in QUO."
+  },
+  "readinessProbe": {
+    "defaultMode": "dry-run-no-api-call",
+    "liveSwitch": "-LiveReadApproved",
+    "method": "GET",
+    "url": "https://api.quo.com/v1/phone-numbers",
+    "headers": [
+      "Authorization",
+      "Accept",
+      "User-Agent"
+    ],
+    "sanitizedEvidencePattern": "inventory/m365-interaction-agent-b10/b10c-quo-api-key-readiness-*.json",
+    "rawEvidenceDefault": "not stored",
+    "rawEvidenceOptionalPath": ".local/quo-ingress/raw/",
+    "sanitization": [
+      "Phone numbers are redacted to last four digits.",
+      "Display names are reduced to hasDisplayName=true/false.",
+      "Raw response body is not committed.",
+      "API key is never written to evidence."
+    ]
+  },
+  "nextGate": [
+    "Adam selects the exact QUO business number or internal test number.",
+    "Adam selects the first live event class.",
+    "Ingress pattern is chosen: manual bridge, no-code webhook bridge, or purpose-built adapter.",
+    "Webhook signing secret, raw payload retention, dedupe, owner, and disable path are approved.",
+    "Outbound SMS, callback, reply, and QUO API send remain blocked."
+  ],
+  "acceptance": [
+    "Local key capture script exists and stores only an encrypted local secret.",
+    "Readiness probe script exists and defaults to no API call.",
+    "A live read-only probe can validate the key without writing CRM, Teams, QUO webhooks, or outbound actions.",
+    "Docs and config make clear that this is B10c.0 readiness, not full QUO ingestion."
+  ]
+}

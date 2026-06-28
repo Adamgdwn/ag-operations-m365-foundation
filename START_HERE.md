@@ -11,11 +11,13 @@ Agent`. B1-B9 G0 are live-proven: New Signal Teams alerting, triage evidence,
 similar-record advisory, one `Suggested` Agent Action Log row, one-writer
 decision, Guided AI Journey source proof, Journey CRM receipt acknowledgement,
 lead-source display in Teams, Journey replay/idempotency hardening, and selected
-internal read-only operating triage. `origin/main` Chunk 20G has been merged
-into this branch, adding the GAIL OS bridge placement register and one-writer
-audit. B10b is now scoped as a detailed QUO placeholder/design pack; live QUO
-source proof moves to B10c or the next source-expansion stage after exact
-approval.
+internal read-only operating triage. `origin/main` Chunk 20G has been merged,
+adding the GAIL OS bridge placement register and one-writer audit. The oversized
+2026-06-25 chunk file is now superseded for active planning by the compact
+2026-06-28 active build plan. B10b is complete as a detailed QUO source
+contract/design pack; B10c.0 local QUO API key readiness is complete without a
+live API read; live QUO source proof moves to B10c.1 or the next source
+expansion stage after exact approval.
 
 ## Current Focus
 
@@ -31,7 +33,11 @@ Current setup runbook:
 
 - [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
 
-Current next-build packet:
+Current active build plan:
+
+- [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+
+Historical chunk ledger:
 
 - [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md)
 
@@ -52,13 +58,14 @@ enables R4 delegated autonomy.
 
 Priority when resumed: one agent with governed M365 capabilities. B8 Journey
 receipt/replay hardening and B9 selected internal G0 triage are now
-live-proven. The remaining structured phase chunk is B10b QUO
-implementation-ready placeholder/design pack, not a live QUO API hookup. B9a
+live-proven. B10b QUO implementation-ready source contract/design is complete,
+and B10c.0 imported the QUO API key into ignored local encrypted storage
+without a live API read. It is not a live QUO source-ingestion hookup. B9a
 local selected-signal operating readiness is executed, and
 B9b proved one internal read-only pass against CRM item `#32` with no Suggested
 row. Any future B9 normal-client read or G1 Suggested row remains separately
-selected/approved. B10a local QUO inbound source readiness is executed; live
-QUO source proof waits for B10c or a later source-expansion stage with exact
+selected/approved. B10a local QUO inbound source readiness is executed; B10c.1
+live QUO source proof waits for a later source-expansion stage with exact
 number, event, ingress, secret, retention, disable, and outbound-block approvals.
 Hiring roles, profile libraries, and onboarding packet work are deferred until
 growth makes them useful.
@@ -70,7 +77,7 @@ growth makes them useful.
    [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 3. Read the current working plan linked above.
 4. Read the New Signal setup runbook if continuing the notification proof.
-5. Read the next-build packet if planning beyond the first alert proof.
+5. Read the active build plan if planning beyond the first alert proof.
 6. Confirm the target write surface and approval boundary before running any
    additional live write from this repo.
 7. If Adam must type an approval phrase, select an account, complete MFA, choose
@@ -82,8 +89,9 @@ growth makes them useful.
 10. If the task mentions the Windows/Linux direct link, use the `direct-link`
    skill and [docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md](docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md).
 
-Do not load old stage packets, session turnover files, exports, or inventory
-snapshots unless the task specifically asks for history or evidence.
+Do not load old stage packets, superseded chunk ledgers, session turnover files,
+exports, or inventory snapshots unless the task specifically asks for history or
+evidence.
 
 ## Current Operating State
 
@@ -131,6 +139,18 @@ snapshots unless the task specifically asks for history or evidence.
   It defines QUO event mappings, ingress options, normalized CRM shape, duplicate
   policy, raw payload policy, live decision worksheet, proof checklist, and the
   future live approval boundary without touching QUO or Microsoft 365.
+- B10b QUO inbound source contract:
+  `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`.
+  It closes the implementation-ready placeholder with event taxonomy,
+  normalized source contract, CRM mapping, dedupe/idempotency, evidence/privacy
+  rules, approval/disable/revoke expectations, and fake synthetic fixture
+  shapes. Companion config:
+  `config/M365_INTERACTION_AGENT_B10B_QUO_SOURCE_CONTRACT.json`.
+- B10c.0 QUO API key readiness:
+  `docs/2026-06-28_QUO_API_KEY_READINESS.md`.
+  The key is stored only under ignored `.local/quo-ingress/`; the dry-run probe
+  produced sanitized local evidence and made no QUO API call. Companion config:
+  `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`.
 - B1 proof harness: `scripts/Invoke-M365NewSignalAlertProof.ps1` records local
   proof evidence and gates the one synthetic CRM create behind a typed approval.
 - B2/B3 triage packet: `scripts/Invoke-M365NewSignalTriage.ps1` reads one
@@ -147,10 +167,10 @@ snapshots unless the task specifically asks for history or evidence.
 - Current GAIL OS bridge posture: no autonomous GAIL OS Connector write path is
   live. Existing Power Automate proof flows are Adam-approved transitional proof
   infrastructure, not Phase 4 connector execution.
-- Next build gate: refinement only unless Adam approves another live read/write
-  scope. Current sequence is B10b placeholder/design closeout; live QUO proof
-  waits for B10c or later exact number/event/ingress/secret/retention/disable
-  and outbound-block approval.
+- Next build gate: refinement or B11 selected operating cadence unless Adam
+  approves another exact live read/write scope. B10b placeholder/design and
+  B10c.0 key readiness are complete; live QUO proof waits for B10c.1 or later exact
+  number/event/ingress/secret/retention/disable and outbound-block approval.
 - Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 
 ## Approval Boundaries
@@ -185,7 +205,10 @@ scope, stop conditions, and local approval evidence are explicit.
 - Master path: [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md)
 - Current plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
 - New Signal setup: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
-- Next build chunks: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md)
+- Active build plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+- QUO source contract: [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md)
+- QUO API key readiness: [docs/2026-06-28_QUO_API_KEY_READINESS.md](docs/2026-06-28_QUO_API_KEY_READINESS.md)
+- Historical chunk ledger: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md)
 - Agent card: [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md)
 - Decisions card: [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md)
 - Agent readiness: [docs/AGENTIC_M365_READINESS.md](docs/AGENTIC_M365_READINESS.md)

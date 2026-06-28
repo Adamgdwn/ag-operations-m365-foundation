@@ -6,9 +6,10 @@ Status: Chunk 7 final usability walkthrough complete. Current selected build
 direction is the Agent Control Plane / `M365 Interaction Agent` via
 `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`. B1-B9 G0 are
 live-proven, including one selected internal read-only triage pass;
-B10a local QUO inbound source readiness is complete; next chunk is B10b QUO
-implementation-ready placeholder/design pack. Live QUO proof is B10c/later after
-exact approval.
+B10a local QUO inbound source readiness is complete; B10b QUO source
+contract/design is complete; B10c.0 local QUO API key readiness is complete
+without live API read. Live QUO proof is B10c.1/later after exact approval; next
+default chunk is B11 selected operating cadence.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
@@ -41,7 +42,7 @@ A card plan is complete only when it defines:
 | Knowledge / Records | Published Methods, Readiness Evidence, Restricted Build Evidence, Archive, Methods and IP nav | `docs/CARD_PLAN_KNOWLEDGE_RECORDS.md` | Active plan with Chunk 7 closeout evidence | Add a clearer cockpit route only if live onboarding shows records are too hidden. |
 | Support / Intake | Operations card, Intake page, Guided AI Labs Intake Register, Change Leadership Tools Support Register | `docs/CARD_PLAN_SUPPORT_INTAKE.md` | Active plan with Chunk 7 closeout evidence | Resolve support MFA before support mailbox operations depend on that identity. |
 | Finance / Closeout | Projects In Flight, Handoff Packets, CRM Closeout Invoice Queue | `docs/CARD_PLAN_FINANCE_CLOSEOUT.md` | Active plan with Chunk 7 closeout evidence | Keep billing, payment, legal, and client acceptance authority with Adam. |
-| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active; B1-B9 G0 live-proven; B10a local QUO readiness complete | Use `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md` and `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`; next run B10b QUO inbound-only proof before broader automation. |
+| Agent Control Plane | Tools card, Agent Action Log, Automation Backlog, Tool Permission Review, Agent Setup, App Grants | `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` | Active; B1-B9 G0 live-proven; B10a local QUO readiness complete; B10b QUO source contract complete; B10c.0 key readiness complete | Use `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`, `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`, `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`, and `docs/2026-06-28_QUO_API_KEY_READINESS.md`; next default B11 selected operating cadence, or B10c.1 live QUO proof only after exact approval. |
 | Access / Onboarding | Login Guide, Access Model, External Sharing Rules, App Grants | `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md` | Active access model with Chunk 7 closeout evidence | Read back exact live SharePoint groups and permission groups before any grant. |
 
 ## Chunk 5 Card Notes
@@ -150,8 +151,9 @@ First acceptance question:
 - Proven: one new CRM signal can produce exactly one internal Teams alert, stay
   linked to the CRM source of truth, and flow into a G0-G4 agent
   triage/approval path.
-- Current question: can B10b box the QUO source contract tightly enough that a
-  later B10c live proof can run without widening the agent authority surface?
+- Current question: should the next move be B11 selected operating cadence, or
+  should Adam pull B10c.1 live QUO proof forward under exact approval while call
+  volume is low?
 
 Chunk 6 readiness result:
 
