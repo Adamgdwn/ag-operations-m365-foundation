@@ -6,8 +6,9 @@ Status: B10b complete. Design-only implementation contract. B10c.0 later added
 local QUO API key readiness, but did not open source ingestion. No QUO webhook,
 CRM write, Teams post, real phone/SMS/voicemail traffic, or outbound QUO action
 has been enabled by this contract.
-B10c.0a later added the QUO/Sona CRM intake prompt and placement note, also
-without live QUO or M365 configuration.
+B10c.0a later added the QUO/Sona CRM intake prompt and placement note, then
+revised it so ordinary message-only calls stay in QUO while consented follow-up
+inquiries can become CRM signals. No live QUO or M365 configuration changed.
 
 Owner: Adam.
 
@@ -31,11 +32,12 @@ Historical B10a readiness packet:
 This contract boxes QUO as a future Phone / Voice / Text sensory portal for the
 M365 Interaction Agent.
 
-QUO must feed the existing lane:
+Consented QUO/Sona follow-up inquiries must feed the existing lane:
 
 ```text
-QUO event -> verified ingress -> CRM - New Signals -> New Signal Teams alert
--> G0 triage/advisory evidence -> optional G1 Suggested row
+QUO/Sona inquiry -> CreateCrmSignal: true -> verified ingress
+-> CRM - New Signals -> New Signal Teams alert -> G0 triage/advisory evidence
+-> optional G1 Suggested row
 ```
 
 QUO is not a separate CRM, not a separate phone bot, and not an autonomous
@@ -44,7 +46,9 @@ requires a fresh exact approval boundary. B10c.0 only imported Adam's QUO API
 key into ignored local encrypted storage and ran a no-network dry-run readiness
 check.
 B10c.0a defines the Sona intake prompt and the future SharePoint/CRM placement
-for `IntakeSource = QUO`, but still does not configure QUO or Microsoft 365.
+for `IntakeSource = QUO`, including the rule that `CreateCrmSignal: false`
+message-only calls remain in QUO's in-app message handling. It still does not
+configure QUO or Microsoft 365.
 
 ## Authority Boundary
 
@@ -64,10 +68,14 @@ Authority level: G0/R0 design and local evidence only.
 
 - `CRM - New Signals` remains the source of truth for new work.
 - `IntakeSource = QUO` is the source label for future QUO-originated signals.
-- One accepted source event should create or map to exactly one CRM signal.
+- One accepted consented intake event should create or map to exactly one CRM
+  signal.
+- Message-only Sona calls, including "just have Adam call me" calls, should
+  remain in QUO's in-app message handling and should not create CRM rows.
 - Existing New Signal Teams alerting and triage should be reused.
-- Sona should create a structured human handoff summary, not take autonomous
-  action.
+- Sona should create a structured CRM handoff summary only for consented
+  follow-up inquiries; message-only calls remain in QUO. Sona should not take
+  autonomous action.
 - Any raw payload, transcript, recording, or full message retention needs
   explicit B10c/later approval.
 - Outbound behavior stays blocked until a separate G3/R3 decision.
@@ -79,10 +87,10 @@ Authority level: G0/R0 design and local evidence only.
 
 | Event class | CRM signal by default | Signal type | Priority | Required future source fields | Notes |
 |---|---|---|---|---|---|
-| `missed_call` | Yes | Phone | High | `sourceEventId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt` | Default fast-attention event. |
-| `voicemail` | Yes | Voicemail | High | `sourceEventId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt`, recording or transcript reference if available | Store only a short summary until retention is approved. |
-| `inbound_sms` | Yes | SMS | High | `sourceEventId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt`, message preview | Store a short preview; raw message retention is gated. |
-| `completed_call_summary` | Selected only | Call Summary | Normal | `sourceEventId`, `sourceConversationId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt`, summary or link | Create a signal only when the call creates new work. |
+| `missed_call` | No for message-only; yes only after consented Sona intake or an approved alert rule | Phone | Normal unless explicit urgent statement | `sourceEventId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt` | Default handling is QUO's in-app message path; CRM is gated by `CreateCrmSignal`. |
+| `voicemail` | No by default; manual or approved promotion only | Voicemail | Normal unless explicit urgent statement | `sourceEventId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt`, recording or transcript reference if available | Store only a short summary until retention is approved. |
+| `inbound_sms` | Consented or selected only | SMS | Normal unless explicit urgent statement | `sourceEventId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt`, message preview | Store a short preview; raw message retention is gated. |
+| `completed_call_summary` | Consented follow-up inquiry only | Call Summary | Normal unless explicit urgent statement | `sourceEventId`, `sourceConversationId`, `businessNumber`, `callerOrSenderNumber`, `eventOccurredAt`, summary or link | Create a signal only when Sona outputs `CreateCrmSignal: true`. |
 | `contact_update` | No | Contact Update | Normal | `sourceEventId`, QUO contact id or equivalent, `eventOccurredAt` | Relationship enrichment only until Graphify/CRM rules exist. |
 
 Unsupported or unknown QUO event classes must stop at evidence-only review until
@@ -105,6 +113,11 @@ touches CRM:
 | `callerOrSenderNumber` | Yes for phone/SMS/voicemail/call | Caller/sender number; normalize for matching and redact in public evidence. |
 | `callerOrSenderName` | Optional | Known display/contact name when available. |
 | `messageOrSummary` | Optional | Short preview/summary only; full raw text is gated. |
+| `createCrmSignal` | Required for Sona summaries | Hard gate from the prompt; `false` means no CRM row. |
+| `consentToFollowUpSystem` | Required when `createCrmSignal = true` | One explicit caller consent to record details for team follow-up. |
+| `intakeDisposition` | Preferred for Sona summaries | Sona judgment: Lead, Existing Client Matter, Support, Scheduling, Partnership, Vendor, General Inquiry, or Message Only. |
+| `interestArea` | Preferred for Sona summaries | AI systems, business automation, Guided AI journey, operations advisory, training, partnership, support, or other. |
+| `preferredContactMethod` | Preferred for Sona summaries | Caller preference when provided. |
 | `recordingOrTranscriptLink` | Optional | Link only when retention/access is approved. |
 | `rawPayloadEvidenceRef` | Optional | Local-only raw payload evidence ref, if B10c/later approves retention. |
 | `payloadDigest` | Yes for live proof | Hash/digest of the raw or sanitized source event, not a secret. |
@@ -142,7 +155,12 @@ Replay behavior:
 
 ## CRM Mapping
 
-Target list: `CRM - New Signals`.
+Target list for consented follow-up inquiries: `CRM - New Signals`.
+
+The future ingress must treat `CreateCrmSignal` as a hard gate. `false` means
+no CRM row; QUO's in-app message or voicemail handling remains the operator
+surface. `true` means the caller explicitly agreed to a follow-up inquiry and
+the event may create or match one CRM row.
 
 | CRM field | Future value/rule |
 |---|---|
@@ -150,10 +168,14 @@ Target list: `CRM - New Signals`.
 | `NeedSummary` | Short human-readable event summary, never a raw secret-bearing payload. |
 | `SignalType` | Phone, Voicemail, SMS, Call Summary, or another approved existing value. |
 | `IntakeSource` | `QUO`. If `QUO` is not yet a live choice, B10c must decide whether to add it or use an approved interim value. |
-| `Priority` | High for missed call, voicemail, inbound SMS by default; Normal for selected call summaries/contact updates unless Adam changes this. |
+| `Priority` | High only when the caller explicitly states urgency, a deadline, or same-day need; Normal otherwise. |
 | `SignalStatus` | New. |
 | `PersonName` | Caller/sender/contact display name when available and approved. |
 | `OrganizationName` | Only when known from approved source data or later CRM/Graphify matching. |
+| `ConsentToFollowUpSystem` | Preserve in `SourceText` or a future dedicated consent field. |
+| `IntakeDisposition` | Preserve in `SourceText`, `NeedSummary`, or a future category field for triage. |
+| `InterestArea` | Preserve in `SourceText`, `NeedSummary`, or a future interest/category field. |
+| `PreferredContactMethod` | Preserve in `NextAction` or a future contact preference field. |
 | `SourceText` | Sanitized metadata block: event class, event id, conversation id, business number label, redacted caller/sender, timestamp, digest, link refs, outbound blocked note. |
 | `RelatedLink` | QUO conversation/call/voicemail link only when approved. |
 | `NextAction` | Human triage note; no outbound reply instruction unless separately approved. |
@@ -173,6 +195,8 @@ QUO placement:
 - keep voicemail as fallback;
 - if QUO provides a separate post-call summary field, use the prompt document's
   structured CRM handoff labels there;
+- leave message-only calls in QUO's in-app message handling when Sona outputs
+  `CreateCrmSignal: false`;
 - do not configure Sona to write SharePoint directly, send Teams posts, send
   SMS/email replies, trigger callbacks, or perform outbound actions.
 
@@ -185,10 +209,10 @@ Operations Cockpit
 -> CRM - New Signals filtered where IntakeSource = QUO
 ```
 
-The future live proof should treat QUO/Sona output as a source event or
-post-call summary, normalize it through the approved B10c.1+ ingress path, then
-write or match exactly one `CRM - New Signals` item. No QUO path may bypass the
-CRM intake list.
+The future live proof should treat consented QUO/Sona output as a source event
+or post-call summary, normalize it through the approved B10c.1+ ingress path,
+then write or match exactly one `CRM - New Signals` item. Message-only output
+must not write CRM. No CRM-bound QUO path may bypass the CRM intake list.
 
 ## Evidence And Privacy
 
@@ -221,6 +245,7 @@ the already completed local key storage and optional read-only key probe:
 | Secret/signature storage | Exact storage location and revoke/delete path. |
 | Raw payload policy | Evidence location, retention period, and redaction rule. |
 | Dedupe rule | Source event id primary rule and fallback window. |
+| CRM write gate | Confirmation that `CreateCrmSignal: false` never writes CRM. |
 | Owner | Named human owner for the bridge. |
 | Disable path | Exact UI or command path to pause the bridge. |
 | Outbound block | Explicit confirmation that SMS, callback, reply, and QUO API send remain blocked. |
@@ -315,7 +340,7 @@ Fixture rules:
 B10c.1 live source proof can start only after Adam approves every item below:
 
 - exact QUO business intake number(s) or internal test number(s);
-- exact first event class;
+- exact first event class, preferably a consented Sona follow-up inquiry;
 - exact ingress pattern;
 - exact secret/signature storage location and revoke path;
 - exact raw payload evidence location and retention/redaction rule;
@@ -324,6 +349,7 @@ B10c.1 live source proof can start only after Adam approves every item below:
 - no-real-client/internal test scope;
 - confirmation that outbound SMS, callback, reply, and QUO API send remain
   blocked;
+- confirmation that message-only calls remain in QUO and do not write CRM;
 - confirmation that the event must route through `CRM - New Signals`.
 
 ## B10c.1 Acceptance Target
@@ -331,7 +357,8 @@ B10c.1 live source proof can start only after Adam approves every item below:
 When separately approved later:
 
 ```text
-one approved no-real-client/internal QUO event
+one approved no-real-client/internal consented QUO/Sona inquiry
+-> CreateCrmSignal: true
 -> normalized source event
 -> one CRM - New Signals item or one duplicate match
 -> one New Signal Teams alert if a new CRM item is created

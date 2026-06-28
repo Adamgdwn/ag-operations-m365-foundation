@@ -25,9 +25,10 @@ Latest handoff:
 [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md). The active
 M365 Interaction Agent lane is through B10c.0a locally: B10a QUO local
 readiness, B10b design-only source contract, B10c.0 local API key readiness,
-and B10c.0a QUO/Sona CRM intake prompt and placement are complete, while
-B10c.1/later live QUO proof remains gated by exact approval. The next default
-chunk is B11 selected operating cadence unless Adam pulls B10c.1 forward.
+and B10c.0a QUO/Sona CRM intake prompt and placement are complete, including
+the message-only versus consented-follow-up gate, while B10c.1/later live QUO
+proof remains gated by exact approval. The next default chunk is B11 selected
+operating cadence unless Adam pulls B10c.1 forward.
 The current cockpit inventory and gap list are in
 [docs/COCKPIT_USABILITY_INVENTORY.md](docs/COCKPIT_USABILITY_INVENTORY.md)
 and [docs/COCKPIT_CARD_GAP_LIST.md](docs/COCKPIT_CARD_GAP_LIST.md).

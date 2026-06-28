@@ -35,7 +35,8 @@
   },
   "sourcePrinciples": [
     "QUO is a future Phone / Voice / Text sensory portal.",
-    "CRM - New Signals remains the source of truth for new work.",
+    "CRM - New Signals remains the source of truth for consented follow-up inquiries and approved new work.",
+    "Message-only Sona calls remain in QUO's in-app message handling and do not create CRM rows.",
     "Teams remains the internal attention surface.",
     "The M365 Interaction Agent produces evidence and supervised suggestions only.",
     "Outbound behavior remains blocked until a later explicit G3/R3 decision.",
@@ -44,21 +45,22 @@
   "eventTaxonomy": [
     {
       "sourceEventType": "missed_call",
-      "createsCrmSignalByDefault": true,
+      "createsCrmSignalByDefault": "false-unless-consented-sona-intake-or-approved-alert-rule",
       "signalType": "Phone",
-      "priority": "High",
+      "priority": "NormalUnlessExplicitUrgentStatement",
       "requiredFutureSourceFields": [
         "sourceEventId",
         "businessNumber",
         "callerOrSenderNumber",
         "eventOccurredAt"
-      ]
+      ],
+      "notes": "Default handling is QUO's in-app message path; CRM is gated by CreateCrmSignal."
     },
     {
       "sourceEventType": "voicemail",
-      "createsCrmSignalByDefault": true,
+      "createsCrmSignalByDefault": "manual-or-approved-promotion-only",
       "signalType": "Voicemail",
-      "priority": "High",
+      "priority": "NormalUnlessExplicitUrgentStatement",
       "requiredFutureSourceFields": [
         "sourceEventId",
         "businessNumber",
@@ -70,9 +72,9 @@
     },
     {
       "sourceEventType": "inbound_sms",
-      "createsCrmSignalByDefault": true,
+      "createsCrmSignalByDefault": "consented-or-selected-only",
       "signalType": "SMS",
-      "priority": "High",
+      "priority": "NormalUnlessExplicitUrgentStatement",
       "requiredFutureSourceFields": [
         "sourceEventId",
         "businessNumber",
@@ -84,9 +86,9 @@
     },
     {
       "sourceEventType": "completed_call_summary",
-      "createsCrmSignalByDefault": "selected-only",
+      "createsCrmSignalByDefault": "consented-follow-up-inquiry-only",
       "signalType": "Call Summary",
-      "priority": "Normal",
+      "priority": "NormalUnlessExplicitUrgentStatement",
       "requiredFutureSourceFields": [
         "sourceEventId",
         "sourceConversationId",
@@ -94,7 +96,8 @@
         "callerOrSenderNumber",
         "eventOccurredAt",
         "messageOrSummary"
-      ]
+      ],
+      "notes": "Create a CRM signal only when Sona outputs CreateCrmSignal: true."
     },
     {
       "sourceEventType": "contact_update",
@@ -125,6 +128,11 @@
       "callerOrSenderNumber",
       "callerOrSenderName",
       "messageOrSummary",
+      "createCrmSignal",
+      "consentToFollowUpSystem",
+      "intakeDisposition",
+      "interestArea",
+      "preferredContactMethod",
       "recordingOrTranscriptLink",
       "rawPayloadEvidenceRef",
       "payloadDigest"
@@ -148,12 +156,17 @@
     "targetList": "CRM - New Signals",
     "requiredSourceLabel": "QUO",
     "fields": {
+      "CreateCrmSignal": "Hard gate from the Sona prompt. Only true may create or match a CRM row.",
       "Title": "QUO <SignalType> - <caller/name placeholder> - <event date/time>",
       "NeedSummary": "Short human-readable event summary.",
       "SignalType": "Phone, Voicemail, SMS, Call Summary, or another approved existing value.",
       "IntakeSource": "QUO",
-      "Priority": "High for missed call, voicemail, inbound SMS by default; Normal for selected call summaries/contact updates.",
+      "Priority": "High only when the caller explicitly states urgency, a deadline, or same-day need; Normal otherwise.",
       "SignalStatus": "New",
+      "ConsentToFollowUpSystem": "Preserve in SourceText or a future dedicated consent field.",
+      "IntakeDisposition": "Preserve in SourceText, NeedSummary, or a future category field for triage.",
+      "InterestArea": "Preserve in SourceText, NeedSummary, or a future interest/category field.",
+      "PreferredContactMethod": "Preserve in NextAction or a future contact preference field.",
       "SourceText": "Sanitized metadata block with event id, event class, conversation id, business number label, redacted caller/sender, timestamp, digest, link refs, and outbound blocked note.",
       "RelatedLink": "QUO conversation/call/voicemail link only when approved.",
       "NextAction": "Human triage note; no outbound reply instruction unless separately approved."
@@ -167,6 +180,7 @@
       "Paste the Sona prompt into the missed-call Sona node during business hours.",
       "Paste the same Sona prompt into the after-hours Sona node.",
       "Keep voicemail as fallback.",
+      "Leave message-only calls in QUO in-app handling when Sona outputs CreateCrmSignal: false.",
       "If QUO has a separate post-call summary field, use the structured CRM handoff labels from the prompt doc there."
     ],
     "sharePointPlacement": {
@@ -193,7 +207,7 @@
       "Outbound SMS, callback, reply, email send, or QUO API send.",
       "Raw transcript, full SMS body, webhook secret, API key, or QUO admin configuration exposure in SharePoint."
     ],
-    "futureIngressRule": "B10c.1+ should normalize QUO/Sona output through the approved ingress path, then create or match exactly one CRM - New Signals item with IntakeSource = QUO."
+    "futureIngressRule": "B10c.1+ should normalize QUO/Sona output through the approved ingress path, then create or match exactly one CRM - New Signals item with IntakeSource = QUO only when CreateCrmSignal is true. CreateCrmSignal false must remain message-only and must not write CRM."
   },
   "evidenceAndPrivacy": {
     "rawPayload": "Not present in B10b. B10c/later approval required before local private retention.",
@@ -214,6 +228,7 @@
     "Named owner and visible disable/pause path.",
     "No-real-client/internal test scope.",
     "Confirmation that outbound SMS, callback, reply, and QUO API send remain blocked.",
+    "Confirmation that message-only calls remain in QUO and do not write CRM.",
     "Confirmation that the event routes through CRM - New Signals."
   ],
   "syntheticFixtures": [

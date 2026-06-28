@@ -18,7 +18,7 @@ The old technical `Guided AI Labs - Intake Register` is not the daily CRM front 
 ## Daily Cards
 
 - New Signal: open the clean business intake form for a new opportunity, referral, support signal, discovery start, or pasted email/context.
-- QUO Intake: open the `CRM - New Signals` queue filtered to `IntakeSource = QUO` for phone, voice, text, and Sona handoff records.
+- QUO Intake: open the `CRM - New Signals` queue filtered to `IntakeSource = QUO` for consented phone, voice, text, and Sona follow-up inquiry records.
 - Triage Queue: review new signals and decide whether they need qualification, nurture, follow-up, or closure.
 - Follow Up Today: work dated follow-ups from the clean signal list.
 - Proposal / Decision Blockers: clear scope, proposal, decision, or go-live blockers.
@@ -66,10 +66,11 @@ Operations Cockpit
 -> CRM - New Signals filtered where IntakeSource = QUO
 ```
 
-The QUO Intake view should show sanitized intake records created or matched by
-the future approved QUO ingress path. It should not expose raw call transcripts,
-full SMS bodies, QUO secrets, webhook configuration, or direct outbound action
-controls.
+The QUO Intake view should show sanitized consented intake records created or
+matched by the future approved QUO ingress path. Message-only calls should stay
+in QUO's in-app message handling and should not appear here. This view should
+not expose raw call transcripts, full SMS bodies, QUO secrets, webhook
+configuration, or direct outbound action controls.
 
 Recommended columns: Title, Priority, SignalType, PersonName, OrganizationName,
 NeedSummary, NextAction, Follow-up date, RelatedLink, Owner, and SignalStatus.
