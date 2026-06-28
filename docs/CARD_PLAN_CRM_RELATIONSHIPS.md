@@ -44,7 +44,7 @@ Plan status:
 - New Signal Teams alert proof: live-proven in
   `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`; current agent hardening
   continues in
-  `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`.
+  `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`.
 - Acceptance tests: active in `docs/CRM_ACCEPTANCE_TESTS.md`.
 
 Completion gate:

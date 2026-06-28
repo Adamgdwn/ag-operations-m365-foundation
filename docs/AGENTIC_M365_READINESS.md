@@ -9,10 +9,12 @@ supervised helpers. 2026-06-27 update: B1-B9 G0 are live-proven; B8a local
 Journey hardening, B8b live Journey replay/idempotency proof, B9a local
 selected-signal operating readiness, B9b selected internal read-only triage, and
 B10a local QUO inbound source readiness are complete. 2026-06-28 update: Chunk
-20G GAIL OS bridge/one-writer framing is merged, and the remaining structured
-chunk is B10b QUO implementation-ready placeholder/design pack. Live QUO proof
-moves to B10c or a later source-expansion stage after exact approval. Future B9
-normal-client reads and G1 Suggested rows remain selected/approved per item.
+ 20G GAIL OS bridge/one-writer framing is merged, B10b QUO
+implementation-ready source contract/design is complete, and B10c.0 local QUO
+API key readiness is complete without live API read. Live QUO proof moves to
+B10c.1 or a later source-expansion stage after exact approval. The next default
+chunk is B11 selected operating cadence. Future B9/B11 normal-client reads and
+G1 Suggested rows remain selected/approved per item.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -58,7 +60,9 @@ Current active implementation note:
   `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
 - The first live notification capability is documented in
   `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md` and is now proven.
-- Current build chunks live in
+- Current active build chunks live in
+  `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`.
+- Historical B1-B10a chunk detail lives in
   `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`.
 - B8a local Journey hardening packet lives at
   `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md`.
@@ -70,10 +74,19 @@ Current active implementation note:
   `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
 - B10a local QUO inbound source proof packet lives at
   `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
+- B10b QUO source contract lives at
+  `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`.
+- B10b machine-readable source contract lives at
+  `config/M365_INTERACTION_AGENT_B10B_QUO_SOURCE_CONTRACT.json`.
+- B10c.0 QUO API key readiness lives at
+  `docs/2026-06-28_QUO_API_KEY_READINESS.md`.
+- B10c.0 machine-readable readiness config lives at
+  `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`.
 - `agent-pnp-provisioning` and delegated setup scripts remain setup/proof
   tooling only; they are not the production agent identity.
-- QUO phone integration has a local B10a readiness packet, but no live QUO
-  connector, webhook, CRM write, Teams post, or outbound action is approved.
+- QUO phone integration has a local B10a readiness packet, B10b source
+  contract, and B10c.0 local API key readiness, but no live QUO connector,
+  webhook, CRM write, Teams post, or outbound action is approved.
 
 Microsoft 365 should become the governed operating substrate:
 
@@ -147,9 +160,11 @@ This exception does not approve app registration, admin consent, external
 messaging, guest/sharing changes, QUO, or broad unattended automation.
 
 Later B1-B9 G0 work proved the Journey source, receipt, replay/idempotency lane,
-and selected internal read-only operating triage, but it does not approve future
-B9 normal-client reads, B9 Suggested rows, B10b QUO setup/proof, outbound
-phone/SMS behavior, or any new live write.
+and selected internal read-only operating triage. B10b then completed the QUO
+source contract/design without live source work, and B10c.0 stored the QUO API
+key locally without a live API read. This does not approve future B9/B11
+normal-client reads, B9/B11 Suggested rows, B10c.1/later QUO setup/proof,
+outbound phone/SMS behavior, or any new live write.
 
 No live tenant read or write was performed during Chunk 6. This pass used local
 Stage 7 governance evidence, Stage 9 bridge-readiness evidence, the Chunk 5 card
@@ -393,13 +408,16 @@ AI increases the value of clean governance and the blast radius of messy access.
     Done for internal CRM item `#32`; no G1 row was written.
 12. Complete B10a local QUO inbound source proof readiness packet. Done.
 13. Close B10b QUO implementation-ready placeholder/design pack without QUO API
-    work. Pending Adam go-ahead.
-14. Run B10c/later QUO inbound-only live proof only after exact
+    work. Done.
+14. Complete B10c.0 local QUO API key readiness without live API read. Done.
+15. Run B11 selected operating cadence or another exact selected-signal G0/G1
+    pass, if Adam chooses that operating bridge.
+16. Run B10c.1/later QUO inbound-only live proof only after exact
     number/event/ingress, secret, retention, duplicate, disable, and
     outbound-block approval.
-15. Pilot read-only recommendation agents.
-16. Add connector-grounded knowledge where SharePoint is not enough.
-17. Add write-capable agents only behind explicit approval gates.
+16. Pilot read-only recommendation agents.
+17. Add connector-grounded knowledge where SharePoint is not enough.
+18. Add write-capable agents only behind explicit approval gates.
 
 ## Microsoft 365 Surfaces To Evaluate
 
@@ -437,9 +455,11 @@ Highest-priority open decisions:
 - Which content is too sensitive for broad Copilot grounding.
 - Whether any external source deserves a Copilot connector after ACL mapping.
 - Whether any future selected B9 item may receive a separate G1 Suggested row,
-  or whether another normal-client B9 read should run against exact item id(s).
+  or whether another normal-client B9/B11 read should run against exact item
+  id(s).
 - Which QUO number(s), event classes, ingress pattern, payload retention,
-  duplicate rule, disable path, and outbound block are approved for B10b.
+  duplicate rule, disable path, and outbound block are approved for B10c/later
+  live proof. B10b is complete and remains design-only.
 
 ## Chunk 6 Acceptance Test
 

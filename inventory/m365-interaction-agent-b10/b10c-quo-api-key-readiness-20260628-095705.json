@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-06-28T09:57:05.9244371-06:00",
+  "chunk": "B10c.0",
+  "sourceSystem": "QUO",
+  "mode": "dry-run-no-api-call",
+  "authority": "G0/R0 local readiness",
+  "apiBaseUrl": "https://api.quo.com",
+  "endpoint": "/v1/phone-numbers",
+  "method": "GET",
+  "liveSystemsTouched": false,
+  "keyPresent": true,
+  "keySource": "C:\\Users\\adamg\\01. Code Projects\\AG Operations Workspace Setup\\.local\\quo-ingress\\quo-api-key.secret",
+  "outboundBlocked": true,
+  "crmTouched": false,
+  "teamsTouched": false,
+  "webhookTouched": false,
+  "rawStored": false,
+  "rawLocalPath": null,
+  "responseStatus": null,
+  "responseDigest": null,
+  "phoneNumberCount": 0,
+  "sanitizedPhoneNumbers": [],
+  "error": null,
+  "notes": [
+    "Default mode performs no API call.",
+    "Live mode uses a read-only phone-number inventory endpoint for key validation.",
+    "Committed evidence is sanitized; raw payload storage requires -StoreRawLocal and stays under .local.",
+    "No outbound QUO action, CRM write, Teams post, or webhook setup is performed."
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "chunk": "B10b",
+  "name": "QUO Inbound Source Contract",
+  "status": "complete-design-only-b10c-gated",
+  "date": "2026-06-28",
+  "owner": "Adam",
+  "authority": "G0/R0 design and local evidence only",
+  "liveSystemsTouched": false,
+  "purpose": "Define the implementation-ready QUO inbound source contract without requiring QUO API discovery or any live source/M365 work.",
+  "relatedDocs": {
+    "activeBuildPlan": "docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md",
+    "sourceContract": "docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md",
+    "crmIntakePrompt": "docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md",
+    "historicalB10aReadinessPacket": "inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md"
+  },
+  "boundaries": {
+    "allowed": [
+      "Define event taxonomy.",
+      "Define normalized source event contract.",
+      "Map future events to CRM - New Signals.",
+      "Define dedupe and idempotency.",
+      "Define evidence, retention, redaction, approval, disable, revoke, and owner expectations.",
+      "Define synthetic fixture shapes with fake data only."
+    ],
+    "blocked": [
+      "Connect to QUO.",
+      "Inspect, request, store, or infer QUO secrets.",
+      "Create QUO webhooks or connectors.",
+      "Call QUO APIs.",
+      "Write CRM rows.",
+      "Post Teams messages.",
+      "Process real phone, SMS, voicemail, or call traffic.",
+      "Send outbound SMS, callback, reply, or QUO API messages."
+    ]
+  },
+  "sourcePrinciples": [
+    "QUO is a future Phone / Voice / Text sensory portal.",
+    "CRM - New Signals remains the source of truth for new work.",
+    "Teams remains the internal attention surface.",
+    "The M365 Interaction Agent produces evidence and supervised suggestions only.",
+    "Outbound behavior remains blocked until a later explicit G3/R3 decision.",
+    "This repo does not become the production GAIL OS connector in B10."
+  ],
+  "eventTaxonomy": [
+    {
+      "sourceEventType": "missed_call",
+      "createsCrmSignalByDefault": true,
+      "signalType": "Phone",
+      "priority": "High",
+      "requiredFutureSourceFields": [
+        "sourceEventId",
+        "businessNumber",
+        "callerOrSenderNumber",
+        "eventOccurredAt"
+      ]
+    },
+    {
+      "sourceEventType": "voicemail",
+      "createsCrmSignalByDefault": true,
+      "signalType": "Voicemail",
+      "priority": "High",
+      "requiredFutureSourceFields": [
+        "sourceEventId",
+        "businessNumber",
+        "callerOrSenderNumber",
+        "eventOccurredAt",
+        "recordingOrTranscriptLink"
+      ],
+      "retentionNote": "Store only a short summary until transcript/recording retention is approved."
+    },
+    {
+      "sourceEventType": "inbound_sms",
+      "createsCrmSignalByDefault": true,
+      "signalType": "SMS",
+      "priority": "High",
+      "requiredFutureSourceFields": [
+        "sourceEventId",
+        "businessNumber",
+        "callerOrSenderNumber",
+        "eventOccurredAt",
+        "messageOrSummary"
+      ],
+      "retentionNote": "Short preview only until raw message retention is approved."
+    },
+    {
+      "sourceEventType": "completed_call_summary",
+      "createsCrmSignalByDefault": "selected-only",
+      "signalType": "Call Summary",
+      "priority": "Normal",
+      "requiredFutureSourceFields": [
+        "sourceEventId",
+        "sourceConversationId",
+        "businessNumber",
+        "callerOrSenderNumber",
+        "eventOccurredAt",
+        "messageOrSummary"
+      ]
+    },
+    {
+      "sourceEventType": "contact_update",
+      "createsCrmSignalByDefault": false,
+      "signalType": "Contact Update",
+      "priority": "Normal",
+      "requiredFutureSourceFields": [
+        "sourceEventId",
+        "eventOccurredAt"
+      ],
+      "notes": "Relationship enrichment only until CRM/Graphify matching rules exist."
+    }
+  ],
+  "normalizedSourceEvent": {
+    "requiredFields": [
+      "sourceSystem",
+      "sourceEventId",
+      "sourceEventType",
+      "eventOccurredAt",
+      "receivedAt",
+      "dedupeKey",
+      "outboundBlocked",
+      "authorityLevel"
+    ],
+    "preferredFields": [
+      "sourceConversationId",
+      "businessNumber",
+      "callerOrSenderNumber",
+      "callerOrSenderName",
+      "messageOrSummary",
+      "recordingOrTranscriptLink",
+      "rawPayloadEvidenceRef",
+      "payloadDigest"
+    ],
+    "constants": {
+      "sourceSystem": "QUO",
+      "outboundBlocked": true
+    }
+  },
+  "dedupe": {
+    "primaryKeyPattern": "QUO:<sourceEventType>:<sourceEventId>",
+    "fallbackKeyPattern": "QUO:<sourceEventType>:<sourceConversationId or call/thread id>:<normalized caller/sender>:<eventOccurredAt UTC 15-minute bucket>",
+    "replayBehavior": {
+      "zeroMatches": "Future approved ingress may create one CRM - New Signals item.",
+      "oneMatch": "Map to the existing CRM item and do not create a duplicate.",
+      "multipleMatches": "Stop for Adam review.",
+      "sameKeyChangedPayload": "Record as possible update/conflict, not a new signal."
+    }
+  },
+  "crmMapping": {
+    "targetList": "CRM - New Signals",
+    "requiredSourceLabel": "QUO",
+    "fields": {
+      "Title": "QUO <SignalType> - <caller/name placeholder> - <event date/time>",
+      "NeedSummary": "Short human-readable event summary.",
+      "SignalType": "Phone, Voicemail, SMS, Call Summary, or another approved existing value.",
+      "IntakeSource": "QUO",
+      "Priority": "High for missed call, voicemail, inbound SMS by default; Normal for selected call summaries/contact updates.",
+      "SignalStatus": "New",
+      "SourceText": "Sanitized metadata block with event id, event class, conversation id, business number label, redacted caller/sender, timestamp, digest, link refs, and outbound blocked note.",
+      "RelatedLink": "QUO conversation/call/voicemail link only when approved.",
+      "NextAction": "Human triage note; no outbound reply instruction unless separately approved."
+    },
+    "contactUpdateRule": "Do not create work by default. Retain as future relationship evidence only after relationship-enrichment rules exist."
+  },
+  "crmIntakePromptPlacement": {
+    "status": "complete-design-only-b10c0a",
+    "promptDoc": "docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md",
+    "quoPlacement": [
+      "Paste the Sona prompt into the missed-call Sona node during business hours.",
+      "Paste the same Sona prompt into the after-hours Sona node.",
+      "Keep voicemail as fallback.",
+      "If QUO has a separate post-call summary field, use the structured CRM handoff labels from the prompt doc there."
+    ],
+    "sharePointPlacement": {
+      "path": "Operations Cockpit -> CRM Command Center -> QUO Intake -> CRM - New Signals",
+      "filter": "IntakeSource = QUO",
+      "defaultSort": "newest first",
+      "recommendedColumns": [
+        "Title",
+        "Priority",
+        "SignalType",
+        "PersonName",
+        "OrganizationName",
+        "NeedSummary",
+        "NextAction",
+        "Follow-up date",
+        "RelatedLink",
+        "Owner",
+        "SignalStatus"
+      ]
+    },
+    "blocked": [
+      "Direct Sona to SharePoint writes.",
+      "Direct Sona Teams posts.",
+      "Outbound SMS, callback, reply, email send, or QUO API send.",
+      "Raw transcript, full SMS body, webhook secret, API key, or QUO admin configuration exposure in SharePoint."
+    ],
+    "futureIngressRule": "B10c.1+ should normalize QUO/Sona output through the approved ingress path, then create or match exactly one CRM - New Signals item with IntakeSource = QUO."
+  },
+  "evidenceAndPrivacy": {
+    "rawPayload": "Not present in B10b. B10c/later approval required before local private retention.",
+    "fullSmsBody": "Not present in B10b. Retention/redaction approval required.",
+    "voicemailTranscript": "Not present in B10b. Retention/redaction approval required.",
+    "recordingLink": "Placeholder only in B10b. Access and retention approval required.",
+    "phoneNumbers": "Fake 555-01xx placeholders only in B10b examples.",
+    "futureRawPayloadLocation": ".local/quo-ingress/",
+    "committedEvidenceRule": "Sanitized summaries, digests, ids, and proof outcomes only."
+  },
+  "b10cApprovalChecklist": [
+    "Exact QUO business intake number(s) or internal test number(s).",
+    "Exact first event class.",
+    "Exact ingress pattern.",
+    "Exact secret/signature storage location and revoke path.",
+    "Exact raw payload evidence location and retention/redaction rule.",
+    "Dedupe/idempotency rule for the selected event class.",
+    "Named owner and visible disable/pause path.",
+    "No-real-client/internal test scope.",
+    "Confirmation that outbound SMS, callback, reply, and QUO API send remain blocked.",
+    "Confirmation that the event routes through CRM - New Signals."
+  ],
+  "syntheticFixtures": [
+    {
+      "label": "missed_call_fake",
+      "sourceSystem": "QUO",
+      "sourceEventId": "quo_evt_fake_missed_call_001",
+      "sourceConversationId": "quo_conv_fake_001",
+      "sourceEventType": "missed_call",
+      "eventOccurredAt": "2026-06-28T15:00:00Z",
+      "receivedAt": "2026-06-28T15:00:15Z",
+      "businessNumber": "+1-555-0100",
+      "callerOrSenderNumber": "+1-555-0199",
+      "callerOrSenderName": "Example Caller",
+      "messageOrSummary": "Fake missed call fixture. No real QUO payload.",
+      "recordingOrTranscriptLink": null,
+      "rawPayloadEvidenceRef": null,
+      "payloadDigest": "sha256:fake-digest-not-from-real-payload",
+      "dedupeKey": "QUO:missed_call:quo_evt_fake_missed_call_001",
+      "outboundBlocked": true,
+      "authorityLevel": "G0/R0"
+    },
+    {
+      "label": "inbound_sms_fake",
+      "sourceSystem": "QUO",
+      "sourceEventId": "quo_evt_fake_inbound_sms_001",
+      "sourceConversationId": "quo_conv_fake_002",
+      "sourceEventType": "inbound_sms",
+      "eventOccurredAt": "2026-06-28T15:05:00Z",
+      "receivedAt": "2026-06-28T15:05:10Z",
+      "businessNumber": "+1-555-0100",
+      "callerOrSenderNumber": "+1-555-0188",
+      "callerOrSenderName": "Example Sender",
+      "messageOrSummary": "Fake SMS preview. No real client text.",
+      "recordingOrTranscriptLink": null,
+      "rawPayloadEvidenceRef": null,
+      "payloadDigest": "sha256:fake-digest-not-from-real-payload",
+      "dedupeKey": "QUO:inbound_sms:quo_evt_fake_inbound_sms_001",
+      "outboundBlocked": true,
+      "authorityLevel": "G0/R0"
+    },
+    {
+      "label": "contact_update_fake",
+      "sourceSystem": "QUO",
+      "sourceEventId": "quo_evt_fake_contact_update_001",
+      "sourceConversationId": null,
+      "sourceEventType": "contact_update",
+      "eventOccurredAt": "2026-06-28T15:10:00Z",
+      "receivedAt": "2026-06-28T15:10:08Z",
+      "businessNumber": null,
+      "callerOrSenderNumber": "+1-555-0177",
+      "callerOrSenderName": "Example Contact",
+      "messageOrSummary": "Fake contact update fixture. Relationship evidence only.",
+      "recordingOrTranscriptLink": null,
+      "rawPayloadEvidenceRef": null,
+      "payloadDigest": "sha256:fake-digest-not-from-real-payload",
+      "dedupeKey": "QUO:contact_update:quo_evt_fake_contact_update_001",
+      "outboundBlocked": true,
+      "authorityLevel": "G0/R0"
+    }
+  ],
+  "acceptance": [
+    "Event taxonomy is defined.",
+    "Normalized source event contract is defined.",
+    "CRM mapping into CRM - New Signals is defined.",
+    "Duplicate/idempotency behavior is defined.",
+    "Raw payload retention, redaction, and evidence expectations are defined.",
+    "Visible approval, disable, revoke, and owner paths are defined.",
+    "Synthetic fixtures use fake data only.",
+    "B10c remains gated.",
+    "No live QUO or M365 action occurred during B10b."
+  ]
+}

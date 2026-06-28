@@ -2,9 +2,11 @@
 
 Date: 2026-06-19
 
-Status: Active card plan with Chunk 6 readiness pass complete. Current selected
-build direction on 2026-06-24 is the `M365 Interaction Agent`, starting with
-the `New Signal` Teams alert proof. This plan complements
+Status: Active card plan for the governed `M365 Interaction Agent`. B1-B9 G0
+are live-proven, B10a local QUO readiness is complete, B10b QUO source
+contract/design is complete, B10c.0 local QUO API key readiness is complete
+without live API read, and the current active build plan is the compact
+2026-06-28 successor plan. This plan complements
 `docs/AGENTIC_M365_READINESS.md` and
 `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; it does not approve app
 registrations, consent, broad unattended automation, external messaging, QUO,
@@ -49,6 +51,7 @@ Related docs:
 
 - `docs/AGENTIC_M365_READINESS.md`
 - `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`
+- `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`
 - `docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md`
 - `config/M365_STAGE_9_AGENT_CAPABILITY_MODEL.json`
 - `config/M365_STAGE_9_BRIDGE_READINESS_CONTROL.json`
@@ -347,7 +350,9 @@ Future enhancements:
 - Add dashboard views for open action-log approvals and automation backlog
   readiness.
 - Fold Teams alerting, CRM triage, Planner/List actions, mailbox drafts, and
-  later QUO signals into one `M365 Interaction Agent` contract.
+  later QUO signals into one `M365 Interaction Agent` contract. Current QUO
+  source contract:
+  `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`.
 
 ## Acceptance Test
 

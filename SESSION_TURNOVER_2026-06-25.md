@@ -5,7 +5,9 @@ Canonical restart file:
 
 Current working docs:
 
-- [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md)
+- [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+- [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md)
+- [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) (historical chunk ledger)
 - [inventory/m365-interaction-agent-b7/B7_JOURNEY_MINIMAL_SIGNAL_ACK_CONTRACT_2026-06-25.md](inventory/m365-interaction-agent-b7/B7_JOURNEY_MINIMAL_SIGNAL_ACK_CONTRACT_2026-06-25.md)
 - [inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md](inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md)
 - [inventory/m365-interaction-agent-b7/B7_LEAD_SOURCE_PROOF_2026-06-25.md](inventory/m365-interaction-agent-b7/B7_LEAD_SOURCE_PROOF_2026-06-25.md)
@@ -54,8 +56,15 @@ receipt acknowledgement.
   defines event mapping, ingress options, normalized CRM shape, duplicate and
   raw payload policies, disable path, live decision worksheet, proof checklist,
   and the future live approval boundary without touching QUO or Microsoft 365.
-  B10b is now scoped as an implementation-ready placeholder/design closeout; live
-  QUO proof moves to B10c or a later source-expansion stage.
+- B10b: QUO inbound source contract/design is complete. It defines event
+  taxonomy, normalized source event shape, CRM mapping, dedupe/idempotency,
+  evidence/privacy rules, approval/disable/revoke expectations, and fake
+  synthetic fixture shapes without touching QUO or Microsoft 365. Live QUO proof
+  moves to B10c.1 or a later source-expansion stage.
+- B10c.0: QUO API key readiness is complete locally. The key was imported into
+  ignored local encrypted storage under `.local/quo-ingress/`, a dry-run
+  readiness check wrote sanitized local evidence, and no live QUO API read,
+  webhook setup, CRM write, Teams post, or outbound QUO action occurred.
 
 ## Live M365 Elements
 
@@ -191,8 +200,8 @@ Old DirectLink form-spec files were scrubbed to
 3. B9a local readiness and B9b selected internal G0 proof are complete. Future
    B9 normal-client reads still require exact selected item id(s), and any G1
    Suggested row remains a separate per-item approval.
-4. B10a local readiness is complete. B10b placeholder/design closeout is next;
-   B10c/later live QUO proof remains gated:
+4. B10a local readiness, B10b source contract/design, and B10c.0 local API key
+   readiness are complete. B10c.1/later live QUO proof remains gated:
    - name approved QUO business intake number(s);
    - name the first no-real-client or internal event class;
    - choose ingress option and approve secret/signature storage plus revoke path;
