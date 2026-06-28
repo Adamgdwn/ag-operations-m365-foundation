@@ -6,6 +6,8 @@ Status: B10b complete. Design-only implementation contract. B10c.0 later added
 local QUO API key readiness, but did not open source ingestion. No QUO webhook,
 CRM write, Teams post, real phone/SMS/voicemail traffic, or outbound QUO action
 has been enabled by this contract.
+B10c.0a later added the QUO/Sona CRM intake prompt and placement note, also
+without live QUO or M365 configuration.
 
 Owner: Adam.
 
@@ -17,6 +19,9 @@ Machine-readable companion:
 
 B10c.0 key readiness:
 `docs/2026-06-28_QUO_API_KEY_READINESS.md`
+
+B10c.0a CRM intake prompt:
+`docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`
 
 Historical B10a readiness packet:
 `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`
@@ -38,6 +43,8 @@ outbound channel. The first live source proof remains B10c.1 or later and
 requires a fresh exact approval boundary. B10c.0 only imported Adam's QUO API
 key into ignored local encrypted storage and ran a no-network dry-run readiness
 check.
+B10c.0a defines the Sona intake prompt and the future SharePoint/CRM placement
+for `IntakeSource = QUO`, but still does not configure QUO or Microsoft 365.
 
 ## Authority Boundary
 
@@ -59,6 +66,8 @@ Authority level: G0/R0 design and local evidence only.
 - `IntakeSource = QUO` is the source label for future QUO-originated signals.
 - One accepted source event should create or map to exactly one CRM signal.
 - Existing New Signal Teams alerting and triage should be reused.
+- Sona should create a structured human handoff summary, not take autonomous
+  action.
 - Any raw payload, transcript, recording, or full message retention needs
   explicit B10c/later approval.
 - Outbound behavior stays blocked until a separate G3/R3 decision.
@@ -151,6 +160,35 @@ Target list: `CRM - New Signals`.
 
 Contact update events do not create work by default. They can be retained as
 future relationship evidence only after the relationship-enrichment rules exist.
+
+## Sona And CRM Intake Placement
+
+Use the B10c.0a prompt document as the operator-facing QUO setup guide:
+`docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`.
+
+QUO placement:
+
+- paste the Sona intake prompt into both QUO `Sona` nodes in the call flow:
+  missed-call handling during business hours and direct after-hours handling;
+- keep voicemail as fallback;
+- if QUO provides a separate post-call summary field, use the prompt document's
+  structured CRM handoff labels there;
+- do not configure Sona to write SharePoint directly, send Teams posts, send
+  SMS/email replies, trigger callbacks, or perform outbound actions.
+
+SharePoint placement:
+
+```text
+Operations Cockpit
+-> CRM Command Center
+-> QUO Intake
+-> CRM - New Signals filtered where IntakeSource = QUO
+```
+
+The future live proof should treat QUO/Sona output as a source event or
+post-call summary, normalize it through the approved B10c.1+ ingress path, then
+write or match exactly one `CRM - New Signals` item. No QUO path may bypass the
+CRM intake list.
 
 ## Evidence And Privacy
 

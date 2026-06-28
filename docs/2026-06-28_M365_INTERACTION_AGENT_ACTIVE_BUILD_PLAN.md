@@ -5,7 +5,8 @@ Date: 2026-06-28
 Status: Active successor plan. Supersedes
 `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md` for current
 planning and startup context. B10b is complete as of 2026-06-28. B10c.0 QUO
-API key readiness is complete locally as of 2026-06-28.
+API key readiness is complete locally as of 2026-06-28. B10c.0a QUO CRM intake
+prompt and placement is complete as design-only guidance as of 2026-06-28.
 
 Owner: Adam.
 
@@ -80,6 +81,8 @@ Completed proof/readiness:
 - B10b QUO implementation-ready source contract and synthetic fixture design.
 - B10c.0 QUO API key local import and dry-run readiness evidence; no live QUO
   API read was performed.
+- B10c.0a QUO/Sona CRM intake prompt and SharePoint placement guidance; no live
+  QUO or CRM configuration was changed.
 - Chunk 20G GAIL OS bridge placement and one-writer framing.
 - D0 documentation cleanup and token-friendly successor plan, this file.
 
@@ -100,14 +103,17 @@ autonomous GAIL OS Connector execution and do not open Phase 4.
 | D0 | Documentation cleanup and token-friendly plan split | Complete | Adam requested cleanup before next build work |
 | B10b | QUO implementation-ready placeholder/design pack | Complete | Source contract: `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`; config: `config/M365_INTERACTION_AGENT_B10B_QUO_SOURCE_CONTRACT.json` |
 | B10c.0 | QUO API key local readiness | Complete local-only | Key imported to ignored `.local/quo-ingress/`; readiness doc: `docs/2026-06-28_QUO_API_KEY_READINESS.md`; config: `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`; dry-run evidence created with no API call |
+| B10c.0a | QUO CRM intake prompt and placement | Complete design-only | Prompt/placement doc: `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`; Sona routes to CRM handoff summary, future ingress writes `CRM - New Signals` with `IntakeSource = QUO` |
 | B10c.1+ | Low-volume QUO live source proof | Later | Exact QUO number/event/ingress/secret/retention/disable/outbound-block approval |
 | B11 | Normal operating cadence for selected signals | Next recommended operating chunk | Adam selects whether to practice real G0 review before more source expansion |
 | Phase 4 | GAIL OS Connector registry and M365 production write path | Blocked | BLK-005 resolved, GAIL OS HTTP API live, explicit Phase 4 authorization |
 
 The current structured phase closed when B10b finished, and B10c.0 has now
-captured the key readiness layer without opening ingestion. The next default
-move is still B11 operating cadence, unless Adam explicitly pulls B10c.1+
-forward for low-volume QUO live proof under a fresh exact approval boundary.
+captured the key readiness layer without opening ingestion. B10c.0a adds the
+Sona prompt and SharePoint/CRM intake placement without touching QUO or M365.
+The next default move is still B11 operating cadence, unless Adam explicitly
+pulls B10c.1+ forward for low-volume QUO live proof under a fresh exact approval
+boundary.
 
 ## Execution Rhythm
 
@@ -249,6 +255,45 @@ and no new write authority.
 B10b result: complete. The repo now has a human-readable source contract and a
 machine-readable config contract, both design-only, both fake-fixture-only, and
 both keeping B10c behind fresh approval.
+
+## B10c.0a QUO CRM Intake Prompt
+
+B10c.0a status: complete design-only. The repo now has a clear Sona intake
+prompt and placement note for the QUO call flow Adam showed:
+
+```text
+Incoming call -> Business hours
+During hours -> Ring users -> if missed -> Sona -> fallback voicemail
+After hours -> Sona -> fallback voicemail
+```
+
+Prompt/placement doc:
+`docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`.
+
+Authority: G0/R0 design and local documentation only.
+
+Placement rule:
+
+- paste the Sona prompt into both QUO `Sona` nodes: missed-call handling during
+  business hours and direct after-hours handling;
+- keep voicemail as fallback;
+- do not connect Sona directly to SharePoint, Teams, SMS reply, callback, email
+  send, or any other outbound automation;
+- later B10c.1+ ingress should transform the QUO/Sona handoff into one
+  `CRM - New Signals` item with `IntakeSource = QUO`, then reuse the existing
+  New Signal Teams alert lane.
+
+SharePoint operator placement:
+
+```text
+Operations Cockpit
+-> CRM Command Center
+-> QUO Intake
+-> CRM - New Signals filtered where IntakeSource = QUO
+```
+
+B10c.0a did not configure QUO, call QUO APIs, read call/SMS/voicemail traffic,
+write CRM, post Teams, create webhooks, or send outbound QUO actions.
 
 ## B10c Gate
 
@@ -450,6 +495,8 @@ Use these files by default:
   `docs/2026-06-28_QUO_API_KEY_READINESS.md`
 - QUO API key readiness config:
   `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`
+- QUO CRM intake prompt and placement:
+  `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`
 - Product/governance plan:
   `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`
 - New Signal setup/proof reference:

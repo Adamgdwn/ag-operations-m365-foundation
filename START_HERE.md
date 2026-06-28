@@ -16,8 +16,9 @@ adding the GAIL OS bridge placement register and one-writer audit. The oversized
 2026-06-25 chunk file is now superseded for active planning by the compact
 2026-06-28 active build plan. B10b is complete as a detailed QUO source
 contract/design pack; B10c.0 local QUO API key readiness is complete without a
-live API read; live QUO source proof moves to B10c.1 or the next source
-expansion stage after exact approval.
+live API read; B10c.0a QUO/Sona CRM intake prompt and placement guidance is
+complete as design-only; live QUO source proof moves to B10c.1 or the next
+source expansion stage after exact approval.
 
 ## Current Focus
 
@@ -60,7 +61,9 @@ Priority when resumed: one agent with governed M365 capabilities. B8 Journey
 receipt/replay hardening and B9 selected internal G0 triage are now
 live-proven. B10b QUO implementation-ready source contract/design is complete,
 and B10c.0 imported the QUO API key into ignored local encrypted storage
-without a live API read. It is not a live QUO source-ingestion hookup. B9a
+without a live API read. B10c.0a adds the Sona prompt and SharePoint/CRM
+placement for future `IntakeSource = QUO` records. It is not a live QUO
+source-ingestion hookup. B9a
 local selected-signal operating readiness is executed, and
 B9b proved one internal read-only pass against CRM item `#32` with no Suggested
 row. Any future B9 normal-client read or G1 Suggested row remains separately
@@ -151,6 +154,12 @@ evidence.
   The key is stored only under ignored `.local/quo-ingress/`; the dry-run probe
   produced sanitized local evidence and made no QUO API call. Companion config:
   `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`.
+- B10c.0a QUO CRM intake prompt and placement:
+  `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`.
+  This tells QUO/Sona to produce a structured human handoff and places the
+  SharePoint operator view at CRM Command Center -> QUO Intake -> filtered
+  `CRM - New Signals` rows where `IntakeSource = QUO`. No live QUO or CRM
+  configuration changed.
 - B1 proof harness: `scripts/Invoke-M365NewSignalAlertProof.ps1` records local
   proof evidence and gates the one synthetic CRM create behind a typed approval.
 - B2/B3 triage packet: `scripts/Invoke-M365NewSignalTriage.ps1` reads one
@@ -169,7 +178,8 @@ evidence.
   infrastructure, not Phase 4 connector execution.
 - Next build gate: refinement or B11 selected operating cadence unless Adam
   approves another exact live read/write scope. B10b placeholder/design and
-  B10c.0 key readiness are complete; live QUO proof waits for B10c.1 or later exact
+  B10c.0 key readiness are complete, and B10c.0a QUO/Sona CRM intake prompt
+  placement is documented; live QUO proof waits for B10c.1 or later exact
   number/event/ingress/secret/retention/disable and outbound-block approval.
 - Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 
@@ -208,6 +218,7 @@ scope, stop conditions, and local approval evidence are explicit.
 - Active build plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
 - QUO source contract: [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md)
 - QUO API key readiness: [docs/2026-06-28_QUO_API_KEY_READINESS.md](docs/2026-06-28_QUO_API_KEY_READINESS.md)
+- QUO CRM intake prompt: [docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md](docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md)
 - Historical chunk ledger: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md)
 - Agent card: [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md)
 - Decisions card: [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md)

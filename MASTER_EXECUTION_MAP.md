@@ -14,7 +14,8 @@
 > OS bridge/one-writer framing merged; oversized chunk ledger superseded by the
 > compact 2026-06-28 active build plan; B10b QUO implementation-ready source
 > contract/design pack complete; B10c.0 local QUO API key readiness complete
-> without live API read; next default chunk is B11 operating cadence unless Adam
+> without live API read; B10c.0a QUO/Sona CRM intake prompt and placement
+> complete as design-only; next default chunk is B11 operating cadence unless Adam
 > pulls B10c.1 live QUO proof forward by exact approval).
 
 Canonical sources this map sits over:
@@ -112,7 +113,7 @@ Three things are now LIVE and verified; the rest remain plan-only.
 | Knowledge / Records | [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md) | Plan only |
 | Support / Intake | [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md) | Plan only |
 | Finance / Closeout | [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md) | Plan only |
-| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B9 G0 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, lead-source display, Journey replay/idempotency hardening, and one selected internal read-only operating triage pass. B10a local QUO inbound source proof packet complete; B10b QUO source contract/design pack complete; B10c.0 local QUO API key readiness complete without live API read. Live QUO proof moves to B10c.1 or a later source-expansion stage after exact approval; next default work is B11 selected operating cadence. Product plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); active build plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md); QUO source contract: [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md); QUO key readiness: [docs/2026-06-28_QUO_API_KEY_READINESS.md](docs/2026-06-28_QUO_API_KEY_READINESS.md); historical chunk ledger: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
+| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B9 G0 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, lead-source display, Journey replay/idempotency hardening, and one selected internal read-only operating triage pass. B10a local QUO inbound source proof packet complete; B10b QUO source contract/design pack complete; B10c.0 local QUO API key readiness complete without live API read; B10c.0a QUO/Sona CRM intake prompt and placement complete as design-only. Live QUO proof moves to B10c.1 or a later source-expansion stage after exact approval; next default work is B11 selected operating cadence. Product plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); active build plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md); QUO source contract: [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md); QUO key readiness: [docs/2026-06-28_QUO_API_KEY_READINESS.md](docs/2026-06-28_QUO_API_KEY_READINESS.md); QUO CRM intake prompt: [docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md](docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md); historical chunk ledger: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
 | Access / Onboarding | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model; net-new hiring/role-profile work deferred until growth makes it useful |
 
 ---
@@ -169,6 +170,7 @@ PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← 
      ✅ B10a: local QUO inbound source proof packet, event mapping, and proof checklist
      ✅ B10b: QUO implementation-ready source contract/design pack, no QUO API work
      ✅ B10c.0: local QUO API key readiness, no live API read or ingestion
+     ✅ B10c.0a: QUO/Sona CRM intake prompt and placement, no live QUO or CRM config
      ③ B11: run selected operating cadence, or pull B10c.1 forward by exact approval
      ④ B10c.1/later: add QUO as inbound-only live source proof while volume is low, if approved
 ```
@@ -204,6 +206,7 @@ rows remain selected/approved per item.
 - **Selected current direction:** **M365 Interaction Agent** — one governed
 agent with capabilities, not a helper stack. The first proof lane is live
 through B9 G0, and the B10a local QUO readiness packet, B10b source contract,
-and B10c.0 local API key readiness are complete. Next default move is B11
-selected operating cadence; live QUO proof is B10c.1/later after exact approval. Onboarding, role profiles, and hiring
+B10c.0 local API key readiness, and B10c.0a QUO/Sona CRM intake prompt are
+complete. Next default move is B11 selected operating cadence; live QUO proof
+is B10c.1/later after exact approval. Onboarding, role profiles, and hiring
 packet work are deferred until growth makes them useful.

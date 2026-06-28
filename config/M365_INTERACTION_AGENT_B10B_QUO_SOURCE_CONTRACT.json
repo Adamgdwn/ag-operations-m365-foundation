@@ -10,6 +10,7 @@
   "relatedDocs": {
     "activeBuildPlan": "docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md",
     "sourceContract": "docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md",
+    "crmIntakePrompt": "docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md",
     "historicalB10aReadinessPacket": "inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md"
   },
   "boundaries": {
@@ -158,6 +159,41 @@
       "NextAction": "Human triage note; no outbound reply instruction unless separately approved."
     },
     "contactUpdateRule": "Do not create work by default. Retain as future relationship evidence only after relationship-enrichment rules exist."
+  },
+  "crmIntakePromptPlacement": {
+    "status": "complete-design-only-b10c0a",
+    "promptDoc": "docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md",
+    "quoPlacement": [
+      "Paste the Sona prompt into the missed-call Sona node during business hours.",
+      "Paste the same Sona prompt into the after-hours Sona node.",
+      "Keep voicemail as fallback.",
+      "If QUO has a separate post-call summary field, use the structured CRM handoff labels from the prompt doc there."
+    ],
+    "sharePointPlacement": {
+      "path": "Operations Cockpit -> CRM Command Center -> QUO Intake -> CRM - New Signals",
+      "filter": "IntakeSource = QUO",
+      "defaultSort": "newest first",
+      "recommendedColumns": [
+        "Title",
+        "Priority",
+        "SignalType",
+        "PersonName",
+        "OrganizationName",
+        "NeedSummary",
+        "NextAction",
+        "Follow-up date",
+        "RelatedLink",
+        "Owner",
+        "SignalStatus"
+      ]
+    },
+    "blocked": [
+      "Direct Sona to SharePoint writes.",
+      "Direct Sona Teams posts.",
+      "Outbound SMS, callback, reply, email send, or QUO API send.",
+      "Raw transcript, full SMS body, webhook secret, API key, or QUO admin configuration exposure in SharePoint."
+    ],
+    "futureIngressRule": "B10c.1+ should normalize QUO/Sona output through the approved ingress path, then create or match exactly one CRM - New Signals item with IntakeSource = QUO."
   },
   "evidenceAndPrivacy": {
     "rawPayload": "Not present in B10b. B10c/later approval required before local private retention.",
