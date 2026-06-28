@@ -1,7 +1,7 @@
 {
   "chunk": "B8",
   "name": "Journey Loop Hardening",
-  "status": "local-design-ready",
+  "status": "live-proven",
   "date": "2026-06-27",
   "owner": "Adam",
   "purpose": "Make the Guided AI Journey -> M365 -> Journey receipt loop dedupe-friendly, readable by portalEventId, and recoverable when Journey shows crm_failed_or_timed_out.",
@@ -10,11 +10,12 @@
     "journeyLedger": "Journey crm_lifecycle_events",
     "httpIntakeFlowDisplayName": "GAIL - Custom site intake to CRM (create-only, HTTP)",
     "httpIntakeFlowId": "9582c422-158d-4975-ba7f-81b4d77e497b",
-    "currentPortalEventStorage": "SourceText metadata block",
-    "currentReceiptCallback": "M365 sends signed ack after CRM item creation when server-side ack endpoint and secret are configured."
+    "currentPortalEventStorage": "Indexed PortalEventId and SourceCorrelationId fields, with SourceText metadata retained for operator context.",
+    "currentReceiptCallback": "M365 sends signed ack after CRM item creation and after idempotent existing-item replay when server-side ack endpoint and secret are configured.",
+    "liveProof": "inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md"
   },
   "recommendedDefault": {
-    "phase": "B8b live update after approval",
+    "phase": "B8b live update completed after approval",
     "sharePointFields": [
       {
         "displayName": "Portal Event ID",
@@ -40,7 +41,7 @@
         "reason": "Derive receipt state from the Journey ledger for now. Add CRM-local status only if operators need to work receipts from CRM directly."
       }
     ],
-    "duplicatePolicy": "If one existing CRM item matches the same PortalEventId, do not create a new CRM item. Return the existing CRM item id/url to Journey with crmStatus=existing. If more than one item matches, stop and require Adam review.",
+    "duplicatePolicy": "If one existing CRM item matches the same PortalEventId, do not create a new CRM item. Return the existing CRM item id/url and message to Journey using the current receiver-compatible receipt shape. If more than one item matches, stop and require Adam review.",
     "replayPolicy": "Journey operator retry/replay must reuse the same portalEventId. A replay should either create the missing CRM item or acknowledge the existing one; it must not silently create duplicate work.",
     "cleanupPolicy": "No delete by default. Leave historical B7 proof rows as evidence. Backfill first-class fields only after exact item ids and live write scope are approved."
   },
@@ -52,6 +53,7 @@
     "autonomy": "No R4 delegated autonomy enabled"
   },
   "liveApprovalRequired": {
+    "status": "consumed-for-2026-06-27-b8b-proof",
     "approvalPhrase": "approve-b8-journey-loop-hardening-live-update-20260627",
     "scope": [
       "Add PortalEventId and SourceCorrelationId fields to CRM - New Signals.",
@@ -75,12 +77,12 @@
     "flowBodyCapture": ".local/flow-builder/capture/flow-body-http-intake.json",
     "b7LiveProof": "inventory/m365-interaction-agent-b7/B7_LIVE_PROOF_2026-06-25.md",
     "b7LeadSourceProof": "inventory/m365-interaction-agent-b7/B7_LEAD_SOURCE_PROOF_2026-06-25.md",
-    "futureSchemaProof": "inventory/m365-interaction-agent-b8/b8-schema-proof-*.md",
-    "futureReplayProof": "inventory/m365-interaction-agent-b8/b8-replay-proof-*.md"
+    "schemaProof": "inventory/m365-interaction-agent-b8/b8-schema-proof-20260627-174034.md",
+    "replayProof": "inventory/m365-interaction-agent-b8/b8-replay-proof-0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca-20260627-235409.md"
   },
   "acceptance": [
     "B8 local packet names exact fields, duplicate policy, replay policy, cleanup policy, evidence paths, stop conditions, and approval phrase.",
-    "After live approval and implementation, a Journey event can be found from PortalEventId without scraping SourceText.",
+    "A Journey event can be found from PortalEventId without scraping SourceText.",
     "Replaying the same PortalEventId does not create an unreviewed duplicate CRM item.",
     "Journey receives a receipt ack for both new-create and existing-item replay outcomes.",
     "Older synthetic evidence rows are left alone or backfilled only under an exact approval scope."

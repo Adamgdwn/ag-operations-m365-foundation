@@ -12,13 +12,13 @@ low-volume operation: B8 hardens the Journey receipt/replay loop, B9 exercises
 selected-signal triage in normal use, and B10 brings QUO forward as an
 inbound-only source proof while call volume is still low. QUO is still outside
 the immediate hardening step, but it is no longer an indefinite parking-lot
-item. B8a local hardening design is now executed; B8b live schema/flow/replay
-work remains gated. B9a local selected-signal operating packet is also
-executed, so the next B9 tenant touch is only a selected G0 read, or a selected
-G1 `Suggested` row if Adam approves that specific item. B10a local QUO inbound
-source readiness is now executed as a no-live-touch packet; B10b live proof
-remains gated by exact number, event, ingress, secret, retention, disable, and
-outbound-block approvals.
+item. B8a local hardening design and B8b live schema/flow/replay proof are now
+executed. B9a local selected-signal operating packet is also executed, so the
+next B9 tenant touch is only a selected G0 read, or a selected G1 `Suggested`
+row if Adam approves that specific item. B10a local QUO inbound source readiness
+is now executed as a no-live-touch packet; B10b live proof remains gated by
+exact number, event, ingress, secret, retention, disable, and outbound-block
+approvals.
 
 Owner: Adam.
 
@@ -50,6 +50,16 @@ CRM signal created
 This is a build plan, not standing approval for tenant writes. Each live write,
 connector, app, permission, external send, or source expansion still needs its
 own approval boundary.
+
+Operator interaction rule: Adam should never have to guess where an approval,
+sign-in, MFA prompt, source selection, or source proof interaction is supposed
+to happen. Before waiting on Adam, the agent must open or name the exact visible
+window/browser/admin surface, give it a clear title, and record where the local
+evidence will land. For B8/B9/B10 approval captures, use
+`scripts/Start-M365InteractionAgentApprovalWindow.ps1`; it opens a visible
+PowerShell window, shows the approved scope and stop conditions, and writes a
+local `.local/interaction-agent-approvals/*.json` capture without performing
+tenant/source work.
 
 ## Guided AI Labs OS Alignment
 
@@ -223,7 +233,7 @@ B7 evidence:
 | B5 | Durable permission decision | Decision Register | Adam chooses the real `m365-interaction-agent` posture. |
 | B6 | Source expansion | Later G2/G3 per source | More inbound sources feed the same CRM -> agent lane. |
 | B7 | Journey minimal signal + CRM receipt ack | Source ingress plus restricted external callback | Journey invite/admin signal creates CRM item, then M365 confirms receipt back to Journey dashboard. |
-| B8 | Journey loop hardening | B8a G0/R0 complete; B8b G2/G3 by exact write scope | First-class `portalEventId`/receipt state, idempotent replay, and pending cleanup plan. |
+| B8 | Journey loop hardening | B8a G0/R0 complete; B8b G2/G3 live proof complete | First-class `portalEventId`/receipt state, idempotent replay, and pending cleanup plan. |
 | B9 | Selected signal operating triage | B9a G0/R0 complete; B9b G0/G1 selected only | Run the proven triage/advisory path on selected CRM items and optionally record one Suggested row per approved item. |
 | B10 | QUO inbound source proof | B10a G0/R0 complete; B10b G3 by exact source proof approval | Low-volume QUO call/SMS/voicemail events create or map CRM signals through the existing alert and triage lane as the first Phone / Voice / Text sensory portal. |
 
@@ -750,7 +760,7 @@ Slim signal principle:
 
 Completed live work:
 
-- Journey confirmed `POST https://www.guidedaijourney.com/api/crm/lifecycle/ack`
+- Journey confirmed `POST <<JOURNEY_ACK_ENDPOINT_SERVER_SIDE_ONLY>>`
   as the fixed server-side acknowledgement endpoint, `x-m365-ack-secret` as the
   header name, HTTP `200` as the success status, and a 15-minute dashboard
   pending timeout. M365 does not call a callback URL supplied inside the inbound
@@ -831,10 +841,21 @@ Turn the live Journey receipt loop into a small operating system: easy to
 dedupe, easy to read back, and recoverable when a Journey event is stuck at
 `crm_failed_or_timed_out`.
 
-Local execution status - 2026-06-27:
+Execution status - 2026-06-27:
 
 - B8a local-only hardening packet generated. No Microsoft 365 connection, HTTP
   send, CRM write, flow update, secret read, or Journey callback was performed.
+- B8b live schema/flow/replay proof completed after Adam approved the exact
+  scope in a visible approval window. Proof packet:
+  `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
+- Indexed `PortalEventId` and `SourceCorrelationId` fields now exist on
+  `CRM - New Signals`.
+- The live HTTP intake flow now performs a pre-create lookup by `PortalEventId`.
+  A replay of the same event returns the existing CRM item path and does not
+  create a duplicate signal.
+- B8b synthetic/internal Journey replay proof used portal event
+  `0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca`; the first post created CRM item
+  `#32`, and the replay left the CRM count at one.
 - Config:
   `config/M365_INTERACTION_AGENT_B8_JOURNEY_LOOP_HARDENING.json`.
 - Packet:
@@ -851,9 +872,12 @@ Local execution status - 2026-06-27:
 - Recommended default: add `PortalEventId` and `SourceCorrelationId`; defer
   `ReceiptStatus` until operators need CRM-local receipt state.
 - Duplicate/replay rule: one existing match returns the existing CRM item id/url
-  to Journey with `crmStatus=existing`; zero matches creates one item and acks
-  `crmStatus=created`; more than one match stops for Adam review.
-- Later live approval phrase prepared, not consumed:
+  to Journey without creating a new CRM item; zero matches creates one item and
+  acks receipt; more than one match stops for Adam review. Compatibility note:
+  the Journey receiver currently accepts the B7 receipt shape, so the
+  existing-item branch keeps the receiver-compatible `crmStatus` value while
+  returning the existing CRM item id/url and message.
+- Live approval phrase consumed for B8b:
   `approve-b8-journey-loop-hardening-live-update-20260627`.
 
 Scope:
@@ -862,19 +886,20 @@ Scope:
 - Keep the Journey ledger as the source of truth for portal event state.
 - Add first-class storage only where it improves dedupe, read-back, or operator
   recovery.
-- Treat all schema, flow-update, and replay writes as fresh approval gates.
+- Treat any further schema, flow-update, cleanup, backfill, or replay write as a
+  fresh approval gate.
 
 Build:
 
-- Draft the SharePoint schema change for first-class `portalEventId` storage.
+- SharePoint schema change for first-class `portalEventId` storage is complete.
   Candidate fields:
   - `PortalEventId` as a single-line text column;
   - `SourceCorrelationId` as a single-line text column;
   - `ReceiptStatus` or equivalent only if CRM needs local receipt state rather
     than deriving it from Journey.
-- Update the HTTP intake flow design so Journey metadata still lands in
-  `SourceText`, while any approved first-class fields are populated directly.
-- Add an idempotency rule before create: replaying the same `portalEventId`
+- HTTP intake flow update is complete: Journey metadata still lands in
+  `SourceText`, and approved first-class fields are populated directly.
+- Pre-create idempotency rule is complete: replaying the same `portalEventId`
   must not silently create duplicate work.
 - Decide whether duplicate handling should:
   - return the existing CRM item id to Journey;
@@ -889,12 +914,13 @@ Build:
 Acceptance:
 
 - B8a local packet names exact fields, duplicate policy, replay policy, cleanup
-  policy, evidence paths, stop conditions, and the future live approval phrase.
-- A Journey event can be found from `portalEventId` without scraping long notes.
-- Replaying the same `portalEventId` does not create an unreviewed duplicate
-  CRM signal.
-- A failed or timed-out Journey CRM receipt can be retried by an operator with
-  an evidence trail.
+  policy, evidence paths, stop conditions, and the live approval phrase.
+- B8b proof shows a Journey event can be found from `portalEventId` without
+  scraping long notes.
+- B8b proof shows replaying the same `portalEventId` does not create an
+  unreviewed duplicate CRM signal.
+- A failed or timed-out Journey CRM receipt can now be retried by an operator
+  with an evidence trail.
 - Existing B7 proof behavior still works: CRM item created, Teams alert posted,
   and Journey receives `crm_received`.
 - No secret value is committed to git, DirectLink, docs, or inventory.
@@ -907,8 +933,8 @@ Stop conditions:
 - Callback URL accepted from inbound payload.
 - Automatic CRM merge, delete, or suppression.
 - Real client replay test before the synthetic replay path passes.
-- No B8b live update unless Adam approves the exact schema/flow/replay scope
-  and the future approval phrase.
+- Any additional B8 write, replay, cleanup, or backfill without a fresh
+  approval boundary.
 
 ## B9 - Selected Signal Operating Triage
 
@@ -1082,18 +1108,17 @@ Completed baseline:
 7. Lead-source display proof recorded CRM item `#27` with
    `Lead source detail: Journey admin invite`.
 8. B8a local Journey hardening packet is complete.
-9. B9a local selected-signal operating packet, queue template, and review
+9. B8b live Journey loop hardening proof is complete.
+10. B9a local selected-signal operating packet, queue template, and review
    template are complete.
-10. B10a local QUO inbound source proof packet, event mapping, live decision
+11. B10a local QUO inbound source proof packet, event mapping, live decision
     worksheet, and proof checklist are complete.
 
 Next sequence:
 
-1. B8a local hardening packet is complete; B8b hardens the Journey
-   receipt/replay loop live only after approval.
-2. B9a local selected-signal operating packet is complete; B9b runs selected
+1. B9a local selected-signal operating packet is complete; B9b runs selected
    read-only triage only after Adam chooses item ids, source, or window.
-3. B10a local QUO readiness packet is complete; B10b brings QUO in live only
+2. B10a local QUO readiness packet is complete; B10b brings QUO in live only
    after exact proof approvals.
 
 ## Immediate Next Work
@@ -1105,12 +1130,15 @@ are now done. Do not rerun any follow-on Suggested-row write or live flow update
 without a fresh approval; the existing B6 Suggested row is Agent Action Log
 `#11`.
 
-B8a local design is executed. The immediate next live work is B8b: add
-first-class `PortalEventId` / `SourceCorrelationId` storage, update the HTTP
-intake flow for idempotency, and run one no-real-client replay proof. Any
-SharePoint schema change, flow update, replay test, cleanup/backfill, Agent
-Action Log write, or other tenant write requires fresh approval for scope,
-target, evidence, rollback, and the prepared B8 approval phrase.
+B8b live Journey loop hardening is executed. It added first-class
+`PortalEventId` / `SourceCorrelationId` storage, updated the HTTP intake flow
+for idempotency, and proved one synthetic/internal replay without creating a
+duplicate CRM item. Any further SharePoint schema change, flow update, replay
+test, cleanup/backfill, Agent Action Log write, or other tenant write requires
+fresh approval for scope, target, evidence, rollback, and the matching approval
+phrase. That approval should be captured in a visible window launched with
+`scripts/Start-M365InteractionAgentApprovalWindow.ps1` so Adam can see the exact
+interaction surface before the live chunk begins.
 
 B9a local operating readiness is executed. The next B9 tenant touch is a
 selected G0 read-only triage run after Adam chooses exact CRM item id(s), source,
@@ -1146,7 +1174,7 @@ Prime Boiler separated from Guided AI Labs
 -> internal B7 proof
 -> B7 lead-source display proof
 -> B8a local Journey loop hardening packet
--> B8b live Journey loop hardening after exact approval
+-> B8b live Journey loop hardening proof
 -> B9a local selected-signal operating packet
 -> B9b selected G0/G1 operating triage after item selection
 -> B10a local QUO inbound source proof packet

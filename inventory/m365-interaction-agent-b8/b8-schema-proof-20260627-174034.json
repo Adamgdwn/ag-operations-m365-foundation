@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-06-27T17:40:39.2864403-06:00",
+  "chunk": "B8b",
+  "site": "https://agoperationsltd.sharepoint.com/sites/GuidedAILabs",
+  "listTitle": "CRM - New Signals",
+  "approvalCapture": "C://Users//adamg//01. Code Projects//AG Operations Workspace Setup//.local//interaction-agent-approvals//b8b-approval-20260627-173147.json",
+  "approvalCapturedAt": "06/27/2026 17:32:55",
+  "mode": "apply",
+  "fields": [
+    {
+      "displayName": "Portal Event ID",
+      "internalName": "PortalEventId",
+      "type": "Text",
+      "indexed": true,
+      "hidden": false,
+      "required": false,
+      "action": "exists"
+    },
+    {
+      "displayName": "Source Correlation ID",
+      "internalName": "SourceCorrelationId",
+      "type": "Text",
+      "indexed": true,
+      "hidden": false,
+      "required": false,
+      "action": "exists"
+    }
+  ],
+  "stopConditionsObserved": [
+    "No real client replay.",
+    "No delete or merge.",
+    "No external message send.",
+    "No callback URL accepted from payload.",
+    "No browser-side intake or ack secret.",
+    "No QUO setup.",
+    "No R4 delegated autonomy."
+  ],
+  "transcript": "C://Users//adamg//01. Code Projects//AG Operations Workspace Setup//inventory//m365-interaction-agent-b8//b8-schema-proof-20260627-174034.log"
+}

@@ -6,11 +6,11 @@ Status: the only active startup document for this repo.
 Read this file first, then open only the current working plan or the specific
 reference needed for the task.
 
-Update 2026-06-25: docs are aligned around one governed `M365 Interaction
-Agent`. B1-B7 are live-proven: New Signal Teams alerting, triage evidence,
+Update 2026-06-27: docs are aligned around one governed `M365 Interaction
+Agent`. B1-B8 are live-proven: New Signal Teams alerting, triage evidence,
 similar-record advisory, one `Suggested` Agent Action Log row, one-writer
 decision, Guided AI Journey source proof, Journey CRM receipt acknowledgement,
-and lead-source display in Teams.
+lead-source display in Teams, and Journey replay/idempotency hardening.
 
 ## Current Focus
 
@@ -45,16 +45,16 @@ remains the relationship/context-graph layer. The local `G0-G4` gates map to
 the organization-level `R0-R5` authority ladder; no current B8/B9/B10 work
 enables R4 delegated autonomy.
 
-Priority when resumed: one agent with governed M365 capabilities. The next
-chunks are B8 Journey receipt/replay hardening, B9 selected-signal operating
-triage, and B10 QUO inbound source proof. B8a local hardening design is
-executed; B8b live schema/flow/replay work remains a gated live step. B9a local
-selected-signal operating readiness is also executed; the next B9 tenant touch
-is selected read-only triage after Adam chooses exact item ids, source, or
-window. B10a local QUO inbound source readiness is now executed; B10b live
-source proof waits for exact number, event, ingress, secret, retention, disable,
-and outbound-block approvals. Hiring roles, profile libraries, and onboarding
-packet work are deferred until growth makes them useful.
+Priority when resumed: one agent with governed M365 capabilities. B8 Journey
+receipt/replay hardening is now live-proven. The remaining chunks in this
+structured phase are B9 selected-signal operating triage and B10 QUO inbound
+source proof. B9a local selected-signal operating readiness is executed; the
+next B9 tenant touch is selected read-only triage after Adam chooses exact item
+ids, source, or window. B10a local QUO inbound source readiness is executed;
+B10b live source proof waits for exact number, event, ingress, secret,
+retention, disable, and outbound-block approvals. Hiring roles, profile
+libraries, and onboarding packet work are deferred until growth makes them
+useful.
 
 ## Fast Startup
 
@@ -66,9 +66,13 @@ packet work are deferred until growth makes them useful.
 5. Read the next-build packet if planning beyond the first alert proof.
 6. Confirm the target write surface and approval boundary before running any
    additional live write from this repo.
-7. If you need the full pathway, read [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md).
-8. If you need the card backlog, read [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md).
-9. If the task mentions the Windows/Linux direct link, use the `direct-link`
+7. If Adam must type an approval phrase, select an account, complete MFA, choose
+   a source item, or perform any other live interaction, open a clearly named
+   visible window first. Do not expect Adam to infer which terminal, browser, or
+   admin surface needs attention.
+8. If you need the full pathway, read [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md).
+9. If you need the card backlog, read [docs/CARD_PLAN_INDEX.md](docs/CARD_PLAN_INDEX.md).
+10. If the task mentions the Windows/Linux direct link, use the `direct-link`
    skill and [docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md](docs/LOCAL_AGENTIC_MACHINE_LINK_RUNBOOK.md).
 
 Do not load old stage packets, session turnover files, exports, or inventory
@@ -101,6 +105,11 @@ snapshots unless the task specifically asks for history or evidence.
   It proposes `PortalEventId` and `SourceCorrelationId`, defers
   `ReceiptStatus`, defines duplicate/replay handling, and prepares the future
   B8 live approval boundary without touching M365.
+- B8b live Journey loop hardening proof:
+  `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
+  It added indexed `PortalEventId` and `SourceCorrelationId` fields, updated
+  the live HTTP intake flow for pre-create idempotency, and proved one
+  synthetic/internal Journey replay without creating a duplicate CRM item.
 - B9a local selected-signal operating triage packet:
   `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
   It indexes prior B1/B6 packet evidence, creates queue and review CSV
@@ -124,12 +133,10 @@ snapshots unless the task specifically asks for history or evidence.
 - Existing live HTTP intake flow: `GAIL - Custom site intake to CRM
   (create-only, HTTP)` is `Started` and can create CRM rows from approved
   server-side website/Journey posts.
-- Next build gate: refinement only unless Adam approves another live write
-  scope. Current sequence is B8b live first-class `PortalEventId` /
-  `SourceCorrelationId` storage and Journey retry/replay hardening if approved,
-  B9b selected read-only CRM triage after item selection, then B10b live QUO
-  inbound proof only after exact number/event/ingress/secret/retention/disable
-  and outbound-block approval.
+- Next build gate: refinement only unless Adam approves another live read/write
+  scope. Current sequence is B9b selected read-only CRM triage after item
+  selection, then B10b live QUO inbound proof only after exact
+  number/event/ingress/secret/retention/disable and outbound-block approval.
 - Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 
 ## Approval Boundaries
@@ -151,6 +158,13 @@ consent, guest/sharing changes, or broad automation.
 Future live-write rule: do not rely on earlier proof approvals as blanket
 approval for new work. Adam must explicitly approve the next live write scope,
 target surface, evidence target, and rollback path.
+
+Operator interaction rule: when approval, sign-in, MFA, source selection, or a
+manual source proof is needed, the agent must launch or point to the exact
+visible interaction surface before waiting on Adam. For M365 Interaction Agent
+approval phrases, use
+`scripts/Start-M365InteractionAgentApprovalWindow.ps1` so the window title,
+scope, stop conditions, and local approval evidence are explicit.
 
 ## Active References
 

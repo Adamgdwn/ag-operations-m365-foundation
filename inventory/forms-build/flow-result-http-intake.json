@@ -6,8 +6,8 @@
   "listId": "a64ef810-ad45-407b-b1ea-516533a8611d",
   "ackConfigured": true,
   "ackSecretHeader": "x-m365-ack-secret",
-  "lastReadBackEvidence": "inventory/forms-build/flow-state-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-040717.json",
-  "lastReadBackAt": "2026-06-26T04:07:17.972Z",
+  "lastReadBackEvidence": "inventory/forms-build/flow-state-9582c422-158d-4975-ba7f-81b4d77e497b-20260627-235808.json",
+  "lastReadBackAt": "2026-06-27T23:58:08.320Z",
   "lastB7Proof": {
     "status": "PASS",
     "portalEventId": "db8d3f91-002b-4729-b6ac-556ee5813d3d",
@@ -22,5 +22,15 @@
     "leadSourceDetail": "Journey admin invite",
     "m365FlowRunEvidence": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260626-042516.json",
     "crmReadBackEvidence": "inventory/m365-interaction-agent-b7/b7-crm-readback-journey-portal-event-1782447883236-20260626-042719.json"
+  },
+  "lastB8bProof": {
+    "status": "PASS",
+    "portalEventId": "0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca",
+    "crmItemId": 32,
+    "proofPacket": "inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md",
+    "schemaProof": "inventory/m365-interaction-agent-b8/b8-schema-proof-20260627-174034.md",
+    "replayProof": "inventory/m365-interaction-agent-b8/b8-replay-proof-0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca-20260627-235409.md",
+    "createdRunEvidence": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260627-235741.json",
+    "existingReplayRunEvidence": "inventory/forms-build/flow-runs-9582c422-158d-4975-ba7f-81b4d77e497b-20260627-235719.json"
   }
 }

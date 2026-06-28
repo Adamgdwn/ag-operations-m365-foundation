@@ -8,11 +8,10 @@
 > **Status:** master map. Points to the canonical sources; does not replace them.
 > **Owner:** Adam (absolute superuser). **Last updated:** 2026-06-27
 > (Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE;
-> M365 Interaction Agent B1-B7 live-proven; B8a local Journey hardening packet
-> complete; B9a local selected-signal operating packet complete; B10a local QUO
-> inbound source proof packet complete; next chunks are B8b live Journey
-> hardening if approved, B9b selected triage after item selection, and B10b live
-> QUO proof if approved).
+> M365 Interaction Agent B1-B8 live-proven; B9a local selected-signal operating
+> packet complete; B10a local QUO inbound source proof packet complete; next
+> chunks are B9b selected triage after item selection and B10b live QUO proof if
+> approved).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),
@@ -109,7 +108,7 @@ Three things are now LIVE and verified; the rest remain plan-only.
 | Knowledge / Records | [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md) | Plan only |
 | Support / Intake | [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md) | Plan only |
 | Finance / Closeout | [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md) | Plan only |
-| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B7 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, and lead-source display. B8a local Journey hardening packet complete; B9a local selected-signal operating packet complete; B10a local QUO inbound source proof packet complete; next: B8b live Journey hardening if approved, B9b selected triage after item selection, B10b QUO live proof if approved. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); chunks: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
+| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B8 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, lead-source display, and Journey replay/idempotency hardening. B9a local selected-signal operating packet complete; B10a local QUO inbound source proof packet complete; next: B9b selected triage after item selection, then B10b QUO live proof if approved. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); chunks: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
 | Access / Onboarding | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model; net-new hiring/role-profile work deferred until growth makes it useful |
 
 ---
@@ -155,24 +154,23 @@ PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← 
   ✅ Bookings / Scheduling LIVE  (native MS Bookings → CRM, intake consumer #2)
   ✅ Operations Follow-up Backbone LIVE  (Email + two-way Calendar + one-way Planner; 15-min sync engine)
      ▸ CURRENT: M365 Interaction Agent
-     ✅ B1-B7 live-proven: New Signal alerting, triage/advisory, Suggested rows,
+     ✅ B1-B8 live-proven: New Signal alerting, triage/advisory, Suggested rows,
         one-writer posture, Journey source proof, Journey CRM receipt ack,
-        and lead-source display
+        lead-source display, and Journey replay/idempotency hardening
      ✅ B8a: local Journey portalEventId, receipt, retry/replay, and cleanup packet
-     ③ B8b: live Journey hardening if exact schema/flow/replay approval is given
+     ✅ B8b: live Journey hardening proof
      ✅ B9a: local selected-signal operating packet, queue, and review template
-     ④ B9b: run selected-signal operating triage through G0/G1 after item selection
+     ③ B9b: run selected-signal operating triage through G0/G1 after item selection
      ✅ B10a: local QUO inbound source proof packet, event mapping, and proof checklist
-     ⑤ B10b: add QUO as inbound-only live source proof while volume is low, if approved
+     ④ B10b: add QUO as inbound-only live source proof while volume is low, if approved
 ```
 
 **Plain reading:** the spine is complete and the first function (CRM) plus two
 adjacent functions (Bookings, Follow-up backbone) are LIVE. CRM is closed except
 for the explicitly held Stage 8 packet archive move. Adam's current priority is
 one governed M365 Interaction Agent, not hiring/onboarding and not a stack of
-helper bots. The B1-B7 proof lane is done; now harden Journey receipts, run
-selected-signal triage in normal operation, then bring QUO in as the next
-inbound source.
+helper bots. The B1-B8 proof lane is done; now run selected-signal triage in
+normal operation, then bring QUO in as the next inbound source.
 
 ---
 
@@ -194,8 +192,7 @@ inbound source.
   Backbone** coming online on top of it.
 - **Selected current direction:** **M365 Interaction Agent** — one governed
   agent with capabilities, not a helper stack. The first proof lane is live
-through B7, and the B8a local hardening packet, B9a local operating packet, and
-B10a local QUO readiness packet are complete. Next comes B8b live Journey
-hardening if approved, B9b selected triage after item selection, and B10b QUO
-live proof if approved. Onboarding, role
+through B8, and the B9a local operating packet and B10a local QUO readiness
+packet are complete. Next comes B9b selected triage after item selection and
+B10b QUO live proof if approved. Onboarding, role
 profiles, and hiring packet work are deferred until growth makes them useful.

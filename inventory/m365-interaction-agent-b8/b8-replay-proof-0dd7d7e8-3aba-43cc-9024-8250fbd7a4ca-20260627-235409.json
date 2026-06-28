@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-06-27T23:54:09.106Z",
+  "chunk": "B8b",
+  "result": "PASS",
+  "portalEventId": "0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca",
+  "correlationId": "0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca",
+  "postResults": [
+    {
+      "label": "initial",
+      "status": 202,
+      "bodyPreview": ""
+    },
+    {
+      "label": "replay",
+      "status": 202,
+      "bodyPreview": ""
+    }
+  ],
+  "fieldChecks": {
+    "portalEventIdFieldPresent": true,
+    "sourceCorrelationIdFieldPresent": true
+  },
+  "counts": {
+    "afterInitial": 1,
+    "afterReplay": 1
+  },
+  "crmItem": {
+    "id": 32,
+    "title": "Guided AI Journey — GAIL Internal B8 Replay Proof",
+    "portalEventId": "0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca",
+    "sourceCorrelationId": "0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca",
+    "intakeSource": "Guided AI Journey",
+    "signalStatus": "New",
+    "priority": "Normal",
+    "created": "2026-06-27T23:53:46Z"
+  },
+  "checks": {
+    "initialPostAccepted": true,
+    "replayPostAccepted": true,
+    "exactlyOneAfterInitial": true,
+    "exactlyOneAfterReplay": true,
+    "sameCrmItemAfterReplay": true,
+    "portalEventIdFirstClass": true,
+    "sourceCorrelationIdFirstClass": true,
+    "intakeSourceJourney": true,
+    "signalStatusNew": true,
+    "sourceTextHasPortalEventId": true,
+    "sourceTextHasB8Marker": true
+  },
+  "boundary": [
+    "Synthetic/internal Journey event only.",
+    "No real client replay.",
+    "No delete or merge.",
+    "No external message send.",
+    "No callback URL accepted from payload.",
+    "No QUO setup.",
+    "No R4 delegated autonomy."
+  ]
+}

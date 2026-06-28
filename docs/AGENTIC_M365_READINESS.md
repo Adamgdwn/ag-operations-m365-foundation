@@ -5,11 +5,11 @@ Date: 2026-06-19
 Status: Active recommendation map for becoming agentic and AI-centric. Chunk 6
 readiness pass complete. Active revision on 2026-06-24: build one governed
 `M365 Interaction Agent` with capability contracts, not a stack of separate
-supervised helpers. 2026-06-27 update: B1-B7 are live-proven; B8a local Journey
-hardening, B9a local selected-signal operating readiness, and B10a local QUO
-inbound source readiness are complete; next chunks are B8b live Journey
-hardening if approved, B9b selected triage after item selection, and B10b QUO
-live proof if approved. B8b/B9b/B10b live work remains approval-gated.
+supervised helpers. 2026-06-27 update: B1-B8 are live-proven; B8a local Journey
+hardening, B8b live Journey replay/idempotency proof, B9a local selected-signal
+operating readiness, and B10a local QUO inbound source readiness are complete.
+The remaining structured chunks are B9b selected triage after item selection and
+B10b QUO live proof if approved. B9b/B10b live work remains approval-gated.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -59,6 +59,8 @@ Current active implementation note:
   `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`.
 - B8a local Journey hardening packet lives at
   `inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md`.
+- B8b live Journey loop hardening proof lives at
+  `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
 - B9a local selected-signal operating packet lives at
   `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
 - B10a local QUO inbound source proof packet lives at
@@ -73,6 +75,17 @@ Microsoft 365 should become the governed operating substrate:
 ```text
 identity -> records -> permissions -> signals -> recommendations -> approvals -> actions -> evidence
 ```
+
+Visible interaction principle:
+
+If a governed action needs Adam to type an approval phrase, choose an account,
+complete MFA, select a source item, confirm a source proof, or operate a live
+admin/source surface, the agent is responsible for opening or naming the exact
+visible interaction surface first. Approval gates should not be hidden in a
+background terminal or implied from chat context. For the M365 Interaction Agent
+B8/B9/B10 lane, use `scripts/Start-M365InteractionAgentApprovalWindow.ps1` to
+show scope and stop conditions in a visible PowerShell window and record local
+approval evidence before any live tenant/source work begins.
 
 In the broader Guided AI Labs operating-system vision, M365 is the enterprise
 body and execution substrate. Freedom coordinates executive cognition, Guided
@@ -128,10 +141,10 @@ Narrow 2026-06-24 exception for the selected proof:
 This exception does not approve app registration, admin consent, external
 messaging, guest/sharing changes, QUO, or broad unattended automation.
 
-Later B1-B7 approvals proved the Journey source and receipt lane, and B9a
-proved local operating readiness, but they do not approve B8b schema/flow
-changes, B9b tenant reads, B9 Suggested rows, B10b QUO setup/proof, outbound
-phone/SMS behavior, or any new live write.
+Later B1-B8 approvals proved the Journey source, receipt, and replay/idempotency
+lane, and B9a proved local operating readiness, but they do not approve B9b
+tenant reads, B9 Suggested rows, B10b QUO setup/proof, outbound phone/SMS
+behavior, or any new live write.
 
 No live tenant read or write was performed during Chunk 6. This pass used local
 Stage 7 governance evidence, Stage 9 bridge-readiness evidence, the Chunk 5 card
@@ -368,7 +381,8 @@ AI increases the value of clean governance and the blast radius of messy access.
 7. Prove Agent Action Log and Decision Register workflow during the final
    workspace walkthrough and any future supervised loops.
 8. Complete B8a local Journey receipt/replay hardening packet. Done.
-9. Run B8b live Journey hardening only after exact schema/flow/replay approval.
+9. Complete B8b live Journey hardening after exact schema/flow/replay approval.
+   Done.
 10. Complete B9a local selected-signal operating packet. Done.
 11. Run B9b selected-signal operating triage under G0/G1 after item selection.
 12. Complete B10a local QUO inbound source proof readiness packet. Done.
@@ -413,6 +427,8 @@ Highest-priority open decisions:
   write-capable custom actions.
 - Which content is too sensitive for broad Copilot grounding.
 - Whether any external source deserves a Copilot connector after ACL mapping.
+- Which CRM item ids, source, or window Adam selects for B9b read-only triage,
+  and whether any selected item may receive a separate G1 Suggested row.
 - Which QUO number(s), event classes, ingress pattern, payload retention,
   duplicate rule, disable path, and outbound block are approved for B10b.
 

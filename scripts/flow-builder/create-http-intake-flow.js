@@ -246,9 +246,15 @@ const nullIfBlank = (expr) => `if(greater(length(trim(coalesce(${expr},''))), 0)
   log(`list GUID: ${listId}`);
   if (!listId) { log('ERROR: could not resolve list GUID'); await cleanup(); process.exit(3); }
 
-  // 3) Flow definition: Request trigger -> If(guard){ Create item } else { Terminate }.
-  const createItem = {
-    runAfter: { Build_CRM_source_text_metadata: ['Succeeded'] }, type: 'OpenApiConnection',
+  // 3) Flow definition: Request trigger -> guard -> B8 idempotency -> create/ack.
+  const findPortalEventFilterExpr = `@if(greater(length(trim(${portalEventIdExpr})), 0), concat('PortalEventId eq ''', ${portalEventIdExpr}, ''''), 'ID eq -1')`;
+  const existingMatchCountExpr = "length(outputs('Find_existing_CRM_items')?['body/value'])";
+  const existingItemExpr = "first(outputs('Find_existing_CRM_items')?['body/value'])";
+  const existingItemIdExpr = `coalesce(${existingItemExpr}?['ID'], ${existingItemExpr}?['Id'])`;
+  const existingCrmItemUrlExpr = `concat('${SITE}/Lists/CRM%20%20New%20Signals/DispForm.aspx?ID=', ${existingItemIdExpr})`;
+
+  const buildCreateItemAction = (runAfter) => ({
+    runAfter, type: 'OpenApiConnection',
     inputs: {
       host: { connectionName: 'shared_sharepointonline', operationId: 'PostItem', apiId: apiId('shared_sharepointonline') },
       parameters: {
@@ -265,65 +271,139 @@ const nullIfBlank = (expr) => `if(greater(length(trim(coalesce(${expr},''))), 0)
         'item/IntentPath/Value': `@coalesce(${B('situation')},'')`,
         'item/SignalStatus/Value': 'New',
         'item/Priority/Value': 'Normal',
+        'item/PortalEventId': `@${portalEventIdExpr}`,
+        'item/SourceCorrelationId': `@${correlationIdExpr}`,
       },
       authentication: "@parameters('$authentication')",
     },
-  };
-  const guardActions = {
-    Build_CRM_source_text_core: { runAfter: {}, type: 'Compose', inputs: sourceTextCoreExpr },
-    Build_CRM_source_text_metadata: { runAfter: { Build_CRM_source_text_core: ['Succeeded'] }, type: 'Compose', inputs: sourceTextMetadataExpr },
-    Create_item: createItem,
-  };
-  if (ACK) {
-    guardActions.Maybe_send_CRM_receipt_ack_to_Journey = {
-      runAfter: { Create_item: ['Succeeded'] },
-      type: 'If',
-      expression: shouldSendAckExpr,
-      actions: {
-        Post_CRM_receipt_ack_to_Journey: {
-          runAfter: {},
-          type: 'Http',
-          inputs: {
-            method: 'POST',
-            uri: ACK.endpoint,
-            headers: {
-              'content-type': 'application/json',
-              [ACK.headerName]: ACK.secret,
-            },
-            body: {
-              schemaVersion: 'journey.crm-receipt.v1',
-              eventType: 'm365.crm_signal.received',
-              receivedEventType: `@${eventTypeExpr}`,
-              source: 'Guided AI Journey',
-              portalEventId: `@${portalEventIdExpr}`,
-              correlationId: `@${correlationIdExpr}`,
-              companyId: `@${nullIfBlank(companyIdExpr)}`,
-              engagementId: `@${nullIfBlank(engagementIdExpr)}`,
-              inviteId: `@${nullIfBlank(inviteIdExpr)}`,
-              journeyInviteId: `@${nullIfBlank(B('journeyInviteId'))}`,
-              journeyOrganizationId: `@${nullIfBlank(B('journeyOrganizationId'))}`,
-              journeyLeadId: `@${nullIfBlank(journeyLeadIdExpr)}`,
-              crmStatus: 'created',
-              received: true,
-              crmRecordId: `@string(${itemIdExpr})`,
-              crmRecordUrl: `@${crmItemUrlExpr}`,
-              crmItemId: `@${itemIdExpr}`,
-              crmItemUrl: `@${crmItemUrlExpr}`,
-              crmTitle: `@outputs('Create_item')?['body/Title']`,
-              signalStatus: 'New',
-              priority: 'Normal',
-              flowRunId: "@workflow()?['run']?['name']",
-              receivedAt: `@coalesce(outputs('Create_item')?['body/Created'], utcNow())`,
-              processedAt: '@utcNow()',
-              ackGeneratedAt: '@utcNow()',
-              message: 'CRM - New Signals item created in Microsoft 365.',
-            },
+  });
+
+  const buildReceiptAckIf = (runAfter, postActionName, crmStatus, refs) => ({
+    runAfter,
+    type: 'If',
+    expression: shouldSendAckExpr,
+    actions: {
+      [postActionName]: {
+        runAfter: {},
+        type: 'Http',
+        inputs: {
+          method: 'POST',
+          uri: ACK.endpoint,
+          headers: {
+            'content-type': 'application/json',
+            [ACK.headerName]: ACK.secret,
+          },
+          body: {
+            schemaVersion: 'journey.crm-receipt.v1',
+            eventType: 'm365.crm_signal.received',
+            receivedEventType: `@${eventTypeExpr}`,
+            source: 'Guided AI Journey',
+            portalEventId: `@${portalEventIdExpr}`,
+            correlationId: `@${correlationIdExpr}`,
+            companyId: `@${nullIfBlank(companyIdExpr)}`,
+            engagementId: `@${nullIfBlank(engagementIdExpr)}`,
+            inviteId: `@${nullIfBlank(inviteIdExpr)}`,
+            journeyInviteId: `@${nullIfBlank(B('journeyInviteId'))}`,
+            journeyOrganizationId: `@${nullIfBlank(B('journeyOrganizationId'))}`,
+            journeyLeadId: `@${nullIfBlank(journeyLeadIdExpr)}`,
+            crmStatus,
+            received: true,
+            crmRecordId: refs.recordId,
+            crmRecordUrl: refs.recordUrl,
+            crmItemId: refs.itemId,
+            crmItemUrl: refs.itemUrl,
+            crmTitle: refs.title,
+            signalStatus: 'New',
+            priority: 'Normal',
+            flowRunId: "@workflow()?['run']?['name']",
+            receivedAt: refs.receivedAt,
+            processedAt: '@utcNow()',
+            ackGeneratedAt: '@utcNow()',
+            message: refs.message,
           },
         },
       },
-      else: { actions: {} },
-    };
+    },
+    else: { actions: {} },
+  });
+
+  const createActions = {
+    Create_item: buildCreateItemAction({}),
+  };
+  if (ACK) {
+    createActions.Maybe_send_created_CRM_receipt_ack_to_Journey = buildReceiptAckIf(
+      { Create_item: ['Succeeded'] },
+      'Post_created_CRM_receipt_ack_to_Journey',
+      'created',
+      {
+        recordId: `@string(${itemIdExpr})`,
+        recordUrl: `@${crmItemUrlExpr}`,
+        itemId: `@${itemIdExpr}`,
+        itemUrl: `@${crmItemUrlExpr}`,
+        title: `@outputs('Create_item')?['body/Title']`,
+        receivedAt: `@coalesce(outputs('Create_item')?['body/Created'], utcNow())`,
+        message: 'CRM - New Signals item created in Microsoft 365.',
+      },
+    );
   }
+
+  const existingActions = ACK ? {
+    Maybe_send_existing_CRM_receipt_ack_to_Journey: buildReceiptAckIf(
+      {},
+      'Post_existing_CRM_receipt_ack_to_Journey',
+      // Journey's B7 receiver currently accepts the created receipt shape.
+      // The replay branch still returns the existing CRM item id/url and an
+      // existing-item message; a future Journey receiver update can add an
+      // explicit crmStatus=existing enum without changing the M365 dedupe path.
+      'created',
+      {
+        recordId: `@string(${existingItemIdExpr})`,
+        recordUrl: `@${existingCrmItemUrlExpr}`,
+        itemId: `@${existingItemIdExpr}`,
+        itemUrl: `@${existingCrmItemUrlExpr}`,
+        title: `@${existingItemExpr}?['Title']`,
+        receivedAt: `@coalesce(${existingItemExpr}?['Created'], utcNow())`,
+        message: 'CRM - New Signals item already existed for this Journey portalEventId.',
+      },
+    ),
+  } : {};
+
+  const guardActions = {
+    Build_CRM_source_text_core: { runAfter: {}, type: 'Compose', inputs: sourceTextCoreExpr },
+    Build_CRM_source_text_metadata: { runAfter: { Build_CRM_source_text_core: ['Succeeded'] }, type: 'Compose', inputs: sourceTextMetadataExpr },
+    Find_existing_CRM_items: {
+      runAfter: { Build_CRM_source_text_metadata: ['Succeeded'] },
+      type: 'OpenApiConnection',
+      inputs: {
+        host: { connectionName: 'shared_sharepointonline', operationId: 'GetItems', apiId: apiId('shared_sharepointonline') },
+        parameters: { dataset: SITE, table: listId, $filter: findPortalEventFilterExpr, $orderby: 'ID desc', $top: 2 },
+        authentication: "@parameters('$authentication')",
+      },
+    },
+    Existing_CRM_item_found: {
+      runAfter: { Find_existing_CRM_items: ['Succeeded'] },
+      type: 'If',
+      expression: `@equals(${existingMatchCountExpr}, 1)`,
+      actions: existingActions,
+      else: {
+        actions: {
+          Multiple_CRM_items_found: {
+            runAfter: {},
+            type: 'If',
+            expression: `@greater(${existingMatchCountExpr}, 1)`,
+            actions: {
+              Stop_for_duplicate_review: {
+                runAfter: {},
+                type: 'Terminate',
+                inputs: { runStatus: 'Failed', runError: { code: 'B8DuplicatePortalEventId', message: 'More than one CRM item matched this Journey portalEventId. Adam review required.' } },
+              },
+            },
+            else: { actions: createActions },
+          },
+        },
+      },
+    },
+  };
   const definition = {
     $schema: 'https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#',
     contentVersion: '1.0.0.0',
@@ -348,7 +428,13 @@ const nullIfBlank = (expr) => `if(greater(length(trim(coalesce(${expr},''))), 0)
   const base = `https://${FLOWHOST}/providers/Microsoft.ProcessSimple/environments/${ENV}/flows`;
   const resultPath = path.join(OUT, 'flow-result-http-intake.json');
   let existingName = null;
-  if (fs.existsSync(resultPath)) { try { existingName = JSON.parse(fs.readFileSync(resultPath, 'utf8')).flowName; } catch {} }
+  let existingResult = {};
+  if (fs.existsSync(resultPath)) {
+    try {
+      existingResult = JSON.parse(fs.readFileSync(resultPath, 'utf8'));
+      existingName = existingResult.flowName || null;
+    } catch {}
+  }
   let cr;
   if (existingName) {
     log(`updating existing flow (${existingName})`);
@@ -372,7 +458,16 @@ const nullIfBlank = (expr) => `if(greater(length(trim(coalesce(${expr},''))), 0)
   if (!callbackUrl) { log('  WARN: could not auto-fetch callback URL; body: ' + cb.body.slice(0, 300)); }
 
   // 6) Persist result (URL is a capability-secret -> .local only, never git).
-  fs.writeFileSync(resultPath, JSON.stringify({ flowName, displayName: DISPLAY, state: (created.properties || {}).state || stateArg, createdAtNote: 'set externally', listId, ackConfigured: !!ACK, ackSecretHeader: ACK ? ACK.headerName : null }, null, 2));
+  fs.writeFileSync(resultPath, JSON.stringify({
+    ...existingResult,
+    flowName,
+    displayName: DISPLAY,
+    state: (created.properties || {}).state || stateArg,
+    createdAtNote: 'set externally',
+    listId,
+    ackConfigured: !!ACK,
+    ackSecretHeader: ACK ? ACK.headerName : null,
+  }, null, 2));
   if (callbackUrl) fs.writeFileSync(path.join(SECRET_DIR, 'http-intake-endpoint.txt'), callbackUrl + '\n', { mode: 0o600 });
   log('\n=== DONE ===');
   log(`  flow: ${DISPLAY}`);

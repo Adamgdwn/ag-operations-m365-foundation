@@ -1,0 +1,178 @@
+{
+  "capturedAt": "2026-06-27T23:57:19.398Z",
+  "environment": "Default-1ca92af5-21ff-42e3-87ae-3bde9c2cc501",
+  "flowName": "9582c422-158d-4975-ba7f-81b4d77e497b",
+  "selectedRunName": "08584190024534051591687360223CU29",
+  "runs": [
+    {
+      "name": "08584190024534051591687360223CU29",
+      "status": "Succeeded",
+      "startTime": "2026-06-27T23:53:52.0782155Z",
+      "endTime": "2026-06-27T23:53:53.4008187Z",
+      "triggerName": "manual"
+    },
+    {
+      "name": "08584190024610452818001389378CU07",
+      "status": "Succeeded",
+      "startTime": "2026-06-27T23:53:44.4381743Z",
+      "endTime": "2026-06-27T23:53:47.2664321Z",
+      "triggerName": "manual"
+    }
+  ],
+  "actions": [
+    {
+      "name": "Build_CRM_source_text_core",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:52.1955708Z",
+      "endTime": "2026-06-27T23:53:52.1972147Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Build_CRM_source_text_metadata",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:52.1978164Z",
+      "endTime": "2026-06-27T23:53:52.199058Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Create_item",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:53.3940409Z",
+      "endTime": "2026-06-27T23:53:53.3943293Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionDependencyFailed",
+        "message": "The execution of template action 'Create_item' is skipped: dependant action 'Multiple_CRM_items_found' completed with status 'Skipped' and code 'ActionSkipped'.",
+        "messageTemplate": "The execution of template action '{0}' is skipped: dependant action '{1}' completed with status '{2}' and code '{3}'."
+      }
+    },
+    {
+      "name": "Existing_CRM_item_found",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:52.5141256Z",
+      "endTime": "2026-06-27T23:53:53.3985444Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Find_existing_CRM_items",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:52.2097923Z",
+      "endTime": "2026-06-27T23:53:52.418713Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Guard",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:52.1940556Z",
+      "endTime": "2026-06-27T23:53:53.400343Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Maybe_send_created_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:53.3965629Z",
+      "endTime": "2026-06-27T23:53:53.3967069Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionConditionFailed",
+        "message": "The execution of template action 'Maybe_send_created_CRM_receipt_ack_to_Journey' is skipped: the 'runAfter' condition for action 'Create_item' is not satisfied. Expected status values 'Succeeded' and actual value 'Skipped'.",
+        "messageTemplate": "The execution of template action '{0}' is skipped: the 'runAfter' condition for action '{1}' is not satisfied. Expected status values '{2}' and actual value '{3}'."
+      }
+    },
+    {
+      "name": "Maybe_send_existing_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Succeeded",
+      "code": "NotSpecified",
+      "startTime": "2026-06-27T23:53:52.5153878Z",
+      "endTime": "2026-06-27T23:53:53.3911712Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Multiple_CRM_items_found",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:53.3973428Z",
+      "endTime": "2026-06-27T23:53:53.3975637Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Multiple_CRM_items_found' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    },
+    {
+      "name": "Post_created_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:53.3957256Z",
+      "endTime": "2026-06-27T23:53:53.3959751Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionDependencyFailed",
+        "message": "The execution of template action 'Post_created_CRM_receipt_ack_to_Journey' is skipped: dependant action 'Maybe_send_created_CRM_receipt_ack_to_Journey' completed with status 'Skipped' and code 'ActionSkipped'.",
+        "messageTemplate": "The execution of template action '{0}' is skipped: dependant action '{1}' completed with status '{2}' and code '{3}'."
+      }
+    },
+    {
+      "name": "Post_existing_CRM_receipt_ack_to_Journey",
+      "type": null,
+      "status": "Succeeded",
+      "code": "OK",
+      "startTime": "2026-06-27T23:53:52.5167069Z",
+      "endTime": "2026-06-27T23:53:53.3784442Z",
+      "outputs": null,
+      "error": null
+    },
+    {
+      "name": "Stop_for_duplicate_review",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:53.3931413Z",
+      "endTime": "2026-06-27T23:53:53.3933906Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionDependencyFailed",
+        "message": "The execution of template action 'Stop_for_duplicate_review' is skipped: dependant action 'Multiple_CRM_items_found' completed with status 'Skipped' and code 'ActionSkipped'.",
+        "messageTemplate": "The execution of template action '{0}' is skipped: dependant action '{1}' completed with status '{2}' and code '{3}'."
+      }
+    },
+    {
+      "name": "Terminate",
+      "type": null,
+      "status": "Skipped",
+      "code": "ActionSkipped",
+      "startTime": "2026-06-27T23:53:53.3991162Z",
+      "endTime": "2026-06-27T23:53:53.3994072Z",
+      "outputs": null,
+      "error": {
+        "code": "ActionBranchingConditionNotSatisfied",
+        "message": "The execution of template action 'Terminate' skipped: the branching condition for this action is not satisfied.",
+        "messageTemplate": "The execution of template action '{0}' skipped: the branching condition for this action is not satisfied."
+      }
+    }
+  ]
+}

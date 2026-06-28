@@ -12,7 +12,8 @@ Current working docs:
 
 ## Stop Point
 
-Boxed late on 2026-06-25 after B1-B7 live proof.
+Boxed late on 2026-06-25 after B1-B7 live proof; updated 2026-06-27 after B8b
+Journey loop hardening proof.
 
 Adam resumed the lane and approved building the live Journey callback and
 related source-display usability. The repo now has a complete first M365
@@ -36,8 +37,12 @@ receipt acknowledgement.
   Teams alert includes a `Lead source` row.
 - B8a: Journey loop hardening local design is executed. The packet proposes
   first-class `PortalEventId` and `SourceCorrelationId`, defers CRM-local
-  `ReceiptStatus`, defines duplicate/replay handling, and prepares the B8b live
-  approval boundary.
+  `ReceiptStatus`, defines duplicate/replay handling, and prepared the B8b live
+  approval boundary that was later consumed for the 2026-06-27 proof.
+- B8b: Journey loop hardening is live and proved. Indexed `PortalEventId` and
+  `SourceCorrelationId` fields now exist on `CRM - New Signals`; the live HTTP
+  intake flow performs pre-create idempotency; a synthetic/internal Journey
+  replay kept one CRM item for one `portalEventId`.
 - B9a: selected-signal operating triage local readiness is executed. The packet
   indexes prior B1/B6 triage evidence, creates queue/review templates, and keeps
   future tenant activity behind selected G0 read-only runs or per-item G1
@@ -93,6 +98,16 @@ did not disable them.
     `config/M365_INTERACTION_AGENT_B8_JOURNEY_LOOP_HARDENING.json`.
   - Packet generator
     `scripts/New-M365B8JourneyLoopHardeningPacket.ps1`.
+- B8b live hardening proof:
+  - Proof packet
+    `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
+  - Schema proof
+    `inventory/m365-interaction-agent-b8/b8-schema-proof-20260627-174034.md`.
+  - Replay proof
+    `inventory/m365-interaction-agent-b8/b8-replay-proof-0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca-20260627-235409.md`.
+  - Portal event
+    `0dd7d7e8-3aba-43cc-9024-8250fbd7a4ca`.
+  - CRM item `#32`.
 - B9a local operating triage packet:
   - Packet
     `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
@@ -153,12 +168,9 @@ Old DirectLink form-spec files were scrubbed to
 ## Next Work
 
 1. Treat B7 as live and complete.
-2. B8a local hardening packet is complete. B8b live work remains gated:
-   - add first-class SharePoint `PortalEventId` and `SourceCorrelationId`
-     storage for dedupe/read-back;
-   - update the HTTP intake flow for pre-create idempotency;
-   - run one no-real-client Journey replay proof;
-   - leave or backfill older synthetic evidence only under exact approval.
+2. B8a local hardening packet and B8b live replay/idempotency proof are
+   complete. Any further B8 cleanup, backfill, replay, schema change, or flow
+   update needs a fresh approval boundary and visible interaction surface.
 3. B9a local readiness is complete. B9b tenant touch is selected G0 read-only
    triage after Adam chooses exact CRM item id(s), source, or window; a G1
    Suggested row remains a separate per-item approval.
