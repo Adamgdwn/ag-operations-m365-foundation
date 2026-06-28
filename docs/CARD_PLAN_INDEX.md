@@ -7,7 +7,8 @@ direction is the Agent Control Plane / `M365 Interaction Agent` via
 `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`. B1-B9 G0 are
 live-proven, including one selected internal read-only triage pass;
 B10a local QUO inbound source readiness is complete; next chunk is B10b QUO
-live proof if approved.
+implementation-ready placeholder/design pack. Live QUO proof is B10c/later after
+exact approval.
 
 This index tracks the operating-card deep dives. The current cockpit has four
 visible top cards, but the target workspace has ten operating-card areas. Use
@@ -149,8 +150,8 @@ First acceptance question:
 - Proven: one new CRM signal can produce exactly one internal Teams alert, stay
   linked to the CRM source of truth, and flow into a G0-G4 agent
   triage/approval path.
-- Current question: can B10b QUO live proof be run through its exact approval
-  gate without widening the agent authority surface?
+- Current question: can B10b box the QUO source contract tightly enough that a
+  later B10c live proof can run without widening the agent authority surface?
 
 Chunk 6 readiness result:
 

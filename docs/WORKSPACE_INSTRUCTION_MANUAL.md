@@ -249,9 +249,9 @@ Current active agent direction:
   `New Signal`.
 - New Signal, Journey receipt, Journey replay/idempotency, B9b selected
   internal read-only triage, and B10a QUO local readiness are proven/readied in
-  that order. The remaining structured agent chunk is B10b live QUO proof; B10b
-  still needs exact source-proof approval and no outbound SMS/callback is
-  enabled.
+  that order. The remaining structured agent chunk is B10b QUO
+  implementation-ready placeholder/design pack; live QUO proof is B10c/later and
+  still needs exact source-proof approval. No outbound SMS/callback is enabled.
 
 Default posture:
 

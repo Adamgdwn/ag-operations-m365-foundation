@@ -2,7 +2,7 @@
 
 Date generated: 2026-06-24
 
-Status: **B1-B9 G0 live proof complete; B10a local packet complete; B10b live work gated** (updated 2026-06-27).
+Status: **B1-B9 G0 live proof complete; B10a local packet complete; B10b placeholder/design next** (updated 2026-06-28).
 The 2026-06-25 pause before B5 was resolved by the B5 durable one-writer
 decision. This revision follows the plan review that separated real agent
 capability from the old supervised setup-helper path, and Adam's decision that
@@ -11,8 +11,9 @@ than separate supervised helper layers. B8b Journey receipt/replay hardening
 and B9b selected internal read-only triage are now live-proven. B9a local
 operating readiness and B10a local QUO readiness are executed. Future B9 normal
 reads still require exact selected item id(s), B9 G1 Suggested rows remain
-per-item gated, and B10b QUO inbound source proof remains the next live chunk if
-approved.
+per-item gated, and B10b is now a QUO implementation-ready placeholder/design
+chunk. The actual QUO live source proof moves to B10c or a later
+source-expansion stage after exact approval.
 
 Owner: Adam.
 
@@ -39,8 +40,8 @@ Boxed on 2026-06-24, updated after the 2026-06-25/26 proof:
 - Journey source and receipt acknowledgement are also proven: CRM item `#25`
   reached Journey status `crm_received`, and CRM item `#27` proved
   `Lead source detail` in CRM provenance and Teams.
-- QUO now has B10a local readiness, and B10b remains the near-term live source
-  proof while call volume is still low.
+- QUO now has B10a local readiness, and B10b remains the near-term source
+  contract/design closeout while call volume is still low.
 - B8a local Journey loop hardening packet is generated with field, duplicate,
   replay, cleanup, and approval-boundary decisions. B8b live work is complete:
   indexed `PortalEventId` and `SourceCorrelationId` fields exist, the live HTTP
@@ -52,7 +53,7 @@ Boxed on 2026-06-24, updated after the 2026-06-25/26 proof:
   selected item id(s), and any G1 row remains per-item approval.
 - B10a local QUO inbound source proof packet is generated with event mapping,
   live decision worksheet, proof checklist, duplicate/payload/disable policies,
-  and the future B10b approval boundary.
+  and the future live approval boundary.
 - Local scripts and runbooks exist for channel setup, Teams connector setup,
   flow creation/update, B1 proof capture, B2/B3 local triage and
   similar-record advisory, B4 Suggested rows, B5 decision recording, B6 Journey
@@ -260,11 +261,12 @@ Evidence to add before build:
 
 ## QUO Phone Service Integration
 
-Status: **B10a local readiness complete; B10b live proof gated** (updated
-2026-06-27). QUO is not part of B8 Journey hardening or B9 selected-signal
-triage, but it is the intended B10 source proof while call volume is still low.
+Status: **B10a local readiness complete; B10b placeholder/design next** (updated
+2026-06-28). QUO is not part of B8 Journey hardening or B9 selected-signal
+triage, but it is the intended next source lane while call volume is still low.
 B10a produced the local packet, event mapping, live decision worksheet, and
-proof checklist without touching QUO or Microsoft 365.
+proof checklist without touching QUO or Microsoft 365. B10b should close the
+implementation-ready placeholder without requiring QUO API work.
 
 QUO should become an inbound signal source, not a separate CRM.
 
@@ -299,7 +301,7 @@ Outbound boundary:
 - The agent may draft a suggested SMS/call-back note for Adam.
 - Sending through QUO API is a later G3 decision with an approval phrase,
   evidence, and rollback/pause path.
-- Future B10b live approval phrase prepared, not consumed:
+- Future live approval phrase prepared, not consumed:
   `approve-b10-quo-inbound-source-proof-20260627`.
 
 Implementation options to compare before build:
@@ -381,8 +383,8 @@ Actions:
 5. Define the minimum proposal packet: source, affected card, action type,
    governance level, human owner, approval needed, result target, evidence
    target, and rollback/pause note.
-6. Keep QUO live setup behind B8/B9 guardrails; B10a local readiness is done
-   and B10b live proof remains approval-gated.
+6. Keep QUO live setup behind B8/B9 guardrails; B10a local readiness is done,
+   B10b placeholder/design is next, and B10c/live proof remains approval-gated.
 7. Draft the least-privilege permission posture for `m365-interaction-agent`,
    including explicit non-goals and revocation path.
 8. Run the Teams alert proof as the first live notification capability of the
@@ -512,8 +514,11 @@ Completed items:
 
 Next when resumed:
 
-1. Run B10b QUO inbound-only live proof only after exact number/event/ingress,
-   secret, retention, duplicate, disable, and outbound-block approval.
+1. Close B10b as a QUO implementation-ready placeholder/design pack without QUO
+   API work.
+2. Run B10c/later QUO inbound-only live proof only after exact
+   number/event/ingress, secret, retention, duplicate, disable, and
+   outbound-block approval.
 
 ## Stop Conditions
 

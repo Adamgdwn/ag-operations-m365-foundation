@@ -7,18 +7,20 @@ lane now includes New Signal Teams alerting, B2/B3 triage evidence,
 similar-record advisory, one G1 `Suggested` Agent Action Log row, B5 one-writer
 posture, B6 Guided AI Journey source proof, B7 Journey CRM receipt
 acknowledgement, and lead-source display in CRM provenance and Teams alerts.
-The current planning update on 2026-06-27 moves the build from proof to
-low-volume operation: B8 hardens the Journey receipt/replay loop, B9 exercises
-selected-signal triage in normal use, and B10 brings QUO forward as an
-inbound-only source proof while call volume is still low. QUO is still outside
-the immediate hardening step, but it is no longer an indefinite parking-lot
-item. B8a local hardening design and B8b live schema/flow/replay proof are now
-executed. B9a local selected-signal operating packet is executed, and B9b has
-now proved one selected internal G0 read-only triage pass against CRM item `#32`
-with no Agent Action Log write. A future B9 G1 `Suggested` row still requires
-per-item approval. B10a local QUO inbound source readiness is executed as a
-no-live-touch packet; B10b live proof remains gated by exact number, event,
-ingress, secret, retention, disable, and outbound-block approvals.
+The current planning update on 2026-06-28 folds in the bigger Guided AI Labs
+operating-system frame: M365 is the enterprise body, GAIL OS is the governed
+authority layer, and this repo owns the Microsoft 365 execution/evidence lane.
+B8 hardens the Journey receipt/replay loop, B9 exercises selected-signal triage
+in normal use, and B10 keeps QUO close as the first Phone / Voice / Text sensory
+portal without forcing QUO API details too early. B8a local hardening design and
+B8b live schema/flow/replay proof are executed. B9a local selected-signal
+operating packet is executed, and B9b has now proved one selected internal G0
+read-only triage pass against CRM item `#32` with no Agent Action Log write. A
+future B9 G1 `Suggested` row still requires per-item approval. B10a local QUO
+inbound source readiness is executed as a no-live-touch packet; B10b is now a
+detailed implementation-ready placeholder/design pack. The actual low-volume
+QUO live proof moves to B10c or the next source-expansion stage after exact
+number, event, ingress, secret, retention, disable, and outbound-block approvals.
 
 Owner: Adam.
 
@@ -44,7 +46,8 @@ CRM signal created
 -> durable agent permission decision
 -> more inbound sources
 -> source receipt acknowledgement where needed
--> operational hardening and near-term QUO inbound proof
+-> operational hardening and QUO placeholder/readiness
+-> later low-volume QUO live proof after exact approval
 ```
 
 This is a build plan, not standing approval for tenant writes. Each live write,
@@ -71,7 +74,8 @@ order. It clarifies what this M365 lane is responsible for.
 - M365 is the enterprise body: records, collaboration, communications, tasks,
   files, and governed internal execution.
 - `CRM - New Signals`, Forms/Journey, and QUO are sensory portals into that
-  body. B10 is the first Phone / Voice / Text sensory proof.
+  body. B10 is the first Phone / Voice / Text sensory design lane, with live
+  source proof deferred until the QUO API/webhook details are worth the attention.
 - Teams, Power Automate, scripts, M365 agents, APIs, product apps, and later
   actions are execution channels, not independent brains.
 - Freedom is the executive-cognition/coordinator layer, Guided AI Labs
@@ -95,6 +99,36 @@ Authority vocabulary:
 Keep using `G0-G4` in current M365 scripts and docs until there is a deliberate
 rename. Use `R0-R5` as the organization-level interpretation of the same
 authority boundary.
+
+## Reconciliation Chunk - 2026-06-28
+
+This branch has merged `origin/main` through Chunk 20G, which added:
+
+- `AGENTS.md`, naming this repository as the M365 Foundation layer of the Guided
+  AI Labs Agentic OS central nervous system.
+- `2026-06-27 - azure-cloud-hosting-decision.md`, locking Azure as the primary
+  runtime for GAIL OS / M365 bridge work.
+- `docs/2026-06-28_M365_GAIL_OS_BRIDGE_PLACEMENT_REGISTER.md`, placing M365 as
+  the enterprise body beneath the GAIL OS authority layer.
+- `docs/2026-06-28_M365_ONE_WRITER_AUDIT.md`, recording the one-writer posture
+  and Phase 4 connector gates.
+
+Reconciliation rule:
+
+- Existing Power Automate proof flows may remain `Started` as Adam-approved
+  transitional proof infrastructure.
+- They are not autonomous GAIL OS connector execution and do not open Phase 4.
+- Any future production connector, app registration, consent grant, or live QUO
+  source hookup remains blocked until BLK-005, GAIL OS Connector registry, and
+  explicit Adam approval are satisfied.
+
+Grouped chunk plan from here:
+
+| Chunk | Scope | Status | Execution trigger |
+|---|---|---|---|
+| B10b | QUO implementation-ready placeholder/design pack | Planned next | Adam go-ahead; no QUO API discovery required |
+| B10c | Low-volume QUO live source proof | Later | Exact QUO number/event/ingress/secret/retention/disable approvals |
+| Phase 4 bridge | GAIL OS Connector registry + M365 production write path | Blocked | BLK-005 resolved, GAIL OS HTTP API live, explicit Phase 4 auth |
 
 ## Pause Handover - 2026-06-25
 
@@ -679,7 +713,8 @@ Selected first proof completed:
 - Agent Action Log: `#11`, status `Suggested`, boundary only; no CRM update,
   task, reminder, message, merge, permission, or external action.
 
-QUO now has B10a local readiness complete. B10b live proof waits until:
+QUO now has B10a local readiness complete. B10b placeholder/design closeout does
+not touch QUO or Microsoft 365. B10c/later live proof waits until:
 
 - Adam chooses which QUO numbers and events count as business intake;
 - Adam chooses the ingress option, secret/signature storage, payload retention,
@@ -1018,13 +1053,13 @@ Stop conditions:
 - Treating the advisory match as automatic dedupe.
 - Using old proof approvals as permission for new live writes.
 
-## B10 - QUO Inbound Source Proof
+## B10 - QUO Inbound Source Readiness
 
 Objective:
 
-Bring QUO into the same CRM -> Teams -> triage lane while call volume is low,
-so phone/SMS/voicemail signals are governed before they become urgent operating
-load.
+Keep QUO close enough to the CRM -> Teams -> triage lane that phone/SMS/voicemail
+signals can be governed while volume is still low, without spending this phase
+on QUO API mechanics before the bigger operating-system architecture is ready.
 
 Local execution status - 2026-06-27:
 
@@ -1048,6 +1083,16 @@ Local execution status - 2026-06-27:
 - Future live approval phrase prepared, not consumed:
   `approve-b10-quo-inbound-source-proof-20260627`.
 
+B10b placeholder target - 2026-06-28:
+
+- Treat B10b as a detailed implementation-ready placeholder/design pack.
+- Do not connect to QUO, inspect QUO secrets, create webhooks, call QUO APIs,
+  create CRM rows, update flows, post Teams messages, or run real phone traffic.
+- Capture the event taxonomy, normalized CRM shape, duplicate/idempotency model,
+  raw payload handling, visible approval surface, disable/revoke path, and
+  synthetic/no-real-client fixture shape.
+- Move the actual live source proof to B10c or the next source-expansion stage.
+
 Position:
 
 - QUO is later than B8/B9 because the Journey loop should be recoverable and
@@ -1056,7 +1101,7 @@ Position:
   broad G2 internal writes, support mailbox adapters, Copilot custom actions,
   or other source expansions.
 
-Inbound-only MVP:
+Inbound-only design target:
 
 - Approved QUO number(s) only.
 - Approved event classes only:
@@ -1090,13 +1135,16 @@ Acceptance:
   duplicate rule, raw payload policy, disable path, evidence targets, stop
   conditions, and the future approval phrase.
 - Event mapping, live decision worksheet, and proof checklist CSVs exist.
-- One no-real-client QUO test event creates or maps exactly one CRM signal.
-- Existing New Signal Teams alert posts once.
-- Triage packet handles the QUO source without a separate helper bot.
-- No automatic SMS reply, callback, external message, or client commitment
-  occurs.
-- Evidence proves source event, normalized CRM item, Teams alert, triage packet,
-  and rollback/pause path.
+- B10b placeholder explicitly names what a future QUO source event would contain
+  and how it would map to `CRM - New Signals`.
+- B10b placeholder includes synthetic/no-real-client fixture expectations without
+  requiring an actual QUO payload.
+- B10b placeholder states that no QUO API call, webhook, connector, secret read,
+  CRM write, Teams post, or real phone traffic occurred.
+- B10c or a later source-expansion stage keeps the live acceptance criteria: one
+  no-real-client QUO test event creates or maps exactly one CRM signal, the
+  existing New Signal Teams alert posts once, and the triage packet handles QUO
+  without a separate helper bot.
 
 Stop conditions:
 
@@ -1136,8 +1184,10 @@ Next sequence:
 1. B9 G0 selected triage is proven. Any future B9 normal-client read still needs
    selected item id(s), and any B9 G1 Suggested row remains a separate per-item
    approval.
-2. B10a local QUO readiness packet is complete; B10b brings QUO in live only
-   after exact proof approvals.
+2. B10a local QUO readiness packet is complete; B10b now closes the
+   implementation-ready placeholder/design pack without QUO API work.
+3. B10c or the next source-expansion stage brings QUO in live only after exact
+   proof approvals.
 
 ## Immediate Next Work
 
@@ -1164,15 +1214,18 @@ evidence, and stopped before any Suggested row. Any future B9 normal-client read
 still needs exact selected item id(s), and any G1 Suggested row remains a
 separate per-item approval that does not approve or execute the recommendation.
 
-B10a local QUO readiness is executed. The next B10 tenant/source touch is B10b:
-one selected no-real-client or internal QUO event through an approved ingress
-path, only after Adam names the QUO number(s), event class, ingress option,
-secret/signature storage and revoke path, raw payload retention/redaction rule,
-duplicate rule, owner/disable path, evidence target, and outbound block. B10b
-still allows no automatic SMS reply, callback, outbound QUO API send, real
-customer proof, CRM merge/delete/suppression, or external commitment. Broader
-write-capable automation, support mailbox adapters, and custom Copilot actions
-remain later.
+B10a local QUO readiness is executed. The next chunk is B10b placeholder
+closeout: make the QUO source contract detailed enough to execute later without
+requiring Adam to figure out the QUO API now. B10b should capture the future
+approval surface and test fixture, then stop. The next B10 tenant/source touch is
+B10c or a later source-expansion stage: one selected no-real-client or internal
+QUO event through an approved ingress path, only after Adam names the QUO
+number(s), event class, ingress option, secret/signature storage and revoke path,
+raw payload retention/redaction rule, duplicate rule, owner/disable path,
+evidence target, and outbound block. The live proof still allows no automatic
+SMS reply, callback, outbound QUO API send, real customer proof, CRM
+merge/delete/suppression, or external commitment. Broader write-capable
+automation, support mailbox adapters, and custom Copilot actions remain later.
 
 ```text
 Prime Boiler separated from Guided AI Labs
@@ -1197,7 +1250,8 @@ Prime Boiler separated from Guided AI Labs
 -> B9a local selected-signal operating packet
 -> B9b selected internal G0 operating triage proof
 -> B10a local QUO inbound source proof packet
--> B10b live QUO inbound source proof after exact approval
+-> B10b QUO implementation-ready placeholder/design pack
+-> B10c live QUO inbound source proof after exact approval
 ```
 
 Read-only evidence to review first:
@@ -1238,8 +1292,10 @@ log suggestions
 earn durable permission
 harden receipt/replay
 exercise selected operating triage
-then add QUO as the next inbound source
+box QUO as the next source contract
+then add QUO live later after exact approval
 ```
 
-QUO stays behind the B8/B9 guardrails, but it should be brought in while call
-volume is low enough to prove calmly.
+QUO stays behind the B8/B9 guardrails. The contract should be ready now, while
+the live hookup waits until call volume, attention, and the QUO API details make
+that proof worth doing calmly.

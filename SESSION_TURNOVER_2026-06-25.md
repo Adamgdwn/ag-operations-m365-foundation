@@ -53,7 +53,9 @@ receipt acknowledgement.
 - B10a: QUO inbound source proof local readiness is executed. The packet
   defines event mapping, ingress options, normalized CRM shape, duplicate and
   raw payload policies, disable path, live decision worksheet, proof checklist,
-  and the future B10b approval boundary without touching QUO or Microsoft 365.
+  and the future live approval boundary without touching QUO or Microsoft 365.
+  B10b is now scoped as an implementation-ready placeholder/design closeout; live
+  QUO proof moves to B10c or a later source-expansion stage.
 
 ## Live M365 Elements
 
@@ -189,7 +191,8 @@ Old DirectLink form-spec files were scrubbed to
 3. B9a local readiness and B9b selected internal G0 proof are complete. Future
    B9 normal-client reads still require exact selected item id(s), and any G1
    Suggested row remains a separate per-item approval.
-4. B10a local readiness is complete. B10b live QUO proof remains gated:
+4. B10a local readiness is complete. B10b placeholder/design closeout is next;
+   B10c/later live QUO proof remains gated:
    - name approved QUO business intake number(s);
    - name the first no-real-client or internal event class;
    - choose ingress option and approve secret/signature storage plus revoke path;

@@ -8,9 +8,11 @@ readiness pass complete. Active revision on 2026-06-24: build one governed
 supervised helpers. 2026-06-27 update: B1-B9 G0 are live-proven; B8a local
 Journey hardening, B8b live Journey replay/idempotency proof, B9a local
 selected-signal operating readiness, B9b selected internal read-only triage, and
-B10a local QUO inbound source readiness are complete. The remaining structured
-chunk is B10b QUO live proof if approved. Future B9 normal-client reads and G1
-Suggested rows remain selected/approved per item.
+B10a local QUO inbound source readiness are complete. 2026-06-28 update: Chunk
+20G GAIL OS bridge/one-writer framing is merged, and the remaining structured
+chunk is B10b QUO implementation-ready placeholder/design pack. Live QUO proof
+moves to B10c or a later source-expansion stage after exact approval. Future B9
+normal-client reads and G1 Suggested rows remain selected/approved per item.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -390,11 +392,14 @@ AI increases the value of clean governance and the blast radius of messy access.
 11. Run B9b selected-signal operating triage under G0 after item selection.
     Done for internal CRM item `#32`; no G1 row was written.
 12. Complete B10a local QUO inbound source proof readiness packet. Done.
-13. Run B10b QUO inbound-only live proof only after exact number/event/ingress,
-    secret, retention, duplicate, disable, and outbound-block approval.
-14. Pilot read-only recommendation agents.
-15. Add connector-grounded knowledge where SharePoint is not enough.
-16. Add write-capable agents only behind explicit approval gates.
+13. Close B10b QUO implementation-ready placeholder/design pack without QUO API
+    work. Pending Adam go-ahead.
+14. Run B10c/later QUO inbound-only live proof only after exact
+    number/event/ingress, secret, retention, duplicate, disable, and
+    outbound-block approval.
+15. Pilot read-only recommendation agents.
+16. Add connector-grounded knowledge where SharePoint is not enough.
+17. Add write-capable agents only behind explicit approval gates.
 
 ## Microsoft 365 Surfaces To Evaluate
 

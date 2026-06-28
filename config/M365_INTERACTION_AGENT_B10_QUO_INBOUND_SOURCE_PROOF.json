@@ -1,7 +1,7 @@
 {
   "chunk": "B10",
   "name": "QUO Inbound Source Proof",
-  "status": "local-source-proof-ready",
+  "status": "local-source-proof-ready-b10b-placeholder-next",
   "date": "2026-06-27",
   "owner": "Adam",
   "purpose": "Bring QUO forward as the first Phone / Voice / Text sensory portal into the existing CRM -> Teams -> triage lane, while keeping all outbound phone/SMS behavior blocked.",
@@ -15,6 +15,8 @@
   },
   "currentState": {
     "quoLiveHookup": "none approved",
+    "b10bMode": "implementation-ready placeholder/design pack; no QUO API, webhook, connector, secret read, CRM write, Teams post, or real phone traffic",
+    "futureLiveProof": "B10c or later source-expansion stage after exact approval",
     "crmSourceList": "CRM - New Signals",
     "teamsAlertFlow": "GAIL - New Signal Teams alert",
     "teamsAlertFlowState": "Started",
@@ -57,7 +59,7 @@
     }
   ],
   "recommendedDefault": {
-    "proofPath": "Use B10a local readiness first. For B10b live proof, prefer one selected no-real-client QUO event through a signed ingress path. Use manual bridge only as a fallback evidence step if webhook details are not ready.",
+    "proofPath": "Use B10a local readiness first. Close B10b as an implementation-ready placeholder/design pack without requiring QUO API details. For B10c or later live proof, prefer one selected no-real-client QUO event through a signed ingress path. Use manual bridge only as a fallback evidence step if webhook details are not ready.",
     "businessNumbers": "Only Adam-approved QUO number(s) count as business intake.",
     "eventClasses": [
       {
@@ -148,7 +150,7 @@
     "retentionDefault": "Keep sanitized proof summaries in inventory. Keep raw local payloads only long enough to validate the proof, then redact or remove according to the B10 live approval.",
     "disablePath": "Every live bridge must have a named owner, exact webhook/flow/adapter location, and one-command or UI pause path before proof."
   },
-  "liveApprovalRequired": {
+  "liveApprovalRequiredForB10cOrLater": {
     "approvalPhrase": "approve-b10-quo-inbound-source-proof-20260627",
     "scope": [
       "Name the QUO business intake number(s) allowed for the proof.",
@@ -172,6 +174,15 @@
       "No R4 delegated autonomy."
     ]
   },
+  "b10bPlaceholderAcceptance": [
+    "Event taxonomy for missed call, voicemail, inbound SMS, completed call summary, and contact update is recorded.",
+    "Normalized CRM - New Signals shape is recorded with IntakeSource = QUO.",
+    "Duplicate/idempotency rule and fallback key strategy are recorded.",
+    "Raw payload retention/redaction policy is recorded without storing raw QUO payloads in git.",
+    "Visible approval surface, disable/revoke path, and named owner expectations are recorded.",
+    "Synthetic/no-real-client fixture expectations are recorded without requiring a real QUO payload.",
+    "No QUO API call, webhook, connector setup, secret read, CRM write, Teams post, external send, or real phone traffic occurs during B10b."
+  ],
   "evidenceTargets": {
     "localPacketDirectory": "inventory/m365-interaction-agent-b10",
     "eventMappingCsvPattern": "b10-quo-event-mapping-*.csv",
@@ -184,7 +195,8 @@
   "acceptance": [
     "B10a local packet exists and names event classes, ingress options, normalized CRM shape, duplicate rule, raw payload policy, disable path, evidence targets, stop conditions, and the future approval phrase.",
     "Event mapping, live decision worksheet, and proof checklist CSVs exist.",
-    "Future B10b proof can be scoped to one no-real-client or internal event before any real customer traffic is used.",
+    "B10b can close as an implementation-ready placeholder/design pack without live QUO API work.",
+    "Future B10c/later proof can be scoped to one no-real-client or internal event before any real customer traffic is used.",
     "No QUO connector, webhook, API call, CRM write, Teams post, external send, or secret read occurs during B10a.",
     "Outbound SMS/callback remains blocked until a later explicit G3/R3 decision."
   ]

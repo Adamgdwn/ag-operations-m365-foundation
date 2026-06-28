@@ -6,12 +6,16 @@ Status: the only active startup document for this repo.
 Read this file first, then open only the current working plan or the specific
 reference needed for the task.
 
-Update 2026-06-27: docs are aligned around one governed `M365 Interaction
+Update 2026-06-28: docs are aligned around one governed `M365 Interaction
 Agent`. B1-B9 G0 are live-proven: New Signal Teams alerting, triage evidence,
 similar-record advisory, one `Suggested` Agent Action Log row, one-writer
 decision, Guided AI Journey source proof, Journey CRM receipt acknowledgement,
 lead-source display in Teams, Journey replay/idempotency hardening, and selected
-internal read-only operating triage.
+internal read-only operating triage. `origin/main` Chunk 20G has been merged
+into this branch, adding the GAIL OS bridge placement register and one-writer
+audit. B10b is now scoped as a detailed QUO placeholder/design pack; live QUO
+source proof moves to B10c or the next source-expansion stage after exact
+approval.
 
 ## Current Focus
 
@@ -48,15 +52,16 @@ enables R4 delegated autonomy.
 
 Priority when resumed: one agent with governed M365 capabilities. B8 Journey
 receipt/replay hardening and B9 selected internal G0 triage are now
-live-proven. The remaining chunk in this structured phase is B10 QUO inbound
-source proof. B9a local selected-signal operating readiness is executed, and
+live-proven. The remaining structured phase chunk is B10b QUO
+implementation-ready placeholder/design pack, not a live QUO API hookup. B9a
+local selected-signal operating readiness is executed, and
 B9b proved one internal read-only pass against CRM item `#32` with no Suggested
 row. Any future B9 normal-client read or G1 Suggested row remains separately
-selected/approved. B10a local QUO inbound source readiness is executed; B10b
-live source proof waits for exact number, event, ingress, secret, retention,
-disable, and outbound-block approvals. Hiring roles, profile
-libraries, and onboarding packet work are deferred until growth makes them
-useful.
+selected/approved. B10a local QUO inbound source readiness is executed; live
+QUO source proof waits for B10c or a later source-expansion stage with exact
+number, event, ingress, secret, retention, disable, and outbound-block approvals.
+Hiring roles, profile libraries, and onboarding packet work are deferred until
+growth makes them useful.
 
 ## Fast Startup
 
@@ -125,7 +130,7 @@ snapshots unless the task specifically asks for history or evidence.
   `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
   It defines QUO event mappings, ingress options, normalized CRM shape, duplicate
   policy, raw payload policy, live decision worksheet, proof checklist, and the
-  future B10b approval boundary without touching QUO or Microsoft 365.
+  future live approval boundary without touching QUO or Microsoft 365.
 - B1 proof harness: `scripts/Invoke-M365NewSignalAlertProof.ps1` records local
   proof evidence and gates the one synthetic CRM create behind a typed approval.
 - B2/B3 triage packet: `scripts/Invoke-M365NewSignalTriage.ps1` reads one
@@ -139,9 +144,13 @@ snapshots unless the task specifically asks for history or evidence.
 - Existing live HTTP intake flow: `GAIL - Custom site intake to CRM
   (create-only, HTTP)` is `Started` and can create CRM rows from approved
   server-side website/Journey posts.
+- Current GAIL OS bridge posture: no autonomous GAIL OS Connector write path is
+  live. Existing Power Automate proof flows are Adam-approved transitional proof
+  infrastructure, not Phase 4 connector execution.
 - Next build gate: refinement only unless Adam approves another live read/write
-  scope. Current sequence is B10b live QUO inbound proof only after exact
-  number/event/ingress/secret/retention/disable and outbound-block approval.
+  scope. Current sequence is B10b placeholder/design closeout; live QUO proof
+  waits for B10c or later exact number/event/ingress/secret/retention/disable
+  and outbound-block approval.
 - Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 
 ## Approval Boundaries

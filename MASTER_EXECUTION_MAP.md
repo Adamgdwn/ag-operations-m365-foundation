@@ -10,8 +10,9 @@
 > (Phase 1 complete; Phase 2 — CRM + Bookings + Follow-up backbone all LIVE;
 > M365 Interaction Agent B1-B9 G0 live-proven; B9a local selected-signal
 > operating packet complete; B9b selected internal read-only triage proof
-> complete; B10a local QUO inbound source proof packet complete; next chunk is
-> B10b live QUO proof if approved).
+> complete; B10a local QUO inbound source proof packet complete; Chunk 20G GAIL
+> OS bridge/one-writer framing merged; next chunk is B10b QUO
+> implementation-ready placeholder/design pack).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),
@@ -108,7 +109,7 @@ Three things are now LIVE and verified; the rest remain plan-only.
 | Knowledge / Records | [docs/CARD_PLAN_KNOWLEDGE_RECORDS.md](docs/CARD_PLAN_KNOWLEDGE_RECORDS.md) | Plan only |
 | Support / Intake | [docs/CARD_PLAN_SUPPORT_INTAKE.md](docs/CARD_PLAN_SUPPORT_INTAKE.md) | Plan only |
 | Finance / Closeout | [docs/CARD_PLAN_FINANCE_CLOSEOUT.md](docs/CARD_PLAN_FINANCE_CLOSEOUT.md) | Plan only |
-| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B9 G0 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, lead-source display, Journey replay/idempotency hardening, and one selected internal read-only operating triage pass. B10a local QUO inbound source proof packet complete; next: B10b QUO live proof if approved. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); chunks: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
+| **Agent Control Plane** | [docs/CARD_PLAN_AGENT_CONTROL_PLANE.md](docs/CARD_PLAN_AGENT_CONTROL_PLANE.md) | **ACTIVE** — B1-B9 G0 live-proven for the M365 Interaction Agent capability path: New Signal Teams alerting, triage/advisory evidence, G1 Suggested rows, B5 one-writer posture, Journey source proof, Journey CRM receipt ack, lead-source display, Journey replay/idempotency hardening, and one selected internal read-only operating triage pass. B10a local QUO inbound source proof packet complete; next: B10b QUO implementation-ready placeholder/design pack. Live QUO proof moves to B10c or a later source-expansion stage after exact approval. Plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md); chunks: [docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md](docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md) |
 | Access / Onboarding | [docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md](docs/WORKSPACE_ACCESS_AND_ONBOARDING_MODEL.md) | Active access model; net-new hiring/role-profile work deferred until growth makes it useful |
 
 ---
@@ -163,16 +164,17 @@ PHASE 2 — FUNCTIONS (interactive, one at a time, Adam-driven, any order)  ← 
      ✅ B9a: local selected-signal operating packet, queue, and review template
      ✅ B9b: selected internal G0 operating triage proof complete
      ✅ B10a: local QUO inbound source proof packet, event mapping, and proof checklist
-     ③ B10b: add QUO as inbound-only live source proof while volume is low, if approved
+     ③ B10b: close QUO implementation-ready placeholder/design pack, no QUO API work
+     ④ B10c/later: add QUO as inbound-only live source proof while volume is low, if approved
 ```
 
 **Plain reading:** the spine is complete and the first function (CRM) plus two
 adjacent functions (Bookings, Follow-up backbone) are LIVE. CRM is closed except
 for the explicitly held Stage 8 packet archive move. Adam's current priority is
 one governed M365 Interaction Agent, not hiring/onboarding and not a stack of
-helper bots. The B1-B9 G0 proof lane is done; now bring QUO in as the next
-inbound source if approved, while future B9 normal-client reads and G1 Suggested
-rows remain selected/approved per item.
+helper bots. The B1-B9 G0 proof lane is done; now box QUO as the next source
+contract without forcing API work, while future B9 normal-client reads and G1
+Suggested rows remain selected/approved per item.
 
 ---
 
@@ -195,5 +197,6 @@ rows remain selected/approved per item.
 - **Selected current direction:** **M365 Interaction Agent** — one governed
   agent with capabilities, not a helper stack. The first proof lane is live
 through B9 G0, and the B10a local QUO readiness packet is complete. Next comes
-B10b QUO live proof if approved. Onboarding, role
-profiles, and hiring packet work are deferred until growth makes them useful.
+B10b QUO placeholder/design closeout; live QUO proof is B10c/later after exact
+approval. Onboarding, role profiles, and hiring packet work are deferred until
+growth makes them useful.

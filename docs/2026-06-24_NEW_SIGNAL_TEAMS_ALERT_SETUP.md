@@ -22,7 +22,8 @@ Boundary:
 - No email sends.
 - No external/prospect notification.
 - No QUO hook from this alert runbook. B10a local QUO readiness exists, but any
-  B10b live QUO source proof needs its own approval.
+  B10b QUO placeholder/design closeout is documentation-only; B10c/later live
+  QUO source proof needs its own approval.
 - No guest access, sharing, permissions, tenant policy, app registration, admin
   consent, deletes, billing, or client commitment changes.
 - Do not rerun setup, proof, connector, flow, or `-Apply` commands from this
