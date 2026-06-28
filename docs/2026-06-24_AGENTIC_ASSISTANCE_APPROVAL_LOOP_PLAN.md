@@ -2,16 +2,17 @@
 
 Date generated: 2026-06-24
 
-Status: **B1-B8 live proof complete; B9a and B10a local packets complete; B9b/B10b live work gated** (updated 2026-06-27).
+Status: **B1-B9 G0 live proof complete; B10a local packet complete; B10b live work gated** (updated 2026-06-27).
 The 2026-06-25 pause before B5 was resolved by the B5 durable one-writer
 decision. This revision follows the plan review that separated real agent
 capability from the old supervised setup-helper path, and Adam's decision that
 this should be one M365 interaction agent with governed capabilities rather
-than separate supervised helper layers. B8b Journey receipt/replay hardening is
-now live-proven. The next chunks are B9b selected-signal operating triage after
-item selection and B10b QUO inbound source proof if approved. B9a local
-operating readiness and B10a local QUO readiness are executed; B9b/B10b live
-work remains gated.
+than separate supervised helper layers. B8b Journey receipt/replay hardening
+and B9b selected internal read-only triage are now live-proven. B9a local
+operating readiness and B10a local QUO readiness are executed. Future B9 normal
+reads still require exact selected item id(s), B9 G1 Suggested rows remain
+per-item gated, and B10b QUO inbound source proof remains the next live chunk if
+approved.
 
 Owner: Adam.
 
@@ -46,8 +47,9 @@ Boxed on 2026-06-24, updated after the 2026-06-25/26 proof:
   intake flow has pre-create idempotency, and the synthetic/internal replay
   proof left one CRM item for one Journey event.
 - B9a local selected-signal operating packet is generated with queue/review
-  templates and operating labels. B9b tenant activity waits for selected item
-  ids, source, or window; any G1 row remains per-item approval.
+  templates and operating labels. B9b selected read-only proof is complete for
+  internal CRM item `#32`; any future normal-client read still waits for exact
+  selected item id(s), and any G1 row remains per-item approval.
 - B10a local QUO inbound source proof packet is generated with event mapping,
   live decision worksheet, proof checklist, duplicate/payload/disable policies,
   and the future B10b approval boundary.
@@ -56,18 +58,19 @@ Boxed on 2026-06-24, updated after the 2026-06-25/26 proof:
   similar-record advisory, B4 Suggested rows, B5 decision recording, B6 Journey
   source proof, B7 Journey acknowledgement, B8a Journey hardening packet
   generation, B8b Journey loop hardening proof, B9a selected-signal operating
-  packet generation, and B10a QUO inbound source proof packet generation.
+  packet generation, B9b selected read-only triage proof, and B10a QUO inbound
+  source proof packet generation.
 - Live proof evidence now shows the channel target, Teams connector, started
   flow, one Teams post from one test CRM item, B2/B3 triage, B4 `Suggested`
   row, B5 one-writer posture, B6 Journey source proof, B7 receipt ack,
-  lead-source display, and B8b replay/idempotency hardening.
+  lead-source display, B8b replay/idempotency hardening, and B9b selected
+  internal G0 triage.
 
 Resume at:
 
 1. `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`
 2. `SESSION_TURNOVER_2026-06-25.md`
-3. B9b selected-signal operating triage after item selection
-4. B10b QUO inbound source proof, if approved
+3. B10b QUO inbound source proof, if approved
 
 ## Approval Protocol - 2026-06-27
 
@@ -81,7 +84,7 @@ Safe without a fresh write approval:
 - documentation review;
 - local evidence review;
 - parser/lint checks;
-- read-only triage only if Adam explicitly asks for it.
+- read-only triage only after exact selected item id(s) are named.
 
 Resolved by B5:
 
@@ -92,9 +95,8 @@ Resolved by B5:
 
 Next approval decisions:
 
-- Which CRM item ids, source, or time window Adam wants for B9b selected
-  read-only triage, and whether any selected item may receive a G1 Suggested
-  row.
+- Whether any future selected B9 item may receive a G1 Suggested row, or any
+  normal-client B9 read should be run against exact item id(s).
 - Which QUO number(s), event class, ingress option, secret/signature storage,
   payload retention, duplicate rule, owner/disable path, and outbound block are
   allowed for B10b.
@@ -503,13 +505,14 @@ Completed items:
 11. B8b live Journey loop hardening proof created indexed `PortalEventId` and
     `SourceCorrelationId` fields, updated HTTP intake idempotency, and proved
     replay without a duplicate CRM item.
-12. B10a local QUO inbound source proof packet, event mapping, decision
+12. B9b selected internal G0 triage proof exists for CRM item `#32`; no Agent
+    Action Log row was written.
+13. B10a local QUO inbound source proof packet, event mapping, decision
     worksheet, and proof checklist exist.
 
 Next when resumed:
 
-1. Run B9b selected-signal operating triage under G0/G1 after item selection.
-2. Run B10b QUO inbound-only live proof only after exact number/event/ingress,
+1. Run B10b QUO inbound-only live proof only after exact number/event/ingress,
    secret, retention, duplicate, disable, and outbound-block approval.
 
 ## Stop Conditions

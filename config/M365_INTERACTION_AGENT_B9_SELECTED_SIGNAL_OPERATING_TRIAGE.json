@@ -1,7 +1,7 @@
 {
   "chunk": "B9",
   "name": "Selected Signal Operating Triage",
-  "status": "local-operating-ready",
+  "status": "selected-g0-live-proven",
   "date": "2026-06-27",
   "owner": "Adam",
   "purpose": "Turn the proven B2/B3/B4 New Signal triage lane into a repeatable operating routine for selected CRM signals, without broad scanning or unattended writes.",
@@ -9,7 +9,7 @@
     "b2b3b4TriageScript": "scripts/Invoke-M365NewSignalTriage.ps1",
     "b5WriterPosture": "Decision Register #6 and Agent Action Log #10",
     "b8aJourneyHardeningPacket": "inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md",
-    "b8bLiveHardening": "Optional and still gated; B9a local work does not require B8b tenant changes."
+    "b8bLiveHardening": "Complete; B9b selected read-only proof used the internal B8 replay proof CRM item #32."
   },
   "authority": {
     "localPacket": "G0/R0",
@@ -60,6 +60,18 @@
       "note": "Prior Journey source proof. Use as packet-shape evidence, not as a new operating recommendation."
     }
   ],
+  "liveProof": {
+    "status": "complete-g0-read-only",
+    "date": "2026-06-27",
+    "selectedCrmItemId": 32,
+    "selectedBasis": "Internal no-real-client B8 replay proof item from the immediately prior Journey loop hardening chunk. Visible B9b selection windows were opened first, but no local selection capture file landed before proceeding conservatively with the known internal proof item.",
+    "proofMarkdown": "inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md",
+    "triagePacketMarkdown": "inventory/new-signal-triage/new-signal-triage-20260627-182259.md",
+    "triagePacketJson": "inventory/new-signal-triage/new-signal-triage-20260627-182259.json",
+    "similarRecordEvidenceJson": "inventory/new-signal-triage/new-signal-match-20260627-182259.json",
+    "reviewCsv": "inventory/m365-interaction-agent-b9/b9-selected-signal-review-20260627-182259.csv",
+    "result": "Selected CRM item #32 produced a G0 triage packet and advisory-only related-record matches. The Agent Action Log suggestion remained dry-run only; no tenant write occurred."
+  },
   "selectionPolicy": [
     "Adam selects exact CRM item ids, or a narrow source/time window, before live read-only triage.",
     "Default batch size is one to three selected items while the operating routine is being tuned.",
@@ -106,6 +118,7 @@
     "B9 local packet exists and names the operating routine, selection policy, review labels, duplicate policy, evidence paths, and stop conditions.",
     "Queue and review CSV templates exist for selected-signal operation.",
     "Existing B2/B3/B4 triage evidence is indexed as seed evidence without rerunning tenant reads or writes.",
+    "B9b selected read-only proof exists for internal CRM item #32 and stopped at G0 with local evidence only.",
     "Future selected-signal runs can stop at G0 with only local evidence.",
     "Any G1 row remains Suggested, linked to evidence, and not approved or executed."
   ]

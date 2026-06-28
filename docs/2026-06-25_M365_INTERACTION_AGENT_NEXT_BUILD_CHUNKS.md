@@ -13,12 +13,12 @@ selected-signal triage in normal use, and B10 brings QUO forward as an
 inbound-only source proof while call volume is still low. QUO is still outside
 the immediate hardening step, but it is no longer an indefinite parking-lot
 item. B8a local hardening design and B8b live schema/flow/replay proof are now
-executed. B9a local selected-signal operating packet is also executed, so the
-next B9 tenant touch is only a selected G0 read, or a selected G1 `Suggested`
-row if Adam approves that specific item. B10a local QUO inbound source readiness
-is now executed as a no-live-touch packet; B10b live proof remains gated by
-exact number, event, ingress, secret, retention, disable, and outbound-block
-approvals.
+executed. B9a local selected-signal operating packet is executed, and B9b has
+now proved one selected internal G0 read-only triage pass against CRM item `#32`
+with no Agent Action Log write. A future B9 G1 `Suggested` row still requires
+per-item approval. B10a local QUO inbound source readiness is executed as a
+no-live-touch packet; B10b live proof remains gated by exact number, event,
+ingress, secret, retention, disable, and outbound-block approvals.
 
 Owner: Adam.
 
@@ -59,7 +59,9 @@ evidence will land. For B8/B9/B10 approval captures, use
 `scripts/Start-M365InteractionAgentApprovalWindow.ps1`; it opens a visible
 PowerShell window, shows the approved scope and stop conditions, and writes a
 local `.local/interaction-agent-approvals/*.json` capture without performing
-tenant/source work.
+tenant/source work. For B9b, the selected CRM item scope is stored locally in
+that untracked capture file so the later read-only run can be tied to the
+visible operator selection.
 
 ## Guided AI Labs OS Alignment
 
@@ -234,7 +236,7 @@ B7 evidence:
 | B6 | Source expansion | Later G2/G3 per source | More inbound sources feed the same CRM -> agent lane. |
 | B7 | Journey minimal signal + CRM receipt ack | Source ingress plus restricted external callback | Journey invite/admin signal creates CRM item, then M365 confirms receipt back to Journey dashboard. |
 | B8 | Journey loop hardening | B8a G0/R0 complete; B8b G2/G3 live proof complete | First-class `portalEventId`/receipt state, idempotent replay, and pending cleanup plan. |
-| B9 | Selected signal operating triage | B9a G0/R0 complete; B9b G0/G1 selected only | Run the proven triage/advisory path on selected CRM items and optionally record one Suggested row per approved item. |
+| B9 | Selected signal operating triage | B9a G0/R0 complete; B9b selected G0/R0 complete; future G1 selected only | Run the proven triage/advisory path on selected CRM items and optionally record one Suggested row per approved item. |
 | B10 | QUO inbound source proof | B10a G0/R0 complete; B10b G3 by exact source proof approval | Low-volume QUO call/SMS/voicemail events create or map CRM signals through the existing alert and triage lane as the first Phone / Voice / Text sensory portal. |
 
 ## Live Proof Record
@@ -944,11 +946,20 @@ Use the proven triage/advisory/Suggested-row lane on selected CRM items so the
 agent starts helping with real operating judgment, without becoming unattended
 automation.
 
-Local execution status - 2026-06-27:
+Execution status - 2026-06-27:
 
 - B9a local-only operating packet generated. No Microsoft 365 connection, live
   tenant read, CRM write, Agent Action Log write, flow update, HTTP send, or
   secret read was performed.
+- B9b selected read-only proof completed against internal no-real-client CRM
+  item `#32`, the B8 replay proof item. The run produced a G0 triage/advisory
+  packet and stopped before any Agent Action Log write.
+- B9b proof:
+  `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
+- B9b triage packet:
+  `inventory/new-signal-triage/new-signal-triage-20260627-182259.md`.
+- B9b review CSV:
+  `inventory/m365-interaction-agent-b9/b9-selected-signal-review-20260627-182259.csv`.
 - Config:
   `config/M365_INTERACTION_AGENT_B9_SELECTED_SIGNAL_OPERATING_TRIAGE.json`.
 - Packet:
@@ -964,6 +975,10 @@ Local execution status - 2026-06-27:
 - Seed evidence indexes prior B1 CRM item `#19` and B6 Journey CRM item `#21`
   as packet-shape examples only; both already have prior Suggested rows and
   should not be duplicated unless Adam explicitly approves a superseding row.
+- B9b used internal item `#32` because the visible B9b selection windows did not
+  produce a local selection capture before the carry-on instruction was executed
+  conservatively. Future normal/real selected runs should capture exact item
+  id(s) in the visible B9b selection window before reading tenant data.
 
 Build:
 
@@ -1110,14 +1125,17 @@ Completed baseline:
 8. B8a local Journey hardening packet is complete.
 9. B8b live Journey loop hardening proof is complete.
 10. B9a local selected-signal operating packet, queue template, and review
-   template are complete.
-11. B10a local QUO inbound source proof packet, event mapping, live decision
+    template are complete.
+11. B9b selected internal G0 read-only operating triage proof is complete for
+    CRM item `#32`; no Agent Action Log row was written.
+12. B10a local QUO inbound source proof packet, event mapping, live decision
     worksheet, and proof checklist are complete.
 
 Next sequence:
 
-1. B9a local selected-signal operating packet is complete; B9b runs selected
-   read-only triage only after Adam chooses item ids, source, or window.
+1. B9 G0 selected triage is proven. Any future B9 normal-client read still needs
+   selected item id(s), and any B9 G1 Suggested row remains a separate per-item
+   approval.
 2. B10a local QUO readiness packet is complete; B10b brings QUO in live only
    after exact proof approvals.
 
@@ -1140,10 +1158,11 @@ phrase. That approval should be captured in a visible window launched with
 `scripts/Start-M365InteractionAgentApprovalWindow.ps1` so Adam can see the exact
 interaction surface before the live chunk begins.
 
-B9a local operating readiness is executed. The next B9 tenant touch is a
-selected G0 read-only triage run after Adam chooses exact CRM item id(s), source,
-or window. A G1 Suggested row remains a separate per-item approval and does not
-approve or execute the recommendation.
+B9a local operating readiness and B9b selected G0 read-only proof are executed.
+The B9b proof used internal CRM item `#32`, produced local triage/advisory
+evidence, and stopped before any Suggested row. Any future B9 normal-client read
+still needs exact selected item id(s), and any G1 Suggested row remains a
+separate per-item approval that does not approve or execute the recommendation.
 
 B10a local QUO readiness is executed. The next B10 tenant/source touch is B10b:
 one selected no-real-client or internal QUO event through an approved ingress
@@ -1176,7 +1195,7 @@ Prime Boiler separated from Guided AI Labs
 -> B8a local Journey loop hardening packet
 -> B8b live Journey loop hardening proof
 -> B9a local selected-signal operating packet
--> B9b selected G0/G1 operating triage after item selection
+-> B9b selected internal G0 operating triage proof
 -> B10a local QUO inbound source proof packet
 -> B10b live QUO inbound source proof after exact approval
 ```
@@ -1190,6 +1209,7 @@ Get-Content inventory\new-signal-alert\new-signal-alert-proof-20260625-162306.md
 Get-Content inventory\new-signal-triage\new-signal-triage-20260625-162436.md
 Get-Content inventory\m365-interaction-agent-b7\B7_LIVE_PROOF_2026-06-25.md
 Get-Content inventory\m365-interaction-agent-b7\B7_LEAD_SOURCE_PROOF_2026-06-25.md
+Get-Content inventory\m365-interaction-agent-b9\B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md
 ```
 
 For a read-only smoke test against the newest CRM signal:

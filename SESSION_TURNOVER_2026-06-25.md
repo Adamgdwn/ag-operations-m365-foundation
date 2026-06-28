@@ -13,7 +13,7 @@ Current working docs:
 ## Stop Point
 
 Boxed late on 2026-06-25 after B1-B7 live proof; updated 2026-06-27 after B8b
-Journey loop hardening proof.
+Journey loop hardening proof and B9b selected internal G0 triage proof.
 
 Adam resumed the lane and approved building the live Journey callback and
 related source-display usability. The repo now has a complete first M365
@@ -47,6 +47,9 @@ receipt acknowledgement.
   indexes prior B1/B6 triage evidence, creates queue/review templates, and keeps
   future tenant activity behind selected G0 read-only runs or per-item G1
   approval.
+- B9b: selected read-only operating triage is proved for internal no-real-client
+  CRM item `#32`. The run produced local G0 triage/advisory evidence and stopped
+  before any Agent Action Log write.
 - B10a: QUO inbound source proof local readiness is executed. The packet
   defines event mapping, ingress options, normalized CRM shape, duplicate and
   raw payload policies, disable path, live decision worksheet, proof checklist,
@@ -121,6 +124,18 @@ did not disable them.
     `config/M365_INTERACTION_AGENT_B9_SELECTED_SIGNAL_OPERATING_TRIAGE.json`.
   - Packet generator
     `scripts/New-M365B9SelectedSignalOperatingTriagePacket.ps1`.
+- B9b selected G0 triage proof:
+  - Proof packet
+    `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
+  - Selected CRM item `#32`.
+  - Triage packet
+    `inventory/new-signal-triage/new-signal-triage-20260627-182259.md`.
+  - Triage JSON
+    `inventory/new-signal-triage/new-signal-triage-20260627-182259.json`.
+  - Similar-record evidence
+    `inventory/new-signal-triage/new-signal-match-20260627-182259.json`.
+  - Review CSV
+    `inventory/m365-interaction-agent-b9/b9-selected-signal-review-20260627-182259.csv`.
 - B10a local QUO inbound source proof packet:
   - Packet
     `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
@@ -171,8 +186,8 @@ Old DirectLink form-spec files were scrubbed to
 2. B8a local hardening packet and B8b live replay/idempotency proof are
    complete. Any further B8 cleanup, backfill, replay, schema change, or flow
    update needs a fresh approval boundary and visible interaction surface.
-3. B9a local readiness is complete. B9b tenant touch is selected G0 read-only
-   triage after Adam chooses exact CRM item id(s), source, or window; a G1
+3. B9a local readiness and B9b selected internal G0 proof are complete. Future
+   B9 normal-client reads still require exact selected item id(s), and any G1
    Suggested row remains a separate per-item approval.
 4. B10a local readiness is complete. B10b live QUO proof remains gated:
    - name approved QUO business intake number(s);

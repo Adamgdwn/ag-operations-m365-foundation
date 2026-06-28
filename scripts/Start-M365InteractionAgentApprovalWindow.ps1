@@ -66,8 +66,9 @@ function Get-ChunkApprovalProfile {
                 Chunk = "B9b"
                 Title = "M365 Interaction Agent B9b Selection"
                 ApprovalPhrase = ""
-                Scope = @("Adam selects exact CRM item ids, source, or narrow time window before any tenant read.", "Any G1 Suggested row remains a separate per-item approval.")
-                StopConditions = @("No unselected CRM reads.", "No CRM updates.", "No duplicate Suggested rows.")
+                StoreTypedText = $true
+                Scope = @("Adam selects exact CRM item id(s) before any tenant read.", "This B9b pass is G0/R0 read-only and writes local evidence only.", "Any G1 Suggested row remains a separate per-item approval.")
+                StopConditions = @("No unselected CRM reads.", "No CRM updates.", "No Agent Action Log write.", "No duplicate Suggested rows.")
                 EvidenceTarget = "inventory/m365-interaction-agent-b9/b9-selected-signal-review-*.csv"
                 Summary = "Selected-signal operating triage selection capture."
             }
@@ -117,7 +118,7 @@ if ($Capture) {
     Write-Host ""
 
     if ([string]::IsNullOrWhiteSpace($profile.ApprovalPhrase)) {
-        $typedPhrase = Read-Host "Type the selected scope or approval note"
+        $typedPhrase = Read-Host "Type exact CRM item id(s), comma-separated"
         $approved = -not [string]::IsNullOrWhiteSpace($typedPhrase)
     }
     else {
@@ -138,6 +139,11 @@ if ($Capture) {
         stopConditions = @($profile.StopConditions)
         evidenceTarget = $profile.EvidenceTarget
         note = "Approval phrase text is not stored except for the required phrase already present in repo docs/config."
+    }
+
+    if (($profile.PSObject.Properties.Name -contains "StoreTypedText") -and $profile.StoreTypedText) {
+        $record.selectedScope = $typedPhrase
+        $record.note = "B9b selectedScope is stored locally because it is the operator's chosen CRM item id scope. This file stays under .local and is not committed."
     }
 
     $record | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $OutputFile -Encoding UTF8

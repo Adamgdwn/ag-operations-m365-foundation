@@ -7,10 +7,11 @@ Read this file first, then open only the current working plan or the specific
 reference needed for the task.
 
 Update 2026-06-27: docs are aligned around one governed `M365 Interaction
-Agent`. B1-B8 are live-proven: New Signal Teams alerting, triage evidence,
+Agent`. B1-B9 G0 are live-proven: New Signal Teams alerting, triage evidence,
 similar-record advisory, one `Suggested` Agent Action Log row, one-writer
 decision, Guided AI Journey source proof, Journey CRM receipt acknowledgement,
-lead-source display in Teams, and Journey replay/idempotency hardening.
+lead-source display in Teams, Journey replay/idempotency hardening, and selected
+internal read-only operating triage.
 
 ## Current Focus
 
@@ -46,13 +47,14 @@ the organization-level `R0-R5` authority ladder; no current B8/B9/B10 work
 enables R4 delegated autonomy.
 
 Priority when resumed: one agent with governed M365 capabilities. B8 Journey
-receipt/replay hardening is now live-proven. The remaining chunks in this
-structured phase are B9 selected-signal operating triage and B10 QUO inbound
-source proof. B9a local selected-signal operating readiness is executed; the
-next B9 tenant touch is selected read-only triage after Adam chooses exact item
-ids, source, or window. B10a local QUO inbound source readiness is executed;
-B10b live source proof waits for exact number, event, ingress, secret,
-retention, disable, and outbound-block approvals. Hiring roles, profile
+receipt/replay hardening and B9 selected internal G0 triage are now
+live-proven. The remaining chunk in this structured phase is B10 QUO inbound
+source proof. B9a local selected-signal operating readiness is executed, and
+B9b proved one internal read-only pass against CRM item `#32` with no Suggested
+row. Any future B9 normal-client read or G1 Suggested row remains separately
+selected/approved. B10a local QUO inbound source readiness is executed; B10b
+live source proof waits for exact number, event, ingress, secret, retention,
+disable, and outbound-block approvals. Hiring roles, profile
 libraries, and onboarding packet work are deferred until growth makes them
 useful.
 
@@ -115,6 +117,10 @@ snapshots unless the task specifically asks for history or evidence.
   It indexes prior B1/B6 packet evidence, creates queue and review CSV
   templates, defines operating labels, and keeps future tenant activity behind
   selected G0 read-only runs or per-item G1 approval.
+- B9b selected G0 operating triage proof:
+  `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
+  It read internal no-real-client CRM item `#32`, produced local
+  triage/advisory evidence, and stopped before any Agent Action Log write.
 - B10a local QUO inbound source proof packet:
   `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
   It defines QUO event mappings, ingress options, normalized CRM shape, duplicate
@@ -134,8 +140,7 @@ snapshots unless the task specifically asks for history or evidence.
   (create-only, HTTP)` is `Started` and can create CRM rows from approved
   server-side website/Journey posts.
 - Next build gate: refinement only unless Adam approves another live read/write
-  scope. Current sequence is B9b selected read-only CRM triage after item
-  selection, then B10b live QUO inbound proof only after exact
+  scope. Current sequence is B10b live QUO inbound proof only after exact
   number/event/ingress/secret/retention/disable and outbound-block approval.
 - Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
 

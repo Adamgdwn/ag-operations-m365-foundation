@@ -247,10 +247,11 @@ Current active agent direction:
 - One `M365 Interaction Agent` with governed capabilities.
 - First proof: `CRM - New Signals` created -> internal Teams channel
   `New Signal`.
-- New Signal, Journey receipt, Journey replay/idempotency, and B10a QUO local
-  readiness are proven/readied in that order. The remaining structured agent
-  chunks are B9b selected-signal triage and B10b live QUO proof; B10b still
-  needs exact source-proof approval and no outbound SMS/callback is enabled.
+- New Signal, Journey receipt, Journey replay/idempotency, B9b selected
+  internal read-only triage, and B10a QUO local readiness are proven/readied in
+  that order. The remaining structured agent chunk is B10b live QUO proof; B10b
+  still needs exact source-proof approval and no outbound SMS/callback is
+  enabled.
 
 Default posture:
 

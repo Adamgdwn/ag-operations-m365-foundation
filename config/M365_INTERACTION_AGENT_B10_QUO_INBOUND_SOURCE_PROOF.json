@@ -7,9 +7,9 @@
   "purpose": "Bring QUO forward as the first Phone / Voice / Text sensory portal into the existing CRM -> Teams -> triage lane, while keeping all outbound phone/SMS behavior blocked.",
   "dependsOn": {
     "b8aJourneyHardeningPacket": "inventory/m365-interaction-agent-b8/b8-journey-loop-hardening-packet-20260627-091238.md",
-    "b8bLiveHardening": "Optional and still gated; B10a local work does not require B8b tenant changes.",
+    "b8bLiveHardening": "Complete; B10a local work did not require it, but the live Journey loop is now hardened.",
     "b9aSelectedSignalOperatingPacket": "inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md",
-    "b9bSelectedTriage": "Optional selected read-only operating runs; B10a local work does not require B9b tenant reads.",
+    "b9bSelectedTriage": "Complete for one internal G0 read-only proof against CRM item #32; future B9 normal-client reads and G1 rows remain separately gated.",
     "newSignalTeamsAlertFlow": "GAIL - New Signal Teams alert",
     "triageScript": "scripts/Invoke-M365NewSignalTriage.ps1"
   },

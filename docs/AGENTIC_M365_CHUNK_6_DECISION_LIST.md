@@ -5,12 +5,12 @@ Date: 2026-06-19
 Status: Chunk 6 baseline output. Local documentation only; no Microsoft 365
 tenant read or write was performed for this pass. Active revision on
 2026-06-24: use this as the safety ladder under the one-agent plan, not as a
-reason to split work into helper bots. 2026-06-27 update: B1-B7 are
-live-proven; use this ladder for B8a local Journey hardening, B8b live Journey
-hardening if approved, B9 selected-signal triage, and B10 QUO inbound proof.
-B8a local Journey hardening, B9a local selected-signal operating readiness, and
-B10a local QUO inbound source proof readiness are complete; B8b/B9b/B10b live
-work remains approval-gated.
+reason to split work into helper bots. 2026-06-27 update: B1-B9 G0 are
+live-proven; use this ladder for future B9 G1 rows, normal-client selected
+triage, and B10 QUO inbound proof. B8a local Journey hardening, B8b live Journey
+hardening, B9a local selected-signal operating readiness, B9b selected internal
+G0 triage, and B10a local QUO inbound source proof readiness are complete; B10b
+live work remains approval-gated.
 
 Use this list with `docs/AGENTIC_M365_READINESS.md` and
 `docs/CARD_PLAN_AGENT_CONTROL_PLANE.md` before approving Copilot, connector,
@@ -23,13 +23,13 @@ Power Platform, custom adapter, or unattended agent work.
   phone lanes should become capabilities of that agent unless a security
   boundary forces a separate adapter.
 - First selected proof is `CRM - New Signals` created -> internal Teams channel
-  `New Signal`; this is now live-proven as part of B1-B7.
+  `New Signal`; this is now live-proven as part of B1-B9 G0.
 - B8a local Journey hardening packet is complete; it does not approve B8b live
   SharePoint schema changes, flow updates, replay tests, cleanup/backfill, or
   Agent Action Log writes.
-- B9a local selected-signal operating packet is complete; it does not approve
-  B9b live tenant reads, G1 Suggested rows, broad scanning, or any CRM/task/
-  message write.
+- B9a local selected-signal operating packet and B9b selected internal G0 proof
+  are complete; they do not approve future normal-client tenant reads, G1
+  Suggested rows, broad scanning, or any CRM/task/message write.
 - B10a local QUO inbound source proof packet is complete; it does not approve
   QUO connector/webhook/API setup, CRM writes, Teams posts, outbound
   phone/SMS actions, or real customer proof.
@@ -164,7 +164,7 @@ Transition rules:
 | A6-12 | Are write-capable Copilot/custom actions allowed? | No. | Action log workflow proven, G2/G3 approval gates proven, rollback tested. |
 | A6-13 | When does QUO enter the agent lane? | B10a local readiness is complete; B10b live proof comes after exact approval while volume is low. | Approved number(s), event class, ingress option, signature/secret plan, retention, duplicate rule, disable path, and outbound block. |
 | A6-14 | When does B8b live Journey hardening happen? | Only after the exact approval phrase and live scope are approved. | `PortalEventId` and `SourceCorrelationId` field approval, HTTP intake flow idempotency update approval, no-real-client replay target, evidence path, rollback/pause note, and phrase `approve-b8-journey-loop-hardening-live-update-20260627`. |
-| A6-15 | When does B9b selected-signal triage touch the tenant? | Only after Adam names exact CRM item id(s), source, or narrow time window. | Selected item/window, read-only evidence target, whether G0 only or one G1 Suggested row is approved, duplicate-suggestion decision, and stop conditions for no CRM/task/message/external writes. |
+| A6-15 | When does future B9 selected-signal triage touch the tenant? | B9b internal G0 proof is complete for CRM item `#32`; future normal-client reads still require exact item id(s), and G1 rows require per-item approval. | Selected item/window, read-only evidence target, whether G0 only or one G1 Suggested row is approved, duplicate-suggestion decision, and stop conditions for no CRM/task/message/external writes. |
 | A6-16 | When does B10b QUO live proof touch QUO or M365? | Only after Adam approves the exact B10b source proof scope and phrase. | QUO number(s), first event class, ingress option, secret/signature storage and revoke path, raw payload retention/redaction, duplicate window, owner/disable path, no-real-client proof target, evidence path, outbound block, and phrase `approve-b10-quo-inbound-source-proof-20260627`. |
 
 ## Acceptance Test

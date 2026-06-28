@@ -5,11 +5,12 @@ Date: 2026-06-19
 Status: Active recommendation map for becoming agentic and AI-centric. Chunk 6
 readiness pass complete. Active revision on 2026-06-24: build one governed
 `M365 Interaction Agent` with capability contracts, not a stack of separate
-supervised helpers. 2026-06-27 update: B1-B8 are live-proven; B8a local Journey
-hardening, B8b live Journey replay/idempotency proof, B9a local selected-signal
-operating readiness, and B10a local QUO inbound source readiness are complete.
-The remaining structured chunks are B9b selected triage after item selection and
-B10b QUO live proof if approved. B9b/B10b live work remains approval-gated.
+supervised helpers. 2026-06-27 update: B1-B9 G0 are live-proven; B8a local
+Journey hardening, B8b live Journey replay/idempotency proof, B9a local
+selected-signal operating readiness, B9b selected internal read-only triage, and
+B10a local QUO inbound source readiness are complete. The remaining structured
+chunk is B10b QUO live proof if approved. Future B9 normal-client reads and G1
+Suggested rows remain selected/approved per item.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,
@@ -63,6 +64,8 @@ Current active implementation note:
   `inventory/m365-interaction-agent-b8/B8B_LIVE_PROOF_2026-06-27.md`.
 - B9a local selected-signal operating packet lives at
   `inventory/m365-interaction-agent-b9/b9-selected-signal-operating-triage-packet-20260627-093338.md`.
+- B9b selected G0 triage proof lives at
+  `inventory/m365-interaction-agent-b9/B9B_SELECTED_G0_TRIAGE_PROOF_2026-06-27.md`.
 - B10a local QUO inbound source proof packet lives at
   `inventory/m365-interaction-agent-b10/b10-quo-inbound-source-proof-packet-20260627-094929.md`.
 - `agent-pnp-provisioning` and delegated setup scripts remain setup/proof
@@ -141,10 +144,10 @@ Narrow 2026-06-24 exception for the selected proof:
 This exception does not approve app registration, admin consent, external
 messaging, guest/sharing changes, QUO, or broad unattended automation.
 
-Later B1-B8 approvals proved the Journey source, receipt, and replay/idempotency
-lane, and B9a proved local operating readiness, but they do not approve B9b
-tenant reads, B9 Suggested rows, B10b QUO setup/proof, outbound phone/SMS
-behavior, or any new live write.
+Later B1-B9 G0 work proved the Journey source, receipt, replay/idempotency lane,
+and selected internal read-only operating triage, but it does not approve future
+B9 normal-client reads, B9 Suggested rows, B10b QUO setup/proof, outbound
+phone/SMS behavior, or any new live write.
 
 No live tenant read or write was performed during Chunk 6. This pass used local
 Stage 7 governance evidence, Stage 9 bridge-readiness evidence, the Chunk 5 card
@@ -384,7 +387,8 @@ AI increases the value of clean governance and the blast radius of messy access.
 9. Complete B8b live Journey hardening after exact schema/flow/replay approval.
    Done.
 10. Complete B9a local selected-signal operating packet. Done.
-11. Run B9b selected-signal operating triage under G0/G1 after item selection.
+11. Run B9b selected-signal operating triage under G0 after item selection.
+    Done for internal CRM item `#32`; no G1 row was written.
 12. Complete B10a local QUO inbound source proof readiness packet. Done.
 13. Run B10b QUO inbound-only live proof only after exact number/event/ingress,
     secret, retention, duplicate, disable, and outbound-block approval.
@@ -427,8 +431,8 @@ Highest-priority open decisions:
   write-capable custom actions.
 - Which content is too sensitive for broad Copilot grounding.
 - Whether any external source deserves a Copilot connector after ACL mapping.
-- Which CRM item ids, source, or window Adam selects for B9b read-only triage,
-  and whether any selected item may receive a separate G1 Suggested row.
+- Whether any future selected B9 item may receive a separate G1 Suggested row,
+  or whether another normal-client B9 read should run against exact item id(s).
 - Which QUO number(s), event classes, ingress pattern, payload retention,
   duplicate rule, disable path, and outbound block are approved for B10b.
 
