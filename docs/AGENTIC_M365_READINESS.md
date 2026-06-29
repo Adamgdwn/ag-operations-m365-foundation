@@ -9,9 +9,10 @@ supervised helpers. 2026-06-27 update: B1-B9 G0 are live-proven; B8a local
 Journey hardening, B8b live Journey replay/idempotency proof, B9a local
 selected-signal operating readiness, B9b selected internal read-only triage, and
 B10a local QUO inbound source readiness are complete. 2026-06-28 update: Chunk
- 20G GAIL OS bridge/one-writer framing is merged, B10b QUO
-implementation-ready source contract/design is complete, and B10c.0 local QUO
-API key readiness is complete without live API read. Live QUO proof moves to
+20G GAIL OS bridge/one-writer framing is merged, B10b QUO
+implementation-ready source contract/design is complete, B10c.0 local QUO API
+key readiness is complete without live API read, and B10c.0a QUO/Sona prompt
+and placement guidance is complete as design-only. Live QUO proof moves to
 B10c.1 or a later source-expansion stage after exact approval. The next default
 chunk is B11 selected operating cadence. Future B9/B11 normal-client reads and
 G1 Suggested rows remain selected/approved per item.
@@ -56,7 +57,9 @@ work.
 
 Current active implementation note:
 
-- The active plan is
+- The active execution plan is
+  `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`.
+- The original product/governance reference is
   `docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md`.
 - The first live notification capability is documented in
   `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md` and is now proven.
@@ -82,11 +85,14 @@ Current active implementation note:
   `docs/2026-06-28_QUO_API_KEY_READINESS.md`.
 - B10c.0 machine-readable readiness config lives at
   `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`.
+- B10c.0a QUO/Sona prompt and placement guidance lives at
+  `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`.
 - `agent-pnp-provisioning` and delegated setup scripts remain setup/proof
   tooling only; they are not the production agent identity.
 - QUO phone integration has a local B10a readiness packet, B10b source
-  contract, and B10c.0 local API key readiness, but no live QUO connector,
-  webhook, CRM write, Teams post, or outbound action is approved.
+  contract, B10c.0 local API key readiness, and B10c.0a Sona prompt/placement
+  guidance, but no live QUO connector, webhook, CRM write, Teams post, or
+  outbound action is approved.
 
 Microsoft 365 should become the governed operating substrate:
 
@@ -458,7 +464,7 @@ Highest-priority open decisions:
   or whether another normal-client B9/B11 read should run against exact item
   id(s).
 - Which QUO number(s), event classes, ingress pattern, payload retention,
-  duplicate rule, disable path, and outbound block are approved for B10c/later
+  duplicate rule, disable path, and outbound block are approved for B10c.1/later
   live proof. B10b is complete and remains design-only.
 
 ## Chunk 6 Acceptance Test

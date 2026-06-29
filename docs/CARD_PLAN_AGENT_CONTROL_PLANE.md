@@ -5,7 +5,8 @@ Date: 2026-06-19
 Status: Active card plan for the governed `M365 Interaction Agent`. B1-B9 G0
 are live-proven, B10a local QUO readiness is complete, B10b QUO source
 contract/design is complete, B10c.0 local QUO API key readiness is complete
-without live API read, and the current active build plan is the compact
+without live API read, B10c.0a QUO/Sona prompt and placement guidance is
+complete as design-only, and the current active build plan is the compact
 2026-06-28 successor plan. This plan complements
 `docs/AGENTIC_M365_READINESS.md` and
 `docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md`; it does not approve app

@@ -2,7 +2,12 @@
 
 Date generated: 2026-06-24
 
-Status: **B1-B9 G0 live proof complete; B10a local packet complete; B10b source contract complete; B10c.0 key readiness complete** (updated 2026-06-28).
+Status: **Reference plan, not the active execution plan. B1-B9 G0 live proof
+complete; B10a local packet complete; B10b source contract complete; B10c.0
+key readiness complete; B10c.0a QUO/Sona prompt and placement complete**
+(updated 2026-06-28).
+Use `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md` for current
+execution status and next chunks.
 The 2026-06-25 pause before B5 was resolved by the B5 durable one-writer
 decision. This revision follows the plan review that separated real agent
 capability from the old supervised setup-helper path, and Adam's decision that
@@ -78,8 +83,8 @@ Boxed on 2026-06-24, updated after the 2026-06-25/26 proof:
 Resume at:
 
 1. `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md`
-2. `SESSION_TURNOVER_2026-06-25.md`
-3. B11 selected operating cadence, or B10c live QUO proof only after exact
+2. `SESSION_TURNOVER_2026-06-28.md`
+3. B11 selected operating cadence, or B10c.1 live QUO proof only after exact
    approval
 
 ## Approval Protocol - 2026-06-27
@@ -109,7 +114,7 @@ Next approval decisions:
   normal-client B9 read should be run against exact item id(s).
 - Which QUO number(s), event class, ingress option, secret/signature storage,
   payload retention, duplicate rule, owner/disable path, and outbound block are
-  eventually allowed for B10c/later live proof. B10b is complete and remains
+  eventually allowed for B10c.1/later live proof. B10b is complete and remains
   design-only.
 
 ## Plan Review Findings
@@ -445,7 +450,7 @@ Proof options:
    exact write lane and approval phrase are confirmed.
 3. **Teams hot-alert proof:** one internal test signal creates exactly one
    `New Signal` Teams alert and links back to the CRM item.
-4. **QUO inbound proof, B10c/later:** one future approved no-real-client or
+4. **QUO inbound proof, B10c.1/later:** one future approved no-real-client or
    internal QUO call/SMS event creates or maps to a CRM signal and triggers the
    Teams alert, with no outbound reply. B10b only prepares this contract.
 5. **Purpose-built app proof:** wait until `m365-interaction-agent` app posture,

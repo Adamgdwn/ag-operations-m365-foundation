@@ -16,9 +16,10 @@
 > contract/design pack complete; B10c.0 local QUO API key readiness complete
 > without live API read; B10c.0a QUO/Sona CRM intake prompt and placement
 > complete as design-only with message-only calls kept in QUO and consented
-> follow-up inquiries routed to future CRM intake; next default chunk is B11
-> operating cadence unless Adam pulls B10c.1 live QUO proof forward by exact
-> approval).
+> follow-up inquiries routed to future CRM intake; Linux M365 CLI setup, GAIL
+> OS CTP-2 dry-run proof, and the personal-credit Azure pilot are complete as
+> cross-repo context only; next default chunk is B11 operating cadence unless
+> Adam pulls B10c.1 live QUO proof forward by exact approval).
 
 Canonical sources this map sits over:
 [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md) (the spine),

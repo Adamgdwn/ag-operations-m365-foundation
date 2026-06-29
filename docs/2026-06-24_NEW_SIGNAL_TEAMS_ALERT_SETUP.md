@@ -2,11 +2,14 @@
 
 Date: 2026-06-24
 
-Status: live B1-B7 baseline established on 2026-06-25/26. The New Signal Teams
+Status: setup/proof reference, not the active execution plan. Live B1-B7
+baseline established on 2026-06-25/26. The New Signal Teams
 alert lane is active for `CRM - New Signals` creates, with proof evidence
 captured for synthetic CRM item `#19`; later chunks proved B5 one-writer
 posture, B6 Journey source ingress, B7 Journey CRM receipt acknowledgement, and
-lead-source display.
+lead-source display. Use
+`docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md` for current chunk
+status.
 
 Purpose:
 
@@ -21,9 +24,9 @@ Boundary:
 - Internal Teams post only.
 - No email sends.
 - No external/prospect notification.
-- No QUO hook from this alert runbook. B10a local QUO readiness and B10b source
-  contract/design exist, but B10c/later live QUO source proof needs its own
-  approval.
+- No QUO hook from this alert runbook. B10a local QUO readiness, B10b source
+  contract/design, B10c.0 key readiness, and B10c.0a prompt placement exist,
+  but B10c.1/later live QUO source proof needs its own approval.
 - No guest access, sharing, permissions, tenant policy, app registration, admin
   consent, deletes, billing, or client commitment changes.
 - Do not rerun setup, proof, connector, flow, or `-Apply` commands from this
@@ -69,7 +72,8 @@ Current forward gate:
 2. B9: run selected-signal operating triage under G0/G1.
 3. B10a: local QUO inbound source proof readiness is complete.
 4. B10b: QUO design-only implementation-ready source contract is complete.
-5. B10c/later: bring QUO in as inbound-only live source proof only after exact
+5. B10c.0a: QUO/Sona prompt and placement guidance is complete as design-only.
+6. B10c.1/later: bring QUO in as inbound-only live source proof only after exact
    number/event/ingress/secret/retention/disable and outbound-block approval.
 
 ## Setup Sequence

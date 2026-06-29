@@ -16,8 +16,10 @@ data lane, and enterprise integration surface. Not a secondary integration or pl
 **Authority:** All M365 writebacks must flow through the OS Connector registry with
 source refs, authority envelopes, and evidence packets. No unregistered write paths.
 
-**Blocker:** BLK-005 — M365 app registration status in Entra is unconfirmed.
-Resolve before Phase 4 implementation begins.
+**Blocker:** BLK-005 — M365 production connector app registration and consent
+posture is not open for Phase 4. A tenant-local delegated CLI app exists for
+Linux setup/read-only proof, but that does not authorize production GAIL OS
+connector writes or broad M365 permission expansion.
 
 **Naming note (2026-06-26):** Several stage docs (e.g.
 `M365_STAGE_9_AGENTIC_OS_BRIDGE_READINESS.md`, `M365_GRAPHIFY_UAOS_ALIGNMENT.md`) refer
@@ -38,8 +40,10 @@ For ordinary scoped work:
 
 1. run `git status --short`
 2. read this file and `START_HERE.md`
-3. inspect the specific stage doc, config, or script relevant to the task
-4. run targeted validation after the change
+3. use `docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md` as the
+   active execution plan unless the task explicitly asks for historical proof
+4. inspect the specific stage doc, config, or script relevant to the task
+5. run targeted validation after the change
 
 Do not turn the full stage-doc set into an automatic startup chain for small edits — route
 context via `00_INDEX.md` and `MASTER_EXECUTION_MAP.md`.

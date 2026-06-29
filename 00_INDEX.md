@@ -15,14 +15,15 @@ the wider project map or older stage/history references.
 > build-out, any order). Read it to see where any single task fits before starting
 > it.
 
-For current work, use [START_HERE.md](START_HERE.md). The active plan is
-[docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md),
-the compact active build plan is
+For current work, use [START_HERE.md](START_HERE.md). The active execution plan
+is
 [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md),
-and the selected setup runbook is
+the product/governance reference is
+[docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md),
+and the selected setup/proof runbook is
 [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md).
 Latest handoff:
-[SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md). The active
+[SESSION_TURNOVER_2026-06-28.md](SESSION_TURNOVER_2026-06-28.md). The active
 M365 Interaction Agent lane is through B10c.0a locally: B10a QUO local
 readiness, B10b design-only source contract, B10c.0 local API key readiness,
 and B10c.0a QUO/Sona CRM intake prompt and placement are complete, including
@@ -39,6 +40,9 @@ The portable Codex/Claude Code skill for that bridge is versioned at
 [skills/direct-link](skills/direct-link).
 The repo intentionally has one active startup document: [START_HERE.md](START_HERE.md).
 
+Current documentation status review:
+[docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md](docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md).
+
 Current QUO source contract:
 [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md).
 
@@ -47,6 +51,9 @@ Current QUO API key readiness:
 
 Current QUO CRM intake prompt:
 [docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md](docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md).
+
+Current M365 CNS source surface map:
+[docs/2026-06-28 - M365 CNS Source Surface Map.md](docs/2026-06-28%20-%20M365%20CNS%20Source%20Surface%20Map.md).
 
 ---
 
@@ -712,8 +719,11 @@ never in the committed `M365_ENVIRONMENT.template.env`.
 ## Current Resume Path
 
 1. Start with [START_HERE.md](START_HERE.md).
-2. Open [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md).
-3. Open [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
+2. Open [SESSION_TURNOVER_2026-06-28.md](SESSION_TURNOVER_2026-06-28.md).
+3. Open [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md).
+4. Open [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
+   only when the original MVP/governance reasoning is needed.
+5. Open [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
    if continuing the selected live proof.
-4. Use this index only for detailed stage history, evidence references, or
+6. Use this index only for detailed stage history, evidence references, or
    older implementation context.

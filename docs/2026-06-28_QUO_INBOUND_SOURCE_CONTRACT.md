@@ -77,7 +77,7 @@ Authority level: G0/R0 design and local evidence only.
   follow-up inquiries; message-only calls remain in QUO. Sona should not take
   autonomous action.
 - Any raw payload, transcript, recording, or full message retention needs
-  explicit B10c/later approval.
+  explicit B10c.1/later approval.
 - Outbound behavior stays blocked until a separate G3/R3 decision.
 - Freedom, GAIL OS, and Graphify should eventually receive stable ids and
   relationship hints, but this repo does not become the production GAIL OS
@@ -119,7 +119,7 @@ touches CRM:
 | `interestArea` | Preferred for Sona summaries | AI systems, business automation, Guided AI journey, operations advisory, training, partnership, support, or other. |
 | `preferredContactMethod` | Preferred for Sona summaries | Caller preference when provided. |
 | `recordingOrTranscriptLink` | Optional | Link only when retention/access is approved. |
-| `rawPayloadEvidenceRef` | Optional | Local-only raw payload evidence ref, if B10c/later approves retention. |
+| `rawPayloadEvidenceRef` | Optional | Local-only raw payload evidence ref, if B10c.1/later approves retention. |
 | `payloadDigest` | Yes for live proof | Hash/digest of the raw or sanitized source event, not a secret. |
 | `dedupeKey` | Yes | Built by the rule below. |
 | `outboundBlocked` | Yes | Always `true` for B10/B10c. |
@@ -216,7 +216,7 @@ must not write CRM. No CRM-bound QUO path may bypass the CRM intake list.
 
 ## Evidence And Privacy
 
-| Data class | B10b handling | B10c/later requirement |
+| Data class | B10b handling | B10c.1/later requirement |
 |---|---|---|
 | Raw QUO payload | Not present. | Store only in approved local/private evidence path; never git. |
 | Full SMS body | Not present. | Retention/redaction approval required. |
@@ -224,7 +224,7 @@ must not write CRM. No CRM-bound QUO path may bypass the CRM intake list.
 | Recording link | Placeholder only. | Access and retention approval required. |
 | Phone numbers | Fake placeholders only. | Redact in committed evidence unless Adam approves exact display. |
 | Payload digest | Shape only. | Compute for replay/idempotency evidence when live proof is approved. |
-| CRM item ids | None created in B10b. | Record only after an approved B10c proof. |
+| CRM item ids | None created in B10b. | Record only after an approved B10c.1 proof. |
 
 Default raw payload location for later approval: `.local/quo-ingress/`.
 

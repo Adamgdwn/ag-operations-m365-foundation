@@ -1,9 +1,10 @@
 # Start Here
 
 Date generated: 2026-06-24
+Last reviewed: 2026-06-28
 Status: the only active startup document for this repo.
 
-Read this file first, then open only the current working plan or the specific
+Read this file first, then open only the active execution plan or the specific
 reference needed for the task.
 
 Update 2026-06-28: docs are aligned around one governed `M365 Interaction
@@ -27,17 +28,17 @@ The Microsoft 365 infrastructure spine is complete. CRM / Relationships,
 Bookings / Scheduling, and the Operations Follow-up Backbone are live and
 verified.
 
-Current working plan:
+Active execution plan:
+
+- [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+
+Product/governance reference:
 
 - [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
 
-Current setup runbook:
+Current setup/proof reference:
 
 - [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
-
-Current active build plan:
-
-- [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
 
 Historical chunk ledger:
 
@@ -65,8 +66,7 @@ and B10c.0 imported the QUO API key into ignored local encrypted storage
 without a live API read. B10c.0a adds the Sona prompt and SharePoint/CRM
 placement for future consented `IntakeSource = QUO` records, while ordinary
 message-only calls stay in QUO. It is not a live QUO source-ingestion hookup.
-B9a
-local selected-signal operating readiness is executed, and
+B9a local selected-signal operating readiness is executed, and
 B9b proved one internal read-only pass against CRM item `#32` with no Suggested
 row. Any future B9 normal-client read or G1 Suggested row remains separately
 selected/approved. B10a local QUO inbound source readiness is executed; B10c.1
@@ -79,10 +79,11 @@ growth makes them useful.
 
 1. Run `git status --short`.
 2. Read the latest handoff:
-   [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
-3. Read the current working plan linked above.
-4. Read the New Signal setup runbook if continuing the notification proof.
-5. Read the active build plan if planning beyond the first alert proof.
+   [SESSION_TURNOVER_2026-06-28.md](SESSION_TURNOVER_2026-06-28.md).
+3. Read the active execution plan linked above.
+4. Read the product/governance reference only when you need the original MVP
+   reasoning or approval-loop design.
+5. Read the New Signal setup runbook only if continuing the notification proof.
 6. Confirm the target write surface and approval boundary before running any
    additional live write from this repo.
 7. If Adam must type an approval phrase, select an account, complete MFA, choose
@@ -163,6 +164,17 @@ evidence.
   the future SharePoint operator view at CRM Command Center -> QUO Intake ->
   filtered `CRM - New Signals` rows where `IntakeSource = QUO`. No live QUO or
   CRM configuration changed.
+- Cross-repo/direct-link context:
+  Linux M365 CLI authentication is working under a tenant-local delegated app;
+  GAIL OS CTP-2 local dry-run triangle proof is complete; the personal-credit
+  Azure pilot now hosts healthy GAIL OS and Graphify Container Apps; Graphify
+  persistence is mounted on Azure Files. These are context facts only and do
+  not open Phase 4 M365 connector execution.
+- Upstream Chunk 5.5 added a Phase 5 M365 CNS source surface map. Treat it as
+  connector-planning context, not as a replacement for the active transitional
+  proof-flow state in the M365 Interaction Agent plan.
+- Night box-up: the external `01 Work Tracking` ledger was refreshed at
+  `C:\Users\adamg\01. Code Projects\01 Work Tracking\AG Operations Workspace Setup\`.
 - B1 proof harness: `scripts/Invoke-M365NewSignalAlertProof.ps1` records local
   proof evidence and gates the one synthetic CRM create behind a typed approval.
 - B2/B3 triage packet: `scripts/Invoke-M365NewSignalTriage.ps1` reads one
@@ -185,7 +197,7 @@ evidence.
   placement is documented with the message-only versus consented-intake gate;
   live QUO proof waits for B10c.1 or later exact number/event/ingress/secret/
   retention/disable and outbound-block approval.
-- Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md).
+- Latest handoff: [SESSION_TURNOVER_2026-06-28.md](SESSION_TURNOVER_2026-06-28.md).
 
 ## Approval Boundaries
 
@@ -217,9 +229,11 @@ scope, stop conditions, and local approval evidence are explicit.
 ## Active References
 
 - Master path: [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md)
-- Current plan: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
-- New Signal setup: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
-- Active build plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+- Active execution plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+- Product/governance reference: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
+- New Signal setup/proof reference: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
+- Documentation status review: [docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md](docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md)
+- Work tracking ledger: `C:\Users\adamg\01. Code Projects\01 Work Tracking\AG Operations Workspace Setup\latest.md`
 - QUO source contract: [docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md](docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md)
 - QUO API key readiness: [docs/2026-06-28_QUO_API_KEY_READINESS.md](docs/2026-06-28_QUO_API_KEY_READINESS.md)
 - QUO CRM intake prompt: [docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md](docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md)
@@ -228,10 +242,11 @@ scope, stop conditions, and local approval evidence are explicit.
 - Decisions card: [docs/CARD_PLAN_DECISIONS_GOVERNANCE.md](docs/CARD_PLAN_DECISIONS_GOVERNANCE.md)
 - Agent readiness: [docs/AGENTIC_M365_READINESS.md](docs/AGENTIC_M365_READINESS.md)
 - G0-G4 decisions: [docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md](docs/AGENTIC_M365_CHUNK_6_DECISION_LIST.md)
+- M365 CNS source surface map: [docs/2026-06-28 - M365 CNS Source Surface Map.md](docs/2026-06-28%20-%20M365%20CNS%20Source%20Surface%20Map.md)
 - CRM history/plan: [docs/CRM_EXECUTION_PLAN.md](docs/CRM_EXECUTION_PLAN.md)
 - Operator manual: [docs/WORKSPACE_INSTRUCTION_MANUAL.md](docs/WORKSPACE_INSTRUCTION_MANUAL.md)
 - Full index: [00_INDEX.md](00_INDEX.md)
-- Latest handoff: [SESSION_TURNOVER_2026-06-25.md](SESSION_TURNOVER_2026-06-25.md)
+- Latest handoff: [SESSION_TURNOVER_2026-06-28.md](SESSION_TURNOVER_2026-06-28.md)
 
 ## Naming Convention
 

@@ -8,12 +8,13 @@ planning and startup context. B10b is complete as of 2026-06-28. B10c.0 QUO
 API key readiness is complete locally as of 2026-06-28. B10c.0a QUO CRM intake
 prompt and placement is complete as design-only guidance as of 2026-06-28, with
 message-only calls kept out of CRM and consented follow-up inquiries routed to
-future `CRM - New Signals` intake.
+future `CRM - New Signals` intake. D1 documentation currentness review is
+complete as of 2026-06-28.
 
 Owner: Adam.
 
 This file is intentionally compact, but it is now detailed enough to execute
-from. The older chunk file remains the historical B1-B10a proof ledger and
+from. The older chunk file remains the historical B1-B10b proof ledger and
 should only be opened when auditing prior decisions, exact acceptance criteria,
 or historical proof detail.
 
@@ -22,8 +23,9 @@ or historical proof detail.
 Default startup path:
 
 1. `START_HERE.md`
-2. This active build plan
-3. The one evidence/config file named by the current task
+2. `SESSION_TURNOVER_2026-06-28.md`
+3. This active build plan
+4. The one evidence/config file named by the current task
 
 Do not load old stage packets, exports, inventory folders, or the superseded
 chunk ledger unless the task specifically asks for proof history or a previous
@@ -89,6 +91,9 @@ Completed proof/readiness:
   configuration was changed.
 - Chunk 20G GAIL OS bridge placement and one-writer framing.
 - D0 documentation cleanup and token-friendly successor plan, this file.
+- D1 documentation currentness review, startup/index rerouting, and June 28
+  turnover creation.
+- D2 night box-up, including external `01 Work Tracking` ledger refresh.
 
 Live/transitional surfaces that may continue operating:
 
@@ -100,17 +105,34 @@ Live/transitional surfaces that may continue operating:
 These flows are Adam-approved transitional proof infrastructure. They are not
 autonomous GAIL OS Connector execution and do not open Phase 4.
 
+Cross-repo/direct-link context as of 2026-06-28:
+
+- Linux M365 CLI authentication is working through a tenant-local delegated app
+  for setup/read-only proof. This does not resolve the production Phase 4 app
+  registration/consent gate.
+- GAIL OS CTP-2 local dry-run proof is complete, including M365 bridge dry-run
+  evidence and authority escalation probes.
+- A personal-credit Azure pilot now hosts healthy GAIL OS and Graphify Container
+  Apps, and Graphify persistence is mounted on Azure Files.
+- Upstream Chunk 5.5 added `docs/2026-06-28 - M365 CNS Source Surface Map.md`
+  as Phase 5 CNS/GAIL OS connector-planning context. Read it alongside, not
+  over top of, the transitional Power Automate proof-flow state in this plan.
+- These facts are useful for later packaging and Phase 4 prep, but no M365
+  production connector write path is open.
+
 ## Current Build Chunks
 
 | Chunk | Scope | Status | What Opens It |
 |---|---|---|---|
 | D0 | Documentation cleanup and token-friendly plan split | Complete | Adam requested cleanup before next build work |
+| D1 | Documentation currentness review and pause point | Complete | Startup/index/turnover/docs-status refreshed; no docs deleted |
+| D2 | Night box-up and work-tracking ledger refresh | Complete | Startup handoff and external `01 Work Tracking` latest/log refreshed before commit/push |
 | B10b | QUO implementation-ready placeholder/design pack | Complete | Source contract: `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`; config: `config/M365_INTERACTION_AGENT_B10B_QUO_SOURCE_CONTRACT.json` |
 | B10c.0 | QUO API key local readiness | Complete local-only | Key imported to ignored `.local/quo-ingress/`; readiness doc: `docs/2026-06-28_QUO_API_KEY_READINESS.md`; config: `config/M365_INTERACTION_AGENT_B10C_QUO_API_KEY_READINESS.json`; dry-run evidence created with no API call |
 | B10c.0a | QUO CRM intake prompt and placement | Complete design-only | Prompt/placement doc: `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`; Sona distinguishes message-only from consented follow-up inquiry; future ingress writes `CRM - New Signals` with `IntakeSource = QUO` only when `CreateCrmSignal: true` |
 | B10c.1+ | Low-volume QUO live source proof | Later | Exact QUO number/event/ingress/secret/retention/disable/outbound-block approval |
 | B11 | Normal operating cadence for selected signals | Next recommended operating chunk | Adam selects whether to practice real G0 review before more source expansion |
-| Phase 4 | GAIL OS Connector registry and M365 production write path | Blocked | BLK-005 resolved, GAIL OS HTTP API live, explicit Phase 4 authorization |
+| Phase 4 | GAIL OS Connector registry and M365 production write path | Blocked | Production connector app/consent posture resolved, GAIL OS API approved for the connector environment, explicit Phase 4 authorization |
 
 The current structured phase closed when B10b finished, and B10c.0 has now
 captured the key readiness layer without opening ingestion. B10c.0a adds the
@@ -167,7 +189,7 @@ Allowed in B10b:
 - define raw payload retention, redaction, and evidence expectations;
 - define visible approval, disable, revoke, and owner paths;
 - define synthetic/no-real-client fixture expectations;
-- update docs/config to mark the live proof as B10c/later.
+- update docs/config to mark the live proof as B10c.1/later.
 
 Not allowed in B10b:
 
@@ -449,8 +471,9 @@ from transitional Power Automate proof work and from B10/B11 operating practice.
 
 Production bridge implementation requires:
 
-- BLK-005 resolved: M365 app registration and consent posture confirmed;
-- GAIL OS HTTP API live;
+- BLK-005 resolved: M365 production connector app registration and consent
+  posture confirmed;
+- GAIL OS HTTP API live in the approved production connector environment;
 - GAIL OS Connector registry available;
 - one writer per M365 write surface;
 - signed authority envelope pattern tested;
@@ -496,6 +519,12 @@ Use these files by default:
 - Startup: `START_HERE.md`
 - Master pathway: `MASTER_EXECUTION_MAP.md`
 - Active build plan: this file
+- Documentation status:
+  `docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md`
+- Current turnover:
+  `SESSION_TURNOVER_2026-06-28.md`
+- External work tracking:
+  `C:\Users\adamg\01. Code Projects\01 Work Tracking\AG Operations Workspace Setup\latest.md`
 - QUO source contract:
   `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md`
 - QUO source contract config:
@@ -514,6 +543,8 @@ Use these files by default:
   `docs/2026-06-28_M365_GAIL_OS_BRIDGE_PLACEMENT_REGISTER.md`
 - One-writer audit:
   `docs/2026-06-28_M365_ONE_WRITER_AUDIT.md`
+- M365 CNS source surface map:
+  `docs/2026-06-28 - M365 CNS Source Surface Map.md`
 - Historical chunk ledger:
   `docs/2026-06-25_M365_INTERACTION_AGENT_NEXT_BUILD_CHUNKS.md`
 
