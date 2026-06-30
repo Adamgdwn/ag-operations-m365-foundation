@@ -1,10 +1,12 @@
 # Documentation Status Review
 
 Date: 2026-06-28
+Last Updated: 2026-06-29
 
 Status: Current documentation cleanup register. Created after the B10c.0a
 QUO/Sona prompt work, Linux M365 setup, GAIL OS local proof, and Azure pilot
-deployment.
+deployment. Updated 2026-06-29 with the M365 agentic IO / GAIL OS bridge
+contract for Freedom-through-GAIL routing.
 
 Owner: Adam.
 
@@ -51,6 +53,7 @@ ledger by default.
 | QUO/Sona prompt and placement | `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md` | Current operator guidance. |
 | QUO inbound source shape | `docs/2026-06-28_QUO_INBOUND_SOURCE_CONTRACT.md` and `config/M365_INTERACTION_AGENT_B10B_QUO_SOURCE_CONTRACT.json` | Current source contract. |
 | M365 CNS source surfaces | `docs/2026-06-28 - M365 CNS Source Surface Map.md` | Current Phase 5 CNS/GAIL OS connector reference; does not supersede transitional Power Automate proof-flow state. |
+| Agentic IO / GAIL OS bridge contract | `docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md` and `config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json` | Active Freedom-through-GAIL IO contract for information-out, information-in, triggered-action, and deliverable-out lanes. Docs/config only; no live M365 execution opened. |
 | One-writer posture | `docs/2026-06-28_M365_ONE_WRITER_AUDIT.md` | Current Phase 4 prep reference. |
 | GAIL OS bridge placement | `docs/2026-06-28_M365_GAIL_OS_BRIDGE_PLACEMENT_REGISTER.md` | Current Phase 4 prep reference. |
 | Operating card map | `docs/CARD_PLAN_INDEX.md` | Active card index. |
@@ -83,6 +86,9 @@ boundary:
   connector-planning context. It should be read alongside the active M365 plan,
   not as a replacement for the transitional Power Automate proof-flow state.
 - The production Phase 4 M365 connector remains owner-gated.
+- Direct Freedom-to-M365 writes are not approved; Freedom-origin M365 task
+  completion routes through GAIL OS authority/evidence per the 2026-06-29
+  agentic IO contract.
 
 ## Work Tracking Folder
 

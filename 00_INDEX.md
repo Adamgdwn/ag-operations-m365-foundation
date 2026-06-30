@@ -2,7 +2,7 @@
 
 **AG Operations / Guided AI Labs — Microsoft 365 Foundation**
 
-Last updated: 2026-06-28
+Last updated: 2026-06-29
 
 This is the detailed document map. It is not the startup document.
 
@@ -55,6 +55,11 @@ Current QUO CRM intake prompt:
 Current M365 CNS source surface map:
 [docs/2026-06-28 - M365 CNS Source Surface Map.md](docs/2026-06-28%20-%20M365%20CNS%20Source%20Surface%20Map.md).
 
+Current M365 agentic IO / GAIL OS bridge contract:
+[docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md](docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md)
+and
+[config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json](config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json).
+
 ---
 
 ## What this project is
@@ -82,6 +87,10 @@ It should be fully useful operational infrastructure in its own right: records,
 tasks, decisions, conversations, approvals, and audit. The future Guided AI Labs
 central OS and Graphify map can then integrate across M365, local/Linux
 workspaces, repositories, products, and other systems.
+
+2026-06-29 bridge note: Freedom may request and consume M365 context, but
+Freedom-origin task completion that touches M365 routes through GAIL OS
+authority and evidence. Direct Freedom-to-M365 writes are not an approved lane.
 
 ---
 

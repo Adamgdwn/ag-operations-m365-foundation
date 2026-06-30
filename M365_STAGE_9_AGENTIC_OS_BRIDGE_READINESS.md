@@ -8,6 +8,16 @@ AI Labs User AI Operating System and Graphify Workspace Cockpit. It does not
 build unattended automation yet. It defines the bridge so future automation can
 be powerful without becoming vague, over-permissioned, or hard to audit.
 
+2026-06-29 addendum: read "UAOS" in this historical Stage 9 file as GAIL OS Rev
+2. The active bridge contract is now
+`docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md` with
+`config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json`. Freedom may coordinate
+intent and request or consume M365 state, but M365 task completion requested by
+Freedom must route through GAIL OS authority/evidence. Direct Freedom-to-M365
+writes are not an approved lane. Graphify remains relationship/context
+intelligence and may receive approved relationship-memory candidates only
+through a bounded learning lane; it is not M365 authority or execution.
+
 Related:
 
 - [M365_FOUNDATION_ROADMAP.md](M365_FOUNDATION_ROADMAP.md)

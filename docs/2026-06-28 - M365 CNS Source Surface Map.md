@@ -13,7 +13,38 @@ Reference: docs/build-control/2026-06-28 - cns-phase5-phase6-build-specification
 
 This document maps all 8 M365 surfaces that the CNS (Cognitive Nervous System) reads from or writes to in the GAIL OS agentic operation. For each surface the map records: current read/write posture, applicable CNS OKP record types, expected EvidencePacket fields, rollback expectations, approval boundary, BLK-005 dependency, and one-writer rule confirmation.
 
-All surfaces are currently in **dry-run / not-configured** state pending BLK-005 resolution (Azure Entra app registration). No live Graph API reads or writes are active as of this date.
+As of this source-map snapshot, all Phase 5 production connector surfaces are
+**dry-run / not-configured** pending BLK-005 resolution (Azure Entra app
+registration). Use the 2026-06-29 addendum and the active M365 plan for
+transitional proof-flow and selected-read context.
+
+## 2026-06-29 Addendum - Current Read
+
+Read this file as the Phase 5 connector-planning surface map, not as the full
+current live-state record. The active M365 plan and startup docs record
+transitional Power Automate proof flows, selected live proofs, and Linux
+read-only setup evidence that happened after this map's source snapshot. Those
+proof flows do not open production GAIL OS Connector execution.
+
+The active agentic IO contract is now:
+
+- `docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md`
+- `config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json`
+
+For future work, the request route is:
+
+```text
+Freedom request/proposal
+  -> GAIL OS authority/evidence
+  -> M365 connector or approved supervised operator
+  -> M365 IO/evidence
+  -> GAIL OS result
+  -> Freedom status/next context
+```
+
+Direct Freedom-to-M365 writes are not approved. Graphify remains outside M365
+authority/execution; it may receive approved relationship-memory candidates
+only through a bounded learning lane.
 
 ---
 

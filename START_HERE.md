@@ -1,7 +1,7 @@
 # Start Here
 
 Date generated: 2026-06-24
-Last reviewed: 2026-06-28
+Last reviewed: 2026-06-29
 Status: the only active startup document for this repo.
 
 Read this file first, then open only the active execution plan or the specific
@@ -22,6 +22,18 @@ complete as design-only, with message-only calls kept in QUO and consented
 follow-up inquiries routed to future CRM intake; live QUO source proof moves to
 B10c.1 or the next source expansion stage after exact approval.
 
+Update 2026-06-29: Adam pulled this lane forward for Freedom/GAIL OS readiness.
+Use
+[docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md](docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md)
+and
+[config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json](config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json)
+for the current information-out, information-in, triggered-action, and
+deliverable-out contract. M365 should be ready for broad agentic push-pull, but
+Freedom-origin task completion that touches M365 must route through GAIL OS
+authority/evidence. This update is docs/config only; it does not open live M365
+writes, app registration, consent, permissions, source webhooks, external
+sends, or unattended automation.
+
 ## Current Focus
 
 The Microsoft 365 infrastructure spine is complete. CRM / Relationships,
@@ -31,6 +43,11 @@ verified.
 Active execution plan:
 
 - [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+
+Current agentic IO / GAIL OS bridge contract:
+
+- [docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md](docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md)
+- [config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json](config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json)
 
 Product/governance reference:
 
@@ -55,9 +72,13 @@ Journey CRM receipt ack where requested
 Vision alignment: treat M365 as the Guided AI Labs enterprise body and governed
 execution substrate. Freedom remains the executive/coordinator layer, Guided AI
 Labs Operating System remains the governance/autonomic layer, and Graphify
-remains the relationship/context-graph layer. The local `G0-G4` gates map to
-the organization-level `R0-R5` authority ladder; no current B8/B9/B10 work
-enables R4 delegated autonomy.
+remains the relationship/context intelligence layer. Freedom may request and
+consume M365 context, but direct Freedom-to-M365 writes are not an approved
+lane; task completion that touches M365 routes through GAIL OS classification,
+authority envelopes, registered connectors or approved supervised operators,
+and evidence packets. The local `G0-G4` gates map to the organization-level
+`R0-R5` authority ladder; no current B8/B9/B10/MIO work enables R4 delegated
+autonomy.
 
 Priority when resumed: one agent with governed M365 capabilities. B8 Journey
 receipt/replay hardening and B9 selected internal G0 triage are now
@@ -191,6 +212,12 @@ evidence.
 - Current GAIL OS bridge posture: no autonomous GAIL OS Connector write path is
   live. Existing Power Automate proof flows are Adam-approved transitional proof
   infrastructure, not Phase 4 connector execution.
+- MIO-0 agentic IO / GAIL OS bridge contract:
+  `docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md` and
+  `config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json` are active. They define
+  information-out, information-in, triggered-action, and deliverable-out lanes
+  for high-volume agentic use while keeping Freedom-origin M365 task completion
+  routed through GAIL OS authority and evidence.
 - Next build gate: refinement or B11 selected operating cadence unless Adam
   approves another exact live read/write scope. B10b placeholder/design and
   B10c.0 key readiness are complete, and B10c.0a QUO/Sona CRM intake prompt
@@ -230,6 +257,8 @@ scope, stop conditions, and local approval evidence are explicit.
 
 - Master path: [MASTER_EXECUTION_MAP.md](MASTER_EXECUTION_MAP.md)
 - Active execution plan: [docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md](docs/2026-06-28_M365_INTERACTION_AGENT_ACTIVE_BUILD_PLAN.md)
+- Agentic IO / GAIL OS bridge contract: [docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md](docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md)
+- Agentic IO / GAIL OS bridge config: [config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json](config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json)
 - Product/governance reference: [docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md](docs/2026-06-24_AGENTIC_ASSISTANCE_APPROVAL_LOOP_PLAN.md)
 - New Signal setup/proof reference: [docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md](docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md)
 - Documentation status review: [docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md](docs/2026-06-28_DOCUMENTATION_STATUS_REVIEW.md)

@@ -13,6 +13,14 @@ data lane, and enterprise integration surface. Not a secondary integration or pl
   SharePoint updates, Teams messages) and returns evidence
 - Stage 9 (agentic bridge readiness) enables GAIL OS Connector registration
 
+**2026-06-29 agentic IO route:** Freedom may coordinate intent, ask for M365
+state, and consume results, but Freedom-origin task completion that touches
+Microsoft 365 must route through GAIL OS authority and evidence first. Direct
+Freedom-to-M365 writes are not an approved lane. Use
+`docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md` and
+`config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json` for the current
+information-out, information-in, triggered-action, and deliverable-out contract.
+
 **Authority:** All M365 writebacks must flow through the OS Connector registry with
 source refs, authority envelopes, and evidence packets. No unregistered write paths.
 

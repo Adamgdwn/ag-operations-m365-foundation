@@ -1,0 +1,328 @@
+{
+  "version": "2026-06-29",
+  "title": "M365 Agentic IO And GAIL OS Bridge Contract",
+  "scope": "Structured planning contract only. This file does not authorize Microsoft 365 calls, tenant writes, app registrations, consent grants, permission changes, source webhooks, external sends, or unattended automation.",
+  "owner": "Adam Goodwin",
+  "default_route": [
+    "freedom proposes intent or asks for status",
+    "gail-os classifies request and issues authority decision",
+    "registered m365 connector or approved supervised operator performs allowed IO",
+    "m365 returns evidence packet to gail-os",
+    "gail-os exposes result/status back to freedom",
+    "approved relationship-memory candidates may flow to graphify"
+  ],
+  "direct_write_policy": {
+    "freedom_to_m365": "not approved",
+    "graphify_to_m365": "not approved",
+    "local_script_to_m365": "supervised proof/setup only with exact gate",
+    "gail_os_connector_to_m365": "future phase 4 only after BLK-005, connector registry, authority envelope, evidence return, one-writer, and explicit Adam authorization"
+  },
+  "operating_modes": [
+    {
+      "id": "team_daily_workspace",
+      "users": [
+        "Adam",
+        "Guided AI Labs team"
+      ],
+      "purpose": "Regular work in CRM, Planner, Teams, SharePoint, Bookings, Forms, files, decisions, evidence, and follow-up records.",
+      "guardrail": "Human workspace ergonomics remain first-class. Agentic structures must not make daily team work awkward."
+    },
+    {
+      "id": "agentic_io_substrate",
+      "users": [
+        "GAIL OS connectors",
+        "approved supervised operators"
+      ],
+      "purpose": "High-volume information reads, source intake, action proposals, internal writes, evidence return, and deliverable placement.",
+      "guardrail": "Every write-capable lane requires source refs, authority envelopes, evidence packets, one writer, idempotency, stop paths, and rollback or pause notes."
+    }
+  ],
+  "io_lanes": [
+    {
+      "id": "IO-1",
+      "name": "Information Out",
+      "purpose": "Pull structured state from M365 into GAIL OS, Freedom, and Graphify-aware reasoning.",
+      "default_authority": "G0/R0 selected read-only unless sensitive/external/source-expansion data raises it to G3/R3.",
+      "examples": [
+        "CRM records",
+        "Planner task state",
+        "SharePoint evidence and decisions",
+        "Forms or Bookings responses after approval",
+        "Journey or QUO source records after exact gate",
+        "approved Teams or Exchange summaries"
+      ],
+      "required_evidence": [
+        "source_ref",
+        "surface and item/window",
+        "actor",
+        "authority_level",
+        "observed_at",
+        "sanitized_payload_summary_or_pointer",
+        "retention_or_redaction_note"
+      ]
+    },
+    {
+      "id": "IO-2",
+      "name": "Information In",
+      "purpose": "Accept structured source events or approved updates into M365.",
+      "default_authority": "G1/R1 proposals; G2/R2 approved internal writes; G3/R3 external, source webhook, connector, mailbox, permission, callback, or client-sensitive work.",
+      "examples": [
+        "website/Journey/QUO events into CRM - New Signals",
+        "approved internal CRM updates",
+        "Decision Register records",
+        "Agent Action Log rows",
+        "support or operations rows"
+      ],
+      "required_evidence": [
+        "source_event_id_or_dedupe_key",
+        "source_system",
+        "target_surface",
+        "normalized_field_contract",
+        "idempotency_result",
+        "approval_ref_for_G2_or_above",
+        "rollback_or_pause_note",
+        "returned_m365_item_or_link"
+      ]
+    },
+    {
+      "id": "IO-3",
+      "name": "Actions Triggered",
+      "purpose": "Trigger work from M365 signals while preserving the GAIL OS authority step.",
+      "default_authority": "Trigger detection may be G0/R0; Suggested rows are G1/R1; internal tasks/rows/notices are G2/R2 after named approval; external/access/client commitments are G3/R3 or G4/R5.",
+      "examples": [
+        "New Signal to Teams internal alert to triage",
+        "CRM lifecycle change to Planner follow-up candidate",
+        "support row to draft response candidate",
+        "Decision Register item to connector posture change candidate",
+        "source event to mission proposal"
+      ],
+      "required_evidence": [
+        "trigger_source",
+        "classification_result",
+        "proposed_action",
+        "authority_gate_result",
+        "action_id",
+        "stop_condition",
+        "result_or_blocked_reason"
+      ]
+    },
+    {
+      "id": "IO-4",
+      "name": "Deliverables Out",
+      "purpose": "Place outputs where humans and later agents can use them.",
+      "default_authority": "G1/R1 for proposals and evidence-only records; G2/R2 for internal deliverables after named approval; G3/R3 for external/client-facing output, mailbox drafts/sends, sharing, or public/client forms; G4/R5 blocked for autonomous destructive or high-authority actions.",
+      "examples": [
+        "EvidencePacket files",
+        "Agent Action Log summaries",
+        "Planner tasks and status",
+        "Teams internal notices",
+        "SharePoint files or folders in approved paths",
+        "mailbox drafts after mailbox readiness and approval"
+      ],
+      "required_evidence": [
+        "deliverable_type",
+        "destination",
+        "link_or_item_id",
+        "approval_ref",
+        "actor",
+        "created_or_updated_at",
+        "rollback_archive_correction_or_supersession_path"
+      ]
+    }
+  ],
+  "surface_contracts": [
+    {
+      "surface": "CRM New Signals and relationship CRM lists",
+      "read_boundary": "Selected CRM reads for signals, relationships, lifecycle, touchpoints, and engagement context.",
+      "write_boundary": "Approved internal CRM creates/updates only; source events use dedupe keys and the New Signal lane.",
+      "authority": "G0/G1/G2, with G3 for external/client-sensitive source expansion.",
+      "evidence_target": "Agent Action Log plus target CRM item link.",
+      "one_writer": "Future GAIL OS M365 Connector; current transitional proof flows must be registered, retired, or replaced before Phase 4.",
+      "stop_triggers": [
+        "missing source_ref",
+        "duplicate writer",
+        "missing dedupe key for source intake",
+        "client-sensitive scope without approval",
+        "external commitment requested"
+      ]
+    },
+    {
+      "surface": "Agent Action Log",
+      "read_boundary": "Read prior agentic suggestions, dry runs, approvals, outcomes, and evidence links.",
+      "write_boundary": "Create Suggested, dry-run, verification, blocked, and completed-action rows inside approved lanes.",
+      "authority": "G1 for suggestions/logging; G2+ when logging a completed approved action.",
+      "evidence_target": "Agent Action Log itself and GAIL OS EvidencePacket return.",
+      "one_writer": "Future GAIL OS M365 Connector for production; supervised local operator for current proof lanes.",
+      "stop_triggers": [
+        "vague action log payload",
+        "missing approval state",
+        "missing source_ref",
+        "missing result",
+        "wrong actor"
+      ]
+    },
+    {
+      "surface": "Decision Register",
+      "read_boundary": "Read prior governance, connector posture, app posture, source, and approval decisions.",
+      "write_boundary": "Record approved decisions only; proposals may be prepared but not treated as approval.",
+      "authority": "G2/G3 depending on scope.",
+      "evidence_target": "Decision Register plus Agent Action Log.",
+      "one_writer": "Adam confirmation plus governed write channel; no inferred approvals.",
+      "stop_triggers": [
+        "approval inferred from chat",
+        "app/consent/permission change without decision record",
+        "missing review date",
+        "missing revoke path"
+      ]
+    },
+    {
+      "surface": "Planner",
+      "read_boundary": "Read selected plans, buckets, task state, and follow-up context.",
+      "write_boundary": "Create/update supervised internal tasks after approval; no calendar/deadline commitment without approval.",
+      "authority": "G0 for reads; G2 for internal task writes.",
+      "evidence_target": "Agent Action Log plus Planner task link or title.",
+      "one_writer": "Future GAIL OS M365 Connector for production task writes.",
+      "stop_triggers": [
+        "task creates commitment outside approved scope",
+        "missing owner",
+        "missing rollback/pause note",
+        "duplicate task without idempotency check"
+      ]
+    },
+    {
+      "surface": "SharePoint evidence libraries and approved folders",
+      "read_boundary": "Read approved evidence, methods, handoffs, and readiness materials.",
+      "write_boundary": "Create folders/files only in approved paths; sharing, permissions, archives, and deletes require higher gates.",
+      "authority": "G0 for reads; G2 for internal file/folder writes; G3 for sharing/permission/public/client impact.",
+      "evidence_target": "Agent Action Log plus file/folder link or content hash.",
+      "one_writer": "Future GAIL OS M365 Connector for production agentic writes.",
+      "stop_triggers": [
+        "wrong workspace path",
+        "permission or sharing mutation requested",
+        "delete requested",
+        "missing content hash for evidence"
+      ]
+    },
+    {
+      "surface": "Teams",
+      "read_boundary": "Read approved channel context only when the channel is selected for that task.",
+      "write_boundary": "Post internal summaries/notices after approval; no broad, guest-impacting, or external-sensitive posts.",
+      "authority": "G0 for selected reads; G2 for internal posts; G3 for broad/external-sensitive posts.",
+      "evidence_target": "Agent Action Log plus channel/post link when available.",
+      "one_writer": "Existing New Signal proof flow remains transitional; future production writer must be registered, retired, or replaced.",
+      "stop_triggers": [
+        "guest or broad audience",
+        "client-sensitive content",
+        "missing alert type",
+        "proof flow conflicts with connector writer"
+      ]
+    },
+    {
+      "surface": "Exchange and support mailbox",
+      "read_boundary": "Approved mailbox metadata and message bodies only after mailbox access posture is complete.",
+      "write_boundary": "Draft replies only after approval; external send remains G3 and human-reviewed.",
+      "authority": "G2 for drafts after approval; G3 for sends and external communications.",
+      "evidence_target": "Support Register plus Agent Action Log.",
+      "one_writer": "Future scoped Exchange Application RBAC adapter only after support MFA and design approval.",
+      "stop_triggers": [
+        "support MFA incomplete",
+        "send requested instead of draft",
+        "external commitment",
+        "mailbox delegation or forwarding change requested"
+      ]
+    },
+    {
+      "surface": "Forms, Bookings, Journey, QUO, and source intake",
+      "read_boundary": "Read approved source schema, response/routing evidence, or selected source events after exact gate.",
+      "write_boundary": "Public/client-facing form or source configuration changes require G3; source events entering CRM use normalized contracts and idempotency.",
+      "authority": "G0/G1 for design and local fixtures; G3 for live source, webhook, client/public, secret, or callback work.",
+      "evidence_target": "Agent Action Log, source event evidence, and target CRM item link when created.",
+      "one_writer": "Source ingress must map into the approved M365/GAIL OS lane; no separate source bot writer.",
+      "stop_triggers": [
+        "live source not approved",
+        "secret requested",
+        "webhook setup requested",
+        "outbound callback or message requested",
+        "missing idempotency key"
+      ]
+    },
+    {
+      "surface": "Entra app registrations, enterprise apps, consent, and permissions",
+      "read_boundary": "Inventory app ownership, permissions, consent posture, sign-in, and audit evidence when approved.",
+      "write_boundary": "No default writes. App creation, consent, selected grants, Exchange RBAC, permissions, and tenant policy changes require separate approval-gated operators.",
+      "authority": "G3/G4.",
+      "evidence_target": "Decision Register, Agent Action Log, and inventory transcript.",
+      "one_writer": "Human/admin approved operator only; never Freedom, Graphify, or an unregistered connector.",
+      "stop_triggers": [
+        "BLK-005 unresolved",
+        "setup-helper reuse requested",
+        "permission grant lacks revoke path",
+        "consent requested without decision record",
+        "broad grant requested"
+      ]
+    }
+  ],
+  "graphify_boundary": {
+    "may_do": [
+      "accelerate relationship context",
+      "surface stale-claim candidates",
+      "receive approved relationship-memory candidates when a learning lane exists"
+    ],
+    "may_not_do": [
+      "approve actions",
+      "execute M365 writes",
+      "act as raw M365 storage clone",
+      "replace M365 source-of-truth records",
+      "hold M365 connector authority"
+    ]
+  },
+  "phase4_required_gates": [
+    "BLK-005 resolved",
+    "GAIL OS connector registry available",
+    "authority envelope required before writes",
+    "evidence packet return path tested",
+    "one-writer transition complete for transitional proof flows",
+    "explicit Adam authorization for exact Phase 4 scope"
+  ],
+  "stop_conditions": [
+    "direct Freedom-to-M365 writes",
+    "production connector writes before Phase 4 opens",
+    "app registration or consent without explicit gate",
+    "permission, selected grant, Exchange RBAC, tenant policy, sharing, or guest changes without explicit gate",
+    "external sends or callbacks without explicit gate",
+    "source webhooks, source secrets, or live source ingestion without exact approval",
+    "Graphify ingest of M365 facts without approved relationship-memory lane"
+  ],
+  "next_chunks": [
+    {
+      "id": "MIO-1",
+      "name": "Machine-Readable IO Surface Review",
+      "status": "next recommended prep",
+      "goal": "Compare this contract against Stage 9 and source-surface configs; add a local preflight if drift appears."
+    },
+    {
+      "id": "MIO-2",
+      "name": "GAIL OS Dry-Run Handoff Shape",
+      "status": "planned",
+      "goal": "Define sample dry-run request/response records for Freedom -> GAIL OS -> M365 -> GAIL OS -> Freedom."
+    },
+    {
+      "id": "MIO-3",
+      "name": "Selected G0 Pull Proof",
+      "status": "planned",
+      "goal": "Run one exact selected read-only proof through existing supervised pattern and emit local evidence."
+    },
+    {
+      "id": "MIO-4",
+      "name": "G1 Proposal/Log Proof Through GAIL OS Shape",
+      "status": "planned",
+      "goal": "Prepare or write one Suggested row inside the existing approval pattern while showing GAIL OS authority/evidence ownership."
+    },
+    {
+      "id": "MIO-5",
+      "name": "G2 Internal Write Pilot",
+      "status": "blocked until earlier proofs and exact approval",
+      "goal": "Perform one named internal write with evidence return and rollback/pause note."
+    }
+  ]
+}
