@@ -15,7 +15,14 @@ key readiness is complete without live API read, and B10c.0a QUO/Sona prompt
 and placement guidance is complete as design-only. Live QUO proof moves to
 B10c.1 or a later source-expansion stage after exact approval. The next default
 chunk is B11 selected operating cadence. Future B9/B11 normal-client reads and
-G1 Suggested rows remain selected/approved per item.
+G1 Suggested rows remain selected/approved per item. 2026-06-29 update: the
+active agentic IO / GAIL OS bridge contract is
+`docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md` with
+`config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json`. This contract prepares
+M365 for broad information-out, information-in, triggered-action, and
+deliverable-out lanes while keeping Freedom-origin task completion routed
+through GAIL OS authority/evidence. Direct Freedom-to-M365 writes remain
+blocked.
 
 This document describes what the Microsoft 365 environment should have before
 Guided AI Labs relies on agents, Copilot extensions, connector-grounded search,

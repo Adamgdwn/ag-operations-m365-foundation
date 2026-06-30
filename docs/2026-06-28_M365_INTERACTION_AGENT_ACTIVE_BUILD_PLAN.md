@@ -9,7 +9,10 @@ API key readiness is complete locally as of 2026-06-28. B10c.0a QUO CRM intake
 prompt and placement is complete as design-only guidance as of 2026-06-28, with
 message-only calls kept out of CRM and consented follow-up inquiries routed to
 future `CRM - New Signals` intake. D1 documentation currentness review is
-complete as of 2026-06-28.
+complete as of 2026-06-28. MIO-0 agentic IO / GAIL OS bridge contract alignment
+is complete as of 2026-06-29; it clarifies high-volume information-out,
+information-in, triggered-action, and deliverable-out lanes while keeping
+Freedom-origin task completion routed through GAIL OS authority and evidence.
 
 Owner: Adam.
 
@@ -44,7 +47,11 @@ stack.
 M365 is the Guided AI Labs enterprise body: records, collaboration,
 communications, tasks, files, and governed execution surfaces. Freedom remains
 the executive/coordinator layer, GAIL OS remains the governance and autonomic
-management layer, and Graphify remains the relationship/context graph.
+management layer, and Graphify remains the relationship/context intelligence
+layer. Freedom may request and consume M365 state, but direct Freedom-to-M365
+writes are not an approved lane. M365 task completion requested by Freedom
+routes through GAIL OS classification, authority envelopes, registered
+connectors or approved supervised operators, and evidence packets.
 
 This repo owns the Microsoft 365 execution and evidence lane. It should leave
 stable source ids, event ids, relationship hints, approval labels, evidence
@@ -132,6 +139,8 @@ Cross-repo/direct-link context as of 2026-06-28:
 | B10c.0a | QUO CRM intake prompt and placement | Complete design-only | Prompt/placement doc: `docs/2026-06-28_QUO_CRM_INTAKE_PROMPT.md`; Sona distinguishes message-only from consented follow-up inquiry; future ingress writes `CRM - New Signals` with `IntakeSource = QUO` only when `CreateCrmSignal: true` |
 | B10c.1+ | Low-volume QUO live source proof | Later | Exact QUO number/event/ingress/secret/retention/disable/outbound-block approval |
 | B11 | Normal operating cadence for selected signals | Next recommended operating chunk | Adam selects whether to practice real G0 review before more source expansion |
+| MIO-0 | Agentic IO / GAIL OS bridge contract alignment | Complete docs/config only | Adam requested M365 readiness for Freedom/GAIL OS push-pull; outputs: `docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md` and `config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json` |
+| MIO-1 | Machine-readable IO surface review | Next recommended Phase 4 prep chunk when connector prep resumes | Compare the new IO contract against Stage 9/source-surface configs and add a local drift preflight if needed |
 | Phase 4 | GAIL OS Connector registry and M365 production write path | Blocked | Production connector app/consent posture resolved, GAIL OS API approved for the connector environment, explicit Phase 4 authorization |
 
 The current structured phase closed when B10b finished, and B10c.0 has now
@@ -491,10 +500,13 @@ Allowed Phase 4 prep while blocked:
 - list transitional Power Automate flows that will need registration,
   retirement, or replacement;
 - identify M365 write surfaces that require one-writer enforcement.
+- refine the MIO agentic IO contract for information-out, information-in,
+  triggered-action, and deliverable-out lanes.
 
 Not allowed before Phase 4 opens:
 
 - create production GAIL OS connector writes;
+- allow direct Freedom-to-M365 writes;
 - grant new app permissions or consent;
 - enable unattended M365 write automation;
 - bypass the existing New Signal lane;
@@ -541,6 +553,10 @@ Use these files by default:
   `docs/2026-06-24_NEW_SIGNAL_TEAMS_ALERT_SETUP.md`
 - GAIL OS bridge placement:
   `docs/2026-06-28_M365_GAIL_OS_BRIDGE_PLACEMENT_REGISTER.md`
+- Agentic IO / GAIL OS bridge contract:
+  `docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md`
+- Agentic IO / GAIL OS bridge contract config:
+  `config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json`
 - One-writer audit:
   `docs/2026-06-28_M365_ONE_WRITER_AUDIT.md`
 - M365 CNS source surface map:
@@ -556,7 +572,9 @@ Stop before any work that requires app registration, app consent, permission
 changes, external sends, guest/sharing changes, public forms, deletes,
 billing/client commitments, Dynamics, Dataverse, premium Power Platform, Copilot
 connector setup, custom actions, QUO setup, source webhooks, source secrets, or
-unattended automation.
+unattended automation. Also stop before any direct Freedom-to-M365 write path;
+Freedom-origin M365 task completion must route through GAIL OS authority and
+evidence.
 
 B10c.0 is the narrow exception already completed for QUO source secret handling:
 local encrypted storage and dry-run readiness only. It does not authorize live

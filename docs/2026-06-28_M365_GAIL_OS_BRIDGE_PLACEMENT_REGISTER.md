@@ -8,6 +8,35 @@
 
 ---
 
+## 2026-06-29 Addendum - Agentic IO Route
+
+Adam pulled this repo forward for Freedom/GAIL OS readiness on 2026-06-29. The
+active IO contract is now:
+
+- `docs/2026-06-29_M365_AGENTIC_IO_AND_GAIL_OS_BRIDGE_CONTRACT.md`
+- `config/M365_AGENTIC_IO_GAIL_OS_BRIDGE_CONTRACT.json`
+
+This addendum does not open Phase 4. It clarifies the request path:
+
+```text
+Freedom proposes/requests
+  -> GAIL OS classifies and authorizes
+  -> M365 executes approved IO through a registered connector or supervised operator
+  -> evidence returns to GAIL OS
+  -> result/status returns to Freedom
+```
+
+Direct Freedom-to-M365 writes remain prohibited. M365 should be prepared for
+large information-out, information-in, triggered-action, and deliverable-out
+flows, but the authority and evidence spine remains GAIL OS.
+
+Graphify wording in this register should be read with the 2026-06-29 boundary
+refinement: Graphify is not an M365 authority or execution path, and it should
+not clone raw M365 storage. It may receive approved relationship-memory
+candidates when a future learning lane and source contract allow that transfer.
+
+---
+
 ## Purpose
 
 This register records where M365 fits in the CNS architecture, what the GAIL OS connection intent is, the current bridge posture, and what must resolve before Phase 4 implementation begins.
@@ -35,7 +64,10 @@ M365 Foundation (Enterprise Body — ag-operations-m365-foundation)
   Return EvidencePacket to GAIL OS
 ```
 
-Graphify is not in this flow — it is the connectome consulted by Freedom and GAIL OS before and during this flow (read-only).
+Graphify is not in this authority/execution flow. It is the relationship/context
+intelligence layer consulted by Freedom and GAIL OS before and during the flow;
+approved relationship-memory candidates may later flow to Graphify only through
+a bounded learning lane.
 
 ---
 
